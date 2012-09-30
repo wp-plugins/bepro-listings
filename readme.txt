@@ -29,6 +29,7 @@ Trouble Shooting
 
 * 404 Error - Unfortunately, wordpress has an existing issue with custom post types. If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save them your current settings so that they are reset for all urls. The option is under your settings menu.
 
+Visit the plugin page for examples and details http://beprosoftware.com/products/bepro-listings/
 
 == Installation ==
 

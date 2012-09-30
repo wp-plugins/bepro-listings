@@ -17,15 +17,15 @@ Bepro Listings allows you to create posts with additional information like, cost
 
 Shortcodes
 
-* Dynamic Map – Setup a map anywhere showing the last X listings on your site
-* Basic Search – Allow users to search listings
-* Filter Search – Allow users to do a more in depth search including, cost, date, etc
-* Listings – Show X listings with optional paging
-* Add Listing Form – Give your users the ability to create listings. You can set a default user id for the listing or force registration.
+* Dynamic Map - Setup a map anywhere showing the last X listings on your site
+* Basic Search - Allow users to search listings
+* Filter Search - Allow users to do a more in depth search including, cost, date, etc
+* Listings - Show X listings with optional paging
+* Add Listing Form - Give your users the ability to create listings. You can set a default user id for the listing or force registration.
 
 Trouble Shooting
 
-* Google Api Calls – If your form submissions seem to be taking long, this may be as a result of your server waiting for a response from google. All Lat/Lon queries are sent there. For this reason, we suggest you use the options where available in the plugin, to not retrieve the Lat/Lon when not necessary.
+* Google Api Calls - If your form submissions seem to be taking long, this may be as a result of your server waiting for a response from google. All Lat/Lon queries are sent there. For this reason, we suggest you use the options where available in the plugin, to not retrieve the Lat/Lon when not necessary.
 
 * 404 Error - Unfortunately, wordpress has an existing issue with custom post types. If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save them your current settings so that they are reset for all urls. The option is under your settings menu.
 

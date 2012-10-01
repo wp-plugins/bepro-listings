@@ -183,7 +183,7 @@
 		$data = get_option("bepro_listings");
 		$listing_types = listing_types_by_post($result->post_id);
 		$thumbnail = get_the_post_thumbnail($result->post_id, 'thumbnail'); 
-		$default_img = (!empty($thumbnail))? $thumbnail:$data["default_image"];
+		$default_img = (!empty($thumbnail))? $thumbnail:'<img src="'.$data["default_image"].'"/>';
 		
 		$results .= 
 		'<div class="'.(($shorten)? "shortcode_results":"results").'">
@@ -194,7 +194,7 @@
 				</tr></table>
 			</div>
 			<div class="result_buttom">
-				<span class="result_img"><img src="'.$default_img.'"/></span>';
+				<span class="result_img">'.$default_img.'</span>';
 		
 			//if requested, hide some of the post content
 			if(empty($shorten)){

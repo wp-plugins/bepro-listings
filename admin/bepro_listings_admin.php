@@ -81,6 +81,8 @@
 				$addresstofind_1 = "http://maps.google.com/maps/geo?q=".urlencode($to_addr);
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $addresstofind_1);
+				curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101');
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,1);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 				$addr_search_1  =  curl_exec($ch);
 				curl_close($ch);

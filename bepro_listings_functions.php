@@ -49,10 +49,10 @@
 	//Setup database and other needed
 	function bepro_listings_install() {
 		global $wpdb;
-		$bepro_listings_version = '1.0.0';
+		$bepro_listings_version = '1.0.1';
 		$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
  		if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'")!=$table_name
-				|| get_option("bepro_listings_version")!= $bepro_listings_version ) {
+				|| version_compare(get_option("bepro_listings_version"), '1.0.0', '<') ) {
 			$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
 			$sql = "CREATE TABLE " . $table_name . " (
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
@@ -75,7 +75,7 @@
 				UNIQUE KEY `post_id` (`post_id`)
 			);";
 
-			$bepro_listings_version = "1.0.0";
+			$bepro_listings_version = "1.0.1";
 			require_once(ABSPATH . 'wp-admin/upgrade-functions.php');
 			dbDelta($sql);
 			
@@ -109,9 +109,11 @@
 			$attach_data = wp_generate_attachment_metadata( $attach_id, $to_filename);
 			wp_update_attachment_metadata( $attach_id, $attach_data );
 			
-			update_option('bepro_listings_version', $bepro_listings_version);
 		}
-		if($post_id)$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET email='support@beprosoftware.com', phone='555-445-5544', cost=0, address_line1='', city='halifax', postcode='', state='NS', country='Canada', website='beprosoftware.com', lat='44.6470678', lon='-63.5747943', first_name='John', last_name='Tester' WHERE post_id=".$post_id);
+		//set version
+		update_option('bepro_listings_version', $bepro_listings_version);
+		
+		if(!empty($post_id))$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET email='support@beprosoftware.com', phone='555-445-5544', cost=0, address_line1='', city='halifax', postcode='', state='NS', country='Canada', website='beprosoftware.com', lat='44.6470678', lon='-63.5747943', first_name='John', last_name='Tester' WHERE post_id=".$post_id);
 		
 		//load options if not already existant		
 		$data = get_option("bepro_listings");

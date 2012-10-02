@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, products, custom posts, searchable
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -99,6 +99,8 @@ Simply set the post to private in the admin.
 = .1.0.0 (Sunday, Sep 30th 2012) = * Launched stable plugin
 
 = .1.0.1 (Monday, Oct 1st 2012) = * Stable with fixes
+
+= .1.0.2 (Monday, Oct 1st 2012) = * Stable with fixes
 
 == Upgrade Notice ==
 

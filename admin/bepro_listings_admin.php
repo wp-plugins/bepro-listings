@@ -38,6 +38,7 @@
 	  global $wpdb;
 	  $listing = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 	  echo '
+		<input type="hidden" name="save_bepro_listings" value="1">
 		<span class="form_label">First Name</span><input type="text" name="first_name" value="'.$listing->first_name.'"><br />
 		<span class="form_label">Last Name</span><input type="text" name="last_name" value="'.$listing->last_name.'"><br />
 		<span class="form_label">Phone</span><input type="text" name="phone" value="'.$listing->phone.'"><br />
@@ -65,6 +66,7 @@
 	//Save Bepro Listing
 	function bepro_admin_save_details($post_id){
 	  global $wpdb;
+	  if (!isset($_POST['save_bepro_listings'])) return; 
 	  if ($parent_id = wp_is_post_revision($post_id)) 
 		$post_id = $parent_id;
 	  

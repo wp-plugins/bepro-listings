@@ -21,11 +21,11 @@ CSS skills are recommended to make the various functionality integrate well with
 
 Shortcodes
 
-* Dynamic Map - Setup a map anywhere showing the last X listings on your site e.g. [generate_map num_results=10 show_paging=1]
+* Dynamic Map - Setup a map anywhere showing the last X listings on your site e.g. [generate_map show_paging=1]
 * Basic Search - Allow users to search listings e.g. [search_form]
 * Filter Search - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]
-* Listings - Show X listings with optional paging e.g. [display_listings num_results=10 show_paging=1]
-* Add Listing Form - Give your users the ability to create listings. You can set a default user id for the listing or force registration. e.g. [create_listing_form num_images=3 register=1]
+* Listings - Show listings with optional paging e.g. [display_listings show_paging=1]
+* Add Listing Form - Give your users the ability to create listings. You can set a default user id for the listing or force registration. e.g. [create_listing_form register=1]
 
 Trouble Shooting
 
@@ -98,7 +98,7 @@ Simply set the post to private in the admin.
 
 = 1.0.2 (Monday, Oct 1st 2012) = * Stable with fixes
 
-= 1.1.0 (Sunday, Oct 7st 2012) = * global settings for cost/contact/geo
+= 1.1.0 (Sunday, Oct 7st 2012) = * global settings for cost/contact/geo & num images
 
 == Upgrade Notice ==
 

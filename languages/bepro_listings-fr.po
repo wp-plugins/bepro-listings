@@ -1,0 +1,118 @@
+# Translation for BePro Listings
+# Copyright (C) 2012 Beyond Programs LTD (beyondprograms.com)
+# This file is distributed under the same license as BePro Listings.
+# President <noble@beyondprograms.com>, 2012.
+# papi <nobility16@yahoo.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: BePro Listings Translation 1.0\n"
+"Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2012-09-14 16:20+0200\n"
+"PO-Revision-Date: 2012-09-15 22:28-0300\n"
+"Last-Translator: papi <nobility16@yahoo.com>\n"
+"Language-Team: bepro software\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+
+msgid "Item Information"
+msgstr "Élément Information"
+
+#: wpGoogleMaps.php:882
+msgid "Item Name"
+msgstr "Nom de l'élément"
+
+#: wpGoogleMaps.php:882
+msgid "Cost"
+msgstr "Coût"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Image"
+msgstr "Image"
+
+msgid "Categories"
+msgstr "Catégories"
+
+msgid "Contact Information"
+msgstr "Information de contact"
+
+msgid "First Name"
+msgstr "Prénom"
+
+msgid "Last Name"
+msgstr "Nom"
+
+msgid "Email"
+msgstr "Courrier électronique"
+
+msgid "Phone"
+msgstr "Téléphone"
+
+msgid "Website"
+msgstr "Site web"
+
+msgid "Location Information"
+msgstr "Information de contact"
+
+msgid "Address"
+msgstr "l'adresse ;"
+
+msgid "City"
+msgstr "Ville"
+
+msgid "State"
+msgstr "Etat"
+
+msgid "Country"
+msgstr "Pays"
+
+msgid "Zip / Postal"
+msgstr "Zip / Postal"
+
+msgid "Filter Map"
+msgstr "Type de filtre"
+
+msgid "Listings Map"
+msgstr "Carte des listes"
+
+msgid "From"
+msgstr "De"
+
+msgid "To"
+msgstr "À"
+
+msgid "Date Range"
+msgstr "Plage de date"
+
+msgid "Price Range"
+msgstr "Intervalle d'impression"
+
+msgid "Distance"
+msgstr "Distance"
+
+msgid "Where"
+msgstr "Où"
+
+msgid "Name"
+msgstr "Nom"
+
+#: bepro_listings.php:234
+msgid "Listing Types"
+msgstr "Liste des Types"
+
+#: bepro_listings.php:276
+msgid "Free"
+msgstr "Libre"
+
+#: bepro_listings.php:278
+msgid "Please Contact"
+msgstr "Fusionner le contact"
+
+#: bepro_listings.php:285
+msgid "View Map"
+msgstr "Voir la carte"

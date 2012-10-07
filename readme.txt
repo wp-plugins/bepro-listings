@@ -21,7 +21,7 @@ CSS skills are recommended to make the various functionality integrate well with
 
 Shortcodes
 
-* Dynamic Map - Setup a map anywhere showing the last X listings on your site e.g. [generate_map show_paging=1]
+* Dynamic Map - Setup a map anywhere showing the last listings on your site e.g. [generate_map show_paging=1]
 * Basic Search - Allow users to search listings e.g. [search_form]
 * Filter Search - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]
 * Listings - Show listings with optional paging e.g. [display_listings show_paging=1]
@@ -90,6 +90,7 @@ Simply set the post to private in the admin.
 1. bepro_lisings / Screenshot #1
 2. bepro_lisings / Screenshot #2
 3. bepro_lisings / Screenshot #3
+4. bepro_lisings / Screenshot #4
 
 
 == Changelog ==

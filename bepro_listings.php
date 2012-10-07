@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
 Description: Bepro Listings allows you to create posts with additional information like, costs, contact, and geographic. This plugin includes the tools you need, to implement listings on any page or post.
-Version: 1.0.2
+Version: 1.1.0
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -49,7 +49,7 @@ class Bepro_listings{
 		
 		add_action('init', 'create_post_type' );
 		add_action('admin_init', 'bepro_admin_init' );
-		add_action('admin_head-bepro_listings', 'bepro_admin_head' );
+		add_action('admin_head', 'bepro_admin_head' );
 		add_action('wp_head', 'bepro_listings_wphead', 0);
 		add_action('wp_footer', 'bepro_listings_javascript');
 		add_action('admin_enqueue_scripts', 'bepro_listings_adminhead');
@@ -75,9 +75,10 @@ class Bepro_listings{
 	function searchform($atts){
 		global $wpdb;
 		extract(shortcode_atts(array(
-			  'listing_page' => $wpdb->escape($_POST["listing_page"]),
-			  'geo' => $wpdb->escape($_POST["geo"])
+			  'listing_page' => $wpdb->escape($_POST["listing_page"])
 		 ), $atts));
+		
+		$data = get_option("bepro_listings");
 		
 		$return_text = '
 			<div class="search_listings">
@@ -90,7 +91,7 @@ class Bepro_listings{
 					<input type="hidden" name="min_cost" value="'.$_POST["min_cost"].'">
 					<input type="hidden" name="max_cost" value="'.$_POST["max_cost"].'">
 					<span class="searchleft">';	
-		if($geo == 1)$return_text .= '<span class="searchlabel">'.__("Where", "bepro-listings").'</span><br />
+		if($data["show_geo"] == (1||"on"))$return_text .= '<span class="searchlabel">'.__("Where", "bepro-listings").'</span><br />
 						<input type="text" name="addr_search" value="'.$_POST["addr_search"].'"><br />
 						';
 		$return_text .=	'<span class="searchlabel">'.__("Name", "bepro-listings").'</span><br />
@@ -207,11 +208,13 @@ class Bepro_listings{
 	function search_filter_options($atts = array()){
 		global $wpdb;
 		extract(shortcode_atts(array(
-			  'listing_page' => $wpdb->escape($_POST["listing_page"]),
-			  'geo' => $wpdb->escape($_POST["geo"])
+			  'listing_page' => $wpdb->escape($_POST["listing_page"])
 		 ), $atts));
 		$echo_this = (!empty($atts))? true:false;
-		 
+		
+		//get settings
+		$data = get_option("bepro_listings");
+		
 		//Process user requested Bepro listing types 
 		if(!empty($_POST["type"])){
 			$l_type = $_POST["type"];
@@ -239,7 +242,7 @@ class Bepro_listings{
 			$search_form .= '</td>
 			</tr>';
 			///////////////////////////////////////////////////////////////////////
-			if($geo == 1)	
+			if($data["show_geo"] == (1||"on"))	
 			$search_form .= '
 				<tr><td>
 					'.__("Distance", "bepro-listings").': <select name="distance">
@@ -253,10 +256,13 @@ class Bepro_listings{
 				</td></tr>';
 				
 				//min/max cost
+				if($data["show_cost"] == (1||"on"))
 				$search_form .= '
 				<tr><td>
 					<span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_cost" value="'.$_POST["min_cost"].'"><span class="label_sep">'.__("Price Range", "bepro-listings").'</span><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_cost" value="'.$_POST["max_cost"].'">
-				</td></tr>
+				</td></tr>';
+				
+				$search_form .= '
 				<tr><td>
 					<span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_date" id="min_date" value="'.$_POST["min_date"].'"><span class="label_sep">'.__("Date Range", "bepro-listings").'</span><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_date" id="max_date" value="'.$_POST["max_date"].'">
 				</td></tr>
@@ -284,9 +290,11 @@ class Bepro_listings{
 			//get listing information related to this post
 			$page_id = get_the_ID();
 			$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id = ".$page_id);
+			//get settings
+			$data = get_option("bepro_listings");
 			if($item && ($wpdb->num_rows == 1)){
 				//Show wordpress gallery for this page
-				echo "<div class='bepro_listing_gallery'>".do_shortcode("[gallery size='thumbnail' columns=5]"."</div>");
+				echo "<div class='bepro_listing_gallery'>".do_shortcode("[gallery size='".$data["gallery_size"]."' columns=5]"."</div>");
 				$post_categories = wp_get_post_categories( $page_id );
 				$types = listing_types();	
 				$check_types = array();
@@ -301,24 +309,28 @@ class Bepro_listings{
 				}else{
 					$cost = __("Please Contact", "bepro-listings");
 				} 
-				echo "<span class='bepro_listing_info'>
-					<div class='item_cost'>".__("Cost", "bepro-listings")." - ".$cost."</div>";
-					//If we have geographic data then we can show this listings address information
-					if($item->lat){
-						$map_url = "http://maps.google.com/maps?&z=10&q=".$item->lat."+".$item->lon."+(".urlencode($item->address_line1.", ".$item->city.", ".$item->state.", Canada").")&mrt=yp ";
-						echo "<div class='bepro_address_info'><span class='item_label'>".__("Address", "bepro-listings")."</span> - <a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a></div>";
-					}
-					//If there is contact information then show it
-					if($item->first_name || $item->email){
-						echo "<div class='item_contactinfo'>
-								<span class='item_label'>".__("First Name", "bepro-listings")."</span> - ".$item->first_name."<br />
-								<span class='item_label'>".__("Last Name", "bepro-listings")."</span> - ".$item->last_name."<br />
-								<span class='item_label'>".__("Email", "bepro-listings")."</span> - ".$item->email."<br />
-								<span class='item_label'>".__("Phone", "bepro-listings")."</span> - ".$item->phone."
-							</div>";
-					}
-				echo "</span>";
-				echo "<div class='bepro_listing_desc'>".get_the_content()."</div>";
+				if(!empty($data["show_details"]) && ($data["show_details"] == "on")){
+					echo "<span class='bepro_listing_info'>
+						<div class='item_cost'>".__("Cost", "bepro-listings")." - ".$cost."</div>";
+						//If we have geographic data then we can show this listings address information
+						if($item->lat){
+							$map_url = "http://maps.google.com/maps?&z=10&q=".$item->lat."+".$item->lon."+(".urlencode($item->address_line1.", ".$item->city.", ".$item->state.", Canada").")&mrt=yp ";
+							echo "<div class='bepro_address_info'><span class='item_label'>".__("Address", "bepro-listings")."</span> - <a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a></div>";
+						}
+						//If there is contact information then show it
+						if($item->first_name || $item->email){
+							echo "<div class='item_contactinfo'>
+									<span class='item_label'>".__("First Name", "bepro-listings")."</span> - ".$item->first_name."<br />
+									<span class='item_label'>".__("Last Name", "bepro-listings")."</span> - ".$item->last_name."<br />
+									<span class='item_label'>".__("Email", "bepro-listings")."</span> - ".$item->email."<br />
+									<span class='item_label'>".__("Phone", "bepro-listings")."</span> - ".$item->phone."
+								</div>";
+						}
+					echo "</span>";
+				}
+				if(!empty($data["show_content"]) && ($data["show_content"] == "on")){
+					echo "<div class='bepro_listing_desc'>".get_the_content()."</div>";
+				}	
 			}else{
 				echo the_content();
 			}	

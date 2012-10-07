@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, products, custom posts, searchable
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ This plugin includes the tools needed to implement searchable listings on any pa
 
 == Description ==
 
-Bepro Listings allows you to create posts with additional information like, costs, contact, and geography.  This will help you to make your listing site unique. This plugin is for those looking to implement listing type features into their own custom design. Alternative WordPress listing plugins, force you to use their layout and organization. This plugin utilizes the wordpress api so its fully integrated where possible. This means the admin is familiar and the functionality is easily utilized via shortcodes and widgets.
+Bepro Listings allows you to create posts with a combination of additional information like, costs, contact, or geography.  This will help you to make your listing site unique. This plugin is for those looking to implement listing type features into their own custom design. Alternative WordPress listing plugins, force you to use their layout and organization. This plugin utilizes the wordpress api so its fully integrated where possible. This means the admin is familiar and the functionality is easily utilized via shortcodes and widgets.
 
 Note
 
@@ -22,14 +22,14 @@ CSS skills are recommended to make the various functionality integrate well with
 Shortcodes
 
 * Dynamic Map - Setup a map anywhere showing the last X listings on your site e.g. [generate_map num_results=10 show_paging=1]
-* Basic Search - Allow users to search listings e.g. [search_form geo=1]
-* Filter Search - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form  geo=1]
-* Listings - Show X listings with optional paging e.g. [display_listings num_results=10 show_paging=1]
-* Add Listing Form - Give your users the ability to create listings. You can set a default user id for the listing or force registration. e.g. [create_listing_form num_images=3 register=1 geo=1 ]
+* Basic Search - Allow users to search listings e.g. [search_form]
+* Filter Search - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]
+* Listings - Show listings with optional paging e.g. [display_listings show_paging=1]
+* Add Listing Form - Give your users the ability to create listings. You can set a default user id for the listing or force registration. e.g. [create_listing_form register=1]
 
 Trouble Shooting
 
-* 404 Error - Unfortunately, wordpress has an existing issue with custom post types. If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save them your current settings so that they are reset for all urls. The option is under your settings menu.
+* 404 Error - Unfortunately, wordpress has an existing issue with custom post types. If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings so that they are reset for all urls. The option is under your settings menu.
 
 Translations
 
@@ -70,17 +70,17 @@ Yes, our development team created the plugin and continue to offer support via s
 
 = I need more features, is there more? =
 
-Yes, there is a premium version of the plugin available with more shortcodes, widgets and features.
+Yes, there add-ons available for this plugin with more shortcodes, widgets and features.
 
 = Can this work with buddypress? =
 
-The free version does not work directly with buddypress. The premium version allows users to post from their buddypress profile
+There is an add-on for that
 
 = Does your post form implement custom profile fields? =
 
 No, it does not currently consider profile fields setup by other plugins
 
-= What if i dont want to link to the created page? =
+= What if i dont want to link to the created listing page? =
 
 Simply set the post to private in the admin.
 
@@ -94,13 +94,11 @@ Simply set the post to private in the admin.
 
 == Changelog ==
 
-= .0.8.0 (Monday, Sep 17th 2012) = * Launched development plugin
+= 1.0.1 (Monday, Oct 1st 2012) = * Stable with Several fixes
 
-= .1.0.0 (Sunday, Sep 30th 2012) = * Launched stable plugin
+= 1.0.2 (Monday, Oct 1st 2012) = * Stable with fixes
 
-= .1.0.1 (Monday, Oct 1st 2012) = * Stable with fixes
-
-= .1.0.2 (Monday, Oct 1st 2012) = * Stable with fixes
+= 1.1.0 (Sunday, Oct 7st 2012) = * global settings for cost/contact/geo & num images
 
 == Upgrade Notice ==
 

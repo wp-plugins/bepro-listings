@@ -27,7 +27,7 @@
 	function bepro_listings_javascript() {
 		$plugindir = plugins_url("bepro_listings");
 		
-		$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings.js"></script><script type="text/javascript" src="'.plugins_url("bepro_listings/js/markerclusterer.js").'"></script>';
+		$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings.js"></script><script type="text/javascript" src="'.plugins_url("bepro_listings/js/markerclusterer.js").'"></script><script type="text/javascript" src="'.plugins_url("bepro_listings/js/jquery.validate.min.js").'"></script><script type="text/javascript" src="'.plugins_url("bepro_listings/js/jquery.maskedinput-1.3.min.js").'"></script>';
 		
 		$scripts .= '
 		<script type="text/javascript">
@@ -49,24 +49,24 @@
 	//Setup database and other needed
 	function bepro_listings_install() {
 		global $wpdb;
-		$bepro_listings_version = '1.0.2';
+		$bepro_listings_version = '1.1.0';
 		$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
  		if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'")!=$table_name
 				|| version_compare(get_option("bepro_listings_version"), '1.0.0', '<') ) {
 			$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
 			$sql = "CREATE TABLE " . $table_name . " (
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
-				email tinytext,
-				phone tinytext,
-				cost float,
+				email tinytext DEFAULT NULL,
+				phone tinytext DEFAULT NULL,
+				cost float DEFAULT NULL,
 				post_id int(9) NOT NULL,
-				first_name tinytext,
-				last_name tinytext,
-				address_line1 tinytext,
-				city tinytext,
-				state tinytext,
-				country tinytext,
-				postcode tinytext,
+				first_name tinytext DEFAULT NULL,
+				last_name tinytext DEFAULT NULL,
+				address_line1 tinytext DEFAULT NULL,
+				city tinytext DEFAULT NULL,
+				state tinytext DEFAULT NULL,
+				country tinytext DEFAULT NULL,
+				postcode tinytext DEFAULT NULL,
 				website varchar(55) DEFAULT NULL,
 				lat varchar(15) DEFAULT NULL,
 				lon varchar(15) DEFAULT NULL,
@@ -117,12 +117,41 @@
 		//load options if not already existant		
 		$data = get_option("bepro_listings");
 		if(empty($data)){
+			//general
+			$data["show_cost"] = 1;
+			$data["show_con"] = 1;
+			$data["show_geo"] = 1;
+			$data["num_images"] = 3;
+			//forms
+			$data["validate_form"] = 1;
+			$data["success_message"] = 'Listing Created and pending admin approval.';			
+			$data["default_user_id"] = get_current_user_id();			
+			//search listings
 			$data["default_image"] = plugins_url("bepro_listings/images/no_img.jpg");
 			$data["num_listings"] = 3;
 			$data["distance"] = 150;
+			//Page/post
+			$data["gallery_size"] = "thumbnail";
+			$data["show_details"] = 1;
+			$data["show_content"] = 1;
+			//Support
+			$data["footer_link"] = 0;
+			//save
 			update_option("bepro_listings", $data);
+		}else{
+			if($data["footer_link"] == ("on" || 1)){
+				add_action("wp_footer", "footer_message");
+			}
 		}
 	}
+	
+	//if selected, show link in footer
+	function footer_message(){
+		echo '<div id="bepro_lisings_footer">
+								<a href="http://www.beprosoftware.com/products/bepro-listings" title="Wordpress Plugin" rel="generator">Proudly powered by BePro Lisitngs</a>
+			</div>';
+	}
+	
 	
 	function load_constants(){
 		// The Main table name
@@ -174,7 +203,6 @@
 	function bepro_delete_post($post_id){
 		global $wpdb;
 		$wpdb->query("DELETE FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post_id);
-		wp_delete_post( $post_id );
 		return;
 	}
 	

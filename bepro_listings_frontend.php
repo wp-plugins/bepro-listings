@@ -22,15 +22,14 @@
 		
 		$echo_this = (!empty($atts))? true:false;
 		extract(shortcode_atts(array(
-			  'num_results' => $wpdb->escape($_POST["num_results"]),
 			  'pop_up' => $wpdb->escape($_POST["num_results"]),
-			  'show_paging' => $wpdb->escape($_POST["show_paging"]),
-			  'size' => $wpdb->escape($_POST["num_results"])
+			  'size' => $wpdb->escape($_POST["size"]),
+			  'show_paging' => $wpdb->escape($_POST["show_paging"])
 		 ), $atts));
 		 
 		//Setup data
 		$data = get_option("bepro_listings");
-		$num_results = !empty($num_results)? $num_results:$data["num_results"]; 
+		$num_results = $data["num_listings"]; 
 		$size = empty($size)? 1:$size;
 		
 		//Get Listing Results
@@ -38,6 +37,7 @@
 		$raw_results = $findings[0];
 		
 		//Setup Listing Markers
+		$counter = 0;
 		foreach($raw_results as $result){
 			$permalink = get_permalink( $result->post_id );
 			if (!empty($result->lat) && !empty($result->lon)){
@@ -55,15 +55,21 @@
 				';
 				$currlat = $result->lat;
 				$currlon = $result->lon;
+				$thumbnail = get_the_post_thumbnail($result->post_id, 'thumbnail'); 
+				$default_img = (!empty($thumbnail))? $thumbnail:'<img src="'.$data["default_image"].'"/>';
 				if($pop_up){//marker pop up 
-					$map_cities .= '
-					var infowindow_'.$counter.' = new google.maps.InfoWindow( { content: "<div class=\"marker_content\">'.((!empty($result->image))? '<span class=\"marker_img\"><img src=\"'.wp_get_attachment_url($result->image).'\" /></span>':"").'<span class=\"marker_detais\">'.$result->item_name.', '.$result->rating.' star<br /><a href=\"http://'.urlencode($result->website).'\">Visit Website</a><br /><a href=\"'.get_permalink($result->post_id).'\">View Listing</a></span></div>", size: new google.maps.Size(50,50)});
-						  google.maps.event.addListener(marker_'.$counter.', "click", function() {
-							infowindow_'.$counter.'.open(map,marker_'.$counter.');
+					$map_cities .= "
+					var infowindow_".$counter." = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->post_title."<br /><a href=\"http://".urlencode($result->website)."\">Visit Website</a><br /><a href=\"".get_permalink($result->post_id)."\">View Listing</a></span></div>, size: new google.maps.Size(50,50) '});
+						  google.maps.event.addListener(marker_".$counter.", \"click\", function() {
+							infowindow_".$counter.".open(map,marker_".$counter.");
 						  });
-					';
+					";
 				}else{
 					$map_cities .= '
+					var infowindow_'.$counter.' = new google.maps.InfoWindow( { content: "<div class=\"marker_content\"><span class=\"marker_detais\">'.$result->post_title.'</span></div>", size: new google.maps.Size(50,50)});
+						  google.maps.event.addListener(marker_'.$counter.', "mouseover", function() {
+							infowindow_'.$counter.'.open(map,marker_'.$counter.');
+						  });
 						  google.maps.event.addListener(marker_'.$counter.', "click", function() {
 							window.location.href = "'.$permalink.'";
 						  });
@@ -117,11 +123,11 @@
 		global $wpdb;
 		extract(shortcode_atts(array(
 			  'shorten' => $wpdb->escape($_POST["shorten"]),
-			  'num_results' => $wpdb->escape($_POST["num_results"]),
 			  'show_paging' => $wpdb->escape($_POST["show_paging"])
 		 ), $atts));
+		 
 		$data = get_option("bepro_listings");
-		$num_results = !empty($num_results)? $num_results:$data["num_results"]; 
+		$num_results = $data["num_listings"]; 
 		$echo_this = (!empty($raw_results))? false:true;
 		
 		$findings = process_listings_results($show_paging, $num_results);				
@@ -199,27 +205,28 @@
 			//if requested, hide some of the post content
 			if(empty($shorten)){
 				$results .='		
-				<span class="result_content">
-					<span class="result_title">'.$result->city.','.$result->state.','.$result->country.'</span>
+				<span class="result_content">';
+				if($data["show_geo"])$results .= '<span class="result_title">'.$result->city.','.$result->state.','.$result->country.'</span>';
+				$results .= '	
 					<span class="result_desc">'.htmlspecialchars(stripslashes(strip_tags($result->post_content))).'</span>
 				</span>
 				';		
 			}
 			$permalink = get_permalink( $result->post_id );
-			
-			if(is_numeric($result->cost)){ 
-				//formats the price to have comas and dollar sign like currency.
-				setlocale(LC_MONETARY, "en_US");
-				$cost = ($result->cost == 0)? "Free" : money_format("%.2n", $result->cost);
-			}else{
-				$cost = "Please Contact";
-			} 
-			
+			if($data["show_cost"]){
+				if(is_numeric($result->cost)){ 
+					//formats the price to have comas and dollar sign like currency.
+					setlocale(LC_MONETARY, "en_US");
+					$cost = ($result->cost == 0)? "Free" : money_format("%.2n", $result->cost);
+				}else{
+					$cost = "Please Contact";
+				} 
+			}
 		
 		$results .=  '<span class="result_do">
 						<span class="result_cost">'.$cost.'</span>
 						';
-		$results .=((!empty($result->website))? '<span class="result_button"><a href="'.$result->website.'" target="_blank">Website</a></span>':"");
+		$results .=((!empty($result->website))? '<span class="result_button"><a href="http://'.$result->website.'" target="_blank">Website</a></span>':"");
 		
 		//If not private then don't show link to listing
 		if($result->post_status == "publish")
@@ -238,18 +245,26 @@
 		global $wpdb;
 		
 		extract(shortcode_atts(array(
-			  'default_user_id' => $wpdb->escape($_POST["default_user_id"]),
-			  'geo' => $wpdb->escape($_POST["default_user_id"]),
-			  'num_images' => $wpdb->escape($_POST["num_images"]),
 			  'register' => $wpdb->escape($_POST["register"])
 		 ), $atts));
 		
+		//get settings
+		$data = get_option("bepro_listings");
+		$default_user_id = $data["default_user_id"];
+		$num_images = $data["num_images"];
+		$validate = $data["validate_form"];
+		$show_cost = $data["show_cost"];
+		$show_con = $data["show_con"];
+		$show_geo = $data["show_geo"];
+		$success_message = $data["success_message"];
+		
 		if(empty($default_user_id) && empty($register)){
-			echo "You must provide a default user id or force registration.";	
+			echo "You must provide a 'default user id' in the admin settings or use the registration=1 option.";	
+			return;
 		}
 		
 		$wp_upload_dir = wp_upload_dir();
-		if(!empty($_POST["save_bepro_listing"])){
+		if(!empty($_POST["save_bepro_listing"]) && !empty($_POST["item_name"]) && !empty($_POST["content"])){
 			$item_name = $wpdb->escape($_POST["item_name"]);
 			$content = $wpdb->escape($_POST["content"]);
 			$categories = $wpdb->escape($_POST["categories"]);
@@ -264,7 +279,11 @@
 			}elseif(isset($last_name) && isset($email) && !empty($password)){
 				$username = $last_name."_".$first_name;
 				$user_id = wp_create_user( $username, $password, $email );
-				if($user_id) echo "<p>Account Successfully Created</p>";
+				if($user_id){
+					echo "<p>Account Successfully Created.</p>";
+				}else{
+					echo "<p>Account was Not created.</p>";
+				}				
 			}
 			if(empty($user_id))$user_id = $default_user_id;
 			if(!empty($user_id)){
@@ -308,7 +327,7 @@
 						}
 					}
 					
-					if(!empty($_POST['address_line1']) || !empty($_POST['city'])){  
+					if(!empty($_POST['postcode']) || !empty($_POST['country'])){  
 						$to_addr .= !empty($_POST['address_line1'])? $_POST['address_line1']:"";
 						$to_addr .= !empty($_POST['city'])? ", ".$_POST['city']:"";
 						$to_addr .= !empty($_POST['state'])? ", ".$_POST['state']:"";
@@ -317,6 +336,8 @@
 						$addresstofind_1 = "http://maps.google.com/maps/geo?q=".urlencode($to_addr);
 						$ch = curl_init();
 						curl_setopt($ch, CURLOPT_URL, $addresstofind_1);
+						curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101');
+						curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,1);
 						curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 						$addr_search_1  =  curl_exec($ch);
 						curl_close($ch);
@@ -343,27 +364,74 @@
 						lat           = '".$lat."',
 						lon           = '".$lon."'";
 					$wpdb->query($sql);
-					echo "<p>Listing Created and pending admin approval</p>";
+					echo $success_message;
 				}
 			}else{
 				echo "<p>There was an error creating this Listing.</p>";
 			}
 		}
+		
+		if(!empty($validate) && ($validate == "on")){
+			echo '
+				<script type="text/javascript">
+					jQuery(document).ready(function(){
+						jQuery("#phone").mask("(999) 999-9999");
+						jQuery("#bepro_create_listings_form").validate({
+							rules: {
+								item_name: "required",
+								description: {
+									required: true,
+									minlength: 15
+								},
+								categories: "required",
+								firstname: "required",
+								lastname: "required",
+								country: "required",
+								email: {
+									required: true,
+									email: true
+								},
+								password: {
+									required: true,
+									minlength: 5
+								},
+								agree: "required"
+							},
+							messages: {
+								item_name: "Please give this a name",
+								description: "Please tell us about this",
+								firstname: "Please enter your firstname",
+								lastname: "Please enter your lastname",
+								password: {
+									required: "Please provide a password",
+									minlength: "Your password must be at least 5 characters long"
+								},
+								email: "Please enter a valid email address",
+								country: "Where in the world is this?",
+								agree: "Please accept our policy"
+							},
+							submitHandler: function(form) {
+								form.submit();
+							}
+						});
+					});
+				</script>
+			';
+		}
 	
 		echo '
-			<form method="post" enctype="multipart/form-data">
+			<form method="post" enctype="multipart/form-data" id="bepro_create_listings_form">
 				<input type="hidden" name="save_bepro_listing" value="1">';
 				
 		echo '
 			<div class="add_listing_form_info bepro_form_section">
 				<h3>'.__("Item Information", "bepro-listings").'</h3>
-				<span class="form_label">'.__("Item Name", "bepro-listings").'</span><input type="" name="item_name"><br />
-				<span class="form_label">'.__("Cost", "bepro-listings").'</span><input type="text" name="cost"><br />
-				<span class="form_label">'.__("Description", "bepro-listings").'</span><textarea name="content"></textarea>
+				<span class="form_label">'.__("Item Name", "bepro-listings").'</span><input type="" id="item_name" name="item_name"><br />
+				<span class="form_label">'.__("Description", "bepro-listings").'</span><textarea name="content" id="content"></textarea>
 				<span class="form_label">'.__("Categories", "bepro-listings").'</span>';
 				$options = listing_types();
 				foreach($options as $opt){
-					echo '<span class="bepro_form_cat"><span class="form_label">'.$opt->name.'</span><input type="checkbox" name="categories[]" value="'.$opt->term_id.'"/></span>';
+					echo '<span class="bepro_form_cat"><span class="form_label">'.$opt->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$opt->term_id.'"/></span>';
 				}
 				echo "<div style='clear:both'></div>";
 				if(!empty($num_images)){
@@ -378,18 +446,27 @@
 		echo '		
 			</div>
 			';		
-				
-		echo '		
+		
+		if(!empty($show_cost) && ($show_cost == "on")){		
+			echo '
+			<div class="add_listing_form_cost bepro_form_section">
+				<span class="form_label">'.__("Cost", "bepro-listings").'</span><input type="text" name="cost" value="0"><br />
+			</div>';
+		}
+		
+		if(!empty($show_con) && ($show_con == "on")){		
+			echo '		
 				<div class="add_listing_form_contact bepro_form_section">
 					<h3>'.__("Contact Information", "bepro-listings").'</h3>
 					<span class="form_label">'.__("First Name", "bepro-listings").'</span><input type="text" name="first_name">
 					<span class="form_label">'.__("Last Name", "bepro-listings").'</span><input type="text" name="last_name">
 					<span class="form_label">'.__("Email", "bepro-listings").'</span><input type="text" name="email">
-					<span class="form_label">'.__("Phone", "bepro-listings").'</span><input type="text" name="phone">
+					<span class="form_label">'.__("Phone", "bepro-listings").'</span><input type="text" name="phone" id="phone">
 					<span class="form_label">'.__("Website", "bepro-listings").'</span><input type="text" name="website">
 				</div>';
-				
-		if(!empty($geo)){
+		}
+		
+		if(!empty($show_geo) && ($show_geo == "on")){
 			echo '
 				<div class="add_listing_form_geo bepro_form_section">
 					<h3>'.__("Location Information", "bepro-listings").'</h3>

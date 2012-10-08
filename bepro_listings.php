@@ -98,8 +98,9 @@ class Bepro_listings{
 						<input type="text" name="name_search" id="name_search" value="'.$_POST["name_search"].'"><br />
 					</span>
 					<input type="submit" value="'.__("Search Listings", "bepro-listings").'">
-					<a href="'.$_SERVER["REQUEST_URI"].'"><button>Clear Search</button></a>
+					
 				</form>
+				<a class="clear_search" href="'.$_SERVER["REQUEST_URI"].'"><button>Clear Search</button></a>
 			</div>
 		';
 		

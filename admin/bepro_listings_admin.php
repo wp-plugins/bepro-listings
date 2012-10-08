@@ -136,15 +136,15 @@
 
 	//Admin Bepro Listings table columns
 	function bepro_listings_edit_columns($columns){
-	  $columns = array(
-		"cb" => "<input type='checkbox' />",
-		"title" => "Item Name",
-		"description" => "Description",
-		"lat_lon" => "Lat/Lon?",
-		"cost" => "Cost",
-		"listing_types" => "Listing Types",
-		"date" => "Date"
-	  );
+		$data = get_option("bepro_listings");
+		$columns = array(
+			"cb" => "<input type='checkbox' />",
+			"title" => "Item Name",
+			"description" => "Description");
+		if($data["show_geo"]) $columns["lat_lon"] =  "Lat/Lon?";	
+		if($data["show_cost"]) $columns["cost"] =   "Cost";	
+		$columns["listing_types"] = "Listing Types";
+		$columns["date"] =  "Date";
 	 
 	  return $columns;
 	}

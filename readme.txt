@@ -11,6 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 This plugin includes the tools needed to implement searchable listings on any page or post.
 
 == Description ==
+[youtube http://www.youtube.com/watch?v=cfASHxSNIHY /]
 
 Bepro Listings allows you to create posts with a combination of additional information like, costs, contact, or geography.  This will help you to make your listing site unique. This plugin is for those looking to implement listing type features into their own custom design. Alternative WordPress listing plugins, force you to use their layout and organization. This plugin utilizes the wordpress api so its fully integrated where possible. This means the admin is familiar and the functionality is easily utilized via shortcodes and widgets.
 

@@ -94,6 +94,8 @@ msgstr ""
 
 
 
+
+
 msgid "Filter Listings"
 msgstr ""
 
@@ -157,6 +159,10 @@ msgstr ""
 msgid "Listing Types"
 msgstr ""
 
+
+
+
+
 #: bepro_listings.php:276
 msgid "Free"
 msgstr ""
@@ -167,4 +173,65 @@ msgstr ""
 
 #: bepro_listings.php:285
 msgid "View Map"
+msgstr ""
+
+
+
+
+
+
+#: bepro_listings_admin.php:258
+msgid "Show Cost"
+msgstr ""
+
+#: bepro_listings_admin.php:259
+msgid "Show Contact"
+msgstr ""
+
+#: bepro_listings_admin.php:260
+msgid "Show Geography"
+msgstr ""
+
+#: bepro_listings_admin.php:261
+msgid "# Of Images"
+msgstr ""
+
+#: bepro_listings_admin.php:274
+msgid "Validate Form"
+msgstr ""
+
+#: bepro_listings_admin.php:275
+msgid "Default User Id"
+msgstr ""
+
+#: bepro_listings_admin.php:276
+msgid "Success Message"
+msgstr ""
+
+#: bepro_listings_admin.php:279
+msgid "Default Listing Image"
+msgstr ""
+
+#: bepro_listings_admin.php:280
+msgid "Default # Listings"
+msgstr ""
+
+#: bepro_listings_admin.php:288
+msgid "Default Search Distance (Mi)"
+msgstr ""
+
+#: bepro_listings_admin.php:299
+msgid "Gallery Size"
+msgstr ""
+
+#: bepro_listings_admin.php:305
+msgid "Show Details"
+msgstr ""
+
+#: bepro_listings_admin.php:306
+msgid "Show Content"
+msgstr ""
+
+#: bepro_listings_admin.php:319
+msgid "Our Link in your footer?"
 msgstr ""

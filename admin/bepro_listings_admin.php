@@ -255,10 +255,10 @@
 					</ul>
 				
 					<div id="tabs-1">
-						<span class="form_label">Show Cost</span><input type="checkbox" name="show_cost" <?php echo ($data["show_cost"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
-						<span class="form_label">Show Contact</span><input type="checkbox" name="show_con" <?php echo ($data["show_con"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
-						<span class="form_label">Show Geography</span><input type="checkbox" name="show_geo" <?php echo ($data["show_geo"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
-						<span class="form_label"># Of Images</span><select name="num_images"><br />
+						<span class="form_label"><?php _e("Show Cost", "bepro-listings"); ?></span><input type="checkbox" name="show_cost" <?php echo ($data["show_cost"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Show Contact", "bepro-listings"); ?></span><input type="checkbox" name="show_con" <?php echo ($data["show_con"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Show Geography", "bepro-listings"); ?></span><input type="checkbox" name="show_geo" <?php echo ($data["show_geo"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("# Of Images", "bepro-listings"); ?></span><select name="num_images"><br />
 							<option value="1" <?php echo ($data["num_images"]== 1)? 'selected="selected"':"" ?>>1</option>
 							<option value="2" <?php echo ($data["num_images"]== 2)? 'selected="selected"':"" ?>>2</option>
 							<option value="3" <?php echo ($data["num_images"]== 3)? 'selected="selected"':"" ?>>3</option>
@@ -271,13 +271,13 @@
 						</select>
 					</div>
 					<div id="tabs-2">
-						<span class="form_label">Validate Form</span><input type="checkbox" name="validate_form" <?php echo ($data["validate_form"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
-						<span class="form_label">Default User Id</span><input type="text" name="default_user_id" value="<?php echo $data["default_user_id"]; ?>"><br />
-						<span class="form_label">Success Message</span><textarea name="success_message"><?php echo $data["success_message"]; ?></textarea>
+						<span class="form_label"><?php _e("Validate Form", "bepro-listings"); ?></span><input type="checkbox" name="validate_form" <?php echo ($data["validate_form"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Default User Id", "bepro-listings"); ?></span><input type="text" name="default_user_id" value="<?php echo $data["default_user_id"]; ?>"><br />
+						<span class="form_label"><?php _e("Success Message", "bepro-listings"); ?></span><textarea name="success_message"><?php echo $data["success_message"]; ?></textarea>
 					</div>
 					<div id="tabs-3">
-						<span class="form_label">Default Listing Image</span><input type="text" name="default_image" value="<?php echo $data["default_image"]; ?>" /></br>
-						<span class="form_label">Default # Listings</span><select name="num_listings">
+						<span class="form_label"><?php _e("Default Listing Image", "bepro-listings"); ?></span><input type="text" name="default_image" value="<?php echo $data["default_image"]; ?>" /></br>
+						<span class="form_label"><?php _e("Default # Listings", "bepro-listings"); ?></span><select name="num_listings">
 							<option value="1" <?php echo ($data["num_listings"]== 1)? 'selected="selected"':"" ?>>1</option>
 							<option value="3" <?php echo ($data["num_listings"]== 3)? 'selected="selected"':"" ?>>3</option>
 							<option value="5" <?php echo ($data["num_listings"]== 5)? 'selected="selected"':"" ?>>5</option>
@@ -285,7 +285,7 @@
 							<option value="20" <?php echo ($data["num_listings"]== 20)? 'selected="selected"':"" ?>>20</option>
 							<option value="50" <?php echo ($data["num_listings"]== 50)? 'selected="selected"':"" ?>>50</option>
 						</select></br>
-						<span class="form_label">Default Search Distance (Mi)</span><select name="distance">
+						<span class="form_label"><?php _e("Default Search Distance (Mi)", "bepro-listings"); ?></span><select name="distance">
 							<option value="10" <?php echo ($data["distance"]== 10)? 'selected="selected"':"" ?>>10</option>
 							<option value="50" <?php echo ($data["distance"]== 50)? 'selected="selected"':"" ?>>50</option>
 							<option value="150" <?php echo ($data["distance"]== 150)? 'selected="selected"':"" ?>>150</option>
@@ -296,14 +296,14 @@
 						<span style="clear:both;display: block;"><br /></span>
 					</div>
 					<div id="tabs-4">
-						<span class="form_label">Gallery Size</span><select name="gallery_size">
+						<span class="form_label"><?php _e("Gallery Size", "bepro-listings"); ?></span><select name="gallery_size">
 							<option value="thumbnail" <?php echo ($data["gallery_size"]== "thumbnail")? 'selected="selected"':"" ?>>thumbnail</option>
 							<option value="medium" <?php echo ($data["gallery_size"]== "medium")? 'selected="selected"':"" ?>>medium</option>
 							<option value="large" <?php echo ($data["gallery_size"]== "large")? 'selected="selected"':"" ?>>large</option>
 							<option value="full" <?php echo ($data["gallery_size"]== "full")? 'selected="selected"':"" ?>>full</option>
 						</select><br />
-						<span class="form_label">Show Details</span><input type="checkbox" name="show_details" <?php echo ($data["show_details"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
-						<span class="form_label">Show Content</span><input type="checkbox" name="show_content" <?php echo ($data["show_content"]== (1 || "on"))? 'checked="checked"':"" ?>>
+						<span class="form_label"><?php _e("Show Details", "bepro-listings"); ?></span><input type="checkbox" name="show_details" <?php echo ($data["show_details"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Show Content", "bepro-listings"); ?></span><input type="checkbox" name="show_content" <?php echo ($data["show_content"]== (1 || "on"))? 'checked="checked"':"" ?>>
 					</div>
 					<div id="tabs-5">
 						<a href="http://beprosoftware.com"><img src="<?php echo plugins_url("bepro_listings/images/bepro_software_logo.png"); ?>"></a><br />
@@ -316,7 +316,7 @@
 							<li>Services - $15-70 USD/hr plugin support - development</li>
 							<li>Social - Coming...</li>
 							<li>Youtube - Coming...</li>
-							<li>Our Link in your footer? - <input style="vertical-align:middle" type="checkbox" name="footer_link" value="1" <?php echo ($data["footer_link"]== ("on" || 1))? 'checked="checked"':"" ?>></li>
+							<li><?php _e("Our Link in your footer?", "bepro-listings"); ?> - <input style="vertical-align:middle" type="checkbox" name="footer_link" value="1" <?php echo ($data["footer_link"]== ("on" || 1))? 'checked="checked"':"" ?>></li>
 						</ul>
 					</div>
 				</div>

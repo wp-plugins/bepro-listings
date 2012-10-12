@@ -379,13 +379,13 @@
 						jQuery("#bepro_create_listings_form").validate({
 							rules: {
 								item_name: "required",
-								description: {
+								content: {
 									required: true,
 									minlength: 15
 								},
 								categories: "required",
-								firstname: "required",
-								lastname: "required",
+								first_name: "required",
+								last_name: "required",
 								country: "required",
 								email: {
 									required: true,
@@ -399,9 +399,9 @@
 							},
 							messages: {
 								item_name: "Please give this a name",
-								description: "Please tell us about this",
-								firstname: "Please enter your firstname",
-								lastname: "Please enter your lastname",
+								content: "Please tell us about this",
+								first_name: "Please enter your firstname",
+								last_name: "Please enter your lastname",
 								password: {
 									required: "Please provide a password",
 									minlength: "Your password must be at least 5 characters long"
@@ -458,9 +458,9 @@
 			echo '		
 				<div class="add_listing_form_contact bepro_form_section">
 					<h3>'.__("Contact Information", "bepro-listings").'</h3>
-					<span class="form_label">'.__("First Name", "bepro-listings").'</span><input type="text" name="first_name">
-					<span class="form_label">'.__("Last Name", "bepro-listings").'</span><input type="text" name="last_name">
-					<span class="form_label">'.__("Email", "bepro-listings").'</span><input type="text" name="email">
+					<span class="form_label">'.__("First Name", "bepro-listings").'</span><input type="text" id="first_name" name="first_name">
+					<span class="form_label">'.__("Last Name", "bepro-listings").'</span><input type="text" id="last_name" name="last_name">
+					<span class="form_label">'.__("Email", "bepro-listings").'</span><input type="text" id="email" name="email">
 					<span class="form_label">'.__("Phone", "bepro-listings").'</span><input type="text" name="phone" id="phone">
 					<span class="form_label">'.__("Website", "bepro-listings").'</span><input type="text" name="website">
 				</div>';
@@ -473,7 +473,7 @@
 					<span class="form_label">'.__("Address", "bepro-listings").'</span><input type="text" name="address_line1">
 					<span class="form_label">'.__("City", "bepro-listings").'</span><input type="text" name="city">
 					<span class="form_label">'.__("State", "bepro-listings").'</span><input type="text" name="state">
-					<span class="form_label">'.__("Country", "bepro-listings").'</span><input type="text" name="country">
+					<span class="form_label">'.__("Country", "bepro-listings").'</span><input type="text" id="country" name="country">
 					<span class="form_label">'.__("Zip / Postal", "bepro-listings").'</span><input type="text" name="postal">
 				</div>
 			';
@@ -483,8 +483,8 @@
 			echo '
 				<div class="add_listing_form_register bepro_form_section">
 					<h3>'.__("Login / Register", "bepro-listings").'</h3>
-					<span class="form_label">'.__("Username", "bepro-listings").'</span><input type="text" name="user_name">
-					<span class="form_label">'.__("Password", "bepro-listings").'</span><input type="text" name="password">
+					<span class="form_label">'.__("Username", "bepro-listings").'</span><input type="text" id="user_name" name="user_name">
+					<span class="form_label">'.__("Password", "bepro-listings").'</span><input type="text" id="password" name="password">
 				</div>
 			';
 		}

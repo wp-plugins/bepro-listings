@@ -18,18 +18,17 @@ Bepro Listings allows you to create posts with a combination of additional infor
 This plugin is for those looking to implement listing type features into their own custom design. Setup categories and control various aspects including, number of images, default search distance, and page details.
 
 = KEY FEATURES =
-Custom posts - This way the listings are seperate to your other posts in the admin and front end
-Google Maps api v3.5 - latest with no need for API keys
-Wordpress Integration - Admin is familiar and integrates with your design
-Shortcodes & Widgets - Several ways to feature the information and engage your visitor.
-Admin Options - Control which features and information are available
+* Custom posts - This way the listings are seperate to your other posts in the admin and front end
+* Google Maps api v3.5 - latest with no need for API keys
+* Wordpress Integration - Admin is familiar and integrates with your design
+* Shortcodes & Widgets - Several ways to feature the information and engage your visitor.
+* Admin Options - Control which features and information are available
 
-= Note =
+= NOTE =
 
 CSS skills are recommended to make the various functionality integrate well with your current theme. The css bundled with the plugin is purely to demonstrate capabilities and is based on the default theme.
 
-
-= Shortcodes =
+= SHORTCODES =
 
 * Dynamic Map - Setup a map anywhere showing the last listings on your site e.g. [generate_map show_paging=1]
 * Basic Search - Allow users to search listings e.g. [search_form]
@@ -37,11 +36,11 @@ CSS skills are recommended to make the various functionality integrate well with
 * Listings - Show listings with optional paging e.g. [display_listings show_paging=1]
 * Add Listing Form - Give your users the ability to create listings. You can set a default user id for the listing or force registration. e.g. [create_listing_form register=1]
 
-= Trouble Shooting =
+= TROUBLE SHOOTING =
 
 * 404 Error - Unfortunately, wordpress has an existing issue with custom post types. If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings so that they are reset for all urls. The option is under your settings menu.
 
-Translations
+= TRANSLATIONS =
 
 Currently, this plugin supports, English, French, and Spanish.
 
@@ -55,7 +54,7 @@ Visit the plugin page for examples and details http://beprosoftware.com/products
 
 * Use shortcodes or widgets
 
-* re-save your current permalink settings
+* Re-save your current permalink settings
 
 == Frequently Asked Questions ==
 

@@ -59,7 +59,7 @@ class bepro_widgets {
 	  <?php
   }
   function bepro_map_widget($args){
-	$data = get_option('filter_search_widget');
+	$data = get_option('bepro_map_widget');
 	$data["echo_this"] = true;
     echo $args['before_widget'];
     echo $args['before_title'] .__("Listings Map", "bepro-listings"). $args['after_title'];

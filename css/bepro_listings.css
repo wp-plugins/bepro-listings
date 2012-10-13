@@ -15,6 +15,12 @@
     along with BePro Listings.  If not, see <http://www.gnu.org/licenses/>.
 */	
 /* bepro listings map */
+#secondary #map{
+	height: 250px;
+	width: 250px;
+	display: block;
+	margin: auto;
+}
 .result_map_1{
 	height: 120px;
 	width: 25%;
@@ -47,11 +53,6 @@
 	clear:left;
 }
 .bepro_listing_info div{
-	border: 1px dashed;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border: 1px dashed;
     margin: 5px 0;
     padding: 0 5px;
 }

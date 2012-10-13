@@ -49,7 +49,7 @@
 	//Setup database and other needed
 	function bepro_listings_install() {
 		global $wpdb;
-		$bepro_listings_version = '1.1.0';
+		$bepro_listings_version = '1.1.1';
 		$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
  		if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'")!=$table_name
 				|| version_compare(get_option("bepro_listings_version"), '1.0.0', '<') ) {

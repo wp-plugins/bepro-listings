@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
 Description: Bepro Listings allows you to create posts with additional information like, costs, contact, and geographic. This plugin includes the tools you need, to implement listings on any page or post.
-Version: 1.1.1
+Version: 1.2.0
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -60,6 +60,9 @@ class Bepro_listings{
 		add_action('wp_ajax_save-widget', 'bepro_save_widget' );
 		add_action("manage_posts_custom_column",  "bepro_listings_custom_columns");
 		add_action("plugins_loaded",  "bepro_listings_install");
+		add_action( 'bp_init', array( $this, "start_bp_addon") );
+		add_action( 'wp_ajax_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
+		add_action( 'wp_ajax_nopriv_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
 		
 		add_filter("manage_edit-bepro_listings_columns", "bepro_listings_edit_columns");
 		add_filter('the_content', array( $this, 'post_page_single'));	
@@ -338,6 +341,13 @@ class Bepro_listings{
 		}else{
 			return $content;
 		}
+	}
+	
+	//buddypress hook
+	function start_bp_addon(){
+		$data = get_option("bepro_listings");
+		if($data["buddypress"] == (1||"on"))
+		include( dirname( __FILE__ ) . '/bepro-listings-bp.php' );
 	}
 }
 

@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: http://beprosoftware.com/
-Tags: listings, google map, products, custom posts, searchable
+Tags: listings, google map, buddypress, custom posts, searchable
 Requires at least: 3.0.1
 Tested up to: 3.4
 Stable tag: 1.1.1
@@ -18,6 +18,7 @@ Bepro Listings allows you to create posts with a combination of additional infor
 This plugin is for those looking to implement listing type features into their own custom design. Setup categories and control various aspects including, number of images, default search distance, and page details.
 
 = KEY FEATURES =
+* Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile
 * Custom posts - This way the listings are seperate to your other posts in the admin and front end
 * Google Maps api v3.5 - latest with no need for API keys
 * Wordpress Integration - Admin is familiar and integrates with your design
@@ -117,6 +118,7 @@ Simply set the post to private in the admin.
 2. bepro_lisings / Screenshot #2
 3. bepro_lisings / Screenshot #3
 4. bepro_lisings / Screenshot #4
+4. bepro_lisings / Screenshot #5
 
 
 == Changelog ==
@@ -127,7 +129,9 @@ Simply set the post to private in the admin.
 
 = 1.1.0 (Sunday, Oct 7st 2012) = * global settings for cost/contact/geo & num images
 
-= 1.1.1 (Sunday, Oct 7st 2012) = * css changes, widget fix, more info
+= 1.1.1 (Sunday, Oct 12th 2012) = * css changes, widget fix, more info
+
+= 1.2.0 (Sunday, Oct 14th 2012) = * buddypress and some hooks
 
 == Upgrade Notice ==
 

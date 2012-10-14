@@ -18,6 +18,7 @@
 
 	function bepro_admin_init(){
 		$data = get_option("bepro_listings");
+		add_meta_box("contact_general_meta", " ", "contact_general_meta", "bepro_listings", "normal", "low");
 		if($data["show_cost"] == (1 || "on"))add_meta_box("cost_meta", "Cost $", "cost_meta", "bepro_listings", "side", "low");
 		if($data["show_con"] == (1 || "on"))add_meta_box("contact_details_meta", "Lisiting Details", "contact_details_meta", "bepro_listings", "normal", "low");
 		if($data["show_geo"] == (1 || "on"))add_meta_box("geographic_details_meta", "Geographic Details", "geographic_details_meta", "bepro_listings", "normal", "low");
@@ -44,11 +45,13 @@
 	  <?php
 	}
 	 
+	function contact_general_meta($post) {
+		echo '<input type="hidden" name="save_bepro_listing" value="1">';
+	}
 	function contact_details_meta($post) {
 	  global $wpdb;
 	  $listing = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 	  echo '
-		<input type="hidden" name="save_bepro_listings" value="1">
 		<span class="form_label">First Name</span><input type="text" name="first_name" value="'.$listing->first_name.'"><br />
 		<span class="form_label">Last Name</span><input type="text" name="last_name" value="'.$listing->last_name.'"><br />
 		<span class="form_label">Phone</span><input type="text" name="phone" value="'.$listing->phone.'"><br />
@@ -64,7 +67,6 @@
 	  echo '
 		<span class="form_label">Lat</span><input type="test" name="lat" value="'.$listing->lat.'"><br />
 		<span class="form_label">Lon</span><input type="test" name="lon" value="'.$listing->lon.'"><br />
-		<span class="form_label">Get New Coords?</span><input type="checkbox" name="getlatlon" value="1"><br /><br />
 		<span class="form_label">Address</span><input type="text" name="address_line1" value="'.$listing->address_line1.'"><br />
 		<span class="form_label">City</span><input type="text" name="city" value="'.$listing->city.'"><br />
 		<span class="form_label">State</span><input type="text" name="state" value="'.$listing->state.'"><br />
@@ -75,63 +77,15 @@
 	
 	//Save Bepro Listing
 	function bepro_admin_save_details($post_id){
-	  global $wpdb;
-	  if (!isset($_POST['save_bepro_listings'])) return; 
-	  if ($parent_id = wp_is_post_revision($post_id)) 
-		$post_id = $parent_id;
+		global $wpdb;
+		if (!isset($_POST['save_bepro_listing'])) return; 
+		if ($parent_id = wp_is_post_revision($post_id)) 
+			$post_id = $parent_id;
 	  
-	  $post_type = get_post_type( $post_id);
-	  if($post_type != "bepro_listings")return;
+		$post_type = get_post_type( $post_id);
+		if($post_type != "bepro_listings")return;
 		//get lat/lon
-		if($_POST['getlatlon'] == 1){  
-			if(!empty($_POST['address_line1']) || !empty($_POST['country'])){  
-				$to_addr .= !empty($_POST['address_line1'])? $_POST['address_line1']:"";
-				$to_addr .= !empty($_POST['city'])? ", ".$_POST['city']:"";
-				$to_addr .= !empty($_POST['state'])? ", ".$_POST['state']:"";
-				$to_addr .= !empty($_POST['country'])? ", ".$_POST['country']:"";
-				$to_addr .= !empty($_POST['postcode'])? ", ".$_POST['postcode']:"";
-				$addresstofind_1 = "http://maps.google.com/maps/geo?q=".urlencode($to_addr);
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, $addresstofind_1);
-				curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101');
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,1);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-				$addr_search_1  =  curl_exec($ch);
-				curl_close($ch);
-				
-				if($addr_search_1)$addr_search_1 = json_decode($addr_search_1);
-				if($addr_search_1->Placemark[0]->address){
-					$lon = $addr_search_1->Placemark[0]->Point->coordinates[0];
-					$lat = $addr_search_1->Placemark[0]->Point->coordinates[1];
-				}
-			}
-		}else{
-			$lon = $_POST['lon'];
-			$lat = $_POST['lat'];
-		}		
-	
-	
-		$listing = $wpdb->get_row("SELECT id FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post_id);	
-		if($listing){
-			$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET
-						cost    = '".addslashes(strip_tags($_POST['cost']))."',
-						first_name    = '".addslashes(strip_tags($_POST['first_name']))."',
-						last_name     = '".addslashes(strip_tags($_POST['last_name']))."',
-						email         = '".addslashes(strip_tags($_POST['email']))."',
-						phone         = '".addslashes(strip_tags($_POST['phone']))."',
-						address_line1 = '".addslashes(strip_tags($_POST['address_line1']))."',
-						city          = '".addslashes(strip_tags($_POST['city']))."',
-						postcode      = '".addslashes(strip_tags($_POST['postcode']))."',
-						state         = '".addslashes(strip_tags($_POST['state']))."',
-						country       = '".addslashes(strip_tags($_POST['country']))."',
-						lat           = '".$lat."',
-						lon           = '".$lon."',
-						website       = '".addslashes(strip_tags($_POST['website']))."'
-						WHERE post_id ='".$post_id."'");
-		}else{
-			$sql = "INSERT INTO ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." (cost, first_name, last_name, email, website, address_line1, city, postcode, state, country, phone, post_id, lat, lon) VALUES('".addslashes(strip_tags($_POST['cost']))."','".addslashes(strip_tags($_POST['first_name']))."','".addslashes(strip_tags($_POST['last_name']))."','".addslashes(strip_tags($_POST['email']))."','".addslashes(strip_tags($_POST['website']))."','".addslashes(strip_tags($_POST['address_line1']))."','".addslashes(strip_tags($_POST['city']))."','".addslashes(strip_tags($_POST['postcode']))."','".addslashes(strip_tags($_POST['state']))."','".addslashes(strip_tags($_POST['country']))."','".addslashes(strip_tags($_POST['phone']))."','".$post_id."','".$lat."','".$lon."')";
-				$wpdb->query($sql);
-		 }
+		bepro_listings_save($post_id);
 	}
 
 	//Admin Bepro Listings table columns
@@ -232,6 +186,9 @@
 			$data["show_details"] = $_POST["show_details"];
 			$data["show_content"] = $_POST["show_content"];
 			
+			//buddypress
+			$data["buddypress"] = $_POST["buddypress"];
+			
 			//Support
 			$data["footer_link"] = $_POST["footer_link"];
 			
@@ -251,7 +208,8 @@
 						<li><a href="#tabs-2">Forms</a></li>
 						<li><a href="#tabs-3">Search/Listings</a></li>
 						<li><a href="#tabs-4">Page/Post</a></li>
-						<li><a href="#tabs-5">Support</a></li>
+						<li><a href="#tabs-5">Buddypress</a></li>
+						<li><a href="#tabs-6">Support</a></li>
 					</ul>
 				
 					<div id="tabs-1">
@@ -306,6 +264,9 @@
 						<span class="form_label"><?php _e("Show Content", "bepro-listings"); ?></span><input type="checkbox" name="show_content" <?php echo ($data["show_content"]== (1 || "on"))? 'checked="checked"':"" ?>>
 					</div>
 					<div id="tabs-5">
+						<span class="form_label"><?php _e("Buddypress", "bepro-listings"); ?></span><input type="checkbox" name="buddypress" <?php echo ($data["buddypress"]== (1 || "on"))? 'checked="checked"':"" ?>>
+					</div>
+					<div id="tabs-6">
 						<a href="http://beprosoftware.com"><img src="<?php echo plugins_url("bepro_listings/images/bepro_software_logo.png"); ?>"></a><br />
 						<p><b>THANK YOU</b> for your interest and support in this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
 						<ul>

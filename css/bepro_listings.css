@@ -108,6 +108,10 @@
 .error{
 	display:block;
 }
+.add_listing_form_info #content{
+	width:100%;
+	margin:0;
+}
 /* Shortened listing results */
 .shortcode_results{
 	width: 170px;

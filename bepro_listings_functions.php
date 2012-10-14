@@ -35,6 +35,22 @@
 				jQuery("#min_date").datepicker();
 				jQuery("#max_date").datepicker();
 			});
+			jQuery(".delete_link").click(function(element){
+				element.preventDefault();
+				tr_element = jQuery(this).parent().parent();
+				
+				file = jQuery(this)[0].id;
+				file = file.split("::");
+				check = confirm("are you sure you want to delete " +file[2]+ "?");
+				if(check){
+					jQuery.post(ajaxurl, { "action":"bepro_ajax_delete_post", post_id:file[1] }, function(i, message) {
+					   var obj = jQuery.parseJSON(i);
+					   alert(obj["status"]);
+					   if(obj["status"] == "Deleted Successfully!")
+					   tr_element.css("display","none");
+					});
+				}
+			});
 		</script>';
 		
 		echo $scripts;
@@ -49,7 +65,7 @@
 	//Setup database and other needed
 	function bepro_listings_install() {
 		global $wpdb;
-		$bepro_listings_version = '1.1.1';
+		$bepro_listings_version = '1.2.0';
 		$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
  		if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'")!=$table_name
 				|| version_compare(get_option("bepro_listings_version"), '1.0.0', '<') ) {
@@ -134,6 +150,8 @@
 			$data["gallery_size"] = "thumbnail";
 			$data["show_details"] = 1;
 			$data["show_content"] = 1;
+			//buddypress
+			$data["buddypress"] = 0;
 			//Support
 			$data["footer_link"] = 0;
 			//save
@@ -154,6 +172,33 @@
 	
 	
 	function load_constants(){
+		// The main slug
+		if ( !defined( 'BEPRO_LISTINGS_SLUG' ) )
+			define( 'BEPRO_LISTINGS_SLUG', 'Listings' );
+
+		// The slug used when editing a doc
+		if ( !defined( 'BEPRO_LISTINGS_LIST_SLUG' ) )
+			define( 'BEPRO_LISTINGS_LIST_SLUG', 'List' );
+
+		// The slug used when editing a doc
+		if ( !defined( 'BEPRO_LISTINGS_EDIT_SLUG' ) )
+			define( 'BEPRO_LISTINGS_EDIT_SLUG', 'edit' );
+
+		// The slug used when creating a new doc
+		if ( !defined( 'BEPRO_LISTINGS_CREATE_SLUG' ) )
+			define( 'BEPRO_LISTINGS_CREATE_SLUG', 'Create' );
+			
+		// The slug used when saving new docs
+		if ( !defined( 'BEPRO_LISTINGSS_SAVE_SLUG' ) )
+			define( 'BEPRO_UPLOADS_SAVE_SLUG', 'save' );
+
+		// The slug used when deleting a doc
+		if ( !defined( 'BEPRO_LISTINGS_DELETE_SLUG' ) )
+			define( 'BEPRO_LISTINGS_DELETE_SLUG', 'delete' );
+			
+		// The slug used when deleting a doc
+		if ( !defined( 'BEPRO_LISTINGS_SEARCH_SLUG' ) )
+			define( 'BEPRO_LISTINGS_SEARCH_SLUG', 'listings' );
 		// The Main table name
 		if ( !defined( 'BEPRO_LISTINGS_TABLE_NAME' ) )
 			define( 'BEPRO_LISTINGS_TABLE_NAME', 'bepro_listings' );
@@ -204,6 +249,197 @@
 		global $wpdb;
 		$wpdb->query("DELETE FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post_id);
 		return;
+	}
+
+	//On delete post, also delete the listing from the database and all attachments
+	function bepro_ajax_delete_post(){
+		global $wpdb;
+		$post_id = $_POST["post_id"];
+		$user_data = wp_get_current_user();
+		$post_data = get_post($post_id);
+		if(is_admin() || ($post_data->post_author == $user_data->ID)){
+			$ans = wp_delete_post( $post_id, true );
+			if($ans){$message["status"] = "Deleted Successfully!";
+			}else{$message["status"] = "Problem Deleting Listing";
+			}
+		}else{
+			$message["status"] = "Problem Deleting Listing";;
+		}
+		echo json_encode($message);
+	}
+	
+	function bepro_listings_save($post_id = false){
+		global $wpdb;
+		if(!empty($_POST["save_bepro_listing"])){
+			//get settings
+			$wp_upload_dir = wp_upload_dir();
+			$data = get_option("bepro_listings");
+			$user_data = wp_get_current_user();
+			$default_user_id = $data["default_user_id"];
+			$success_message = $data["success_message"];
+			$num_images = $data["num_images"];
+			$return_message = false;
+			
+			$item_name = $wpdb->escape($_POST["item_name"]);
+			$content = $wpdb->escape(strip_tags($_POST["content"]));
+			$categories = $wpdb->escape($_POST["categories"]);
+			$username = $wpdb->escape(strip_tags($_POST["username"]));
+			$password = $wpdb->escape(strip_tags($_POST["password"]));
+			$post_id = (empty($post_id))? $wpdb->escape($_POST["bepro_post_id"]):$post_id;
+			$cost =  trim(addslashes(strip_tags($_POST["cost"])));
+			$cost = str_replace(array("$",","), array("",""), $cost);
+			$cost = (!is_numeric($cost) || ($cost < 0))? "NULL": $cost; 
+
+			//Figure out user_id
+			if(is_user_logged_in()){
+				$user_id = $user_data->ID;
+			}elseif(isset($username) && !empty($password)){
+				$user_id = wp_create_user( $username, $password, $email );		
+			}
+			if(empty($user_id))$user_id = $default_user_id;
+			
+			if(!empty($user_id)){
+				if(empty($post_id)){
+					$post = array(
+					  'post_author' => $user_id,
+					  'post_content' => $content,
+					  'post_status' => "pending", 
+					  'post_title' => $item_name,
+					  'post_type' => "bepro_listings"
+					);  
+					//Create post
+					$post_id = wp_insert_post( $post, $wp_error ); 
+				}
+			
+				if(empty($wp_error)){
+					$post_data = get_post($post_id);
+					//setup custom bepro listing post categories
+					if(!empty($categories))wp_set_post_terms($post_id,$categories,'bepro_listing_types');
+					
+					//setup post images
+					if($num_images){
+						//delete images
+						$counter = 0;
+						while($counter < $num_images){
+							if(is_numeric($_POST["delete_image_".$counter]) && ($post_data->post_author == $user_data->ID))wp_delete_attachment( $_POST["delete_image_".$counter], true );
+							$counter++;
+						}
+						
+						$counter = 1;
+						$attachments = get_children(array('post_parent'=>$post_id));
+						require ( ABSPATH . 'wp-admin/includes/image.php' );
+						while(($counter <= $num_images) && (count($attachments) <= $num_images)) {
+							if(!empty($_FILES["bepro_form_image_".$counter]) && (!$_FILES["bepro_form_image_".$counter]["error"]) && getimagesize($_FILES["bepro_form_image_".$counter]["tmp_name"])){
+								$full_filename = $wp_upload_dir['path'].$_FILES["bepro_form_image_".$counter]["name"];
+								$check_move = @move_uploaded_file($_FILES["bepro_form_image_".$counter]["tmp_name"], $full_filename);
+								if($check_move){
+									$filename = basename($_FILES["bepro_form_image_".$counter]["name"]);
+									$filename = preg_replace('/\.[^.]+$/', '', $filename);
+									$attachment = array(
+										 'post_mime_type' => $_FILES["bepro_form_image_".$counter]['type'],
+										 'post_title' => $filename,
+										 'post_content' => '',
+										 'post_status' => 'inherit'
+									);
+									$attach_id = wp_insert_attachment( $attachment, $full_filename, $post_id);
+									$attach_data = wp_generate_attachment_metadata( $attach_id, $full_filename);
+									wp_update_attachment_metadata( $attach_id, $attach_data );
+								}
+							}
+							$counter++;
+						}
+					}
+					
+					//manage lat/lon
+					if(is_numeric($_POST['lat']) && is_numeric($_POST['lon'])){
+						$lat = $_POST['lat'];
+						$lon = $_POST['lon'];
+					}else{
+						if(!empty($_POST['postcode']) || !empty($_POST['country'])){  
+							$to_addr .= !empty($_POST['address_line1'])? $_POST['address_line1']:"";
+							$to_addr .= !empty($_POST['city'])? ", ".$_POST['city']:"";
+							$to_addr .= !empty($_POST['state'])? ", ".$_POST['state']:"";
+							$to_addr .= !empty($_POST['country'])? ", ".$_POST['country']:"";
+							$to_addr .= !empty($_POST['postcode'])? ", ".$_POST['postcode']:"";
+							$addresstofind_1 = "http://maps.google.com/maps/geo?q=".urlencode($to_addr);
+							$ch = curl_init();
+							curl_setopt($ch, CURLOPT_URL, $addresstofind_1);
+							curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101');
+							curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,1);
+							curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+							$addr_search_1  =  curl_exec($ch);
+							curl_close($ch);
+							
+							if($addr_search_1)$addr_search_1 = json_decode($addr_search_1);
+							if($addr_search_1->Placemark[0]->address){
+								$lon = $addr_search_1->Placemark[0]->Point->coordinates[0];
+								$lat = $addr_search_1->Placemark[0]->Point->coordinates[1];
+							}
+						}
+					}
+					
+					$post_data = $_POST;
+					$post_data["post_id"] = $post_id;
+					$post_data["lat"] = $lat;
+					$post_data["lon"] = $lon;
+					$post_data["cost"] = $cost;
+					$listing = $wpdb->get_row("SELECT id FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post_id);
+					
+					if($listing){
+						$result = bepro_update_post($post_data);
+					}else{
+						$result = bepro_add_post($post_data);
+					}
+					if($result){
+						$return_message = true;
+					}else{
+						$return_message = false;
+					}
+				}
+			}else{
+				$return_message = false;
+			}
+		}
+		
+		return $return_message;
+	}
+	
+	function bepro_add_post($post){
+		global $wpdb;
+		return $wpdb->query("INSERT INTO ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET
+			first_name    = '".$wpdb->escape(strip_tags($post['first_name']))."',
+			last_name     = '".$wpdb->escape(strip_tags($post['last_name']))."',
+			cost         = '".$wpdb->escape(strip_tags($post['cost']))."',
+			email         = '".$wpdb->escape(strip_tags($post['email']))."',
+			website       = '".$wpdb->escape(strip_tags($post['website']))."',
+			address_line1 = '".$wpdb->escape(strip_tags($post['address_line1']))."',
+			city          = '".$wpdb->escape(strip_tags($post['city']))."',
+			postcode      = '".$wpdb->escape(strip_tags($post['postcode']))."',
+			state         = '".$wpdb->escape(strip_tags($post['state']))."',
+			country       = '".$wpdb->escape(strip_tags($post['country']))."',
+			post_id         = '".$post['post_id']."',
+			phone         = '".$wpdb->escape(strip_tags($post['phone']))."',
+			lat           = '".$wpdb->escape(strip_tags($$post['lat']))."',
+			lon           = '".$wpdb->escape(strip_tags($$post['lon']))."'");
+	}
+	
+	function bepro_update_post($post){
+		global $wpdb;
+		return $wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET
+			cost    = '".$wpdb->escape(strip_tags($post['cost']))."',
+			first_name    = '".$wpdb->escape(strip_tags($post['first_name']))."',
+			last_name     = '".$wpdb->escape(strip_tags($post['last_name']))."',
+			email         = '".$wpdb->escape(strip_tags($post['email']))."',
+			phone         = '".$wpdb->escape(strip_tags($post['phone']))."',
+			address_line1 = '".$wpdb->escape(strip_tags($post['address_line1']))."',
+			city          = '".$wpdb->escape(strip_tags($post['city']))."',
+			postcode      = '".$wpdb->escape(strip_tags($post['postcode']))."',
+			state         = '".$wpdb->escape(strip_tags($post['state']))."',
+			country       = '".$wpdb->escape(strip_tags($post['country']))."',
+			lat           = '".$wpdb->escape(strip_tags($post['lat']))."',
+			lon           = '".$wpdb->escape(strip_tags($post['lon']))."',
+			website       = '".$wpdb->escape(strip_tags($_POST['website']))."'
+			WHERE post_id ='".$wpdb->escape(strip_tags($post['post_id']))."'");
 	}
 	
 	//Create BePro Listings custom post type.

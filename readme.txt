@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, custom posts, searchable
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,7 +15,7 @@ This plugin includes the tools needed to implement searchable listings on any pa
 
 Bepro Listings allows you to create posts with a combination of additional information like, costs, contact, or geography. Widgets and shortcodes then help you to search and view this information via various formats including google maps. Consider using these building blocks for your next listing site. 
 
-This plugin is for those looking to implement listing type features into their own custom design. Setup categories and control various aspects including, number of images, default search distance, and page details.
+This plugin is for those looking to implement listing type features into their own custom design. Setup categories and control various aspects including, number of images, default search distance, and page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete).
 
 = KEY FEATURES =
 * Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile

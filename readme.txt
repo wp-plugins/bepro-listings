@@ -8,7 +8,7 @@ Stable tag: 1.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-This plugin includes the tools needed to implement searchable listings on any page or post.
+This plugin includes the tools needed to implement searchable listings on any page or post. With buddypress, users can manage their own listings
 
 == Description ==
 [youtube http://www.youtube.com/watch?v=cfASHxSNIHY /]

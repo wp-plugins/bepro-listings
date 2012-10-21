@@ -275,8 +275,8 @@
 							<li>Upgrades - beprosoftware.com/products</li>
 							<li>Contact Us - support@beyprosoftware.com</li>
 							<li>Services - $15-70 USD/hr plugin support - development</li>
-							<li>Social - Coming...</li>
-							<li>Youtube - Coming...</li>
+							<li>Social - https://twitter.com/BeProSoftware</li>
+							<li>Youtube - http://www.youtube.com/playlist?list=PLMzIqO2N1YpjMx4QfiCjwFsxxfHVy1goG</li>
 							<li><?php _e("Our Link in your footer?", "bepro-listings"); ?> - <input style="vertical-align:middle" type="checkbox" name="footer_link" value="1" <?php echo ($data["footer_link"]== ("on" || 1))? 'checked="checked"':"" ?>></li>
 						</ul>
 					</div>

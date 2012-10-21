@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, custom posts, searchable
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -132,6 +132,8 @@ Simply set the post to private in the admin.
 = 1.1.1 (Sunday, Oct 12th 2012) = * css changes, widget fix, more info
 
 = 1.2.0 (Sunday, Oct 14th 2012) = * buddypress and some hooks
+
+= 1.2.1 (Sunday, Oct 21st 2012) = * conflick error and css fixes
 
 == Upgrade Notice ==
 

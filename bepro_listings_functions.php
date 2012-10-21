@@ -65,7 +65,7 @@
 	//Setup database and other needed
 	function bepro_listings_install() {
 		global $wpdb;
-		$bepro_listings_version = '1.2.0';
+		$bepro_listings_version = '1.2.1';
 		$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
  		if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'")!=$table_name
 				|| version_compare(get_option("bepro_listings_version"), '1.0.0', '<') ) {
@@ -327,7 +327,9 @@
 						
 						$counter = 1;
 						$attachments = get_children(array('post_parent'=>$post_id));
+						if(!function_exists("wp_create_thumbnail"))
 						require ( ABSPATH . 'wp-admin/includes/image.php' );
+						
 						while(($counter <= $num_images) && (count($attachments) <= $num_images)) {
 							if(!empty($_FILES["bepro_form_image_".$counter]) && (!$_FILES["bepro_form_image_".$counter]["error"]) && getimagesize($_FILES["bepro_form_image_".$counter]["tmp_name"])){
 								$full_filename = $wp_upload_dir['path'].$_FILES["bepro_form_image_".$counter]["name"];

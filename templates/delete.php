@@ -1,6 +1,7 @@
 <?php
 	
 	require("../../../../wp-load.php");
+	if(!function_exists("wp_create_thumbnail"))
 	require ( '../../../../wp-admin/includes/image.php' );
 	
 	if(empty($_POST["id"]) || !is_user_logged_in() ||!is_numeric($_POST["id"]) ) exit;

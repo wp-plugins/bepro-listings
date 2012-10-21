@@ -51,6 +51,7 @@
 	float:left;
 	display:block;
 	clear:left;
+	white-space: pre-line;
 }
 .bepro_listing_info div{
     margin: 5px 0;
@@ -214,6 +215,7 @@
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
 	border-bottom-color: #999;
+	white-space: pre-line;
 }
 
 

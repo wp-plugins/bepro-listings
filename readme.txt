@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, custom posts, searchable
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,6 +24,7 @@ This plugin is for those looking to implement listing type features into their o
 * Wordpress Integration - Admin is familiar and integrates with your design
 * Shortcodes & Widgets - Several ways to feature the information and engage your visitor.
 * Admin Options - Control which features and information are available
+* Validations - User Submissions are validated using jQuery
 
 = NOTE =
 
@@ -53,7 +54,7 @@ Visit the plugin page for examples and details http://beprosoftware.com/products
 
 * Consider altering the options located under the newly created admin menu for BePro Listings
 
-* Use shortcodes or widgets
+* Use shortcodes and/or widgets
 
 * Re-save your current permalink settings
 
@@ -129,11 +130,13 @@ Simply set the post to private in the admin.
 
 = 1.1.0 (Sunday, Oct 7st 2012) = * global settings for cost/contact/geo & num images
 
-= 1.1.1 (Sunday, Oct 12th 2012) = * css changes, widget fix, more info
+= 1.1.1 (Friday, Oct 12th 2012) = * css changes, widget fix, more info
 
 = 1.2.0 (Sunday, Oct 14th 2012) = * buddypress and some hooks
 
 = 1.2.1 (Sunday, Oct 21st 2012) = * conflick error and css fixes
+
+= 1.2.2 (Tuesday, Oct 30st 2012) = * user create featured image
 
 == Upgrade Notice ==
 

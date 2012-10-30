@@ -65,7 +65,7 @@
 	//Setup database and other needed
 	function bepro_listings_install() {
 		global $wpdb;
-		$bepro_listings_version = '1.2.1';
+		$bepro_listings_version = BEPRO_LISTINGS_VERSION;
 		$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
  		if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'")!=$table_name
 				|| version_compare(get_option("bepro_listings_version"), '1.0.0', '<') ) {
@@ -202,6 +202,9 @@
 		// The Main table name
 		if ( !defined( 'BEPRO_LISTINGS_TABLE_NAME' ) )
 			define( 'BEPRO_LISTINGS_TABLE_NAME', 'bepro_listings' );
+		// Current version
+		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
+			define( 'BEPRO_LISTINGS_VERSION', '1.2.2' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -346,6 +349,7 @@
 									$attach_id = wp_insert_attachment( $attachment, $full_filename, $post_id);
 									$attach_data = wp_generate_attachment_metadata( $attach_id, $full_filename);
 									wp_update_attachment_metadata( $attach_id, $attach_data );
+									if($counter == 1)update_post_meta($post_id, '_thumbnail_id', $attach_id);
 								}
 							}
 							$counter++;

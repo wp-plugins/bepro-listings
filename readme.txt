@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, custom posts, searchable
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.2.2
+Stable tag: 1.2.21
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,16 +15,26 @@ This plugin includes the tools needed to implement searchable listings on any pa
 
 Bepro Listings allows you to create posts with a combination of additional information like, costs, contact, or geography. Widgets and shortcodes then help you to search and view this information via various formats including google maps. Consider using these building blocks for your next listing site. 
 
-This plugin is for those looking to implement listing type features into their own custom design. Setup categories and control various aspects including, number of images, default search distance, and page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete).
+= Popular Uses =
+
+This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup categories and control various aspects including, number of images, default search distance, and page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+
+* Store Finder - List your stores including, location and contact details 
+* Directory - Employee, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of listings site
+* Products & Services - List them yourself or allow your members to list products and/or services
+* Informational - Tourism, points of interest, and other details best shown via map
+* User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
 
 = KEY FEATURES =
+We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information ($Cost, @Contact, ºLat/Lon) 
+
 * Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile
 * Custom posts - This way the listings are seperate to your other posts in the admin and front end
 * Google Maps api v3.5 - latest with no need for API keys
 * Wordpress Integration - Admin is familiar and integrates with your design
 * Shortcodes & Widgets - Several ways to feature the information and engage your visitor.
 * Admin Options - Control which features and information are available
-* Validations - User Submissions are validated using jQuery
+* Validations - User Form Submissions are validated using jQuery
 
 = NOTE =
 
@@ -102,7 +112,7 @@ Yes, there add-ons available for this plugin. Check our website beprosoftware.co
 
 = Can this work with buddypress? =
 
-In progress
+Since 1.2.0
 
 = Does your user submission form implement custom profile fields? =
 
@@ -137,6 +147,8 @@ Simply set the post to private in the admin.
 = 1.2.1 (Sunday, Oct 21st 2012) = * conflick error and css fixes
 
 = 1.2.2 (Tuesday, Oct 30st 2012) = * user create featured image
+
+= 1.2.21 (Wednesday, Jan 16st 2012) = * error checks
 
 == Upgrade Notice ==
 

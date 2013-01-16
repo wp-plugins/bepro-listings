@@ -17,7 +17,7 @@
 */	
  
 	function bepro_listings_wphead() {
-		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('bepro_listings/css/bepro_listings.css').'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('bepro_listings/css/jquery-ui-1.8.18.custom.css').'" ><meta name=\"plugin\" content=\"Bepro Listings plugin\">';
+		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('css/bepro_listings.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" ><meta name=\"plugin\" content=\"Bepro Listings plugin\">';
 		
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-datepicker');
@@ -25,9 +25,9 @@
 	} 
 
 	function bepro_listings_javascript() {
-		$plugindir = plugins_url("bepro_listings");
+		$plugindir = plugins_url(__FILE__ );
 		
-		$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings.js"></script><script type="text/javascript" src="'.plugins_url("bepro_listings/js/markerclusterer.js").'"></script><script type="text/javascript" src="'.plugins_url("bepro_listings/js/jquery.validate.min.js").'"></script><script type="text/javascript" src="'.plugins_url("bepro_listings/js/jquery.maskedinput-1.3.min.js").'"></script>';
+		$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings.js"></script><script type="text/javascript" src="'.plugins_url("js/markerclusterer.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/jquery.validate.min.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/jquery.maskedinput-1.3.min.js", __FILE__ ).'"></script>';
 		
 		$scripts .= '
 		<script type="text/javascript">
@@ -111,24 +111,26 @@
 			
 			$upload_dir = wp_upload_dir();
 			$to_filename = $upload_dir['path']."no_img.jpg";
-			$full_filename = plugins_url("bepro_listings/images/no_img.jpg");
+			$full_filename = plugins_url("images/no_img.jpg", __FILE__ );
 			$attachment = array(
 				 'post_mime_type' => "image/jpeg",
 				 'post_title' => "No Image",
 				 'post_content' => '',
 				 'post_status' => 'inherit'
 			);
-			copy($full_filename, $to_filename);
-			
-			$attach_id = wp_insert_attachment( $attachment, $to_filename, $post_id);
-			$attach_data = wp_generate_attachment_metadata( $attach_id, $to_filename);
-			wp_update_attachment_metadata( $attach_id, $attach_data );
-			
+			if(@copy($full_filename, $to_filename)){
+				$attach_id = wp_insert_attachment( $attachment, $to_filename, $post_id);
+				$attach_data = wp_generate_attachment_metadata( $attach_id, $to_filename);
+				wp_update_attachment_metadata( $attach_id, $attach_data );
+			}
 		}
 		//set version
 		update_option('bepro_listings_version', $bepro_listings_version);
-		
+		/*
 		if(!empty($post_id))$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET email='support@beprosoftware.com', phone='555-445-5544', cost=0, address_line1='', city='halifax', postcode='', state='NS', country='Canada', website='beprosoftware.com', lat='44.6470678', lon='-63.5747943', first_name='John', last_name='Tester' WHERE post_id=".$post_id);
+		*/
+		
+		if(!empty($post_id))$wpdb->query("INSERT INTO ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." (email, phone, cost, address_line1, city, postcode, state, country, website, lat, lon, first_name, last_name, post_id) VALUES('support@beprosoftware.com','555-445-5544', 0, '','halifax', '', 'NS','Canada', 'beprosoftware.com', '44.6470678', '-63.5747943', 'John', 'Tester', $post_id)");
 		
 		//load options if not already existant		
 		$data = get_option("bepro_listings");
@@ -143,7 +145,7 @@
 			$data["success_message"] = 'Listing Created and pending admin approval.';			
 			$data["default_user_id"] = get_current_user_id();			
 			//search listings
-			$data["default_image"] = plugins_url("bepro_listings/images/no_img.jpg");
+			$data["default_image"] = plugins_url("images/no_img.jpg", __FILE__ );
 			$data["num_listings"] = 3;
 			$data["distance"] = 150;
 			//Page/post
@@ -204,7 +206,7 @@
 			define( 'BEPRO_LISTINGS_TABLE_NAME', 'bepro_listings' );
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '1.2.2' );
+			define( 'BEPRO_LISTINGS_VERSION', '1.2.21' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -470,7 +472,7 @@
 			'publicly_queryable' => true,
 			'show_ui' => true,
 			'query_var' => true,
-			'menu_icon' => plugins_url("bepro_listings/images/blogs.png") ,
+			'menu_icon' => plugins_url("images/blogs.png", __FILE__ ) ,
 			'rewrite' => true,
 			'capability_type' => 'post',
 			'hierarchical' => false,

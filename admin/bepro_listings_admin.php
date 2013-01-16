@@ -267,7 +267,7 @@
 						<span class="form_label"><?php _e("Buddypress", "bepro-listings"); ?></span><input type="checkbox" name="buddypress" <?php echo ($data["buddypress"]== (1 || "on"))? 'checked="checked"':"" ?>>
 					</div>
 					<div id="tabs-6">
-						<a href="http://beprosoftware.com"><img src="<?php echo plugins_url("bepro_listings/images/bepro_software_logo.png"); ?>"></a><br />
+						<a href="http://beprosoftware.com"><img src="<?php echo plugins_url("images/bepro_software_logo.png", __FILE__ ); ?>"></a><br />
 						<p><b>THANK YOU</b> for your interest and support in this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
 						<ul>
 							<li>Support Forum - beprosoftware.com/forums</li>

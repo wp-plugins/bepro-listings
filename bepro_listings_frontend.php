@@ -118,11 +118,44 @@
 		}
 	}
 	
+	//Show categories Called from shortcode
+	function display_listing_categories($atts = array()){
+		global $wpdb;
+		$no_img = plugins_url("images/no_img.jpg", __FILE__ );
+		extract(shortcode_atts(array(
+			  'shorten' => $wpdb->escape($_POST["shorten"]),
+			  'url_input' => $wpdb->escape($_POST["url"]),
+			  'type' => $wpdb->escape($_POST["type"])
+		 ), $atts));
+		$categories = get_terms( 'bepro_listing_types', 'orderby=count&hide_empty=0' );
+		$cat_list = "<h3>".__("Categories","bepro_listings")."</h3><div class='cat_lists'>";
+		
+		if($categories && (count($categories) > 0)){
+			foreach($categories as $cat){
+				$url = "";
+				$url = empty($url_input)? $url."?filter_search=1&type=".$cat->term_id:$url_input;
+				$thumb_id = get_bepro_listings_term_meta( $cat->term_id, "thumbnail_id");
+				$img = empty($thumb_id)? $no_img:wp_get_attachment_url( $thumb_id );
+				$cat_list .= "<div class='cat_list_item'>
+				<div class='cat_img'><a href='".$url."'><img src='".$img."' /></a></div>
+				<div class='cat_title'><a href='".$url."'>".$cat->name."</a></div>
+				<div class='cat_desc'>".$cat->description."</div>
+				</div>
+				";
+			}
+		}else{
+			$cat_list .= "<div class='cat_list_no_item'>No Categories Created.</div>";
+		}
+		echo $cat_list."</div>";
+	}
+	
+	
 	//Show listings Called from shortcode
 	function display_listings($atts = array(), $raw_results = array(), $enlarge_map = 0){
 		global $wpdb;
 		extract(shortcode_atts(array(
 			  'shorten' => $wpdb->escape($_POST["shorten"]),
+			  'type' => $wpdb->escape($_POST["type"]),
 			  'show_paging' => $wpdb->escape($_POST["show_paging"])
 		 ), $atts));
 		 
@@ -166,8 +199,9 @@
 	
 	//process paging and listings
 	function process_listings_results($show_paging = false, $num_results = false){
-		if(!empty($_POST["filter_search"]))$returncaluse = Bepro_listings::listitems(array());
-		$filter_cat = (!empty($_POST["type"]))? true:false;
+		if(!empty($_REQUEST["filter_search"]))$returncaluse = Bepro_listings::listitems(array());
+		$filter_cat = (!empty($_REQUEST["type"]))? true:false;
+
 		
 		//Handle Paging selection calculations and process listings
 		if($show_paging == 1){

@@ -127,6 +127,191 @@
 	  }
 	}
 	
+		
+	/**
+	 * Category thumbnail fields.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	function bepro_listings_add_category_thumbnail_field() {
+		?>
+		<div class="form-field">
+			<label><?php _e('Thumbnail', 'bepro_listings'); ?></label>
+			<div id="bepro_listing_types_thumbnail" style="float:left;margin-right:10px;"><img src="<?php echo bepro_listings_placeholder_img_src(); ?>" width="60px" height="60px" /></div>
+			<div style="line-height:60px;">
+				<input type="hidden" id="bepro_listing_types_thumbnail_id" name="bepro_listing_types_thumbnail_id" />
+				<button type="submit" class="upload_image_button button"><?php _e('Upload/Add image', 'bepro_listings'); ?></button>
+				<button type="submit" class="remove_image_button button"><?php _e('Remove image', 'bepro_listings'); ?></button>
+			</div>
+			<script type="text/javascript">
+				
+				 // Only show the "remove image" button when needed
+				 if ( ! jQuery('#bepro_listing_types_thumbnail_id').val() )
+					 jQuery('.remove_image_button').hide();
+
+				window.send_to_editor_default = window.send_to_editor;
+
+				window.send_to_termmeta = function(html) {
+
+					jQuery('body').append('<div id="temp_image">' + html + '</div>');
+
+					var img = jQuery('#temp_image').find('img');
+
+					imgurl 		= img.attr('src');
+					imgclass 	= img.attr('class');
+					imgid		= parseInt(imgclass.replace(/\D/g, ''), 10);
+
+					jQuery('#bepro_listing_types_thumbnail_id').val(imgid);
+					jQuery('#bepro_listing_types_thumbnail img').attr('src', imgurl);
+					jQuery('.remove_image_button').show();
+					jQuery('#temp_image').remove();
+
+					tb_remove();
+
+					window.send_to_editor = window.send_to_editor_default;
+				}
+
+				jQuery('.upload_image_button').live('click', function(){
+					var post_id = 0;
+
+					window.send_to_editor = window.send_to_termmeta;
+
+					tb_show('', 'media-upload.php?post_id=' + post_id + '&amp;type=image&amp;TB_iframe=true');
+					return false;
+				});
+
+				jQuery('.remove_image_button').live('click', function(){
+					jQuery('#bepro_listing_types_thumbnail img').attr('src', '<?php echo bepro_listings_placeholder_img_src(); ?>');
+					jQuery('#bepro_listing_types_thumbnail_id').val('');
+					jQuery('.remove_image_button').hide();
+					return false;
+				});
+
+			</script>
+			<div class="clear"></div>
+		</div>
+		<?php
+	}
+
+
+	/**
+	 * Edit category thumbnail field.
+	 *
+	 * @access public
+	 * @param mixed $term Term (category) being edited
+	 * @param mixed $taxonomy Taxonomy of the term being edited
+	 * @return void
+	 */
+	function bepro_listings_edit_category_thumbnail_field( $term, $taxonomy ) {
+
+		$image 			= '';
+		$thumbnail_id 	= get_bepro_listings_term_meta( $term->term_id, 'thumbnail_id', true );
+		if ($thumbnail_id) :
+			$image = wp_get_attachment_url( $thumbnail_id );
+		else :
+			$image = bepro_listings_placeholder_img_src();
+		endif;
+		?>
+		<tr class="form-field">
+			<th scope="row" valign="top"><label><?php _e('Thumbnail', 'bepro_listings'); ?></label></th>
+			<td>
+				<div id="bepro_listing_types_thumbnail" style="float:left;margin-right:10px;"><img src="<?php echo $image; ?>" width="60px" height="60px" /></div>
+				<div style="line-height:60px;">
+					<input type="hidden" id="bepro_listing_types_thumbnail_id" name="bepro_listing_types_thumbnail_id" value="<?php echo $thumbnail_id; ?>" />
+					<button type="submit" class="upload_image_button button"><?php _e('Upload/Add image', 'bepro_listings'); ?></button>
+					<button type="submit" class="remove_image_button button"><?php _e('Remove image', 'bepro_listings'); ?></button>
+				</div>
+				<script type="text/javascript">
+
+					window.send_to_termmeta = function(html) {
+
+						jQuery('body').append('<div id="temp_image">' + html + '</div>');
+
+						var img = jQuery('#temp_image').find('img');
+
+						imgurl 		= img.attr('src');
+						imgclass 	= img.attr('class');
+						imgid		= parseInt(imgclass.replace(/\D/g, ''), 10);
+
+						jQuery('#bepro_listing_types_thumbnail_id').val(imgid);
+						jQuery('#bepro_listing_types_thumbnail img').attr('src', imgurl);
+						jQuery('#temp_image').remove();
+
+						tb_remove();
+					}
+
+					jQuery('.upload_image_button').live('click', function(){
+						var post_id = 0;
+
+						window.send_to_editor = window.send_to_termmeta;
+
+						tb_show('', 'media-upload.php?post_id=' + post_id + '&amp;type=image&amp;TB_iframe=true');
+						return false;
+					});
+
+					jQuery('.remove_image_button').live('click', function(){
+						jQuery('#bepro_listing_types_thumbnail img').attr('src', '<?php echo bepro_listings_placeholder_img_src(); ?>');
+						jQuery('#bepro_listing_types_thumbnail_id').val('');
+						return false;
+					});
+
+				</script>
+				<div class="clear"></div>
+			</td>
+		</tr>
+		<?php
+	}
+
+
+
+	/**
+	 * bepro_listings_category_thumbnail_field_save function.
+	 *
+	 * @access public
+	 * @param mixed $term_id Term ID being saved
+	 * @param mixed $tt_id
+	 * @param mixed $taxonomy Taxonomy of the term being saved
+	 * @return void
+	 */
+	function bepro_listings_category_thumbnail_field_save( $term_id, $tt_id, $taxonomy ) {
+		if ( isset( $_POST['bepro_listing_types_thumbnail_id'] ) )
+			update_bepro_listings_term_meta( $term_id, 'thumbnail_id', $_POST['bepro_listing_types_thumbnail_id'] );
+	}
+
+	
+	function bepro_edit_listing_types_column($theme_columns){
+	$new_columns = array(
+        'cb' => '<input type="checkbox" />',
+        'name' => __('Name'),
+        'thumb' => '',
+		'description' => __('Description'),
+        'slug' => __('Slug'),
+        'posts' => __('Posts')
+        );
+		return $new_columns;
+	}
+
+	function bepro_listing_types_column( $columns, $column, $id ) {
+
+		if ( $column == 'thumb' ) {
+
+			$image 			= '';
+			$thumbnail_id 	= get_bepro_listings_term_meta( $id, 'thumbnail_id', true );
+
+			if ($thumbnail_id)
+				$image = wp_get_attachment_url( $thumbnail_id );
+			else
+				$image = bepro_listings_placeholder_img_src();
+
+			$columns .= '<img src="' . $image . '" alt="Thumbnail" class="wp-post-image" height="48" width="48" />';
+
+		}
+
+		return $columns;
+	}
+
+	
 	//Admin css and javascript
 	function bepro_listings_adminhead() {
 			wp_admin_css('thickbox');
@@ -267,7 +452,7 @@
 						<span class="form_label"><?php _e("Buddypress", "bepro-listings"); ?></span><input type="checkbox" name="buddypress" <?php echo ($data["buddypress"]== (1 || "on"))? 'checked="checked"':"" ?>>
 					</div>
 					<div id="tabs-6">
-						<a href="http://beprosoftware.com"><img src="<?php echo plugins_url("images/bepro_software_logo.png", __FILE__ ); ?>"></a><br />
+						<a href="http://beprosoftware.com"><img src="<?php echo BEPRO_LISTINGS_PLUGIN_PATH."/images/bepro_software_logo.png"; ?>"></a><br />
 						<p><b>THANK YOU</b> for your interest and support in this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
 						<ul>
 							<li>Support Forum - beprosoftware.com/forums</li>

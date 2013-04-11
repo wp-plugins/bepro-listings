@@ -83,6 +83,26 @@
     float: left;
 }
 
+
+/* Cat Listing layout */
+
+.cat_list_item{
+	float:left;
+	width:200px;
+	margin-left: 10px;
+}
+.cat_list_item div{
+	float:left;
+	width:200px;
+	clear:both;
+}
+.cat_list_item img{
+	float:left;
+	width:200px;
+	height: 175px;
+	clear:both;
+}
+
 /* form layout */
 .form_label{
 	width:90px; 
@@ -139,6 +159,17 @@
 
 .shortcode_results .result_do{
 	clear:both;
+}
+
+/* Category listings results */
+
+#listings_area h3{
+	font-size: 22px;
+	text-decoration: underline;
+}
+#listings_area .cat_lists{
+	margin:10px 0;
+	float: left;
 }
 
 /* normal listings results */

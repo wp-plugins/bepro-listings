@@ -62,14 +62,30 @@
 		add_submenu_page('edit.php?post_type=bepro_listings', 'Option', 'Options', 4, 'bepro_listings_options', 'bepro_listings_options');
 	}
 	
-	//Setup database and other needed
-	function bepro_listings_install() {
+	     
+	//setup for multisite 
+	function bepro_new_blog($blog_id, $user_id, $domain, $path, $site_id, $meta ) {
+		global $wpdb;
+		bepro_listings_install_table($blog_id);
+	}
+	
+	//Setup database for multisite
+	function bepro_listings_install_table($blog_id = false) {
 		global $wpdb;
 		$bepro_listings_version = BEPRO_LISTINGS_VERSION;
-		$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
+
+		//Manage Multi Site
+		if($blog_id && ($blog_id != 1)){
+			$table_name = $wpdb->prefix.$blog_id."_".BEPRO_LISTINGS_TABLE_BASE;
+			$meta_table = $wpdb->prefix.$blog_id."_"."bepro_listing_typesmeta";
+		}else{
+			$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_BASE;
+			$meta_table = $wpdb->prefix."bepro_listing_typesmeta";
+		}		
+		
  		if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'")!=$table_name
 				|| version_compare(get_option("bepro_listings_version"), '1.0.0', '<') ) {
-			$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
+
 			$sql = "CREATE TABLE " . $table_name . " (
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
 				email tinytext DEFAULT NULL,
@@ -94,18 +110,32 @@
 			require_once(ABSPATH . 'wp-admin/upgrade-functions.php');
 			dbDelta($sql);
 			
+			//Switch to new blog
+			
+			if($blog_id)switch_to_blog($blog_id);
+			
 			//initial bepro listing
 			$user_id = get_current_user_id();
+			
 			$post = array(
 				  'post_author' => $user_id,
 				  'post_content' => "This is your first listing. Delete this one in your admin and create one of your own.",
 				  'post_status' => "publish", 
 				  'post_title' => "Your First Listing",
+				  'post_category' => array($my_cat_id),
 				  'post_type' => "bepro_listings"
 				);  
 				
 			//Create post
 			$post_id = wp_insert_post( $post, $wp_error ); 
+			
+			
+			
+			//setup category
+			$my_cat_id = term_exists( "Business", "bepro_listing_types"); 
+			if(is_array($my_cat_id)) $my_cat_id = $my_cat_id["term_id"];
+			wp_set_post_terms( $post_id, array($my_cat_id), "bepro_listing_types", false );
+			wp_set_object_terms( $post_id, $my_cat_id, "bepro_listing_types", false);
 			
 			//add first image
 			
@@ -123,16 +153,23 @@
 				$attach_data = wp_generate_attachment_metadata( $attach_id, $to_filename);
 				wp_update_attachment_metadata( $attach_id, $attach_data );
 			}
+			if($blog_id)restore_current_blog();
 		}
+		
+		
+		if ($wpdb->get_var("SHOW TABLES LIKE '$meta_table'")!=$meta_table){
+			create_metadata_table($meta_table, "bepro_listing_types");
+		}
+		$var_name = "bepro_listing_typesmeta";
+		$wpdb->$var_name = $meta_table;
+		
 		//set version
 		update_option('bepro_listings_version', $bepro_listings_version);
-		/*
-		if(!empty($post_id))$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET email='support@beprosoftware.com', phone='555-445-5544', cost=0, address_line1='', city='halifax', postcode='', state='NS', country='Canada', website='beprosoftware.com', lat='44.6470678', lon='-63.5747943', first_name='John', last_name='Tester' WHERE post_id=".$post_id);
-		*/
+
+		//add first post
+		if(!empty($post_id))$wpdb->query("INSERT INTO ".$table_name." (email, phone, cost, address_line1, city, postcode, state, country, website, lat, lon, first_name, last_name, post_id) VALUES('support@beprosoftware.com','561-288-5321', 0, '','halifax', '', 'NS','Canada', 'beprosoftware.com', '44.6470678', '-63.5747943', 'Lead', 'Tester', $post_id)");
 		
-		if(!empty($post_id))$wpdb->query("INSERT INTO ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." (email, phone, cost, address_line1, city, postcode, state, country, website, lat, lon, first_name, last_name, post_id) VALUES('support@beprosoftware.com','555-445-5544', 0, '','halifax', '', 'NS','Canada', 'beprosoftware.com', '44.6470678', '-63.5747943', 'John', 'Tester', $post_id)");
-		
-		//load options if not already existant		
+		//load default options if they dont already exist		
 		$data = get_option("bepro_listings");
 		if(empty($data)){
 			//general
@@ -162,6 +199,43 @@
 			if($data["footer_link"] == ("on" || 1)){
 				add_action("wp_footer", "footer_message");
 			}
+		}
+		
+	}
+	
+	function create_metadata_table($table_name, $type) {
+		global $wpdb;
+	 
+		if (!empty ($wpdb->charset))
+			$charset_collate = "DEFAULT CHARACTER SET {$wpdb->charset}";
+		if (!empty ($wpdb->collate))
+			$charset_collate .= " COLLATE {$wpdb->collate}";
+				 
+		  $sql = "CREATE TABLE IF NOT EXISTS {$table_name} (
+			meta_id bigint(20) NOT NULL AUTO_INCREMENT,
+			{$type}_id bigint(20) NOT NULL default 0,
+		 
+			meta_key varchar(255) DEFAULT NULL,
+			meta_value longtext DEFAULT NULL,
+					 
+			UNIQUE KEY meta_id (meta_id)
+		) {$charset_collate};";
+		 
+		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+		dbDelta($sql);
+	}
+	
+	//Setup database and other needed
+	function bepro_listings_install() {
+		global $wpdb;
+		
+		if (function_exists('is_multisite') && is_multisite()){ 
+			$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs"));
+			foreach($blogids as $blogid_x){
+				bepro_listings_install_table($blogid_x);
+			}
+		}else{
+			bepro_listings_install_table();
 		}
 	}
 	
@@ -201,12 +275,27 @@
 		// The slug used when deleting a doc
 		if ( !defined( 'BEPRO_LISTINGS_SEARCH_SLUG' ) )
 			define( 'BEPRO_LISTINGS_SEARCH_SLUG', 'listings' );
-		// The Main table name
-		if ( !defined( 'BEPRO_LISTINGS_TABLE_NAME' ) )
+			
+		// The plugin path
+		if ( !defined( 'BEPRO_LISTINGS_PLUGIN_PATH' ) )
+			define( 'BEPRO_LISTINGS_PLUGIN_PATH', plugins_url("", __FILE__ ) );
+		
+		// The Main table name (check if multisite)
+		if (function_exists('is_multisite') && is_multisite()) {
+			global $wpdb;
+			$cur_blog_id = ($wpdb->blogid == 1)? "":$wpdb->blogid.'_';
+			define( 'BEPRO_LISTINGS_TABLE_NAME', $cur_blog_id.'bepro_listings' );
+		}else if ( !defined( 'BEPRO_LISTINGS_TABLE_NAME' ) ){
 			define( 'BEPRO_LISTINGS_TABLE_NAME', 'bepro_listings' );
+		}	
+		
+		// Base Table Name
+		if ( !defined( 'BEPRO_LISTINGS_TABLE_BASE' ) )
+			define( 'BEPRO_LISTINGS_TABLE_BASE', 'bepro_listings' );
+		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '1.2.21' );
+			define( 'BEPRO_LISTINGS_VERSION', '1.2.3' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -332,7 +421,7 @@
 						
 						$counter = 1;
 						$attachments = get_children(array('post_parent'=>$post_id));
-						if(!function_exists("wp_create_thumbnail"))
+						if(!function_exists("wp_get_image_editor"))
 						require ( ABSPATH . 'wp-admin/includes/image.php' );
 						
 						while(($counter <= $num_images) && (count($attachments) <= $num_images)) {
@@ -477,10 +566,59 @@
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			'menu_position' => null,
-			'supports' => array('title','editor','thumbnail', 'comments', 'revisions', 'page-attributes')
+			'supports' => array('title','editor','thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes')
 		  ); 
 	 
 		register_post_type( 'bepro_listings' , $args );
-		register_taxonomy("bepro_listing_types", array("bepro_listings"), array("hierarchical" => true, "label" => "Listing Types", "singular_label" => "Listing Type", "rewrite" => true));
+		register_taxonomy("bepro_listing_types", 
+			array("bepro_listings"), 
+			array('hierarchical' 			=> true,
+	            'label' 				=> __( 'BePro Listing Categories', 'bepro_listings'),
+	            'labels' => array(
+	                    'name' 				=> __( 'Listing Categories', 'bepro_listings'),
+	                    'singular_name' 	=> __( 'Listing Category', 'bepro_listings'),
+						'menu_name'			=> _x( 'Categories', 'Admin menu name', 'bepro_listings' ),
+	                    'search_items' 		=> __( 'Search Listing Categories', 'bepro_listings'),
+	                    'all_items' 		=> __( 'All Listing Categories', 'bepro_listings'),
+	                    'parent_item' 		=> __( 'Parent Listing Category', 'bepro_listings'),
+	                    'parent_item_colon' => __( 'Parent Listing Category:', 'bepro_listings'),
+	                    'edit_item' 		=> __( 'Edit Listing Category', 'bepro_listings'),
+	                    'update_item' 		=> __( 'Update Listing Category', 'bepro_listings'),
+	                    'add_new_item' 		=> __( 'Add New Listing Category', 'bepro_listings'),
+	                    'new_item_name' 	=> __( 'New Listing Category Name', 'bepro_listings')
+	            	),
+	            'show_ui' 				=> true,
+	            'query_var' 			=> true,
+				"rewrite" => true)
+			);	
+			
+			// Create the category
+			$my_cat_id = wp_insert_term(
+			  'Business', // the term 
+			  'bepro_listing_types', // the taxonomy
+			  array(
+				'description'=> 'Location of businesses',
+				'slug' => 'Business',
+				'parent'=> ""
+			  )
+			);  
+			
 	}
+	
+	function bepro_listings_placeholder_img_src() {
+		return plugins_url("images/no_img.jpg", __FILE__ );
+	}
+
+	function update_bepro_listings_term_meta( $term_id, $meta_key, $meta_value, $prev_value = '' ) {
+		return update_metadata( 'bepro_listing_types', $term_id, $meta_key, $meta_value, $prev_value );
+	}
+
+	function get_bepro_listings_term_meta( $term_id, $key, $single = true ) {
+		return get_metadata( 'bepro_listing_types', $term_id, $key, $single );
+	}
+
+
+
+
+
 ?>

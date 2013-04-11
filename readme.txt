@@ -1,14 +1,14 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: http://beprosoftware.com/
-Tags: listings, google map, buddypress, custom posts, searchable
+Tags: listings, google map, buddypress, custom posts, multisite, directory,
 Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 1.2.21
+Tested up to: 3.5
+Stable tag: 1.2.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-This plugin includes the tools needed to implement searchable listings on any page or post. With buddypress, users can manage their own listings
+This plugin includes the tools needed to implement searchable listings on any page or post. With buddypress, users can manage their own listings. Features flexibility via mutisite compatability.
 
 == Description ==
 [youtube http://www.youtube.com/watch?v=cfASHxSNIHY /]
@@ -26,15 +26,17 @@ This plugin is best utilized by those looking to implement listing type features
 * User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
 
 = KEY FEATURES =
-We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information ($Cost, @Contact, ºLat/Lon) 
+We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information ($Cost, @Contact, &deg;Lat/Lon) 
 
-* Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile
-* Custom posts - This way the listings are seperate to your other posts in the admin and front end
-* Google Maps api v3.5 - latest with no need for API keys
-* Wordpress Integration - Admin is familiar and integrates with your design
+* Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile.
+* Custom posts - This way the listings are seperate to your other posts in the admin and front end.
+* Listing Categories - Custom Taxonomies with the ability to add images and list them.
+* Google Maps api v3.5 - latest with no need for API keys.
+* Wordpress Integration - Admin is familiar and integrates with your design.
 * Shortcodes & Widgets - Several ways to feature the information and engage your visitor.
-* Admin Options - Control which features and information are available
-* Validations - User Form Submissions are validated using jQuery
+* Admin Options - Control the ability for users to intereact with features and information.
+* Validations - User Form Submissions are validated using jQuery.
+* Multisite - Now multisite compatible, expand the use of this plugin throughout your network.
 
 = NOTE =
 
@@ -125,11 +127,11 @@ Simply set the post to private in the admin.
 
 == Screenshots ==
 
-1. bepro_lisings / Screenshot #1
-2. bepro_lisings / Screenshot #2
-3. bepro_lisings / Screenshot #3
-4. bepro_lisings / Screenshot #4
-4. bepro_lisings / Screenshot #5
+1. Manage Listings
+2. Search Listings
+3. View Listing
+4. Configure Listing Options
+5. Buddypress Profile listing Manager
 
 
 == Changelog ==
@@ -149,6 +151,8 @@ Simply set the post to private in the admin.
 = 1.2.2 (Tuesday, Oct 30st 2012) = * user create featured image
 
 = 1.2.21 (Wednesday, Jan 16st 2012) = * error checks
+
+= 1.2.22 (Thursday, April 4th 2013) = * wordpress 3.5 and multisite compatible
 
 == Upgrade Notice ==
 

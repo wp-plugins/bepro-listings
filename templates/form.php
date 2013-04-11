@@ -4,7 +4,6 @@
 			echo '
 				<script type="text/javascript">
 					jQuery(document).ready(function(){
-						jQuery("#phone").mask("(999) 999-9999");
 						jQuery("#bepro_create_listings_form").validate({
 							rules: {
 								item_name: "required",

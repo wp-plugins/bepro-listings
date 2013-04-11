@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
 Description: Bepro Listings allows you to create posts with additional information like, costs, contact, and geographic. This plugin includes the tools you need, to implement listings on any page or post.
-Version: 1.2.21
+Version: 1.2.3
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -59,11 +59,19 @@ class Bepro_listings{
 		add_action('delete_post', 'bepro_delete_post' );
 		add_action('wp_ajax_save-widget', 'bepro_save_widget' );
 		add_action("manage_posts_custom_column",  "bepro_listings_custom_columns");
-		add_action("plugins_loaded",  "bepro_listings_install");
+		add_action( "plugins_loaded",  "bepro_listings_install");
 		add_action( 'bp_init', array( $this, "start_bp_addon") );
 		add_action( 'wp_ajax_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
 		add_action( 'wp_ajax_nopriv_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
+		add_action( 'wpmu_new_blog', 'bepro_new_blog', 10, 6);   
+		add_action( 'bepro_listing_types_add_form_fields', 'bepro_listings_add_category_thumbnail_field' );
+		add_action( 'bepro_listing_types_edit_form_fields', 'bepro_listings_edit_category_thumbnail_field', 10,2 );
+		add_action( 'created_term', 'bepro_listings_category_thumbnail_field_save', 10,3 );
+		add_action( 'edit_term', 'bepro_listings_category_thumbnail_field_save', 10,3 );
 		
+		
+		add_filter('manage_edit-bepro_listing_types_columns', 'bepro_edit_listing_types_column', 10, 3 );
+		add_filter('manage_bepro_listing_types_custom_column', 'bepro_listing_types_column', 10, 3 );
 		add_filter("manage_edit-bepro_listings_columns", "bepro_listings_edit_columns");
 		add_filter('the_content', array( $this, 'post_page_single'));	
 		
@@ -71,6 +79,7 @@ class Bepro_listings{
 		add_shortcode("filter_form", array( $this, "search_filter_options"));
 		add_shortcode("generate_map", "generate_map");
 		add_shortcode("display_listings", "display_listings");
+		add_shortcode("display_listing_categories", "display_listing_categories");
 		add_shortcode("create_listing_form", "user_create_listing");
 	}
 
@@ -103,7 +112,7 @@ class Bepro_listings{
 					<input type="submit" value="'.__("Search Listings", "bepro-listings").'">
 					
 				</form>
-				<a class="clear_search" href="'.$_SERVER["REQUEST_URI"].'"><button>Clear Search</button></a>
+				<a class="clear_search" href="'.$_SERVER["PHP_SELF"].'"><button>Clear Search</button></a>
 			</div>
 		';
 		
@@ -114,13 +123,14 @@ class Bepro_listings{
 	function listitems($atts) {
 		global $wpdb;
 		extract(shortcode_atts(array(
-			  'l_type' => $wpdb->escape($_POST["type"]),
+			  'l_type' => $wpdb->escape($_REQUEST["type"]),
 			  'min_cost' => $wpdb->escape($_POST["min_cost"]),
 			  'max_cost' => $wpdb->escape($_POST["max_cost"]),
 			  'min_date' => $wpdb->escape($_POST["min_date"]),
 			  'max_date' => $wpdb->escape($_POST["max_date"]),
 			  'l_name' => $wpdb->escape($_POST["name_search"]),
 			  'l_city' => $wpdb->escape($_POST["addr_search"]),
+			  'wp_site' => $wpdb->escape($_POST["wp_site"]),
 		 ), $atts));
 		 
 		 $data = get_option("bepro_listings");
@@ -148,7 +158,7 @@ class Bepro_listings{
 		$distance = (empty($_POST["distance"]))? $data["distance"]:$_POST["distance"];
 		if(!empty($l_city) && isset($l_city)){ 
 			//newest edits aug, 12, 2012
-			$addresstofind = sprintf('http://maps.google.com/maps/geo?q=%s&output=csv&sensor=false',rawurlencode($l_city));
+			$addresstofind = sprintf('http://maps.googleapis.com/maps/api/geocode/json?address=%s&output=csv&sensor=false',rawurlencode($l_city));
 			$ch = curl_init();
 			$timeout = 5; 
 			curl_setopt ($ch, CURLOPT_URL, $addresstofind);
@@ -157,29 +167,31 @@ class Bepro_listings{
 			$_result = curl_exec($ch);
 			curl_close($ch);
 			
-			$rawlatlon = explode(",", $_result);
-			$currentlat = $rawlatlon[2];
-			$currentlon = $rawlatlon[3];
-			 
+			$_result = json_decode($_result);
+			$currentlat = (string)$_result->results[0]->geometry->location->lat; 
+			$currentlon = (string)$_result->results[0]->geometry->location->lng;
 			 // Variables for proximity query
 			 $x = $currentlat;
 			 $x2 = 'geo.lat';
 			 $y = $currentlon;
 			 $y2 = 'geo.lon';
 			 
-			 if($rawlatlon){
+			 if($_result){
 				$returncaluse =  "AND (3958 * 3.1415926 * SQRT(({$y2} - {$y}) * ({$y2} - {$y}) + COS({$y2} / 57.29578) * COS({$y} / 57.29578) * ({$x2} - {$x}) * ({$x2} - {$x})) / 180) <= {$distance} AND geo.lat IS NOT NULL AND geo.lon IS NOT NULL";
 			 }
 	   }
 	   
 	   //Query BePro Listing Name 'LIKE' user query
 	   if(!empty($l_name)){
-			$check_avail = $wpdb->get_row("SELECT bl.* FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as bl
+			$listing_table_name = (!empty($wp_site) && is_numeric($wp_site) && ($wp_site > 0))?
+				$wpdb->prefix.$wp_site.'_bepro_listings':$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
+	   
+			$check_avail = $wpdb->get_row("SELECT bl.* FROM ".$listing_table_name." as bl
 			LEFT JOIN ".$wpdb->prefix."posts as posts ON posts.ID = bl.post_id
 			WHERE post_title LIKE '%$l_name%' LIMIT 1");
 			 
 			if($check_avail){
-				//If distance, fine listings 'LIKE' user supplied request within radius
+				//If distance, find listings 'LIKE' user supplied request within radius
 				if(!empty($_POST["distance"])){
 					$x = $check_avail->lat;
 					$x2 = 'geo.lat';
@@ -273,7 +285,7 @@ class Bepro_listings{
 				<tr>
 					<td>
 						<input type="submit" class="form-submit" value="'.__("Refine Search", "bepro-listings").'" id="edit-submit" name="find">
-						<a href="'.$_SERVER["REQUEST_URI"].'"><button>Clear Search</button></a>
+						<a href="'.$_SERVER["PHP_SELF"].'"><button>Clear Search</button></a>
 					</td>
 				</tr>
 			</table>
@@ -289,7 +301,7 @@ class Bepro_listings{
 	//show listing on pages created for it
 	function post_page_single($content){
 		remove_filter( 'the_content', array( $this, 'post_page_single'));
-		if(is_single() && in_the_loop()){
+		if(is_single() && in_the_loop() && (get_post_type() == 'bepro_listings')){
 			global $current_user, $wpdb;
 			//get listing information related to this post
 			$page_id = get_the_ID();

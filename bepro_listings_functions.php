@@ -295,7 +295,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '1.2.3' );
+			define( 'BEPRO_LISTINGS_VERSION', '1.2.31' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -590,18 +590,7 @@
 	            'show_ui' 				=> true,
 	            'query_var' 			=> true,
 				"rewrite" => true)
-			);	
-			
-			// Create the category
-			$my_cat_id = wp_insert_term(
-			  'Business', // the term 
-			  'bepro_listing_types', // the taxonomy
-			  array(
-				'description'=> 'Location of businesses',
-				'slug' => 'Business',
-				'parent'=> ""
-			  )
-			);  
+			);	 
 			
 	}
 	

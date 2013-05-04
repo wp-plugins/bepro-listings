@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, custom posts, multisite, directory,
 Requires at least: 3.0.1
 Tested up to: 3.5
-Stable tag: 1.2.32
+Stable tag: 1.2.33
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -155,6 +155,8 @@ Simply set the post to private in the admin.
 = 1.2.3 (Thursday, April 11th 2013) = * wordpress 3.5 and multisite compatible
 
 = 1.2.32 (Monday, April 22nd 2013) = * fix issue when uploading images
+
+= 1.2.32 (Saturday, May 4th 2013) = * fix issue regarding the retrieval of lat/lon
 
 == Upgrade Notice ==
 

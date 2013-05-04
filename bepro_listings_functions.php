@@ -295,7 +295,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '1.2.32' );
+			define( 'BEPRO_LISTINGS_VERSION', '1.2.33' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -458,7 +458,7 @@
 							$to_addr .= !empty($_POST['state'])? ", ".$_POST['state']:"";
 							$to_addr .= !empty($_POST['country'])? ", ".$_POST['country']:"";
 							$to_addr .= !empty($_POST['postcode'])? ", ".$_POST['postcode']:"";
-							$addresstofind_1 = "http://maps.google.com/maps/geo?q=".urlencode($to_addr);
+							$addresstofind_1 = "http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($to_addr)."&sensor=false";
 							$ch = curl_init();
 							curl_setopt($ch, CURLOPT_URL, $addresstofind_1);
 							curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101');
@@ -468,9 +468,9 @@
 							curl_close($ch);
 							
 							if($addr_search_1)$addr_search_1 = json_decode($addr_search_1);
-							if($addr_search_1->Placemark[0]->address){
-								$lon = $addr_search_1->Placemark[0]->Point->coordinates[0];
-								$lat = $addr_search_1->Placemark[0]->Point->coordinates[1];
+							if($addr_search_1->results[0]->geometry->location){
+								$lon = (string)$addr_search_1->results[0]->geometry->location->lng;
+								$lat = (string)$addr_search_1->results[0]->geometry->location->lat;
 							}
 						}
 					}
@@ -516,8 +516,8 @@
 			country       = '".$wpdb->escape(strip_tags($post['country']))."',
 			post_id         = '".$post['post_id']."',
 			phone         = '".$wpdb->escape(strip_tags($post['phone']))."',
-			lat           = '".$wpdb->escape(strip_tags($$post['lat']))."',
-			lon           = '".$wpdb->escape(strip_tags($$post['lon']))."'");
+			lat           = '".$wpdb->escape(strip_tags($post['lat']))."',
+			lon           = '".$wpdb->escape(strip_tags($post['lon']))."'");
 	}
 	
 	function bepro_update_post($post){

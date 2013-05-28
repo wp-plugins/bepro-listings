@@ -295,7 +295,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '1.2.33' );
+			define( 'BEPRO_LISTINGS_VERSION', '1.2.34' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );

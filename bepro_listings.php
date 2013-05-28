@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
 Description: Bepro Listings allows you to create posts with additional information like, costs, contact, and geographic. This plugin includes the tools you need, to implement listings on any page or post.
-Version: 1.2.33
+Version: 1.2.34
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -330,7 +330,7 @@ class Bepro_listings{
 						<div class='item_cost'>".__("Cost", "bepro-listings")." - ".$cost."</div>";
 						//If we have geographic data then we can show this listings address information
 						if($item->lat){
-							$map_url = "http://maps.google.com/maps?&z=10&q=".$item->lat."+".$item->lon."+(".urlencode($item->address_line1.", ".$item->city.", ".$item->state.", Canada").")&mrt=yp ";
+							$map_url = "http://maps.google.com/maps?&z=10&q=".$item->lat."+".$item->lon."+(".urlencode($item->address_line1.", ".$item->city.", ".$item->state.", ".$item->country).")&mrt=yp ";
 							echo "<div class='bepro_address_info'><span class='item_label'>".__("Address", "bepro-listings")."</span> - <a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a></div>";
 						}
 						//If there is contact information then show it

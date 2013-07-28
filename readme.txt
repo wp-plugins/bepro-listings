@@ -3,12 +3,12 @@ Contributors: BeyondPrograms
 Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, custom posts, multisite, directory,
 Requires at least: 3.0.1
-Tested up to: 3.5
-Stable tag: 1.2.34
+Tested up to: 3.5.2
+Stable tag: 1.2.35
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-This plugin includes the tools needed to implement searchable listings on any page or post. With buddypress, users can manage their own listings. Features flexibility via mutisite compatability.
+Searchable listings on any page or post. Now buddypress & mutisite compatable.
 
 == Description ==
 [youtube http://www.youtube.com/watch?v=cfASHxSNIHY /]
@@ -159,6 +159,8 @@ Simply set the post to private in the admin.
 = 1.2.33 (Saturday, May 4th 2013) = * fix issue regarding the retrieval of lat/lon
 
 = 1.2.34 (Tuesday, May 28th 2013) = * fix issue regarding country when clicking listing map links
+
+= 1.2.35 (Sunday, Jul 28th 2013) = * fix text domain languages and map markers
 
 == Upgrade Notice ==
 

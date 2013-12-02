@@ -72,7 +72,7 @@ Visit the plugin page for examples and details http://www.beprosoftware.com/prod
 
 * Download the plugin files to your plugin directory and activate.
 
-* Consider altering the options located under the newly created admin menu for BePro Listings
+* Re-save the options located under the newly created admin menu for BePro Listings
 
 * Use shortcodes and/or widgets
 

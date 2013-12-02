@@ -12,7 +12,7 @@ Searchable listings on any page or post. Now buddypress & mutisite compatable.
 
 == Description ==
 
-Bepro Listings provides a new post type with options to add information like, cost, contact, and/or geography. It also facilitates better control over wordpress core features. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Listing options including a growing list of formats including galleries and google maps. Consider using these building blocks for your next community listing site. 
+Bepro Listings provides a new post type with options to add information like, cost, contact, and/or geography. It facilitates better control over wordpress core features. It also provides a growing set of listing formats including galleries and google maps. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Consider using these building blocks for your next community listing site. 
 
 = Popular Uses =
 

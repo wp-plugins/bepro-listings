@@ -25,7 +25,6 @@
 	}
 	
 	function bepro_admin_head(){
-		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('../css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" >';
 		echo "<style type='text/css'>.bepro_listings input[type=checkbox]{margin:11px 0;}</style>";
 		echo "<style>
 		  .ui-tabs-vertical { width: 55em; }
@@ -54,7 +53,7 @@
 									alert("Form saved!");
 								}else{
 									alert("!Form save error!");
-								}	
+								}								
 							})
 						});
 					}
@@ -413,7 +412,7 @@
 		
 		?>
 		<h1>BePro Listings Options</h1>
-		<div class="wrap">
+		<div class="wrap bepro_listings_admin_form">
 			<form class="bepro_listings" method="post">
 				<input type="hidden" name="update_options" value="1" />
 				<div id="bepro_listings_tabs">
@@ -493,10 +492,11 @@
 						<a href="http://beprosoftware.com"><img src="<?php echo BEPRO_LISTINGS_PLUGIN_PATH."/images/bepro_software_logo.png"; ?>"></a><br />
 						<p><b>THANK YOU</b> for your interest and support in this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
 						<ul>
-							<li>Support Forum - beprosoftware.com/forums</li>
-							<li>Add-ons - beprosoftware.com/shop</li>
+							<li>Support Forum - http://beprosoftware.com/forums</li>
+							<li>Donate - Coffee, dev time, simple thanks - beprosoftware.com/donations</li>
+							<li>Upgrades - beprosoftware.com/products</li>
 							<li>Contact Us - support@beprosoftware.com</li>
-							<li>Services - $15-100 USD/hr plugin support - development</li>
+							<li>Services - $15-70 USD/hr plugin support - development</li>
 							<li>Social - https://twitter.com/BeProSoftware</li>
 							<li>Youtube - http://www.youtube.com/playlist?list=PLMzIqO2N1YpjMx4QfiCjwFsxxfHVy1goG</li>
 							<li><?php _e("Our Link in your footer?", "bepro-listings"); ?> - <input style="vertical-align:middle" type="checkbox" name="footer_link" value="1" <?php echo ($data["footer_link"]== ("on" || 1))? 'checked="checked"':"" ?>></li>
@@ -511,11 +511,9 @@
 		</div>
 		<div class="bepro_listings_loading_msg">
 		<p>Jquery is loading... Please wait</p>
-		</div>
-			
-			<?php
+		</div>	
+			<?php	
 	}
-	
 	
 	function bepro_listings_addons(){
 			ob_start();

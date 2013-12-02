@@ -204,7 +204,7 @@
 			$data['bepro_listings_item_gallery_template'] = "bepro_listings_item_gallery";
 			$data['bepro_listings_item_after_gallery_template'] = "bepro_listings_item_after_gallery";
 			$data['bepro_listings_item_details_template'] = 'bepro_listings_item_details';
-			$data['bepro_listings_item_content_template'] = 'bepro_listings_item_content_info');
+			$data['bepro_listings_item_content_template'] = 'bepro_listings_item_content_info';
 			//save
 			update_option("bepro_listings", $data);
 		}else{

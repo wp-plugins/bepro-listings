@@ -336,7 +336,7 @@
 			$cost = __("Please Contact", "bepro-listings");
 		}
 		
-		if(!empty($data["show_details"]) && ($data["show_details"] == "on")){
+		if(!empty($data["show_details"]) && (($data["show_details"] == "on") ||($data["show_details"] == 1)) ){
 			echo "<h3>Details : </h3><span class='bepro_listing_info'>";
 			if($data["show_cost"] == 1){
 				echo "<div class='item_cost'>".__("Cost", "bepro-listings")." - ".$cost."</div>";
@@ -361,7 +361,7 @@
 	}
 	function bepro_listings_item_content_template(){
 		$data = get_option("bepro_listings");
-		if(!empty($data["show_content"]) && ($data["show_content"] == "on")){
+		if(!empty($data["show_content"]) && (($data["show_content"] == "on") || ($data["show_content"] == 1))){
 			echo "<div class='bepro_listing_desc'>".apply_filters("bepro_listings_item_content",bepro_listings_item_tabs())."</div>";
 		}	
 	}

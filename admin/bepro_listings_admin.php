@@ -25,6 +25,7 @@
 	}
 	
 	function bepro_admin_head(){
+		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('../css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" >';
 		echo "<style type='text/css'>.bepro_listings input[type=checkbox]{margin:11px 0;}</style>";
 		echo "<style>
 		  .ui-tabs-vertical { width: 55em; }

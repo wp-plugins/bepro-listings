@@ -51,7 +51,7 @@
 			<form method="post" enctype="multipart/form-data" id="bepro_create_listings_form">
 				<input type="hidden" name="save_bepro_listing" value="1">
 				<input type="hidden" name="bepro_post_id" value="'.$post_data->ID.'">';
-				
+		do_action("bepro_listing_form_start");		
 		echo '
 			<div class="add_listing_form_info bepro_form_section">
 				<h3>'.__("Item Information", "bepro-listings").'</h3>
@@ -63,7 +63,10 @@
 					echo '<span class="bepro_form_cat"><span class="form_label">'.$opt->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$opt->term_id.'" '.(isset($categories[$opt->term_id])? 'checked="checked"':"").'/></span>';
 				}
 				echo "<div style='clear:both'></div>";
-				if(!empty($num_images)){
+				
+		do_action("bepro_listing_form_in_item_before_images");		
+			
+				if(!empty($num_images) && ($num_images > 0)){
 					$counter = 1;
 					echo "<span class='bepro_form_images'>";
 					while($counter <= $num_images){
@@ -76,15 +79,20 @@
 					}
 					echo "</span>";
 				}
+		do_action("bepro_listings_form_after_item");		
 		echo '		
 			</div>
 			';		
 		
+		
 		if(!empty($show_cost) && ($show_cost == "on")){		
 			echo '
 			<div class="add_listing_form_cost bepro_form_section">
-				<span class="form_label">'.__("Cost", "bepro-listings").'</span><input type="text" name="cost" value="'.(isset($item->cost)? $item->cost:0).'"><br />
-			</div>';
+				<span class="form_label">'.__("Cost", "bepro-listings").'</span><input type="text" name="cost" value="'.(isset($item->cost)? $item->cost:0).'"><br />';
+			
+			do_action("bepro_listing_form_after_cost");
+			echo '</div>';
+			
 		}
 		
 		if(!empty($show_con) && ($show_con == "on")){		
@@ -95,9 +103,13 @@
 					<span class="form_label">'.__("Last Name", "bepro-listings").'</span><input type="text" id="last_name" name="last_name" value="'.$item->last_name.'">
 					<span class="form_label">'.__("Email", "bepro-listings").'</span><input type="text" id="email" name="email" value="'.$item->email.'">
 					<span class="form_label">'.__("Phone", "bepro-listings").'</span><input type="text" name="phone" id="phone" value="'.$item->phone.'">
-					<span class="form_label">'.__("Website", "bepro-listings").'</span><input type="text" name="website" value="'.$item->website.'">
-				</div>';
+					<span class="form_label">'.__("Website", "bepro-listings").'</span><input type="text" name="website" value="'.$item->website.'">';
+			
+			do_action("bepro_listing_form_after_contact");		
+			echo '	</div>';
+				
 		}
+		
 		
 		if(!empty($show_geo) && ($show_geo == "on")){
 			echo '
@@ -107,22 +119,24 @@
 					<span class="form_label">'.__("City", "bepro-listings").'</span><input type="text" name="city" value="'.$item->city.'">
 					<span class="form_label">'.__("State", "bepro-listings").'</span><input type="text" name="state" value="'.$item->state.'">
 					<span class="form_label">'.__("Country", "bepro-listings").'</span><input type="text" id="country" name="country" value="'.$item->country.'">
-					<span class="form_label">'.__("Zip / Postal", "bepro-listings").'</span><input type="text" name="postal" value="'.$item->postal.'">
-				</div>
-			';
+					<span class="form_label">'.__("Zip / Postal", "bepro-listings").'</span><input type="text" name="postal" value="'.$item->postal.'">';
+					
+			do_action("bepro_listing_form_after_location");		
+			echo '	</div>';
+			
 		}		
 		
-		do_action("bepro_listing_form_section");
 		
 		if(!empty($register) && !is_user_logged_in()){
 			echo '
 				<div class="add_listing_form_register bepro_form_section">
 					<h3>'.__("Login / Register", "bepro-listings").'</h3>
 					<span class="form_label">'.__("Username", "bepro-listings").'</span><input type="text" id="user_name" name="user_name">
-					<span class="form_label">'.__("Password", "bepro-listings").'</span><input type="text" id="password" name="password">
-				</div>
-			';
+					<span class="form_label">'.__("Password", "bepro-listings").'</span><input type="text" id="password" name="password">';
+			do_action("bepro_listing_form_after_register");			
+			echo '	</div>';
 		}
+		do_action("bepro_listing_form_end");
 		echo '<input type="submit" value="'.__("Create Listing", "bepro-listings").'">
 				</form>';
 ?>

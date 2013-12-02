@@ -3,46 +3,54 @@ Contributors: BeyondPrograms
 Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, custom posts, multisite, directory,
 Requires at least: 3.0.1
-Tested up to: 3.5.2
-Stable tag: 1.2.35
+Tested up to: 3.7.1
+Stable tag: 2.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Searchable listings on any page or post. Now buddypress & mutisite compatable.
 
 == Description ==
-[youtube http://www.youtube.com/watch?v=cfASHxSNIHY /]
 
-Bepro Listings allows you to create posts with a combination of additional information like, costs, contact, or geography. Widgets and shortcodes then help you to search and view this information via various formats including google maps. Consider using these building blocks for your next listing site. 
+Bepro Listings provides a new post type with options to add information like, cost, contact, and/or geography. It also facilitates better control over wordpress core features. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Listing options including a growing list of formats including galleries and google maps. Consider using these building blocks for your next community listing site. 
 
 = Popular Uses =
 
-This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup categories and control various aspects including, number of images, default search distance, and page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup core featues like categories, as well as control various aspects including, number of images, default search distance, and page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 * Store Finder - List your stores including, location and contact details 
 * Directory - Employee, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of listings site
 * Products & Services - List them yourself or allow your members to list products and/or services
 * Informational - Tourism, points of interest, and other details best shown via map
 * User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
+* Gallery website - Artists are using the new listing features to show just the images in listing results.
 
 = KEY FEATURES =
-We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information ($Cost, @Contact, &deg;Lat/Lon) 
+We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information like ($Cost, @Contact, &deg;Lat/Lon) 
 
 * Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile.
 * Custom posts - This way the listings are seperate to your other posts in the admin and front end.
 * Listing Categories - Custom Taxonomies with the ability to add images and list them.
 * Google Maps api v3.5 - latest with no need for API keys.
 * Wordpress Integration - Admin is familiar and integrates with your design.
+* Hooks & Filters - Develops will love documentation the ability to easily extend features
 * Shortcodes & Widgets - Several ways to feature the information and engage your visitor.
 * Admin Options - Control the ability for users to intereact with features and information.
 * Validations - User Form Submissions are validated using jQuery.
 * Multisite - Now multisite compatible, expand the use of this plugin throughout your network.
 
-= NOTE =
+= ADD ONS =
 
-CSS skills are recommended to make the various functionality integrate well with your current theme. The css bundled with the plugin is purely to demonstrate capabilities and is based on the default theme.
+Since version 2.0.0 you can now expand on the features of BePro Listings. We have added tons of wordpress hooks and filters to the system. We have also improved how our templates are implemented. This provides lots of new ways to customize your listings experinece. Current available add-ons include:
+
+* Tags - This was definitely an achilles heel for this plugin. Now you can tag your listings and allow users to search them via the tag widget
+* Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
+* Gallery - Update the stock wordpress gallery with this lightbox option with a better design
+* Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings
 
 = SHORTCODES =
+
+View our website for more examples and documenation http://www.beprosoftware.com/products/bepro-listings/
 
 * Dynamic Map - Setup a map anywhere showing the last listings on your site e.g. [generate_map show_paging=1]
 * Basic Search - Allow users to search listings e.g. [search_form]
@@ -58,7 +66,7 @@ CSS skills are recommended to make the various functionality integrate well with
 
 Currently, this plugin supports, English, French, and Spanish.
 
-Visit the plugin page for examples and details http://beprosoftware.com/products/bepro-listings/
+Visit the plugin page for examples and details http://www.beprosoftware.com/products/bepro-listings/
 
 == Installation ==
 
@@ -69,6 +77,8 @@ Visit the plugin page for examples and details http://beprosoftware.com/products
 * Use shortcodes and/or widgets
 
 * Re-save your current permalink settings
+
+* Install any available add-ons
 
 == Frequently Asked Questions ==
 
@@ -110,7 +120,7 @@ Yes, our development team created the plugin and continue to offer support via s
 
 = I need more features, is there more? =
 
-Yes, there add-ons available for this plugin. Check our website beprosoftware.com.
+Yes, there add-ons available for this plugin. Check our website beprosoftware.com/shop
 
 = Can this work with buddypress? =
 
@@ -161,6 +171,8 @@ Simply set the post to private in the admin.
 = 1.2.34 (Tuesday, May 28th 2013) = * fix issue regarding country when clicking listing map links
 
 = 1.2.35 (Sunday, Jul 28th 2013) = * fix text domain languages and map markers
+
+= 2.0.0 (Sunday, Dec 1st 2013) = * Major fix improving compatability and features
 
 == Upgrade Notice ==
 

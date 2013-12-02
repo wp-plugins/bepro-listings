@@ -3,8 +3,8 @@
 Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
-Description: Bepro Listings allows you to create posts with additional information like, costs, contact, and geographic. This plugin includes the tools you need, to implement listings on any page or post.
-Version: 1.2.35
+Description: Bepro Listings has everything needed to fulfill your Listings or Directory needs. It integrates with your theme and provides better control of wordpress features. In addition, it provides a growing list of new options like, costs, contact, and geography.
+Version: 2.0.0
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -68,12 +68,23 @@ class Bepro_listings{
 		add_action( 'bepro_listing_types_edit_form_fields', 'bepro_listings_edit_category_thumbnail_field', 10,2 );
 		add_action( 'created_term', 'bepro_listings_category_thumbnail_field_save', 10,3 );
 		add_action( 'edit_term', 'bepro_listings_category_thumbnail_field_save', 10,3 );
+		add_action( 'bepro_listings_tabs', 'bepro_listings_description_tab', 10 );
+		add_action( 'bepro_listings_tabs', 'bepro_listings_comments_tab', 20 );
+		add_action( 'bepro_listings_tab_panels', 'bepro_listings_description_panel', 10 );
+		add_action( 'bepro_listings_tab_panels', 'bepro_listings_comments_panel', 20 );
+		
+		$data = get_option("bepro_listings_template");
+		add_action( ((!empty($data['bepro_listings_item_title_template']))? $data['bepro_listings_item_title_template']:'bepro_listings_item_title'), 'bepro_listings_item_title_template');
+		add_action( ((!empty($data['bepro_listings_item_gallery_template']))? $data['bepro_listings_item_gallery_template']:'bepro_listings_item_gallery'), 'bepro_listings_item_gallery_template');
+		add_action( ((!empty($data['bepro_listings_item_after_gallery_template']))? $data['bepro_listings_item_after_gallery_template']:'bepro_listings_item_after_gallery'), 'bepro_listings_item_after_gallery_template');
+		add_action( ((!empty($data['bepro_listings_item_details_template']))? $data['bepro_listings_item_details_template']:'bepro_listings_item_details'), 'bepro_listings_item_details_template');
+		add_action( ((!empty($data['bepro_listings_item_content_template']))? $data['bepro_listings_item_content_template']:'bepro_listings_item_content_info'), 'bepro_listings_item_content_template');
 		
 		
 		add_filter('manage_edit-bepro_listing_types_columns', 'bepro_edit_listing_types_column', 10, 3 );
 		add_filter('manage_bepro_listing_types_custom_column', 'bepro_listing_types_column', 10, 3 );
 		add_filter("manage_edit-bepro_listings_columns", "bepro_listings_edit_columns");
-		add_filter('the_content', array( $this, 'post_page_single'));	
+		add_filter('single_template', array( $this, 'post_page_single'), 15);
 		
 		add_shortcode("search_form", array( $this, "searchform"));
 		add_shortcode("filter_form", array( $this, "search_filter_options"));
@@ -300,59 +311,12 @@ class Bepro_listings{
 	
 	//show listing on pages created for it
 	function post_page_single($content){
-		remove_filter( 'the_content', array( $this, 'post_page_single'));
-		if(is_single() && in_the_loop() && (get_post_type() == 'bepro_listings')){
-			global $current_user, $wpdb;
-			//get listing information related to this post
-			$page_id = get_the_ID();
-			$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id = ".$page_id);
-			//get settings
-			$data = get_option("bepro_listings");
-			if($item && ($wpdb->num_rows == 1)){
-				//Show wordpress gallery for this page
-				echo "<div class='bepro_listing_gallery'>".do_shortcode("[gallery size='".$data["gallery_size"]."' columns=5]"."</div>");
-				$post_categories = wp_get_post_categories( $page_id );
-				$types = listing_types();	
-				$check_types = array();
-				foreach($types as $type){
-					$cat = get_category( $type->category_id );
-					$check_types[] = $cat->name;
-				}
-				
-				if(is_numeric($item->cost)){
-					//formats the price to have comas and dollar sign like currency.
-					$cost = ($item->cost == 0)? __("Free", "bepro-listings") : money_format("%.2n", $item->cost);
-				}else{
-					$cost = __("Please Contact", "bepro-listings");
-				} 
-				if(!empty($data["show_details"]) && ($data["show_details"] == "on")){
-					echo "<span class='bepro_listing_info'>
-						<div class='item_cost'>".__("Cost", "bepro-listings")." - ".$cost."</div>";
-						//If we have geographic data then we can show this listings address information
-						if($item->lat){
-							$map_url = "http://maps.google.com/maps?&z=10&q=".$item->lat."+".$item->lon."+(".urlencode($item->address_line1.", ".$item->city.", ".$item->state.", ".$item->country).")&mrt=yp ";
-							echo "<div class='bepro_address_info'><span class='item_label'>".__("Address", "bepro-listings")."</span> - <a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a></div>";
-						}
-						//If there is contact information then show it
-						if($item->first_name || $item->email){
-							echo "<div class='item_contactinfo'>
-									<span class='item_label'>".__("First Name", "bepro-listings")."</span> - ".$item->first_name."<br />
-									<span class='item_label'>".__("Last Name", "bepro-listings")."</span> - ".$item->last_name."<br />
-									<span class='item_label'>".__("Email", "bepro-listings")."</span> - ".$item->email."<br />
-									<span class='item_label'>".__("Phone", "bepro-listings")."</span> - ".$item->phone."
-								</div>";
-						}
-					echo "</span>";
-				}
-				if(!empty($data["show_content"]) && ($data["show_content"] == "on")){
-					echo "<div class='bepro_listing_desc'>".get_the_content()."</div>";
-				}	
-			}else{
-				echo the_content();
-			}	
+		if(get_post_type() == 'bepro_listings'){
+			include(plugin_dir_path( __FILE__ )."templates/single-listing.php");
 		}else{
 			return $content;
 		}
+		exit;
 	}
 	
 	//buddypress hook

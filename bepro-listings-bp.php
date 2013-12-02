@@ -30,9 +30,10 @@
 		if(isset($_POST["save_bepro_listing"]) && !empty($_POST["save_bepro_listing"])){
 			$success = false;
 			$success = bepro_listings_save();
+			$messages = array(1=> "success", 2=> "error");
 			$current_user = wp_get_current_user();
 			$bp_profile_link = bp_core_get_user_domain( $bp->displayed_user->id);
-			wp_redirect($bp_profile_link  . BEPRO_LISTINGS_SLUG ."?message=".$success);
+			wp_redirect($bp_profile_link  . BEPRO_LISTINGS_SLUG ."?message=".$messages[$success]);
 			exit;
 
 		}elseif(isset($bp->action_variables[0]) && ($bp->current_action == BEPRO_LISTINGS_CREATE_SLUG)){

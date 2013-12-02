@@ -25,13 +25,41 @@
 	}
 	
 	function bepro_admin_head(){
+		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('../css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" >';
 		echo "<style type='text/css'>.bepro_listings input[type=checkbox]{margin:11px 0;}</style>";
+		echo "<style>
+		  .ui-tabs-vertical { width: 55em; }
+		  .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+		  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+		  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+		  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+		  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+		  .bepro_listings_admin_form{display:none;}
+		  </style>
+		  ";
 		echo '
 			<script type="text/javascript">
 				jQuery(document).ready(function(){
 					if(jQuery("#bepro_listings_tabs")){
 						jQuery( "#bepro_listings_tabs" ).tabs();
 					}
+					if(jQuery("#bepro_listings_addon_tabs")){
+						jQuery( "#bepro_listings_addon_tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+						jQuery( "#bepro_listings_addon_tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+						jQuery( ".admin_addon_form" ).submit(function(e){
+							e.preventDefault();
+							id = jQuery(this)[0].id;
+							jQuery.post(ajaxurl, jQuery("#" + id).serialize(), function(rtn){
+								if(rtn == 1){
+									alert("Form saved!");
+								}else{
+									alert("!Form save error!");
+								}	
+							})
+						});
+					}
+					jQuery(".bepro_listings_admin_form").css("display","block");
+					jQuery(".bepro_listings_loading_msg").css("display","none");
 				});
 			</script>
 		';
@@ -368,6 +396,7 @@
 			
 			//Page/post
 			$data["gallery_size"] = $_POST["gallery_size"];
+			$data["gallery_cols"] = $_POST["gallery_cols"];
 			$data["show_details"] = $_POST["show_details"];
 			$data["show_content"] = $_POST["show_content"];
 			
@@ -411,6 +440,7 @@
 							<option value="7" <?php echo ($data["num_images"]== 7)? 'selected="selected"':"" ?>>7</option>
 							<option value="8" <?php echo ($data["num_images"]== 8)? 'selected="selected"':"" ?>>8</option>
 							<option value="9" <?php echo ($data["num_images"]== 9)? 'selected="selected"':"" ?>>9</option>
+							<option value="0" <?php echo ($data["num_images"]== 0)? 'selected="selected"':"" ?>>None</option>
 						</select>
 					</div>
 					<div id="tabs-2">
@@ -424,7 +454,10 @@
 							<option value="1" <?php echo ($data["num_listings"]== 1)? 'selected="selected"':"" ?>>1</option>
 							<option value="3" <?php echo ($data["num_listings"]== 3)? 'selected="selected"':"" ?>>3</option>
 							<option value="5" <?php echo ($data["num_listings"]== 5)? 'selected="selected"':"" ?>>5</option>
+							<option value="8" <?php echo ($data["num_listings"]== 8)? 'selected="selected"':"" ?>>8</option>
 							<option value="10" <?php echo ($data["num_listings"]== 10)? 'selected="selected"':"" ?>>10</option>
+							<option value="12" <?php echo ($data["num_listings"]== 12)? 'selected="selected"':"" ?>>12</option>
+							<option value="16" <?php echo ($data["num_listings"]== 16)? 'selected="selected"':"" ?>>16</option>
 							<option value="20" <?php echo ($data["num_listings"]== 20)? 'selected="selected"':"" ?>>20</option>
 							<option value="50" <?php echo ($data["num_listings"]== 50)? 'selected="selected"':"" ?>>50</option>
 						</select></br>
@@ -445,6 +478,11 @@
 							<option value="large" <?php echo ($data["gallery_size"]== "large")? 'selected="selected"':"" ?>>large</option>
 							<option value="full" <?php echo ($data["gallery_size"]== "full")? 'selected="selected"':"" ?>>full</option>
 						</select><br />
+						<span class="form_label"><?php _e("#Gallery Columns", "bepro-listings"); ?></span><select name="gallery_cols">
+							<option value="3" <?php echo ($data["gallery_cols"]== 3)? 'selected="selected"':"" ?>>3</option>
+							<option value="5" <?php echo ($data["gallery_cols"]== 5)? 'selected="selected"':"" ?>>5</option>
+							<option value="8" <?php echo ($data["gallery_cols"]== 8)? 'selected="selected"':"" ?>>8</option>
+						</select><br />
 						<span class="form_label"><?php _e("Show Details", "bepro-listings"); ?></span><input type="checkbox" name="show_details" <?php echo ($data["show_details"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Show Content", "bepro-listings"); ?></span><input type="checkbox" name="show_content" <?php echo ($data["show_content"]== (1 || "on"))? 'checked="checked"':"" ?>>
 					</div>
@@ -456,19 +494,45 @@
 						<p><b>THANK YOU</b> for your interest and support in this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
 						<ul>
 							<li>Support Forum - beprosoftware.com/forums</li>
-							<li>Donate - Coffee, dev time, simple thanks - beprosoftware.com/donations</li>
-							<li>Upgrades - beprosoftware.com/products</li>
-							<li>Contact Us - support@beyprosoftware.com</li>
-							<li>Services - $15-70 USD/hr plugin support - development</li>
+							<li>Add-ons - beprosoftware.com/shop</li>
+							<li>Contact Us - support@beprosoftware.com</li>
+							<li>Services - $15-100 USD/hr plugin support - development</li>
 							<li>Social - https://twitter.com/BeProSoftware</li>
 							<li>Youtube - http://www.youtube.com/playlist?list=PLMzIqO2N1YpjMx4QfiCjwFsxxfHVy1goG</li>
 							<li><?php _e("Our Link in your footer?", "bepro-listings"); ?> - <input style="vertical-align:middle" type="checkbox" name="footer_link" value="1" <?php echo ($data["footer_link"]== ("on" || 1))? 'checked="checked"':"" ?>></li>
 						</ul>
+						<hr />
+						<p><b>BePro Software&trade;</b> is a service owned and operated by <a href="http://beyondprograms.ca" target="_blank">Beyond Programs Ltd.</a> a Canadian company.</p>
 					</div>
 				</div>
 				<span style="clear:both;display: block;"><br /></span>
-				<input type="submit" name="submit" value="Update All Options &raquo" />
+				<input type="submit" name="submit" value="Update BePro Listings Options &raquo" />
 			</form>
+		</div>
+		<div class="bepro_listings_loading_msg">
+		<p>Jquery is loading... Please wait</p>
+		</div>
+			
+			<?php
+	}
+	
+	
+	function bepro_listings_addons(){
+			ob_start();
+			do_action('bepro_listings_admin_tabs');
+			$tabs = trim( ob_get_clean() );
+			?>
+		<h1>Add-On Options</h1>
+		<div class="wrap bepro_listings_admin_form">
+			<div id="bepro_listings_addon_tabs">
+				<ul class="tabs">
+					<?php echo $tabs; ?>
+				</ul>
+				<?php do_action('bepro_listings_admin_tab_panels'); ?>
+			</div>	
+		</div>
+		<div class="bepro_listings_loading_msg">
+		<p>Jquery is loading... Please wait</p>
 		</div>
 		<?php
 	}

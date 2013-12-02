@@ -304,4 +304,73 @@
 	}
 	
 	
+	//content templates
+	function bepro_listings_item_title_template(){
+		echo get_the_title();
+	}
+	function bepro_listings_item_gallery_template(){
+		$data = get_option("bepro_listings");
+		$num_images = $data["num_images"];
+		
+		//Show wordpress gallery for this page
+		$gallery = ($num_images == 0)? "":do_shortcode("[gallery size='".$data["gallery_size"]."' columns=".((!empty($data["gallery_cols"]))? $data["gallery_cols"]:3)."]");
+		echo "<div class='bepro_listing_gallery'>".apply_filters("bepro_listings_item_gallery_feature", $gallery)."</div>";
+	}
+	function bepro_listings_item_after_gallery_template(){
+		$page_id = get_the_ID();
+		//show categories
+		$cat_section = "<h3>Categories : </h3><div class='bepro_listing_category_section'>".get_the_term_list($page_id, 'bepro_listing_types', '', ', ','')."</div>";
+
+		echo $cat_section;
+	}
+	function bepro_listings_item_details_template(){
+		global $wpdb;
+		$page_id = get_the_ID();
+		$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id = ".$page_id);
+		//get settings
+		$data = get_option("bepro_listings");
+		if(is_numeric($item->cost)){
+			//formats the price to have comas and dollar sign like currency.
+			$cost = ($item->cost == 0)? __("Free", "bepro-listings") : money_format("%.2n", $item->cost);
+		}else{
+			$cost = __("Please Contact", "bepro-listings");
+		}
+		
+		if(!empty($data["show_details"]) && ($data["show_details"] == "on")){
+			echo "<h3>Details : </h3><span class='bepro_listing_info'>";
+			if($data["show_cost"] == 1){
+				echo "<div class='item_cost'>".__("Cost", "bepro-listings")." - ".$cost."</div>";
+			}	
+				//If we have geographic data then we can show this listings address information
+				if($item->lat){
+					$map_url = "http://maps.google.com/maps?&z=10&q=".$item->lat."+".$item->lon."+(".urlencode($item->address_line1.", ".$item->city.", ".$item->state.", ".$item->country).")&mrt=yp ";
+					echo "<div class='bepro_address_info'><span class='item_label'>".__("Address", "bepro-listings")."</span> - <a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a></div>";
+				}
+				//If there is contact information then show it
+				if($item->first_name || $item->email){
+					echo "<div class='item_contactinfo'>
+							<span class='item_label'>".__("First Name", "bepro-listings")."</span> - ".$item->first_name."<br />
+							<span class='item_label'>".__("Last Name", "bepro-listings")."</span> - ".$item->last_name."<br />
+							<span class='item_label'>".__("Email", "bepro-listings")."</span> - ".$item->email."<br />
+							<span class='item_label'>".__("Phone", "bepro-listings")."</span> - ".$item->phone."
+						</div>";
+				}
+			echo "</span>";
+		}
+		
+	}
+	function bepro_listings_item_content_template(){
+		$data = get_option("bepro_listings");
+		if(!empty($data["show_content"]) && ($data["show_content"] == "on")){
+			echo "<div class='bepro_listing_desc'>".apply_filters("bepro_listings_item_content",bepro_listings_item_tabs())."</div>";
+		}	
+	}
+	
+	//listing item comments template
+	
+	function bepro_listings_item_tabs(){
+		include(plugin_dir_path( __FILE__ ).'/templates/tabs.php');
+	}
+	
+	
 ?>

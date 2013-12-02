@@ -19,13 +19,13 @@
 	function bepro_listings_wphead() {
 		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('css/bepro_listings.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" ><meta name=\"plugin\" content=\"Bepro Listings plugin\">';
 		
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('jquery-ui-datepicker');
-		wp_enqueue_script('google-maps' , 'http://maps.google.com/maps/api/js' , false , '3.5&sensor=false');
 	} 
 
 	function bepro_listings_javascript() {
-		$plugindir = plugins_url(__FILE__ );
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('jquery-ui-datepicker');
+		wp_enqueue_script('google-maps' , 'http://maps.google.com/maps/api/js' , false , '3.5&sensor=false');
+		$plugindir = plugins_url("bepro-listings");
 		
 		$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings.js"></script><script type="text/javascript" src="'.plugins_url("js/markerclusterer.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/jquery.validate.min.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/jquery.maskedinput-1.3.min.js", __FILE__ ).'"></script>';
 		
@@ -60,6 +60,11 @@
 	
 	function bepro_listings_menus() {
 		add_submenu_page('edit.php?post_type=bepro_listings', 'Option', 'Options', 4, 'bepro_listings_options', 'bepro_listings_options');
+		$num_admin_menus = 0;
+		$num_menus = apply_filters("bepro_listings_num_admin_menus", $num_admin_menus);
+		if($num_menus > 0)
+			add_submenu_page('edit.php?post_type=bepro_listings', 'AddOns', 'AddOns', 5, 'bepro_listings_addons', 'bepro_listings_addons');
+			
 	}
 	
 	     
@@ -187,6 +192,7 @@
 			$data["distance"] = 150;
 			//Page/post
 			$data["gallery_size"] = "thumbnail";
+			$data["gallery_cols"] = 3;
 			$data["show_details"] = 1;
 			$data["show_content"] = 1;
 			//buddypress
@@ -295,7 +301,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '1.2.34' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.0' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -503,6 +509,7 @@
 	
 	function bepro_add_post($post){
 		global $wpdb;
+		do_action("bepro_listings_add_listing", $post);
 		return $wpdb->query("INSERT INTO ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET
 			first_name    = '".$wpdb->escape(strip_tags($post['first_name']))."',
 			last_name     = '".$wpdb->escape(strip_tags($post['last_name']))."',
@@ -522,6 +529,7 @@
 	
 	function bepro_update_post($post){
 		global $wpdb;
+		do_action("bepro_listings_update_listing", $post);
 		return $wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET
 			cost    = '".$wpdb->escape(strip_tags($post['cost']))."',
 			first_name    = '".$wpdb->escape(strip_tags($post['first_name']))."',
@@ -571,7 +579,7 @@
 	 
 		register_post_type( 'bepro_listings' , $args );
 		register_taxonomy("bepro_listing_types", 
-			array("bepro_listings"), 
+			"bepro_listings", 
 			array('hierarchical' 			=> true,
 	            'label' 				=> __( 'BePro Listing Categories', 'bepro_listings'),
 	            'labels' => array(
@@ -591,7 +599,7 @@
 	            'query_var' 			=> true,
 				"rewrite" => true)
 			);	 
-			
+			register_taxonomy_for_object_type( 'bepro_listing_types', 'bepro_listings' );
 	}
 	
 	function bepro_listings_placeholder_img_src() {
@@ -606,7 +614,21 @@
 		return get_metadata( 'bepro_listing_types', $term_id, $key, $single );
 	}
 
-
+	function bepro_listings_description_tab(){
+		include(plugin_dir_path( __FILE__ )."templates/tabs/tab-description.php");
+	}
+	
+	function bepro_listings_comments_tab(){
+		include(plugin_dir_path( __FILE__ )."templates/tabs/tab-comments.php");
+	}
+	
+	function bepro_listings_description_panel(){
+		include(plugin_dir_path( __FILE__ )."templates/tabs/description.php");
+	}
+	
+	function bepro_listings_comments_panel(){
+		include(plugin_dir_path( __FILE__ )."templates/tabs/comments.php");
+	}
 
 
 

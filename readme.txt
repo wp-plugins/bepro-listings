@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, multisite, directory, video, gallery,
 Requires at least: 3.0.1
 Tested up to: 3.7.1
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ Searchable listings on any page or post. Now buddypress & mutisite compatable.
 
 == Description ==
 
-Bepro Listings provides a new post type with options to add information like, cost, contact, and/or geography. It facilitates better control over wordpress core features. It also provides a growing set of listing formats including galleries and google maps. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Consider using these building blocks for your next community listing site. 
+Bepro Listings provides a new post type with options to add information like, cost, contact, and/or geography. It facilitates better control over wordpress core features. It also provides a growing set of listing formats including galleries and google maps. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Perfect building blocks for your listing site. 
 
 = Popular Uses =
 
@@ -72,7 +72,7 @@ Visit the plugin page for examples and details http://www.beprosoftware.com/prod
 
 * Download the plugin files to your plugin directory and activate.
 
-* Re-save the options located under the newly created admin menu for BePro Listings
+* Consider altering the options located under the newly created admin menu for BePro Listings
 
 * Use shortcodes and/or widgets
 
@@ -173,6 +173,8 @@ Simply set the post to private in the admin.
 = 1.2.35 (Sunday, Jul 28th 2013) = * fix text domain languages and map markers
 
 = 2.0.0 (Sunday, Dec 1st 2013) = * Major fix improving compatability and features
+
+= 2.0.1 (Monday, Dec 2st 2013) = * Minor tweaks to new 2.0.0 release
 
 == Upgrade Notice ==
 

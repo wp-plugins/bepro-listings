@@ -199,6 +199,12 @@
 			$data["buddypress"] = 0;
 			//Support
 			$data["footer_link"] = 0;
+			//templates
+			$data['bepro_listings_item_title_template'] = 'bepro_listings_item_title';
+			$data['bepro_listings_item_gallery_template'] = "bepro_listings_item_gallery";
+			$data['bepro_listings_item_after_gallery_template'] = "bepro_listings_item_after_gallery";
+			$data['bepro_listings_item_details_template'] = 'bepro_listings_item_details';
+			$data['bepro_listings_item_content_template'] = 'bepro_listings_item_content_info');
 			//save
 			update_option("bepro_listings", $data);
 		}else{
@@ -301,7 +307,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.0' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.1' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );

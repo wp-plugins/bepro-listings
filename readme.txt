@@ -14,6 +14,8 @@ Searchable listings on any page or post. Now buddypress & mutisite compatable.
 
 Bepro Listings provides a new post type with options to add information like, cost, contact, and/or geography. It facilitates better control over wordpress core features. It also provides a growing set of listing formats including galleries and google maps. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Perfect building blocks for your listing site. 
 
+Visit the plugin page for examples and details http://www.beprosoftware.com/products/bepro-listings/
+
 = Popular Uses =
 
 This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup core featues like categories, as well as control various aspects including, number of images, default search distance, and page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
@@ -52,11 +54,11 @@ Since version 2.0.0 you can now expand on the features of BePro Listings. We hav
 
 View our website for more examples and documenation http://www.beprosoftware.com/products/bepro-listings/
 
-* Dynamic Map - Setup a map anywhere showing the last listings on your site e.g. [generate_map show_paging=1]
+* Dynamic Map - Setup a map anywhere showing the last listings on your site e.g. [generate_map]
 * Basic Search - Allow users to search listings e.g. [search_form]
 * Filter Search - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]
-* Listings - Show listings with optional paging e.g. [display_listings show_paging=1]
-* Add Listing Form - Give your users the ability to create listings. You can set a default user id for the listing or force registration. e.g. [create_listing_form register=1]
+* Listings - Show listings with optional paging e.g. [display_listings]
+* Add Listing Form - Give your users the ability to create listings. You can set a default user id for the listing or force registration. e.g. [create_listing_form]
 
 = TROUBLE SHOOTING =
 
@@ -66,7 +68,6 @@ View our website for more examples and documenation http://www.beprosoftware.com
 
 Currently, this plugin supports, English, French, and Spanish.
 
-Visit the plugin page for examples and details http://www.beprosoftware.com/products/bepro-listings/
 
 == Installation ==
 

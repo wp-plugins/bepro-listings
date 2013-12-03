@@ -215,6 +215,9 @@
 			
 			//save
 			update_option("bepro_listings", $data);
+			
+			global $wp_rewrite;
+			$wp_rewrite->flush_rules();
 		}else{
 			if($data["footer_link"] == ("on" || 1)){
 				add_action("wp_footer", "footer_message");
@@ -315,7 +318,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.5' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.53' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );

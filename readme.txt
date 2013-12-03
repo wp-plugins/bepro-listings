@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, multisite, directory, video, gallery,
 Requires at least: 3.0.1
 Tested up to: 3.7.1
-Stable tag: 2.0.52
+Stable tag: 2.0.53
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

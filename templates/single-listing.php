@@ -23,7 +23,7 @@ get_header("listings"); ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 		
 		<?php
-		if($item && ($wpdb->num_rows == 1)){
+		if($item){
 			include(plugin_dir_path( __FILE__ )."/content-single-listing.php"); 
 		}else{
 			the_content();

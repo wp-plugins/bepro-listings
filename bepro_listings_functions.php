@@ -159,6 +159,7 @@
 				wp_update_attachment_metadata( $attach_id, $attach_data );
 			}
 			if($blog_id)restore_current_blog();
+			
 		}
 		
 		
@@ -215,6 +216,10 @@
 			
 			//save
 			update_option("bepro_listings", $data);
+			
+			//refresh permalinks
+			global $wp_rewrite;
+			$wp_rewrite->flush_rules();
 		}else{
 			if($data["footer_link"] == ("on" || 1)){
 				add_action("wp_footer", "footer_message");
@@ -315,7 +320,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.5' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.51' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -584,7 +589,7 @@
 			'show_ui' => true,
 			'query_var' => true,
 			'menu_icon' => plugins_url("images/blogs.png", __FILE__ ) ,
-			'rewrite' => true,
+			'rewrite' => array("slug" => "listings", 'with_front' => false),
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			'menu_position' => null,
@@ -611,7 +616,7 @@
 	            	),
 	            'show_ui' 				=> true,
 	            'query_var' 			=> true,
-				"rewrite" => true)
+				'rewrite' => array("slug" => "listing_types", 'with_front' => false))
 			);	 
 			register_taxonomy_for_object_type( 'bepro_listing_types', 'bepro_listings' );
 	}

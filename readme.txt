@@ -52,8 +52,6 @@ Since version 2.0.0 you can now expand on the features of BePro Listings. We hav
 
 = SHORTCODES =
 
-View our website for more examples and documenation http://www.beprosoftware.com/products/bepro-listings/
-
 * Dynamic Map - Setup a map anywhere showing the last listings on your site e.g. [generate_map]
 * Basic Search - Allow users to search listings e.g. [search_form]
 * Filter Search - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]

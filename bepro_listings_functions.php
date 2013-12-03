@@ -176,7 +176,7 @@
 		
 		//load default options if they dont already exist		
 		$data = get_option("bepro_listings");
-		if(empty($data)){
+		if(empty($data["bepro_listings_list_template_1"])){
 			//general
 			$data["show_cost"] = 1;
 			$data["show_con"] = 1;
@@ -199,12 +199,18 @@
 			$data["buddypress"] = 0;
 			//Support
 			$data["footer_link"] = 0;
-			//templates
+			//item page template
 			$data['bepro_listings_item_title_template'] = 'bepro_listings_item_title';
 			$data['bepro_listings_item_gallery_template'] = "bepro_listings_item_gallery";
 			$data['bepro_listings_item_after_gallery_template'] = "bepro_listings_item_after_gallery";
 			$data['bepro_listings_item_details_template'] = 'bepro_listings_item_details';
 			$data['bepro_listings_item_content_template'] = 'bepro_listings_item_content_info';
+			
+			//item list template
+			//item list template
+			$data['bepro_listings_list_template_1'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_image" => "bepro_listings_list_image_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_1.css", __FILE__ ));
+			$data['bepro_listings_list_template_2'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_above_title" => "bepro_listings_list_image_template","bepro_listings_list_image" => "bepro_listings_list_geo_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_2.css", __FILE__ ));
+			
 			//save
 			update_option("bepro_listings", $data);
 		}else{
@@ -307,7 +313,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.2' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.3' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );

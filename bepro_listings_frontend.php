@@ -172,6 +172,15 @@
 		if(empty($raw_results) || is_null($raw_results)){
 			$results = "<p>your criteria returned no results.</p>";
 		}else{
+			//item listing template
+			$list_templates = $data['bepro_listings_list_template_'.$type];
+			foreach($list_templates as $key => $val){
+				if($key == "style")
+					$results .="<link href='".$val."' rel='stylesheet' />";
+				else
+					add_action($key, $val);
+			}
+			
 			foreach($raw_results as $result){
 				if(empty($layout)){
 					$results .= basic_listing_layout($result, $shorten, $echo_this);
@@ -221,59 +230,66 @@
 		return $findings;
 	}
 	
-	function basic_listing_layout($result, $shorten = false, $echo_this = false){
+	
+	function basic_listing_layout($result, $type = 1){
+		//allow other features to tie in
+		$listing_template_file = plugin_dir_path( __FILE__ ).'/templates/listings/generic.php';
+		$get_listing_template = apply_filters("bepro_listings_list_template", $listing_template_file);
+		if($get_listing_template != -1)$listing_template_file = $get_listing_template;
+		
+		ob_start();
+		include($listing_template_file);
+		$results = ob_get_contents();
+		ob_end_clean();	
+			
+		return $results;			
+	}
+	
+	function bepro_listings_list_title_template($bp_listing){
+		echo "<div class='result_name'>".$bp_listing->post_title."</div>";
+	}
+	function bepro_listings_list_category_template($bp_listing){
+		echo '<span class="result_type">'.get_the_term_list($bp_listing->post_id, 'bepro_listing_types', '', ', ','').'</span>';
+	}
+	function bepro_listings_list_image_template($bp_listing){
 		$data = get_option("bepro_listings");
-		$listing_types = listing_types_by_post($result->post_id);
-		$thumbnail = get_the_post_thumbnail($result->post_id, 'thumbnail'); 
+		$thumbnail = get_the_post_thumbnail($bp_listing->post_id, 'thumbnail'); 
+		$thumbnail_check = apply_filters("bepro_listings_list_thumbnail",$bp_listing->post_id);
+		if(!is_numeric($thumbnail_check)) $thumbnail = $thumbnail_check;
 		$default_img = (!empty($thumbnail))? $thumbnail:'<img src="'.$data["default_image"].'"/>';
+		echo '<span class="result_img">'.$default_img.'</span>';
+	}
+	function bepro_listings_list_geo_template($bp_listing){
+		$data = get_option("bepro_listings");
+		if($data["show_geo"])
+			echo '<span class="result_title">'.$bp_listing->city.','.$bp_listing->state.','.$bp_listing->country.'</span>';
+	}
+	function bepro_listings_list_content_template($bp_listing){
+		$content =  substr( htmlspecialchars(stripslashes(strip_tags($bp_listing->post_content))), 0, 130);
+		echo '<span class="result_desc">'.$content.'</span>';
+	}
+	function bepro_listings_list_links_template($bp_listing){
+		$data = get_option("bepro_listings");
+		$permalink = get_permalink( $bp_listing->post_id );
+		if($data["show_cost"]){
+			if(is_numeric($bp_listing->cost)){ 
+				//formats the price to have comas and dollar sign like currency.
+				setlocale(LC_MONETARY, "en_US");
+				$cost = ($bp_listing->cost == 0)? "Free" : money_format("%.2n", $bp_listing->cost);
+			}else{
+				$cost = "Please Contact";
+			} 
+			//cost
+			echo '<span class="result_cost">'.$cost.'</span>';
+		}
 		
-		$results .= 
-		'<div class="'.(($shorten)? "shortcode_results":"results").'">
-			<div class="result_top">
-				<table><tr>
-				<td><span class="result_name">'.$result->post_title.'</span></td>
-				<td class="result_bar"><span class="result_type">'.get_the_term_list($result->post_id, 'bepro_listing_types', '', ', ','').'</span></td>
-				</tr></table>
-			</div>
-			<div class="result_buttom">
-				<span class="result_img">'.$default_img.'</span>';
-		
-			//if requested, hide some of the post content
-			if(empty($shorten)){
-				$results .='		
-				<span class="result_content">';
-				if($data["show_geo"])$results .= '<span class="result_title">'.$result->city.','.$result->state.','.$result->country.'</span>';
-				$results .= '	
-					<span class="result_desc">'.htmlspecialchars(stripslashes(strip_tags($result->post_content))).'</span>
-				</span>
-				';		
-			}
-			$permalink = get_permalink( $result->post_id );
-			if($data["show_cost"]){
-				if(is_numeric($result->cost)){ 
-					//formats the price to have comas and dollar sign like currency.
-					setlocale(LC_MONETARY, "en_US");
-					$cost = ($result->cost == 0)? "Free" : money_format("%.2n", $result->cost);
-				}else{
-					$cost = "Please Contact";
-				} 
-			}
-		
-		$results .=  '<span class="result_do">
-						<span class="result_cost">'.$cost.'</span>
-						';
-		$results .=((!empty($result->website))? '<span class="result_button"><a href="http://'.$result->website.'" target="_blank">Website</a></span>':"");
+		//website link
+		if(!empty($bp_listing->website))
+			echo '<span class="result_button"><a href="http://'.$bp_listing->website.'" target="_blank">Website</a></span>';
 		
 		//If not private then don't show link to listing
-		if($result->post_status == "publish")
-		$results .='<span class="result_button"><a href="'.$permalink.'" target="_blank">Item</a>
-						</span>
-					</span>';
-					
-		$results .=	'<div style="clear:both"><br /></div>
-					</div></div>';
-					
-		return $results;			
+		if($bp_listing->post_status == "publish")
+			echo '<span class="result_button"><a href="'.$permalink.'" target="_blank">Item</a></span>';
 	}
 	
 	//User form for creating Bepro Listings

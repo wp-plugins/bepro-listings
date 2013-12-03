@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
 Description: Bepro Listings has everything needed to fulfill your Listings or Directory needs. It integrates with your theme and provides better control over wordpress features. In addition, it provides a growing list of new options like, costs, contact, and geography.
-Version: 2.0.2
+Version: 2.0.3
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -73,6 +73,7 @@ class Bepro_listings{
 		add_action( 'bepro_listings_tab_panels', 'bepro_listings_description_panel', 10 );
 		add_action( 'bepro_listings_tab_panels', 'bepro_listings_comments_panel', 20 );
 		
+		//item page template
 		$data = get_option("bepro_listings");
 		add_action( ((!empty($data['bepro_listings_item_title_template']))? $data['bepro_listings_item_title_template']:'bepro_listings_item_title'), 'bepro_listings_item_title_template');
 		add_action( ((!empty($data['bepro_listings_item_gallery_template']))? $data['bepro_listings_item_gallery_template']:'bepro_listings_item_gallery'), 'bepro_listings_item_gallery_template');
@@ -80,7 +81,7 @@ class Bepro_listings{
 		add_action( ((!empty($data['bepro_listings_item_details_template']))? $data['bepro_listings_item_details_template']:'bepro_listings_item_details'), 'bepro_listings_item_details_template');
 		add_action( ((!empty($data['bepro_listings_item_content_template']))? $data['bepro_listings_item_content_template']:'bepro_listings_item_content_info'), 'bepro_listings_item_content_template');
 		
-		
+		//filters
 		add_filter('manage_edit-bepro_listing_types_columns', 'bepro_edit_listing_types_column', 10, 3 );
 		add_filter('manage_bepro_listing_types_custom_column', 'bepro_listing_types_column', 10, 3 );
 		add_filter("manage_edit-bepro_listings_columns", "bepro_listings_edit_columns");

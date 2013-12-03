@@ -377,6 +377,7 @@
 
 	//Options Page
 	function bepro_listings_options() {
+		$data = get_option("bepro_listings");
 		if(!empty($_POST["update_options"])){
 			//general
 			$data["show_cost"] = $_POST["show_cost"];
@@ -409,7 +410,6 @@
 			update_option("bepro_listings", $data);
 		}
 		
-		$data = get_option("bepro_listings");
 		
 		?>
 		<h1>BePro Listings Options</h1>

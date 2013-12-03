@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, multisite, directory, video, gallery,
 Requires at least: 3.0.1
 Tested up to: 3.7.1
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -174,7 +174,9 @@ Simply set the post to private in the admin.
 
 = 2.0.0 (Sunday, Dec 1st 2013) = * Major fix improving compatability and features
 
-= 2.0.2 (Monday, Dec 2st 2013) = * Minor tweaks to new 2.0.0 release
+= 2.0.2 (Monday, Dec 2nd 2013) = * Minor tweaks to new 2.0.0 release
+
+= 2.0.3 (Tuesday, Dec 3rd 2013) = * Dynamically load listings templates in line with 2.0.0 standards
 
 == Upgrade Notice ==
 

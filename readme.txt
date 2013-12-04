@@ -12,7 +12,7 @@ Searchable listings (gallery, video, location, etc) on any page or post. Now bud
 
 == Description ==
 
-Bepro Listings provides a new post type with options to add information like, cost, contact, and/or geography. It facilitates better control over wordpress core features. It also provides a growing set of listing formats including galleries and google maps. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Perfect building blocks for your listing site. 
+Bepro Listings provides a new post type with options to add information like, cost, contact, and/or geography. It facilitates better control over wordpress core features. It also provides a growing set of listing formats including galleries(image/video) and google maps. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Perfect building blocks for your listing site. 
 
 Visit the plugin page for examples and details http://www.beprosoftware.com/products/bepro-listings/
 
@@ -25,7 +25,7 @@ This plugin is best utilized by those looking to implement listing type features
 * Products & Services - List them yourself or allow your members to list products and/or services
 * Informational - Tourism, points of interest, and other details best shown via map
 * User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
-* Gallery website - Artists are using the new listing features to show just the images in listing results.
+* Gallery website - Artists are using the new listing features to show just the images and videos in listing results.
 
 = KEY FEATURES =
 We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information like ($Cost, @Contact, &deg;Lat/Lon) 
@@ -35,11 +35,12 @@ We are constantly developing new features for this plugin. The hope is to contin
 * Listing Categories - Custom Taxonomies with the ability to add images and list them.
 * Google Maps api v3.5 - latest with no need for API keys.
 * Wordpress Integration - Admin is familiar and integrates with your design.
-* Hooks & Filters - Develops will love documentation the ability to easily extend features
+* Hooks & Filters - Developers will love documentation the ability to easily extend features
 * Shortcodes & Widgets - Several ways to feature the information and engage your visitor.
 * Admin Options - Control the ability for users to intereact with features and information.
 * Validations - User Form Submissions are validated using jQuery.
 * Multisite - Now multisite compatible, expand the use of this plugin throughout your network.
+* Submission Form - Give users a quick way to submit a listing without being logged in.
 
 = ADD ONS =
 
@@ -60,7 +61,7 @@ Since version 2.0.0 you can now expand on the features of BePro Listings. We hav
 
 = TROUBLE SHOOTING =
 
-* 404 Error - Unfortunately, wordpress has an existing issue with custom post types. If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings so that they are reset for all urls. The option is under your settings menu.
+* 404 Error - Unfortunately, wordpress has an existing issue with custom post type permalinks. If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings so that they are reset for all urls. The option is under your settings menu.
 
 = TRANSLATIONS =
 
@@ -133,6 +134,9 @@ No, not currently. Is this a feature you are interested in?
 
 Simply set the post to private in the admin.
 
+= Are there ways to extend the features? =
+
+Yes, there are lots of hooks/filters and templates (listings/page)
 
 == Screenshots ==
 

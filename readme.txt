@@ -8,7 +8,7 @@ Stable tag: 2.0.53
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Searchable listings (gallery, video, location, etc) on any page or post. Now buddypress & mutisite compatable.
+Searchable listings (gallery, directory, maps, etc) on any page or post. Now buddypress & mutisite compatable.
 
 == Description ==
 
@@ -18,7 +18,7 @@ Visit the plugin page for examples and details http://www.beprosoftware.com/prod
 
 = Popular Uses =
 
-This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup core featues like categories, as well as control various aspects including, number of images, default search distance, and page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup core wordpress featues, as well as new aspects including, number of images, default search distance, and page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 * Store Finder - List your stores including, location and contact details 
 * Directory - Employee, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of listings site
@@ -31,22 +31,24 @@ This plugin is best utilized by those looking to implement listing type features
 We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information like ($Cost, @Contact, &deg;Lat/Lon) 
 
 * Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile.
-* Custom posts - This way the listings are seperate to your other posts in the admin and front end.
+* Custom posts - Listings are seperate to your other posts in the admin and front end.
 * Listing Categories - Custom Taxonomies with the ability to add images and list them.
-* Google Maps api v3.5 - latest with no need for API keys.
-* Wordpress Integration - Admin is familiar and integrates with your design.
-* Hooks & Filters - Developers will love documentation the ability to easily extend features
+* Listings - Two templates come with the base plugin and they can be extended.
+* Google Maps api v3.5 - Great for showing listings via a map with no need for API keys.
+* Submission Form - Give users a quick way to submit a listing without being logged in.
+* Validations - User Form Submissions are validated using jQuery.
+* Search Features - Allow users to search by name, location, or various filterable options.
+* Wordpress Integration - Admin/features are familiar and integrate with your existing theme.
+* Hooks & Filters - Developers will love the documentation & ability to easily extend features.
 * Shortcodes & Widgets - Several ways to feature the information and engage your visitor.
 * Admin Options - Control the ability for users to intereact with features and information.
-* Validations - User Form Submissions are validated using jQuery.
 * Multisite - Now multisite compatible, expand the use of this plugin throughout your network.
-* Submission Form - Give users a quick way to submit a listing without being logged in.
 
 = ADD ONS =
 
-Since version 2.0.0 you can now expand on the features of BePro Listings. We have added tons of wordpress hooks and filters to the system. We have also improved how our templates are implemented. This provides lots of new ways to customize your listings experinece. Current available add-ons include:
+Since version 2.0.0, you can now expand on the features of BePro Listings. We have added tons of wordpress hooks and filters to the system. We have also improved how our templates are implemented. This provides lots of new ways to customize your listings experinece. Current available add-ons include:
 
-* Tags - This was definitely an achilles heel for this plugin. Now you can tag your listings and allow users to search them via the tag widget
+* Tags - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget
 * Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
 * Gallery - Update the stock wordpress gallery with this lightbox option with a better design
 * Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings
@@ -74,7 +76,7 @@ Currently, this plugin supports, English, French, and Spanish.
 
 * Consider altering the options located under the newly created admin menu for BePro Listings
 
-* Use shortcodes and/or widgets
+* Use shortcodes and/or widgets for user interaction
 
 * Re-save your current permalink settings
 

@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, multisite, directory, video, gallery,
 Requires at least: 3.0.1
 Tested up to: 3.7.1
-Stable tag: 2.0.54
+Stable tag: 2.0.55
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ Searchable listings (gallery, directory, maps, etc) on any page or post. Now bud
 
 == Description ==
 
-Bepro Listings provides a new post type with options to add information like, cost, contact, and/or geography. It facilitates better control over wordpress core features. It also provides a growing set of listing formats including galleries(image/video), documents and google maps. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Perfect building blocks for your listing site. 
+Bepro Listings facilitates better control over wordpress core features. It provides a new post type with options like, cost, contact, and/or geography. It also provides a growing set of listing formats including galleries(image/video), documents and google maps. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Perfect building blocks for your listing site. 
 
 Visit the plugin page for examples and details http://www.beprosoftware.com/products/bepro-listings/
 
@@ -26,7 +26,7 @@ This plugin is best utilized by those looking to implement listing type features
 * Informational - Tourism, points of interest, and other details best shown via map
 * User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
 * Gallery website - Artists are using the new listing features to show just the images and videos in listing results.
-* Realestate - Perfect way to showcase, buildings, apartments, hotels, and other locations
+* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations
 
 = KEY FEATURES =
 We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information like ($Cost, @Contact, &deg;Lat/Lon) 
@@ -52,8 +52,8 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 * Tags - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget
 * Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
 * Gallery - Update the stock wordpress gallery with this lightbox option with a better design
-* Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings
-* Documents - Allow users to add and manage document listings on your website from the front end
+* Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings (youtube, vimeo, uploaded documents)
+* Documents - Allow users to add and manage document listings on your website from the front end (zip, doc, csv, etc)
 
 = SHORTCODES =
 
@@ -65,7 +65,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 
 = TROUBLE SHOOTING =
 
-* 404 Error - Unfortunately, wordpress has an existing issue with custom post type permalinks. If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings so that they are reset for all urls. The option is under your settings menu.
+* 404 Error - If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings so that they are reset for all urls. The option is under your settings menu.
 
 = TRANSLATIONS =
 

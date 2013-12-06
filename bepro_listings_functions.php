@@ -176,16 +176,17 @@
 		$lon = floatval('-63.5747943');
 		if(!empty($post_id))$wpdb->query("INSERT INTO ".$table_name." (email, phone, cost, address_line1, city, postcode, state, country, website, lat, lon, first_name, last_name, post_id) VALUES('support@beprosoftware.com','561-288-5321', 0, '','halifax', '', 'NS','Canada', 'beprosoftware.com', '$lat', '$lon', 'Lead', 'Tester', $post_id)");
 		
+		
 		//load default options if they dont already exist		
 		$data = get_option("bepro_listings");
-		if(empty($data["bepro_listings_list_template_1"])){
+		if(empty($data["bepro_listings_list_template_x"])){
 			//general
-			$data["show_cost"] = 1;
-			$data["show_con"] = 1;
-			$data["show_geo"] = 1;
+			$data["show_cost"] = "on";
+			$data["show_con"] = "on";
+			$data["show_geo"] = "on";
 			$data["num_images"] = 3;
 			//forms
-			$data["validate_form"] = 1;
+			$data["validate_form"] = "on";
 			$data["success_message"] = 'Listing Created and pending admin approval.';			
 			$data["default_user_id"] = get_current_user_id();			
 			//search listings
@@ -195,8 +196,8 @@
 			//Page/post
 			$data["gallery_size"] = "thumbnail";
 			$data["gallery_cols"] = 3;
-			$data["show_details"] = 1;
-			$data["show_content"] = 1;
+			$data["show_details"] = "on";
+			$data["show_content"] = "on";
 			//buddypress
 			$data["buddypress"] = 0;
 			//Support
@@ -215,14 +216,6 @@
 			
 			//save
 			update_option("bepro_listings", $data);
-			
-			global $wp_rewrite;
-			if($wp_rewrite)
-				$wp_rewrite->flush_rules();
-		}else{
-			if($data["footer_link"] == ("on" || 1)){
-				add_action("wp_footer", "footer_message");
-			}
 		}
 		
 	}
@@ -249,19 +242,6 @@
 		dbDelta($sql);
 	}
 	
-	//Setup database and other needed
-	function bepro_listings_install() {
-		global $wpdb;
-		
-		if (function_exists('is_multisite') && is_multisite()){ 
-			$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs"));
-			foreach($blogids as $blogid_x){
-				bepro_listings_install_table($blogid_x);
-			}
-		}else{
-			bepro_listings_install_table();
-		}
-	}
 	
 	//if selected, show link in footer
 	function footer_message(){
@@ -319,7 +299,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.54' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.55' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );

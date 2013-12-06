@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
 Description: Bepro Listings has everything needed to fulfill your Listings or Directory needs. It integrates with your theme and provides better control over wordpress features. In addition, it provides a growing list of new options like, costs, contact, and geography.
-Version: 2.0.54
+Version: 2.0.55
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -59,7 +59,6 @@ class Bepro_listings{
 		add_action('delete_post', 'bepro_delete_post' );
 		add_action('wp_ajax_save-widget', 'bepro_save_widget' );
 		add_action("manage_posts_custom_column",  "bepro_listings_custom_columns");
-		add_action( "plugins_loaded",  "bepro_listings_install");
 		add_action( 'bp_init', array( $this, "start_bp_addon") );
 		add_action( 'wp_ajax_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
 		add_action( 'wp_ajax_nopriv_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
@@ -75,6 +74,9 @@ class Bepro_listings{
 		
 		//item page template
 		$data = get_option("bepro_listings");
+		if($data["footer_link"] == ("on" || 1)){
+			add_action("wp_footer", "footer_message");
+		}
 		add_action( ((!empty($data['bepro_listings_item_title_template']))? $data['bepro_listings_item_title_template']:'bepro_listings_item_title'), 'bepro_listings_item_title_template');
 		add_action( ((!empty($data['bepro_listings_item_gallery_template']))? $data['bepro_listings_item_gallery_template']:'bepro_listings_item_gallery'), 'bepro_listings_item_gallery_template');
 		add_action( ((!empty($data['bepro_listings_item_after_gallery_template']))? $data['bepro_listings_item_after_gallery_template']:'bepro_listings_item_after_gallery'), 'bepro_listings_item_after_gallery_template');
@@ -326,6 +328,23 @@ class Bepro_listings{
 		if($data["buddypress"] == (1||"on"))
 		include( dirname( __FILE__ ) . '/bepro-listings-bp.php' );
 	}
+	
+	
+	//activate
+	function bepro_listings_activate() {
+        global $wp_rewrite, $wpdb;  
+		$wp_rewrite->flush_rules();  
+		
+		if (function_exists('is_multisite') && is_multisite()){ 
+			$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs"));
+			foreach($blogids as $blogid_x){
+				bepro_listings_install_table($blogid_x);
+			}
+		}else{
+			bepro_listings_install_table();
+		}
+	}
 }
 
+register_activation_hook( __FILE__, array("Bepro_listings",'bepro_listings_activate') );
 $startup = new Bepro_listings();

@@ -217,7 +217,8 @@
 			update_option("bepro_listings", $data);
 			
 			global $wp_rewrite;
-			$wp_rewrite->flush_rules();
+			if($wp_rewrite)
+				$wp_rewrite->flush_rules();
 		}else{
 			if($data["footer_link"] == ("on" || 1)){
 				add_action("wp_footer", "footer_message");
@@ -318,7 +319,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.53' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.54' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -446,16 +447,18 @@
 						$attachments = get_children(array('post_parent'=>$post_id));
 						if(!function_exists("wp_generate_attachment_metadata"))
 						require ( ABSPATH . 'wp-admin/includes/image.php' );
+						require ( ABSPATH . 'wp-admin/includes/media.php' );
 						
 						while(($counter <= $num_images) && (count($attachments) <= $num_images)) {
-							if(!empty($_FILES["bepro_form_image_".$counter]) && (!$_FILES["bepro_form_image_".$counter]["error"]) && getimagesize($_FILES["bepro_form_image_".$counter]["tmp_name"])){
+							if(!empty($_FILES["bepro_form_image_".$counter]) && (!$_FILES["bepro_form_image_".$counter]["error"])){
 								$full_filename = $wp_upload_dir['path'].$_FILES["bepro_form_image_".$counter]["name"];
 								$check_move = @move_uploaded_file($_FILES["bepro_form_image_".$counter]["tmp_name"], $full_filename);
 								if($check_move){
 									$filename = basename($_FILES["bepro_form_image_".$counter]["name"]);
 									$filename = preg_replace('/\.[^.]+$/', '', $filename);
+									$wp_filetype = wp_check_filetype(basename($full_filename), null );
 									$attachment = array(
-										 'post_mime_type' => $_FILES["bepro_form_image_".$counter]['type'],
+										 'post_mime_type' => $wp_filetype['type'],
 										 'post_title' => $filename,
 										 'post_content' => '',
 										 'post_status' => 'inherit'
@@ -510,7 +513,7 @@
 					}else{
 						$result = bepro_add_post($post_data);
 					}
-					if($result){
+					if(!$wp_error){
 						$return_message = true;
 					}else{
 						$return_message = false;

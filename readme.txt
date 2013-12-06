@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map, buddypress, multisite, directory, video, gallery,
 Requires at least: 3.0.1
 Tested up to: 3.7.1
-Stable tag: 2.0.53
+Stable tag: 2.0.54
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -26,6 +26,7 @@ This plugin is best utilized by those looking to implement listing type features
 * Informational - Tourism, points of interest, and other details best shown via map
 * User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
 * Gallery website - Artists are using the new listing features to show just the images and videos in listing results.
+* Realestate - Perfect way to showcase, buildings, apartments, hotels, and other locations
 
 = KEY FEATURES =
 We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information like ($Cost, @Contact, &deg;Lat/Lon) 
@@ -52,6 +53,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 * Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
 * Gallery - Update the stock wordpress gallery with this lightbox option with a better design
 * Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings
+* Documents - All users to add and manage documents on your website from the front end
 
 = SHORTCODES =
 
@@ -182,6 +184,8 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 = 2.0.2 (Monday, Dec 2nd 2013) = * Minor tweaks to new 2.0.0 release
 
 = 2.0.3 (Tuesday, Dec 3rd 2013) = * Dynamically load listings templates in line with 2.0.0 standards
+
+= 2.0.54 (Friday, Dec 6th 2013) = * Major fixes to submission form, document handling, and error messages
 
 == Upgrade Notice ==
 

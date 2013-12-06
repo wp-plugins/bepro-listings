@@ -169,6 +169,22 @@
 	margin-right:10px;
 	display:block;
 }
+
+.form_heading{
+
+	width:225px; 
+
+	margin-right:10px;
+
+	display:block;
+	
+	font-weight:bold;
+	
+	margin: 10px 0;
+	
+	text-decoration:underline;
+
+}
 .bepro_form_section{
 	border-bottom: 1px dashed;
     margin: 5px 0;

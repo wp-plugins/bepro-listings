@@ -30,10 +30,13 @@
 		if(isset($_POST["save_bepro_listing"]) && !empty($_POST["save_bepro_listing"])){
 			$success = false;
 			$success = bepro_listings_save();
-			$messages = array(1=> "success", 2=> "error");
+			if($success)
+				$message = urlencode("Success saving listing");
+			else
+				$message = urlencode("Error saving listing");
 			$current_user = wp_get_current_user();
 			$bp_profile_link = bp_core_get_user_domain( $bp->displayed_user->id);
-			wp_redirect($bp_profile_link  . BEPRO_LISTINGS_SLUG ."?message=".$messages[$success]);
+			wp_redirect($bp_profile_link  . BEPRO_LISTINGS_SLUG ."?message=".$message);
 			exit;
 
 		}elseif(isset($bp->action_variables[0]) && ($bp->current_action == BEPRO_LISTINGS_CREATE_SLUG)){
@@ -61,6 +64,7 @@
 	
 	function update_listing_content(){
 		global $wpdb, $bp, $post;
+		$data = get_option("bepro_listings");
 		//get information 
 		$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE id = ".$bp->action_variables[0]);
 		$post_data = get_post($item->post_id);
@@ -74,17 +78,23 @@
 		}
 		$args = array(
 			'numberposts' => -1,
-			'post_mime_type' => 'image',
 			'post_parent' => $item->post_id,
 			'post_type' => 'attachment'
 		);  
 		//get images
 		$attachments = get_posts($args);
 		$thunmbnails = array();
+		$file_icons = array("application/pdf" => "document.png", "text/plain" => "text.png", "text/csv" => "spreadsheet.png","application/rar" => "archive.png", "application/x-tar" => "archive.png", "application/zip" => "archive.png", "application/x-gzip" => "archive.png","application/x-7z-compressed" => "archive.png","application/msword" => "document.png","application/vnd.oasis.opendocument.text" => "document.png","application/vnd.oasis.opendocument.presentation" => "text.png","application/vnd.oasis.opendocument.spreadsheet" => "interactive.png","application/vnd.oasis.opendocument.graphics" => "interactive.png", "application/vnd.oasis.opendocument.chart" => "spreadsheet.png","application/wordperfect" => "document.png", "video/x-ms-asf" => "video.png", "video/x-ms-wmv" => "video.png",  "video/x-ms-wmx" => "video.png", "video/x-ms-wm" => "video.png", "video/avi" => "video.png", "video/divx" => "video.png","video/x-flv" => "video.png", "video/quicktime" => "video.png", "video/mpeg" => "video.png", "video/mp4" => "video.png", "video/ogg" => "video.png", "video/webm" => "video.png", "video/x-matroska" => "video.png");
 		if($attachments){  
 			foreach ($attachments as $attachment) {
 				$image = wp_get_attachment_image_src($attachment->ID,'thumbnail', false);
+				if(!$image){
+					$p_type = get_post_mime_type($attachment->ID);
+					$f_type = empty($file_icons[$p_type])? "text.png":$file_icons[$p_type];
+					$image[0] = get_bloginfo("wpurl")."/wp-includes/images/crystal/".$f_type;
+				}
 				$image[4] =  $attachment->ID;
+				$image[5] = basename ( get_attached_file( $attachment->ID ) );
 				$thunmbnails[] = $image;
 			}
 		}

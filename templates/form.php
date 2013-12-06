@@ -55,9 +55,9 @@
 		echo '
 			<div class="add_listing_form_info bepro_form_section">
 				<h3>'.__("Item Information", "bepro-listings").'</h3>
-				<span class="form_label">'.__("Item Name", "bepro-listings").'</span><input type="" id="item_name" name="item_name" value="'.$post_data->post_title.'" '.(isset($post_data->post_title)?'readonly="readonly"':"").'><br />
-				<span class="form_label">'.__("Description", "bepro-listings").'</span><textarea name="content" id="content">'.$post_data->post_content.'</textarea>
-				<span class="form_label">'.__("Categories", "bepro-listings").'</span>';
+				<span class="form_heading">'.__("Item Name", "bepro-listings").'</span><input type="" id="item_name" name="item_name" value="'.$post_data->post_title.'" '.(isset($post_data->post_title)?'readonly="readonly"':"").'><br />
+				<span class="form_heading">'.__("Description", "bepro-listings").'</span><textarea name="content" id="content">'.$post_data->post_content.'</textarea>
+				<span class="form_heading">'.__("Categories", "bepro-listings").'</span>';
 				$options = listing_types();
 				foreach($options as $opt){
 					echo '<span class="bepro_form_cat"><span class="form_label">'.$opt->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$opt->term_id.'" '.(isset($categories[$opt->term_id])? 'checked="checked"':"").'/></span>';
@@ -68,9 +68,10 @@
 			
 				if(!empty($num_images) && ($num_images > 0)){
 					$counter = 1;
-					echo "<span class='bepro_form_images'>";
+					echo "<span class='bepro_form_images'><span class='form_heading'>Files (".apply_filters("bepro_listings_upload_file_heading","imgs").")</span>";
 					while($counter <= $num_images){
-						echo '<span class="form_label">'.__("Image", "bepro-listings").$counter.'</span>';
+						$filename = $thunmbnails[$counter-1][5];
+						echo '<span class="form_label">'.(empty($filename)? __("File ".$counter, "bepro-listings"):$filename).'</span>';
 						if(isset($thunmbnails[$counter-1]) && !stristr($thunmbnails[$counter-1][0], "no_img.jpg")){
 							echo "<img src='".$thunmbnails[$counter-1][0]."'><br /><span>Delete?</span><input type='checkbox' name='delete_image_".($counter-1)."' value='".$thunmbnails[$counter-1][4]."'><br />";
 						}
@@ -137,6 +138,6 @@
 			echo '	</div>';
 		}
 		do_action("bepro_listing_form_end");
-		echo '<input type="submit" value="'.__("Create Listing", "bepro-listings").'">
+		echo '<input type="submit" value="'.__((empty($post_data)?"Create Listing":"Update Listing"), "bepro-listings").'">
 				</form>';
 ?>

@@ -12,7 +12,7 @@ Searchable listings (gallery, directory, maps, etc) on any page or post. Now bud
 
 == Description ==
 
-Bepro Listings provides a new post type with options to add information like, cost, contact, and/or geography. It facilitates better control over wordpress core features. It also provides a growing set of listing formats including galleries(image/video) and google maps. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Perfect building blocks for your listing site. 
+Bepro Listings provides a new post type with options to add information like, cost, contact, and/or geography. It facilitates better control over wordpress core features. It also provides a growing set of listing formats including galleries(image/video), documents and google maps. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Perfect building blocks for your listing site. 
 
 Visit the plugin page for examples and details http://www.beprosoftware.com/products/bepro-listings/
 
@@ -53,7 +53,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 * Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
 * Gallery - Update the stock wordpress gallery with this lightbox option with a better design
 * Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings
-* Documents - All users to add and manage documents on your website from the front end
+* Documents - Allow users to add and manage document listings on your website from the front end
 
 = SHORTCODES =
 

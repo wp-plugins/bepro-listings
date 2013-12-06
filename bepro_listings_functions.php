@@ -299,7 +299,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.55' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.56' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -602,6 +602,13 @@
 			register_taxonomy_for_object_type( 'bepro_listing_types', 'bepro_listings' );
 	}
 	
+	function bepro_listings_setup_category(){
+		global $wpdb;
+		//setup category
+		$var_name = "bepro_listing_typesmeta";
+		$meta_table = $wpdb->prefix."bepro_listing_typesmeta";
+		$wpdb->$var_name = $meta_table;
+	}
 	function bepro_listings_placeholder_img_src() {
 		return plugins_url("images/no_img.jpg", __FILE__ );
 	}

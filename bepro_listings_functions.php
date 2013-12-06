@@ -179,7 +179,7 @@
 		
 		//load default options if they dont already exist		
 		$data = get_option("bepro_listings");
-		if(empty($data["bepro_listings_list_template_x"])){
+		if(empty($data["bepro_listings_list_template_1"])){
 			//general
 			$data["show_cost"] = "on";
 			$data["show_con"] = "on";

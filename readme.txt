@@ -11,14 +11,13 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Searchable listings (gallery, directory, maps, etc) on any page or post. Now buddypress & mutisite compatable.
 
 == Description ==
-
-Bepro Listings facilitates better control over wordpress core features. It provides a new post type with options like, cost, contact, and/or geography. It also provides a growing set of listing formats including galleries(image/video), documents and google maps. Widgets and shortcodes offer lots of ways to search and view various aspects of the posts. Perfect building blocks for your listing site. 
+BePro Listings allows you to list anything incluing, images, documents, and videos. Shortcodes & widgets help you to search and showcase this information in various formats including multiple listing templates and google maps. With better control over wordpress core features and lots of addons, this is the perfect foundation for your listings site. 
 
 Visit the plugin page for examples and details http://www.beprosoftware.com/products/bepro-listings/
 
 = Popular Uses =
 
-This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup core wordpress featues, as well as new aspects including, number of images, default search distance, and page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup core wordpress featues, as well as new aspects like, # of uploads, default search distance, and page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 * Store Finder - List your stores including, location and contact details 
 * Directory - Employee, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of listings site
@@ -146,11 +145,12 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 
 == Screenshots ==
 
-1. Manage Listings
+1. Listings example
 2. Search Listings
 3. View Listing
 4. Configure Listing Options
 5. Buddypress Profile listing Manager
+6. Manage Listings
 
 
 == Changelog ==

@@ -25,9 +25,10 @@ This plugin is best utilized by those looking to implement listing type features
 * Informational - Tourism, points of interest, and other details best shown via map
 * User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
 * Image website - Artists are using the new features to show just images in listing results.
-* Video Listings - You can setup the plugin to feature videos only (uploaded and linked)
+* Video Listings - You can setup the plugin to feature videos only (uploaded and/or linked)
 * Document Gallery - Showcase multiple file types and have them show up in listings
 * Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations
+* Geotag - Add location information to, documents, images, videos, etc. 
 
 = KEY FEATURES =
 We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information like ($Cost, @Contact, &deg;Lat/Lon) 
@@ -52,8 +53,8 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 
 * Tags - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget
 * Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
-* Gallery - Update the stock wordpress gallery with this lightbox option with a better design
-* Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings from youtube, vimeo and uploaded documents (mp4, mpeg, avi, wmv, webm, etc)
+* Gallery - Update the stock wordpress gallery with this lightbox option and better design
+* Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings from, youtube, vimeo and uploaded documents (mp4, mpeg, avi, wmv, webm, etc)
 * Documents - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)
 
 = SHORTCODES =
@@ -146,11 +147,12 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 == Screenshots ==
 
 1. Listings example
-2. Search Listings
-3. View Listing
-4. Configure Listing Options
+2. Search and filter Listings
+3. View Listing page
+4. Listing page with addons
 5. Buddypress Profile listing Manager
 6. Manage Listings
+7. Configure Listing Options
 
 
 == Changelog ==

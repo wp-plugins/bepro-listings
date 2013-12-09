@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: http://beprosoftware.com/
-Tags: listings, google map, buddypress, multisite, directory, video, gallery,
+Tags: listings, google map, buddypress, multisite, directory, video, gallery, shop finder, business locations, shop locator,  geocoding, front end, submission, Classifieds, Job Search, documents, Real Estate,
 Requires at least: 3.0.1
 Tested up to: 3.7.1
 Stable tag: 2.0.56

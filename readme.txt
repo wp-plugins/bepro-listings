@@ -56,6 +56,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 * Gallery - Update the stock wordpress gallery with this lightbox option and better design
 * Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings from, youtube, vimeo and uploaded documents (mp4, mpeg, avi, wmv, webm, etc)
 * Documents - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)
+* Icons - Tons of google map icons from the "Map Icons Collection" by Nicolas Mollet
 
 = SHORTCODES =
 

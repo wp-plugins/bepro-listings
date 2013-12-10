@@ -58,9 +58,28 @@
 				<span class="form_heading">'.__("Item Name", "bepro-listings").'</span><input type="" id="item_name" name="item_name" value="'.$post_data->post_title.'" '.(isset($post_data->post_title)?'readonly="readonly"':"").'><br />
 				<span class="form_heading">'.__("Description", "bepro-listings").'</span><textarea name="content" id="content">'.$post_data->post_content.'</textarea>
 				<span class="form_heading">'.__("Categories", "bepro-listings").'</span>';
-				$options = listing_types();
-				foreach($options as $opt){
-					echo '<span class="bepro_form_cat"><span class="form_label">'.$opt->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$opt->term_id.'" '.(isset($categories[$opt->term_id])? 'checked="checked"':"").'/></span>';
+				if($cat_drop == ("on" || 1)){
+					$args = array(
+						'show_option_none'   => 'Select One',
+						'orderby'            => 'ID', 
+						'order'              => 'ASC',
+						'hide_empty'         => 0, 
+						'echo'               => 1,
+						'selected'           => array_shift($categories),
+						'hierarchical'       => true, 
+						'name'               => 'cat_drop',
+						'id'                 => '',
+						'class'              => 'postform',
+						'taxonomy'           => 'bepro_listing_types',
+						'hide_if_empty'      => false,
+							'walker'             => ''
+					);
+					wp_dropdown_categories($args);
+				}else{
+					$options = listing_types();
+					foreach($options as $opt){
+						echo '<span class="bepro_form_cat"><span class="form_label">'.$opt->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$opt->term_id.'" '.(isset($categories[$opt->term_id])? 'checked="checked"':"").'/></span>';
+					}
 				}
 				echo "<div style='clear:both'></div>";
 				

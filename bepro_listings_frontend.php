@@ -41,46 +41,20 @@
 		foreach($raw_results as $result){
 			$permalink = get_permalink( $result->post_id );
 			if (!empty($result->lat) && !empty($result->lon)){
-				$map_cities .= '
-					position = new google.maps.LatLng('.$result->lat.','.$result->lon.');
-					var marker_'.$counter.' = new google.maps.Marker({
-						position: position,
-						map: map,
-						clickable: true,
-						title: "'.$result->item_name.'",
-					});
-					
-					markers.push(marker_'.$counter.');
-					positions.push(position);	
-				';
+				$map_cities .= apply_filters("bepro_listings_map_marker",$result, $counter);
 				$currlat = $result->lat;
 				$currlon = $result->lon;
 				$thumbnail = get_the_post_thumbnail($result->post_id, 'thumbnail'); 
 				$default_img = (!empty($thumbnail))? $thumbnail:'<img src="'.$data["default_image"].'"/>';
 				if($pop_up){//marker pop up 
-					$map_cities .= "
-					var infowindow_".$counter." = '<div class=\"marker_content\"><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->post_title."<br /><a href=\"http://".urlencode($result->website)."\">Visit Website</a><br /><a href=\"".get_permalink($result->post_id)."\">View Listing</a></span></div>';
-						  google.maps.event.addListener(marker_".$counter.", \"click\", function() {
-							infowindow.setContent(infowindow_".$counter.");
-							infowindow.open(map,marker_".$counter.");
-						  });
-					";
+					$map_cities .= apply_filters("bepro_listings_detail_infowindow",$result, $counter);
 				}else{
-					$map_cities .= '
-					var infowindow_'.$counter.' = "<div class=\"marker_content\"><span class=\"marker_detais\">'.$result->post_title.'</span></div>";
-						  google.maps.event.addListener(marker_'.$counter.', "mouseover", function() {
-							infowindow.setContent(infowindow_'.$counter.');
-							infowindow.open(map,marker_'.$counter.');
-						  });
-						  google.maps.event.addListener(marker_'.$counter.', "click", function() {
-							window.location.href = "'.$permalink.'";
-						  });
-					';
+					$map_cities .= apply_filters("bepro_listings_simple_infowindow",$result, $counter);
 				}
 			}
 			$counter++;
 		}
-		
+		$declare_for_map = apply_filters("bepro_listings_declare_for_map", '');
 		//javascript initialization of the map
 		$map = "<script type='text/javascript'>
 			jQuery(document).ready(function(){
@@ -90,15 +64,17 @@
 				positions = new Array();
 				var currentlat = $currlat;
 				var currentlon = $currlon;
-				
+				var openwindow = false;
 				var latlng = new google.maps.LatLng(currentlat, currentlon);
+				icon_1 = new google.maps.MarkerImage('".plugins_url("images/icons/icon_1.png", __FILE__)."');
 				var myOptions = {
 					zoom:10,
 					center: latlng,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				}
+				$declare_for_map
 				map = new google.maps.Map(document.getElementById('map'), myOptions);
-				var infowindow = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->post_title."<br /><a href=\"http://".urlencode($result->website)."\">Visit Website</a><br /><a href=\"".get_permalink($result->post_id)."\">View Listing</a></span></div>, size: new google.maps.Size(50,50) '});
+				
 				$map_cities
 				//cluster markers
 				if(markers.length > 1){
@@ -118,6 +94,53 @@
 		}else{	
 			return $map;
 		}
+	}
+	
+	function bepro_listings_vars_for_map($vars){
+		return $vars;
+	}
+	
+	function bepro_listings_generate_simple_infowindow($result, $counter){
+		return 'var infowindow_'.$counter.' = new google.maps.InfoWindow( { content: "<div class=\"marker_content\"><span class=\"marker_detais\">'.$result->post_title.'</span></div>", size: new google.maps.Size(50,50)});
+				  google.maps.event.addListener(marker_'.$counter.', "mouseover", function() {
+					if(openwindow){
+						eval(openwindow).close();
+					}
+					infowindow_'.$counter.'.open(map,marker_'.$counter.');
+					openwindow = infowindow_'.$counter.';
+				  });
+				  google.maps.event.addListener(marker_'.$counter.', "click", function() {
+					window.location.href = "'.$permalink.'";
+				  });
+			';
+	}
+	
+	function bepro_listings_generate_detail_infowindow($result, $counter){
+		return "var infowindow_".$counter." = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->post_title."<br /><a href=\"http://".urlencode($result->website)."\">Visit Website</a><br /><a href=\"".get_permalink($result->post_id)."\">View Listing</a></span></div>, size: new google.maps.Size(50,50) '});
+				  google.maps.event.addListener(marker_".$counter.", \"click\", function() {
+					if(openwindow){
+						eval(openwindow).close();
+					}
+					infowindow_".$counter.".open(map,marker_".$counter.");
+					openwindow = infowindow_".$counter.";
+				  });
+			";
+	
+	}
+	
+	function bepro_listings_generate_map_marker($result, $counter){
+		return 'position = new google.maps.LatLng('.$result->lat.','.$result->lon.');
+					var marker_'.$counter.' = new google.maps.Marker({
+						position: position,
+						icon:icon_1,
+						map: map,
+						clickable: true,
+						title: "'.$result->item_name.'",
+					});
+					
+					markers.push(marker_'.$counter.');
+					positions.push(position);	
+				';
 	}
 	
 	//Show categories Called from shortcode
@@ -181,10 +204,9 @@
 					add_action($key, $val);
 			}
 			
+			//loop over listing template file
 			foreach($raw_results as $result){
-				if(empty($layout)){
-					$results .= basic_listing_layout($result, $shorten, $echo_this);
-				}
+				$results .= basic_listing_layout($result, $type);
 			}
 		}
 		
@@ -229,7 +251,6 @@
 		$findings[0] = $raw_results;
 		return $findings;
 	}
-	
 	
 	function basic_listing_layout($result, $type = 1){
 		//allow other features to tie in
@@ -315,7 +336,11 @@
 		}
 		
 		$wp_upload_dir = wp_upload_dir();
-		bepro_listings_save();
+		if(bepro_listings_save()){
+			echo "<h2>Listing Successfully Saved</h2>";
+		}else{
+			echo "<h2>Issue saving your listing. Please contact the website administrator</h2>";
+		}
 		include( dirname( __FILE__ )."/templates/form.php");
 	}
 	
@@ -352,7 +377,7 @@
 			$cost = __("Please Contact", "bepro-listings");
 		}
 		
-		if(!empty($data["show_details"]) && (($data["show_details"] == "on") ||($data["show_details"] == 1)) ){
+		if(!empty($data["show_details"]) && (($data["show_details"] == "on")|| ($data["show_details"] == 1)) ){
 			echo "<h3>Details : </h3><span class='bepro_listing_info'>";
 			if($data["show_cost"] == 1){
 				echo "<div class='item_cost'>".__("Cost", "bepro-listings")." - ".$cost."</div>";
@@ -377,12 +402,12 @@
 	}
 	function bepro_listings_item_content_template(){
 		$data = get_option("bepro_listings");
-		if(!empty($data["show_content"]) && (($data["show_content"] == "on") || ($data["show_content"] == 1))){
+		if(!empty($data["show_content"]) && (($data["show_content"] == "on")|| ($data["show_content"] == 1)) ){
 			echo "<div class='bepro_listing_desc'>".apply_filters("bepro_listings_item_content",bepro_listings_item_tabs())."</div>";
 		}	
 	}
 	
-	//listing item comments template
+	//comments template
 	
 	function bepro_listings_item_tabs(){
 		include(plugin_dir_path( __FILE__ ).'/templates/tabs.php');

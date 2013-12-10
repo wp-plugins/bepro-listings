@@ -73,7 +73,7 @@
 		$categories = array();
 		if($raw_categories){
 			foreach($raw_categories as $category) {
-				$categories[$category->term_id] = 1;
+				$categories[$category->term_id] = $category->term_id;
 			}
 		}
 		$args = array(
@@ -107,6 +107,7 @@
 		$show_cost = $data["show_cost"];
 		$show_con = $data["show_con"];
 		$show_geo = $data["show_geo"];
+		$cat_drop = $data["cat_drop"];
 		
 		$siteNo = $bp->groups->current_group->id;
 		$listing_url = $bp->loggedin_user->domain.BEPRO_LISTINGS_SLUG."/";

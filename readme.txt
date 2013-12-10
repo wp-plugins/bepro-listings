@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: http://beprosoftware.com/
-Tags: listings, google map, buddypress, multisite, directory, video, gallery, shop finder, business locations, shop locator,  geocoding, front end, submission, Classifieds, Job Search, documents, Real Estate,
+Tags: listings, google map, buddypress, multisite, directory, video, gallery, shop finder, business locations, shop locator,  geocoding, front end, submission, upload, Classifieds, Job Search, documents, Real Estate, Geotag,
 Requires at least: 3.0.1
 Tested up to: 3.7.1
-Stable tag: 2.0.56
+Stable tag: 2.0.57
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -148,11 +148,10 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 
 1. Listings example
 2. Search and filter Listings
-3. View Listing page
-4. Listing page with addons
-5. Buddypress Profile listing Manager
-6. Manage Listings
-7. Configure Listing Options
+3. Listing page with addons
+4. Buddypress Profile listing Manager
+5. Manage Listings
+6. Configure Listing Options
 
 
 == Changelog ==
@@ -190,6 +189,8 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 = 2.0.3 (Tuesday, Dec 3rd 2013) = * Dynamically load listings templates in line with 2.0.0 standards
 
 = 2.0.54 (Friday, Dec 6th 2013) = * Major fixes to submission form, document handling, and error messages
+
+= 2.0.57 (Friday, Dec 6th 2013) = * Improve map and new options for front end form
 
 == Upgrade Notice ==
 

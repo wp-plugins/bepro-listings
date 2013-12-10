@@ -188,7 +188,9 @@
 			//forms
 			$data["validate_form"] = "on";
 			$data["success_message"] = 'Listing Created and pending admin approval.';			
-			$data["default_user_id"] = get_current_user_id();			
+			$data["default_user_id"] = get_current_user_id();	
+			$data["fail_message"] = "Issue saving listing. Try again or contact the Admin";			
+			$data["cat_drop"] = "on";					
 			//search listings
 			$data["default_image"] = plugins_url("images/no_img.jpg", __FILE__ );
 			$data["num_listings"] = 3;
@@ -299,7 +301,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.56' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.57' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );

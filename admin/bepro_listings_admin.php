@@ -389,6 +389,8 @@
 			$data["validate_form"] = $_POST["validate_form"];
 			$data["default_user_id"] = $_POST["default_user_id"];
 			$data["success_message"] = $_POST["success_message"];			
+			$data["fail_message"] = $_POST["fail_message"];			
+			$data["cat_drop"] = $_POST["cat_drop"];			
 			
 			//search listings
 			$data["default_image"] = $_POST["default_image"];
@@ -446,7 +448,9 @@
 					<div id="tabs-2">
 						<span class="form_label"><?php _e("Validate Form", "bepro-listings"); ?></span><input type="checkbox" name="validate_form" <?php echo ($data["validate_form"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Default User Id", "bepro-listings"); ?></span><input type="text" name="default_user_id" value="<?php echo $data["default_user_id"]; ?>"><br />
-						<span class="form_label"><?php _e("Success Message", "bepro-listings"); ?></span><textarea name="success_message"><?php echo $data["success_message"]; ?></textarea>
+						<span class="form_label"><?php _e("Success Message", "bepro-listings"); ?></span><textarea name="success_message"><?php echo $data["success_message"]; ?></textarea><br />
+						<span class="form_label"><?php _e("Fail Message", "bepro-listings"); ?></span><textarea name="fail_message"><?php echo $data["fail_message"]; ?></textarea><br />
+						<span class="form_label"><?php _e("Category Dropdown", "bepro-listings"); ?></span><input type="checkbox" name="cat_drop" <?php echo ($data["cat_drop"]== (1 || "on"))? 'checked="checked"':"" ?>>
 					</div>
 					<div id="tabs-3">
 						<span class="form_label"><?php _e("Default Listing Image", "bepro-listings"); ?></span><input type="text" name="default_image" value="<?php echo $data["default_image"]; ?>" /></br>
@@ -494,10 +498,9 @@
 						<p><b>THANK YOU</b> for your interest and support in this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
 						<ul>
 							<li>Support Forum - http://beprosoftware.com/forums</li>
-							<li>Donate - Coffee, dev time, simple thanks - beprosoftware.com/donations</li>
 							<li>Upgrades - beprosoftware.com/products</li>
 							<li>Contact Us - support@beprosoftware.com</li>
-							<li>Services - $15-70 USD/hr plugin support - development</li>
+							<li>Services - $15-100 USD/hr plugin support - development</li>
 							<li>Social - https://twitter.com/BeProSoftware</li>
 							<li>Youtube - http://www.youtube.com/playlist?list=PLMzIqO2N1YpjMx4QfiCjwFsxxfHVy1goG</li>
 							<li><?php _e("Our Link in your footer?", "bepro-listings"); ?> - <input style="vertical-align:middle" type="checkbox" name="footer_link" value="1" <?php echo ($data["footer_link"]== ("on" || 1))? 'checked="checked"':"" ?>></li>

@@ -39,17 +39,16 @@
 		//Setup Listing Markers
 		$counter = 0;
 		foreach($raw_results as $result){
-			$permalink = get_permalink( $result->post_id );
 			if (!empty($result->lat) && !empty($result->lon)){
-				$map_cities .= apply_filters("bepro_listings_map_marker",$result, $counter);
+				$map_cities .= apply_filters("bepro_listings_map_marker","", $result, $counter);
 				$currlat = $result->lat;
 				$currlon = $result->lon;
 				$thumbnail = get_the_post_thumbnail($result->post_id, 'thumbnail'); 
 				$default_img = (!empty($thumbnail))? $thumbnail:'<img src="'.$data["default_image"].'"/>';
 				if($pop_up){//marker pop up 
-					$map_cities .= apply_filters("bepro_listings_detail_infowindow",$result, $counter);
+					$map_cities .= apply_filters("bepro_listings_detail_infowindow", $result, $counter);
 				}else{
-					$map_cities .= apply_filters("bepro_listings_simple_infowindow",$result, $counter);
+					$map_cities .= apply_filters("bepro_listings_simple_infowindow", $result, $counter);
 				}
 			}
 			$counter++;
@@ -101,6 +100,7 @@
 	}
 	
 	function bepro_listings_generate_simple_infowindow($result, $counter){
+		$permalink = get_permalink( $result->post_id );
 		return 'var infowindow_'.$counter.' = new google.maps.InfoWindow( { content: "<div class=\"marker_content\"><span class=\"marker_detais\">'.$result->post_title.'</span></div>", size: new google.maps.Size(50,50)});
 				  google.maps.event.addListener(marker_'.$counter.', "mouseover", function() {
 					if(openwindow){
@@ -128,7 +128,7 @@
 	
 	}
 	
-	function bepro_listings_generate_map_marker($result, $counter){
+	function bepro_listings_generate_map_marker($var, $result, $counter){
 		return 'position = new google.maps.LatLng('.$result->lat.','.$result->lon.');
 					var marker_'.$counter.' = new google.maps.Marker({
 						position: position,

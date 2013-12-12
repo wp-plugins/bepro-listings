@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
 Description: Bepro Listings has everything needed to fulfill your Listings or Directory needs. It integrates with your theme and provides better control over wordpress features. In addition, it provides a growing list of new options like, costs, contact, and geography.
-Version: 2.0.58
+Version: 2.0.59
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -120,18 +120,22 @@ class Bepro_listings{
 					<input type="hidden" name="min_date" value="'.$_POST["min_date"].'">
 					<input type="hidden" name="max_date" value="'.$_POST["max_date"].'">
 					<input type="hidden" name="min_cost" value="'.$_POST["min_cost"].'">
-					<input type="hidden" name="max_cost" value="'.$_POST["max_cost"].'">
-					<span class="searchleft">';	
-		if($data["show_geo"] == (1||"on"))$return_text .= '<span class="searchlabel">'.__("Where", "bepro-listings").'</span><br />
-						<input type="text" name="addr_search" value="'.$_POST["addr_search"].'"><br />
-						';
-		$return_text .=	'<span class="searchlabel">'.__("Name", "bepro-listings").'</span><br />
-						<input type="text" name="name_search" id="name_search" value="'.$_POST["name_search"].'"><br />
+					<input type="hidden" name="max_cost" value="'.$_POST["max_cost"].'">';	
+		if($data["show_geo"] == (1||"on"))$return_text .= '
+					<span class="blsearchwhere">
+						<span class="searchlabel">'.__("Where", "bepro-listings").'</span>
+						<input type="text" name="addr_search" value="'.$_POST["addr_search"].'">
+					</span>';
+		$return_text .=	'
+					<span class="blsearchname">
+						<span class="searchlabel">'.__("Name", "bepro-listings").'</span>
+						<input type="text" name="name_search" id="name_search" value="'.$_POST["name_search"].'">
 					</span>
+					<span class="blsearchbuttons">
 					<input type="submit" value="'.__("Search Listings", "bepro-listings").'">
-					
+										<a class="clear_search" href="'.$_SERVER["PHP_SELF"].'"><button>Clear Search</button></a>
+					</span>					
 				</form>
-				<a class="clear_search" href="'.$_SERVER["PHP_SELF"].'"><button>Clear Search</button></a>
 			</div>
 		';
 		

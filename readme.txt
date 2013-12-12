@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map,poi, map, map markers, map icons, wp maps, buddypress, multisite, directory, video, images, gallery, shop finder, business locations, shop locator,  geocoding, front end, submission, upload, Classifieds, Job Search, documents, Real Estate, Geotag,
 Requires at least: 3.0.1
 Tested up to: 3.7.1
-Stable tag: 2.0.59
+Stable tag: 2.0.60
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -131,7 +131,7 @@ Yes, there add-ons available for this plugin. Check our website beprosoftware.co
 
 = Can this work with buddypress? =
 
-Since 1.2.0
+Since 1.2.0. Version 2.0.60 added integration with activity feeds
 
 = Does your user submission form implement custom profile fields? =
 
@@ -192,6 +192,8 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 = 2.0.54 (Friday, Dec 6th 2013) = * Major fixes to submission form, document handling, and error messages
 
 = 2.0.57 (Friday, Dec 6th 2013) = * Improve map and new options for front end form
+
+= 2.0.60 (Thursday, Dec 12th 2013) = * Add listing activity to buddypress feed
 
 == Upgrade Notice ==
 

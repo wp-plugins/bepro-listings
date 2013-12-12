@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
 Description: Bepro Listings has everything needed to fulfill your Listings or Directory needs. It integrates with your theme and provides better control over wordpress features. In addition, it provides a growing list of new options like, costs, contact, and geography.
-Version: 2.0.59
+Version: 2.0.60
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -334,8 +334,11 @@ class Bepro_listings{
 	//buddypress hook
 	function start_bp_addon(){
 		$data = get_option("bepro_listings");
-		if($data["buddypress"] == (1||"on"))
-		include( dirname( __FILE__ ) . '/bepro-listings-bp.php' );
+		if($data["buddypress"] == (1||"on")){
+			add_filter('bp_blogs_activity_new_post_action', 'bepro_listings_bp_activity_action', 1, 3);
+			add_filter ( 'bp_blogs_record_post_post_types', 'bepro_listings_bp_activity_publish',1,1 );
+			include( dirname( __FILE__ ) . '/bepro-listings-bp.php' );
+		}
 	}
 	
 	

@@ -137,50 +137,66 @@
 
 		return $view;
 	}
-		
-// Set up Cutsom BP navigation
-function bepro_listings_nav() {
-    global $bp;
-		$settings_link = $bp->loggedin_user->domain . BEPRO_LISTINGS_SLUG. '/';
+			
+	// Set up Cutsom BP navigation
+	function bepro_listings_nav() {
+		global $bp;
+			$settings_link = $bp->loggedin_user->domain . BEPRO_LISTINGS_SLUG. '/';
 
-		bp_core_new_nav_item( array(
-				'name' => __( BEPRO_LISTINGS_SLUG, 'buddypress' ),
-				'slug' => BEPRO_LISTINGS_SLUG,
-				'position' => 20,
-				'default_subnav_slug' => 'List',
-				'screen_function' => 'display_item_list' 
-		) );
-		
-		bp_core_new_subnav_item( array( 'name' => __( BEPRO_LISTINGS_LIST_SLUG, 'buddypress' ), 'slug' => BEPRO_LISTINGS_LIST_SLUG, 'parent_url' => $settings_link, 'parent_slug' => BEPRO_LISTINGS_SLUG, 'screen_function' => 'display_item_list', 'position' => 10) );
-		
-		bp_core_new_subnav_item( array( 'name' => __( BEPRO_LISTINGS_CREATE_SLUG, 'buddypress' ), 'slug' => BEPRO_LISTINGS_CREATE_SLUG, 'parent_url' => $settings_link, 'parent_slug' => BEPRO_LISTINGS_SLUG, 'screen_function' => 'create_listings', 'position' => 90, 'user_has_access' => bp_is_my_profile() ) );
+			bp_core_new_nav_item( array(
+					'name' => __( BEPRO_LISTINGS_SLUG, 'buddypress' ),
+					'slug' => BEPRO_LISTINGS_SLUG,
+					'position' => 20,
+					'default_subnav_slug' => 'List',
+					'screen_function' => 'display_item_list' 
+			) );
+			
+			bp_core_new_subnav_item( array( 'name' => __( BEPRO_LISTINGS_LIST_SLUG, 'buddypress' ), 'slug' => BEPRO_LISTINGS_LIST_SLUG, 'parent_url' => $settings_link, 'parent_slug' => BEPRO_LISTINGS_SLUG, 'screen_function' => 'display_item_list', 'position' => 10) );
+			
+			bp_core_new_subnav_item( array( 'name' => __( BEPRO_LISTINGS_CREATE_SLUG, 'buddypress' ), 'slug' => BEPRO_LISTINGS_CREATE_SLUG, 'parent_url' => $settings_link, 'parent_slug' => BEPRO_LISTINGS_SLUG, 'screen_function' => 'create_listings', 'position' => 90, 'user_has_access' => bp_is_my_profile() ) );
 
 
-      // Change the order of menu items
-      $bp->bp_nav[BEPRO_LISTINGS_SLUG]['position'] = 100;
-	  bepro_listings_nav_count();
-	  
-}
-
-function bepro_listings_nav_count() {
-		global $bp, $wpdb;
-		
-		$user_id = $bp->displayed_user->id;
-		// This will probably only work on BP 1.3+
-		if ( !empty( $bp->bp_nav[BEPRO_LISTINGS_SLUG]) ) {
-			$current_tab_name = $bp->bp_nav[BEPRO_LISTINGS_SLUG]['name'];
-
-			$item_count = $wpdb->get_row("SELECT count(*) as item_count FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 
-		LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
-
-			if($item_count) $item_count = $item_count->item_count;
-
-			$bp->bp_nav[BEPRO_LISTINGS_SLUG]['name'] = sprintf( __( '%s <span>%d</span>', BEPRO_LISTINGS_SLUG ), $current_tab_name, $item_count );
-		}
+		  // Change the order of menu items
+		  $bp->bp_nav[BEPRO_LISTINGS_SLUG]['position'] = 100;
+		  bepro_listings_nav_count();
+		  
 	}
 
-	
+	function bepro_listings_nav_count() {
+			global $bp, $wpdb;
+			
+			$user_id = $bp->displayed_user->id;
+			// This will probably only work on BP 1.3+
+			if ( !empty( $bp->bp_nav[BEPRO_LISTINGS_SLUG]) ) {
+				$current_tab_name = $bp->bp_nav[BEPRO_LISTINGS_SLUG]['name'];
 
+				$item_count = $wpdb->get_row("SELECT count(*) as item_count FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 
+			LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
+
+				if($item_count) $item_count = $item_count->item_count;
+
+				$bp->bp_nav[BEPRO_LISTINGS_SLUG]['name'] = sprintf( __( '%s <span>%d</span>', BEPRO_LISTINGS_SLUG ), $current_tab_name, $item_count );
+			}
+		}
 
 bepro_listings_nav();
+
+	function bepro_listings_bp_activity_publish( $post_types ) {
+		$post_types[] = 'bepro_listings';
+		return $post_types;
+	}
+
+	function bepro_listings_bp_activity_action( $activity_action, $post, $post_permalink ) {
+		global $bp;
+		if( $post->post_type == 'bepro_listings' ) {
+			if ( is_multisite() )
+			$activity_action = sprintf( __( '%1$s created a new listing, %2$s, on the site %3$s', 'bepro_listings' ), bp_core_get_userlink( (int) $post->post_author ), '' . $post->post_title . '', '' . get_blog_option( $blog_id, 'blogname' ) . '' );
+			else
+			$activity_action = sprintf( __( '%1$s created a new listing, %2$s', 'bepro_listings' ), bp_core_get_userlink( (int) $post->post_author ), '' . $post->post_title . '' );
+
+		}
+
+		return $activity_action;
+	}
+
 ?>

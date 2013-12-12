@@ -267,18 +267,19 @@
 	}
 	
 	function bepro_listings_list_title_template($bp_listing){
-		echo "<div class='result_name'>".$bp_listing->post_title."</div>";
+		echo "<div class='result_name'>".substr($bp_listing->post_title,0, 18).((strlen($bp_listing->post_title) > 18)? "...":"")."</div>";
 	}
 	function bepro_listings_list_category_template($bp_listing){
 		echo '<span class="result_type">'.get_the_term_list($bp_listing->post_id, 'bepro_listing_types', '', ', ','').'</span>';
 	}
 	function bepro_listings_list_image_template($bp_listing){
+		$permalink = get_permalink( $bp_listing->post_id );
 		$data = get_option("bepro_listings");
 		$thumbnail = get_the_post_thumbnail($bp_listing->post_id, 'thumbnail'); 
 		$thumbnail_check = apply_filters("bepro_listings_list_thumbnail",$bp_listing->post_id);
 		if(!is_numeric($thumbnail_check)) $thumbnail = $thumbnail_check;
 		$default_img = (!empty($thumbnail))? $thumbnail:'<img src="'.$data["default_image"].'"/>';
-		echo '<span class="result_img">'.$default_img.'</span>';
+		echo '<span class="result_img"><a href="'.$permalink.'" target="_blank">'.$default_img.'</a></span>';
 	}
 	function bepro_listings_list_geo_template($bp_listing){
 		$data = get_option("bepro_listings");

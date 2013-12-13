@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
 Description: Bepro Listings has everything needed to fulfill your Listings or Directory needs. It integrates with your theme and provides better control over wordpress features. In addition, it provides a growing list of new options like, costs, contact, and geography.
-Version: 2.0.62
+Version: 2.0.63
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -48,6 +48,7 @@ class Bepro_listings{
 		load_constants();
 		
 		add_action('init', 'create_post_type' );
+		add_action('init', array($this, 'check_flush_permalinks') );
 		add_action('admin_init', 'bepro_admin_init' );
 		add_action('admin_head', 'bepro_admin_head' );
 		add_action('wp_head', 'bepro_listings_wphead', 0);
@@ -98,6 +99,7 @@ class Bepro_listings{
 		add_shortcode("display_listings", "display_listings");
 		add_shortcode("display_listing_categories", "display_listing_categories");
 		add_shortcode("create_listing_form", "user_create_listing");
+		
 	}
 
 	//Simple Search Listings Form
@@ -352,6 +354,25 @@ class Bepro_listings{
 			}
 		}else{
 			bepro_listings_install_table();
+		}
+	}
+	
+	//flush permalinks
+	function flush_permalinks(){
+		global $wp_rewrite;  
+		$wp_rewrite->flush_rules(); 
+	}
+	
+	// check_upgrade
+	function check_flush_permalinks(){
+		global $wp_rewrite; 
+		$bepro_listings_version = get_option("bepro_listings_version");
+		if(!empty($bepro_listings_version) && (BEPRO_LISTINGS_VERSION != $bepro_listings_version)){
+			update_option('bepro_listings_version', BEPRO_LISTINGS_VERSION);
+			$this->flush_permalinks();
+		}else if(empty($bepro_listings_version)){
+			update_option('bepro_listings_version', BEPRO_LISTINGS_VERSION);
+			$this->flush_permalinks();
 		}
 	}
 }

@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: listings, google map,poi, map, map markers, map icons, wp maps, buddypress, multisite, directory, video, images, gallery, shop finder, business locations, shop locator,  geocoding, front end, submission, upload, Classifieds, Job Search, documents, Real Estate, Geotag,
 Requires at least: 3.0.1
 Tested up to: 3.7.1
-Stable tag: 2.0.61
+Stable tag: 2.0.62
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

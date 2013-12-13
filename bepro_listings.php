@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
 Description: Bepro Listings has everything needed to fulfill your Listings or Directory needs. It integrates with your theme and provides better control over wordpress features. In addition, it provides a growing list of new options like, costs, contact, and geography.
-Version: 2.0.61
+Version: 2.0.62
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -90,8 +90,6 @@ class Bepro_listings{
 		add_filter("manage_edit-bepro_listings_columns", "bepro_listings_edit_columns");
 		add_filter('single_template', array( $this, 'post_page_single'), 15);
 		add_filter("bepro_listings_declare_for_map", "bepro_listings_vars_for_map");
-		add_filter("bepro_listings_simple_infowindow", "bepro_listings_generate_simple_infowindow", 1, 2);
-		add_filter("bepro_listings_detail_infowindow", "bepro_listings_generate_map_marker", 1, 2);	
 		add_filter("bepro_listings_map_marker", "bepro_listings_generate_map_marker", 1, 3);
 		
 		add_shortcode("search_form", array( $this, "searchform"));

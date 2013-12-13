@@ -41,7 +41,21 @@
 	display: block;
 	margin: auto;
 }
-
+.marker_title{
+	clear:both;
+	display:block;
+}
+.marker_img{
+	float:left;
+}
+.marker_detais{
+	float: right;
+	width:135px;
+}
+.marker_links{
+	clear: right;
+	float: right;
+}
 /* listing layout */
 .bepro_listing_desc{
 	float:left;

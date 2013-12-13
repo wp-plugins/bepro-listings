@@ -98,7 +98,7 @@
 		return $vars;
 	}
 	
-	function bepro_listings_generate_simple_infowindow($var, $result, $counter){
+	function bepro_listings_simple_infowindow($var, $result, $counter){
 		$permalink = get_permalink( $result->post_id );
 		return 'var infowindow_'.$counter.' = new google.maps.InfoWindow( { content: "<div class=\"marker_content\"><span class=\"marker_detais\">'.$result->post_title.'</span></div>", size: new google.maps.Size(50,50)});
 				  google.maps.event.addListener(marker_'.$counter.', "mouseover", function() {
@@ -112,21 +112,6 @@
 					window.location.href = "'.$permalink.'";
 				  });
 			';
-	}
-	
-	function bepro_listings_generate_detail_infowindow($var, $result, $counter){
-		$thumbnail = get_the_post_thumbnail($result->post_id, 'thumbnail'); 
-		$default_img = (!empty($thumbnail))? $thumbnail:'<img src="'.$data["default_image"].'"/>';
-
-		return "var infowindow_".$counter." = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->post_title."<br /><a href=\"http://".urlencode($result->website)."\">Visit Website</a><br /><a href=\"".get_permalink($result->post_id)."\">View Listing</a></span></div>, size: new google.maps.Size(50,50) '});
-				  google.maps.event.addListener(marker_".$counter.", \"click\", function() {
-					if(openwindow){
-						eval(openwindow).close();
-					}
-					infowindow_".$counter.".open(map,marker_".$counter.");
-					openwindow = infowindow_".$counter.";
-				  });
-			";
 	}
 	
 	function bepro_listings_detailed_infowindow($result, $counter){

@@ -202,6 +202,7 @@
 		 
 		$data = get_option("bepro_listings");
 		$num_results = $data["num_listings"]; 
+		$type = empty($type)? 1:$type;
 		$echo_this = (!empty($raw_results))? false:true;
 		
 		$findings = process_listings_results($show_paging, $num_results);				
@@ -212,7 +213,7 @@
 			$results = "<p>your criteria returned no results.</p>";
 		}else{
 			//item listing template
-			$list_templates = $data['bepro_listings_list_template_'.$type];
+			$list_templates = isset($data['bepro_listings_list_template_'.$type])? $data['bepro_listings_list_template_'.$type]: $data['bepro_listings_list_template_1'];
 			foreach($list_templates as $key => $val){
 				if($key == "style")
 					$results .="<link href='".$val."' rel='stylesheet' />";

@@ -88,8 +88,7 @@
 			$meta_table = $wpdb->prefix."bepro_listing_typesmeta";
 		}		
 		
- 		if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'")!=$table_name
-				|| version_compare(get_option("bepro_listings_version"), '1.0.0', '<') ) {
+ 		if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'")!=$table_name) {
 
 			$sql = "CREATE TABLE " . $table_name . " (
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
@@ -181,7 +180,7 @@
 		$data = get_option("bepro_listings");
 		if(empty($data["bepro_listings_list_template_1"])){
 			//general
-			$data["show_cost"] = "on";
+			$data["show_cost"] = "";
 			$data["show_con"] = "on";
 			$data["show_geo"] = "on";
 			$data["num_images"] = 3;
@@ -248,7 +247,7 @@
 	//if selected, show link in footer
 	function footer_message(){
 		echo '<div id="bepro_lisings_footer">
-								<a href="http://www.beprosoftware.com/products/bepro-listings" title="Wordpress Plugin" rel="generator">Proudly powered by BePro Lisitngs</a>
+								<a href="http://www.beprosoftware.com/products/bepro-listings" title="Wordpress Classifieds & Directory Plugin" rel="generator">Proudly powered by BePro Lisitngs</a>
 			</div>';
 	}
 	
@@ -301,7 +300,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.66' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.67' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );

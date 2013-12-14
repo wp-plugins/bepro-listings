@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: http://beprosoftware.com/
-Tags: listings, google map,poi, map, map markers, map icons, wp maps, buddypress, multisite, directory, video, images, gallery, shop finder, business locations, shop locator,  geocoding, front end, submission, upload, Classifieds, Job Search, documents, Real Estate, Geotag,
+Tags: listings, google map,poi, map, map markers, map icons, wp maps, buddypress, multisite, directory, business directory, business locations, business manager, video listings, images, gallery, shop finder, shop locator, hotel, geocoding, front end, submission, upload, Classifieds, Job listings, documents, Real Estate, Geotag,
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.66
+Stable tag: 2.0.67
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,14 +31,14 @@ This plugin is best utilized by those looking to implement listing type features
 * Geotag - Add location information to, documents, images, videos, etc. 
 
 = KEY FEATURES =
-We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information like ($Cost, @Contact, &deg;Lat/Lon) 
+We are constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information like ($Cost, @Contact, &deg;Lat/Lon). The following features are included with this plugin:
 
 * Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile.
 * Custom posts - Listings are seperate to your other posts in the admin and front end.
 * Listing Categories - Custom Taxonomies with the ability to add images and list them.
 * Listings - Two templates come with the base plugin and they can be extended.
 * Google Maps api v3.5 - Great for showing listings via a map with no need for API keys.
-* Submission Form - Give users a quick way to submit a listing without being logged in.
+* Submission Form - Offer front end submission for members and or guests.
 * Validations - User Form Submissions are validated using jQuery.
 * Search Features - Allow users to search by name, location, or various filterable options.
 * Wordpress Integration - Admin/features are familiar and integrate with your existing theme.
@@ -46,6 +46,7 @@ We are constantly developing new features for this plugin. The hope is to contin
 * Shortcodes & Widgets - Several ways to feature the information and engage your visitor.
 * Admin Options - Control the ability for users to intereact with features and information.
 * Multisite - Now multisite compatible, expand the use of this plugin throughout your network.
+* Gallery - Works with the wordpress gallery shortcode, so its compatible with many gallery plugins
 
 = ADD ONS =
 
@@ -68,7 +69,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 
 = TROUBLE SHOOTING =
 
-* 404 Error - If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings so that they are reset for all urls. The option is under your settings menu.
+* 404 Error - If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings, so that they are reset for all urls. The option is under your settings menu.
 
 = TRANSLATIONS =
 

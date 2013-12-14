@@ -8,7 +8,7 @@ Stable tag: 2.0.67
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Searchable listings (gallery, directory, maps, etc) on any page or post. Now buddypress & multisite compatable.
+Searchable listings (business, directory, classifieds, store finder) on any page or post. Features include, google maps, gallery, front end upload, buddypress & multisite.
 
 == Description ==
 BePro Listings allows you to list anything incluing, images, documents, and videos. Shortcodes & widgets help you to search and showcase this information in various formats including multiple listing templates and google maps. With better control over wordpress core features and lots of addons, this is the perfect foundation for your listings site. 

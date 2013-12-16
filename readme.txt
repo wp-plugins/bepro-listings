@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: http://beprosoftware.com/
-Tags: listings, google, maps, poi, map, map markers, map icons, buddypress, multisite, directory, listings directory, business directory, business locations, video listings, gallery, galleries, locator, locations, finder, store, shop, staff, members, pets, car, geocoding, front end upload, Classifieds,Classifieds directory, document listings, 
+Tags: listings, google, maps, poi, map, map markers, map icons, buddypress, multisite, Classifieds,Classifieds directory, directory, listings directory, business directory, business locations, video listings, gallery, galleries, locator, locations, finder, store, shop, staff, members, pets, car, geocoding, front end upload, document listings, 
 Requires at least: 3.0.1
 Tested up to: 3.8
 Stable tag: 2.0.69

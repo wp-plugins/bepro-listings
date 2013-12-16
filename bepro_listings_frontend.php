@@ -299,7 +299,7 @@
 			if(is_numeric($bp_listing->cost)){ 
 				//formats the price to have comas and dollar sign like currency.
 				setlocale(LC_MONETARY, "en_US");
-				$cost = ($bp_listing->cost == 0)? "Free" : money_format("%.2n", $bp_listing->cost);
+				$cost = ($bp_listing->cost == 0)? "Free" : sprintf('%01.2f', $bp_listing->cost);
 			}else{
 				$cost = "Please Contact";
 			} 
@@ -375,7 +375,7 @@
 		$data = get_option("bepro_listings");
 		if(is_numeric($item->cost)){
 			//formats the price to have comas and dollar sign like currency.
-			$cost = ($item->cost == 0)? __("Free", "bepro-listings") : money_format("%.2n", $item->cost);
+			$cost = ($item->cost == 0)? __("Free", "bepro-listings") : sprintf('%01.2f', $item->cost);
 		}else{
 			$cost = __("Please Contact", "bepro-listings");
 		}

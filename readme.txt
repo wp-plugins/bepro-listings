@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: http://beprosoftware.com/
-Tags: listings, google, maps, poi, map, map markers, map icons, buddypress, multisite, Classifieds,Classifieds directory, directory, listings directory, business directory, business locations, video listings, gallery, galleries, locator, locations, finder, store, shop, staff, members, pets, car, geocoding, front end upload, document listings, 
+Tags: listings, video listings, gallery, galleries, google, maps, poi, map, map markers, map icons, buddypress, multisite, Classifieds,Classifieds directory, directory, listings directory, business directory, business locations, galleries, locator, locations, finder, geocoding, front end upload, document listings, 
 Requires at least: 3.0.1
 Tested up to: 3.8
 Stable tag: 2.0.69
@@ -19,8 +19,8 @@ Visit the plugin page for examples and details http://www.beprosoftware.com/prod
 
 This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup core wordpress featues, as well as new aspects like, # of uploads, default search distance, and page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
-* Store Finder - List your stores including, location and contact details 
-* Directory - Employee, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of listings site
+* Store Finder - List your stores or shop including, location and contact details 
+* Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of listings site
 * Products & Services - List them yourself or allow members to list products and/or services
 * Informational - Tourism, points of interest, and other details best shown via map
 * User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish

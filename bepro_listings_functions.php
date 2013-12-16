@@ -300,7 +300,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.67' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.68' );
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -427,8 +427,9 @@
 						$counter = 1;
 						$attachments = get_children(array('post_parent'=>$post_id));
 						if(!function_exists("wp_generate_attachment_metadata"))
-						require ( ABSPATH . 'wp-admin/includes/image.php' );
-						require ( ABSPATH . 'wp-admin/includes/media.php' );
+							require ( ABSPATH . 'wp-admin/includes/image.php' );
+						if(!function_exists("media_upload_tabs"))
+							require ( ABSPATH . 'wp-admin/includes/media.php' );
 						
 						while(($counter <= $num_images) && (count($attachments) <= $num_images)) {
 							if(!empty($_FILES["bepro_form_image_".$counter]) && (!$_FILES["bepro_form_image_".$counter]["error"])){

@@ -380,9 +380,9 @@
 			$cost = __("Please Contact", "bepro-listings");
 		}
 		
-		if(!empty($data["show_details"]) && (($data["show_details"] == "on")|| ($data["show_details"] == 1)) ){
+		if(!empty($data["show_details"]) && (($data["show_details"] == "on")|| ($data["show_details"] == "on")) ){
 			echo "<h3>Details : </h3><span class='bepro_listing_info'>";
-			if($data["show_cost"] == 1){
+			if($data["show_cost"] == "on"){
 				echo "<div class='item_cost'>".__("Cost", "bepro-listings")." - ".$cost."</div>";
 			}	
 				//If we have geographic data then we can show this listings address information

@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: buddypress, business locations, business directory, car, classifieds, Classifieds directory, directory, document listings, finder, front end upload, galleries, gallery, geocoding, google, listings, listings directory, locations, locator, map, map icons, map markers, maps, members, multisite, pets, poi, shop, staff, store, video listings
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.69
+Stable tag: 2.0.70
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -54,7 +54,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 
 * Tags - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget
 * Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
-* Gallery - Update the stock wordpress gallery with this lightbox option and better design
+* Gallery - Three 3 gallery options including slider & lightbox, plus three new listings templates
 * Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings from, youtube, vimeo and uploaded documents (mp4, mpeg, avi, wmv, webm, etc)
 * Documents - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)
 * Icons - Tons of google map icons from the "Map Icons Collection" by Nicolas Mollet

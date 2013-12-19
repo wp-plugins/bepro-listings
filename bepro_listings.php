@@ -361,9 +361,9 @@ class Bepro_listings{
 	
 	//activate
 	function bepro_listings_activate() {
-		global $wpdb;  
+		global $wpdb, $wp_rewrite;  
 		
-		$this->flush_rules();	
+		$wp_rewrite->flush_rules();	
 		
 		if (function_exists('is_multisite') && is_multisite()){ 
 			$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs"));

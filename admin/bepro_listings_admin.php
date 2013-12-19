@@ -497,14 +497,17 @@
 						<a href="http://beprosoftware.com"><img src="<?php echo BEPRO_LISTINGS_PLUGIN_PATH."/images/bepro_software_logo.png"; ?>"></a><br />
 						<p><b>THANK YOU</b> for your interest and support in this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
 						<ul>
-							<li>Support Forum - http://beprosoftware.com/forums</li>
-							<li>Upgrades - beprosoftware.com/products</li>
-							<li>Contact Us - support@beprosoftware.com</li>
-							<li>Services - $15-100 USD/hr plugin support - development</li>
-							<li>Social - https://twitter.com/BeProSoftware</li>
-							<li>Youtube - http://www.youtube.com/playlist?list=PLMzIqO2N1YpjMx4QfiCjwFsxxfHVy1goG</li>
+							<li>Support Forum - Join our <a href="http://beprosoftware.com/forums" target="_blank">forums</a> for any support questions</li>
+							<li>Documentation - Instructions, videos, shortcodes, and more on <a href="http://beprosoftware.com/products/bepro-listings/">this dedicated page</a></li>
+							<li>Contact Us - Send us an email via our <a href="http://www.beprosoftware.com/contact-us/">Contact Us</a> Page</li>
+							<li>Upgrades - View our list of <a href="http://www.beprosoftware.com/products/" target="_blank">wordpress plugins and themes</a></li>
+							<li>Services - We offer <a href="http://www.beprosoftware.com/services/" target="_blank">Various services</a> including support starting at $15/hr</li>
+							<li>Social - Our <a href="https://twitter.com/BeProSoftware" target="_blank">Twitter Page</a></li>
+							<li>Rate Us - Give this plugin a rating on <a href="http://wordpress.org/support/view/plugin-reviews/bepro-listings" target="_blank">Wordpress.org</a></li>
+							<li>Youtube - Our <a href="http://www.youtube.com/playlist?list=PLMzIqO2N1YpjMx4QfiCjwFsxxfHVy1goG" target="_blank">Youtube Playlist</a> managed by <a href="http://www.adcoordinates.com" target="_blank">Ad Coordinates</a></li>
 							<li><?php _e("Our Link in your footer?", "bepro-listings"); ?> - <input style="vertical-align:middle" type="checkbox" name="footer_link" value="1" <?php echo ($data["footer_link"]== ("on" || 1))? 'checked="checked"':"" ?>></li>
 						</ul>
+						<p>NOTE: We can help with customizing this plugin to fit any of your needs. Simply <a href="http://www.beprosoftware.com/contact-us/" target="_blank">reach out</a>. You will receive a personalized responce from a senior member of our <b>BePro Software Team</b></p>
 						<hr />
 						<p><b>BePro Software&trade;</b> is a service owned and operated by <a href="http://beyondprograms.ca" target="_blank">Beyond Programs Ltd.</a> a Canadian company.</p>
 					</div>

@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/products
 Description: Everything needed to create a Listings site (business, directory, classifieds, store finder, realestate). It integrates with your theme and provides better control over wordpress features. In also provides a growing list of new options like, costs, contact, and geography (google maps)
-Version: 2.0.70
+Version: 2.0.71
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -90,9 +90,13 @@ class Bepro_listings{
 		add_filter('manage_bepro_listing_types_custom_column', 'bepro_listing_types_column', 10, 3 );
 		add_filter("manage_edit-bepro_listings_columns", "bepro_listings_edit_columns");
 		add_filter('single_template', array( $this, 'post_page_single'), 15);
+		add_filter('bepro_listings_search_filter', array( $this, 'bepro_listings_search_filter_return'), 1);
+		add_filter('bepro_listings_search_join_clause', array( $this, 'bepro_listings_search_join_clause_return'), 1);
+		add_filter('bepro_listings_return_clause', array( $this, 'bepro_listings_return_clause_return'), 1);
 		add_filter("bepro_listings_declare_for_map", "bepro_listings_vars_for_map");
 		add_filter("bepro_listings_map_marker", "bepro_listings_generate_map_marker", 1, 3);
 		
+		//shortcodes
 		add_shortcode("search_form", array( $this, "searchform"));
 		add_shortcode("filter_form", array( $this, "search_filter_options"));
 		add_shortcode("generate_map", "generate_map");
@@ -241,6 +245,9 @@ class Bepro_listings{
 	   if(!empty($max_date) && (is_numeric(str_replace("/","",$max_date)))){
 		$returncaluse.= " AND geo.created <= '".date("y-m-d",strtotime($max_date))."'";
 	   }
+	   
+	   $returncaluse.= apply_filters("bepro_listings_return_clause","");
+	   
 		return $returncaluse;
 	}
 
@@ -263,7 +270,7 @@ class Bepro_listings{
 		}	
 		
 		$search_form = "<div class='filter_search_form'>
-			<form method='post' action='/".$listing_page."'>
+			<form method='post' action='".$listing_page."'>
 				<input type='hidden' name='name_search' value='".$_POST["name_search"]."'>
 				<input type='hidden' name='addr_search' value='".$_POST["addr_search"]."'>
 				<input type='hidden' name='filter_search' value='1'>
@@ -304,7 +311,11 @@ class Bepro_listings{
 				$search_form .= '
 				<tr><td>
 					<span class="label_sep">'.__("Date Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_date" id="min_date" value="'.$_POST["min_date"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_date" id="max_date" value="'.$_POST["max_date"].'">
-				</td></tr>
+				</td></tr>';
+				
+				$search_form .= apply_filters("bepro_listings_search_filter","");
+				
+				$search_form .= '
 				<tr>
 					<td>
 						<input type="submit" class="form-submit" value="'.__("Refine Search", "bepro-listings").'" id="edit-submit" name="find">
@@ -374,6 +385,18 @@ class Bepro_listings{
 			update_option('bepro_listings_version', BEPRO_LISTINGS_VERSION);
 			$this->flush_permalinks();
 		}
+	}
+	
+	function bepro_listings_search_filter_return($i){
+		return $i;
+	}
+	
+	function bepro_listings_search_join_clause_return($i){
+		return $i;
+	}
+	
+	function bepro_listings_return_clause_return($i){
+		return $i;
 	}
 }
 

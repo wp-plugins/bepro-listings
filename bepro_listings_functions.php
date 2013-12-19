@@ -299,8 +299,10 @@
 			define( 'BEPRO_LISTINGS_TABLE_BASE', 'bepro_listings' );
 		
 		// Current version
-		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) )
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.74' );
+		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.75' );
+			Bepro_listings::bepro_listings_activate();
+		}	
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );

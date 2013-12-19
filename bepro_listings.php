@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Everything needed to create a Listings site (business, directory, classifieds, store finder, realestate). It integrates with your theme and provides better control over wordpress features. In also provides a growing list of new options like, costs, contact, and geography (google maps)
-Version: 2.0.74
+Version: 2.0.75
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -359,6 +359,22 @@ class Bepro_listings{
 		$wp_rewrite->flush_rules(); 
 	}
 	
+	//activate
+	function bepro_listings_activate() {
+		global $wpdb;  
+		
+		$this->flush_rules();	
+		
+		if (function_exists('is_multisite') && is_multisite()){ 
+			$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs"));
+			foreach($blogids as $blogid_x){
+				bepro_listings_install_table($blogid_x);
+			}
+		}else{
+			bepro_listings_install_table();
+		}
+	}
+	
 	// check_upgrade
 	function check_flush_permalinks(){
 		$bepro_listings_version = get_option("bepro_listings_version");
@@ -384,21 +400,4 @@ class Bepro_listings{
 	}
 }
 
-//activate
-function bepro_listings_activate() {
-	global $wpdb, $wp_rewrite;  
-	
-	$wp_rewrite->flush_rules();	
-	
-	if (function_exists('is_multisite') && is_multisite()){ 
-		$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs"));
-		foreach($blogids as $blogid_x){
-			bepro_listings_install_table($blogid_x);
-		}
-	}else{
-		bepro_listings_install_table();
-	}
-}
-
-register_activation_hook( __FILE__, 'bepro_listings_activate' );
 $startup = new Bepro_listings();

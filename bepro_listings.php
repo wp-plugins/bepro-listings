@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Everything needed to create a Listings site (business, directory, classifieds, store finder, realestate). It integrates with your theme and provides better control over wordpress features. In also provides a growing list of new options like, costs, contact, and geography (google maps)
-Version: 2.0.73
+Version: 2.0.74
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -386,9 +386,9 @@ class Bepro_listings{
 
 //activate
 function bepro_listings_activate() {
-	global $wpdb;  
+	global $wpdb, $wp_rewrite;  
 	
-	Bepro_listings::flush_permalinks();		
+	$wp_rewrite->flush_rules();	
 	
 	if (function_exists('is_multisite') && is_multisite()){ 
 		$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs"));

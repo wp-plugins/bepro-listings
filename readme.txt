@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: buddypress, business locations, business directory, car, classifieds, Classifieds directory, directory, document listings, finder, front end upload, galleries, gallery, geocoding, google, listings, listings directory, locations, locator, map, map icons, map markers, maps, members, multisite, pets, poi, shop, staff, store, video listings
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.71
+Stable tag: 2.0.72
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -199,6 +199,8 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 = 2.0.68 (Monday, Dec 16th 2013) = * Fix issues with admin saving and cost showing on front end
 
 = 2.0.71 (Monday, Dec 16th 2013) = * Fixes to search filter and addition of wordpress filters
+
+= 2.0.72 (Thursday, Dec 19th 2013) = * Fixes to activation
 
 == Upgrade Notice ==
 

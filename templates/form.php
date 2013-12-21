@@ -51,7 +51,7 @@
 			<form method="post" enctype="multipart/form-data" id="bepro_create_listings_form">
 				<input type="hidden" name="save_bepro_listing" value="1">
 				<input type="hidden" name="bepro_post_id" value="'.$post_data->ID.'">';
-		do_action("bepro_listing_form_start");		
+		do_action("bepro_listing_form_start", $post_data);		
 		echo '
 			<div class="add_listing_form_info bepro_form_section">
 				<h3>'.__("Item Information", "bepro-listings").'</h3>
@@ -83,7 +83,7 @@
 				}
 				echo "<div style='clear:both'></div>";
 				
-		do_action("bepro_listing_form_in_item_before_images");		
+		do_action("bepro_listing_form_in_item_before_images", $post_data);		
 			
 				if(!empty($num_images) && ($num_images > 0)){
 					$counter = 1;
@@ -99,7 +99,7 @@
 					}
 					echo "</span>";
 				}
-		do_action("bepro_listings_form_after_item");		
+		do_action("bepro_listings_form_after_item", $post_data);		
 		echo '		
 			</div>
 			';		
@@ -110,7 +110,7 @@
 			<div class="add_listing_form_cost bepro_form_section">
 				<span class="form_label">'.__("Cost", "bepro-listings").'</span><input type="text" name="cost" value="'.(isset($item->cost)? $item->cost:0).'"><br />';
 			
-			do_action("bepro_listing_form_after_cost");
+			do_action("bepro_listing_form_after_cost", $post_data);
 			echo '</div>';
 			
 		}
@@ -125,7 +125,7 @@
 					<span class="form_label">'.__("Phone", "bepro-listings").'</span><input type="text" name="phone" id="phone" value="'.$item->phone.'">
 					<span class="form_label">'.__("Website", "bepro-listings").'</span><input type="text" name="website" value="'.$item->website.'">';
 			
-			do_action("bepro_listing_form_after_contact");		
+			do_action("bepro_listing_form_after_contact", $post_data);		
 			echo '	</div>';
 				
 		}
@@ -141,7 +141,7 @@
 					<span class="form_label">'.__("Country", "bepro-listings").'</span><input type="text" id="country" name="country" value="'.$item->country.'">
 					<span class="form_label">'.__("Zip / Postal", "bepro-listings").'</span><input type="text" name="postal" value="'.$item->postal.'">';
 					
-			do_action("bepro_listing_form_after_location");		
+			do_action("bepro_listing_form_after_location", $post_data);		
 			echo '	</div>';
 			
 		}		
@@ -153,10 +153,10 @@
 					<h3>'.__("Login / Register", "bepro-listings").'</h3>
 					<span class="form_label">'.__("Username", "bepro-listings").'</span><input type="text" id="user_name" name="user_name">
 					<span class="form_label">'.__("Password", "bepro-listings").'</span><input type="text" id="password" name="password">';
-			do_action("bepro_listing_form_after_register");			
+			do_action("bepro_listing_form_after_register", $post_data);			
 			echo '	</div>';
 		}
-		do_action("bepro_listing_form_end");
+		do_action("bepro_listing_form_end", $post_data);
 		echo '<input type="submit" value="'.__((empty($post_data)?"Create Listing":"Update Listing"), "bepro-listings").'">
 				</form>';
 ?>

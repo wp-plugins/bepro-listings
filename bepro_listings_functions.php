@@ -123,9 +123,18 @@
 			
 			$post = array(
 				  'post_author' => $user_id,
-				  'post_content' => "This is your first listing. Delete this one in your admin and create one of your own.",
+				  'post_content' => "<p>This is your first listing. Delete this one in your admin and create one of your own. If you need help, our <a href='http://beprosoftware.com/shop'>Canadian Wordpress Web Development</a> team can help. Also note we have tons of add-ons for this plugin like: </p>
+				  <ul>
+					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-tags/'>Tags</a> - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget</li>
+					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-contact/'>Contact</a> - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing</li>
+					<li><a href='www.beprosoftware.com/shop/bepro-listings-galleries/'>Gallery</a> - Three 3 gallery options including slider &amp; lightbox, plus three new listings templates</li>
+					<li><a href='www.beprosoftware.com/shop/bepro-listings-videos/'>Video</a> - Improve on the Gallery plugin with the ability to add and feature videos in your listings from, youtube, vimeo and uploaded documents (mp4, mpeg, avi, wmv, webm, etc)</li>
+					<li><a href='www.beprosoftware.com/shop/bepro-listings-documents/'>Documents</a> - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)</li>
+					<li><a href='www.beprosoftware.com/shop/bepro-listings-icons/'>Icons</a> - Tons of google map icons from the 'Map Icons Collection' by Nicolas Mollet</li>
+				</ul>
+				<p>Check them all out on the <a href='http://www.beprosoftware.com/products/bepro-listings/'>BePro Lisitngs documentation</a> page along with <b>shortcodes</b> and <b>instructions</b></p>",
 				  'post_status' => "publish", 
-				  'post_title' => "Your First Listing",
+				  'post_title' => "Your First Wordpress Listing",
 				  'post_category' => array($my_cat_id),
 				  'post_type' => "bepro_listings"
 				);  
@@ -180,7 +189,7 @@
 		$data = get_option("bepro_listings");
 		if(empty($data["bepro_listings_list_template_1"])){
 			//general
-			$data["show_cost"] = "";
+			$data["show_cost"] = "on";
 			$data["show_con"] = "on";
 			$data["show_geo"] = "on";
 			$data["num_images"] = 3;
@@ -284,6 +293,14 @@
 		// The plugin path
 		if ( !defined( 'BEPRO_LISTINGS_PLUGIN_PATH' ) )
 			define( 'BEPRO_LISTINGS_PLUGIN_PATH', plugins_url("", __FILE__ ) );
+			
+		// Plugin Slug
+		if ( !defined( 'BEPRO_LISTINGS_CATEGORY' ) )
+			define( 'BEPRO_LISTINGS_CATEGORY', "bepro_listing_types" );
+			
+		// Category Slug
+		if ( !defined( 'BEPRO_LISTINGS_CATEGORY' ) )
+			define( 'BEPRO_LISTINGS_CATEGORY', "bepro_listing_types" );
 		
 		// The Main table name (check if multisite)
 		if (function_exists('is_multisite') && is_multisite()) {
@@ -300,7 +317,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.76' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.77' );
 		}	
 		
 		$data = get_option("bepro_listings");

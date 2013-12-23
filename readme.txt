@@ -19,16 +19,16 @@ BePro Listings allows you to list anything incluing, images, documents, and vide
 
 This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup core wordpress featues, as well as new aspects like, # of uploads, default search distance, and item page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
-	Store Finder - List your stores or shop including, location and contact details 
-	Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of listings site
-	Products & Services - List them yourself or allow members to list products and/or services
-	Informational - Tourism, points of interest, and other details best shown via map
-	User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
-	Image website - Artists are using the new features to show just images in listing results.
-	Video Listings - You can setup the plugin to feature videos only (uploaded and/or linked)
-	Document Gallery - Showcase multiple file types and have them show up in listings
-	Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations
-	Geotag - Add location information to, documents, images, videos, etc. 
+	* Store Finder - List your stores or shop including, location and contact details 
+	* Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of listings site
+	* Products & Services - List them yourself or allow members to list products and/or services
+	* Informational - Tourism, points of interest, and other details best shown via map
+	* User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
+	* Image website - Artists are using the new features to show just images in listing results.
+	* Video Listings - You can setup the plugin to feature videos only (uploaded and/or linked)
+	* Document Gallery - Showcase multiple file types and have them show up in listings
+	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations
+	* Geotag - Add location information to, documents, images, videos, etc. 
 
 = KEY FEATURES =
 Our BePro Software Team is constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information like ($Cost, @Contact, &deg;Lat/Lon). The following features are included with this plugin:
@@ -59,7 +59,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 	7. Realestate - Add realestate related information to listings & the ability to search/filter by realestate details
 	8. S2Member - Limit & get paid for your listings depending on membership levels, using this s2member integration
 
-= Whats the Difference? =
+= WHATS THE DIFFERENCE? =
 
 BePro Listings works with buddypress in its free stock form. We also integrate with s2member, many gallery plugins (e.g. galleria), and any other plugin which is in line with our goals. We do this instead of locking you into low level inferior features. 
 
@@ -69,11 +69,11 @@ Most importantly, and further to the last point, BePro Listings is built for dev
 
 = SHORTCODES =
 
-	Dynamic Map - Setup a map anywhere showing the last listings on your site e.g. [generate_map]
-	Basic Search - Allow users to search listings e.g. [search_form]
-	Filter Search - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]
-	Listings - Show listings with optional paging e.g. [display_listings]
-	Add Listing Form - Give your users the ability to create listings. You can set a default user id for the listing or force registration. e.g. [create_listing_form]
+	* Dynamic Map - Setup a map anywhere showing the last listings on your site e.g. [generate_map]
+	* Basic Search - Allow users to search listings e.g. [search_form]
+	* Filter Search - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]
+	* Listings - Show listings with optional paging e.g. [display_listings]
+	* Add Listing Form - Give your users the ability to create listings. You can set a default user id for the listing or force registration. e.g. [create_listing_form]
 
 = TROUBLE SHOOTING =
 

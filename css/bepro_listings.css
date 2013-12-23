@@ -222,7 +222,12 @@
 	width:100%;
 	margin:0;
 }
-
+.filter_search_form input[type=checkbox]{
+	margin:0;
+}
+.filter_search_form .searchcheckbox{
+	margin-left:5px;
+}
 /* Category listings results */
 
 #listings_area h3{

@@ -174,7 +174,7 @@
 	}
 	
 	function bepro_cat_templates($cat, $url_input, $template = 0){
-		$base_url = empty($url_input)? site_url():$url_input;
+		$base_url = empty($url_input)? "":$url_input;
 		$url = $base_url."?filter_search=1&type=".$cat->term_id;
 		$cat_list = "";
 		if($template == 1){

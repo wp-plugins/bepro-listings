@@ -174,8 +174,7 @@
 	}
 	
 	function bepro_cat_templates($cat, $url_input, $template = 0){
-		$base_url = empty($url_input)? "":$url_input;
-		$url = $base_url."?filter_search=1&type=".$cat->term_id;
+		$url = $url_input."?filter_search=1&type=".$cat->term_id;
 		$cat_list = "";
 		if($template == 1){
 			$thumb_id = get_bepro_listings_term_meta( $cat->term_id, "thumbnail_id");
@@ -203,7 +202,7 @@
 			if(!empty($sub_categories)){
 				$cat_list .="<ul>";
 				foreach($sub_categories as $sub_cat){
-					$sub_url = $base_url."?filter_search=1&type=".$sub_cat->term_id;
+					$sub_url = $url_input."?filter_search=1&type=".$sub_cat->term_id;
 					$cat_list .= "<li><a href='".$sub_url."'>".$sub_cat->name."&nbsp;(".$sub_cat->count.")</a></li>";
 				}
 				$cat_list .="</ul>";

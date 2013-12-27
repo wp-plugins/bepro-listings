@@ -22,7 +22,7 @@
 		
 		$echo_this = (!empty($atts))? true:false;
 		extract(shortcode_atts(array(
-			  'pop_up' => $wpdb->escape($_POST["num_results"]),
+			  'pop_up' => $wpdb->escape($_POST["pop_up"]),
 			  'size' => $wpdb->escape($_POST["size"]),
 			  'show_paging' => $wpdb->escape($_POST["show_paging"])
 		 ), $atts));
@@ -149,30 +149,82 @@
 		global $wpdb;
 		$no_img = plugins_url("images/no_img.jpg", __FILE__ );
 		extract(shortcode_atts(array(
-			  'shorten' => $wpdb->escape($_POST["shorten"]),
 			  'url_input' => $wpdb->escape($_POST["url"]),
-			  'type' => $wpdb->escape($_POST["type"])
+			  'ctype' => $wpdb->escape($_POST["ctype"]),
+			  'cat' => $wpdb->escape($_POST["cat"])
 		 ), $atts));
-		$categories = get_terms( 'bepro_listing_types', 'orderby=count&hide_empty=0' );
-		$cat_list = "<h3>".__("Categories","bepro_listings")."</h3><div class='cat_lists'>";
+		
+		
+		$cat_heading = (!empty($_GET["type"]) && is_numeric($_GET["type"]))? "Sub Categories":"Categories";
+		$parent = (!empty($cat) && is_numeric($cat))? $cat:0;
+		$parent = (!empty($_GET["type"]) && is_numeric($_GET["type"]))? $_GET["type"]:0;  
+		
+		$categories = get_terms( 'bepro_listing_types', 'orderby=count&hide_empty=0&parent='.$parent );
+		
+		$cat_list = "<h3>".__($cat_heading,"bepro_listings")."</h3><div class='cat_lists'>";
 		
 		if($categories && (count($categories) > 0)){
 			foreach($categories as $cat){
-				$url = "";
-				$url = empty($url_input)? $url."?filter_search=1&type=".$cat->term_id:$url_input;
-				$thumb_id = get_bepro_listings_term_meta( $cat->term_id, "thumbnail_id");
-				$img = empty($thumb_id)? $no_img:wp_get_attachment_url( $thumb_id );
-				$cat_list .= "<div class='cat_list_item'>
-				<div class='cat_img'><a href='".$url."'><img src='".$img."' /></a></div>
-				<div class='cat_title'><a href='".$url."'>".$cat->name."</a></div>
-				<div class='cat_desc'>".$cat->description."</div>
-				</div>
-				";
+				$cat_list.= bepro_cat_templates($cat, $url_input, $ctype);
 			}
 		}else{
-			$cat_list .= "<div class='cat_list_no_item'>No Categories Created.</div>";
+			$cat_list .= "<div class='cat_list_no_item'>No ".$cat_heading." Created.</div>";
 		}
 		echo $cat_list."</div>";
+	}
+	
+	function bepro_cat_templates($cat, $url_input, $template = 0){
+		$base_url = empty($url_input)? site_url():$url_input;
+		$url = $base_url."?filter_search=1&type=".$cat->term_id;
+		$cat_list = "";
+		if($template == 1){
+			$thumb_id = get_bepro_listings_term_meta( $cat->term_id, "thumbnail_id");
+			$img = empty($thumb_id)? $no_img:wp_get_attachment_url( $thumb_id );
+			$cat_list .= "<div class='cat_list_item'>
+			<div class='cat_img'><a href='".$url."'><img src='".$img."' /></a></div>
+			<div class='cat_title'><a href='".$url."'>".$cat->name."&nbsp;(".$cat->count.")</a></div>
+			</div>
+			";
+		}else if($template == 2){
+			$thumb_id = get_bepro_listings_term_meta( $cat->term_id, "thumbnail_id");
+			$img = empty($thumb_id)? $no_img:wp_get_attachment_url( $thumb_id );
+			$cat_list .= "<div class='cat_list_item'>
+			<div class='cat_img'><a href='".$url."'><img src='".$img."' /></a></div>
+			<div class='cat_title'><a href='".$url."'>".$cat->name."&nbsp;(".$cat->count.")</a></div>
+			<div class='cat_desc'>".$cat->description."</div>
+			</div>
+			";
+		}else if($template == 3){
+			$sub_categories = get_terms( 'bepro_listing_types', 'orderby=count&hide_empty=0&parent='.$cat->term_id );
+			$cat_list = "<div class='cat_list_item'>
+			<div class='cat_title cat_head'><a href='".$url."'>".$cat->name."&nbsp;(".$cat->count.")</a></div>
+			<div class='cat_desc'>".$cat->description."</div>
+			";
+			if(!empty($sub_categories)){
+				$cat_list .="<ul>";
+				foreach($sub_categories as $sub_cat){
+					$sub_url = $base_url."?filter_search=1&type=".$sub_cat->term_id;
+					$cat_list .= "<li><a href='".$sub_url."'>".$sub_cat->name."&nbsp;(".$sub_cat->count.")</a></li>";
+				}
+				$cat_list .="</ul>";
+			}
+			$cat_list .= "</div>";
+		}else{
+			$sub_categories = get_terms( 'bepro_listing_types', 'orderby=count&hide_empty=0&parent='.$cat->term_id );
+			$cat_list = "<div class='cat_list_item'>
+			<div class='cat_title cat_head'><a href='".$url."'>".$cat->name."&nbsp;(".$cat->count.")</a></div>";
+			if(!empty($sub_categories)){
+				$cat_list .="<ul>";
+				foreach($sub_categories as $sub_cat){
+					$sub_url = $base_url."?filter_search=1&type=".$sub_cat->term_id;
+					$cat_list .= "<li><a href='".$sub_url."'>".$sub_cat->name."&nbsp;(".$sub_cat->count.")</a></li>";
+				}
+				$cat_list .="</ul>";
+			}
+			$cat_list .= "</div>";
+		}
+		
+		return $cat_list;
 	}
 	
 	

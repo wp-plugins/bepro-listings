@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: buddypress, business-directory, car, classifieds, Classifieds directory, directory, document, front end upload, gallery, google, listings, listings directory, map, members, pets, realestate, staff, store, video listings
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.78
+Stable tag: 2.0.79
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,20 +13,20 @@ Searchable listings (business, directory, classifieds, store finder) w/ options 
 == Description ==
 [Main Site](http://beprosoftware.com/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/)
 
-BePro Listings allows you to list anything incluing, images, documents, and videos on any page or post. Shortcodes & widgets help you to search and showcase this information in various formats including multiple listing templates and google maps. With better control over wordpress core features and lots of addons, this is the perfect foundation for your listings site. 
+BePro Listings allows you to list anything incluing, images, documents, and videos on any page or post. Shortcodes & widgets help you to search and showcase this information in various formats including multiple listing templates and google maps. With better control over wordpress core features and lots of addons, this is the perfect foundation for your listings site.
 
 = Popular Uses =
 
 This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup core wordpress featues, as well as new aspects like, # of uploads, default search distance, and item page details. With the new buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 	* Store Finder - List your stores or shop including, location and contact details 
-	* Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of listings site
+	* Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of directory listings site
 	* Products & Services - List them yourself or allow members to list products and/or services
 	* Informational - Tourism, points of interest, and other details best shown via map
 	* User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
 	* Image website - Artists are using the new features to show just images in listing results.
 	* Video Listings - You can setup the plugin to feature videos only (uploaded and/or linked)
-	* Document Gallery - Showcase multiple file types and have them show up in listings
+	* Document Directory - Showcase multiple file types and have them show up in search listings
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations
 	* Geotag - Add location information to, documents, images, videos, etc. 
 
@@ -34,8 +34,8 @@ This plugin is best utilized by those looking to implement listing type features
 Our BePro Software Team is constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information like ($Cost, @Contact, &deg;Lat/Lon). The following features are included with this plugin:
 
 	1. Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile.
-	2. Custom posts - Listings are seperate to your other posts in the admin and front end.
-	3. Listing Categories - Custom Taxonomies with the ability to add images and list them.
+	2. Custom posts - Listings are separate to your other posts in the admin and front end.
+	3. Listing Categories - (Custom Taxonomies) 4 different directory style layouts including optional images
 	4. Listings - Two templates come with the base plugin and they can be extended.
 	5. Google Maps api v3.5 - Great for showing listings via a map with no need for API keys.
 	6. Front end Submission  - Allow visitors to post, or lock it to members only, or it submits to you as pending.
@@ -47,6 +47,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	12. Admin Options - Control the ability for users to intereact with features and information.
 	13. Multisite - Now multisite compatible, expand the use of this plugin throughout your network.
 	14. Gallery - Works with the wordpress gallery shortcode, so its compatible with many gallery plugins
+
 = ADD ONS =
 Since version 2.0.0, you can now expand on the features of BePro Listings. We have added tons of wordpress hooks and filters to the system. We have also improved how our templates are implemented. This provides lots of new ways to customize your listings experinece. Current available add-ons include:
 
@@ -56,16 +57,22 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 	4. Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings from, youtube, vimeo and uploaded documents (mp4, mpeg, avi, wmv, webm, etc)
 	5. Documents - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)
 	6. Icons - Tons of google map markers/icons from the "Map Icons Collection" by Nicolas Mollet
-	7. Realestate - Add realestate related information to listings & the ability to search/filter by realestate details
+	7. Realestate - Add realestate directory related information to listings & the ability to search/filter by realestate details
 	8. S2Member - Limit & get paid for your listings depending on membership levels, using this s2member integration
+
+= THEMES =
+
+BePro Listings has spawned the famous $1 wordpress themes. BePro Listings has so many options that we felt a practical tutorial would be the best introduction. We wanted to prove that you can integrate BePro Listings into any theme. Thier goal is to showcase how to utilize BePro Listings.
+
+	1. ByCater - This responsive directory theme features a home page template utilizing BePro Listings
 
 = WHATS THE DIFFERENCE? =
 
 BePro Listings works with buddypress in its free stock form. We also integrate with s2member, many gallery plugins (e.g. galleria), and any other plugin which is in line with our goals. We do this instead of locking you into low level inferior features. 
 
-BePro Listings is also modular. You put together the pieces that are important to your listings site. Why pay for document management if you don't want that feature? The priceses of Addons start at $5 and help to further development of the plugin
+BePro Listings is modular. All addons are designed and tested to work together. You put together the pieces that are important to your listings/directory/classifieds site. Why pay for document management if you don't want that feature? The prices of Addons start at $5 and help to further development of the plugin. So if you download addons from us, you know they all work together 100%
 
-Most importantly, and further to the last point, BePro Listings is built for developers to expand. Our addons are focused and benefit from BePro Listings upgrades. So for e.g. if you had created the addon BePro Listinges realestate, you wouldnt worry about the boring things like, search, ajax, listings management, admin area, etc. You just work on what makes a good realestate plugin. 
+Most importantly, and further to the last point, BePro Listings is built for developers to expand. Our addons are focused and benefit from BePro Listings upgrades. So for e.g. if you had created the addon BePro Listinges realestate, you wouldnt worry about the boring things like, search, ajax, listings management, admin area, etc. You just work on the features which make a good realestate plugin.
 
 = SHORTCODES =
 
@@ -132,11 +139,11 @@ Not currently. Do you think that would be a good feature?
 
 = Is there support? =
 
-Yes, our development team created the plugin and continue to offer support via support@beprosoftware.com 
+Yes, our development team created the plugin and continue to offer support via our support forums
 
 = I need more features, is there more? =
 
-Yes, there add-ons available for this plugin. Check our website beprosoftware.com/shop
+Yes, there are add-ons available for this plugin. Check our website beprosoftware.com/shop
 
 = Can this work with buddypress? =
 
@@ -156,12 +163,13 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 
 == Screenshots ==
 
-1. Listings example
-2. Search and filter Listings
+1. Shortcode Features
+2. E.g. alternate Search and filter design
 3. Listing page with addons
 4. Buddypress Profile listing Manager
 5. Manage Listings
 6. Configure Listing Options
+7. Optional Category Layout w/ images
 
 
 == Changelog ==
@@ -211,6 +219,8 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 = 2.0.76 (Thursday, Dec 19th 2013) = * Fixes to activation
 
 = 2.0.77 (Friday, Dec 20th 2013) = * Improve organization of plugin including new hooks and filters
+
+= 2.0.79 (Friday, Dec 27th 2013) = * New Category templates, styling, and functionality
 
 == Upgrade Notice ==
 

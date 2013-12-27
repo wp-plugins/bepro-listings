@@ -175,7 +175,17 @@
 	height: 175px;
 	clear:both;
 }
-.cat_list_item .cat_desc{	display:none;}
+.cat_list_item .cat_desc{	}
+.cat_list_item .cat_head{	
+	background-color: #dfdfdf;
+	padding: 5px 5px;
+	width:175px;
+	clear:both;
+	display:block;
+}
+.cat_list_item ul li{
+	list-style-type:none;
+}
 /* form layout */
 .form_label{
 	width:90px; 

@@ -62,17 +62,17 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 
 = THEMES =
 
-BePro Listings has spawned the famous $1 wordpress themes. BePro Listings has so many options that we felt a practical tutorial would be the best introduction. We wanted to prove that you can integrate BePro Listings into any theme. Thier goal is to showcase how to utilize BePro Listings.
+BePro Listings has spawned the famous $1 wordpress themes. BePro Listings has so many options that we felt a practical tutorial would be the best introduction. We wanted to prove that you can integrate BePro Listings into any theme. The goal of our $1 wordpress themes, is to showcase BePro Listings features.
 
-	1. ByCater - This responsive directory theme features a home page template utilizing BePro Listings
+	1. ByCater - This responsive directory theme features a home page template utilizing (map, search, categories, and listings). It has a sidebar and integrates with the wordpress menu
 
 = WHATS THE DIFFERENCE? =
 
-BePro Listings works with buddypress in its free stock form. We also integrate with s2member, many gallery plugins (e.g. galleria), and any other plugin which is in line with our goals. We do this instead of locking you into low level inferior features. 
+Here at BeProSoftware.com, we focus on providing building blocks for developers and designers, not walls. BePro Listings works with buddypress in its free stock form. We also integrate with s2member, many gallery plugins (e.g. galleria), and any other plugin which is in line with our goals. This provides you the customer, with the flexibility to select the best components for your listings/directory/classifieds site.
 
-BePro Listings is modular. All addons are designed and tested to work together. You put together the pieces that are important to your listings/directory/classifieds site. Why pay for document management if you don't want that feature? The prices of Addons start at $5 and help to further development of the plugin. So if you download addons from us, you know they all work together 100%
+We believe that bundling plugins into themes forces unneeded bloating. Our plugins are tested to work cohesively, as if packaged in a theme; However, they are offered separtely for custom solutions. Why pay for document management if you don't want that feature? The prices of our Addons start at $5 and help to further development of the plugin.
 
-Most importantly, and further to the last point, BePro Listings is built for developers to expand. Our addons are focused and benefit from BePro Listings upgrades. So for e.g. if you had created the addon BePro Listinges realestate, you wouldnt worry about the boring things like, search, ajax, listings management, admin area, etc. You just work on the features which make a good realestate plugin.
+BePro Listings is also built for developers to expand. Our addons benefit from the foundation of "BePro Listings" and generally focus on targeted solutions. So for e.g. if you created the addon "BePro Listinges realestate", you wouldnt worry about the boring things like, search, ajax, directory management, admin area, etc. You just work on the features which make a good realestate plugin.
 
 = SHORTCODES =
 
@@ -80,7 +80,8 @@ Most importantly, and further to the last point, BePro Listings is built for dev
 	* Basic Search - Allow users to search listings e.g. [search_form]
 	* Filter Search - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]
 	* Listings - Show listings with optional paging e.g. [display_listings]
-	* Add Listing Form - Give your users the ability to create listings. You can set a default user id for the listing or force registration. e.g. [create_listing_form]
+	* Front end Upload Form - Give your users the ability to submit from any page or post. You can set a default user id for the listing or force registration. e.g. [create_listing_form]
+	* Category Links - Allow users to navigate your directory/listings using category links e.g. [display_listing_categories]
 
 = TROUBLE SHOOTING =
 

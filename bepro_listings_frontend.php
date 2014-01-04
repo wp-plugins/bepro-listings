@@ -340,8 +340,8 @@
 			echo '<span class="result_title">'.$bp_listing->city.','.$bp_listing->state.','.$bp_listing->country.'</span>';
 	}
 	function bepro_listings_list_content_template($bp_listing){
-		$content =  substr( htmlspecialchars(stripslashes(strip_tags($bp_listing->post_content))), 0, 130);
-		echo '<span class="result_desc">'.$content.'</span>';
+		$content =  substr($bp_listing->post_content, 0, 130);
+		echo '<span class="result_desc">'.do_shortcode($content).'</span>';
 	}
 	function bepro_listings_list_links_template($bp_listing){
 		$data = get_option("bepro_listings");

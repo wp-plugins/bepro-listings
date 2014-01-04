@@ -155,7 +155,7 @@
 			//add first image
 			
 			$upload_dir = wp_upload_dir();
-			$to_filename = $upload_dir['path']."no_img.jpg";
+			$to_filename = $upload_dir['path']."/no_img.jpg";
 			$full_filename = plugins_url("images/no_img.jpg", __FILE__ );
 			$attachment = array(
 				 'post_mime_type' => "image/jpeg",
@@ -221,7 +221,6 @@
 			$data['bepro_listings_item_details_template'] = 'bepro_listings_item_details';
 			$data['bepro_listings_item_content_template'] = 'bepro_listings_item_content_info';
 			
-			//item list template
 			//item list template
 			$data['bepro_listings_list_template_1'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_image" => "bepro_listings_list_image_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_1.css", __FILE__ ));
 			$data['bepro_listings_list_template_2'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_above_title" => "bepro_listings_list_image_template","bepro_listings_list_image" => "bepro_listings_list_geo_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_2.css", __FILE__ ));
@@ -319,7 +318,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.80' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.81' );
 		}	
 		
 		$data = get_option("bepro_listings");

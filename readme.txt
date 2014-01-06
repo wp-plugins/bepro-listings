@@ -65,6 +65,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 BePro Listings has spawned the famous $1 wordpress themes. BePro Listings has so many options that we felt a practical tutorial would be the best introduction. We wanted to prove that you can integrate BePro Listings into any theme. The goal of our $1 wordpress themes, is to showcase BePro Listings features.
 
 	1. ByCater - This responsive directory theme features a home page template utilizing (map, search, categories, and listings). It has a sidebar and integrates with the wordpress menu
+	2. FolioProjects - Child theme for twentyfourteen. Perfect for gallery, portfolio, and other sites where you want to emphases the images. Comes with two templates
 
 = WHATS THE DIFFERENCE? =
 

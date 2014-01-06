@@ -165,13 +165,14 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 
 == Screenshots ==
 
-1. Shortcode Features
-2. E.g. alternate Search and filter design
-3. Listing page with addons
-4. Buddypress Profile listing Manager
-5. Manage Listings
-6. Configure Listing Options
-7. Optional Category Layout w/ images
+1. Shortcode Features on ByCater $1 Theme
+2. Gallery Features on FolioProjects $1 Theme
+3. E.g. alternate Search and filter design
+4. Listing page with addons
+5. Buddypress Profile listing Manager
+6. Manage Listings
+7. Configure Listing Options
+8. Optional Category Layout w/ images
 
 
 == Changelog ==

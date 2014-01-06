@@ -269,7 +269,7 @@
 			$counter = 1;
 			$paging = "<div style='clear:both'><br /></div><div class='paging'>Pages: ";
 			while($pages != 0){
-				$paging .= "<a href='?page=".$counter."'>".$counter."</a>";
+				$paging .= "<a href='?lpage=".$counter."'>".$counter."</a>";
 				$pages--;
 				$counter++;
 			}
@@ -291,7 +291,7 @@
 		
 		//Handle Paging selection calculations and process listings
 		if($show_paging == 1){
-			$page = (empty($_GET["page"]))? 1 : $_GET["page"];
+			$page = (empty($_GET["lpage"]))? 1 : $_GET["lpage"];
 			$page = ($page - 1) * $num_results;
 			$limit_clause = " ORDER BY posts.post_title ASC LIMIT $page , $num_results";
 			$resvs = bepro_get_listings($returncaluse);

@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: buddypress, business-directory, car, classifieds, Classifieds directory, directory, document, front end upload, gallery, google, listings, listings directory, map, members, pets, realestate, staff, store, video listings
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.81
+Stable tag: 2.0.82
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -64,8 +64,8 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 
 BePro Listings has spawned the famous $1 wordpress themes. BePro Listings has so many options that we felt a practical tutorial would be the best introduction. We wanted to prove that you can integrate BePro Listings into any theme. The goal of our $1 wordpress themes, is to showcase BePro Listings features.
 
-	1. ByCater - This responsive directory theme features a home page template utilizing (map, search, categories, and listings). It has a sidebar and integrates with the wordpress menu
-	2. FolioProjects - Child theme for twentyfourteen. Perfect for gallery, portfolio, and other sites where you want to emphases the images. Comes with two templates
+	1. ByCater - This responsive directory theme features a home page template utilizing (map, search, categories, and listings). It also integrates with typical wordpress features like, sidebar, menu, etc
+	2. FolioProjects - Responsive Child theme for the stock wordpress twentyfourteen teamplate. Perfect for gallery, portfolio, and other sites where you want to emphasize the featured images. Comes with three templates
 
 = WHATS THE DIFFERENCE? =
 
@@ -73,7 +73,7 @@ Here at BeProSoftware.com, we focus on providing building blocks for developers 
 
 We believe that bundling plugins into themes forces unneeded bloating. Our plugins are tested to work cohesively, as if packaged in a theme; However, they are offered separtely for custom solutions. Why pay for document management if you don't want that feature? The prices of our Addons start at $5 and help to further development of the plugin.
 
-BePro Listings is also built for developers to expand. Our addons benefit from the foundation of "BePro Listings" and generally focus on targeted solutions. So for e.g. if you created the addon "BePro Listinges realestate", you wouldnt worry about the boring things like, search, ajax, directory management, admin area, etc. You just work on the features which make a good realestate plugin.
+BePro Listings is also built for developers to expand. Our addons benefit from the foundation of "BePro Listings" and generally focus on targeted solutions. So for e.g. if you created the addon "BePro Listings realestate", you wouldnt worry about the boring things like, search, ajax, directory management, admin area, etc. You just work on the features which make a good realestate plugin.
 
 = SHORTCODES =
 

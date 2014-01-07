@@ -43,6 +43,12 @@ class bepro_widgets {
 		update_option('bepro_map_widget', $data);
 		echo "success";
 	  }
+	  if ($_POST["id_base"] == "recent-bepro-listings"){
+		$data['heading'] = attribute_escape($_POST['heading']);
+		$data['num'] = attribute_escape($_POST['num']);
+		update_option('bepro_recent_widget', $data);
+		echo "success";
+	  }
   }
   
   function bepro_map_control(){
@@ -67,11 +73,71 @@ class bepro_widgets {
     echo $args['after_widget'];
   }
 
+  
+  function bepro_recent_control(){
+	 if ($_POST["id_base"] == "recent-bepro-listings")bepro_widgets::bepro_save_widget();
+     $data = get_option('bepro_recent_widget');
+	  ?>
+		  <p><label>Heading<input type="text" name="heading" value="<?php echo $data['heading']; ?>"></label></p>
+		  <p><label>Num Listings<select name="num">
+		  <option value="" <?php echo ($data['num'] == "")? "selected='selected'":""; ?> >Select One</option>
+		  <option value="1" <?php echo ($data['num'] == 1)? "selected='selected'":""; ?> >1</option>
+		  <option value="2" <?php echo ($data['num'] == 2)? "selected='selected'":""; ?>>2</option>
+		  <option value="3" <?php echo ($data['num'] == 3)? "selected='selected'":""; ?>>3</option>
+		  <option value="4" <?php echo ($data['num'] == 4)? "selected='selected'":""; ?>>4</option>
+		  <option value="5" <?php echo ($data['num'] == 5)? "selected='selected'":""; ?>>5</option>
+		  </select></label></p>
+	  <?php
+  }
+  function bepro_recent_widget($args){
+	$data = get_option('bepro_recent_widget');
+	
+    echo $args['before_widget'];
+    $before_title = $args['before_title'];
+	$title = empty($data["heading"])? __("Recent Listings", "bepro-listings"):$data["heading"];
+	$after_title = $args['after_title'];
+	$num_posts = empty($data["num"])? 5:$data["num"];
+	
+	$r = new WP_Query(array("posts_per_page" => $num_posts));
+
+	if ( $r->have_posts() ) {
+
+		echo $before_widget;
+
+		if ( $title )
+			echo $before_title . $title . $after_title;
+
+		echo '<ul class="recent_listings_widget">';
+
+		while ( $r->have_posts()) {
+			$r->the_post();
+
+			echo '<li>
+				<a href="' . get_permalink() . '">
+					' . get_the_post_thumbnail( $r->post->ID, 'bepro_listings' ) . ' ' . get_the_title() . '
+				</a>
+			</li>';
+		}
+
+		echo '</ul>';
+
+		echo $after_widget;
+	} 
+    echo $args['after_widget'];
+  }
+
   function register(){
     register_sidebar_widget('Bepro Listings Search Filter', array('bepro_widgets', 'filter_search_widget'));
     register_widget_control('Bepro Listings Search Filter', array('bepro_widgets', 'filter_search_control'));
     register_sidebar_widget('Bepro Listings Map', array('bepro_widgets', 'bepro_map_widget'));
     register_widget_control('Bepro Listings Map', array('bepro_widgets', 'bepro_map_control'));
+	
+    register_sidebar_widget('Recent Bepro Listings', array('bepro_widgets', 'bepro_recent_widget'));
+    register_widget_control('Recent Bepro Listings', array('bepro_widgets', 'bepro_recent_control'));
   }
+  
+  
+  
+
 }
 ?>

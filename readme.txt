@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: apartment, buddypress, business, catalogue, classifieds, directory, document, front end upload, gallery, google, listings, location, map, members, pets, product, property, real estate, rent, staff, store, vehicle, video
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.83
+Stable tag: 2.0.84
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

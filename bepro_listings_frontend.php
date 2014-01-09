@@ -389,11 +389,13 @@
 			return;
 		}
 		
-		$wp_upload_dir = wp_upload_dir();
-		if(bepro_listings_save()){
-			echo "<h2>Listing Successfully Saved</h2>";
-		}else{
-			echo "<h2>Issue saving your listing. Please contact the website administrator</h2>";
+		if(!empty($_POST["save_bepro_listing"])){
+			$wp_upload_dir = wp_upload_dir();
+			if(bepro_listings_save()){
+				echo "<h2>Listing Successfully Saved</h2>";
+			}else{
+				echo "<h2>Issue saving your listing. Please contact the website administrator</h2>";
+			}
 		}
 		include( dirname( __FILE__ )."/templates/form.php");
 	}

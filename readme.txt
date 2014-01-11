@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: http://beprosoftware.com/
-Tags: apartment, buddypress, business, catalogue, classifieds, directory, document, front end upload, gallery, google, listings, location, map, members, pets, product, property, real estate, rent, staff, store, vehicle, video
+Tags: address, apartment, buddypress, business, catalogue, classifieds, directory, document, front end upload, gallery, google, image, listings, location, map, members, pets, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, wordpress
 Requires at least: 3.0.1
 Tested up to: 3.8
 Stable tag: 2.0.84

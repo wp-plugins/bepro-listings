@@ -318,7 +318,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.84' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.85' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -459,7 +459,7 @@
 						
 						while(($counter <= $num_images) && (count($attachments) <= $num_images)) {
 							if(!empty($_FILES["bepro_form_image_".$counter]) && (!$_FILES["bepro_form_image_".$counter]["error"])){
-								$full_filename = $wp_upload_dir['path'].$_FILES["bepro_form_image_".$counter]["name"];
+								$full_filename = $wp_upload_dir['path']."/".$_FILES["bepro_form_image_".$counter]["name"];
 								$check_move = @move_uploaded_file($_FILES["bepro_form_image_".$counter]["tmp_name"], $full_filename);
 								if($check_move){
 									$filename = basename($_FILES["bepro_form_image_".$counter]["name"]);

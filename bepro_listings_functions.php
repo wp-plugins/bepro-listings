@@ -318,7 +318,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.85' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.86' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -434,6 +434,12 @@
 					);  
 					//Create post
 					$post_id = wp_insert_post( $post, $wp_error ); 
+				}else{
+					$my_post = array(
+						  'ID'           => $post_id,
+						  'post_content' => $content
+					);
+					wp_update_post( $my_post );
 				}
 			
 				if(empty($wp_error)){

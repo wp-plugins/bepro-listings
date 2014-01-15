@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: address, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, showcase, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.85
+Stable tag: 2.0.86
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -229,7 +229,9 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 
 = 2.0.79 (Friday, Dec 27th 2013) = * New Category templates, styling, and functionality
 
-= 2.0.85 (Friday, Dec 27th 2013) = * Fix upload file path and a few other small fixes
+= 2.0.85 (Tuesday, Jan 14th 2013) = * Fix upload file path and a few other small fixes
+
+= 2.0.86 (Wednesday, Jan 15th 2013) = * Update listings content fix
 
 == Upgrade Notice ==
 

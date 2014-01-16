@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: address, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, showcase, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.88
+Stable tag: 2.0.89
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -94,6 +94,9 @@ These all have options and you can check them out via the documentation link abo
 
 Currently, this plugin supports, English, French, and Spanish.
 
+= INTRO VIDEO
+
+[youtube http://www.youtube.com/watch?v=4pV7LathU8Q&hd=1]
 
 == Installation ==
 

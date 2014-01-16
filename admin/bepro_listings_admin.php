@@ -496,7 +496,7 @@
 					<div id="tabs-6">
 						<a href="http://beprosoftware.com"><img src="<?php echo BEPRO_LISTINGS_PLUGIN_PATH."/images/bepro_software_logo.png"; ?>"></a><br />
 						<p><b>THANK YOU</b> for your interest and support in this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
-						<iframe width="560" height="315" src="//www.youtube.com/embed/4pV7LathU8Q" frameborder="0" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="//www.youtube.com/embed/qax-T3o8ZS8" frameborder="0" allowfullscreen></iframe>
 						<ul>
 							<li>Support Forum - Join our <a href="http://beprosoftware.com/forums" target="_blank">forums</a> for any support questions</li>
 							<li>Documentation - Instructions, videos, shortcodes, and more on <a href="http://beprosoftware.com/products/bepro-listings/">this dedicated page</a></li>

@@ -96,7 +96,7 @@ Currently, this plugin supports, English, French, and Spanish. You can contribut
 
 = INTRO VIDEO =
 
-[youtube http://www.youtube.com/watch?v=4pV7LathU8Q&hd=1]
+[youtube http://www.youtube.com/watch?v=qax-T3o8ZS8&hd=1]
 
 == Installation ==
 

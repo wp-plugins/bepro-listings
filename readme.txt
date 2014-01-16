@@ -94,7 +94,7 @@ These all have options and you can check them out via the documentation link abo
 
 Currently, this plugin supports, English, French, and Spanish.
 
-= INTRO VIDEO
+= INTRO VIDEO =
 
 [youtube http://www.youtube.com/watch?v=4pV7LathU8Q&hd=1]
 

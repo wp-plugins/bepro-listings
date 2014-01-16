@@ -92,7 +92,7 @@ These all have options and you can check them out via the documentation link abo
 
 = TRANSLATIONS =
 
-Currently, this plugin supports, English, French, and Spanish.
+Currently, this plugin supports, English, French, and Spanish. You can contribute other languages
 
 = INTRO VIDEO =
 

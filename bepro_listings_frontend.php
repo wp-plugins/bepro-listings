@@ -282,7 +282,6 @@
 			if($counter > 1) $results.= $paging; // if no pages then dont show this
 		}
 		if($echo_this){
-			var_dump($echo_this);
 			echo $results;
 		}else{	
 			return $results;

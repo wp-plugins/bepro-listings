@@ -170,7 +170,13 @@
 		}else{
 			$cat_list .= "<div class='cat_list_no_item'>No ".$cat_heading." Created.</div>";
 		}
-		echo $cat_list."</div>";
+		$cat_list.= "</div>";
+		
+		if($echo_this){
+			echo $cat_list;
+		}else{	
+			return $cat_list;
+		}
 	}
 	
 	function bepro_cat_templates($cat, $url_input, $template = 0){
@@ -239,8 +245,7 @@
 		$data = get_option("bepro_listings");
 		$num_results = $data["num_listings"]; 
 		$type = empty($type)? 1:$type;
-		$echo_this = (!empty($raw_results))? false:true;
-		
+		$echo_this = (empty($raw_results))? false:true;
 		$findings = process_listings_results($show_paging, $num_results);				
 		$raw_results = $findings[0];				
 			
@@ -277,6 +282,7 @@
 			if($counter > 1) $results.= $paging; // if no pages then dont show this
 		}
 		if($echo_this){
+			var_dump($echo_this);
 			echo $results;
 		}else{	
 			return $results;
@@ -444,12 +450,12 @@
 					echo "<div class='bepro_address_info'><span class='item_label'>".__("Address", "bepro-listings")."</span> - <a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a></div>";
 				}
 				//If there is contact information then show it
-				if($item->first_name || $item->email){
+				if($data["show_con"] == "on"){
 					echo "<div class='item_contactinfo'>
-							<span class='item_label'>".__("First Name", "bepro-listings")."</span> - ".$item->first_name."<br />
-							<span class='item_label'>".__("Last Name", "bepro-listings")."</span> - ".$item->last_name."<br />
-							<span class='item_label'>".__("Email", "bepro-listings")."</span> - ".$item->email."<br />
-							<span class='item_label'>".__("Phone", "bepro-listings")."</span> - ".$item->phone."
+							".(empty($item->first_name)? "":"<span class='item_label'>".__("First Name", "bepro-listings")."</span> - ".$item->first_name."<br />")."
+							".(empty($item->last_name)? "":"<span class='item_label'>".__("Last Name", "bepro-listings")."</span> - ".$item->last_name."<br />")."
+							".(empty($item->email)? "":"<span class='item_label'>".__("Email", "bepro-listings")."</span> - <a href='mailto:".$item->email."'>".$item->email."</a>"."<br />")."
+							".(empty($item->phone)? "":"<span class='item_label'>".__("Phone", "bepro-listings")."</span> - <a href='tel:".$item->phone."'>".$item->phone."</a>")."
 						</div>";
 				}
 			echo "</span>";

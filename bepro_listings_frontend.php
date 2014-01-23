@@ -346,7 +346,7 @@
 	}
 	function bepro_listings_list_content_template($bp_listing){
 		$content =  substr($bp_listing->post_content, 0, 130);
-		echo '<span class="result_desc">'.do_shortcode($content).'</span>';
+		echo '<span class="result_desc">'.stripslashes(do_shortcode($content)).'</span>';
 	}
 	function bepro_listings_list_links_template($bp_listing){
 		$data = get_option("bepro_listings");
@@ -464,7 +464,7 @@
 	function bepro_listings_item_content_template(){
 		$data = get_option("bepro_listings");
 		if(!empty($data["show_content"]) && (($data["show_content"] == "on")|| ($data["show_content"] == 1)) ){
-			echo "<div class='bepro_listing_desc'>".apply_filters("bepro_listings_item_content",bepro_listings_item_tabs())."</div>";
+			echo "<div class='bepro_listing_desc'>".stripslashes(apply_filters("bepro_listings_item_content",bepro_listings_item_tabs()))."</div>";
 		}	
 	}
 	

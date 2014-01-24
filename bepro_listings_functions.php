@@ -134,7 +134,7 @@
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-realestate/'>Real Estate</a> - Everything needed to run a realestate website, including related info (# rooms, #baths, etc) and search options</li>
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-s2member/'>S2Member</a> - For those interested in running a paid directory/classifieds, this plugin integrates with the popular membershp plugin 's2member'</li>
 				</ul>
-				<p>Check them all out on the <a href='http://www.beprosoftware.com/products/bepro-listings/'>BePro Lisitngs documentation</a> page along with <b>shortcodes</b> and <b>instructions</b></p>",
+				<p>Check them all out on the <a href='http://www.beprosoftware.com/products/bepro-listings/'>BePro Lisitngs documentation</a> page along with <b>shortcodes</b> and <b>instructions</b></p><iframe width='560' height='315' src='//www.youtube.com/embed/IfhJmP_LRDs' frameborder='0' allowfullscreen></iframe>",
 				  'post_status' => "publish", 
 				  'post_title' => "Your First Wordpress Listing",
 				  'post_category' => array($my_cat_id),

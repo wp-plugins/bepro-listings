@@ -98,7 +98,7 @@ class bepro_widgets {
 	$after_title = $args['after_title'];
 	$num_posts = empty($data["num"])? 5:$data["num"];
 	
-	$r = new WP_Query(array("posts_per_page" => $num_posts));
+	$r = new WP_Query(array("posts_per_page" => $num_posts, "post_type" => "bepro_listings"));
 
 	if ( $r->have_posts() ) {
 
@@ -113,9 +113,9 @@ class bepro_widgets {
 			$r->the_post();
 
 			echo '<li>
-				<a href="' . get_permalink() . '">
-					' . get_the_post_thumbnail( $r->post->ID, 'bepro_listings' ) . ' ' . get_the_title() . '
-				</a>
+				<a href="' . get_permalink() . '" class="sidebar_recent_imgs">
+					' . get_the_post_thumbnail( $r->post->ID, 'bepro_listings' ) . '</a>';
+			echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>
 			</li>';
 		}
 
@@ -127,13 +127,13 @@ class bepro_widgets {
   }
 
   function register(){
-    register_sidebar_widget('Bepro Listings Search Filter', array('bepro_widgets', 'filter_search_widget'));
-    register_widget_control('Bepro Listings Search Filter', array('bepro_widgets', 'filter_search_control'));
-    register_sidebar_widget('Bepro Listings Map', array('bepro_widgets', 'bepro_map_widget'));
-    register_widget_control('Bepro Listings Map', array('bepro_widgets', 'bepro_map_control'));
+    wp_register_sidebar_widget("bepro-listings-search-filter",'Bepro Listings Search Filter', array('bepro_widgets', 'filter_search_widget'));
+    wp_register_widget_control("bepro-listings-search-filter",'Bepro Listings Search Filter', array('bepro_widgets', 'filter_search_control'));
+    wp_register_sidebar_widget("bepro-listings-map",'Bepro Listings Map', array('bepro_widgets', 'bepro_map_widget'));
+    wp_register_widget_control("bepro-listings-map",'Bepro Listings Map', array('bepro_widgets', 'bepro_map_control'));
 	
-    register_sidebar_widget('Recent Bepro Listings', array('bepro_widgets', 'bepro_recent_widget'));
-    register_widget_control('Recent Bepro Listings', array('bepro_widgets', 'bepro_recent_control'));
+    wp_register_sidebar_widget("recent-bepro-listings",'Recent Bepro Listings', array('bepro_widgets', 'bepro_recent_widget'));
+    wp_register_widget_control("recent-bepro-listings",'Recent Bepro Listings', array('bepro_widgets', 'bepro_recent_control'));
   }
   
   

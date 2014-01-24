@@ -128,11 +128,12 @@
 					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-tags/'>Tags</a> - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget</li>
 					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-contact/'>Contact</a> - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing</li>
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-galleries/'>Gallery</a> - Three 3 gallery options including slider &amp; lightbox, plus three new listings templates</li>
-					<li><a href='www.beprosoftware.com/shop/bepro-listings-videos/'>Video</a> - Improve on the Gallery plugin with the ability to add and feature videos in your listings from, youtube, vimeo and uploaded documents (mp4, mpeg, avi, wmv, webm, etc)</li>
+					<li><a href='www.beprosoftware.com/shop/bepro-listings-videos/'>Video</a> - Improve on the Gallery plugin with the ability to add and feature videos in your listings from website like youtube and uploaded documents (mp4, mpeg, avi, wmv, webm, etc)</li>
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-documents/'>Documents</a> - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)</li>
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-icons/'>Icons</a> - Tons of google map icons from the 'Map Icons Collection' by Nicolas Mollet</li>
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-realestate/'>Real Estate</a> - Everything needed to run a realestate website, including related info (# rooms, #baths, etc) and search options</li>
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-s2member/'>S2Member</a> - For those interested in running a paid directory/classifieds, this plugin integrates with the popular membershp plugin 's2member'</li>
+					<li><a href='www.beprosoftware.com/shop/bepro-listings-audio/'>Audio</a> - Create a, podcasts, music, or any other type of audio focused website. We support, wav, mp3, and several file types</li>
 				</ul>
 				<p>Check them all out on the <a href='http://www.beprosoftware.com/products/bepro-listings/'>BePro Lisitngs documentation</a> page along with <b>shortcodes</b> and <b>instructions</b></p><iframe width='560' height='315' src='//www.youtube.com/embed/IfhJmP_LRDs' frameborder='0' allowfullscreen></iframe>",
 				  'post_status' => "publish", 

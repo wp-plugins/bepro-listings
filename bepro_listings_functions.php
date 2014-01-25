@@ -321,7 +321,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.93' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.94' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -350,13 +350,13 @@
 				LEFT JOIN ".$wpdb->prefix."terms t ON t.term_id = tax.term_id";
 				
 		$join_filter = apply_filters("bepro_listings_search_join_clause","");
-		
+
 		if(!empty($returncaluse)){//if we have a search query
 			$raw_results = $wpdb->get_results("SELECT geo.*, posts.post_title, posts.post_content, posts.post_status FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 
-		LEFT JOIN ".$wpdb->prefix."posts as posts on posts.ID = geo.post_id $cat_finder $join_filter WHERE (posts.post_status = 'publish' OR posts.post_status = 'private') $returncaluse $limit_clause");
+		LEFT JOIN ".$wpdb->prefix."posts as posts on posts.ID = geo.post_id $cat_finder $join_filter WHERE (posts.post_status = 'publish' OR posts.post_status = 'private') $returncaluse GROUP BY geo.post_id $limit_clause");
 		}else{//general blank search
 			$raw_results = $wpdb->get_results("SELECT geo.*, posts.post_title, posts.post_content, posts.post_status FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 
-		LEFT JOIN ".$wpdb->prefix."posts as posts on posts.ID = geo.post_id $cat_finder $join_filter WHERE (posts.post_status = 'publish' OR posts.post_status = 'private') $limit_clause");	
+		LEFT JOIN ".$wpdb->prefix."posts as posts on posts.ID = geo.post_id $cat_finder $join_filter WHERE (posts.post_status = 'publish' OR posts.post_status = 'private') GROUP BY geo.post_id $limit_clause");	
 		}
 		return $raw_results;
 	}

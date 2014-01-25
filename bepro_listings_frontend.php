@@ -24,6 +24,7 @@
 		extract(shortcode_atts(array(
 			  'pop_up' => $wpdb->escape($_POST["pop_up"]),
 			  'size' => $wpdb->escape($_POST["size"]),
+			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
 			  'show_paging' => $wpdb->escape($_POST["show_paging"])
 		 ), $atts));
 		 
@@ -34,7 +35,7 @@
 		
 		
 		//Get Listing Results
-		$findings = process_listings_results($show_paging, $num_results);				
+		$findings = process_listings_results($show_paging, $num_results, $l_type);				
 		$raw_results = $findings[0];
 		
 		//Setup Listing Markers
@@ -155,9 +156,9 @@
 		 ), $atts));
 		
 		
-		$cat_heading = (!empty($_GET["type"]) && is_numeric($_GET["type"]))? "Sub Categories":"Categories";
+		$cat_heading = (!empty($_GET["l_type"]) && is_numeric($_GET["l_type"]))? "Sub Categories":"Categories";
 		$parent = (!empty($cat) && is_numeric($cat))? $cat:0;
-		$parent = (!empty($_GET["type"]) && is_numeric($_GET["type"]))? $_GET["type"]:0;  
+		$parent = (!empty($_GET["l_type"]) && is_numeric($_GET["l_type"]))? $_GET["l_type"]:0;  
 		
 		$categories = get_terms( 'bepro_listing_types', 'orderby=count&hide_empty=0&parent='.$parent );
 		
@@ -179,8 +180,14 @@
 		}
 	}
 	
+	/*
+	//
+	//category templates
+	//
+	*/	
+	
 	function bepro_cat_templates($cat, $url_input, $template = 0){
-		$url = $url_input."?filter_search=1&type=".$cat->term_id;
+		$url = $url_input."?filter_search=1&l_type=".$cat->term_id;
 		$cat_list = "";
 		if($template == 1){
 			$thumb_id = get_bepro_listings_term_meta( $cat->term_id, "thumbnail_id");
@@ -208,7 +215,7 @@
 			if(!empty($sub_categories)){
 				$cat_list .="<ul>";
 				foreach($sub_categories as $sub_cat){
-					$sub_url = $url_input."?filter_search=1&type=".$sub_cat->term_id;
+					$sub_url = $url_input."?filter_search=1&l_type=".$sub_cat->term_id;
 					$cat_list .= "<li><a href='".$sub_url."'>".$sub_cat->name."&nbsp;(".$sub_cat->count.")</a></li>";
 				}
 				$cat_list .="</ul>";
@@ -221,7 +228,7 @@
 			if(!empty($sub_categories)){
 				$cat_list .="<ul>";
 				foreach($sub_categories as $sub_cat){
-					$sub_url = $base_url."?filter_search=1&type=".$sub_cat->term_id;
+					$sub_url = $base_url."?filter_search=1&l_type=".$sub_cat->term_id;
 					$cat_list .= "<li><a href='".$sub_url."'>".$sub_cat->name."&nbsp;(".$sub_cat->count.")</a></li>";
 				}
 				$cat_list .="</ul>";
@@ -233,20 +240,22 @@
 	}
 	
 	
-	//Show listings Called from shortcode
+	//Show listings Called from shortcode. type is the template to use. l_type is the category to filter by.
 	function display_listings($atts = array(), $raw_results = array(), $enlarge_map = 0){
 		global $wpdb;
 		extract(shortcode_atts(array(
 			  'shorten' => $wpdb->escape($_POST["shorten"]),
 			  'type' => $wpdb->escape($_POST["type"]),
+			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
 			  'show_paging' => $wpdb->escape($_POST["show_paging"])
 		 ), $atts));
 		 
 		$data = get_option("bepro_listings");
 		$num_results = $data["num_listings"]; 
 		$type = empty($type)? 1:$type;
+		
 		$echo_this = (empty($raw_results))? false:true;
-		$findings = process_listings_results($show_paging, $num_results);				
+		$findings = process_listings_results($show_paging, $num_results, $l_type);				
 		$raw_results = $findings[0];				
 			
 		//Create the GUI layout for the listings
@@ -289,17 +298,20 @@
 	}
 	
 	//process paging and listings
-	function process_listings_results($show_paging = false, $num_results = false){
-		if(!empty($_REQUEST["filter_search"]))$returncaluse = Bepro_listings::listitems(array());
-		$filter_cat = (!empty($_REQUEST["type"]))? true:false;
-
+	function process_listings_results($show_paging = false, $num_results = false, $l_type = false){
+		global $wpdb;
 		
+		if(!empty($_REQUEST["filter_search"]) || !empty($l_type)){
+			$returncaluse = Bepro_listings::listitems(array('l_type' => $l_type));
+			$filter_cat = true;
+		}	
+
 		//Handle Paging selection calculations and process listings
 		if($show_paging == 1){
 			$page = (empty($_GET["lpage"]))? 1 : $_GET["lpage"];
 			$page = ($page - 1) * $num_results;
 			$limit_clause = " ORDER BY posts.post_title ASC LIMIT $page , $num_results";
-			$resvs = bepro_get_listings($returncaluse);
+			$resvs = bepro_get_listings($returncaluse, $filter_cat);
 			$pages = ceil(count($resvs)/$num_results);
 			$findings[1] = $pages;
 			$raw_results = bepro_get_listings($returncaluse, $filter_cat, $limit_clause);
@@ -324,6 +336,11 @@
 		return $results;			
 	}
 	
+	/*
+	//
+	//Listing templates
+	//
+	*/	
 	function bepro_listings_list_title_template($bp_listing){
 		echo "<div class='result_name'>".substr($bp_listing->post_title,0, 18).((strlen($bp_listing->post_title) > 18)? "...":"")."</div>";
 	}
@@ -372,41 +389,12 @@
 			echo '<span class="result_button"><a href="'.$permalink.'" target="_blank">Item</a></span>';
 	}
 	
-	//User form for creating Bepro Listings
-	function user_create_listing($atts = array()){
-		global $wpdb;
-		
-		extract(shortcode_atts(array(
-			  'register' => $wpdb->escape($_POST["register"])
-		 ), $atts));
-		
-		//get settings
-		$data = get_option("bepro_listings");
-		$default_user_id = $data["default_user_id"];
-		$num_images = $data["num_images"];
-		$validate = $data["validate_form"];
-		$show_cost = $data["show_cost"];
-		$show_con = $data["show_con"];
-		$show_geo = $data["show_geo"];
-		
-		if(empty($default_user_id) && empty($register)){
-			echo "You must provide a 'default user id' in the admin settings or use the registration=1 option.";	
-			return;
-		}
-		
-		if(!empty($_POST["save_bepro_listing"])){
-			$wp_upload_dir = wp_upload_dir();
-			if(bepro_listings_save()){
-				echo "<h2>Listing Successfully Saved</h2>";
-			}else{
-				echo "<h2>Issue saving your listing. Please contact the website administrator</h2>";
-			}
-		}
-		include( dirname( __FILE__ )."/templates/form.php");
-	}
 	
-	
-	//content templates
+	/*
+	//
+	//Item Page templates
+	//
+	*/
 	function bepro_listings_item_title_template(){
 		echo get_the_title();
 	}
@@ -468,11 +456,45 @@
 		}	
 	}
 	
-	//comments template
-	
+	//item page tabs
 	function bepro_listings_item_tabs(){
 		include(plugin_dir_path( __FILE__ ).'/templates/tabs.php');
 	}
+	
+	//User form for creating Bepro Listings
+	function user_create_listing($atts = array()){
+		global $wpdb;
+		
+		extract(shortcode_atts(array(
+			  'register' => $wpdb->escape($_POST["register"])
+		 ), $atts));
+		
+		//get settings
+		$data = get_option("bepro_listings");
+		$default_user_id = $data["default_user_id"];
+		$num_images = $data["num_images"];
+		$validate = $data["validate_form"];
+		$show_cost = $data["show_cost"];
+		$show_con = $data["show_con"];
+		$show_geo = $data["show_geo"];
+		
+		if(empty($default_user_id) && empty($register)){
+			echo "You must provide a 'default user id' in the admin settings or use the registration=1 option.";	
+			return;
+		}
+		
+		if(!empty($_POST["save_bepro_listing"])){
+			$wp_upload_dir = wp_upload_dir();
+			if(bepro_listings_save()){
+				echo "<h2>Listing Successfully Saved</h2>";
+			}else{
+				echo "<h2>Issue saving your listing. Please contact the website administrator</h2>";
+			}
+		}
+		include( dirname( __FILE__ )."/templates/form.php");
+	}
+	
+	
 	
 	
 ?>

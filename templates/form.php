@@ -67,7 +67,7 @@
 						'echo'               => 1,
 						'selected'           => array_shift($categories),
 						'hierarchical'       => true, 
-						'name'               => 'cat_drop',
+						'name'               => 'categories[]',
 						'id'                 => '',
 						'class'              => 'postform',
 						'taxonomy'           => 'bepro_listing_types',
@@ -76,6 +76,10 @@
 					);
 					wp_dropdown_categories($args);
 				}else{
+					/*
+					require_once(ABSPATH . "wp-admin" . '/includes/template.php');
+					wp_terms_checklist( $post_data->ID, array('descendants_and_self'  => 0,'selected_cats' =>array_shift($categories),'taxonomy' => 'bepro_listing_types'));
+					*/
 					$options = listing_types();
 					foreach($options as $opt){
 						echo '<span class="bepro_form_cat"><span class="form_label">'.$opt->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$opt->term_id.'" '.(isset($categories[$opt->term_id])? 'checked="checked"':"").'/></span>';

@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Everything needed to create a Listings site (business, directory, classifieds, store finder, realestate). It integrates with your theme and provides better control over wordpress features. It also provides a growing list of new options like, costs, contact, and geography (google maps)
-Version: 2.0.93
+Version: 2.0.94
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -152,7 +152,7 @@ class Bepro_listings{
 	function listitems($atts) {
 		global $wpdb;
 		extract(shortcode_atts(array(
-			  'l_type' => $wpdb->escape($_REQUEST["type"]),
+			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
 			  'min_cost' => $wpdb->escape($_POST["min_cost"]),
 			  'max_cost' => $wpdb->escape($_POST["max_cost"]),
 			  'min_date' => $wpdb->escape($_POST["min_date"]),
@@ -178,11 +178,14 @@ class Bepro_listings{
 		
 		//Query Bepro Listing Types
 		$returncaluse = "";
-		 if(!empty($l_type) && (is_numeric($l_type) || is_array($l_type))){
+		
+		if(!empty($atts["l_type"]) && !is_array($l_type)){
+			$returncaluse  .= "AND t.term_id IN ($l_type)";
+		}else if(!empty($l_type) && (is_numeric($l_type) || is_array($l_type))){
 			if(is_array($l_type))$l_type = implode(",", $l_type);
 			$returncaluse  .= "AND t.term_id IN ($l_type)";
-		 }		
-
+		 }	 
+		
 		//Query google for lat/lon of users requested address
 		$distance = (empty($_POST["distance"]))? $data["distance"]:$_POST["distance"];
 		if(!empty($l_city) && isset($l_city)){ 
@@ -264,8 +267,8 @@ class Bepro_listings{
 		$data = get_option("bepro_listings");
 		
 		//Process user requested Bepro listing types 
-		if(!empty($_POST["type"])){
-			$l_type = $_POST["type"];
+		if(!empty($_POST["l_type"])){
+			$l_type = $_POST["l_type"];
 			foreach($l_type as $raw_t){
 				$types[$raw_t] = 1; 
 			}
@@ -284,7 +287,7 @@ class Bepro_listings{
 			$options = listing_types();
 			foreach($options as $opt){
 				$checked = (isset($types[$opt->term_id]))? "checked='checked'":"";
-				$search_form .= '<input type="checkbox" name="type[]" value="'.$opt->term_id.'" '.$checked.'/><span class="searchcheckbox">'.$opt->name.'</span><br />';
+				$search_form .= '<input type="checkbox" name="l_type[]" value="'.$opt->term_id.'" '.$checked.'/><span class="searchcheckbox">'.$opt->name.'</span><br />';
 			}
 
 			$search_form .= '</td>

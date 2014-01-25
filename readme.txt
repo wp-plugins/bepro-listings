@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: address, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.93
+Stable tag: 2.0.94
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -17,7 +17,7 @@ BePro Listings allows you to list anything incluing, images, documents, audio, a
 
 = Popular Uses =
 
-This plugin is best utilized by those looking to implement listing type features into their own custom design. Setup core wordpress featues, as well as new aspects like, # of uploads, default search distance, and item page details. With our buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Setup core wordpress featues, as well as new aspects like, # of uploads, default search distance, and item page details. With our buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 	* Store Finder - List your stores or shop including, location and contact details 
 	* Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of directory listings site
@@ -31,12 +31,12 @@ This plugin is best utilized by those looking to implement listing type features
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations
 
 = KEY FEATURES =
-Our BePro Software Team is constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with the Information like ($Cost, @Contact, &deg;Lat/Lon). The following features are included with this plugin:
+Our BePro Software Team is constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with diverse content. The following features are included with the plugin:
 
 	1. Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile.
 	2. Custom posts - Listings are separate to your other posts in the admin and front end.
 	3. Listing Categories - (Custom Taxonomies) 4 different directory style layouts including optional images
-	4. Listings - Two templates come with the base plugin and they can be extended.
+	4. Listings - List by Category NEW! (e.g. "featured only"). Two templates come with the base plugin and they can be extended. 
 	5. Google Maps api v3.5 - Great for showing listings via a map with no need for API keys.
 	6. Front end Submission  - Allow visitors to post, or lock it to members only, or it submits to you as pending.
 	7. Validations - User Form Submissions are validated using jQuery.
@@ -63,7 +63,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 
 = THEMES =
 
-BePro Listings has spawned the famous $1 wordpress themes. BePro Listings has so many options that we felt a practical tutorial would be the best introduction. We wanted to prove that you can integrate BePro Listings into any theme. The goal of our $1 wordpress themes, is to showcase BePro Listings features.
+BePro Listings has spawned the famous $1 one dollar wordpress themes. The plugin has so many options, that we felt a practical tutorial would be the best introduction. The goal of our $1 wordpress themes, is to showcase BePro Listings features; However, they posses all of the features of any other theme. Some of our $1 one dollar wordpress themes are complete themes, while others are child themes built on free solutions. We want to prove that you can integrate BePro Listings into any theme and create any type of listings site. CHALLENGE US! 
 
 	1. ByCater - This responsive directory theme features a home page template utilizing (map, search, categories, and listings). It also integrates with typical wordpress features like, sidebar, menu, etc
 	2. FolioProjects - Responsive Child theme for the stock wordpress twentyfourteen teamplate. Perfect for gallery, portfolio, and other sites where you want to emphasize the featured images. Comes with three templates
@@ -92,7 +92,16 @@ These all have options and you can check them out via the documentation link abo
 
 = TRANSLATIONS =
 
-Currently, this plugin supports, English, French, and Spanish. You can contribute other languages
+Currently, this plugin supports, English, French, and Spanish. You can contribute other languages, simply register on our website. Then share your language file in the forums. The process of creating a language file is simple. Start by editing one of the existing language files like:
+
+- http://plugins.svn.wordpress.org/bepro-listings/trunk/languages/bepro-listings-es_ES.po
+
+This link is an online copy of a bepro listings language file. If you have downloaded and/or installed BePro Listings, you have a copy. In the above case, you would replace the spanish translation with your language. You should also rename the file according to your language and country. You can use the following software
+
+- http://poedit.net  (free)
+- https://poeditor.com (basic free)
+
+The usefulness of BePro Listings beyond english, is very important to us. If you find deficiencies in our use of localization, please reach out
 
 = INTRO VIDEO =
 
@@ -251,6 +260,12 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 
 * Upgrade widget code to be 2.8 compatible
 * Fix recent listings widget
+
+= 2.0.94 (Friday, Jan 24th 2013) = 
+
+* New shortcode option to Limit listings and map results to a particular category
+* Fix dropdown categories on front end edit pages
+* Fix to "category filter" results for map and listings
 
 
 == Upgrade Notice ==

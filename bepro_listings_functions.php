@@ -185,7 +185,7 @@
 		//add first post
 		$lat = floatval('44.6470678');
 		$lon = floatval('-63.5747943');
-		if(!empty($post_id))$wpdb->query("INSERT INTO ".$table_name." (email, phone, cost, address_line1, city, postcode, state, country, website, lat, lon, first_name, last_name, post_id) VALUES('support@beprosoftware.com','561-288-5321', 0, '','halifax', '', 'NS','Canada', 'beprosoftware.com', '$lat', '$lon', 'Lead', 'Tester', $post_id)");
+		if(!empty($post_id))$wpdb->query("INSERT INTO ".$table_name." (email, phone, cost, address_line1, city, postcode, state, country, website, lat, lon, first_name, last_name, post_id) VALUES('support@beprosoftware.com','561-555-4321', 0, '','halifax', '', 'NS','Canada', 'beprosoftware.com', '$lat', '$lon', 'Lead', 'Tester', $post_id)");
 		
 		
 		//load default options if they dont already exist		
@@ -321,7 +321,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.94' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.95' );
 		}	
 		
 		$data = get_option("bepro_listings");

@@ -4,7 +4,7 @@ Donate link: http://beprosoftware.com/
 Tags: address, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.94
+Stable tag: 2.0.95
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -25,7 +25,7 @@ BePro Listings can be applied to any listings scenario. It's designed to be modu
 	* Informational - Tourism, points of interest, and other details best shown via map
 	* User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
 	* Image website - Artists are using the new features to show just images in listing results.
-	* Video Listings - You can setup the plugin to feature videos only (uploaded and/or linked)
+	* Video Listings - Setup the plugin to feature videos only (uploaded and/or linked).
 	* Podcast & Music - List all of your audio files including mp3 and wav
 	* Document Directory - Showcase multiple file types and have them show up in search listings
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations
@@ -54,12 +54,13 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 	1. Tags - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget
 	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
 	3. Gallery - Three 3 gallery options including slider & lightbox, plus three new listings templates
-	4. Video - Improve on the Gallery plugin with the ability to add and feature videos in your listings from, youtube, vimeo and uploaded documents (mp4, mpeg, avi, wmv, webm, etc)
+	4. Video - Improve on the Gallery plugin with the ability to upload file types like (mp4, mpeg, avi, wmv, webm). Also link videos from sites like, youtube, vimeo, & dailymotion
 	5. Documents - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)
 	6. Icons - Tons of google map markers/icons from the "Map Icons Collection" by Nicolas Mollet
 	7. Realestate - Add realestate directory related information to listings & the ability to search/filter by realestate details
 	8. S2Member - Limit & get paid for your listings depending on membership levels, using this s2member integration
 	9. Audio - List your podcasts and music on wordpress with this addon. We support several file types including wav, wma, mp3 and m4a
+	10. Favorites - Engage your visitors! Record theirs likes and dislikes to figure out the most popular listings.
 
 = THEMES =
 
@@ -245,27 +246,31 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 
 = 2.0.79 (Friday, Dec 27th 2013) = * New Category templates, styling, and functionality
 
-= 2.0.85 (Tuesday, Jan 14th 2013) = * Fix upload file path and a few other small fixes
+= 2.0.85 (Tuesday, Jan 14th 2014) = * Fix upload file path and a few other small fixes
 
-= 2.0.86 (Wednesday, Jan 15th 2013) = * Update listings content fix
+= 2.0.86 (Wednesday, Jan 15th 2014) = * Update listings content fix
 
-= 2.0.90 (Friday, Jan 17th 2013) = * Substantial upgrade making shortcodes work better with custom templates
+= 2.0.90 (Friday, Jan 17th 2014) = * Substantial upgrade making shortcodes work better with custom templates
 
-= 2.0.92 (Thursday, Jan 23rd 2013) = 
+= 2.0.92 (Thursday, Jan 23rd 2014) = 
 
 * Removing slashes (e.g. won\'t) from listing and item content
 * New admin feature to toggle how lat/lng is retrieved
 
-= 2.0.93 (Friday, Jan 24th 2013) = 
+= 2.0.93 (Friday, Jan 24th 2014) = 
 
 * Upgrade widget code to be 2.8 compatible
 * Fix recent listings widget
 
-= 2.0.94 (Friday, Jan 24th 2013) = 
+= 2.0.94 (Saturday, Jan 25th 2014) = 
 
 * New shortcode option to Limit listings and map results to a particular category
 * Fix dropdown categories on front end edit pages
 * Fix to "category filter" results for map and listings
+
+= 2.0.95 (Friday, Jan 31st 2014) = 
+
+* New ability to specify listing ids and limit in display_listings shortcode
 
 
 == Upgrade Notice ==

@@ -247,15 +247,17 @@
 			  'shorten' => $wpdb->escape($_POST["shorten"]),
 			  'type' => $wpdb->escape($_POST["type"]),
 			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
+			  'l_ids' => $wpdb->escape($_REQUEST["l_ids"]),
+			  'limit' => $wpdb->escape($_REQUEST["limit"]),
 			  'show_paging' => $wpdb->escape($_POST["show_paging"])
 		 ), $atts));
 		 
 		$data = get_option("bepro_listings");
-		$num_results = $data["num_listings"]; 
+		$num_results = (empty($limit)|| !is_numeric($limit))? $data["num_listings"]:$limit; 
 		$type = empty($type)? 1:$type;
 		
 		$echo_this = (empty($raw_results))? false:true;
-		$findings = process_listings_results($show_paging, $num_results, $l_type);				
+		$findings = process_listings_results($show_paging, $num_results, $l_type, $l_ids);				
 		$raw_results = $findings[0];				
 			
 		//Create the GUI layout for the listings
@@ -298,13 +300,17 @@
 	}
 	
 	//process paging and listings
-	function process_listings_results($show_paging = false, $num_results = false, $l_type = false){
+	function process_listings_results($show_paging = false, $num_results = false, $l_type = false, $l_ids = false){
 		global $wpdb;
 		
 		if(!empty($_REQUEST["filter_search"]) || !empty($l_type)){
 			$returncaluse = Bepro_listings::listitems(array('l_type' => $l_type));
 			$filter_cat = true;
 		}	
+		
+		if(!empty($l_ids)){
+			$returncaluse .= " AND posts.ID IN ($l_ids)";
+		}
 
 		//Handle Paging selection calculations and process listings
 		if($show_paging == 1){

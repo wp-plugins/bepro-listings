@@ -368,7 +368,7 @@
 			echo '<span class="result_title">'.$bp_listing->city.','.$bp_listing->state.','.$bp_listing->country.'</span>';
 	}
 	function bepro_listings_list_content_template($bp_listing){
-		$content =  substr($bp_listing->post_content, 0, 130);
+		$content =  substr(strip_tags($bp_listing->post_content), 0, 130);
 		echo '<span class="result_desc">'.stripslashes(do_shortcode($content)).'</span>';
 	}
 	function bepro_listings_list_links_template($bp_listing){

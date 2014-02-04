@@ -111,7 +111,7 @@
 				UNIQUE KEY `post_id` (`post_id`)
 			);";
 
-			require_once(ABSPATH . 'wp-admin/upgrade-functions.php');
+			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 			dbDelta($sql);
 			
 			//Switch to new blog
@@ -321,7 +321,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.96' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.97' );
 		}	
 		
 		$data = get_option("bepro_listings");

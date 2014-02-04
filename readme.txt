@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
-Donate link: http://beprosoftware.com/
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
 Tags: address, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.96
+Stable tag: 2.0.97
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

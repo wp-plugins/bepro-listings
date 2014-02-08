@@ -61,6 +61,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 	8. S2Member - Limit & get paid for your listings depending on membership levels, using this s2member integration
 	9. Audio - List your podcasts and music on wordpress with this addon. We support several file types including wav, wma, mp3 and m4a
 	10. Favorites - Engage your visitors! Record theirs likes and dislikes to figure out the most popular listings.
+	11. Authors - Publicize your authors and give their listings more visibility.
 
 = THEMES =
 

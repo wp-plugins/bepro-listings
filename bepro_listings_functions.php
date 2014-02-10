@@ -134,6 +134,8 @@
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-realestate/'>Real Estate</a> - Everything needed to run a realestate website, including related info (# rooms, #baths, etc) and search options</li>
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-s2member/'>S2Member</a> - For those interested in running a paid directory/classifieds, this plugin integrates with the popular membershp plugin 's2member'</li>
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-audio/'>Audio</a> - Create a, podcasts, music, or any other type of audio focused website. We support, wav, mp3, and several file types</li>
+					<li><a href='www.beprosoftware.com/shop/bepro-listings-favorites/'>Favorites</a> - Allow visitors and registered users to interact with listings. They can record their likes/dislikes and view them via shortcodes</li>
+					<li><a href='www.beprosoftware.com/shop/bepro-listings-authors/'>Authors</a> - Give your Blog writers and their listings more visibility. With this plugin you add their profile info to their listing pages.</li>
 				</ul>
 				<p>Check them all out on the <a href='http://www.beprosoftware.com/products/bepro-listings/'>BePro Lisitngs documentation</a> page along with <b>shortcodes</b> and <b>instructions</b></p><iframe width='560' height='315' src='//www.youtube.com/embed/IfhJmP_LRDs' frameborder='0' allowfullscreen></iframe>",
 				  'post_status' => "publish", 
@@ -199,17 +201,20 @@
 			//forms
 			$data["validate_form"] = "on";
 			$data["success_message"] = 'Listing Created and pending admin approval.';			
+			$data["default_status"] = 'pending';			
 			$data["default_user_id"] = get_current_user_id();	
 			$data["fail_message"] = "Issue saving listing. Try again or contact the Admin";			
 			$data["cat_drop"] = "on";					
 			//search listings
 			$data["default_image"] = plugins_url("images/no_img.jpg", __FILE__ );
+			$data["link_new_page"] = "on";
 			$data["num_listings"] = 3;
 			$data["distance"] = 150;
 			//Page/post
 			$data["gallery_size"] = "thumbnail";
 			$data["gallery_cols"] = 3;
 			$data["show_details"] = "on";
+			$data["add_detail_links"] = "on";
 			$data["show_content"] = "on";
 			//map
 			$data["map_query_type"] = "curl";
@@ -321,7 +326,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.97' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.98' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -407,6 +412,7 @@
 			$success_message = $data["success_message"];
 			$num_images = $data["num_images"];
 			$query_type = $data["map_query_type"];
+			$default_status = empty($data["default_status"])? "pending":$data["default_status"];
 			$return_message = false;
 			
 			$item_name = $wpdb->escape($_POST["item_name"]);
@@ -432,7 +438,7 @@
 					$post = array(
 					  'post_author' => $user_id,
 					  'post_content' => $content,
-					  'post_status' => "pending", 
+					  'post_status' => $default_status, 
 					  'post_title' => $item_name,
 					  'post_type' => "bepro_listings"
 					);  

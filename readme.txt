@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.97
+Stable tag: 2.0.98
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -272,6 +272,13 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 = 2.0.95 (Friday, Jan 31st 2014) = 
 
 * New ability to specify listing ids and limit in display_listings shortcode
+
+= 2.0.98 (Monday Feb 10th 2014) = 
+
+* New admin option for auto publish
+* New admin option for listing links opening new pages
+* New admin option for links on item detail pages for privacy
+* Recent fixes for php notices
 
 
 == Upgrade Notice ==

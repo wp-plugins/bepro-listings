@@ -356,11 +356,12 @@
 	function bepro_listings_list_image_template($bp_listing){
 		$permalink = get_permalink( $bp_listing->post_id );
 		$data = get_option("bepro_listings");
+		$target = empty($data["link_new_page"])? "":'target="_blank"';
 		$thumbnail = get_the_post_thumbnail($bp_listing->post_id, 'thumbnail'); 
 		$thumbnail_check = apply_filters("bepro_listings_list_thumbnail",$bp_listing->post_id);
 		if(!is_numeric($thumbnail_check)) $thumbnail = $thumbnail_check;
 		$default_img = (!empty($thumbnail))? $thumbnail:'<img src="'.$data["default_image"].'"/>';
-		echo '<span class="result_img"><a href="'.$permalink.'" target="_blank">'.$default_img.'</a></span>';
+		echo '<span class="result_img"><a href="'.$permalink.'" '.$target.'>'.$default_img.'</a></span>';
 	}
 	function bepro_listings_list_geo_template($bp_listing){
 		$data = get_option("bepro_listings");
@@ -373,6 +374,7 @@
 	}
 	function bepro_listings_list_links_template($bp_listing){
 		$data = get_option("bepro_listings");
+		$target = empty($data["link_new_page"])? "":'target="_blank"';
 		$permalink = get_permalink( $bp_listing->post_id );
 		if($data["show_cost"]){
 			if(is_numeric($bp_listing->cost)){ 
@@ -388,11 +390,11 @@
 		
 		//website link
 		if(!empty($bp_listing->website))
-			echo '<span class="result_button"><a href="http://'.$bp_listing->website.'" target="_blank">Website</a></span>';
+			echo '<span class="result_button"><a href="http://'.$bp_listing->website.'" '.$target.'>Website</a></span>';
 		
 		//If not private then don't show link to listing
 		if($bp_listing->post_status == "publish")
-			echo '<span class="result_button"><a href="'.$permalink.'" target="_blank">Item</a></span>';
+			echo '<span class="result_button"><a href="'.$permalink.'" '.$target.'>Item</a></span>';
 	}
 	
 	
@@ -425,6 +427,7 @@
 		$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id = ".$page_id);
 		//get settings
 		$data = get_option("bepro_listings");
+		$add_detail_links = empty($data["add_detail_links"])? false:true;
 		if(is_numeric($item->cost)){
 			//formats the price to have comas and dollar sign like currency.
 			$cost = ($item->cost == 0)? __("Free", "bepro-listings") : sprintf('%01.2f', $item->cost);
@@ -444,11 +447,25 @@
 				}
 				//If there is contact information then show it
 				if($data["show_con"] == "on"){
+					if(!empty($item->email)){
+						if($add_detail_links){
+							$email = "<span class='item_label'>".__("Email", "bepro-listings")."</span> - <a href='mailto:".$item->email."'>".$item->email."</a><br />";
+						}else{
+							$email = "<span class='item_label'>".__("Email", "bepro-listings")."</span> - ".$item->email."<br />";
+						}
+					}
+					if(!empty($item->phone)){
+						if($add_detail_links){
+							$phone = "<span class='item_label'>".__("Phone", "bepro-listings")."</span> - <a href='tel:".$item->phone."'>".$item->phone."</a>";
+						}else{
+							$phone = "<span class='item_label'>".__("Phone", "bepro-listings")."</span> - ".$item->phone;
+						}
+					}
 					echo "<div class='item_contactinfo'>
 							".(empty($item->first_name)? "":"<span class='item_label'>".__("First Name", "bepro-listings")."</span> - ".$item->first_name."<br />")."
 							".(empty($item->last_name)? "":"<span class='item_label'>".__("Last Name", "bepro-listings")."</span> - ".$item->last_name."<br />")."
-							".(empty($item->email)? "":"<span class='item_label'>".__("Email", "bepro-listings")."</span> - <a href='mailto:".$item->email."'>".$item->email."</a>"."<br />")."
-							".(empty($item->phone)? "":"<span class='item_label'>".__("Phone", "bepro-listings")."</span> - <a href='tel:".$item->phone."'>".$item->phone."</a>")."
+							".$email."
+							".$phone."
 						</div>";
 				}
 			echo "</span>";

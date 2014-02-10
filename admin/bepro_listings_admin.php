@@ -388,12 +388,14 @@
 			//forms
 			$data["validate_form"] = $_POST["validate_form"];
 			$data["default_user_id"] = $_POST["default_user_id"];
+			$data["default_status"] = $_POST["default_status"];
 			$data["success_message"] = $_POST["success_message"];			
 			$data["fail_message"] = $_POST["fail_message"];			
 			$data["cat_drop"] = $_POST["cat_drop"];			
 			
 			//search listings
 			$data["default_image"] = $_POST["default_image"];
+			$data["link_new_page"] = $_POST["link_new_page"];
 			$data["num_listings"] = $_POST["num_listings"];
 			$data["distance"] = $_POST["distance"];
 			
@@ -401,6 +403,7 @@
 			$data["gallery_size"] = $_POST["gallery_size"];
 			$data["gallery_cols"] = $_POST["gallery_cols"];
 			$data["show_details"] = $_POST["show_details"];
+			$data["add_detail_links"] = $_POST["add_detail_links"];
 			$data["show_content"] = $_POST["show_content"];
 			
 			//map
@@ -452,12 +455,17 @@
 					<div id="tabs-2">
 						<span class="form_label"><?php _e("Validate Form", "bepro-listings"); ?></span><input type="checkbox" name="validate_form" <?php echo ($data["validate_form"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Default User Id", "bepro-listings"); ?></span><input type="text" name="default_user_id" value="<?php echo $data["default_user_id"]; ?>"><br />
+						<span class="form_label"><?php _e("Default Status", "bepro-listings"); ?></span><select name="default_status">
+							<option value="pending" <?php echo ($data["default_status"]== "pending")? 'selected="selected"':"" ?>>Pending</option>
+							<option value="publish" <?php echo ($data["default_status"]== "publish")? 'selected="selected"':"" ?>>Published</option>
+						</select></br>
 						<span class="form_label"><?php _e("Success Message", "bepro-listings"); ?></span><textarea name="success_message"><?php echo $data["success_message"]; ?></textarea><br />
 						<span class="form_label"><?php _e("Fail Message", "bepro-listings"); ?></span><textarea name="fail_message"><?php echo $data["fail_message"]; ?></textarea><br />
 						<span class="form_label"><?php _e("Category Dropdown", "bepro-listings"); ?></span><input type="checkbox" name="cat_drop" <?php echo ($data["cat_drop"]== (1 || "on"))? 'checked="checked"':"" ?>>
 					</div>
 					<div id="tabs-3">
 						<span class="form_label"><?php _e("Default Listing Image", "bepro-listings"); ?></span><input type="text" name="default_image" value="<?php echo $data["default_image"]; ?>" /></br>
+						<span class="form_label"><?php _e("Links Open New Page", "bepro-listings"); ?></span><input type="checkbox" name="link_new_page" <?php echo ($data["link_new_page"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Default # Listings", "bepro-listings"); ?></span><select name="num_listings">
 							<option value="1" <?php echo ($data["num_listings"]== 1)? 'selected="selected"':"" ?>>1</option>
 							<option value="3" <?php echo ($data["num_listings"]== 3)? 'selected="selected"':"" ?>>3</option>
@@ -492,6 +500,7 @@
 							<option value="8" <?php echo ($data["gallery_cols"]== 8)? 'selected="selected"':"" ?>>8</option>
 						</select><br />
 						<span class="form_label"><?php _e("Show Details", "bepro-listings"); ?></span><input type="checkbox" name="show_details" <?php echo ($data["show_details"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Links on Details", "bepro-listings"); ?></span><input type="checkbox" name="add_detail_links" <?php echo ($data["add_detail_links"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Show Content", "bepro-listings"); ?></span><input type="checkbox" name="show_content" <?php echo ($data["show_content"]== (1 || "on"))? 'checked="checked"':"" ?>>
 					</div>
 					<div id="tabs-5">
@@ -505,8 +514,8 @@
 					</div>
 					<div id="tabs-7">
 						<a href="http://beprosoftware.com"><img src="<?php echo BEPRO_LISTINGS_PLUGIN_PATH."/images/bepro_software_logo.png"; ?>"></a><br />
-						<p><b>THANK YOU</b> for your interest and support in this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
 						<iframe width="560" height="315" src="//www.youtube.com/embed/IfhJmP_LRDs" frameborder="0" allowfullscreen></iframe>
+						<p><b>THANK YOU</b> for your interest and support of this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
 						<ul>
 							<li>Support Forum - Join our <a href="http://beprosoftware.com/forums" target="_blank">forums</a> for any support questions</li>
 							<li>Documentation - Instructions, videos, shortcodes, and more on <a href="http://beprosoftware.com/products/bepro-listings/">this dedicated page</a></li>
@@ -516,6 +525,7 @@
 							<li>Social - Our <a href="https://twitter.com/BeProSoftware" target="_blank">Twitter Page</a></li>
 							<li>Rate Us - Give this plugin a rating on <a href="http://wordpress.org/support/view/plugin-reviews/bepro-listings" target="_blank">Wordpress.org</a></li>
 							<li>Youtube - Our <a href="http://www.youtube.com/playlist?list=PLMzIqO2N1YpjMx4QfiCjwFsxxfHVy1goG" target="_blank">Youtube Playlist</a> managed by <a href="http://www.adcoordinates.com" target="_blank">Ad Coordinates</a></li>
+							<li>Donations - We accept donations of any amount <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings">via paypal</a></li>
 							<li><?php _e("Our Link in your footer?", "bepro-listings"); ?> - <input style="vertical-align:middle" type="checkbox" name="footer_link" value="1" <?php echo ($data["footer_link"]== ("on" || 1))? 'checked="checked"':"" ?>></li>
 						</ul>
 						<p>NOTE: We can help with customizing this plugin to fit any of your needs. Simply <a href="http://www.beprosoftware.com/contact-us/" target="_blank">reach out</a>. You will receive a personalized responce from a senior member of our <b>BePro Software Team</b></p>

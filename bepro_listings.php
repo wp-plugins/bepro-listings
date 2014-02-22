@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Everything needed to create a Listings site (business, directory, classifieds, store finder, realestate). It integrates with your theme and provides better control over wordpress features. It also provides a growing list of new options like, costs, contact, and geography (google maps)
-Version: 2.0.98
+Version: 2.0.99
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -63,6 +63,8 @@ class Bepro_listings{
 		add_action( 'bp_init', array( $this, "start_bp_addon") );
 		add_action( 'wp_ajax_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
 		add_action( 'wp_ajax_nopriv_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
+		add_action( 'wp_ajax_bl_ajax_frontend_update', 'bl_ajax_frontend_update' );
+		add_action( 'wp_ajax_nopriv_bl_ajax_frontend_update', 'bl_ajax_frontend_update' );
 		add_action( 'wpmu_new_blog', 'bepro_new_blog', 10, 6);   
 		add_action( 'bepro_listing_types_add_form_fields', 'bepro_listings_add_category_thumbnail_field' );
 		add_action( 'bepro_listing_types_edit_form_fields', 'bepro_listings_edit_category_thumbnail_field', 10,2 );
@@ -106,7 +108,7 @@ class Bepro_listings{
 	}
 
 	//Simple Search Listings Form
-	function searchform($atts){
+	function searchform($atts = array(), $echo_this=false){
 		global $wpdb;
 		extract(shortcode_atts(array(
 			  'listing_page' => $wpdb->escape($_POST["listing_page"])
@@ -136,7 +138,7 @@ class Bepro_listings{
 					</span>
 					<span class="blsearchbuttons">
 					<input type="submit" value="'.__("Search Listings", "bepro-listings").'">
-										<a class="clear_search" href="'.$_SERVER["PHP_SELF"].'"><button>Clear Search</button></a>
+										<a class="clear_search" href="'.get_bloginfo("url")."/".$listing_page.'"><button>Clear Search</button></a>
 					</span>					
 				</form>
 			</div>
@@ -256,12 +258,11 @@ class Bepro_listings{
 		return $returncaluse;
 	}
 
-	function search_filter_options($atts = array()){
+	function search_filter_options($atts = array(), $echo_this = false){
 		global $wpdb;
 		extract(shortcode_atts(array(
 			  'listing_page' => $wpdb->escape($_POST["listing_page"])
 		 ), $atts));
-		$echo_this = (!empty($atts))? true:false;
 		
 		//get settings
 		$data = get_option("bepro_listings");
@@ -275,7 +276,7 @@ class Bepro_listings{
 		}	
 		
 		$search_form = "<div class='filter_search_form'>
-			<form method='post' action='".$listing_page."'>
+			<form id='filter_search_form' method='post' action='".$listing_page."'>
 				<input type='hidden' name='name_search' value='".$_POST["name_search"]."'>
 				<input type='hidden' name='addr_search' value='".$_POST["addr_search"]."'>
 				<input type='hidden' name='filter_search' value='1'>
@@ -324,7 +325,7 @@ class Bepro_listings{
 				<tr>
 					<td>
 						<input type="submit" class="form-submit" value="'.__("Refine Search", "bepro-listings").'" id="edit-submit" name="find">
-						<a href="'.$_SERVER["PHP_SELF"].'"><button>Clear Search</button></a>
+						<a class="clear_search" href="'.get_bloginfo("url")."/".$listing_page.'"><button>Clear Search</button></a>
 					</td>
 				</tr>
 			</table>

@@ -29,7 +29,7 @@ class bepro_widgets {
 	$data["echo_this"] = true;
     echo $args['before_widget'];
     echo $args['before_title'] .__("Filter Listings", "bepro-listings"). $args['after_title'];
-    Bepro_listings::search_filter_options($data);
+    echo Bepro_listings::search_filter_options($data);
     echo $args['after_widget'];
   }
   function bepro_save_widget(){

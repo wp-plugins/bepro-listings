@@ -22,6 +22,7 @@
 	} 
 
 	function bepro_listings_javascript() {
+		$data = get_option("bepro_listings");
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('google-maps' , 'http://maps.google.com/maps/api/js' , false , '3.5&sensor=false');
@@ -31,28 +32,37 @@
 		
 		$scripts .= '
 		<script type="text/javascript">
+			if(!ajaxurl)	
+					var ajaxurl = "'.admin_url('admin-ajax.php').'";
             jQuery(document).ready(function(){
-				jQuery("#min_date").datepicker();
-				jQuery("#max_date").datepicker();
+				if(jQuery("#min_date"))
+					jQuery("#min_date").datepicker();
+				if(jQuery("#max_date"))	
+					jQuery("#max_date").datepicker();
+					
+				jQuery(".delete_link").click(function(element){
+					element.preventDefault();
+					tr_element = jQuery(this).parent().parent();
+					
+					file = jQuery(this)[0].id;
+					file = file.split("::");
+					check = confirm("are you sure you want to delete " +file[2]+ "?");
+					if(check){
+						jQuery.post(ajaxurl, { "action":"bepro_ajax_delete_post", post_id:file[1] }, function(i, message) {
+						   var obj = jQuery.parseJSON(i);
+						   alert(obj["status"]);
+						   if(obj["status"] == "Deleted Successfully!")
+						   tr_element.css("display","none");
+						});
+					}
+				});	
 			});
-			jQuery(".delete_link").click(function(element){
-				element.preventDefault();
-				tr_element = jQuery(this).parent().parent();
-				
-				file = jQuery(this)[0].id;
-				file = file.split("::");
-				check = confirm("are you sure you want to delete " +file[2]+ "?");
-				if(check){
-					jQuery.post(ajaxurl, { "action":"bepro_ajax_delete_post", post_id:file[1] }, function(i, message) {
-					   var obj = jQuery.parseJSON(i);
-					   alert(obj["status"]);
-					   if(obj["status"] == "Deleted Successfully!")
-					   tr_element.css("display","none");
-					});
-				}
-			});
+			
 		</script>';
 		
+		if($data["ajax_on"] == "on")
+			$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings_ajax.js"></script>';
+			
 		echo $scripts;
 		return;
 	}
@@ -208,6 +218,7 @@
 			//search listings
 			$data["default_image"] = plugins_url("images/no_img.jpg", __FILE__ );
 			$data["link_new_page"] = "on";
+			$data["ajax_on"] = "on";
 			$data["num_listings"] = 3;
 			$data["distance"] = 150;
 			//Page/post
@@ -326,7 +337,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.0.98' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.0.99' );
 		}	
 		
 		$data = get_option("bepro_listings");

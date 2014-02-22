@@ -275,3 +275,8 @@
 #bepro_lisings_footer{
 	text-align: center;
 }
+
+/* general */
+.bl_shortcode_selected{
+	display:none;
+}

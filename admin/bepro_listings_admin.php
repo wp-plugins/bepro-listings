@@ -396,6 +396,7 @@
 			//search listings
 			$data["default_image"] = $_POST["default_image"];
 			$data["link_new_page"] = $_POST["link_new_page"];
+			$data["ajax_on"] = $_POST["ajax_on"];
 			$data["num_listings"] = $_POST["num_listings"];
 			$data["distance"] = $_POST["distance"];
 			
@@ -466,6 +467,7 @@
 					<div id="tabs-3">
 						<span class="form_label"><?php _e("Default Listing Image", "bepro-listings"); ?></span><input type="text" name="default_image" value="<?php echo $data["default_image"]; ?>" /></br>
 						<span class="form_label"><?php _e("Links Open New Page", "bepro-listings"); ?></span><input type="checkbox" name="link_new_page" <?php echo ($data["link_new_page"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Ajax On?", "bepro-listings"); ?></span><input type="checkbox" name="ajax_on" <?php echo ($data["ajax_on"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Default # Listings", "bepro-listings"); ?></span><select name="num_listings">
 							<option value="1" <?php echo ($data["num_listings"]== 1)? 'selected="selected"':"" ?>>1</option>
 							<option value="3" <?php echo ($data["num_listings"]== 3)? 'selected="selected"':"" ?>>3</option>

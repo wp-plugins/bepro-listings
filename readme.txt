@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: address, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
+Tags: address, ajax, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.98
+Stable tag: 2.0.99
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -17,7 +17,7 @@ BePro Listings allows you to list anything incluing, images, documents, audio, a
 
 = Popular Uses =
 
-BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Setup core wordpress featues, as well as new aspects like, # of uploads, default search distance, and item page details. With our buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Setup core wordpress featues, as well as new aspects like, # of uploads, ajax filter, default search distance, and item page details. With our buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 	* Store Finder - List your stores or shop including, location and contact details 
 	* Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of directory listings site
@@ -47,6 +47,8 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	12. Admin Options - Control the ability for users to intereact with features and information.
 	13. Multisite - Now multisite compatible, expand the use of this plugin throughout your network.
 	14. Gallery - Works with the wordpress gallery shortcode, so its compatible with many gallery plugins
+
+	15. Ajax (NEW) - Search and filter on one page. Yes, wow is the correct phrase to use!
 
 = ADD ONS =
 Since version 2.0.0, you can now expand on the features of BePro Listings. We have added tons of wordpress hooks and filters to the system. Your visitors will love our file viewers, as well as the ability to play audio and video from your website. We have also improved how our templates are implemented. This provides lots of new ways to customize your listings experinece. Current available add-ons include:
@@ -118,6 +120,8 @@ The usefulness of BePro Listings beyond english, is very important to us. If you
 * Re-save your current permalink settings
 
 * Consider altering the options located under the newly created admin menu for BePro Listings
+
+* It is strongly recommended that beginners keep the "Ajax on" option selected. This simplifies the use of widgets, since you won't have to worry about url forwarding.
 
 * Use shortcodes and/or widgets for user interaction
 
@@ -280,6 +284,15 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 * New admin option for links on item detail pages for privacy
 * Recent fixes for php notices
 
+= 2.0.99 (Saturday Feb 22nd 2014) = 
+
+* Tweaks for listing type 1 style
+* Tweaks to details page layout
+* New admin option for ajax search and filter on the frontend
+* Several changes to the core php functions
+* Changes to the loading of js files
+* Changes to the search filter widget
+* Multiple changes to the, map, category, and listings shortcodes
 
 == Upgrade Notice ==
 

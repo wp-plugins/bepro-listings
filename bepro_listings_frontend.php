@@ -16,11 +16,21 @@
     along with BePro Listings.  If not, see <http://www.gnu.org/licenses/>.
 */	
 
+	//ajax update front end
+	function bl_ajax_frontend_update(){
+		$map = generate_map();
+		$cat = display_listing_categories();
+		$listings = display_listings();
+		$filter = Bepro_listings::search_filter_options();
+		$search = Bepro_listings::searchform();
+		echo json_encode(array("map" =>$map,"cat" =>$cat,"listings" =>$listings,"filter" =>$filter,"search" =>$search ));
+		exit;
+	}
+	
 	//Create map, used by shortcode and widget
-	function generate_map($atts = array(), $raw_results = array()){
+	function generate_map($atts = array(), $echo_this = false){
 		global $wpdb;
 		
-		$echo_this = (!empty($atts))? true:false;
 		extract(shortcode_atts(array(
 			  'pop_up' => $wpdb->escape($_POST["pop_up"]),
 			  'size' => $wpdb->escape($_POST["size"]),
@@ -87,7 +97,11 @@
 				}
 			});
 		</script>
-		<div id='map' class='result_map_$size'></div>";
+		<div id='shortcode_map'>
+		<div id='bl_size' class='bl_shortcode_selected'>$size</div>
+		<div id='bl_pop_up' class='bl_shortcode_selected'>$pop_up</div>
+		<div id='map' class='result_map_$size'></div>
+		</div>";
 		if($echo_this){
 			echo $map;
 		}else{	
@@ -146,7 +160,7 @@
 	}
 	
 	//Show categories Called from shortcode
-	function display_listing_categories($atts = array()){
+	function display_listing_categories($atts = array(), $echo_this = false){
 		global $wpdb;
 		$no_img = plugins_url("images/no_img.jpg", __FILE__ );
 		extract(shortcode_atts(array(
@@ -156,13 +170,16 @@
 		 ), $atts));
 		
 		
-		$cat_heading = (!empty($_GET["l_type"]) && is_numeric($_GET["l_type"]))? "Sub Categories":"Categories";
+		$cat_heading = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? "Sub Categories":"Categories";
 		$parent = (!empty($cat) && is_numeric($cat))? $cat:0;
-		$parent = (!empty($_GET["l_type"]) && is_numeric($_GET["l_type"]))? $_GET["l_type"]:0;  
+		$parent = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $_REQUEST["l_type"]:0;  
 		
-		$categories = get_terms( 'bepro_listing_types', 'orderby=count&hide_empty=0&parent='.$parent );
+		$query_args = array('orderby'=>'count', 'hide_empty' =>0);
+		$parent =(is_array($parent))? $query_args['include'] = $parent:$query_args['parent'] = $parent; 
 		
-		$cat_list = "<h3>".__($cat_heading,"bepro_listings")."</h3><div class='cat_lists'>";
+		$categories = get_terms( array('post_tag','bepro_listing_types'), $query_args);
+		
+		$cat_list = "<div id='shortcode_cat' class='cat_lists'><h3>".__($cat_heading,"bepro_listings")."</h3>";
 		
 		if($categories && (count($categories) > 0)){
 			foreach($categories as $cat){
@@ -173,6 +190,7 @@
 		}
 		$cat_list.= "</div>";
 		
+		$cat_list.= "<div id='bl_ctype' class='bl_shortcode_selected'>$ctype</div>";
 		if($echo_this){
 			echo $cat_list;
 		}else{	
@@ -240,11 +258,10 @@
 	}
 	
 	
-	//Show listings Called from shortcode. type is the template to use. l_type is the category to filter by.
-	function display_listings($atts = array(), $raw_results = array(), $enlarge_map = 0){
+	//Show listings Called from shortcode or ajax. type is the template to use. l_type is the category to filter by.
+	function display_listings($atts = array(), $echo_this = false){
 		global $wpdb;
 		extract(shortcode_atts(array(
-			  'shorten' => $wpdb->escape($_POST["shorten"]),
 			  'type' => $wpdb->escape($_POST["type"]),
 			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
 			  'l_ids' => $wpdb->escape($_REQUEST["l_ids"]),
@@ -256,7 +273,6 @@
 		$num_results = (empty($limit)|| !is_numeric($limit))? $data["num_listings"]:$limit; 
 		$type = empty($type)? 1:$type;
 		
-		$echo_this = (empty($raw_results))? false:true;
 		$findings = process_listings_results($show_paging, $num_results, $l_type, $l_ids);				
 		$raw_results = $findings[0];				
 			
@@ -292,6 +308,9 @@
 			$paging .= "</div>";
 			if($counter > 1) $results.= $paging; // if no pages then dont show this
 		}
+		
+		$results = "<div id='shortcode_list'>".$results."</div>";
+		$results .= "<div id='bl_limit' class='bl_shortcode_selected'>$limit</div><div id='bl_type' class='bl_shortcode_selected'>$type</div><div id='bl_show_paging' class='bl_shortcode_selected'>$show_paging</div>";
 		if($echo_this){
 			echo $results;
 		}else{	
@@ -369,8 +388,8 @@
 			echo '<span class="result_title">'.$bp_listing->city.','.$bp_listing->state.','.$bp_listing->country.'</span>';
 	}
 	function bepro_listings_list_content_template($bp_listing){
-		$content =  substr(strip_tags($bp_listing->post_content), 0, 130);
-		echo '<span class="result_desc">'.stripslashes(do_shortcode($content)).'</span>';
+		$content =  substr(strip_tags($bp_listing->post_content), 0, 80);
+		echo '<span class="result_desc">'.stripslashes(do_shortcode($content)).'...</span>';
 	}
 	function bepro_listings_list_links_template($bp_listing){
 		$data = get_option("bepro_listings");
@@ -435,7 +454,7 @@
 			$cost = __("Please Contact", "bepro-listings");
 		}
 		
-		if(!empty($data["show_details"]) && (($data["show_details"] == "on")|| ($data["show_details"] == "on")) ){
+		if(($data["show_geo"] == "on") || ($data["show_cost"] == "on") || ($data["show_con"] == "on") ){
 			echo "<h3>Details : </h3><span class='bepro_listing_info'>";
 			if($data["show_cost"] == "on"){
 				echo "<div class='item_cost'>".__("Cost", "bepro-listings")." - ".$cost."</div>";

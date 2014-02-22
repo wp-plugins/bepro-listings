@@ -333,7 +333,7 @@
 
 		//Handle Paging selection calculations and process listings
 		if($show_paging == 1){
-			$page = (empty($_GET["lpage"]))? 1 : $_GET["lpage"];
+			$page = (empty($_REQUEST["lpage"]))? 1 : $_REQUEST["lpage"];
 			$page = ($page - 1) * $num_results;
 			$limit_clause = " ORDER BY posts.post_title ASC LIMIT $page , $num_results";
 			$resvs = bepro_get_listings($returncaluse, $filter_cat);

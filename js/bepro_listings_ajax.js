@@ -38,6 +38,44 @@ jQuery(document).ready(function(){
 		}});	
 	});
 	
+	jQuery("body").on("click",".paging a",function(element){
+		element.preventDefault();
+		href = jQuery(this).attr("href");
+		raw_val = href.split("lpage=");
+		lpage = raw_val[1];
+		shortcode_vals = get_bl_shortcode_vals();
+		bl_ajax_init();
+		fairy_dust = "";
+		if(jQuery("#filter_search_form")){
+			fairy_dust = jQuery("#filter_search_form").serialize();
+		}else if(jQuery("#listingsearchform")){
+			if(jQuery("input[name=filter_search]").val(l_type))
+				fairy_dust = jQuery("#listingsearchform").serialize();
+		}
+
+		fairy_dust = fairy_dust + "&lpage=" + lpage;		
+			
+		jQuery.ajax({
+			type : "POST",
+			url : ajaxurl, 
+			data: fairy_dust + "&action=bl_ajax_frontend_update" + shortcode_vals, 
+			success : function(r_c){
+			options = jQuery.parseJSON(r_c);
+			bl_ajax_complete();
+			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+				jQuery("#shortcode_map").replaceWith(options.map);
+			if(((options.cat).length > 0) && (jQuery("#shortcode_cat")))
+				jQuery("#shortcode_cat").replaceWith(options.cat);
+			if(((options.listings).length > 0) && (jQuery("#shortcode_list")))
+				jQuery("#shortcode_list").replaceWith(options.listings);
+			if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
+				jQuery("#filter_search_form").replaceWith(options.filter);
+			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
+				jQuery("#listingsearchform").replaceWith(options.search);
+		
+		}});	
+	});
+	
 	jQuery(".clear_search button").click(function(element){
 		element.preventDefault();
 	});

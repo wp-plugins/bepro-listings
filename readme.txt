@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, ajax, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.0.99
+Stable tag: 2.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -293,6 +293,11 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 * Changes to the loading of js files
 * Changes to the search filter widget
 * Multiple changes to the, map, category, and listings shortcodes
+
+
+= 2.0.30 (Saturday Feb 22nd 2014) = 
+
+* AJAX pagination
 
 == Upgrade Notice ==
 

@@ -121,7 +121,7 @@ The usefulness of BePro Listings beyond english, is very important to us. If you
 
 * Consider altering the options located under the newly created admin menu for BePro Listings
 
-* It is strongly recommended that beginners keep the "Ajax on" option selected. This simplifies the use of widgets, since you won't have to worry about url forwarding.
+* It is strongly recommended that beginners keep the "Ajax on" option selected. This simplifies the use of widgets and shortcodes, since you won't have to worry about url forwarding.
 
 * Use shortcodes and/or widgets for user interaction
 

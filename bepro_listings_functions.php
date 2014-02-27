@@ -337,7 +337,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.0' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.01' );
 		}	
 		
 		$data = get_option("bepro_listings");

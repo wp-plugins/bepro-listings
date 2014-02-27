@@ -33,7 +33,7 @@ jQuery(document).ready(function(){
 			if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
 				jQuery("#filter_search_form").replaceWith(options.filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
-				jQuery("#listingsearchform").replaceWith(options.search);
+				jQuery(".search_listings").replaceWith(options.search);
 		
 		}});	
 	});
@@ -71,7 +71,7 @@ jQuery(document).ready(function(){
 			if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
 				jQuery("#filter_search_form").replaceWith(options.filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
-				jQuery("#listingsearchform").replaceWith(options.search);
+				jQuery(".search_listings").replaceWith(options.search);
 		
 		}});	
 	});
@@ -100,7 +100,7 @@ jQuery(document).ready(function(){
 			if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
 				jQuery("#filter_search_form").replaceWith(options.filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
-				jQuery("#listingsearchform").replaceWith(options.search);
+				jQuery(".search_listings").replaceWith(options.search);
 		}});
 	});
 	
@@ -125,7 +125,7 @@ jQuery(document).ready(function(){
 			if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
 				jQuery("#filter_search_form").replaceWith(options.filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
-				jQuery("#listingsearchform").replaceWith(options.search);
+				jQuery(".search_listings").replaceWith(options.search);
 		
 		}});
 	});

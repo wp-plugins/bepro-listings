@@ -28,6 +28,44 @@
 	}
 	
 	//Create map, used by shortcode and widget
+	function bl_all_in_one($atts = array(), $echo_this = false){
+		global $wpdb;
+		
+		$return_text = "";
+		extract(shortcode_atts(array(
+			  'l_type' => $wpdb->escape($_REQUEST["l_type"])
+		 ), $atts));
+		 
+		if($l_type == "a1"){ 
+			$return_text .= do_shortcode("[search_form]"); 
+			$return_text .=  do_shortcode("[generate_map size=1]"); 
+			$return_text .=  do_shortcode("[display_listing_categories]"); 
+			$return_text .=  do_shortcode("[display_listings]"); 
+		}elseif($l_type == "a2"){ 
+			$return_text .=  do_shortcode("[search_form]"); 
+			$return_text .=  do_shortcode("[generate_map size=2]"); 
+			$return_text .=  do_shortcode("[display_listing_categories]"); 
+			$return_text .=  do_shortcode("[display_listings]"); 
+		}elseif($l_type == "a3"){ 
+			$return_text .=  do_shortcode("[search_form]"); 
+			$return_text .=  do_shortcode("[generate_map size=3]"); 
+			$return_text .=  do_shortcode("[display_listing_categories ctype=1]"); 
+			$return_text .=  do_shortcode("[display_listings]"); 
+		}else{
+			$return_text .=  do_shortcode("[search_form]"); 
+			$return_text .=  do_shortcode("[generate_map size=4]"); 
+			$return_text .=  do_shortcode("[display_listing_categories]"); 
+			$return_text .=  do_shortcode("[display_listings]"); 
+		}
+		
+		if($echo_this){
+			echo $return_text;
+		}else{	
+			return $return_text;
+		}
+	}
+	
+	//Create map, used by shortcode and widget
 	function generate_map($atts = array(), $echo_this = false){
 		global $wpdb;
 		
@@ -177,7 +215,7 @@
 		$query_args = array('orderby'=>'count', 'hide_empty' =>0);
 		$parent =(is_array($parent))? $query_args['include'] = $parent:$query_args['parent'] = $parent; 
 		
-		$categories = get_terms( array('post_tag','bepro_listing_types'), $query_args);
+		$categories = get_terms( array('bepro_listing_types'), $query_args);
 		
 		$cat_list = "<div id='shortcode_cat' class='cat_lists'><h3>".__($cat_heading,"bepro_listings")."</h3>";
 		
@@ -436,9 +474,9 @@
 	function bepro_listings_item_after_gallery_template(){
 		$page_id = get_the_ID();
 		//show categories
-		$cat_section = "<h3>Categories : </h3><div class='bepro_listing_category_section'>".get_the_term_list($page_id, 'bepro_listing_types', '', ', ','')."</div>";
-
-		echo $cat_section;
+		$cats = get_the_term_list($page_id, 'bepro_listing_types', '', ', ','');
+		if($cats)
+		echo $cat_section = "<div class='bepro_listing_category_section'><h3>Categories : </h3>".$cats."</div>";
 	}
 	function bepro_listings_item_details_template(){
 		global $wpdb;

@@ -217,7 +217,7 @@
 			$data["cat_drop"] = "on";					
 			//search listings
 			$data["default_image"] = plugins_url("images/no_img.jpg", __FILE__ );
-			$data["link_new_page"] = "on";
+			$data["link_new_page"] = 1;
 			$data["ajax_on"] = "on";
 			$data["num_listings"] = 3;
 			$data["distance"] = 150;
@@ -337,7 +337,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.01' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.02' );
 		}	
 		
 		$data = get_option("bepro_listings");

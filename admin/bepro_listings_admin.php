@@ -466,7 +466,11 @@
 					</div>
 					<div id="tabs-3">
 						<span class="form_label"><?php _e("Default Listing Image", "bepro-listings"); ?></span><input type="text" name="default_image" value="<?php echo $data["default_image"]; ?>" /></br>
-						<span class="form_label"><?php _e("Links Open New Page", "bepro-listings"); ?></span><input type="checkbox" name="link_new_page" <?php echo ($data["link_new_page"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("How Links Open", "bepro-listings"); ?></span><select name="link_new_page">
+							<option value="1" <?php echo ($data["link_new_page"] == 1)? 'selected="selected"':"" ?>>Go To Page</option>
+							<option value="2" <?php echo ($data["link_new_page"] == 2)? 'selected="selected"':"" ?>>New Tab</option>
+							<option value="3" <?php echo ($data["link_new_page"] == 3)? 'selected="selected"':"" ?>>Ajax Page</option>
+						</select><br />
 						<span class="form_label"><?php _e("Ajax On?", "bepro-listings"); ?></span><input type="checkbox" name="ajax_on" <?php echo ($data["ajax_on"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Default # Listings", "bepro-listings"); ?></span><select name="num_listings">
 							<option value="1" <?php echo ($data["num_listings"]== 1)? 'selected="selected"':"" ?>>1</option>

@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Everything needed to create a Listings site (business, directory, classifieds, store finder, realestate). It integrates with your theme and provides better control over wordpress features. It also provides a growing list of new options like, costs, contact, and geography (google maps)
-Version: 2.1.01
+Version: 2.1.02
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -63,6 +63,8 @@ class Bepro_listings{
 		add_action( 'bp_init', array( $this, "start_bp_addon") );
 		add_action( 'wp_ajax_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
 		add_action( 'wp_ajax_nopriv_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
+		add_action( 'wp_ajax_bl_ajax_result_page', 'bl_ajax_result_page' );
+		add_action( 'wp_ajax_nopriv_bl_ajax_result_page', 'bl_ajax_result_page' );
 		add_action( 'wp_ajax_bl_ajax_frontend_update', 'bl_ajax_frontend_update' );
 		add_action( 'wp_ajax_nopriv_bl_ajax_frontend_update', 'bl_ajax_frontend_update' );
 		add_action( 'wpmu_new_blog', 'bepro_new_blog', 10, 6);   

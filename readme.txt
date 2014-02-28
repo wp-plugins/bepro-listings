@@ -4,16 +4,20 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, ajax, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.01
+Stable tag: 2.1.02
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Searchable listings (business, directory, classifieds, store finder) w/ options like (google maps, gallery, front end upload, & buddypress)
 
 == Description ==
-BePro Listings allows you to list anything incluing, images, documents, audio, and videos on any page or post. Shortcodes & widgets help you to search and showcase this information in various formats including multiple listing templates and google maps. There is no Listings focused plugin (directory/classifieds/etc) with more free or paid features. This is the perfect foundation for your listings site.
+BePro Listings allows you to list anything incluing, images, documents, audio, and videos on any page or post. Shortcodes & widgets help you to search and showcase this information in various formats including multiple listing templates and google maps. This is the perfect foundation for your listings site.
 
 [Main Site](http://beprosoftware.com/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Hire a Developer](http://beprosoftware.com/jobs/)
+
+= Easy Setup (Just one and done) =
+
+Put our all in one shortcode [bl_all_in_one] in any page or post. Then on the options page in the admin (Bepro Listings -> Options), click the search/listings tab. Select "Ajax Page" from the "how links open" select box. Thats it, everything works on one page (map, listings,categories,etc). When you are ready for custom configurations, we have a plethora of options. 
 
 = Popular Uses =
 
@@ -97,6 +101,8 @@ These all have options and you can check them out via the documentation link abo
 = TROUBLE SHOOTING =
 
 * 404 Error - If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings, so that they are reset for all urls. The option is under your settings menu.
+
+* Google Maps - If google map controls look weird, this has absolutely nothing to do with the plugin. This is a css style related issue (your theme). Specifically, its the addition of max-width declarations to images. In fact, you should google the issue (google maps max-width). Lots of bootstrap themes use this css declaration.
 
 = TRANSLATIONS =
 
@@ -311,6 +317,11 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 * Tweak category layout
 * Fix search from ajax issues
 * New feature bl_all_in_one shortcode
+
+= 2.1.02 (Friday Feb 28th 2014) = 
+
+* Fix map widget issue
+* (New feature) Ajax pages
 
 == Upgrade Notice ==
 

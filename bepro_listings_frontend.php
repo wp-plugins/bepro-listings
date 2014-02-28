@@ -27,6 +27,85 @@
 		exit;
 	}
 	
+	function bl_ajax_result_page(){
+		$listings = bl_ajax_get_listings();
+		$map = generate_map();
+		$cat = display_listing_categories();
+		$filter = Bepro_listings::search_filter_options();
+		$search = Bepro_listings::searchform();
+		echo json_encode(array("map" =>$map,"cat" =>$cat,"listings" =>$listings,"filter" =>$filter,"search" =>$search ));
+		exit;
+	}
+	
+	function bl_ajax_get_listings(){
+		/*
+		ob_start();
+		include(plugin_dir_path( __FILE__ )."templates/ajax-single-listing.php");
+		return trim( ob_get_clean() );	
+		*/
+		$post_id = is_numeric($_POST["bl_post_id"])? $_POST["bl_post_id"]:false;
+		if($post_id){
+			$the_query = new WP_Query( array("post_type" => "bepro_listings", 'p' => $post_id) );
+			while ( $the_query->have_posts() ) {
+				$the_query->the_post();
+				ob_start();
+				echo '<div id="shortcode_list">';
+				echo result_page_back_button();
+				echo "<h1>";
+				do_action( 'bepro_listings_item_title' );
+				echo "</h1>";
+				do_action( 'bepro_listings_item_above_gallery' );
+				do_action( 'bepro_listings_item_gallery');
+				do_action( 'bepro_listings_item_after_gallery');
+				do_action( 'bepro_listings_item_before_details');
+				do_action( 'bepro_listings_item_details');
+				do_action( 'bepro_listings_item_after_details');
+				do_action("bepro_listings_item_content_info");
+				do_action("bepro_listings_item_end");
+				echo "</div>";
+				$data = ob_get_contents();
+				ob_clean();
+			}
+			$post = get_post($post_id);
+			$_POST["l_name"] = $post->post_title;
+			$cats = get_terms( array('bepro_listing_types'), array('post_id' => $post_id));
+			$cats = wp_get_post_terms( $post_id , "bepro_listing_types", array("fields" => "ids"));
+			$term = array();
+			foreach($cats as $cat){
+				$term[] = $cat;
+			}
+			$_POST["l_type"] = $term;
+			$_REQUEST["l_type"] = $term;
+		}else{
+			$data = "something went wrong";
+		}
+		return $data;
+	}
+	
+	function result_page_back_button(){
+		$l_type = "";
+		if(!empty($_POST["l_type"]))
+		foreach($_POST["l_type"] as $check_l_type){
+			if(is_numeric($check_l_type))
+				$l_type .='<input type="hidden" name="l_type[]" value="'.$check_l_type.'">';
+		}
+		$button = '
+			<form method="post" id="result_page_back_button">
+				<input type="hidden" name="filter_search" value="1">
+				'.$l_type.'
+				<input type="hidden" name="distance" value="'.$_POST["distance"].'">
+				<input type="hidden" name="min_date" value="'.$_POST["min_date"].'">
+				<input type="hidden" name="max_date" value="'.$_POST["max_date"].'">
+				<input type="hidden" name="min_cost" value="'.$_POST["min_cost"].'">
+				<input type="hidden" name="max_cost" value="'.$_POST["max_cost"].'">
+				<input type="hidden" name="addr_search" value="'.$_POST["addr_search"].'">
+				<input type="hidden" name="name_search" id="name_search" value="'.$_POST["name_search"].'">
+				<input type="submit" value="Return To Results">
+			</form>
+		';
+		return $button;
+	}
+	
 	//Create map, used by shortcode and widget
 	function bl_all_in_one($atts = array(), $echo_this = false){
 		global $wpdb;
@@ -73,7 +152,8 @@
 			  'pop_up' => $wpdb->escape($_POST["pop_up"]),
 			  'size' => $wpdb->escape($_POST["size"]),
 			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
-			  'show_paging' => $wpdb->escape($_POST["show_paging"])
+			  'show_paging' => $wpdb->escape($_POST["show_paging"]),
+			  'bl_post_id' => $wpdb->escape($_POST["bl_post_id"])
 		 ), $atts));
 		 
 		//Setup data
@@ -83,7 +163,7 @@
 		
 		
 		//Get Listing Results
-		$findings = process_listings_results($show_paging, $num_results, $l_type);				
+		$findings = process_listings_results($show_paging, $num_results, $l_type, $bl_post_id);				
 		$raw_results = $findings[0];
 		
 		//Setup Listing Markers
@@ -153,6 +233,17 @@
 	
 	function bepro_listings_simple_infowindow($result, $counter){
 		$permalink = get_permalink( $result->post_id );
+		$data = get_option("bepro_listings");
+		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
+		
+		if($target == 2){
+			$link = 'var win=window.open("'.$permalink.'", "_blank"); win.focus();';
+		}elseif($target == 3){
+			$link = 'bl_ajax_get_page("'.$result->post_id.'")';	
+		}else{
+			$link = 'window.location.href = "'.$permalink.'"';
+		}
+		
 		return 'var infowindow_'.$counter.' = new google.maps.InfoWindow( { content: "<div class=\"marker_content\"><span class=\"marker_detais\">'.$result->post_title.'</span></div>", size: new google.maps.Size(50,50)});
 				  google.maps.event.addListener(marker_'.$counter.', "mouseover", function() {
 					if(openwindow){
@@ -162,16 +253,25 @@
 					openwindow = infowindow_'.$counter.';
 				  });
 				  google.maps.event.addListener(marker_'.$counter.', "click", function() {
-					window.location.href = "'.$permalink.'";
+					'.$link.';
 				  });
 			';
 	}
 	
 	function bepro_listings_detailed_infowindow($result, $counter){
 		$thumbnail = get_the_post_thumbnail($result->post_id, 'thumbnail'); 
+		$data = get_option("bepro_listings");
+		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
 		$default_img = (!empty($thumbnail))? $thumbnail:'<img src="'.$data["default_image"].'"/>';
-
-		return "var infowindow_".$counter." = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_title\">".addslashes(substr($result->post_title,0,18))."</span><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->address_line1.", ".$result->city.", ".$result->state.", ".$result->country."</span><span class=\"marker_links\"><a href=\"http://".urlencode($result->website)."\">Visit Website</a><br /><a href=\"".get_permalink($result->post_id)."\">View Listing</a></span></div>', size: new google.maps.Size(50,50)});
+		if($target == 2){
+			$link = "<a href=\"http://".urlencode($result->website)."\" target='_blank'>Visit Website</a>";
+		}elseif($target == 3){
+			$link = $link = "<a href=\"http://".urlencode($result->website)."\" class='bl_ajax_result_page' post_id=\"".$result->post_id."\">Visit Website</a>";
+		}else{
+			$link ="<a href=\"http://".urlencode($result->website)."\" post_id=\"".$bp_listing->post_id."\">>Visit Website</a>";
+		}
+		
+		return "var infowindow_".$counter." = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_title\">".addslashes(substr($result->post_title,0,18))."</span><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->address_line1.", ".$result->city.", ".$result->state.", ".$result->country."</span><span class=\"marker_links\">".$link."<br /><a href=\"".get_permalink($result->post_id)."\">View Listing</a></span></div>', size: new google.maps.Size(50,50)});
 				  google.maps.event.addListener(marker_".$counter.", \"click\", function() {
 					if(openwindow){
 						eval(openwindow).close();
@@ -210,7 +310,7 @@
 		
 		$cat_heading = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? "Sub Categories":"Categories";
 		$parent = (!empty($cat) && is_numeric($cat))? $cat:0;
-		$parent = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $_REQUEST["l_type"]:0;  
+		$parent = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $_REQUEST["l_type"]:0; 
 		
 		$query_args = array('orderby'=>'count', 'hide_empty' =>0);
 		$parent =(is_array($parent))? $query_args['include'] = $parent:$query_args['parent'] = $parent; 
@@ -413,12 +513,19 @@
 	function bepro_listings_list_image_template($bp_listing){
 		$permalink = get_permalink( $bp_listing->post_id );
 		$data = get_option("bepro_listings");
-		$target = empty($data["link_new_page"])? "":'target="_blank"';
+		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
 		$thumbnail = get_the_post_thumbnail($bp_listing->post_id, 'thumbnail'); 
 		$thumbnail_check = apply_filters("bepro_listings_list_thumbnail",$bp_listing->post_id);
 		if(!is_numeric($thumbnail_check)) $thumbnail = $thumbnail_check;
 		$default_img = (!empty($thumbnail))? $thumbnail:'<img src="'.$data["default_image"].'"/>';
-		echo '<span class="result_img"><a href="'.$permalink.'" '.$target.'>'.$default_img.'</a></span>';
+		
+		if($target == 2){
+			echo '<span class="result_img"><a href="'.$permalink.'" target="_blank">'.$default_img.'</a></span>';
+		}elseif($target == 3){
+			echo '<span class="result_img"><a href="'.$permalink.'" class="bl_ajax_result_page" post_id="'.$bp_listing->post_id.'">'.$default_img.'</a></span>';	
+		}else{
+			echo '<span class="result_img"><a href="'.$permalink.'">'.$default_img.'</a></span>';
+		}
 	}
 	function bepro_listings_list_geo_template($bp_listing){
 		$data = get_option("bepro_listings");
@@ -431,7 +538,7 @@
 	}
 	function bepro_listings_list_links_template($bp_listing){
 		$data = get_option("bepro_listings");
-		$target = empty($data["link_new_page"])? "":'target="_blank"';
+		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
 		$permalink = get_permalink( $bp_listing->post_id );
 		if($data["show_cost"]){
 			if(is_numeric($bp_listing->cost)){ 
@@ -444,14 +551,28 @@
 			//cost
 			echo '<span class="result_cost">'.$cost.'</span>';
 		}
-		
-		//website link
-		if(!empty($bp_listing->website))
-			echo '<span class="result_button"><a href="http://'.$bp_listing->website.'" '.$target.'>Website</a></span>';
-		
-		//If not private then don't show link to listing
-		if($bp_listing->post_status == "publish")
-			echo '<span class="result_button"><a href="'.$permalink.'" '.$target.'>Item</a></span>';
+			
+		/*
+		* 1 = go to page
+		* 2 = new window
+		* 3 = ajax page
+		*/		
+		if($target == 2){
+			if(!empty($bp_listing->website))
+				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'"  target="_blank">Website</a></span>';
+			
+			if($bp_listing->post_status == "publish")
+				echo '<span class="result_button"><a href="'.$permalink.'" target="_blank">Item</a></span>';
+		}elseif($target == 3){
+			if($bp_listing->post_status == "publish")
+				echo '<span class="result_button"><a class="bl_ajax_result_page" post_id="'.$bp_listing->post_id.'" href="'.$permalink.'" '.$target.'>Item</a></span>';
+		}else{
+			if(!empty($bp_listing->website))
+				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'">Website</a></span>';
+			
+			if($bp_listing->post_status == "publish")
+				echo '<span class="result_button"><a href="'.$permalink.'">Item</a></span>';
+		}
 	}
 	
 	

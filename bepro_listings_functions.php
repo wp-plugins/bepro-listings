@@ -337,7 +337,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.02' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.03' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -410,6 +410,7 @@
 			$message["status"] = "Problem Deleting Listing";;
 		}
 		echo json_encode($message);
+		exit;
 	}
 	
 	function bepro_listings_save($post_id = false){

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, ajax, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.02
+Stable tag: 2.1.03
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -322,6 +322,11 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 
 * Fix map widget issue
 * (New feature) Ajax pages
+
+= 2.1.03 (Saturday Mar 1st 2014) = 
+
+* Fix minor map popup html display issue
+* Fix delete feature for buddypress front end users
 
 == Upgrade Notice ==
 

@@ -13,7 +13,7 @@ Searchable listings (business, directory, classifieds, store finder) w/ options 
 == Description ==
 BePro Listings allows you to list anything incluing, images, documents, audio, and videos on any page or post. Shortcodes & widgets help you to search and showcase this information in various formats including multiple listing templates and google maps. This is the perfect foundation for your listings site.
 
-[Main Site](http://beprosoftware.com/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Hire a Developer](http://beprosoftware.com/jobs/)
+[Main Site](http://beprosoftware.com/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/)
 
 = Easy Setup (Just one and done) =
 
@@ -81,11 +81,11 @@ BePro Listings has spawned the famous $1 one dollar wordpress themes. The plugin
 
 = WHATS THE DIFFERENCE? =
 
-Here at BeProSoftware.com, we focus on providing building blocks for developers and designers. BePro Listings works with buddypress in its free stock form. We also integrate with s2member, many gallery plugins (e.g. galleria), and any other plugin which is in line with our goals. This provides you the customer, with the flexibility to select the best components for your listings/directory/classifieds/portfolio site.
+BePro Listings works with buddypress and many gallery plugins (e.g. galleria) in its free stock form. We also integrate with s2member and several other plugin to provide you the customer, with the flexibility to select the best components for your listings/directory/classifieds/portfolio site.
 
-We believe that bundling plugins into themes forces unneeded bloating. Our plugins are tested to work cohesively, as if packaged in a theme; However, they are offered separtely for custom solutions. Why pay for document management if you don't want that feature? The prices of our Addons start at $5 and help to further development of the plugin.
+We believe that integrating plugins into themes forces unneeded bloating. Our plugins are tested to work cohesively, as if coded into a theme; However, they are offered separtely for custom solutions. Why pay for document management if you don't want that feature? The prices of our Addons start at $5 and help to further development of the plugin. You can also buy bundles of plugins and themes for great discounts.
 
-BePro Listings is also built for developers to expand. Our addons benefit from the foundation of "BePro Listings" and generally focus on targeted solutions. So for e.g. if you created the addon "BePro Listings realestate", you wouldnt worry about the boring things like, search, ajax, directory management, admin area, etc. You just work on the features which make a good realestate plugin.
+BePro Listings is built for various levels of users. Our novice users will appreciate our $1 themes, ajax features and "all in one" shortcodes. Our intermediate users will appreiate the plethora of configuration options. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 
 = SHORTCODES =
 These all have options and you can check them out via the documentation link above.

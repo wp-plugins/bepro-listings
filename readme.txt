@@ -8,16 +8,16 @@ Stable tag: 2.1.03
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Searchable listings (business, directory, classifieds, store finder) w/ options like (google maps, gallery, front end upload, & buddypress)
+Custom listings (business, directory, classifieds, store finder) w/ options like (google maps, gallery, front end upload, & ajax search/filter)
 
 == Description ==
-BePro Listings allows you to list anything incluing, images, documents, audio, and videos on any page or post. Shortcodes & widgets help you to search and showcase this information in various formats including multiple listing templates and google maps. This is the perfect foundation for your listings site.
+BePro Listings allows you to list anything incluing, images, documents, audio, and videos on any page or post. Shortcodes & widgets help you to search, filter and showcase this information in various ways including google maps and multiple listing templates. Choose between our easy one page/shortcode setup with ajax features or configurable distributed architechture.
 
 [Main Site](http://beprosoftware.com/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/)
 
 = Easy Setup (Just one and done) =
 
-Put our all in one shortcode [bl_all_in_one] in any page or post. Then on the options page in the admin (Bepro Listings -> Options), click the search/listings tab. Select "Ajax Page" from the "how links open" select box. Thats it, everything works on one page (map, listings,categories,etc). When you are ready for custom configurations, we have a plethora of options. 
+Put this shortcode [bl_all_in_one] in any page or post. Confirm "Ajax Page" is selected on the BePro Listings admin page for the option "how links open". Thats it, everything works on one page (map, listings,categories,etc). When you are ready for custom configurations, we have a plethora of extra shortcodes and options. 
 
 = Popular Uses =
 
@@ -26,12 +26,12 @@ BePro Listings can be applied to any listings scenario. It's designed to be modu
 	* Store Finder - List your store or shop branches including, location and contact details 
 	* Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of directory listings site
 	* Products & Services - List them yourself or allow members to list products and/or services
-	* Informational - Tourism, points of interest, and other details best shown via map
+	* Informational - Tourism, points of interest, and other details best shown via google maps
 	* User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
-	* Image website - Artists are using the new features to show just images in listing results.
-	* Video Listings - Setup the plugin to feature videos only (uploaded and/or linked).
-	* Podcast & Music - List all of your audio files including mp3 and wav
-	* Document Directory - Showcase multiple file types and have them show up in search listings
+	* Image website - Artists are using the new features to categorize, manage, and showcase their work
+	* Video Listings - Feature videos from sites like youtube and uploaded to your server.
+	* Podcast & Music - List and categorize all of your audio files including mp3 and wav
+	* Document Directory - Showcase multiple file types allowing users to search and view them on your website
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations
 
 = KEY FEATURES =
@@ -48,18 +48,17 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	9. Search Filter - Allow users to filter the search results by category, date, price, and several addon options 
 	10. Wordpress Integration - Admin/features are familiar and integrate with your existing theme.
 	11. Hooks & Filters - Developers will love the documentation & ability to easily extend features.
-	12. Shortcodes - Several ways to feature the information and engage your visitor. There are currently 6 base free ones and several available through addons
+	12. Shortcodes - Several ways to feature the information and engage your visitor. There are currently 7 shortcodes in the free plugin and several more available through addons
 	13. Admin Options - Control the ability for users to intereact with features and information.
 	14. Multisite - Now multisite compatible, expand the use of this plugin throughout your network.
 	15. Gallery - Works with the wordpress gallery shortcode, so its compatible with many gallery plugins
 	16. Widgets - Several widgets are available including, recent listings and search filter. Just about every content focused addon brings more widgets
 	17. Ajax (NEW) - Search and filter on one page. Yes, wow is the correct phrase to use!
-	18. All In One - New shortcode option for ease of use. Just one and done.
 
 = ADD ONS =
 Since version 2.0.0, you can now expand on the features of BePro Listings. We have added tons of wordpress hooks and filters to the system. Your visitors will love our file viewers, as well as the ability to play audio and video from your website. We have also improved how our templates are implemented. This provides lots of new ways to customize your listings experinece. Current available add-ons include:
 
-	1. Tags - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget
+	1. Tags - Now you and your members can tag your listings and allow users to search them via the tag widget
 	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
 	3. Gallery - Three 3 gallery options including slider & lightbox, plus three new listings templates
 	4. Video - Improve on the Gallery plugin with the ability to upload file types like (mp4, mpeg, avi, wmv, webm). Also link videos from sites like, youtube, vimeo, & dailymotion
@@ -75,17 +74,17 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 
 BePro Listings has spawned the famous $1 one dollar wordpress themes. The plugin has so many options, that we felt a practical tutorial would be the best introduction. The goal of our $1 wordpress themes, is to showcase BePro Listings features; However, they posses all of the features of any other theme. Some of our $1 one dollar wordpress themes are complete themes, while others are child themes built on free solutions. We want to prove that you can integrate BePro Listings into any theme and create any type of listings site. CHALLENGE US! 
 
-	1. ByCater - This responsive directory theme features a home page template utilizing (map, search, categories, and listings). It also integrates with typical wordpress features like, sidebar, menu, etc
+	1. ByCater - This responsive directory theme features a home page template utilizing (google map, search, categories, and listings). It also integrates with typical wordpress features like, sidebar, menu, etc
 	2. FolioProjects - Responsive Child theme for the stock wordpress twentyfourteen teamplate. Perfect for gallery, portfolio, and other sites where you want to emphasize the featured images. Comes with three templates
-	3. MT Classifieds - Great responsive theme for classified focused websites. Template uses various features including (map, categories, and listings)
+	3. MT Classifieds - Great responsive theme for classified focused websites. Template uses various features including (google map, categories, and listings)
 
 = WHATS THE DIFFERENCE? =
 
-BePro Listings works with buddypress and many gallery plugins (e.g. galleria) in its free stock form. We also integrate with s2member and several other plugin to provide you the customer, with the flexibility to select the best components for your listings/directory/classifieds/portfolio site.
+BePro Listings works with buddypress and many gallery plugins (e.g. galleria) in its free stock form. Via addons, we also integrate with s2member and several other popular plugins. This makes it extreamly easy to interchange features and pick the best combinations for extending your listings / directory / classifieds / portfolio site. 
 
-We believe that integrating plugins into themes forces unneeded bloating. Our plugins are tested to work cohesively, as if coded into a theme; However, they are offered separtely for custom solutions. Why pay for document management if you don't want that feature? The prices of our Addons start at $5 and help to further development of the plugin. You can also buy bundles of plugins and themes for great discounts.
+We created BePro Listings and its addons to be modular. This allows you to only add the features you need, effectively speeding up the load time of your website. The prices of our Addons start at $5 and help to further development of the plugin. You can also buy bundles of plugins and themes for great discounts.
 
-BePro Listings is built for various levels of users. Our novice users will appreciate our $1 themes, ajax features and "all in one" shortcodes. Our intermediate users will appreiate the plethora of configuration options. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
+BePro Listings is built for various levels of users. Our novice users will appreciate our $1 themes, ajax features and "all in one" shortcodes. Our intermediate users will appreiate the plethora of configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 
 = SHORTCODES =
 These all have options and you can check them out via the documentation link above.
@@ -96,7 +95,7 @@ These all have options and you can check them out via the documentation link abo
 	* Listings - Show listings with optional paging e.g. [display_listings]
 	* Front end Upload Form - Give your users the ability to submit from any page or post. You can set a default user id for the listing or force registration. e.g. [create_listing_form]
 	* Category Links - Allow users to navigate your directory/listings using category links e.g. [display_listing_categories]
-	* All In One - Use one shortcode to implement several features at once. Various configurations available.
+	* All In One (NEW) - Use one shortcode to implement several features at once. Various configurations available [bl_all_in_one].
 
 = TROUBLE SHOOTING =
 

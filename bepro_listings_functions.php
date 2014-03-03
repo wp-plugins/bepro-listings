@@ -337,7 +337,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.03' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.04' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -680,6 +680,22 @@
 		$meta_table = $wpdb->prefix."bepro_listing_typesmeta";
 		$wpdb->$var_name = $meta_table;
 	}
+	
+	//function to check if string is a valid category syntax
+	function bl_check_is_valid_cat($cat_to_check){
+		$raw_cat = explode(",",$cat_to_check);
+		$cats = (is_array($raw_cat))? $raw_cat:"";
+		$is_int = array();
+		foreach($cats as $cat){
+			$is_int[] = is_numeric($cat)? true:false;
+		}
+		if(in_array(false,array_values($is_int))){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
 	function bepro_listings_placeholder_img_src() {
 		return plugins_url("images/no_img.jpg", __FILE__ );
 	}

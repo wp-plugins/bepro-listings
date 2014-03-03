@@ -390,8 +390,13 @@
 			$data["default_user_id"] = $_POST["default_user_id"];
 			$data["default_status"] = $_POST["default_status"];
 			$data["success_message"] = $_POST["success_message"];			
-			$data["fail_message"] = $_POST["fail_message"];			
-			$data["cat_drop"] = $_POST["cat_drop"];			
+			$data["fail_message"] = $_POST["fail_message"];		
+			
+			//check cat exclude
+			$data["bepro_listings_cat_exclude"] = (bl_check_is_valid_cat($_POST["bepro_listings_cat_exclude"]))? $_POST["bepro_listings_cat_exclude"]:"";
+			
+			//check cat required
+			$data["bepro_listings_cat_required"] = (bl_check_is_valid_cat($_POST["bepro_listings_cat_required"]))?$_POST["bepro_listings_cat_required"]:"";
 			
 			//search listings
 			$data["default_image"] = $_POST["default_image"];
@@ -462,7 +467,8 @@
 						</select></br>
 						<span class="form_label"><?php _e("Success Message", "bepro-listings"); ?></span><textarea name="success_message"><?php echo $data["success_message"]; ?></textarea><br />
 						<span class="form_label"><?php _e("Fail Message", "bepro-listings"); ?></span><textarea name="fail_message"><?php echo $data["fail_message"]; ?></textarea><br />
-						<span class="form_label"><?php _e("Category Dropdown", "bepro-listings"); ?></span><input type="checkbox" name="cat_drop" <?php echo ($data["cat_drop"]== (1 || "on"))? 'checked="checked"':"" ?>>
+						<span class="form_label"><?php _e("Required Categories", "bepro-listings"); ?></span><input type="text" name="bepro_listings_cat_required" value="<?php echo $data["bepro_listings_cat_required"]; ?>" /></br>
+						<span class="form_label"><?php _e("Exclude Categories", "bepro-listings"); ?></span><input type="text" name="bepro_listings_cat_exclude" value="<?php echo $data["bepro_listings_cat_exclude"]; ?>" /></br>
 					</div>
 					<div id="tabs-3">
 						<span class="form_label"><?php _e("Default Listing Image", "bepro-listings"); ?></span><input type="text" name="default_image" value="<?php echo $data["default_image"]; ?>" /></br>

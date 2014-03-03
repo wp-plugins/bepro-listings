@@ -56,34 +56,28 @@
 			<div class="add_listing_form_info bepro_form_section">
 				<h3>'.__("Item Information", "bepro-listings").'</h3>
 				<span class="form_heading">'.__("Item Name", "bepro-listings").'</span><input type="" id="item_name" name="item_name" value="'.$post_data->post_title.'" '.(isset($post_data->post_title)?'readonly="readonly"':"").'><br />
-				<span class="form_heading">'.__("Description", "bepro-listings").'</span><textarea name="content" id="content">'.$post_data->post_content.'</textarea>
-				<span class="form_heading">'.__("Categories", "bepro-listings").'</span>';
-				if($cat_drop == ("on" || 1)){
-					$args = array(
-						'show_option_none'   => 'Select One',
-						'orderby'            => 'ID', 
-						'order'              => 'ASC',
-						'hide_empty'         => 0, 
-						'echo'               => 1,
-						'selected'           => array_shift($categories),
-						'hierarchical'       => true, 
-						'name'               => 'categories[]',
-						'id'                 => '',
-						'class'              => 'postform',
-						'taxonomy'           => 'bepro_listing_types',
-						'hide_if_empty'      => false,
-							'walker'             => ''
-					);
-					wp_dropdown_categories($args);
-				}else{
-					/*
-					require_once(ABSPATH . "wp-admin" . '/includes/template.php');
-					wp_terms_checklist( $post_data->ID, array('descendants_and_self'  => 0,'selected_cats' =>array_shift($categories),'taxonomy' => 'bepro_listing_types'));
-					*/
-					$options = listing_types();
-					foreach($options as $opt){
-						echo '<span class="bepro_form_cat"><span class="form_label">'.$opt->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$opt->term_id.'" '.(isset($categories[$opt->term_id])? 'checked="checked"':"").'/></span>';
+				<span class="form_heading">'.__("Description", "bepro-listings").'</span><textarea name="content" id="content">'.$post_data->post_content.'</textarea>';
+				
+				//show categories
+				$data = get_option("bepro_listings");
+				$exclude = explode(",",$data["bepro_listings_cat_exclude"]);
+				$required = explode(",",$data["bepro_listings_cat_required"]);
+				$page_id = get_the_ID();
+				//show categories
+				$cats = get_terms( array('bepro_listing_types'));
+				$required_list = "";
+				$normal_list = "";
+				if($cats){
+					foreach($cats as $cat){
+						if(!empty($exclude) && in_array($cat->term_id, array_values($exclude))){
+						
+						}elseif(!empty($required) && in_array($cat->term_id, array_values($required))){
+							$required_list .= '<span class="bepro_form_cat"><span class="form_label">'.$cat->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$cat->term_id.'" checked="checked" disabled="disabled"></span>';
+						}else{
+							$normal_list .= '<span class="bepro_form_cat"><span class="form_label">'.$cat->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$cat->term_id.'" checked="checked"></span>';
+						}
 					}
+					echo $cat_section = "<div class='bepro_listing_category_section'><h3>Categories : </h3><p><strong>Pre Selected</strong></p>".(empty($required_list)?"None":$required_list)."<div style='clear:both'><br /></div><p><strong>Optional</strong></p>".$normal_list."</div>";
 				}
 				echo "<div style='clear:both'></div>";
 				

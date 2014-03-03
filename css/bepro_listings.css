@@ -167,7 +167,10 @@
 }
 
 /* Cat Listing layout */
-
+.cat_lists{
+	float:left;
+	clear:both;
+}
 .cat_list_item{
 	float:left;
 	width:185px;
@@ -227,6 +230,7 @@
 .bepro_form_cat{
 	margin:5px 0;
 	float:left;
+	height: 80px;
 }
 .label_sep{	
     clear: both;

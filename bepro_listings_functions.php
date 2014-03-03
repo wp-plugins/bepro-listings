@@ -214,7 +214,8 @@
 			$data["default_status"] = 'pending';			
 			$data["default_user_id"] = get_current_user_id();	
 			$data["fail_message"] = "Issue saving listing. Try again or contact the Admin";			
-			$data["cat_drop"] = "on";					
+			$data["bepro_listings_cat_required"] = "";					
+			$data["bepro_listings_cat_exclude"] = "";					
 			//search listings
 			$data["default_image"] = plugins_url("images/no_img.jpg", __FILE__ );
 			$data["link_new_page"] = 1;

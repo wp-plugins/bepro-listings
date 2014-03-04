@@ -23,7 +23,10 @@
 				background-color:#F0E68C;
 				float: left;
 				clear: both;
-				padding:10px 2px 0 2px;
+				padding:10px 10px 0;
+				border-radius:10px;
+				-moz-border-radius:10px;
+				-webkit-border-radius:10px;
 			}
 		
 		</style>
@@ -349,7 +352,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.05' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.06' );
 		}	
 		
 		$data = get_option("bepro_listings");

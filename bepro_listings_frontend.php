@@ -474,10 +474,11 @@
 			$l_featured_id = "_featured";
 		}else{
 			$show_bl_type = "<div id='bl_type' class='bl_shortcode_selected'>$type</div>";
+			$hidden_limit_text = "<div id='bl_limit' class='bl_shortcode_selected'>$limit</div>";
 		}
 		
 		$results = "<div id='shortcode_list$l_featured_id' $l_featured>".$results."</div>";
-		$results .= "<div id='bl_limit' class='bl_shortcode_selected'>$limit</div> $show_bl_type $show_paging";
+		$results .= "$hidden_limit_text $show_bl_type $show_paging";
 		if($echo_this){
 			echo $results;
 		}else{	
@@ -501,7 +502,7 @@
 		$order_by = (($order_by == 1) || (empty($order_by)))? "posts.post_title":"RAND()";
 
 		//Handle Paging selection calculations and process listings
-		if($show_paging == 1){
+
 			$page = (empty($_REQUEST["lpage"]))? 1 : $_REQUEST["lpage"];
 			$page = ($page - 1) * $num_results;
 			$limit_clause = " ORDER BY $order_by ASC LIMIT $page , $num_results";
@@ -509,9 +510,7 @@
 			$pages = ceil(count($resvs)/$num_results);
 			$findings[1] = $pages;
 			$raw_results = bepro_get_listings($returncaluse, $filter_cat, $limit_clause);
-		}else{
-			$raw_results = bepro_get_listings($returncaluse, $filter_cat);
-		}
+
 		$findings[0] = $raw_results;
 		return $findings;
 	}

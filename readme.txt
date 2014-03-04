@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, ajax, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.05
+Stable tag: 2.1.06
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -340,6 +340,12 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 * Fix minor listing shortcode css issue
 * Major change to how listing templates are generated
 * New shortcode options (l_featured, order_by, ex_type) for display_listings shortcode (i.e. featured listings)
+
+= 2.1.06 (Tuesday Mar 4th 2014) = 
+
+* Tweak minor featured listing shortcode css issue
+* Major change to how paging for listings are generated
+
 
 == Upgrade Notice ==
 

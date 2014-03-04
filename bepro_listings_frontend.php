@@ -402,6 +402,9 @@
 		extract(shortcode_atts(array(
 			  'type' => $wpdb->escape($_POST["type"]),
 			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
+			  'ex_type' => $wpdb->escape($_REQUEST["ex_type"]),
+			  'l_featured' => $wpdb->escape($_POST["l_featured"]),
+			  'order_by' => $wpdb->escape($_POST["order_by"]),
 			  'l_ids' => $wpdb->escape($_REQUEST["l_ids"]),
 			  'limit' => $wpdb->escape($_REQUEST["limit"]),
 			  'show_paging' => $wpdb->escape($_POST["show_paging"])
@@ -411,7 +414,20 @@
 		$num_results = (empty($limit)|| !is_numeric($limit))? $data["num_listings"]:$limit; 
 		$type = empty($type)? 1:$type;
 		
-		$findings = process_listings_results($show_paging, $num_results, $l_type, $l_ids);				
+		//find which types are allowed
+		if(!empty($ex_type) && bl_check_is_valid_cat($ex_type)){
+			$raw_l_types = get_terms( array('bepro_listing_types'), array('exclude'=> explode(",",$ex_type)));
+			foreach($raw_l_types as $raw_l_type){
+				$l_type[] = $raw_l_type->term_id;
+			}
+			if(!empty($l_type) && is_array($l_type))
+				$l_type = implode(",",$l_type);
+				
+		}
+		
+		//make presumption to randomize featured listings
+		if(empty($order_by) && !empty($l_featured))$order_by = 2;
+		$findings = process_listings_results($show_paging, $num_results, $l_type, $l_ids, $order_by);				
 		$raw_results = $findings[0];				
 			
 		//Create the GUI layout for the listings
@@ -431,9 +447,14 @@
 			foreach($raw_results as $result){
 				$results .= basic_listing_layout($result, $type);
 			}
+			foreach($list_templates as $key => $val){
+				remove_action($key, $val);
+			}
 		}
 		
-		if($show_paging == 1){
+		//show paging if not featured listings and if its selected as an option
+		
+		if(($show_paging == 1) && (empty($l_featured))){
 			$pages = 0;
 			$pages = $findings[1];
 			$counter = 1;
@@ -445,10 +466,18 @@
 			}
 			$paging .= "</div>";
 			if($counter > 1) $results.= $paging; // if no pages then dont show this
+			$show_paging = "<div id='bl_show_paging' class='bl_shortcode_selected'>$show_paging</div>";
 		}
 		
-		$results = "<div id='shortcode_list'>".$results."</div>";
-		$results .= "<div id='bl_limit' class='bl_shortcode_selected'>$limit</div><div id='bl_type' class='bl_shortcode_selected'>$type</div><div id='bl_show_paging' class='bl_shortcode_selected'>$show_paging</div>";
+		if(!empty($l_featured)){
+			$l_featured = "class='l_featured'";
+			$l_featured_id = "_featured";
+		}else{
+			$show_bl_type = "<div id='bl_type' class='bl_shortcode_selected'>$type</div>";
+		}
+		
+		$results = "<div id='shortcode_list$l_featured_id' $l_featured>".$results."</div>";
+		$results .= "<div id='bl_limit' class='bl_shortcode_selected'>$limit</div> $show_bl_type $show_paging";
 		if($echo_this){
 			echo $results;
 		}else{	
@@ -457,7 +486,7 @@
 	}
 	
 	//process paging and listings
-	function process_listings_results($show_paging = false, $num_results = false, $l_type = false, $l_ids = false){
+	function process_listings_results($show_paging = false, $num_results = false, $l_type = false, $l_ids = false, $order_by = 1){
 		global $wpdb;
 		
 		if(!empty($_REQUEST["filter_search"]) || !empty($l_type)){
@@ -468,12 +497,14 @@
 		if(!empty($l_ids)){
 			$returncaluse .= " AND posts.ID IN ($l_ids)";
 		}
+		
+		$order_by = (($order_by == 1) || (empty($order_by)))? "posts.post_title":"RAND()";
 
 		//Handle Paging selection calculations and process listings
 		if($show_paging == 1){
 			$page = (empty($_REQUEST["lpage"]))? 1 : $_REQUEST["lpage"];
 			$page = ($page - 1) * $num_results;
-			$limit_clause = " ORDER BY posts.post_title ASC LIMIT $page , $num_results";
+			$limit_clause = " ORDER BY $order_by ASC LIMIT $page , $num_results";
 			$resvs = bepro_get_listings($returncaluse, $filter_cat);
 			$pages = ceil(count($resvs)/$num_results);
 			$findings[1] = $pages;
@@ -487,7 +518,7 @@
 	
 	function basic_listing_layout($result, $type = 1){
 		//allow other features to tie in
-		$listing_template_file = plugin_dir_path( __FILE__ ).'/templates/listings/generic.php';
+		$listing_template_file = plugin_dir_path( __FILE__ ).'/templates/listings/generic_'.$type.'.php';
 		$get_listing_template = apply_filters("bepro_listings_list_template", $listing_template_file);
 		if($get_listing_template != -1)$listing_template_file = $get_listing_template;
 		

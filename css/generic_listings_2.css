@@ -1,6 +1,6 @@
 /* normal listings results */
 
-.shortcode_results{
+.shortcode_results_2{
 	width:99%;
 	float: left;
 	border-radius: 5px;
@@ -12,25 +12,25 @@
 	background-color: #fff;
 	padding-right: 5px;
 }
-.shortcode_results.result_name{
+.shortcode_results_2.result_name{
 	float: left;
 }
-.shortcode_results .result_location{
+.shortcode_results_2 .result_location{
 	float: right;
 	width:218px;
 }
-.shortcode_results .result_img img{
+.shortcode_results_2 .result_img img{
     float: left;
     margin-right: 5px;
 	width: 25%;
 	height: 160px;
 }
-.shortcode_results .result_content{
+.shortcode_results_2 .result_content{
 	width: 73%;
 	float: left;
 	margin:0 4px;
 }
-.shortcode_results .result_title {
+.shortcode_results_2 .result_title {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: normal;
@@ -40,7 +40,7 @@
 	text-align: left;
 	margin-top: 5px;
 }
-.shortcode_results .result_desc {
+.shortcode_results_2 .result_desc {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;
 	height: 115px;
@@ -56,7 +56,7 @@
 }
 
 
-.shortcode_results .booking_link {
+.shortcode_results_2 .booking_link {
 	width: 132px;
 	float: right;
 	overflow: hidden;
@@ -75,7 +75,7 @@
 .result_button a:hover {
 	text-decoration:underline;
 }
-.shortcode_results .listwebsite {
+.shortcode_results_2 .listwebsite {
 	width: 115px;
 	float: right;
 	overflow: hidden;
@@ -90,21 +90,21 @@
 	clear: none;
 	margin-right: 5px;
 }
-.shortcode_results .result_type{
+.shortcode_results_2 .result_type{
 	display: block;
 	float: right;
 	padding-left: 10px;
 }
-.shortcode_results  .result_rating {
+.shortcode_results_2  .result_rating {
 float: left;
 }
-.shortcode_results  .rating{
+.shortcode_results_2  .rating{
 	float: left;
 }
-.shortcode_results  .result_cost{
+.shortcode_results_2  .result_cost{
 	float: left;
 }
-.shortcode_results  .result_button{
+.shortcode_results_2  .result_button{
 	background-repeat: repeat-x;
 	background-color: #EBEBEB;
 	color: #DA0505;

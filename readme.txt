@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, ajax, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.04
+Stable tag: 2.1.05
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,6 +23,7 @@ Put this shortcode [bl_all_in_one] in any page or post. Confirm "Ajax Page" is s
 
 BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Setup core wordpress featues, as well as new aspects like, # of uploads, ajax filter, default search distance, and item page details. With our buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
+	* Paid Listings - Use our s2member addons to charge to list on your website
 	* Store Finder - List your store or shop branches including, location and contact details 
 	* Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of directory listings site
 	* Products & Services - List them yourself or allow members to list products and/or services
@@ -80,11 +81,11 @@ BePro Listings has spawned the famous $1 one dollar wordpress themes. The plugin
 
 = WHATS THE DIFFERENCE? =
 
-BePro Listings works with buddypress and many gallery plugins (e.g. galleria) in its free stock form. Via addons, we also integrate with s2member and several other popular plugins. This makes it extreamly easy to interchange features and pick the best combinations for extending your listings / directory / classifieds / portfolio site. 
+We created BePro Listings and its addons to be modular. This allows you to only add the features you need, effectively speeding up the load time of your website. The prices of our Addons start at $5 and our themes are $1. You can also buy bundles of plugins and themes for great discounts. Effectively, we are offering you, the freedom to interchange options, at a very cost effective rate.
 
-We created BePro Listings and its addons to be modular. This allows you to only add the features you need, effectively speeding up the load time of your website. The prices of our Addons start at $5 and help to further development of the plugin. You can also buy bundles of plugins and themes for great discounts.
+Out of the box, BePro Listings works with buddypress and many gallery plugins (e.g. galleria) in its free stock form. Via addons, we also integrate with s2member and several other popular plugins. This makes it extreamly easy and quick to add the best combinations of features for extending your listings / directory / classifieds / portfolio site. 
 
-BePro Listings is built for various levels of users. Our novice users will appreciate our $1 themes, ajax features and "all in one" shortcodes. Our intermediate users will appreiate the plethora of configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
+Most importantly, BePro Listings is built for various levels of users. Our novice users will appreciate our $1 themes, ajax features and "all in one" shortcodes. Our intermediate users will appreiate the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 
 = SHORTCODES =
 These all have options and you can check them out via the documentation link above.
@@ -333,6 +334,12 @@ Yes, there are lots of hooks/filters and templates (listings/page)
 * Fix minor details page css issue with categories
 * New feature, exclude categories on front end form
 * New feature, required categories on front end form
+
+= 2.1.05 (Tuesday Mar 4th 2014) = 
+
+* Fix minor listing shortcode css issue
+* Major change to how listing templates are generated
+* New shortcode options (l_featured, order_by, ex_type) for display_listings shortcode (i.e. featured listings)
 
 == Upgrade Notice ==
 

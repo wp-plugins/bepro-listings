@@ -17,7 +17,18 @@
 */	
  
 	function bepro_listings_wphead() {
-		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('css/bepro_listings.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" ><meta name=\"plugin\" content=\"Bepro Listings plugin\">';
+		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('css/bepro_listings.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" ><meta name=\"plugin\" content=\"Bepro Listings plugin\">
+		<style type="text/css">
+			.l_featured{
+				background-color:#F0E68C;
+				float: left;
+				clear: both;
+				padding:10px 2px 0 2px;
+			}
+		
+		</style>
+		
+		';
 		
 	} 
 
@@ -338,7 +349,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.04' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.05' );
 		}	
 		
 		$data = get_option("bepro_listings");

@@ -8,20 +8,20 @@ Stable tag: 2.1.06
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Custom listings (business, directory, classifieds, store finder) w/ options like (google maps, gallery, front end upload, & ajax search/filter)
+Custom listings (portfolio, directory, classifieds, store finder) w/ options like (google maps, gallery, front end upload, & ajax search / filter)
 
 == Description ==
 BePro Listings allows you to list anything incluing, images, documents, audio, and videos on any page or post. Shortcodes & widgets help you to search, filter and showcase this information in various ways including google maps and multiple listing templates. Choose between our easy one page/shortcode setup with ajax features or configurable distributed architechture.
 
-[Main Site](http://beprosoftware.com/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/)
+[Main Site](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/designs/)
 
 = Easy Setup (Just one and done) =
 
-Put this shortcode [bl_all_in_one] in any page or post. Confirm "Ajax Page" is selected on the BePro Listings admin page for the option "how links open". Thats it, everything works on one page (map, listings,categories,etc). When you are ready for custom configurations, we have a plethora of extra shortcodes and options. 
+Put this shortcode [bl_all_in_one] in any page or post. Confirm "Ajax Page" is selected on the BePro Listings admin page, for the option "how links open". Thats it, everything works on one page (map, listings,categories, search, etc). When you are ready for custom configurations, we have a plethora of extra shortcodes and options. 
 
 = Popular Uses =
 
-BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Setup core wordpress featues, as well as new aspects like, # of uploads, ajax filter, default search distance, and item page details. With our buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Configure options like, # of uploads, ajax filter, default search distance, and item page details. With our buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 	* Paid Listings - Use our s2member addons to charge to list on your website
 	* Store Finder - List your store or shop branches including, location and contact details 
@@ -33,7 +33,7 @@ BePro Listings can be applied to any listings scenario. It's designed to be modu
 	* Video Listings - Feature videos from sites like youtube and uploaded to your server.
 	* Podcast & Music - List and categorize all of your audio files including mp3 and wav
 	* Document Directory - Showcase multiple file types allowing users to search and view them on your website
-	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations
+	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a BePro Listings Realestate addon
 
 = KEY FEATURES =
 Our BePro Software Team is constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with diverse content. The following features are included with the plugin:
@@ -83,7 +83,7 @@ BePro Listings has spawned the famous $1 one dollar wordpress themes. The plugin
 
 We created BePro Listings and its addons to be modular. This allows you to only add the features you need, effectively speeding up the load time of your website. The prices of our Addons start at $5 and our themes are $1. You can also buy bundles of plugins and themes for great discounts. Effectively, we are offering you, the freedom to interchange options, at a very cost effective rate.
 
-Out of the box, BePro Listings works with buddypress and many gallery plugins (e.g. galleria) in its free stock form. Via addons, we also integrate with s2member and several other popular plugins. This makes it extreamly easy and quick to add the best combinations of features for extending your listings / directory / classifieds / portfolio site. 
+Out of the box, BePro Listings works with buddypress and many gallery plugins (e.g. galleria). Via addons, we also integrate with s2member and several other popular plugins. This makes it extreamly easy and quick to add the best combinations of features for extending your listings / directory / classifieds / portfolio site. 
 
 Most importantly, BePro Listings is built for various levels of users. Our novice users will appreciate our $1 themes, ajax features and "all in one" shortcodes. Our intermediate users will appreiate the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 
@@ -102,7 +102,7 @@ These all have options and you can check them out via the documentation link abo
 
 * 404 Error - If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings, so that they are reset for all urls. The option is under your settings menu.
 
-* Google Maps - If google map controls look weird, this has absolutely nothing to do with the plugin. This is a css style related issue (your theme). Specifically, its the addition of max-width declarations to images. In fact, you should google the issue (google maps max-width). Lots of bootstrap themes use this css declaration.
+* Google Maps - If google map controls look weird, this is a css style related issue (your theme). Specifically, its the addition of max-width declarations to images. For details, you can google the issue (google maps max-width). Lots of bootstrap themes use this css declaration.
 
 = TRANSLATIONS =
 
@@ -147,15 +147,15 @@ Yes, it works anywhere shortcodes are accepted
 
 = Do shortcodes and widets work together? =
 
-Yes, if they are on the page where a form submission is received, they will react to the submission
+Yes, if they are on the page where a form submission is received, they will react to the submission. The easiest way to do this is with our [bl_all_in_one] shortcode
 
 = How can I customize the layout? =
 
-You should alter the /css/bepro_listings.css file as needed and there are several templates
+You should alter the /css/bepro_listings.css file as needed and there are several php templates. Ultimately, the templates are little more than wordpress hooks so its easy to create your own.
 
 = Can I add Markers to the Map? =
 
-Markers are generated by posts which match a search criteria. To have a marker on the map, you must have created a post. 
+Markers are generated by posts which match a search criteria. To have a marker on the map, you must have created a post. Marker icons can be changed with our BePro Listings Icons addon
 
 = What is the Map showing by default? =
 
@@ -179,11 +179,11 @@ Try changing the query type under map in the admin
 
 = Is there support? =
 
-Yes, our development team created the plugin and continue to offer free support via our support forums and paid support via our website beprosoftware.com
+Yes, our development team created the plugin and continue to offer free support via our support forums and paid support via our website beprosoftware.com. You can also get monthly support.
 
 = I need more features, is there more? =
 
-Yes, there are add-ons available for this plugin. Check our website beprosoftware.com/shop
+Yes, there are add-ons and themes available for this plugin. Check our website beprosoftware.com/shop
 
 = Can this work with buddypress? =
 
@@ -200,6 +200,14 @@ Simply set the post to private in the admin.
 = Are there ways to extend the features? =
 
 Yes, there are lots of hooks/filters and templates (listings/page)
+
+= Can i setup featured listings? =
+
+Yes, you can specify categories and flag the listings as featured via options for the [display_listings] shortcode. Consult the shortcode documentation.
+
+= Do i need to create templates for detail pages if i use ajax pages? =
+
+Yes, listing detail pages are generated whether you use them or not. This is a huge asset for seo reasons. There is a strong chance that users will first visit your website via one of those pages. Its within your interest to either a) use one of our $1 themes or b) create the necessary template files to integrate this plugin into your theme's layout
 
 == Screenshots ==
 

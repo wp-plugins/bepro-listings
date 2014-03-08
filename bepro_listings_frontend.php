@@ -308,7 +308,8 @@
 		 ), $atts));
 		
 		
-		$cat_heading = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? "Sub Categories":"Categories";
+		$cat_heading = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? "No Categories Found":"Categories";
+		
 		$parent = (!empty($cat) && is_numeric($cat))? $cat:0;
 		$parent = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $_REQUEST["l_type"]:0; 
 		
@@ -317,14 +318,21 @@
 		
 		$categories = get_terms( array('bepro_listing_types'), $query_args);
 		
-		$cat_list = "<div id='shortcode_cat' class='cat_lists'><h3>".__($cat_heading,"bepro_listings")."</h3>";
+		$cat_list = "<div id='shortcode_cat' class='cat_lists'>";
 		
 		if($categories && (count($categories) > 0)){
+			//If only one category was selected then show its name in the heading
+			if((is_numeric($_REQUEST["l_type"]) || (is_array($_REQUEST["l_type"]) && (count($_REQUEST["l_type"]) == 1))) && !empty($categories)){
+				$cat = $categories[0];
+				$cat_list .= "<h3>".$cat->name." Category</h3>";
+			}else{
+				$cat_list .= "<h3>".__($cat_heading,"bepro_listings")."</h3>";
+			}
 			foreach($categories as $cat){
 				$cat_list.= bepro_cat_templates($cat, $url_input, $ctype);
 			}
 		}else{
-			$cat_list .= "<div class='cat_list_no_item'>No ".$cat_heading." Created.</div>";
+			$cat_list .= "<div class='cat_list_no_item'> ".$cat_heading." Created.</div>";
 		}
 		$cat_list.= "</div>";
 		
@@ -343,6 +351,7 @@
 	*/	
 	
 	function bepro_cat_templates($cat, $url_input, $template = 0){
+		$no_img = plugins_url("images/no_img.jpg", __FILE__ );
 		$url = $url_input."?filter_search=1&l_type=".$cat->term_id;
 		$cat_list = "";
 		if($template == 1){
@@ -569,6 +578,8 @@
 	function bepro_listings_list_links_template($bp_listing){
 		$data = get_option("bepro_listings");
 		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
+		$show_web_link = $data["show_web_link"];
+		$details_link = empty($data["details_link"])? "Item":$data["details_link"];
 		$permalink = get_permalink( $bp_listing->post_id );
 		if($data["show_cost"]){
 			if(is_numeric($bp_listing->cost)){ 
@@ -588,20 +599,20 @@
 		* 3 = ajax page
 		*/		
 		if($target == 2){
-			if(!empty($bp_listing->website))
+			if(!empty($bp_listing->website) && !empty($show_web_link))
 				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'"  target="_blank">Website</a></span>';
 			
 			if($bp_listing->post_status == "publish")
-				echo '<span class="result_button"><a href="'.$permalink.'" target="_blank">Item</a></span>';
+				echo '<span class="result_button"><a href="'.$permalink.'" target="_blank">'.$details_link.'</a></span>';
 		}elseif($target == 3){
 			if($bp_listing->post_status == "publish")
-				echo '<span class="result_button"><a class="bl_ajax_result_page" post_id="'.$bp_listing->post_id.'" href="'.$permalink.'" '.$target.'>Item</a></span>';
+				echo '<span class="result_button"><a class="bl_ajax_result_page" post_id="'.$bp_listing->post_id.'" href="'.$permalink.'" '.$target.'>'.$details_link.'</a></span>';
 		}else{
-			if(!empty($bp_listing->website))
+			if(!empty($bp_listing->website) && !empty($show_web_link))
 				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'">Website</a></span>';
 			
 			if($bp_listing->post_status == "publish")
-				echo '<span class="result_button"><a href="'.$permalink.'">Item</a></span>';
+				echo '<span class="result_button"><a href="'.$permalink.'">'.$details_link.'</a></span>';
 		}
 	}
 	

@@ -4,20 +4,20 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, ajax, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.07
+Stable tag: 2.1.08
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Custom listings (portfolio, directory, classifieds, store finder) w/ options like (google maps, gallery, front end upload, & ajax search / filter)
 
 == Description ==
-BePro Listings allows you to list anything incluing, images, documents, audio, and videos on any page or post. Shortcodes & widgets help you to search, filter and showcase this information in various ways including google maps and multiple listing templates. Choose between our easy one page/shortcode setup with ajax features or configurable distributed architechture.
+BePro Listings allows you to, search, filter and showcase information in various ways including google maps and multiple listing templates. Configure results to highlight various media types including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with ajax features or configurable distributed architechture.
 
 [Main Site](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/designs/)
 
 = Easy Setup (Just one and done) =
 
-Put this shortcode [bl_all_in_one] in any page or post. Confirm "Ajax Page" is selected on the BePro Listings admin page, for the option "how links open". Thats it, everything works on one page (map, listings,categories, search, etc). When you are ready for custom configurations, we have a plethora of extra shortcodes and options. 
+Put this shortcode [bl_all_in_one] in any page or post. Confirm "Ajax Page" is selected on the BePro Listings admin page, for the option "how links open". Thats it, everything works on one page (map, listings,categories, search, etc). When you are ready for custom configurations, we have a plethora of extra shortcodes and options. If you prefer an alternative to the DIY method, check out our $1 one dollar wordpress themes and available support on our website.
 
 = Popular Uses =
 
@@ -347,12 +347,20 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 * Fix minor listing shortcode css issue
 * Major change to how listing templates are generated
-* New shortcode options (l_featured, order_by, ex_type) for display_listings shortcode (i.e. featured listings)
+* New shortcode options (l_featured, order_by, ex_type) for display_listings shorcode (i.e. featured listings)
 
 = 2.1.06 (Tuesday Mar 4th 2014) = 
 
 * Tweak minor featured listing shortcode css issue
 * Major change to how paging for listings are generated
+
+= 2.1.08 (Saturday Mar 8th 2014) = 
+
+* Fix missing "no image" image for categories without images
+* Styling enhancements to listing templates
+* New listings option for details link text
+* New listings option to hide external website link
+* Filtered Category now shows category name in heading instead of "Sub Category" name
 
 
 == Upgrade Notice ==

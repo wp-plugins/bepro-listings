@@ -236,6 +236,8 @@
 			$data["ajax_on"] = "on";
 			$data["num_listings"] = 3;
 			$data["distance"] = 150;
+			$data["details_link"] = "Item";
+			$data["show_web_link"] = "";
 			//Page/post
 			$data["gallery_size"] = "thumbnail";
 			$data["gallery_cols"] = 3;
@@ -352,7 +354,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.07' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.08' );
 		}	
 		
 		$data = get_option("bepro_listings");

@@ -404,6 +404,8 @@
 			$data["ajax_on"] = $_POST["ajax_on"];
 			$data["num_listings"] = $_POST["num_listings"];
 			$data["distance"] = $_POST["distance"];
+			$data["details_link"] = $_POST["details_link"];
+			$data["show_web_link"] = $_POST["show_web_link"];
 			
 			//Page/post
 			$data["gallery_size"] = $_POST["gallery_size"];
@@ -497,6 +499,9 @@
 							<option value="500" <?php echo ($data["distance"]== 500)? 'selected="selected"':"" ?>>500</option>
 							<option value="1000" <?php echo ($data["distance"]== 1000)? 'selected="selected"':"" ?>>1000</option>
 						</select>
+						<span style="clear:both;display: block;"><br /></span>
+						<span class="form_label"><?php _e("Details Link Text", "bepro-listings"); ?></span><input type="text" name="details_link" value="<?php echo $data["details_link"]; ?>" /></br>
+						<span class="form_label"><?php _e("Show Website Link?", "bepro-listings"); ?></span><input type="checkbox" name="show_web_link" <?php echo ($data["show_web_link"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
 						<span style="clear:both;display: block;"><br /></span>
 					</div>
 					<div id="tabs-4">

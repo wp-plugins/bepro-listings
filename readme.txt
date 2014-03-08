@@ -17,7 +17,10 @@ BePro Listings allows you to, search, filter and showcase information in various
 
 = Easy Setup (Just one and done) =
 
-Put this shortcode [bl_all_in_one] in any page or post. Confirm "Ajax Page" is selected on the BePro Listings admin page, for the option "how links open". Thats it, everything works on one page (map, listings,categories, search, etc). When you are ready for custom configurations, we have a plethora of extra shortcodes and options. If you prefer an alternative to the DIY method, check out our $1 one dollar wordpress themes and available support on our website.
+1. Put this shortcode [bl_all_in_one] in any page or post. 
+2. Confirm "Ajax Page" is selected on the BePro Listings admin page, for the option "how links open". 
+
+Thats it, everything works on one page (map, listings,categories, search, etc). When you are ready for custom configurations, we have a plethora of extra shortcodes and options. If you prefer an alternative to the DIY method, check out our $1 one dollar wordpress themes and available support on our website.
 
 = Popular Uses =
 

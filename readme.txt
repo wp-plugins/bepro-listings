@@ -26,7 +26,7 @@ Thats it, everything works on one page (map, listings,categories, search, etc). 
 
 BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Configure options like, # of uploads, ajax filter, default search distance, and item page details. With our buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
-	* Paid Listings - Use our s2member addons to charge to list on your website
+	* Paid Listings - Use our s2member or PMPro addons to charge users for listing on your website
 	* Store Finder - List your store or shop branches including, location and contact details 
 	* Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of directory listings site
 	* Products & Services - List them yourself or allow members to list products and/or services
@@ -73,6 +73,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 	9. Audio - List your podcasts and music on wordpress with this addon. We support several file types including wav, wma, mp3 and m4a
 	10. Favorites - Engage your visitors! Record theirs likes and dislikes to figure out the most popular listings.
 	11. Authors - Publicize your authors and give their listings more visibility.
+	12. PMPro - Use Paid Membership Pro to charge users to post listings on your website, with this integration.
 
 = THEMES =
 
@@ -86,7 +87,7 @@ BePro Listings has spawned the famous $1 one dollar wordpress themes. The plugin
 
 We created BePro Listings and its addons to be modular. This allows you to only add the features you need, effectively speeding up the load time of your website. The prices of our Addons start at $5 and our themes are $1. You can also buy bundles of plugins and themes for great discounts. Effectively, we are offering you, the freedom to interchange options, at a very cost effective rate.
 
-Out of the box, BePro Listings works with buddypress and many gallery plugins (e.g. galleria). Via addons, we also integrate with s2member and several other popular plugins. This makes it extreamly easy and quick to add the best combinations of features for extending your listings / directory / classifieds / portfolio site. 
+Out of the box, BePro Listings works with buddypress and many gallery plugins (e.g. galleria). Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This makes it extreamly easy and quick to add the best combinations of features for extending your listings / directory / classifieds / portfolio site. 
 
 Most importantly, BePro Listings is built for various levels of users. Our novice users will appreciate our $1 themes, ajax features and "all in one" shortcodes. Our intermediate users will appreiate the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 

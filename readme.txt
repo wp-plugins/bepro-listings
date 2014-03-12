@@ -15,6 +15,10 @@ BePro Listings allows you to, search, filter and showcase information in various
 
 [Main Site](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/designs/)
 
+= INTRO VIDEO =
+
+[youtube http://www.youtube.com/watch?v=zg2o1XK7vKk&hd=1]
+
 = Easy Setup (Just one and done) =
 
 1. Put this shortcode [bl_all_in_one] in any page or post. 
@@ -120,10 +124,6 @@ This link is an online copy of a bepro listings language file. If you have downl
 - https://poeditor.com (basic free)
 
 The usefulness of BePro Listings beyond english, is very important to us. If you find deficiencies in our use of localization, please reach out
-
-= INTRO VIDEO =
-
-[youtube http://www.youtube.com/watch?v=IfhJmP_LRDs&hd=1]
 
 == Installation ==
 

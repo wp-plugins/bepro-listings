@@ -161,7 +161,7 @@
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-favorites/'>Favorites</a> - Allow visitors and registered users to interact with listings. They can record their likes/dislikes and view them via shortcodes</li>
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-authors/'>Authors</a> - Give your Blog writers and their listings more visibility. With this plugin you add their profile info to their listing pages.</li>
 				</ul>
-				<p>Check them all out on the <a href='http://www.beprosoftware.com/products/bepro-listings/'>BePro Lisitngs documentation</a> page along with <b>shortcodes</b> and <b>instructions</b></p><iframe width='560' height='315' src='//www.youtube.com/embed/IfhJmP_LRDs' frameborder='0' allowfullscreen></iframe>",
+				<p>Check them all out on the <a href='http://www.beprosoftware.com/products/bepro-listings/'>BePro Lisitngs documentation</a> page along with <b>shortcodes</b> and <b>instructions</b></p><iframe width='560' height='315' src='//www.youtube.com/embed/zg2o1XK7vKk' frameborder='0' allowfullscreen></iframe>",
 				  'post_status' => "publish", 
 				  'post_title' => "Your First Wordpress Listing",
 				  'post_category' => array($my_cat_id),

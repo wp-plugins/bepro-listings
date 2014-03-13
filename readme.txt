@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, ajax, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.08
+Stable tag: 2.1.09
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -86,6 +86,7 @@ BePro Listings has spawned the famous $1 one dollar wordpress themes. The plugin
 	1. ByCater - This responsive directory theme features a home page template utilizing (google map, search, categories, and listings). It also integrates with typical wordpress features like, sidebar, menu, etc
 	2. FolioProjects - Responsive Child theme for the stock wordpress twentyfourteen teamplate. Perfect for gallery, portfolio, and other sites where you want to emphasize the featured images. Comes with three templates
 	3. MT Classifieds - Great responsive theme for classified focused websites. Template uses various features including (google map, categories, and listings)
+	4. WhatLocalsCallIt - Great responsive directory theme built on the twentytwelve foundation. 
 
 = WHATS THE DIFFERENCE? =
 
@@ -366,6 +367,10 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 * New listings option to hide external website link
 * Filtered Category now shows category name in heading instead of "Sub Category" name
 
+= 2.1.09 (Thursday Mar 13th 2014) = 
+
+* Minor fix for better upgrade compatability
+* Minor style tweak to listing type 2
 
 == Upgrade Notice ==
 

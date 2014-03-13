@@ -10,7 +10,6 @@
 	margin-bottom: 10px;
 	overflow: hidden;
 	background-color: #fff;
-	padding-right: 5px;
 	box-shadow: 1px 1px;
 	-moz-box-shadow: 1px 1px;
 	-webkit-box-shadow: 1px 1px;
@@ -97,7 +96,7 @@
 .shortcode_results_2 .result_type{
 	display: block;
 	float: right;
-	padding-left: 10px;
+	padding-right: 10px;
 }
 .shortcode_results_2  .result_rating {
 float: left;

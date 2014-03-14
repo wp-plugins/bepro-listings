@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: address, ajax, apartment, audio, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, flv, flash, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
+Tags: address, ajax, apartment, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
 Stable tag: 2.1.09
@@ -33,13 +33,14 @@ BePro Listings can be applied to any listings scenario. It's designed to be modu
 	* Paid Listings - Use our s2member or PMPro addons to charge users for listing on your website
 	* Store Finder - List your store or shop branches including, location and contact details 
 	* Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of directory listings site
-	* Products & Services - List them yourself or allow members to list products and/or services
+	* Products & Services - List them yourself or allow members to list products and/or services e.g. product catalogue
 	* Informational - Tourism, points of interest, and other details best shown via google maps
 	* User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
 	* Image website - Artists are using the new features to categorize, manage, and showcase their work
 	* Video Listings - Feature videos from sites like youtube and uploaded to your server.
 	* Podcast & Music - List and categorize all of your audio files including mp3 and wav
 	* Document Directory - Showcase multiple file types allowing users to search and view them on your website
+	* Portfolio - Feature your work in various ways. 
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a BePro Listings Realestate addon
 
 = KEY FEATURES =
@@ -86,7 +87,7 @@ BePro Listings has spawned the famous $1 one dollar wordpress themes. The plugin
 	1. ByCater - This responsive directory theme features a home page template utilizing (google map, search, categories, and listings). It also integrates with typical wordpress features like, sidebar, menu, etc
 	2. FolioProjects - Responsive Child theme for the stock wordpress twentyfourteen teamplate. Perfect for gallery, portfolio, and other sites where you want to emphasize the featured images. Comes with three templates
 	3. MT Classifieds - Great responsive theme for classified focused websites. Template uses various features including (google map, categories, and listings)
-	4. WhatLocalsCallIt - Great responsive directory theme built on the twentytwelve foundation. 
+	4. WhatLocalsCallIt - Great responsive directory theme built on the twentytwelve foundation. Great option for a Product catalogue
 
 = WHATS THE DIFFERENCE? =
 

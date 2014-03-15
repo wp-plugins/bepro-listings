@@ -40,7 +40,7 @@ BePro Listings can be applied to any listings scenario. It's designed to be modu
 	* Video Listings - Feature videos from sites like youtube and uploaded to your server.
 	* Podcast & Music - List and categorize all of your audio files including mp3 and wav
 	* Document Directory - Showcase multiple file types allowing users to search and view them on your website
-	* Portfolio - Feature your work in various ways. 
+	* Portfolio - Feature your work in various ways, allowing users to view various details and comment. 
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a BePro Listings Realestate addon
 
 = KEY FEATURES =
@@ -72,7 +72,7 @@ Since version 2.0.0, you can now expand on the features of BePro Listings. We ha
 	3. Gallery - Three 3 gallery options including slider & lightbox, plus three new listings templates
 	4. Video - Improve on the Gallery plugin with the ability to upload file types like (mp4, mpeg, avi, wmv, webm). Also link videos from sites like, youtube, vimeo, & dailymotion
 	5. Documents - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)
-	6. Icons - Tons of google map markers/icons from the "Map Icons Collection" by Nicolas Mollet
+	6. Icons - Tons of google map markers/icons from the "Map Icons Collection" by Nicolas Mollet and also allows other addons to place icons on listings, video, documents, etc
 	7. Realestate - Add realestate directory related information to listings & the ability to search/filter by realestate details
 	8. S2Member - Limit & get paid for your listings depending on membership levels, using this s2member integration
 	9. Audio - List your podcasts and music on wordpress with this addon. We support several file types including wav, wma, mp3 and m4a
@@ -93,9 +93,9 @@ BePro Listings has spawned the famous $1 one dollar wordpress themes. The plugin
 
 We created BePro Listings and its addons to be modular. This allows you to only add the features you need, effectively speeding up the load time of your website. The prices of our Addons start at $5 and our themes are $1. You can also buy bundles of plugins and themes for great discounts. Effectively, we are offering you, the freedom to interchange options, at a very cost effective rate.
 
-Out of the box, BePro Listings works with buddypress and many gallery plugins (e.g. galleria). Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This makes it extreamly easy and quick to add the best combinations of features for extending your listings / directory / classifieds / portfolio site. 
+Out of the box, BePro Listings works with buddypress and many gallery plugins (e.g. galleria). Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This makes it extreamly easy and quick to add the best combinations of features for extending your directory / classifieds / portfolio / Catalogue site. 
 
-Most importantly, BePro Listings is built for various levels of users. Our novice users will appreciate our $1 themes, ajax features and "all in one" shortcodes. Our intermediate users will appreiate the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
+Most importantly, BePro Listings is built for various levels of users. Novice users will appreciate our $1 themes, ajax features and "all in one" shortcodes. Intermediate users will appreiate the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 
 = SHORTCODES =
 These all have options and you can check them out via the documentation link above.

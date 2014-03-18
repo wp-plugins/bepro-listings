@@ -413,6 +413,7 @@
 			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
 			  'ex_type' => $wpdb->escape($_REQUEST["ex_type"]),
 			  'l_featured' => $wpdb->escape($_POST["l_featured"]),
+			  'order_dir' => $wpdb->escape($_POST["order_dir"]),
 			  'order_by' => $wpdb->escape($_POST["order_by"]),
 			  'l_ids' => $wpdb->escape($_REQUEST["l_ids"]),
 			  'limit' => $wpdb->escape($_REQUEST["limit"]),
@@ -436,7 +437,9 @@
 		
 		//make presumption to randomize featured listings
 		if(empty($order_by) && !empty($l_featured))$order_by = 2;
-		$findings = process_listings_results($show_paging, $num_results, $l_type, $l_ids, $order_by);				
+		if(empty($order_dir))$order_dir = 1;
+		
+		$findings = process_listings_results($show_paging, $num_results, $l_type, $l_ids, $order_by,$order_dir);				
 		$raw_results = $findings[0];				
 			
 		//Create the GUI layout for the listings
@@ -496,7 +499,7 @@
 	}
 	
 	//process paging and listings
-	function process_listings_results($show_paging = false, $num_results = false, $l_type = false, $l_ids = false, $order_by = 1){
+	function process_listings_results($show_paging = false, $num_results = false, $l_type = false, $l_ids = false, $order_by = 1, $order_dir = 1){
 		global $wpdb;
 		
 		if(!empty($_REQUEST["filter_search"]) || !empty($l_type)){
@@ -509,12 +512,13 @@
 		}
 		
 		$order_by = (($order_by == 1) || (empty($order_by)))? "posts.post_title":"RAND()";
+		$order_dir = (($order_dir == 1) || (empty($order_dir)))? "ASC":"DESC";
 
 		//Handle Paging selection calculations and process listings
 
 			$page = (empty($_REQUEST["lpage"]))? 1 : $_REQUEST["lpage"];
 			$page = ($page - 1) * $num_results;
-			$limit_clause = " ORDER BY $order_by ASC LIMIT $page , $num_results";
+			$limit_clause = " ORDER BY $order_by $order_dir LIMIT $page , $num_results";
 			$resvs = bepro_get_listings($returncaluse, $filter_cat);
 			$pages = ceil(count($resvs)/$num_results);
 			$findings[1] = $pages;

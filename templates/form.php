@@ -74,7 +74,7 @@
 						}elseif(!empty($required) && in_array($cat->term_id, array_values($required))){
 							$required_list .= '<span class="bepro_form_cat"><span class="form_label">'.$cat->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$cat->term_id.'" checked="checked" disabled="disabled"></span>';
 						}else{
-							$normal_list .= '<span class="bepro_form_cat"><span class="form_label">'.$cat->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$cat->term_id.'" checked="checked"></span>';
+							$normal_list .= '<span class="bepro_form_cat"><span class="form_label">'.$cat->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$cat->term_id.'"></span>';
 						}
 					}
 					echo $cat_section = "<div class='bepro_listing_category_section'><h3>Categories : </h3><p><strong>Pre Selected</strong></p>".(empty($required_list)?"None":$required_list)."<div style='clear:both'><br /></div><p><strong>Optional</strong></p>".$normal_list."</div>";

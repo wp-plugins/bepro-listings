@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, ajax, apartment, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.11
+Stable tag: 2.1.12
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -65,7 +65,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	17. Ajax (NEW) - Search and filter on one page. Yes, wow is the correct phrase to use!
 
 = ADD ONS =
-Since version 2.0.0, you can now expand on the features of BePro Listings. We have added tons of wordpress hooks and filters to the system. Your visitors will love our file viewers, as well as the ability to play audio and video from your website. We have also improved how our templates are implemented. This provides lots of new ways to customize your listings experinece. Current available add-ons include:
+Our Addons provide lots of new ways to customize your listings experinece. We have (3) three major categories of addons. 1) There are media addons like, videos and documents. 2) There are customer engagement addons like, contact and favorites. 3) Also there are niche market addons like real estate. Current available add-ons include:
 
 	1. Tags - Now you and your members can tag your listings and allow users to search them via the tag widget
 	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
@@ -381,6 +381,11 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 = 2.1.11 (Thursday Mar 20th 2014) =
 
 * Minor fix for category filter
+
+= 2.1.12 (Thursday Mar 20th 2014) =
+
+* Add ability to change author to other users with role of author
+* Fix to show empty categories on the create listing form 
 
 == Upgrade Notice ==
 

@@ -531,17 +531,21 @@
 					</div>
 					<div id="tabs-7">
 						<a href="http://beprosoftware.com"><img src="<?php echo BEPRO_LISTINGS_PLUGIN_PATH."/images/bepro_software_logo.png"; ?>"></a><br />
-						<iframe width="560" height="315" src="//www.youtube.com/embed/IfhJmP_LRDs" frameborder="0" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="//www.youtube.com/embed/D5YpZX0go88" frameborder="0" allowfullscreen></iframe>
 						<p><b>THANK YOU</b> for your interest and support of this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
-						<ul>
+						<h2>Support For You</h2>
+						<ul style="border:1px solid; padding:10px">
 							<li>Support Forum - Join our <a href="http://beprosoftware.com/forums" target="_blank">forums</a> for any support questions</li>
 							<li>Documentation - Instructions, videos, shortcodes, and more on <a href="http://beprosoftware.com/products/bepro-listings/">this dedicated page</a></li>
 							<li>Contact Us - Send us an email via our <a href="http://www.beprosoftware.com/contact-us/">Contact Us</a> Page</li>
 							<li>Upgrades - View our list of <a href="http://www.beprosoftware.com/products/" target="_blank">wordpress plugins and themes</a></li>
 							<li>Services - We offer <a href="http://www.beprosoftware.com/services/" target="_blank">Various services</a> including support starting at $15/hr</li>
 							<li>Social - Our <a href="https://twitter.com/BeProSoftware" target="_blank">Twitter Page</a></li>
-							<li>Rate Us - Give this plugin a rating on <a href="http://wordpress.org/support/view/plugin-reviews/bepro-listings" target="_blank">Wordpress.org</a></li>
 							<li>Youtube - Our <a href="http://www.youtube.com/playlist?list=PLMzIqO2N1YpjMx4QfiCjwFsxxfHVy1goG" target="_blank">Youtube Playlist</a> managed by <a href="http://www.adcoordinates.com" target="_blank">Ad Coordinates</a></li>
+						</ul>
+						<h2>Support For The Plugin</h2>
+						<ul style="border:1px solid; padding:10px">		
+							<li><span style="color:green;font-weight:bold;font-size:18px;text-decoration:underline">Rate Us</span></a> - Give this plugin a <span style="color:green;font-weight:bold;font-size:18px;text-decoration:underline">rating</span> on <a href="http://wordpress.org/support/view/plugin-reviews/bepro-listings" target="_blank">Wordpress.org</a>. This is the best way to support the plugin and encourage its growth</li>
 							<li>Donations - We accept donations of any amount <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings">via paypal</a></li>
 							<li><?php _e("Our Link in your footer?", "bepro-listings"); ?> - <input style="vertical-align:middle" type="checkbox" name="footer_link" value="1" <?php echo ($data["footer_link"]== ("on" || 1))? 'checked="checked"':"" ?>></li>
 						</ul>

@@ -302,7 +302,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.11' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.12' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -461,7 +461,9 @@
 			}
 			if(empty($user_id))$user_id = $default_user_id;
 			
-			if(!empty($user_id)){
+			$user_id = apply_filters("bl_save_listing_user_id_overide", $user_id);
+			
+			if(!empty($user_id) && ($user_id != 0)){
 				if(empty($post_id)){
 					$post = array(
 					  'post_author' => $user_id,
@@ -660,7 +662,7 @@
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			'menu_position' => null,
-			'supports' => array('title','editor','thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes')
+			'supports' => array('title','editor','thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes', 'author')
 		  ); 
 	 
 		register_post_type( 'bepro_listings' , $args );

@@ -64,7 +64,7 @@
 				$required = explode(",",$data["bepro_listings_cat_required"]);
 				$page_id = get_the_ID();
 				//show categories
-				$cats = get_terms( array('bepro_listing_types'));
+				$cats = get_terms( array('bepro_listing_types'), array("hide_empty" => false));
 				$required_list = "";
 				$normal_list = "";
 				if($cats){

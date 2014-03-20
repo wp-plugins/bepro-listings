@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, ajax, apartment, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.10
+Stable tag: 2.1.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -377,6 +377,10 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 * Minor fix for front end submission form. Removed pre-checked setting for categories.
 * New (order_dir) option for [display_listings] shortcode 
+
+= 2.1.11 (Thursday Mar 20th 2014) =
+
+* Minor fix for category filter
 
 == Upgrade Notice ==
 

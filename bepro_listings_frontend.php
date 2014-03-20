@@ -314,7 +314,7 @@
 		$parent = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $_REQUEST["l_type"]:0; 
 		
 		$query_args = array('orderby'=>'count', 'hide_empty' =>0);
-		$parent =(is_array($parent))? $query_args['include'] = $parent:$query_args['parent'] = $parent; 
+		$parent =(is_array($parent) || (is_numeric($parent)))? $query_args['include'] = $parent:$query_args['parent'] = $parent; 
 		
 		$categories = get_terms( array('bepro_listing_types'), $query_args);
 		

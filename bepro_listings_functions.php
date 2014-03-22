@@ -147,7 +147,7 @@
 			
 			$post = array(
 				  'post_author' => $user_id,
-				  'post_content' => "<p>This is your first listing. Delete this one in your admin and create one of your own. If you need help, our <a href='http://beprosoftware.com/shop'>Canadian Wordpress Web Development</a> team can help. Also note we have tons of add-ons for this plugin like: </p>
+				  'post_content' => "<p>This is your first listing. Delete this one in your admin and create one of your own. If you need help, our <a href='http://www.beprosoftware.com/services/'>North American Wordpress Web Development</a> team can help. Also note we have tons of <a href='beprosoftware.com/products/bepro-listings'>Wordpress Directory</a> and <a href='beprosoftware.com/products/bepro-listings'>Wordpress classifieds plugin</a> addons for this plugin like: </p>
 				  <ul>
 					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-tags/'>Tags</a> - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget</li>
 					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-contact/'>Contact</a> - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing</li>
@@ -161,7 +161,18 @@
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-favorites/'>Favorites</a> - Allow visitors and registered users to interact with listings. They can record their likes/dislikes and view them via shortcodes</li>
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-authors/'>Authors</a> - Give your Blog writers and their listings more visibility. With this plugin you add their profile info to their listing pages.</li>
 				</ul>
-				<p>Check them all out on the <a href='http://www.beprosoftware.com/products/bepro-listings/'>BePro Lisitngs documentation</a> page along with <b>shortcodes</b> and <b>instructions</b></p><iframe width='560' height='315' src='//www.youtube.com/embed/zg2o1XK7vKk' frameborder='0' allowfullscreen></iframe>",
+				<h2>Classifieds / Porfolio / Directory Themes</h2>
+				<p>We also have several $1 one dollar wordpress themes you can purchase with free data. This provides a great tutorial and / or way to get setup quickly</p>
+				<ul>
+					<li><a href='http://www.beprosoftware.com/shop/bycater/'>ByCater</a> - Vertile theme for any <strong>wordpress lisings</strong></li>
+					<li><a href='http://www.beprosoftware.com/shop/folioprojects/'>FolioProjects</a> - Best used for <strong>Wordpress portfolios</strong></li>
+					<li><a href='http://www.beprosoftware.com/shop/mt-classifieds/'>MT CLassifieds</a> - Great <strong>Wordpress Classifieds Theme</strong></li>
+					<li><a href='http://www.beprosoftware.com/shop/whatlocalscallit/'>WhatLocalsCallIt</a> - Perfect <strong>Wordpress Directory Theme</strong></li>
+				</ul>
+				
+				<p>Check them all out on the <a href='http://www.beprosoftware.com/products/bepro-listings/'>BePro Lisitngs documentation</a> page along with <b>shortcodes</b> and <b>instructions</b></p>
+				
+				<iframe width='560' height='315' src='//www.youtube.com/embed/zg2o1XK7vKk' frameborder='0' allowfullscreen></iframe>",
 				  'post_status' => "publish", 
 				  'post_title' => "Your First Wordpress Listing",
 				  'post_category' => array($my_cat_id),

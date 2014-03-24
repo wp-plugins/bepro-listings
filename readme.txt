@@ -13,7 +13,7 @@ Custom listings (portfolio, directory, classifieds, store finder) w/ options lik
 == Description ==
 BePro Listings allows you to, search, filter and showcase information in various ways including google maps and multiple listing templates. Configure results to highlight various media types including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with ajax features or configurable distributed architechture.
 
-[Main Site](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
+[BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
 = INTRO VIDEO =
 
@@ -116,16 +116,9 @@ These all have options and you can check them out via the documentation link abo
 
 = TRANSLATIONS =
 
-Currently, this plugin supports, English, French, and Spanish. You can contribute other languages, simply register on our website. Then share your language file in the forums. The process of creating a language file is simple. Start by editing one of the existing language files like:
+Currently, this plugin supports, English, French, and Spanish. You can contribute other languages, simply register on our website. Then share your language file in the forums. The process of creating a language file is simple. Documentation regarding how to do this is available on our website.
 
-- http://plugins.svn.wordpress.org/bepro-listings/trunk/languages/bepro-listings-es_ES.po
-
-This link is an online copy of a bepro listings language file. If you have downloaded and/or installed BePro Listings, you have a copy. In the above case, you would replace the spanish translation with your language. You should also rename the file according to your language and country. You can use the following software
-
-- http://poedit.net  (free)
-- https://poeditor.com (basic free)
-
-The usefulness of BePro Listings beyond english, is very important to us. If you find deficiencies in our use of localization, please reach out
+The usefulness of BePro Listings beyond english, is very important to us. If you find deficiencies in our use of localization, please reach out.
 
 == Installation ==
 

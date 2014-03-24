@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Custom listings (portfolio, directory, classifieds, store finder) w/ options like (google maps, gallery, front end upload, & ajax search / filter)
 
 == Description ==
-BePro Listings allows you to, search, filter and showcase information in various ways including google maps and multiple listing templates. Configure results to highlight various media types including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with ajax features or configurable distributed architechture.
+BePro Listings allows you to, search, filter and showcase information in various ways including **google maps** and multiple listing templates. Configure results to highlight various media types including, images, documents, audio, and **videos**. Choose between our easy one page/shortcode setup with **ajax features** or configurable distributed architechture.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
@@ -24,7 +24,7 @@ BePro Listings allows you to, search, filter and showcase information in various
 1. Put this shortcode [bl_all_in_one] in any page or post. 
 2. Confirm "Ajax Page" is selected on the BePro Listings admin page, for the option "how links open". 
 
-Thats it, everything works on one page (map, listings,categories, search, etc). When you are ready for custom configurations, we have a plethora of extra shortcodes and options. If you prefer an alternative to the DIY method, check out our $1 one dollar wordpress themes and available support on our website.
+Thats it, everything works on one page (map, listings,categories, search, etc). When you are ready for *custom configurations*, we have a plethora of extra shortcodes and options. If you prefer an alternative to the DIY method, check out our $1 one dollar wordpress themes and available support on our website.
 
 = Popular Uses =
 
@@ -32,16 +32,17 @@ BePro Listings can be applied to any listings scenario. It's designed to be modu
 
 	* Paid Listings - Use our s2member or PMPro addons to charge users for listing on your website
 	* Store Finder - List your store or shop branches including, location and contact details 
-	* Directory - Employee, staff, members, pets, car, Business, Classifieds, Job Search, Fleet Tracking, Job Board, or any other type of directory listings site
+	* **Directory** - Employee, staff, members, pets, car, Business, Job Search, Fleet Tracking, Job Board, or any other type of directory listings site
+	* **Classifieds** - Sell ad space or use the system like a **bullitin board**
 	* Products & Services - List them yourself or allow members to list products and/or services e.g. product catalogue
 	* Informational - Tourism, points of interest, and other details best shown via google maps
 	* User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
 	* Image website - Artists are using the new features to categorize, manage, and showcase their work
-	* Video Listings - Feature videos from sites like youtube and uploaded to your server.
+	* **Video Listings** - Feature videos from sites like youtube and uploaded to your server.
 	* Podcast & Music - List and categorize all of your audio files including mp3 and wav
 	* Document Directory - Showcase multiple file types allowing users to search and view them on your website
-	* Portfolio - Feature your work in various ways, allowing users to view various details and comment. 
-	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a BePro Listings Realestate addon
+	* **Portfolio** - Feature your work in various ways, allowing users to view various details and comment. 
+	* **Real Estate** - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a BePro Listings Realestate addon
 
 = KEY FEATURES =
 Our BePro Software Team is constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with diverse content. The following features are included with the plugin:
@@ -62,10 +63,10 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	14. Multisite - Now multisite compatible, expand the use of this plugin throughout your network.
 	15. Gallery - Works with the wordpress gallery shortcode, so its compatible with many gallery plugins
 	16. Widgets - Several widgets are available including, recent listings and search filter. Just about every content focused addon brings more widgets
-	17. Ajax (NEW) - Search and filter on one page. Yes, wow is the correct phrase to use!
+	17. **Ajax** (NEW) - Search and filter on one page. Yes, wow is the correct phrase to use!
 
 = ADD ONS =
-Our Addons provide lots of new ways to customize your listings experinece. We have (3) three major categories of addons. 1) There are media addons like, videos and documents. 2) There are customer engagement addons like, contact and favorites. 3) Also there are niche market addons like real estate. Current available add-ons include:
+Our Addons provide lots of new ways to customize your listings experinece. We have (3) three major categories of addons. **1)** There are *media addons* like, **videos** and documents. 2) There are customer engagement addons like, contact and favorites. 3) Also there are niche market addons like **real estate**. Current available add-ons include:
 
 	1. Tags - Now you and your members can tag your listings and allow users to search them via the tag widget
 	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
@@ -86,7 +87,7 @@ BePro Listings has spawned the famous $1 one dollar wordpress themes. The plugin
 
 	1. ByCater - This responsive directory theme features a home page template utilizing (google map, search, categories, and listings). It also integrates with typical wordpress features like, sidebar, menu, etc
 	2. FolioProjects - Responsive Child theme for the stock wordpress twentyfourteen teamplate. Perfect for gallery, portfolio, and other sites where you want to emphasize the featured images. Comes with three templates
-	3. MT Classifieds - Great responsive theme for classified focused websites. Template uses various features including (google map, categories, and listings)
+	3. MT Classifieds - Great responsive theme for **classifieds** focused websites. Template uses various features including (**google map**, categories, and listings)
 	4. WhatLocalsCallIt - Great responsive directory theme built on the twentytwelve foundation. Great option for a Product catalogue
 
 = WHATS THE DIFFERENCE? =
@@ -116,7 +117,7 @@ These all have options and you can check them out via the documentation link abo
 
 = TRANSLATIONS =
 
-Currently, this plugin supports, English, French, and Spanish. You can contribute other languages, simply register on our website. Then share your language file in the forums. The process of creating a language file is simple. Documentation regarding how to do this is available on our website.
+Currently, this plugin supports, English, French, and Spanish. You can contribute other languages. Documentation regarding how to do this is available on our website.
 
 The usefulness of BePro Listings beyond english, is very important to us. If you find deficiencies in our use of localization, please reach out.
 

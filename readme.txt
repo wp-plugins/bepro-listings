@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Custom listings (portfolio, directory, classifieds, store finder) w/ options like (google maps, gallery, front end upload, & ajax search / filter)
 
 == Description ==
-BePro Listings allows you to, search, filter and showcase information in various ways including **google maps** and multiple listing templates. Configure results to highlight various media types including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or configurable distributed architechture.
+BePro Listings allows you to, search, filter and showcase information in various ways including **google maps** and multiple listing templates. Configure results to highlight various **media** types including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or configurable distributed architechture.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
@@ -24,11 +24,13 @@ BePro Listings allows you to, search, filter and showcase information in various
 1. Put this shortcode [bl_all_in_one] in any page or post. 
 2. Confirm "Ajax Page" is selected on the BePro Listings admin page, for the option "how links open". 
 
-Thats it, everything works on one page (**google maps**, listings, categories, search, etc). When you are ready for *custom configurations*, we have a plethora of extra shortcodes and options. If you prefer an alternative to the DIY method, check out our **$1 one dollar wordpress themes** and available **support** on our website.
+Thats it, everything works on one page (**google maps**, listings, categories, search, etc). When you are ready for *custom configurations*, we have a plethora of extra shortcodes and options. If you prefer an alternative to the DIY method, check out our **$1 one dollar wordpress themes** and **available support** on our website.
+
+Remember, unlike other solutions, just about everything in BePro Listings can be set to an **off state** i.e. removed. So, if your solution does not need **Google Maps**, ajax, or cost related info, then simply turn off the options in the admin. Then use the shortcodes that do focus on your needs.
 
 = Popular Uses =
 
-BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Configure options like, # of uploads, ajax filter, default search distance, and item page details. With our buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Configure options like, # of uploads, **ajax search filter**, default search distance, and item page details. With our buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 	* Paid Listings - Use our s2member or PMPro addons to charge users for listing on your website
 	* Store Finder - List your store or shop branches including, location and contact details 

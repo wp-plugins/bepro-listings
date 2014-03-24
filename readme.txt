@@ -98,7 +98,7 @@ We created BePro Listings and its addons to be *modular*. This allows you to onl
 
 Out of the box, BePro Listings works with buddypress and many **gallery plugins** (e.g. galleria). Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This makes it extreamly easy and quick to add the best combinations of features for extending your **directory** / **classifieds** / **portfolio** / **Catalogue** site. 
 
-Most importantly, BePro Listings is built for various levels of users. Novice users will appreciate our $1 themes, ajax features and *"all in one"* shortcodes. Intermediate users will appreiate the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
+Most importantly, BePro Listings is built for various levels of users. Novice users will appreciate our $1 themes, **ajax features** and *"all in one"* shortcodes. Intermediate users will appreiate the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 
 = SHORTCODES =
 These all have options and you can check them out via the documentation link above.
@@ -116,6 +116,12 @@ These all have options and you can check them out via the documentation link abo
 * 404 Error - If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings, so that they are reset for all urls. The option is under your settings menu.
 
 * Google Maps - If google map controls look weird, this is a css style related issue (your theme). Specifically, its the addition of max-width declarations to images. For details, you can *google* the issue (**google maps** max-width). Lots of bootstrap themes use this css declaration.
+
+= CONTRIBUTING =
+
+You can support the development of this plugin via the donations link on the right. You can also donate code via
+
+* github repo - https://github.com/BeProSoftware/bepro-listings
 
 = TRANSLATIONS =
 
@@ -194,10 +200,6 @@ Since 1.2.0. Version 2.0.60 added integration with activity feeds
 = Does your user submission form implement custom profile fields? =
 
 No, not currently. Is this a feature you are interested in?
-
-= What if i dont want to link to the created listing page? =
-
-Simply set the post to private in the admin.
 
 = Are there ways to extend the features? =
 

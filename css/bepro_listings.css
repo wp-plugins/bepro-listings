@@ -165,6 +165,19 @@
 	text-shadow: 0 1px 0 rgba(255,255,255,0.8);
 	text-decoration: none;
 }
+#tab-map{
+	height:350px;
+}	
+.bepro_listings_tabs #page_details_map_wrap{
+	width:700px;
+	height:350px;
+	position:absolute;
+	margin-top: 45px;
+}	
+.bepro_listings_tabs #page_details_map{
+	width:700px;
+	height:300px;
+}
 
 /* Cat Listing layout */
 .cat_lists{

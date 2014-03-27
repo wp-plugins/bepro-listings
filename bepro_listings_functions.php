@@ -313,7 +313,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.12' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.13' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -367,10 +367,19 @@
 			$data['bepro_listings_item_content_template'] = 'bepro_listings_item_content_info';
 			
 			//item list template
-			$data['bepro_listings_list_template_1'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_image" => "bepro_listings_list_image_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_1.css", __FILE__ ));
-			$data['bepro_listings_list_template_2'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_above_title" => "bepro_listings_list_image_template","bepro_listings_list_image" => "bepro_listings_list_geo_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_2.css", __FILE__ ));
+			$data['bepro_listings_list_template_1'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_image" => "bepro_listings_list_image_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_1.css", __FILE__ ));
+			$data['bepro_listings_list_template_2'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_above_title" => "bepro_listings_list_image_template","bepro_listings_list_image" => "bepro_listings_list_geo_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_2.css", __FILE__ ));
 			
 			//save
+			update_option("bepro_listings", $data);
+		}
+		
+		//Things that need to change only if there is an upgrade
+		
+		$bepro_listings_version = get_option("bepro_listings_version");
+		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
+			$data['bepro_listings_list_template_1'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_image" => "bepro_listings_list_image_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_1.css", __FILE__ ));
+			$data['bepro_listings_list_template_2'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_above_title" => "bepro_listings_list_image_template","bepro_listings_list_image" => "bepro_listings_list_geo_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_2.css", __FILE__ ));
 			update_option("bepro_listings", $data);
 		}
 	}
@@ -745,12 +754,24 @@
 		include(plugin_dir_path( __FILE__ )."templates/tabs/tab-comments.php");
 	}
 	
+	function bepro_listings_maps_tab(){
+		$data = get_option("bepro_listings");
+		if($data["show_geo"] == "on")
+			include(plugin_dir_path( __FILE__ )."templates/tabs/tab-maps.php");
+	}
+	
 	function bepro_listings_description_panel(){
 		include(plugin_dir_path( __FILE__ )."templates/tabs/description.php");
 	}
 	
 	function bepro_listings_comments_panel(){
 		include(plugin_dir_path( __FILE__ )."templates/tabs/comments.php");
+	}
+	
+	function bepro_listings_maps_panel(){
+		$data = get_option("bepro_listings");
+		if($data["show_geo"] == "on")
+			include(plugin_dir_path( __FILE__ )."templates/tabs/maps.php");
 	}
 
 

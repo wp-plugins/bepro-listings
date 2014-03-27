@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, ajax, apartment, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.12
+Stable tag: 2.1.13
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -38,13 +38,14 @@ BePro Listings can be applied to any listings scenario. It's designed to be modu
 	* Classifieds - Sell ad space or use the system like a bullitin board
 	* Products & Services - List them yourself or allow members to list products and/or services e.g. product catalogue
 	* Informational - Tourism, points of interest, and other details best shown via google maps
-	* User Contributions - Using the submission form shortcode, let users contribute blog posts for you to review and publish
-	* Image website - Artists are using the new features to categorize, manage, and showcase their work
-	* Video Listings - Feature videos from sites like youtube and uploaded to your server.
+	* Front End Uploads - Using the submission form shortcode, users can contribute blog posts for you to review and publish
+	* Image website - Artists are using the new Gallery features to categorize, manage, and showcase their work
+	* Video Listings - Feature videos from sites like youtube or videos uploaded to your server.
 	* Podcast & Music - List and categorize all of your audio files including mp3 and wav
 	* Document Directory - Showcase multiple file types allowing users to search and view them on your website
-	* Portfolio - Feature your work in various ways, allowing users to view various details and comment. 
+	* Portfolio - Feature your work in various ways, allowing users to view details and comment. Best solution for showcasing portfolio projects.
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a BePro Listings Realestate addon
+	* Google Maps - We have one of the most feature rich google map options available for wordpress. Many users choose us just for this feature.
 
 = KEY FEATURES =
 Our BePro Software Team is constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with diverse content. The following features are included with the plugin:
@@ -384,6 +385,17 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 * Add ability to change author to other users with role of author
 * Fix to show empty categories on the create listing form 
+
+= 2.1.13 (Wednesday Mar 26th 2014) =
+
+* Default listing order by option is now date
+* New shortcode option for map shortcode "map_id"
+* New feature, map shows on item details page
+* Tweak to how categories look when selected on the front end
+* New filters added to the system
+* Alteration to template system for listings. Cost now has its onw function.
+* Removed empty categories from filter options
+* fixed undefined error messaged when show_paging optin not used is listings shortcode
 
 == Upgrade Notice ==
 

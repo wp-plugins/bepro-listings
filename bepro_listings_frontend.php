@@ -153,6 +153,7 @@
 			  'size' => $wpdb->escape($_POST["size"]),
 			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
 			  'show_paging' => $wpdb->escape($_POST["show_paging"]),
+			  'map_id' => $wpdb->escape($_POST["map_id"]),
 			  'bl_post_id' => $wpdb->escape($_POST["bl_post_id"])
 		 ), $atts));
 		 
@@ -161,6 +162,8 @@
 		$num_results = $data["num_listings"]; 
 		$size = empty($size)? 1:$size;
 		
+		//check map id
+		$map_id = empty($map_id)? "map":$map_id;
 		
 		//Get Listing Results
 		$findings = process_listings_results($show_paging, $num_results, $l_type, $bl_post_id);				
@@ -200,7 +203,7 @@
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				}
 				$declare_for_map
-				map = new google.maps.Map(document.getElementById('map'), myOptions);
+				map = new google.maps.Map(document.getElementById('".$map_id."'), myOptions);
 				
 				$map_cities
 				//cluster markers
@@ -218,7 +221,7 @@
 		<div id='shortcode_map'>
 		<div id='bl_size' class='bl_shortcode_selected'>$size</div>
 		<div id='bl_pop_up' class='bl_shortcode_selected'>$pop_up</div>
-		<div id='map' class='result_map_$size'></div>
+		<div id='".$map_id."' class='result_map_$size'></div>
 		</div>";
 		if($echo_this){
 			echo $map;
@@ -313,7 +316,7 @@
 		$parent = (!empty($cat) && is_numeric($cat))? $cat:0;
 		$parent = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $_REQUEST["l_type"]:0; 
 		
-		$query_args = array('orderby'=>'count', 'hide_empty' =>0);
+		$query_args = array('orderby'=>'count');
 		$parent =(is_array($parent) || (is_numeric($parent)))? $query_args['include'] = $parent:$query_args['parent'] = $parent; 
 		
 		$categories = get_terms( array('bepro_listing_types'), $query_args);
@@ -327,9 +330,9 @@
 				$cat_list .= "<h3>".$cat->name." Category</h3>";
 			}else{
 				$cat_list .= "<h3>".__($cat_heading,"bepro_listings")."</h3>";
-			}
-			foreach($categories as $cat){
-				$cat_list.= bepro_cat_templates($cat, $url_input, $ctype);
+				foreach($categories as $cat){
+					$cat_list.= bepro_cat_templates($cat, $url_input, $ctype);
+				}
 			}
 		}else{
 			$cat_list .= "<div class='cat_list_no_item'> ".$cat_heading." Created.</div>";
@@ -479,6 +482,8 @@
 			$paging .= "</div>";
 			if($counter > 1) $results.= $paging; // if no pages then dont show this
 			$show_paging = "<div id='bl_show_paging' class='bl_shortcode_selected'>$show_paging</div>";
+		}else{
+			$show_paging = "<div id='bl_show_paging' class='bl_shortcode_selected'>0</div>";
 		}
 		
 		if(!empty($l_featured)){
@@ -511,7 +516,14 @@
 			$returncaluse .= " AND posts.ID IN ($l_ids)";
 		}
 		
-		$order_by = (($order_by == 1) || (empty($order_by)))? "posts.post_title":"RAND()";
+		if($order_by == 1){
+			$order_by = "posts.post_title";
+		}else if($order_by == 2){
+			$order_by = "RAND()";
+		}else{
+			$order_by = "posts.post_date";
+		}
+		
 		$order_dir = (($order_dir == 1) || (empty($order_dir)))? "ASC":"DESC";
 
 		//Handle Paging selection calculations and process listings
@@ -579,12 +591,9 @@
 		$content =  substr(strip_tags($bp_listing->post_content), 0, 80);
 		echo '<span class="result_desc">'.stripslashes(do_shortcode($content)).'...</span>';
 	}
-	function bepro_listings_list_links_template($bp_listing){
+	
+	function bepro_listings_list_cost_template($bp_listing){
 		$data = get_option("bepro_listings");
-		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
-		$show_web_link = $data["show_web_link"];
-		$details_link = empty($data["details_link"])? "Item":$data["details_link"];
-		$permalink = get_permalink( $bp_listing->post_id );
 		if($data["show_cost"]){
 			if(is_numeric($bp_listing->cost)){ 
 				//formats the price to have comas and dollar sign like currency.
@@ -594,8 +603,17 @@
 				$cost = "Please Contact";
 			} 
 			//cost
-			echo '<span class="result_cost">'.$cost.'</span>';
+			echo '<span class="result_cost">'.apply_filters("bl_cost_listing_value",$cost).'</span>';
 		}
+	}
+	
+	function bepro_listings_list_links_template($bp_listing){
+		$data = get_option("bepro_listings");
+		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
+		$show_web_link = $data["show_web_link"];
+		$details_link = empty($data["details_link"])? "Item":$data["details_link"];
+		$permalink = get_permalink( $bp_listing->post_id );
+		
 			
 		/*
 		* 1 = go to page
@@ -661,7 +679,7 @@
 		if(($data["show_geo"] == "on") || ($data["show_cost"] == "on") || ($data["show_con"] == "on") ){
 			echo "<h3>Details : </h3><span class='bepro_listing_info'>";
 			if($data["show_cost"] == "on"){
-				echo "<div class='item_cost'>".__("Cost", "bepro-listings")." - ".$cost."</div>";
+				echo "<div class='item_cost'>".__("Cost", "bepro-listings")." - ".apply_filters("bl_cost_listing_value",$cost)."</div>";
 			}	
 				//If we have geographic data then we can show this listings address information
 				if($item->lat){

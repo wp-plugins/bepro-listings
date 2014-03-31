@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: address, ajax, apartment, buddypress, business, business directory, catalogue, classifieds, clients, directory, document, employee, finder, front end upload, gallery, google, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, theme, vehicle, video, vimeo, youtube
+Tags: address, ajax, apartment, buddypress, business, catalogue, classifieds, directory, document, employee, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
 Stable tag: 2.1.13
@@ -40,8 +40,8 @@ BePro Listings can be applied to any listings scenario. It's designed to be modu
 	* Informational - Tourism, points of interest, and other details best shown via google maps
 	* Front End Uploads - Using the submission form shortcode, users can contribute blog posts for you to review and publish
 	* Image website - Artists are using the new Gallery features to categorize, manage, and showcase their work
-	* Video Listings - Feature videos from sites like youtube or videos uploaded to your server.
-	* Podcast & Music - List and categorize all of your audio files including mp3 and wav
+	* Video Listings - Feature HTML5 videos (w/ flash fallback) from sites like youtube or videos uploaded to your server.
+	* Podcast & Music - List and categorize all of your audio files including mp3 and wav then play them on a HTML5 player  (w/ flv fallback)
 	* Document Directory - Showcase multiple file types allowing users to search and view them on your website
 	* Portfolio - Feature your work in various ways, allowing users to view details and comment. Best solution for showcasing portfolio projects.
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a BePro Listings Realestate addon
@@ -67,9 +67,10 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	15. Gallery - Works with the wordpress gallery shortcode, so its compatible with many gallery plugins
 	16. Widgets - Several widgets are available including, recent listings and search filter. Just about every content focused addon brings more widgets
 	17. Ajax (NEW) - Search and filter on one page. Yes, wow is the correct phrase to use!
+	18. On page google map (NEW) - Now all listings have their own google map showing listing location in a tab
 
 = ADD ONS =
-Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are *media addons* like, **videos** and **documents**. 2) There are customer engagement addons like, contact and favorites. 3) We create niche market addons like **real estate**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
+Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio**. 2) There are customer engagement addons like, contact and favorites. 3) We create niche market addons like **real estate**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
 
 	1. Tags - Now you and your members can tag your listings and allow users to search them via the tag widget
 	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing

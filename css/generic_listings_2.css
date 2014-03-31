@@ -123,7 +123,12 @@ float: left;
 }
 
 /* Featured */
-.shortcode_results_2 .result_featured {
-	position: absolute;
-	margin: -26px 0 0 -212px;
+.shortcode_results_2 .result_featured{
+	background: transparent url(../images/bepro_listings_featured.png) no-repeat 0 0;
+	height: 117px;
+	width: 118px;
+	float: left;
+	left: 0;
+	margin: -26px 0 0 -27%;
+	opacity: .99;
 }

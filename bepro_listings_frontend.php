@@ -571,7 +571,7 @@
 	}
 	function bepro_listings_list_featured_template($bp_listing){
 		if($bp_listing->featured)
-			echo '<span class="result_featured"><img src="'.plugins_url("images/bepro_listings_featured.png", __FILE__).'"></span>';
+			echo '<span class="result_featured"></span>';
 	}
 	function bepro_listings_list_image_template($bp_listing){
 		$permalink = get_permalink( $bp_listing->post_id );

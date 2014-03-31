@@ -25,3 +25,10 @@
 	height: 105px;
 	overflow: hidden;
 }
+.shortcode_results_1 .result_featured {
+	position: absolute;
+	margin: -54px 0 0 -14px;
+}
+.shortcode_results_1 .result_featured img{
+	height: 105px;
+}

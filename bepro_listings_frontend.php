@@ -454,13 +454,16 @@
 			foreach($list_templates as $key => $val){
 				if($key == "style")
 					$results .="<link href='".$val."' rel='stylesheet' />";
+				else if($key == "template_file")
+					$results .="";
 				else
 					add_action($key, $val);
 			}
 			
 			//loop over listing template file
 			foreach($raw_results as $result){
-				$results .= basic_listing_layout($result, $type);
+				$result->featured = is_numeric($l_featured);
+				$results .= basic_listing_layout($result, $list_templates["template_file"]);
 			}
 			foreach($list_templates as $key => $val){
 				remove_action($key, $val);
@@ -475,7 +478,8 @@
 			$counter = 1;
 			$paging = "<div style='clear:both'><br /></div><div class='paging'>Pages: ";
 			while($pages != 0){
-				$paging .= "<a href='?lpage=".$counter."'>".$counter."</a>";
+				$selected = ((!empty($_REQUEST["lpage"]) && ($counter == $_REQUEST["lpage"]))||(empty($_REQUEST["lpage"]) && ($counter == 1)))? $selected="selected":"";
+				$paging .= "<a href='?lpage=".$counter."' class='$selected'>".$counter."</a>";
 				$pages--;
 				$counter++;
 			}
@@ -483,18 +487,18 @@
 			if($counter > 1) $results.= $paging; // if no pages then dont show this
 			$show_paging = "<div id='bl_show_paging' class='bl_shortcode_selected'>$show_paging</div>";
 		}else{
-			$show_paging = "<div id='bl_show_paging' class='bl_shortcode_selected'>0</div>";
+			if(empty($l_featured))
+				$show_paging = "<div id='bl_show_paging' class='bl_shortcode_selected'>0</div>";
 		}
 		
 		if(!empty($l_featured)){
-			$l_featured = "class='l_featured'";
 			$l_featured_id = "_featured";
 		}else{
 			$show_bl_type = "<div id='bl_type' class='bl_shortcode_selected'>$type</div>";
 			$hidden_limit_text = "<div id='bl_limit' class='bl_shortcode_selected'>$limit</div>";
 		}
 		
-		$results = "<div id='shortcode_list$l_featured_id' $l_featured>".$results."</div>";
+		$results = "<div id='shortcode_list$l_featured_id'>".$results."</div>";
 		$results .= "$hidden_limit_text $show_bl_type $show_paging";
 		if($echo_this){
 			echo $results;
@@ -540,9 +544,9 @@
 		return $findings;
 	}
 	
-	function basic_listing_layout($result, $type = 1){
+	function basic_listing_layout($result, $listing_template_file = ''){
+		if(empty($listing_template_file))$listing_template_file = plugin_dir_path( __FILE__ ).'/templates/listings/generic_'.$type.'.php';
 		//allow other features to tie in
-		$listing_template_file = plugin_dir_path( __FILE__ ).'/templates/listings/generic_'.$type.'.php';
 		$get_listing_template = apply_filters("bepro_listings_list_template", $listing_template_file);
 		if($get_listing_template != -1)$listing_template_file = $get_listing_template;
 		
@@ -564,6 +568,10 @@
 	}
 	function bepro_listings_list_category_template($bp_listing){
 		echo '<span class="result_type">'.get_the_term_list($bp_listing->post_id, 'bepro_listing_types', '', ', ','').'</span>';
+	}
+	function bepro_listings_list_featured_template($bp_listing){
+		if($bp_listing->featured)
+			echo '<span class="result_featured"><img src="'.plugins_url("images/bepro_listings_featured.png", __FILE__).'"></span>';
 	}
 	function bepro_listings_list_image_template($bp_listing){
 		$permalink = get_permalink( $bp_listing->post_id );

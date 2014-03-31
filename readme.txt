@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, ajax, apartment, buddypress, business, catalogue, classifieds, directory, document, employee, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.13
+Stable tag: 2.1.14
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -52,8 +52,8 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 
 	1. Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile.
 	2. Custom posts - Listings are separate to your other posts in the admin and front end.
-	3. Listing Categories - (Custom Taxonomies) 4 different directory style layouts including optional images
-	4. Listings - List by Category NEW! (e.g. "featured only"). Two templates come with the base plugin and they can be extended. 
+	3. Listing Categories - List by Category (Custom Taxonomies) 4 different directory style layouts including optional images
+	4. Listings - Two templates including a ("Featured") banner option, come with the base plugin and they can be extended. 
 	5. Google Maps api v3.5 - Great for showing listings via a map with no need for API keys.
 	6. Front end Submission  - Allow visitors to post, or lock it to members only, or it submits to you as pending.
 	7. Validations - User Form Submissions are validated using jQuery.
@@ -70,17 +70,17 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	18. On page google map (NEW) - Now all listings have their own google map showing listing location in a tab
 
 = ADD ONS =
-Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio**. 2) There are customer engagement addons like, contact and favorites. 3) We create niche market addons like **real estate**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
+Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, contact and favorites. 3) We create niche market addons like **real estate**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
 
 	1. Tags - Now you and your members can tag your listings and allow users to search them via the tag widget
 	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
 	3. Gallery - Three 3 gallery options including slider & lightbox, plus three new listings templates
-	4. Video - Improve on the Gallery plugin with the ability to upload file types like (mp4, mpeg, avi, wmv, webm). Also link videos from sites like, youtube, vimeo, & dailymotion
+	4. Video - Improve on the Gallery plugin with the ability to upload file types like (mp4, mpeg, avi, wmv, webm). Also link videos from sites like, youtube, vimeo, & dailymotion. Uploaded videos are played using HTML5 or fallback to flassh
 	5. Documents - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)
 	6. Icons - Tons of google map markers/icons from the "Map Icons Collection" by Nicolas Mollet and also allows other addons to place icons on listings, video, documents, etc
 	7. Realestate - Add realestate directory related information to listings & the ability to search/filter by realestate details
 	8. S2Member - Limit & get paid for your listings depending on membership levels, using this s2member integration
-	9. Audio - List your podcasts and music on wordpress with this addon. We support several file types including wav, wma, mp3 and m4a
+	9. Audio - List your podcasts and music on wordpress with this addon. We support several file types including wav, wma, mp3 and m4a. Uploaded audio is played using HTML5 or fallback to flassh
 	10. Favorites - Engage your visitors! Record theirs likes and dislikes to figure out the most popular listings.
 	11. Authors - Publicize your authors and give their listings more visibility.
 	12. PMPro - Use Paid Membership Pro to charge users to post listings on your website, with this integration.
@@ -397,6 +397,13 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 * Alteration to template system for listings. Cost now has its onw function.
 * Removed empty categories from filter options
 * fixed undefined error messaged when show_paging optin not used is listings shortcode
+
+= 2.1.14 (Monday Mar 31st 2014) =
+
+* Fix paging in cases where featured listings are shown with normal listings
+* New style for paging
+* New style for featured listing with featured badge instead of colors
+* Rename filter widget buttons
 
 == Upgrade Notice ==
 

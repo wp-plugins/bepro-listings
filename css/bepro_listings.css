@@ -66,6 +66,9 @@
 	float: right;
 }
 /* listing layout */
+#shortcode_list{
+	clear:left;
+}
 .bepro_listing_desc{
 	float:left;
 	display:block;
@@ -277,16 +280,20 @@
 }
 
 
-
 /* Paging */
+.paging{
+	float:right;
+}
 .paging a{
-	background-color: #F5F5F5;
-    border: 1px dashed #000000;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     padding: 2px 4px;
 	margin: 2px 5px;
+}
+.paging a:hover,.paging a.selected{
+	background-color: grey;
+	color: #fff;
 }
 
 /*footer */

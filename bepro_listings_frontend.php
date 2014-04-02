@@ -593,7 +593,15 @@
 	function bepro_listings_list_geo_template($bp_listing){
 		$data = get_option("bepro_listings");
 		if($data["show_geo"])
-			echo '<span class="result_title">'.$bp_listing->city.','.$bp_listing->state.','.$bp_listing->country.'</span>';
+			echo '<span class="result_title">'.$bp_listing->city;
+			
+			if(!empty($bp_listing->state))
+				echo ', '.$bp_listing->state;
+			
+			if(!empty($bp_listing->country))
+				echo ', '.$bp_listing->country;
+			
+			echo '</span>';
 	}
 	function bepro_listings_list_content_template($bp_listing){
 		$content =  substr(strip_tags($bp_listing->post_content), 0, 80);

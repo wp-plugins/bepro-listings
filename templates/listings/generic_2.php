@@ -9,5 +9,4 @@
 	do_action("bepro_listings_list_content", $result);
 	do_action("bepro_listings_list_end", $result);
 ?>
-<div style="clear:both"><br /></div>
 </div>

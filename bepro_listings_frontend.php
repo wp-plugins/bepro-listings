@@ -774,7 +774,4 @@
 		include( dirname( __FILE__ )."/templates/form.php");
 	}
 	
-	
-	
-	
 ?>

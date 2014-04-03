@@ -30,7 +30,7 @@ Remember, unlike other solutions, just about everything in BePro Listings can be
 
 = Popular Uses =
 
-BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Configure options like, # of uploads, **ajax search filter**, default search distance, and item page details. With our buddypress option, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Configure options like, # of uploads, **ajax search filter**, default search distance, and item page details. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 	* Paid Listings - Use our s2member or PMPro addons to charge users for listing on your website
 	* Store Finder - List your store or shop branches including, location and contact details 
@@ -50,7 +50,7 @@ BePro Listings can be applied to any listings scenario. It's designed to be modu
 = KEY FEATURES =
 Our BePro Software Team is constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with diverse content. The following features are included with the plugin:
 
-	1. Buddypress - (New for 1.2.0) Allow your users to manage their submissions from their profile.
+	1. My Listings - Use Buddypress or our standalone profile shortcode to allow your users to manage their submissions
 	2. Custom posts - Listings are separate to your other posts in the admin and front end.
 	3. Listing Categories - List by Category (Custom Taxonomies) 4 different directory style layouts including optional images
 	4. Listings - Two templates including a ("Featured") banner option, come with the base plugin and they can be extended. 
@@ -112,6 +112,7 @@ These all have options and you can check them out via the documentation link abo
 	* Front end Upload Form - Give your users the ability to submit from any page or post. You can set a default user id for the listing or force registration. e.g. [create_listing_form]
 	* Category Links - Allow users to navigate your directory/listings using category links e.g. [display_listing_categories]
 	* All In One (NEW) - Use one shortcode to implement several features at once. Various configurations available [bl_all_in_one].
+	* Profile - Use our standalone profile shortcode, no need for buddypress or any other plugin [bl_my_listings]
 
 = TROUBLE SHOOTING =
 
@@ -198,6 +199,10 @@ Yes, there are add-ons and themes available for this plugin. Check our website b
 = Can this work with buddypress? =
 
 Since 1.2.0. Version 2.0.60 added integration with activity feeds
+
+= Do I have to use buddypress? =
+
+No. Since 2.1.17 we supply a standalone profile which can be implemented via shortcode
 
 = Does your user submission form implement custom profile fields? =
 
@@ -413,6 +418,10 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 * Made css and template changes to listing type 2
 * Tweak geography info layout for listing type 2
+
+= 2.1.17 (Thursday Apr 3rd 2014) =
+
+* New Shortcode for standalone profile page
 
 == Upgrade Notice ==
 

@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: address, ajax, apartment, buddypress, business, catalogue, classifieds, directory, document, employee, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, vehicle, video, vimeo, youtube
+Tags: address, ajax, apartment, buddypress, business, catalogue, classifieds, csv, directory, document, employee, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 2.1.16
+Stable tag: 2.1.18
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,6 +68,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	16. Widgets - Several widgets are available including, recent listings and search filter. Just about every content focused addon brings more widgets
 	17. Ajax (NEW) - Search and filter on one page. Yes, wow is the correct phrase to use!
 	18. On page google map (NEW) - Now all listings have their own google map showing listing location in a tab
+	19. Upload CSV (NEW) - Upload your lisings via a csv document
 
 = ADD ONS =
 Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, contact and favorites. 3) We create niche market addons like **real estate**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
@@ -422,6 +423,10 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 = 2.1.17 (Thursday Apr 3rd 2014) =
 
 * New Shortcode for standalone profile page
+
+= 2.1.18 (Saturday Apr 5th 2014) =
+
+* New ability to upload listings via CSV file in admin
 
 == Upgrade Notice ==
 

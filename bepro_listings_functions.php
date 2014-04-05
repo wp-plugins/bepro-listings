@@ -301,7 +301,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.17' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.18' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -438,7 +438,7 @@
 		exit;
 	}
 	
-	function bepro_listings_save($post_id = false){
+	function bepro_listings_save($post_id = false, $return_post_id = false){
 		global $wpdb;
 		if(!empty($_POST["save_bepro_listing"])){
 			//get settings
@@ -565,11 +565,54 @@
 			}
 		}
 		
+		if($return_post_id)
+			return $post_id;
+		
 		return $return_message;
+	}
+	
+	//function to get a file via url, upload it, and attach to a post
+	
+	function bl_attach_remote_file($post_id, $remote_url){
+		$raw_file = explode("/",$remote_url);
+		$uploads = wp_upload_dir();
+		$filename = $uploads['path']."/".$raw_file[sizeof($raw_file)-1];//get filename
+		if(bl_http_get_file($remote_url, $filename)){
+			$wp_filetype = wp_check_filetype(basename($filename), null );
+			$attachment = array(
+				 'post_mime_type' => $wp_filetype['type'],
+				 'post_title' => $filename,
+				 'post_content' => '',
+				 'post_status' => 'inherit'
+			);
+			$attach_id = wp_insert_attachment( $attachment, $filename, $post_id);
+			$attach_data = wp_generate_attachment_metadata( $attach_id, $filename);
+			wp_update_attachment_metadata( $attach_id, $attach_data );
+			update_post_meta($post_id, '_thumbnail_id', $attach_id);
+		}
+	}
+	
+	function bl_http_get_file($remote_url, $local_file)    {
+		$data = get_option("bepro_listings");
+		$query_type = $data["map_query_type"];
+		
+		$fp = fopen($local_file, 'w');
+		if(empty($query_type) || ($query_type == "curl")){
+			$cp = curl_init($remote_url);
+			curl_setopt($cp, CURLOPT_FILE, $fp);
+			$buffer = curl_exec($cp);
+			curl_close($cp);
+		}else{
+			$fp  =  file_get_contents($remote_url);
+		}
+		fclose($fp);
+		
+		return true;
 	}
 	
 	function get_bepro_lat_lon(){
 		$latlon = array();
+		$data = get_option("bepro_listings");
 		$query_type = $data["map_query_type"];
 		if(!empty($_POST['postcode']) || !empty($_POST['country'])){  
 			$to_addr .= !empty($_POST['address_line1'])? $_POST['address_line1']:"";

@@ -406,6 +406,8 @@
 			$data["distance"] = $_POST["distance"];
 			$data["details_link"] = $_POST["details_link"];
 			$data["show_web_link"] = $_POST["show_web_link"];
+			$data["show_date"] = $_POST["show_date"];
+			$data["currency_sign"] = $_POST["currency_sign"];
 			
 			//Page/post
 			$data["gallery_size"] = $_POST["gallery_size"];
@@ -509,6 +511,7 @@
 							<option value="1" <?php echo ($data["link_new_page"] == 1)? 'selected="selected"':"" ?>>Go To Page</option>
 							<option value="2" <?php echo ($data["link_new_page"] == 2)? 'selected="selected"':"" ?>>New Tab</option>
 							<option value="3" <?php echo ($data["link_new_page"] == 3)? 'selected="selected"':"" ?>>Ajax Page</option>
+							<option value="3" <?php echo ($data["link_new_page"] == 4)? 'selected="selected"':"" ?>>Hide Internal</option>
 						</select><br />
 						<span class="form_label"><?php _e("Ajax On?", "bepro-listings"); ?></span><input type="checkbox" name="ajax_on" <?php echo ($data["ajax_on"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Default # Listings", "bepro-listings"); ?></span><select name="num_listings">
@@ -532,7 +535,9 @@
 						</select>
 						<span style="clear:both;display: block;"><br /></span>
 						<span class="form_label"><?php _e("Details Link Text", "bepro-listings"); ?></span><input type="text" name="details_link" value="<?php echo $data["details_link"]; ?>" /></br>
-						<span class="form_label"><?php _e("Show Website Link?", "bepro-listings"); ?></span><input type="checkbox" name="show_web_link" <?php echo ($data["show_web_link"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Show Website Link?", "bepro-listings"); ?></span><input type="checkbox" name="show_web_link" <?php echo (($data["show_web_link"]==1) || ($data["show_web_link"]== "on"))? 'checked="checked"':"" ?> value="1"><br />
+						<span class="form_label"><?php _e("Currency Sign?", "bepro-listings"); ?></span><input type="text" name="currency_sign" value="<?php echo $data["currency_sign"]; ?>" /></br>
+						<span class="form_label"><?php _e("Show Date filter?", "bepro-listings"); ?></span><input type="checkbox" name="show_date" <?php echo ($data["show_date"]== (1))? 'checked="checked"':"" ?> value="1"><br />
 						<span style="clear:both;display: block;"><br /></span>
 					</div>
 					<div id="tabs-4">
@@ -561,7 +566,7 @@
 						<span class="form_label"><?php _e("Buddypress", "bepro-listings"); ?></span><input type="checkbox" name="buddypress" <?php echo ($data["buddypress"]== (1 || "on"))? 'checked="checked"':"" ?>>
 					</div>
 					<div id="tabs-7">
-						<p>CSV upload documenation avaialble <a href="beprosoftware.com/products/bepro-listings" target="_blank">here</a></p>
+						<p>CSV upload documenation avaialble <a href="http://beprosoftware.com/products/bepro-listings" target="_blank">here</a></p>
 						<span class="form_label"><?php _e("CSV File", "bepro-listings"); ?></span><input type="file" name="csv_upload" value=""><br />
 						<span class="form_label"><?php _e("Delimiter", "bepro-listings"); ?></span><select name="csv_upload_delimiter">
 							<option value=";">;</option>
@@ -585,7 +590,7 @@
 						</ul>
 						<h2>Support For The Plugin</h2>
 						<ul style="border:1px solid; padding:10px">		
-							<li><span style="color:green;font-weight:bold;font-size:18px;text-decoration:underline">Rate Us</span></a> - Give this plugin a <span style="color:green;font-weight:bold;font-size:18px;text-decoration:underline">rating</span> on <a href="http://wordpress.org/support/view/plugin-reviews/bepro-listings" target="_blank">Wordpress.org</a>. This is the best way to support the plugin and encourage its growth</li>
+							<li><a href="http://wordpress.org/support/view/plugin-reviews/bepro-listings" target="_blank"><span style="color:green;font-weight:bold;font-size:18px;text-decoration:underline">Rate Us</span></a> - Give this plugin a <a href="http://wordpress.org/support/view/plugin-reviews/bepro-listings" target="_blank"><span style="color:green;font-weight:bold;font-size:18px;text-decoration:underline">rating</span></a> on <a href="http://wordpress.org/support/view/plugin-reviews/bepro-listings" target="_blank">Wordpress.org</a>. This is the best way to support the plugin and encourage its growth</li>
 							<li>Donations - We accept donations of any amount <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings">via paypal</a></li>
 							<li><?php _e("Our Link in your footer?", "bepro-listings"); ?> - <input style="vertical-align:middle" type="checkbox" name="footer_link" value="1" <?php echo ($data["footer_link"]== ("on" || 1))? 'checked="checked"':"" ?>></li>
 						</ul>

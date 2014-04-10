@@ -564,7 +564,17 @@
 	//
 	*/	
 	function bepro_listings_list_title_template($bp_listing){
-		echo "<div class='result_name'>".substr($bp_listing->post_title,0, 18).((strlen($bp_listing->post_title) > 18)? "...":"")."</div>";
+		$data = get_option("bepro_listings");
+		if($data["link_new_page"] == 4){
+			$permalink = $bp_listing->website;
+		}else{
+			$permalink = get_permalink( $bp_listing->post_id );
+		}
+		
+		$title = $bp_listing->post_title;
+		$title = substr($title,0, 18).((strlen($title) > 18)? "...":"");
+		$title = apply_filters("bl_list_title_temp",$title, $bp_listing);
+		echo "<div class='result_name'><a href='".$permalink."' target='_blank'>".$title."</a></div>";
 	}
 	function bepro_listings_list_category_template($bp_listing){
 		echo '<span class="result_type">'.get_the_term_list($bp_listing->post_id, 'bepro_listing_types', '', ', ','').'</span>';
@@ -574,8 +584,14 @@
 			echo '<span class="result_featured"></span>';
 	}
 	function bepro_listings_list_image_template($bp_listing){
-		$permalink = get_permalink( $bp_listing->post_id );
 		$data = get_option("bepro_listings");
+		if($data["link_new_page"] == 4){
+			$permalink = $bp_listing->website;
+		}else{
+			$permalink = get_permalink( $bp_listing->post_id );
+		}
+		
+		
 		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
 		$thumbnail = get_the_post_thumbnail($bp_listing->post_id, 'thumbnail'); 
 		$thumbnail_check = apply_filters("bepro_listings_list_thumbnail",$bp_listing->post_id);
@@ -614,7 +630,7 @@
 			if(is_numeric($bp_listing->cost)){ 
 				//formats the price to have comas and dollar sign like currency.
 				setlocale(LC_MONETARY, "en_US");
-				$cost = ($bp_listing->cost == 0)? "Free" : sprintf('%01.2f', $bp_listing->cost);
+				$cost = ($bp_listing->cost == 0)? "Free" : $data["currency_sign"].sprintf('%01.2f', $bp_listing->cost);
 			}else{
 				$cost = "Please Contact";
 			} 
@@ -635,6 +651,7 @@
 		* 1 = go to page
 		* 2 = new window
 		* 3 = ajax page
+		* 4 = hide internal
 		*/		
 		if($target == 2){
 			if(!empty($bp_listing->website) && !empty($show_web_link))
@@ -645,6 +662,9 @@
 		}elseif($target == 3){
 			if($bp_listing->post_status == "publish")
 				echo '<span class="result_button"><a class="bl_ajax_result_page" post_id="'.$bp_listing->post_id.'" href="'.$permalink.'" '.$target.'>'.$details_link.'</a></span>';
+		}elseif($target == 4){
+				$website = (stristr($bp_listing->website,"http"))? $bp_listing->website:"http://".$bp_listing->website;
+				echo '<span class="result_button"><a href="'.$website.'"  target="_blank">Website</a></span>';
 		}else{
 			if(!empty($bp_listing->website) && !empty($show_web_link))
 				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'">Website</a></span>';
@@ -687,7 +707,7 @@
 		$add_detail_links = empty($data["add_detail_links"])? false:true;
 		if(is_numeric($item->cost)){
 			//formats the price to have comas and dollar sign like currency.
-			$cost = ($item->cost == 0)? __("Free", "bepro-listings") : sprintf('%01.2f', $item->cost);
+			$cost = ($item->cost == 0)? __("Free", "bepro-listings") : $data["currency_sign"].sprintf('%01.2f', $item->cost);
 		}else{
 			$cost = __("Please Contact", "bepro-listings");
 		}

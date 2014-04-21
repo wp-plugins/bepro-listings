@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Everything needed to create a Listings site (directory, classifieds, store finder, portfolio). Base features include, front end upload, gallery, buddypress integration, ajax search and filter. Use google maps and various listing templates to showcase info.
-Version: 2.1.19
+Version: 2.1.20
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -47,7 +47,7 @@ class Bepro_listings{
 		include(dirname( __FILE__ ) . '/bepro_listings_frontend.php');
 		include(dirname( __FILE__ ) . '/bepro_listings_profile.php');
 		
-		add_action('init', 'create_post_type' );
+		add_action('init', 'bepro_create_post_type' );
 		add_action('init', array($this, 'check_flush_permalinks') );
 		add_action('admin_init', 'bepro_admin_init' );
 		add_action('admin_head', 'bepro_admin_head' );
@@ -105,7 +105,7 @@ class Bepro_listings{
 		//shortcodes
 		add_shortcode("search_form", array( $this, "searchform"));
 		add_shortcode("filter_form", array( $this, "search_filter_options"));
-		add_shortcode("generate_map", "generate_map");
+		add_shortcode("generate_map", "bepro_generate_map");
 		add_shortcode("display_listings", "display_listings");
 		add_shortcode("display_listing_categories", "display_listing_categories");
 		add_shortcode("create_listing_form", "user_create_listing");

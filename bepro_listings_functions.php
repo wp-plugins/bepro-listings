@@ -301,7 +301,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.19' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.20' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -690,7 +690,7 @@
 	}
 	
 	//Create BePro Listings custom post type.
-	function create_post_type() {
+	function bepro_create_post_type() {
 		$labels = array(
 			'name' => _x('BePro Listings', 'post type general name'),
 			'singular_name' => _x('Listing', 'post type singular name'),

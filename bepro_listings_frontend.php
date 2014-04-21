@@ -145,7 +145,7 @@
 	}
 	
 	//Create map, used by shortcode and widget
-	function generate_map($atts = array(), $echo_this = false){
+	function bepro_generate_map($atts = array(), $echo_this = false){
 		global $wpdb;
 		
 		extract(shortcode_atts(array(

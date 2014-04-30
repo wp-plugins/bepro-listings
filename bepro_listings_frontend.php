@@ -18,7 +18,7 @@
 
 	//ajax update front end
 	function bl_ajax_frontend_update(){
-		$map = generate_map();
+		$map = bepro_generate_map();
 		$cat = display_listing_categories();
 		$listings = display_listings();
 		$filter = Bepro_listings::search_filter_options();
@@ -29,7 +29,7 @@
 	
 	function bl_ajax_result_page(){
 		$listings = bl_ajax_get_listings();
-		$map = generate_map();
+		$map = bepro_generate_map();
 		$cat = display_listing_categories();
 		$filter = Bepro_listings::search_filter_options();
 		$search = Bepro_listings::searchform();
@@ -583,6 +583,16 @@
 		if($bp_listing->featured)
 			echo '<span class="result_featured"></span>';
 	}
+	function bepro_listings_list_phone_template($bp_listing){
+		if(!empty($bp_listing->phone)){
+			echo "<span class='result_phone'>".__("Phone", "bepro-listings")." - ".$bp_listing->phone."</span>";
+		}
+	}
+	function bepro_listings_list_email_template($bp_listing){
+		if(!empty($bp_listing->email)){
+			echo "<span class='result_email'>".__("Email", "bepro-listings")." - ".$bp_listing->email."</span>";	
+		}
+	}
 	function bepro_listings_list_image_template($bp_listing){
 		$data = get_option("bepro_listings");
 		if($data["link_new_page"] == 4){
@@ -609,9 +619,12 @@
 	function bepro_listings_list_geo_template($bp_listing){
 		$data = get_option("bepro_listings");
 		if($data["show_geo"])
-			echo '<span class="result_title">'.$bp_listing->city;
+			echo '<span class="result_title">'.$bp_listing->address_line1;
 			
-			if(!empty($bp_listing->state))
+			if(!empty($bp_listing->city)) 
+				echo ', '.$bp_listing->city;
+				
+			if(!empty($bp_listing->state)) 
 				echo ', '.$bp_listing->state;
 			
 			if(!empty($bp_listing->country))
@@ -696,7 +709,7 @@
 		//show categories
 		$cats = get_the_term_list($page_id, 'bepro_listing_types', '', ', ','');
 		if($cats)
-		echo $cat_section = "<div class='bepro_listing_category_section'><h3>Categories : </h3>".$cats."</div>";
+		echo $cat_section = "<div class='bepro_listing_category_section'><h3>".__("Categories", "bepro-listings")." : </h3>".$cats."</div>";
 	}
 	function bepro_listings_item_details_template(){
 		global $wpdb;
@@ -713,7 +726,7 @@
 		}
 		
 		if(($data["show_geo"] == "on") || ($data["show_cost"] == "on") || ($data["show_con"] == "on") ){
-			echo "<h3>Details : </h3><span class='bepro_listing_info'>";
+			echo "<h3>".__("Details", "bepro-listings")." : </h3><span class='bepro_listing_info'>";
 			if($data["show_cost"] == "on"){
 				echo "<div class='item_cost'>".__("Cost", "bepro-listings")." - ".apply_filters("bl_cost_listing_value",$cost)."</div>";
 			}	

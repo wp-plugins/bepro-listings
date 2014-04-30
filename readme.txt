@@ -444,6 +444,14 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 * Function name changes
 
+= 2.1.21 (Tuesday Apr 29th 2014) =
+
+* Continued Function name changes
+* Fix paging error and search issues
+* French language improvements
+* Localization improvements
+* New front end template functions
+
 == Upgrade Notice ==
 
 None

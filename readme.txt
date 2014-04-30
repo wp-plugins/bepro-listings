@@ -28,6 +28,14 @@ Thats it, everything works on one page (**google maps**, listings, categories, s
 
 Remember, unlike other solutions, just about everything in BePro Listings can be set to an **off state** i.e. removed. So, if your solution does not need **Google Maps**, ajax, or cost related info, then simply turn off the options in the admin. Then use the shortcodes that do focus on your needs.
 
+= TRUE FREEDOM! =
+
+Don't be locked down by popular **"theme frameworks"** and **toolsets**. Our codebase is extreamly flexible, inviting customizaion and extention. 
+
+1. Don't like our gallery? Simply use another or interface with ours. Don't like our video player... document reader... audio player... etc
+
+2. The listings and detail pages are templates. Yes, they can be rearanged, sections removed, and be completely restyled. Thats why you can use our plugin for so many different listing niches.
+
 = Popular Uses =
 
 BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Configure options like, # of uploads, **ajax search filter**, default search distance, and item page details. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
@@ -73,7 +81,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	20. Currency - Setup cost and implement any curreny sign you want. Allow users to search by cost
 
 = ADD ONS =
-Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, contact and favorites. 3) We create niche market addons like **real estate**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
+Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, contact and **availability / booking**. 3) We create niche market addons like **real estate**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
 
 	1. Tags - Now you and your members can tag your listings and allow users to search them via the tag widget
 	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
@@ -102,7 +110,7 @@ BePro Listings has spawned the famous **$1 one dollar wordpress themes**. The pl
 
 We created BePro Listings and its addons to be *modular*. This allows you to only add the features you need, effectively speeding up the *load time* of your website. The prices of our Addons start at $5 and our themes are $1. You can also buy *bundles* of plugins and themes for great discounts. Effectively, we are offering you, the freedom to interchange options, at a very *cost effective* rate.
 
-Out of the box, BePro Listings works with buddypress and many **gallery plugins** (e.g. galleria). Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This makes it extreamly easy and quick to add the best combinations of features for extending your **directory** / **classifieds** / **portfolio** / **Catalogue** site. 
+Out of the box, BePro Listings works with buddypress and many **gallery plugins** (e.g. galleria). Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This open architecture, makes it extreamly easy and quick to add the best combinations of features for extending your **directory** / **classifieds** / **portfolio** / **Catalogue** site. 
 
 Most importantly, BePro Listings is built for various levels of users. Novice users will appreciate our $1 themes, **ajax features** and *"all in one"* shortcodes. Intermediate users will appreiate the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 

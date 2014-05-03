@@ -460,11 +460,23 @@
 					add_action($key, $val);
 			}
 			
+			$previous = array();
+			$check = apply_filters("bl_start_bepro_listing_template", $type);
+			$results .= @(is_numeric($check) || ($check == $type))? "":$check;
 			//loop over listing template file
 			foreach($raw_results as $result){
+				$check = apply_filters("bl_before_bepro_listing_template",$type,$result,$previous);
+				$results .= @(is_numeric($check) || ($check == $type))? "":$check;
 				$result->featured = is_numeric($l_featured);
 				$results .= basic_listing_layout($result, $list_templates["template_file"]);
+				$check = apply_filters("bl_after_bepro_listing_template", $type,$result,$previous);
+				$results .= @(is_numeric($check) || ($check == $type))? "":$check;
+				$previous = $result;
 			}
+			
+			$check = apply_filters("bl_end_bepro_listing_template", $type);
+			$results .= @(is_numeric($check) || ($check == $type))? "":$check;
+			
 			foreach($list_templates as $key => $val){
 				remove_action($key, $val);
 			}
@@ -524,6 +536,8 @@
 			$order_by = "posts.post_title";
 		}else if($order_by == 2){
 			$order_by = "RAND()";
+		}else if($order_by == 3){
+			$order_by = "geo.last_name";
 		}else{
 			$order_by = "posts.post_date";
 		}
@@ -545,7 +559,8 @@
 	}
 	
 	function basic_listing_layout($result, $listing_template_file = ''){
-		if(empty($listing_template_file))$listing_template_file = plugin_dir_path( __FILE__ ).'/templates/listings/generic_'.$type.'.php';
+		if(empty($listing_template_file))$listing_template_file = plugin_dir_path( __FILE__ ).'/templates/listings/generic_1.php';
+		
 		//allow other features to tie in
 		$get_listing_template = apply_filters("bepro_listings_list_template", $listing_template_file);
 		if($get_listing_template != -1)$listing_template_file = $get_listing_template;
@@ -709,7 +724,7 @@
 		//show categories
 		$cats = get_the_term_list($page_id, 'bepro_listing_types', '', ', ','');
 		if($cats)
-		echo $cat_section = "<div class='bepro_listing_category_section'><h3>".__("Categories", "bepro-listings")." : </h3>".$cats."</div>";
+		echo $cat_section = "<div class='bepro_listing_category_section'><h3>".__("Free", "bepro-listings")." : </h3>".$cats."</div>";
 	}
 	function bepro_listings_item_details_template(){
 		global $wpdb;

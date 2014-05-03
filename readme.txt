@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: address, affiliate, appointment, ajax, apartment, booking, buddypress, business, catalogue, csv, classifieds, directory, document, employee, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
-Stable tag: 2.1.20
+Stable tag: 2.1.22
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -459,6 +459,12 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 * French language improvements
 * Localization improvements
 * New front end template functions
+
+= 2.1.22 (Saturday May 3rd 2014) =
+
+* fixes to function names
+* new filters added to template generation process
+* enhancements to localization
 
 == Upgrade Notice ==
 

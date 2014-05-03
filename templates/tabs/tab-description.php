@@ -9,5 +9,5 @@
 global $post;
 
 if ( $post->post_content ) : ?>
-	<li class="description_tab"><a href="#tab-description"><?php _e('Description', 'bepro_listings'); ?></a></li>
+	<li class="description_tab"><a href="#tab-description"><?php _e('Description', 'bepro-listings'); ?></a></li>
 <?php endif; ?>

@@ -81,7 +81,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	20. Currency - Setup cost and implement any curreny sign you want. Allow users to search by cost
 
 = ADD ONS =
-Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, contact and **availability / booking**. 3) We create niche market addons like **real estate**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
+Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, contact and **availability / booking**. 3) We create niche market addons like **real estate** and **Business**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
 
 	1. Tags - Now you and your members can tag your listings and allow users to search them via the tag widget
 	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing

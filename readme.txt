@@ -91,11 +91,12 @@ Our Addons provide lots of new ways to customize your listings experinece. We ha
 	6. Icons - Tons of google map markers/icons from the "Map Icons Collection" by Nicolas Mollet and also allows other addons to place icons on listings, video, documents, etc
 	7. Realestate - Add realestate directory related information to listings & the ability to search/filter by realestate details
 	8. S2Member - Limit & get paid for your listings depending on membership levels, using this s2member integration
-	9. Audio - List your podcasts and music on wordpress with this addon. We support several file types including wav, wma, mp3 and m4a. Uploaded audio is played using HTML5 or fallback to flassh
+	9. Audio - List your podcasts and music on wordpress with this addon. We support several file types including wav, wma, mp3 and m4a. Uploaded audio is played using HTML5 or fallback to flash
 	10. Favorites - Engage your visitors! Record theirs likes and dislikes to figure out the most popular listings.
 	11. Authors - Publicize your authors and give their listings more visibility.
 	12. PMPro - Use Paid Membership Pro to charge users to post listings on your website, with this integration.
 	13. Booking (New) - Setup your availability and allow users to schedule time. Perfect for real estate, vehicle, hotel, and other niche sites
+	14. Business Directory - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.
 
 = THEMES =
 

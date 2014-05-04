@@ -64,4 +64,11 @@ jQuery(document).ready(function($) {
 		}
 	});
 	
+	if($("#bepro_listings_tabs")){
+		$( "#bepro_listings_tabs" ).tabs();
+	}
+	if($("#bepro_listings_addon_tabs")){
+		$( ".frontend_bepro_listings_tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+		$( ".frontend_bepro_listings_tabs .tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+	}
 });	

@@ -27,6 +27,7 @@
 		$data = get_option("bepro_listings");
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-datepicker');
+		wp_print_scripts('jquery-ui-tabs');
 		wp_enqueue_script('google-maps' , 'http://maps.google.com/maps/api/js' , false , '3.5&sensor=false');
 		$plugindir = plugins_url("bepro-listings");
 		
@@ -301,7 +302,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.22' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.23' );
 		}	
 		
 		$data = get_option("bepro_listings");

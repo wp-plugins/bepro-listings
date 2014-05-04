@@ -14,7 +14,7 @@ do_action('bepro_listings_tabs');
 $tabs = trim( ob_get_clean() );
 
 if ( ! empty( $tabs ) ) : ?>
-	<div class="bepro_listings_tabs">
+	<div class="frontend_bepro_listings_tabs">
 		<ul class="tabs">
 			<?php echo $tabs; ?>
 		</ul>

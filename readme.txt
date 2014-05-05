@@ -97,6 +97,7 @@ Our Addons provide lots of new ways to customize your listings experinece. We ha
 	12. PMPro - Use Paid Membership Pro to charge users to post listings on your website, with this integration.
 	13. Booking (New) - Setup your availability and allow users to schedule time. Perfect for real estate, vehicle, hotel, and other niche sites
 	14. Business Directory - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.
+	15. Vehicles - Lists cars, boats, trucks, planes, and other automobiles with their details
 
 = THEMES =
 

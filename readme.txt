@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: BeyondPrograms
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: address, affiliate, appointment, ajax, apartment, booking, buddypress, business, catalogue, csv, classifieds, directory, document, employee, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, members, music, mp3, mp4, pets, player, pdf, portfolio, product, property, real estate, rent, staff, store, vehicle, video, vimeo, youtube
+Tags: affiliate, appointment, ajax, booking, buddypress, catalogue, csv, classifieds, directory, document, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, music, mp3, mp4, pets, player, pdf, portfolio, product, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
 Stable tag: 2.1.23

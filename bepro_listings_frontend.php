@@ -724,7 +724,7 @@
 		//show categories
 		$cats = get_the_term_list($page_id, 'bepro_listing_types', '', ', ','');
 		if($cats)
-		echo $cat_section = "<div class='bepro_listing_category_section'><h3>".__("Free", "bepro-listings")." : </h3>".$cats."</div>";
+		echo $cat_section = "<div class='bepro_listing_category_section'><h3>".__("Category", "bepro-listings")." : </h3>".$cats."</div>";
 	}
 	function bepro_listings_item_details_template(){
 		global $wpdb;
@@ -741,7 +741,7 @@
 		}
 		
 		if(($data["show_geo"] == "on") || ($data["show_cost"] == "on") || ($data["show_con"] == "on") ){
-			echo "<h3>".__("Details", "bepro-listings")." : </h3><span class='bepro_listing_info'>";
+			echo "<span class='bepro_listing_info'><h3>".__("Details", "bepro-listings")." : </h3>";
 			if($data["show_cost"] == "on"){
 				echo "<div class='item_cost'>".__("Cost", "bepro-listings")." - ".apply_filters("bl_cost_listing_value",$cost)."</div>";
 			}	

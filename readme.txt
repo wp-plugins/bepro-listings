@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: affiliate, appointment, ajax, booking, buddypress, catalogue, csv, classifieds, directory, document, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, music, mp3, mp4, pets, player, pdf, portfolio, product, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
-Stable tag: 2.1.23
+Stable tag: 2.1.24
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -471,6 +471,10 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 = 2.1.23 (Sunday May 4th 2014) =
 
 * New design for page details tabs
+
+= 2.1.24 (Tuesday May 6th 2014) =
+
+* Costmetic change, fixing wrong wording of listing detail pages
 
 == Upgrade Notice ==
 

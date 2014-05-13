@@ -15,8 +15,7 @@ $result = process_listings_results(false, 1, false, $post->ID, 1, 1);
 $result = $result[0][0];
 ?>
 <script type="text/javascript">
-	jQuery(document).ready(function(){
-		jQuery(".map_tab a").one('click', function() {
+		function launch_frontend_map() {
 			icon_1 = new google.maps.MarkerImage('<?php echo plugins_url("bepro-listings/images/icons/icon_1.png", "bepro-listings"); ?>');
 			var mapOptions = {
 			zoom: 6,
@@ -32,8 +31,7 @@ $result = $result[0][0];
 			icon:icon_1,
 			title: '<?php echo $result->item_name; ?>'
 			});
-		});
-	});
+		}
 </script>
 	<div class="panel entry-content" id="tab-map">
 

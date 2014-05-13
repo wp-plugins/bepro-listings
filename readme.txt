@@ -1,10 +1,10 @@
 === BePro Listings ===
 Contributors: BeyondPrograms
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: affiliate, appointment, ajax, booking, buddypress, catalogue, csv, classifieds, directory, document, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, music, mp3, mp4, pets, player, pdf, portfolio, product, store, vehicle, video, vimeo, youtube
+Tags: affiliate, appointment, ajax, booking, buddypress, catalogue, csv, classifieds, directory, document, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, music, mp3, mp4, pets, player, pdf, portfolio, product, responsive, reviews, star, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
-Stable tag: 2.1.24
+Stable tag: 2.1.25
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,7 +81,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	20. Currency - Setup cost and implement any curreny sign you want. Allow users to search by cost
 
 = ADD ONS =
-Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, contact and **availability / booking**. 3) We create niche market addons like **real estate** and **Business**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
+Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, **Star Reviews** and **availability / booking**. 3) We create niche market addons like **real estate** and **Business**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
 
 	1. Tags - Now you and your members can tag your listings and allow users to search them via the tag widget
 	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
@@ -122,7 +122,8 @@ These all have options and you can check them out via the documentation link abo
 
 	* Dynamic Map - Setup a map anywhere showing the last listings on your site e.g. [generate_map]
 	* Basic Search - Allow users to search listings e.g. [search_form]
-	* Filter Search - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]
+	* Filter Search Table - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]
+	* Filter Search CSS - Allow users to do more in depth search including, cost, date, etc e.g. [bl_search_filter]
 	* Listings - Show listings with optional paging e.g. [display_listings]
 	* Front end Upload Form - Give your users the ability to submit from any page or post. You can set a default user id for the listing or force registration. e.g. [create_listing_form]
 	* Category Links - Allow users to navigate your directory/listings using category links e.g. [display_listing_categories]
@@ -476,6 +477,14 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 = 2.1.24 (Tuesday May 6th 2014) =
 
 * Costmetic change, fixing wrong wording of listing detail pages
+
+= 2.1.25 (Friday May 9th 2014) =
+
+* New filters added
+* Improvement to how the upload form is rendered
+* New Tab style and underlying js
+* Category text / label options added to admin
+* New shortcode and design added for search filter
 
 == Upgrade Notice ==
 

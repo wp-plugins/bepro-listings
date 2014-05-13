@@ -22,8 +22,9 @@
 		$cat = display_listing_categories();
 		$listings = display_listings();
 		$filter = Bepro_listings::search_filter_options();
+		$short_filter = search_filter_shortcode();
 		$search = Bepro_listings::searchform();
-		echo json_encode(array("map" =>$map,"cat" =>$cat,"listings" =>$listings,"filter" =>$filter,"search" =>$search ));
+		echo json_encode(array("map" =>$map,"cat" =>$cat,"listings" =>$listings,"filter" =>$filter,"short_filter" =>$short_filter,"search" =>$search ));
 		exit;
 	}
 	
@@ -129,6 +130,11 @@
 			$return_text .=  do_shortcode("[search_form]"); 
 			$return_text .=  do_shortcode("[generate_map size=3]"); 
 			$return_text .=  do_shortcode("[display_listing_categories ctype=1]"); 
+			$return_text .=  do_shortcode("[display_listings]"); 
+		}elseif($l_type == "a4"){ 
+			$return_text .=  do_shortcode("[search_form]"); 
+			$return_text .=  do_shortcode("[bl_search_filter]"); 
+			$return_text .=  do_shortcode("[display_listing_categories]"); 
 			$return_text .=  do_shortcode("[display_listings]"); 
 		}else{
 			$return_text .=  do_shortcode("[search_form]"); 
@@ -303,6 +309,7 @@
 	//Show categories Called from shortcode
 	function display_listing_categories($atts = array(), $echo_this = false){
 		global $wpdb;
+		$data = get_option("bepro_listings");
 		$no_img = plugins_url("images/no_img.jpg", __FILE__ );
 		extract(shortcode_atts(array(
 			  'url_input' => $wpdb->escape($_POST["url"]),
@@ -311,7 +318,7 @@
 		 ), $atts));
 		
 		
-		$cat_heading = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? "No Categories Found":"Categories";
+		$cat_heading = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $data["cat_empty"]:$data["cat_heading"];
 		
 		$parent = (!empty($cat) && is_numeric($cat))? $cat:0;
 		$parent = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $_REQUEST["l_type"]:0; 
@@ -327,7 +334,7 @@
 			//If only one category was selected then show its name in the heading
 			if((is_numeric($_REQUEST["l_type"]) || (is_array($_REQUEST["l_type"]) && (count($_REQUEST["l_type"]) == 1))) && !empty($categories)){
 				$cat = $categories[0];
-				$cat_list .= "<h3>".$cat->name." Category</h3>";
+				$cat_list .= "<h3>".$cat->name." ".$data["cat_singular"]."</h3>";
 			}else{
 				$cat_list .= "<h3>".__($cat_heading,"bepro_listings")."</h3>";
 				foreach($categories as $cat){
@@ -524,6 +531,10 @@
 		global $wpdb;
 		
 		if(!empty($_REQUEST["filter_search"]) || !empty($l_type)){
+			
+			if(is_array($l_type) && @isset($l_type[0]) && ($l_type[0]==0)){
+				$l_type ="";
+			}	
 			$returncaluse = Bepro_listings::listitems(array('l_type' => $l_type));
 			$filter_cat = true;
 		}	
@@ -571,6 +582,94 @@
 		ob_end_clean();	
 			
 		return $results;			
+	}
+	
+	/*
+	//
+	//Filter shortcode
+	//
+	*/	
+	
+	function search_filter_shortcode($atts = array(), $echo_this = false){
+		global $wpdb;
+		extract(shortcode_atts(array(
+			  'listing_page' => $wpdb->escape($_POST["listing_page"]),
+			  'l_type' => $wpdb->escape($_POST["l_type"])
+		 ), $atts));
+		
+		//get settings
+		$data = get_option("bepro_listings");
+		
+		//Process user requested Bepro listing types 
+
+		$search_form = "<div class='filter_search_form_shortcode'>
+			<form id='filter_search_shortcode_form' method='post' action='".$listing_page."'>
+				<input type='hidden' name='name_search' value='".$_POST["name_search"]."'>
+				<input type='hidden' name='addr_search' value='".$_POST["addr_search"]."'>
+				<input type='hidden' name='filter_search' value='1'>
+				<div>
+						<span class='searchlabel'>".__($data["cat_heading"], "bepro-listings")."</span>
+						";
+			if($l_type){	
+				$l_type = $l_type[0];			
+				$parent = (is_numeric($l_type) && ($l_type != "0"))? $l_type:" ";
+			}else{
+				$parent = "";
+			}
+				$args = array(
+					'show_option_all'	=> 'All',
+					'orderby'            => 'ID', 
+					'order'              => 'ASC',
+					'show_count'         => 0,
+					'hide_empty'         => 1, 
+					'child_of'           => 0,
+					'exclude'            => '',
+					'echo'               => 0,
+					'selected'           => $parent,
+					'hierarchical'       => 0, 
+					'name'               => 'l_type[]',
+					'id'                 => 'bl_search_filter',
+					'class'              => 'bl_search_filter_class',
+					'depth'              => 0,
+					'tab_index'          => 0,
+					'taxonomy'           => 'bepro_listing_types',
+					'hide_if_empty'      => true,
+						'walker'             => ''
+				);
+				$search_form .= wp_dropdown_categories( $args )."</div>";
+
+			///////////////////////////////////////////////////////////////////////
+			if($data["show_geo"] == (1||"on"))	
+			$search_form .= "<div>".__("Distance", "bepro-listings").': <select name="distance">
+						<option value="">None</option>
+						<option value="50" '.(($_POST["distance"] == 50)? 'selected="selected"':"").'>50 miles</option>
+						<option value="150" '.((($_POST["distance"] == 150) || empty($_POST["distance"]))? 'selected="selected"':"").'>150 miles</option>
+						<option value="250" '.(($_POST["distance"] == 250)? 'selected="selected"':"").'>250 miles</option>
+						<option value="500" '.(($_POST["distance"] == 500)? 'selected="selected"':"").'>500 miles</option>
+						<option value="1000" '.(($_POST["distance"] == 1000)? 'selected="selected"':"").'>1000 miles</option>
+					</select></div>';
+				
+				//min/max cost
+				if($data["show_cost"] == (1||"on"))
+				$search_form .= '
+					<div><span class="label_sep">'.__("Price Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_cost" value="'.$_POST["min_cost"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_cost" value="'.$_POST["max_cost"].'"></div>';
+				
+				if($data["show_date"] == (1))
+				$search_form .= '
+					<div><span class="label_sep">'.__("Date Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_date" id="min_date" value="'.$_POST["min_date"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_date" id="max_date" value="'.$_POST["max_date"].'"></div>';
+				
+				$search_form .= apply_filters("bepro_listings_search_filter_shortcode","");
+				
+				$search_form .= '
+						<div><input type="submit" class="form-submit" value="'.__("Filter", "bepro-listings").'" id="edit-submit" name="find">
+						<a class="clear_search" href="'.get_bloginfo("url")."/".$listing_page.'"><button>Clear</button></a></div>
+		</form></div>
+		';
+		if($echo_this){
+			echo $search_form;
+		}else{	
+			return $search_form;
+		}
 	}
 	
 	/*
@@ -720,11 +819,12 @@
 		echo "<div class='bepro_listing_gallery'>".apply_filters("bepro_listings_item_gallery_feature", $gallery)."</div>";
 	}
 	function bepro_listings_item_after_gallery_template(){
+		$data = get_option("bepro_listings");
 		$page_id = get_the_ID();
 		//show categories
 		$cats = get_the_term_list($page_id, 'bepro_listing_types', '', ', ','');
-		if($cats)
-		echo $cat_section = "<div class='bepro_listing_category_section'><h3>".__("Category", "bepro-listings")." : </h3>".$cats."</div>";
+		if($cats) 
+		echo $cat_section = "<div class='bepro_listing_category_section'><h3>".__($data["cat_heading"], "bepro-listings")." : </h3>".$cats."</div>";
 	}
 	function bepro_listings_item_details_template(){
 		global $wpdb;
@@ -743,7 +843,7 @@
 		if(($data["show_geo"] == "on") || ($data["show_cost"] == "on") || ($data["show_con"] == "on") ){
 			echo "<span class='bepro_listing_info'><h3>".__("Details", "bepro-listings")." : </h3>";
 			if($data["show_cost"] == "on"){
-				echo "<div class='item_cost'>".__("Cost", "bepro-listings")." - ".apply_filters("bl_cost_listing_value",$cost)."</div>";
+				echo "<div class='item_cost'>".__(apply_filters("bl_cost_listing_label","Cost"), "bepro-listings")." - ".apply_filters("bl_cost_listing_value",$cost)."</div>";
 			}	
 				//If we have geographic data then we can show this listings address information
 				if($item->lat){
@@ -819,7 +919,13 @@
 				echo "<h2>Issue saving your listing. Please contact the website administrator</h2>";
 			}
 		}
+		ob_start();
+		
 		include( dirname( __FILE__ )."/templates/form.php");
+		$results = ob_get_contents();
+		ob_end_clean();	
+		
+		return $results;
 	}
 	
 ?>

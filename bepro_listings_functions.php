@@ -17,7 +17,7 @@
 */	
  
 	function bepro_listings_wphead() {
-		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('css/bepro_listings.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" ><meta name=\"plugin\" content=\"Bepro Listings plugin\">
+		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('css/bepro_listings.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/easy-responsive-tabs.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" ><meta name=\"plugin\" content=\"Bepro Listings plugin\">
 		
 		';
 		
@@ -31,7 +31,7 @@
 		wp_enqueue_script('google-maps' , 'http://maps.google.com/maps/api/js' , false , '3.5&sensor=false');
 		$plugindir = plugins_url("bepro-listings");
 		
-		$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings.js"></script><script type="text/javascript" src="'.plugins_url("js/markerclusterer.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/jquery.validate.min.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/jquery.maskedinput-1.3.min.js", __FILE__ ).'"></script>';
+		$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings.js"></script><script type="text/javascript" src="'.plugins_url("js/markerclusterer.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/jquery.validate.min.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/jquery.maskedinput-1.3.min.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/easyResponsiveTabs.js", __FILE__ ).'"></script>';
 		
 		$scripts .= '
 		<script type="text/javascript">
@@ -302,7 +302,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.24' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.25' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -320,6 +320,9 @@
 			$data["show_con"] = "on";
 			$data["show_geo"] = "on";
 			$data["num_images"] = 3;
+			$data["cat_heading"] = "Categories";
+			$data["cat_empty"] = "No Categories";
+			$data["cat_singular"] = "Category";
 			//forms
 			$data["validate_form"] = "on";
 			$data["success_message"] = 'Listing Created and pending admin approval.';			

@@ -176,7 +176,7 @@
 	height:350px;
 	position:absolute;
 }	
-.frontend_bepro_listings_tabs #page_details_map{
+.frontend_bepro_listings_vert_tabs #page_details_map{
 	width:100%;
 	height:300px;
 }
@@ -259,6 +259,30 @@
     font-weight: bold;
     margin: 5px 0;
     text-align: center;
+}
+.filter_search_form_shortcode .label_sep{	
+    clear: none;
+    float: left;
+    display: inline;
+    margin: 0 5px;
+}
+.filter_search_form_shortcode .form_label{	
+    display: inline;
+}
+.filter_search_form_shortcode div{	
+    clear: none;
+    float: left;
+    display: inline;
+    margin: 0 5px;
+	height: 40px;
+}
+.filter_search_form_shortcode select{	
+    width:auto;
+}
+.filter_search_form_shortcode{	
+    border: 1px solid;
+	float: left;
+	padding: 10px;
 }
 .error{
 	display:block;

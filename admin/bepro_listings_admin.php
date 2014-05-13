@@ -384,6 +384,9 @@
 			$data["show_con"] = $_POST["show_con"];
 			$data["show_geo"] = $_POST["show_geo"];
 			$data["num_images"] = $_POST["num_images"];
+			$data["cat_heading"] = $_POST["cat_heading"];
+			$data["cat_empty"] = $_POST["cat_empty"];
+			$data["cat_singular"] = $_POST["cat_singular"];
 	
 			//forms
 			$data["validate_form"] = $_POST["validate_form"];
@@ -491,7 +494,10 @@
 							<option value="8" <?php echo ($data["num_images"]== 8)? 'selected="selected"':"" ?>>8</option>
 							<option value="9" <?php echo ($data["num_images"]== 9)? 'selected="selected"':"" ?>>9</option>
 							<option value="0" <?php echo ($data["num_images"]== 0)? 'selected="selected"':"" ?>>None</option>
-						</select>
+						</select><br />
+						<span class="form_label"><?php _e("Category Heading", "bepro-listings"); ?></span><input type="input" name="cat_heading" value="<?php echo $data["cat_heading"]; ?>"><br />
+						<span class="form_label"><?php _e("Category Empty", "bepro-listings"); ?></span><input type="input" name="cat_empty" value="<?php echo $data["cat_empty"]; ?>"><br />
+						<span class="form_label"><?php _e("Category Singular", "bepro-listings"); ?></span><input type="input" name="cat_singular" value="<?php echo $data["cat_singular"]; ?>"><br />
 					</div>
 					<div id="tabs-2">
 						<span class="form_label"><?php _e("Validate Form", "bepro-listings"); ?></span><input type="checkbox" name="validate_form" <?php echo ($data["validate_form"]== (1 || "on"))? 'checked="checked"':"" ?>><br />

@@ -8,7 +8,7 @@ Stable tag: 2.1.25
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Create any type of directory website (portfolio, classifieds, business, etc) w/ options like (google maps, gallery, front end upload, & ajax search / filter)
+Create any directory website (portfolio, classifieds, business, etc) w/ options like (google maps, gallery, front end upload, & ajax search / filter)
 
 == Description ==
 BePro Listings facilitates infinite custom mashups of themes, addons, and templates for creating any type of directory. This plugin allows you to, search, filter and showcase information in various ways including **google maps** and multiple listing templates. Configure results to highlight various **media** types including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.

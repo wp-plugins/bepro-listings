@@ -8,10 +8,10 @@ Stable tag: 2.1.25
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Create any directory site (portfolio, classifieds, business, etc) w/ option like (google maps, gallery, front end upload, & ajax search / filter)
+Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
 
 == Description ==
-BePro Listings facilitates infinite custom mashups of themes, addons, and templates for creating any type of directory. Search, filter and showcase information in various ways including **google maps** and multiple listing templates. Configure results to highlight various **media** types including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
+BePro Listings facilitates infinite custom combinations of themes, addons, and templates ( mashups ) for creating any type of directory. Search, filter and showcase information in various ways including **google maps** and multiple listing templates. Configure results to highlight various **media** types including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
@@ -36,11 +36,11 @@ Don't be locked down by popular **"theme frameworks"** and **toolsets**. Our cod
 
 2. The listings and detail pages are templates. Yes, they can be rearanged, sections removed, and be completely restyled. Thats why you can use our plugin for so many different listing niches.
 
-3. Our addons all communicate. You can create a new addon which can communicate with them too. This facilitates extreamly unique mashups.
+3. Our addons all communicate. You can create a new addon which can communicate with them too. This facilitates extreamly unique combinations of layouts and features (**mash ups**).
 
 = Popular Uses =
 
-BePro Listings can be applied to any listings scenario. It's designed to be modular and flexible, facilitating custom combinations, as you integrate it into your current theme. Configure options like, # of uploads, **ajax search filter**, default search distance, and item page details. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+BePro Listings can be integrated into your current **theme**. Configure options like, # of uploads, **ajax search filter**, default search distance, and item page details. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 	* Paid Listings - Use our s2member or PMPro addons to charge users for listing on your website
 	* Store Finder - List your store or shop branches including, location and contact details 
@@ -82,6 +82,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	18. On page google map (NEW) - Now all listings have their own google map showing listing location in a tab
 	19. Upload CSV (NEW) - Upload your lisings via a csv document
 	20. Currency - Setup cost and implement any curreny sign you want. Allow users to search by cost
+	21. Responsive - Our listings and detail pages are all responsive. Perfect for integrating into your mobile compatible theme.
 
 = ADD ONS =
 Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, **Star Reviews** and **availability / booking**. 3) We create niche market addons like **real estate** and **Business**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
@@ -139,9 +140,11 @@ These all have options and you can check them out via the documentation link abo
 
 * Google Maps - If google map controls look weird, this is a css style related issue (your theme). Specifically, its the addition of max-width declarations to images. For details, you can *google* the issue (**google maps** max-width). Lots of bootstrap themes use this css declaration.
 
+* Displaced sidebar - If the details page has a displaced sidebar i.e. obviously broken template, you will need to create one for BePro Listings. Details about how to do that are included in the documentation link above. Every plugin which creates pages from custom post types, has this issue and requires its own template file.
+
 = CONTRIBUTING =
 
-You can support the development of this plugin via the donations link on the right. You can also donate code via
+You can support the development of this plugin via the donations link on the right or leaving a review. You can also donate code via
 
 * github repo - https://github.com/BeProSoftware/bepro-listings
 
@@ -225,13 +228,13 @@ No. Since 2.1.17 we supply a standalone profile which can be implemented via sho
 
 = Does your user submission form implement custom profile fields? =
 
-No, not currently. Is this a feature you are interested in?
+No, but you can extend the fields via wordpress hooks and filters. We offer this as a service on our website
 
 = Are there ways to extend the features? =
 
 Yes, there are lots of hooks/filters and templates (listings/page)
 
-= Can i setup featured listings? =
+= Can I setup featured listings? =
 
 Yes, you can specify categories and flag the listings as featured via options for the [display_listings] shortcode. Consult the shortcode documentation.
 

@@ -8,10 +8,10 @@ Stable tag: 2.1.25
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Custom listings (portfolio, directory, classifieds, store finder) w/ options like (google maps, gallery, front end upload, & ajax search / filter)
+Create any type of directory website (portfolio, classifieds, business, etc) w/ options like (google maps, gallery, front end upload, & ajax search / filter)
 
 == Description ==
-BePro Listings allows you to, search, filter and showcase information in various ways including **google maps** and multiple listing templates. Configure results to highlight various **media** types including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or configurable distributed architechture.
+BePro Listings facilitates infinite custom mashups of themes, addons, and templates for creating any type of directory. This plugin allows you to, search, filter and showcase information in various ways including **google maps** and multiple listing templates. Configure results to highlight various **media** types including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
@@ -30,11 +30,13 @@ Remember, unlike other solutions, just about everything in BePro Listings can be
 
 = TRUE FREEDOM! =
 
-Don't be locked down by popular **"theme frameworks"** and **toolsets**. Our codebase is extreamly flexible, inviting customizaion and extention. 
+Don't be locked down by popular **"theme frameworks"** and **toolsets**. Our codebase is extreamly flexible, inviting customizaion, extention, and unique mashups which **simulate any Directory**.
 
 1. Don't like our gallery? Simply use another or interface with ours. Don't like our video player... document reader... audio player... etc
 
 2. The listings and detail pages are templates. Yes, they can be rearanged, sections removed, and be completely restyled. Thats why you can use our plugin for so many different listing niches.
+
+3. Our addons all communicate. You can create a new addon which can communicate with them too. This facilitates extreamly unique mashups.
 
 = Popular Uses =
 
@@ -42,7 +44,8 @@ BePro Listings can be applied to any listings scenario. It's designed to be modu
 
 	* Paid Listings - Use our s2member or PMPro addons to charge users for listing on your website
 	* Store Finder - List your store or shop branches including, location and contact details 
-	* Directory - Employee, staff, members, pets, car, Business, Job Search, Fleet Tracking, Job Board, or any other type of directory listings site
+	* Directory - Employee, staff, members, pets, Business, Job Search, Job Board, or any other type of directory listings site
+	* Vehicles - List your dealer inventory, cars, trucks, etc. Or use geo features for Fleet Tracking
 	* Affiliate - List, price, and link to amazon products and other popular affilate projects.
 	* Classifieds - Sell ad space or use the system like a bullitin board
 	* Products & Services - List them yourself or allow members to list products and/or services e.g. product catalogue

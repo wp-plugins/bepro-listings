@@ -323,7 +323,7 @@
 		$parent = (!empty($cat) && is_numeric($cat))? $cat:0;
 		$parent = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $_REQUEST["l_type"]:0; 
 		
-		$query_args = array('orderby'=>'count');
+		$query_args = array('orderby'=>'count', "parent" => 0);
 		$parent =(is_array($parent) || (is_numeric($parent)))? $query_args['include'] = $parent:$query_args['parent'] = $parent; 
 		
 		$categories = get_terms( array('bepro_listing_types'), $query_args);
@@ -573,7 +573,7 @@
 		if(empty($listing_template_file))$listing_template_file = plugin_dir_path( __FILE__ ).'/templates/listings/generic_1.php';
 		
 		//allow other features to tie in
-		$get_listing_template = apply_filters("bepro_listings_list_template", $listing_template_file);
+		$get_listing_template = apply_filters("bepro_listings_change_list_template", $listing_template_file,$result);
 		if($get_listing_template != -1)$listing_template_file = $get_listing_template;
 		
 		ob_start();

@@ -679,6 +679,7 @@
 	*/	
 	function bepro_listings_list_title_template($bp_listing){
 		$data = get_option("bepro_listings");
+		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
 		if($data["link_new_page"] == 4){
 			$permalink = $bp_listing->website;
 		}else{
@@ -688,8 +689,23 @@
 		$title = $bp_listing->post_title;
 		$title = substr($title,0, 18).((strlen($title) > 18)? "...":"");
 		$title = apply_filters("bl_list_title_temp",$title, $bp_listing);
-		echo "<div class='result_name'><a href='".$permalink."' target='_blank'>".$title."</a></div>";
+		
+			
+		/*
+		* 1 = go to page
+		* 2 = new window
+		* 3 = ajax page
+		* 4 = hide internal
+		*/		
+		if($target == 2){
+			echo "<div class='result_name'><a href='".$permalink."' target='_blank'>".$title."</a></div>";	
+		}elseif($target == 3){
+			echo "<div class='result_name'><a class='bl_ajax_result_page' post_id='".$bp_listing->post_id."' href='".$permalink."' target='_blank'>".$title."</a></div>";
+		}else{
+			echo "<div class='result_name'><a href='".$permalink."'>".$title."</a></div>";	
+		}
 	}
+	
 	function bepro_listings_list_category_template($bp_listing){
 		echo '<span class="result_type">'.get_the_term_list($bp_listing->post_id, 'bepro_listing_types', '', ', ','').'</span>';
 	}

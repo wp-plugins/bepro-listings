@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: affiliate, appointment, ajax, booking, buddypress, catalogue, csv, classifieds, directory, document, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, music, mp3, mp4, pets, player, pdf, portfolio, product, responsive, reviews, star, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
-Stable tag: 2.1.26
+Stable tag: 2.1.27
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -486,8 +486,7 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 = 2.1.25 (Friday May 9th 2014) =
 
-* New filters added
-* Improvement to how the upload form is rendered
+* New filters add to how the upload form is rendered
 * New Tab style and underlying js
 * Category text / label options added to admin
 * New shortcode and design added for search filter
@@ -496,6 +495,11 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 * Fix issue where sub categories are shown multiple times
 * New filters introduced for easier template management
+
+= 2.1.27 (Wednesday May 28th 2014) =
+
+* Fix ajax page feature for the "item name" link on listings
+* Fix admin option for how links open
 
 == Upgrade Notice ==
 

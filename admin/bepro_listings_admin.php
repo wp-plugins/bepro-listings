@@ -517,7 +517,7 @@
 							<option value="1" <?php echo ($data["link_new_page"] == 1)? 'selected="selected"':"" ?>>Go To Page</option>
 							<option value="2" <?php echo ($data["link_new_page"] == 2)? 'selected="selected"':"" ?>>New Tab</option>
 							<option value="3" <?php echo ($data["link_new_page"] == 3)? 'selected="selected"':"" ?>>Ajax Page</option>
-							<option value="3" <?php echo ($data["link_new_page"] == 4)? 'selected="selected"':"" ?>>Hide Internal</option>
+							<option value="4" <?php echo ($data["link_new_page"] == 4)? 'selected="selected"':"" ?>>Hide Internal</option>
 						</select><br />
 						<span class="form_label"><?php _e("Ajax On?", "bepro-listings"); ?></span><input type="checkbox" name="ajax_on" <?php echo ($data["ajax_on"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Default # Listings", "bepro-listings"); ?></span><select name="num_listings">

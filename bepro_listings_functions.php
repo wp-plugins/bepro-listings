@@ -116,7 +116,7 @@
 				state tinytext DEFAULT NULL,
 				country tinytext DEFAULT NULL,
 				postcode tinytext DEFAULT NULL,
-				website varchar(55) DEFAULT NULL,
+				website varchar(155) DEFAULT NULL,
 				lat varchar(15) DEFAULT NULL,
 				lon varchar(15) DEFAULT NULL,
 				created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -302,7 +302,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.27' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.28' );
 		}	
 		
 		$data = get_option("bepro_listings");

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: affiliate, appointment, ajax, booking, buddypress, catalogue, csv, classifieds, directory, document, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, music, mp3, mp4, pets, player, pdf, portfolio, product, responsive, reviews, star, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
-Stable tag: 2.1.27
+Stable tag: 2.1.28
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -500,6 +500,11 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 * Fix ajax page feature for the "item name" link on listings
 * Fix admin option for how links open
+
+= 2.1.28 (Tuesday Jun 3rd 2014) =
+
+* Increase to database length for website links
+* Major fix to ajax search filter and listing results
 
 == Upgrade Notice ==
 

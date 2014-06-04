@@ -24,8 +24,6 @@ jQuery(document).ready(function(){
 			success : function(r_c){
 			options = jQuery.parseJSON(r_c);
 			bl_ajax_complete();
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
-				jQuery("#shortcode_map").replaceWith(options.map);
 			if(((options.cat).length > 0) && (jQuery("#shortcode_cat")))
 				jQuery("#shortcode_cat").replaceWith(options.cat);
 			if(((options.listings).length > 0) && (jQuery("#shortcode_list")))
@@ -36,6 +34,8 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
+			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+				jQuery("#shortcode_map").replaceWith(options.map);	
 		
 		}});	
 	});
@@ -70,8 +70,6 @@ jQuery(document).ready(function(){
 			success : function(r_c){
 				options = jQuery.parseJSON(r_c);
 				bl_ajax_complete();
-				if(((options.map).length > 0) && (jQuery("#shortcode_map")))
-					jQuery("#shortcode_map").replaceWith(options.map);
 				if(((options.cat).length > 0) && (jQuery("#shortcode_cat")))
 					jQuery("#shortcode_cat").replaceWith(options.cat);
 				if(((options.listings).length > 0) && (jQuery("#shortcode_list")))
@@ -82,6 +80,8 @@ jQuery(document).ready(function(){
 					jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 				if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 					jQuery(".search_listings").replaceWith(options.search);
+				if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+					jQuery("#shortcode_map").replaceWith(options.map);	
 			}
 		});	
 	});
@@ -101,8 +101,6 @@ jQuery(document).ready(function(){
 			success : function(r_c){
 			options = jQuery.parseJSON(r_c);
 			bl_ajax_complete();
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
-				jQuery("#shortcode_map").replaceWith(options.map);
 			if(((options.cat).length > 0) && (jQuery("#shortcode_cat")))
 				jQuery("#shortcode_cat").replaceWith(options.cat);
 			if(((options.listings).length > 0) && (jQuery("#shortcode_list")))
@@ -113,6 +111,8 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
+			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+				jQuery("#shortcode_map").replaceWith(options.map);	
 		}});
 	});
 	
@@ -128,8 +128,6 @@ jQuery(document).ready(function(){
 			success : function(r_c){
 			options = jQuery.parseJSON(r_c);
 			bl_ajax_complete();
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
-				jQuery("#shortcode_map").replaceWith(options.map);
 			if(((options.cat).length > 0) && (jQuery("#shortcode_cat")))
 				jQuery("#shortcode_cat").replaceWith(options.cat);
 			if(((options.listings).length > 0) && (jQuery("#shortcode_list")))
@@ -140,6 +138,8 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
+			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+				jQuery("#shortcode_map").replaceWith(options.map);	
 		
 		}});
 	});
@@ -156,8 +156,6 @@ jQuery(document).ready(function(){
 			success : function(r_c){
 			options = jQuery.parseJSON(r_c);
 			bl_ajax_complete();
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
-				jQuery("#shortcode_map").replaceWith(options.map);
 			if(((options.cat).length > 0) && (jQuery("#shortcode_cat")))
 				jQuery("#shortcode_cat").replaceWith(options.cat);
 			if(((options.listings).length > 0) && (jQuery("#shortcode_list")))
@@ -168,6 +166,8 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
+			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+				jQuery("#shortcode_map").replaceWith(options.map);	
 		
 		}});
 	});
@@ -183,8 +183,6 @@ jQuery(document).ready(function(){
 			success : function(r_c){
 			options = jQuery.parseJSON(r_c);
 			bl_ajax_complete();
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
-				jQuery("#shortcode_map").replaceWith(options.map);
 			if(((options.cat).length > 0) && (jQuery("#shortcode_cat")))
 				jQuery("#shortcode_cat").replaceWith(options.cat);
 			if(((options.listings).length > 0) && (jQuery("#shortcode_list")))
@@ -195,6 +193,8 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery("#listingsearchform").replaceWith(options.search);
+			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+				jQuery("#shortcode_map").replaceWith(options.map);	
 		}});
 	});
 	
@@ -210,8 +210,6 @@ jQuery(document).ready(function(){
 			success : function(r_c){
 			options = jQuery.parseJSON(r_c);
 			bl_ajax_complete();
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
-				jQuery("#shortcode_map").replaceWith(options.map);
 			if(((options.cat).length > 0) && (jQuery("#shortcode_cat")))
 				jQuery("#shortcode_cat").replaceWith(options.cat);
 			if(((options.listings).length > 0) && (jQuery("#shortcode_list")))
@@ -222,6 +220,8 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery("#listingsearchform").replaceWith(options.search);
+			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+				jQuery("#shortcode_map").replaceWith(options.map);	
 		}});
 	});
 });
@@ -272,8 +272,6 @@ function bl_ajax_get_page(post_id){
 		success : function(r_c){
 		options = jQuery.parseJSON(r_c);
 		bl_ajax_complete();
-		if(((options.map).length > 0) && (jQuery("#shortcode_map")))
-			jQuery("#shortcode_map").replaceWith(options.map);
 		if(((options.cat).length > 0) && (jQuery("#shortcode_cat")))
 			jQuery("#shortcode_cat").replaceWith(options.cat);
 		if(((options.listings).length > 0) && (jQuery("#shortcode_list")))
@@ -284,6 +282,7 @@ function bl_ajax_get_page(post_id){
 			jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);	
 		if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 			jQuery(".search_listings").replaceWith(options.search);
-	
+		if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+			jQuery("#shortcode_map").replaceWith(options.map);
 	}});	
 }

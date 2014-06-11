@@ -910,9 +910,11 @@
 		global $wpdb;
 		
 		extract(shortcode_atts(array(
+			  'origami' => $wpdb->escape($_POST["origami"]),
 			  'register' => $wpdb->escape($_POST["register"])
 		 ), $atts));
-		
+		 
+		$_POST["origami"] = $origami; 
 		//get settings
 		$data = get_option("bepro_listings");
 		$default_user_id = $data["default_user_id"];

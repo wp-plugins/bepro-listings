@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: affiliate, appointment, ajax, booking, buddypress, catalogue, csv, classifieds, directory, document, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, music, mp3, mp4, pets, player, pdf, portfolio, product, responsive, reviews, star, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
-Stable tag: 2.1.28
+Stable tag: 2.1.29
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -14,6 +14,8 @@ Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (goog
 BePro Listings facilitates infinite custom combinations of themes, addons, and templates ( mashups ) for creating any type of directory. Search, filter and showcase information in various ways including **google maps** and multiple listing templates. Configure results to highlight various **media** types including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
+
+**Note** - Our new Origami addon allows you to run multiple directories on the same domain, just like your favorite classifieds website. No other wordpress directory solution can do that for you.
 
 = INTRO VIDEO =
 
@@ -102,7 +104,8 @@ Our Addons provide lots of new ways to customize your listings experinece. We ha
 	13. Booking (New) - Setup your availability and allow users to schedule time. Perfect for real estate, vehicle, hotel, and other niche sites
 	14. Business Directory (New) - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.
 	15. Vehicles (New) - Lists cars, boats, trucks, planes, and other automobiles with their details
-	16. Reviews(New) - Uses can leave and search by star ratings
+	16. Reviews(New) - Users can leave and search by star ratings
+	17. Origami (New) - Run multiple directories on the same domain like a true classifieds website
 
 = THEMES =
 
@@ -505,6 +508,11 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 * Increase to database length for website links
 * Major fix to ajax search filter and listing results
+
+= 2.1.29 (Jun 2014) =
+
+* Make category heading in the sidebar filter dynamic.
+* Preparation for origami
 
 == Upgrade Notice ==
 

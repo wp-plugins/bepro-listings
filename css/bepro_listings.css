@@ -171,6 +171,7 @@
 #tab-map{
 	height:350px;
 }	
+.bl_clear_heading{clear:left;}
 .frontend_bepro_listings_tabs #page_details_map_wrap{
 	width:70%;
 	height:350px;

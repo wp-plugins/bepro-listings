@@ -308,7 +308,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.29' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.30' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -435,6 +435,7 @@
 
 	//On delete post, also delete the listing from the database and all attachments
 	function bepro_ajax_delete_post(){
+		if(!is_numeric($_POST["post_id"])) exit;
 		global $wpdb;
 		$post_id = $_POST["post_id"];
 		$user_data = wp_get_current_user();

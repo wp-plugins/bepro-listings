@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, buddypress integration, ajax search and filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for other shortcodes
-Version: 2.1.29
+Version: 2.1.30
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -197,7 +197,7 @@ class Bepro_listings{
 		 }	 
 		
 		//Query google for lat/lon of users requested address
-		$distance = (empty($_POST["distance"]))? $data["distance"]:$_POST["distance"];
+		$distance = (empty($_POST["distance"]))? $data["distance"]:addslashes(strip_tags($_POST["distance"]));
 		if(!empty($l_city) && isset($l_city)){ 
 			//newest edits aug, 12, 2012
 			$addresstofind = sprintf('http://maps.googleapis.com/maps/api/geocode/json?address=%s&output=csv&sensor=false',rawurlencode($l_city));

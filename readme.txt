@@ -257,163 +257,95 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 == Changelog ==
 
-= 1.0.1 (Monday, Oct 1st 2012) = * Stable with Several fixes
+= 2.1.30 (Jun 11th, 2014) =
 
-= 1.0.2 (Monday, Oct 1st 2012) = * Stable with fixes
+* Security enhancements
 
-= 1.1.0 (Sunday, Oct 7st 2012) = * global settings for cost/contact/geo & num images
+= 2.1.29 (Jun 10th, 2014) =
 
-= 1.1.1 (Friday, Oct 12th 2012) = * css changes, widget fix, more info
+* Make category heading in the sidebar filter dynamic.
+* Preparation for origami
 
-= 1.2.0 (Sunday, Oct 14th 2012) = * buddypress and some hooks
+= 2.1.28 (Tuesday Jun 3rd 2014) =
 
-= 1.2.1 (Sunday, Oct 21st 2012) = * conflick error and css fixes
+* Increase to database length for website links
+* Major fix to ajax search filter and listing results
 
-= 1.2.2 (Tuesday, Oct 30st 2012) = * user create featured image
+= 2.1.27 (Wednesday May 28th 2014) =
 
-= 1.2.21 (Wednesday, Jan 16st 2012) = * error checks
+* Fix ajax page feature for the "item name" link on listings
+* Fix admin option for how links open
 
-= 1.2.3 (Thursday, April 11th 2013) = * wordpress 3.5 and multisite compatible
+= 2.1.26 (Monday May 26th 2014) =
 
-= 1.2.32 (Monday, April 22nd 2013) = * fix issue when uploading images
+* Fix issue where sub categories are shown multiple times
+* New filters introduced for easier template management
 
-= 1.2.33 (Saturday, May 4th 2013) = * fix issue regarding the retrieval of lat/lon
+= 2.1.25 (Friday May 9th 2014) =
 
-= 1.2.34 (Tuesday, May 28th 2013) = * fix issue regarding country when clicking listing map links
+* New filters add to how the upload form is rendered
+* New Tab style and underlying js
+* Category text / label options added to admin
+* New shortcode and design added for search filter
 
-= 1.2.35 (Sunday, Jul 28th 2013) = * fix text domain languages and map markers
+= 2.1.24 (Tuesday May 6th 2014) =
 
-= 2.0.0 (Sunday, Dec 1st 2013) = * Major fix improving compatability and features
+* Costmetic change, fixing wrong wording of listing detail pages
 
-= 2.0.2 (Monday, Dec 2nd 2013) = * Minor tweaks to new 2.0.0 release
+= 2.1.23 (Sunday May 4th 2014) =
 
-= 2.0.3 (Tuesday, Dec 3rd 2013) = * Dynamically load listings templates in line with 2.0.0 standards
+* New design for page details tabs
 
-= 2.0.54 (Friday, Dec 6th 2013) = * Major fixes to submission form, document handling, and error messages
+= 2.1.22 (Saturday May 3rd 2014) =
 
-= 2.0.57 (Friday, Dec 6th 2013) = * Improve map and new options for front end form
+* fixes to function names
+* new filters added to template generation process
+* enhancements to localization
 
-= 2.0.60 (Thursday, Dec 12th 2013) = * Add listing activity to buddypress feed
+= 2.1.21 (Tuesday Apr 29th 2014) =
 
-= 2.0.68 (Monday, Dec 16th 2013) = * Fix issues with admin saving and cost showing on front end
+* Continued Function name changes
+* Fix paging error and search issues
+* French language improvements
+* Localization improvements
+* New front end template functions
 
-= 2.0.71 (Monday, Dec 16th 2013) = * Fixes to search filter and addition of wordpress filters
+= 2.1.20 (Monday Apr 21st 2014) =
 
-= 2.0.76 (Thursday, Dec 19th 2013) = * Fixes to activation
+* Function name changes
 
-= 2.0.77 (Friday, Dec 20th 2013) = * Improve organization of plugin including new hooks and filters
+= 2.1.19 (Saturday Apr 10th 2014) =
 
-= 2.0.79 (Friday, Dec 27th 2013) = * New Category templates, styling, and functionality
+* New listing link option in admin for affiliate projects
+* New filter for listing titles
+* Listing titles are now linked
+* Listing links depend on listing link option in admin. This includes images
+* New option to show / hide the date filter feature
+* New currency sign option which shows on listings and details page
 
-= 2.0.85 (Tuesday, Jan 14th 2014) = * Fix upload file path and a few other small fixes
+= 2.1.18 (Saturday Apr 5th 2014) =
 
-= 2.0.86 (Wednesday, Jan 15th 2014) = * Update listings content fix
+* New ability to upload listings via CSV file in admin
 
-= 2.0.90 (Friday, Jan 17th 2014) = * Substantial upgrade making shortcodes work better with custom templates
+= 2.1.17 (Thursday Apr 3rd 2014) =
 
-= 2.0.92 (Thursday, Jan 23rd 2014) = 
+* New Shortcode for standalone profile page
 
-* Removing slashes (e.g. won\'t) from listing and item content
-* New admin feature to toggle how lat/lng is retrieved
+= 2.1.16 (Wednesday Apr 2nd 2014) =
 
-= 2.0.93 (Friday, Jan 24th 2014) = 
+* Made css and template changes to listing type 2
+* Tweak geography info layout for listing type 2
 
-* Upgrade widget code to be 2.8 compatible
-* Fix recent listings widget
+= 2.1.15 (Monday Mar 31st 2014) =
 
-= 2.0.94 (Saturday, Jan 25th 2014) = 
+* Improved featured css for better mobile compatability.
 
-* New shortcode option to Limit listings and map results to a particular category
-* Fix dropdown categories on front end edit pages
-* Fix to "category filter" results for map and listings
+= 2.1.14 (Monday Mar 31st 2014) =
 
-= 2.0.95 (Friday, Jan 31st 2014) = 
-
-* New ability to specify listing ids and limit in display_listings shortcode
-
-= 2.0.98 (Monday Feb 10th 2014) = 
-
-* New admin option for auto publish
-* New admin option for listing links opening new pages
-* New admin option for links on item detail pages for privacy
-* Recent fixes for php notices
-
-= 2.0.99 (Saturday Feb 22nd 2014) = 
-
-* Tweaks for listing type 1 style
-* Tweaks to details page layout
-* New admin option for ajax search and filter on the frontend
-* Several changes to the core php functions
-* Changes to the loading of js files
-* Changes to the search filter widget
-* Multiple changes to the, map, category, and listings shortcodes
-
-
-= 2.1.0 (Saturday Feb 22nd 2014) = 
-
-* AJAX pagination
-
-= 2.1.01 (Thursday Feb 27th 2014) = 
-
-* Tweak varius styles e.g. widgets
-* Tweak category layout
-* Fix search from ajax issues
-* New feature bl_all_in_one shortcode
-
-= 2.1.02 (Friday Feb 28th 2014) = 
-
-* Fix map widget issue
-* (New feature) Ajax pages
-
-= 2.1.03 (Saturday Mar 1st 2014) = 
-
-* Fix minor map popup html display issue
-* Fix delete feature for buddypress front end users
-
-= 2.1.04 (Sunday Mar 2nd 2014) = 
-
-* Fix minor shortcode css issue
-* Fix minor details page css issue with categories
-* New feature, exclude categories on front end form
-* New feature, required categories on front end form
-
-= 2.1.05 (Tuesday Mar 4th 2014) = 
-
-* Fix minor listing shortcode css issue
-* Major change to how listing templates are generated
-* New shortcode options (l_featured, order_by, ex_type) for display_listings shorcode (i.e. featured listings)
-
-= 2.1.06 (Tuesday Mar 4th 2014) = 
-
-* Tweak minor featured listing shortcode css issue
-* Major change to how paging for listings are generated
-
-= 2.1.08 (Saturday Mar 8th 2014) = 
-
-* Fix missing "no image" image for categories without images
-* Styling enhancements to listing templates
-* New listings option for details link text
-* New listings option to hide external website link
-* Filtered Category now shows category name in heading instead of "Sub Category" name
-
-= 2.1.09 (Thursday Mar 13th 2014) = 
-
-* Minor fix for better upgrade compatability
-* Minor style tweak to listing type 2
-
-= 2.1.10 (Tuesday Mar 18th 2014) = 
-
-* Minor fix for front end submission form. Removed pre-checked setting for categories.
-* New (order_dir) option for [display_listings] shortcode 
-
-= 2.1.11 (Thursday Mar 20th 2014) =
-
-* Minor fix for category filter
-
-= 2.1.12 (Thursday Mar 20th 2014) =
-
-* Add ability to change author to other users with role of author
-* Fix to show empty categories on the create listing form 
+* Fix paging in cases where featured listings are shown with normal listings
+* New style for paging
+* New style for featured listing with featured badge instead of colors
+* Rename filter widget buttons
 
 = 2.1.13 (Wednesday Mar 26th 2014) =
 
@@ -426,96 +358,216 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 * Removed empty categories from filter options
 * fixed undefined error messaged when show_paging optin not used is listings shortcode
 
-= 2.1.14 (Monday Mar 31st 2014) =
+= 2.1.12 (Thursday Mar 20th 2014) =
 
-* Fix paging in cases where featured listings are shown with normal listings
-* New style for paging
-* New style for featured listing with featured badge instead of colors
-* Rename filter widget buttons
+* Add ability to change author to other users with role of author
+* Fix to show empty categories on the create listing form 
 
-= 2.1.15 (Monday Mar 31st 2014) =
+= 2.1.11 (Thursday Mar 20th 2014) =
 
-* Improved featured css for better mobile compatability.
+* Minor fix for category filter
 
-= 2.1.16 (Wednesday Apr 2nd 2014) =
+= 2.1.10 (Tuesday Mar 18th 2014) = 
 
-* Made css and template changes to listing type 2
-* Tweak geography info layout for listing type 2
+* Minor fix for front end submission form. Removed pre-checked setting for categories.
+* New (order_dir) option for [display_listings] shortcode 
 
-= 2.1.17 (Thursday Apr 3rd 2014) =
+= 2.1.09 (Thursday Mar 13th 2014) = 
 
-* New Shortcode for standalone profile page
+* Minor fix for better upgrade compatability
+* Minor style tweak to listing type 2
 
-= 2.1.18 (Saturday Apr 5th 2014) =
+= 2.1.08 (Saturday Mar 8th 2014) = 
 
-* New ability to upload listings via CSV file in admin
+* Fix missing "no image" image for categories without images
+* Styling enhancements to listing templates
+* New listings option for details link text
+* New listings option to hide external website link
+* Filtered Category now shows category name in heading instead of "Sub Category" name
 
-= 2.1.19 (Saturday Apr 10th 2014) =
+= 2.1.06 (Tuesday Mar 4th 2014) = 
 
-* New listing link option in admin for affiliate projects
-* New filter for listing titles
-* Listing titles are now linked
-* Listing links depend on listing link option in admin. This includes images
-* New option to show / hide the date filter feature
-* New currency sign option which shows on listings and details page
+* Tweak minor featured listing shortcode css issue
+* Major change to how paging for listings are generated
 
-= 2.1.20 (Monday Apr 21st 2014) =
+= 2.1.05 (Tuesday Mar 4th 2014) = 
 
-* Function name changes
+* Fix minor listing shortcode css issue
+* Major change to how listing templates are generated
+* New shortcode options (l_featured, order_by, ex_type) for display_listings shorcode (i.e. featured listings)
 
-= 2.1.21 (Tuesday Apr 29th 2014) =
+= 2.1.04 (Sunday Mar 2nd 2014) = 
 
-* Continued Function name changes
-* Fix paging error and search issues
-* French language improvements
-* Localization improvements
-* New front end template functions
+* Fix minor shortcode css issue
+* Fix minor details page css issue with categories
+* New feature, exclude categories on front end form
+* New feature, required categories on front end form
 
-= 2.1.22 (Saturday May 3rd 2014) =
+= 2.1.03 (Saturday Mar 1st 2014) = 
 
-* fixes to function names
-* new filters added to template generation process
-* enhancements to localization
+* Fix minor map popup html display issue
+* Fix delete feature for buddypress front end users
 
-= 2.1.23 (Sunday May 4th 2014) =
+= 2.1.02 (Friday Feb 28th 2014) = 
 
-* New design for page details tabs
+* Fix map widget issue
+* (New feature) Ajax pages
 
-= 2.1.24 (Tuesday May 6th 2014) =
+= 2.1.01 (Thursday Feb 27th 2014) = 
 
-* Costmetic change, fixing wrong wording of listing detail pages
+* Tweak varius styles e.g. widgets
+* Tweak category layout
+* Fix search from ajax issues
+* New feature bl_all_in_one shortcode
 
-= 2.1.25 (Friday May 9th 2014) =
+= 2.1.0 (Saturday Feb 22nd 2014) = 
 
-* New filters add to how the upload form is rendered
-* New Tab style and underlying js
-* Category text / label options added to admin
-* New shortcode and design added for search filter
+* AJAX pagination
 
-= 2.1.26 (Monday May 26th 2014) =
+= 2.0.99 (Saturday Feb 22nd 2014) = 
 
-* Fix issue where sub categories are shown multiple times
-* New filters introduced for easier template management
+* Tweaks for listing type 1 style
+* Tweaks to details page layout
+* New admin option for ajax search and filter on the frontend
+* Several changes to the core php functions
+* Changes to the loading of js files
+* Changes to the search filter widget
+* Multiple changes to the, map, category, and listings shortcodes
 
-= 2.1.27 (Wednesday May 28th 2014) =
+= 2.0.98 (Monday Feb 10th 2014) = 
 
-* Fix ajax page feature for the "item name" link on listings
-* Fix admin option for how links open
+* New admin option for auto publish
+* New admin option for listing links opening new pages
+* New admin option for links on item detail pages for privacy
+* Recent fixes for php notices
 
-= 2.1.28 (Tuesday Jun 3rd 2014) =
+= 2.0.95 (Friday, Jan 31st 2014) = 
 
-* Increase to database length for website links
-* Major fix to ajax search filter and listing results
+* New ability to specify listing ids and limit in display_listings shortcode
 
-= 2.1.29 (Jun 10th, 2014) =
+= 2.0.94 (Saturday, Jan 25th 2014) = 
 
-* Make category heading in the sidebar filter dynamic.
-* Preparation for origami
+* New shortcode option to Limit listings and map results to a particular category
+* Fix dropdown categories on front end edit pages
+* Fix to "category filter" results for map and listings
 
-= 2.1.30 (Jun 11th, 2014) =
+= 2.0.93 (Friday, Jan 24th 2014) = 
 
-* Security enhancements
+* Upgrade widget code to be 2.8 compatible
+* Fix recent listings widget
 
+= 2.0.92 (Thursday, Jan 23rd 2014) = 
+
+* Removing slashes (e.g. won\'t) from listing and item content
+* New admin feature to toggle how lat/lng is retrieved
+
+= 2.0.90 (Friday, Jan 17th 2014) = 
+
+* Substantial upgrade making shortcodes work better with custom templates
+
+= 2.0.86 (Wednesday, Jan 15th 2014) = 
+
+* Update listings content fix
+
+= 2.0.85 (Tuesday, Jan 14th 2014) = 
+
+* Fix upload file path and a few other small fixes
+
+= 2.0.79 (Friday, Dec 27th 2013) = 
+
+* New Category templates, styling, and functionality
+
+= 2.0.77 (Friday, Dec 20th 2013) = 
+
+* Improve organization of plugin including new hooks and filters
+
+= 2.0.76 (Thursday, Dec 19th 2013) = 
+
+* Fixes to activation
+
+= 2.0.71 (Monday, Dec 16th 2013) = 
+
+* Fixes to search filter and addition of wordpress filters
+
+= 2.0.68 (Monday, Dec 16th 2013) = 
+
+* Fix issues with admin saving and cost showing on front end
+
+= 2.0.60 (Thursday, Dec 12th 2013) = 
+
+* Add listing activity to buddypress feed
+
+= 2.0.57 (Friday, Dec 6th 2013) = 
+
+* Improve map and new options for front end form
+
+= 2.0.54 (Friday, Dec 6th 2013) = 
+
+* Major fixes to submission form, document handling, and error messages
+
+= 2.0.3 (Tuesday, Dec 3rd 2013) = 
+
+* Dynamically load listings templates in line with 2.0.0 standards
+
+= 2.0.2 (Monday, Dec 2nd 2013) = 
+
+* Minor tweaks to new 2.0.0 release
+
+= 2.0.0 (Sunday, Dec 1st 2013) = 
+
+* Major fix improving compatability and features
+
+= 1.2.35 (Sunday, Jul 28th 2013) = 
+
+* fix text domain languages and map markers
+
+= 1.2.34 (Tuesday, May 28th 2013) = 
+
+* fix issue regarding country when clicking listing map links
+
+= 1.2.33 (Saturday, May 4th 2013) = 
+
+* fix issue regarding the retrieval of lat/lon
+
+= 1.2.32 (Monday, April 22nd 2013) = 
+
+* fix issue when uploading images
+
+= 1.2.3 (Thursday, April 11th 2013) = 
+
+* wordpress 3.5 and multisite compatible
+
+= 1.2.21 (Wednesday, Jan 16st 2012) = 
+
+* error checks
+
+= 1.2.2 (Tuesday, Oct 30st 2012) = 
+
+* user create featured image
+
+= 1.2.1 (Sunday, Oct 21st 2012) = 
+
+* conflick error and css fixes
+
+= 1.2.0 (Sunday, Oct 14th 2012) = 
+
+* buddypress and some hooks
+
+= 1.1.1 (Friday, Oct 12th 2012) = 
+
+* css changes, widget fix, more info
+
+= 1.1.0 (Sunday, Oct 7st 2012) = 
+
+* global settings for cost/contact/geo & num images
+
+= 1.0.2 (Monday, Oct 1st 2012) = 
+
+* Stable with fixes
+
+= 1.0.1 (Monday, Oct 1st 2012) = 
+
+* Stable with Several fixes
 
 == Upgrade Notice ==
 

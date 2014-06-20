@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, buddypress integration, ajax search and filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for other shortcodes
-Version: 2.1.30
+Version: 2.1.31
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -382,7 +382,7 @@ class Bepro_listings{
 		Bepro_listings::flush_permalinks();	
 		
 		if (function_exists('is_multisite') && is_multisite()){ 
-			$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM $wpdb->blogs"));
+			$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
 			foreach($blogids as $blogid_x){
 				bepro_listings_install_table($blogid_x);
 			}

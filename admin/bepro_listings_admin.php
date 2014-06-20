@@ -407,6 +407,7 @@
 			$data["ajax_on"] = $_POST["ajax_on"];
 			$data["num_listings"] = $_POST["num_listings"];
 			$data["distance"] = $_POST["distance"];
+			$data["title_length"] = is_numeric($_POST["title_length"])?$_POST["title_length"]:$data["title_length"];
 			$data["details_link"] = $_POST["details_link"];
 			$data["show_web_link"] = $_POST["show_web_link"];
 			$data["show_date"] = $_POST["show_date"];
@@ -540,6 +541,7 @@
 							<option value="1000" <?php echo ($data["distance"]== 1000)? 'selected="selected"':"" ?>>1000</option>
 						</select>
 						<span style="clear:both;display: block;"><br /></span>
+						<span class="form_label"><?php _e("Title Length", "bepro-listings"); ?></span><input type="text" name="title_length" value="<?php echo $data["title_length"]; ?>" /></br>
 						<span class="form_label"><?php _e("Details Link Text", "bepro-listings"); ?></span><input type="text" name="details_link" value="<?php echo $data["details_link"]; ?>" /></br>
 						<span class="form_label"><?php _e("Show Website Link?", "bepro-listings"); ?></span><input type="checkbox" name="show_web_link" <?php echo (($data["show_web_link"]==1) || ($data["show_web_link"]== "on"))? 'checked="checked"':"" ?> value="1"><br />
 						<span class="form_label"><?php _e("Currency Sign?", "bepro-listings"); ?></span><input type="text" name="currency_sign" value="<?php echo $data["currency_sign"]; ?>" /></br>

@@ -685,9 +685,9 @@
 		}else{
 			$permalink = get_permalink( $bp_listing->post_id );
 		}
-		
+		$title_length = !empty($data["title_length"])? $data["title_length"]:18;
 		$title = $bp_listing->post_title;
-		$title = substr($title,0, 18).((strlen($title) > 18)? "...":"");
+		$title = substr($title,0, $title_length).((strlen($title) > $title_length)? "...":"");
 		$title = apply_filters("bl_list_title_temp",$title, $bp_listing);
 		
 			

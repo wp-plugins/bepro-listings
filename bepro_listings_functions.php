@@ -308,7 +308,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.30' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.31' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -343,6 +343,7 @@
 			$data["ajax_on"] = "on";
 			$data["num_listings"] = 3;
 			$data["distance"] = 150;
+			$data["title_length"] = 18;
 			$data["details_link"] = "Item";
 			$data["show_web_link"] = "";
 			$data["currency_sign"] = "$";
@@ -379,9 +380,7 @@
 		$bepro_listings_version = get_option("bepro_listings_version");
 		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
 		$bepro_listings_version = get_option("bepro_listings_version");
-			$data["cat_heading"] = "Categories";
-			$data["cat_empty"] = "No Categories";
-			$data["cat_singular"] = "Category";
+			$data["title_length"] = 18;
 			update_option("bepro_listings", $data);
 		}
 	}

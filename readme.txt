@@ -113,6 +113,7 @@ BePro Listings has spawned the famous **$1 one dollar wordpress themes**. The pl
 	2. FolioProjects - Responsive Child theme for the stock wordpress twentyfourteen teamplate. Perfect for gallery, portfolio, and other sites where you want to emphasize the featured images. Comes with three templates
 	3. MT Classifieds - Great responsive theme for classified focused websites. Template uses various features including (google map, categories, and listings)
 	4. WhatLocalsCallIt - Great responsive directory theme built on the twentytwelve foundation. Great option for a Product catalogue
+	5. MP Directory - Try this theme for your next, real estate, vehicle, or other directory
 
 = WHATS THE DIFFERENCE? =
 

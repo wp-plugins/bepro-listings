@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
 
 == Description ==
-BePro Listings facilitates infinite custom combinations of themes, addons, and templates ( mashups ) for creating any type of directory. Search, filter and showcase information in various ways including **google maps** and multiple listing templates. Configure results to highlight various **media** including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
+BePro Listings facilitates infinite custom combinations of themes, addons, and templates for creating any type of directory. Search, filter and showcase information in various ways including **google maps**, categories and multiple listing templates. Configure results to highlight various **media** including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
@@ -24,7 +24,7 @@ BePro Listings facilitates infinite custom combinations of themes, addons, and t
 1. Put this shortcode [bl_all_in_one] in any page or post. Try [bl_all_in_one l_type=a4] to remove the map
 2. Confirm "Ajax Page" is selected on the BePro Listings admin page, for the option "how links open". 
 
-Thats it, everything works on one page (**google maps**, listings, categories, search, etc). When you are ready for *custom configurations*, we have a plethora of extra shortcodes and options. If you prefer an alternative to the DIY method, check out our **$1 one dollar wordpress themes** and **available support** on our website.
+Thats it, everything works on one page (**google maps**, listings, categories, search, etc). When you are ready for *custom configurations*, we have a plethora of extra shortcodes and options. If you prefer an alternative to the DIY method, check out our **$1 one dollar wordpress themes** and **wordpress support** available on our website.
 
 Remember, unlike other solutions, just about everything in BePro Listings can be set to an **off state** i.e. removed. So, if your solution does not need **Google Maps**, ajax, or cost related info, then simply turn off the options in the admin. Then use the shortcodes that do focus on your needs.
 
@@ -36,7 +36,7 @@ Don't be locked down by popular **"theme frameworks"** and **toolsets**. Our cod
 
 2. The listings and detail pages are templates. Yes, they can be rearanged, sections removed, and be completely restyled. Thats why you can use our plugin for so many different listing niches.
 
-3. Our addons all communicate. You can create a new addon which can communicate with them too. This facilitates extreamly unique combinations of layouts and features (**mash ups**).
+3. Our addons all communicate. You can create a new addon which can communicate with them too.
 
 = Popular Uses =
 
@@ -60,7 +60,7 @@ BePro Listings can be integrated into your current **theme**. Configure options 
 	* Google Maps - We have one of the most feature rich google map options available for wordpress. Many users choose us just for this feature.
 
 = KEY FEATURES =
-Our BePro Software Team is constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with diverse content. The following features are included with the plugin:
+Our BePro Software Team is constantly developing new features for this plugin. The hope is to continue providing options for a) retrieving b) displaying and c) engaging your members with diverse content. The following features are included with the base plugin:
 
 	1. My Listings - Use Buddypress or our standalone profile shortcode to allow your users to manage their submissions
 	2. Custom posts - Listings are separate to your other posts in the admin and front end.
@@ -117,7 +117,7 @@ BePro Listings has spawned the famous **$1 one dollar wordpress themes**. The pl
 
 = WHATS THE DIFFERENCE? =
 
-We created BePro Listings and its addons to be *modular*. This allows you to only add the features you need, effectively speeding up the *load time* of your website. The prices of our Addons start at $5 and our themes are $1. You can also buy *bundles* of plugins and themes for great discounts. Effectively, we are offering you, the freedom to interchange options, at a very *cost effective* rate.
+We created BePro Listings and its addons to be *modular*. This allows you to only add the features you need, effectively speeding up the *load time* of your website. The prices of our Addons start at $5 and our themes at $1. You can also purchase subscriptions, reward points, or *bundles* of plugins and themes for great discounts. Effectively, we are offering you, the freedom to interchange options, at a very *cost effective* rate.
 
 Out of the box, BePro Listings works with buddypress and many **gallery plugins** (e.g. galleria). Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This open architecture, makes it extreamly easy and quick to add the best combinations of features for extending your **directory** / **classifieds** / **portfolio** / **Catalogue** site. 
 
@@ -190,7 +190,7 @@ You should alter the /css/bepro_listings.css file as needed and there are severa
 
 = Can I add Markers to the Map? =
 
-Markers are generated by posts which match a search criteria. To have a marker on the map, you must have created a post. Marker icons can be changed with our BePro Listings Icons addon
+Markers are generated by posts which match a search criteria. To have a marker on the map, you must have created a "BePro Listing". Marker icons can be changed with our BePro Listings Icons addon
 
 = What is the Map showing by default? =
 
@@ -234,7 +234,7 @@ No, but you can extend the fields via wordpress hooks and filters. We offer this
 
 = Are there ways to extend the features? =
 
-Yes, there are lots of hooks/filters and templates (listings/page)
+Yes, there are lots of wordpress hooks/filters and templates (listings/page)
 
 = Can I setup featured listings? =
 
@@ -258,7 +258,7 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 == Changelog ==
 
-= 2.1.30 (Jun 20th, 2014) =
+= 2.1.31 (Jun 20th, 2014) =
 
 * New admin option to manage length of title on listings
 * Continued enhancement of Wordpress compatability and removal of php errors

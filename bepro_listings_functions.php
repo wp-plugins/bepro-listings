@@ -17,7 +17,7 @@
 */	
  
 	function bepro_listings_wphead() {
-		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('css/bepro_listings.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/easy-responsive-tabs.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" ><meta name=\"plugin\" content=\"Bepro Listings plugin\">
+		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('css/bepro_listings.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/easy-responsive-tabs.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" ><meta name=\"plugin\" content=\"Bepro Listings wordpress directory\">
 		
 		';
 		
@@ -136,7 +136,7 @@
 			
 			$post = array(
 				  'post_author' => $user_id,
-				  'post_content' => "<p>This is your first listing. Delete this one in your admin and create one of your own. If you need help, our <a href='http://www.beprosoftware.com/services/'>North American Wordpress Web Development</a> team can help. Also note we have tons of <a href='beprosoftware.com/products/bepro-listings'>Wordpress Directory</a> and <a href='beprosoftware.com/products/bepro-listings'>Wordpress classifieds plugin</a> addons for this plugin like: </p>
+				  'post_content' => "<p>This is your first listing. Delete this one in your admin and create one of your own. If you need help, our <a href='http://www.beprosoftware.com/services/'>Wordpress Development</a> team can help. Also note we have tons of <a href='beprosoftware.com/products/bepro-listings'>Wordpress Directory Plugins</a> and <a href='beprosoftware.com/products/bepro-listings'>Wordpress Directory Themes</a> for this plugin like: </p>
 				  <ul>
 					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-tags/'>Tags</a> - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget</li>
 					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-contact/'>Contact</a> - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing</li>
@@ -159,10 +159,11 @@
 				<h2>Classifieds / Porfolio / Directory Themes</h2>
 				<p>We also have several $1 one dollar wordpress themes you can purchase with free data. This provides a great tutorial and / or way to get setup quickly</p>
 				<ul>
-					<li><a href='http://www.beprosoftware.com/shop/bycater/'>ByCater</a> - Vertile theme for any <strong>wordpress lisings</strong></li>
+					<li><a href='http://www.beprosoftware.com/shop/bycater/'>ByCater</a> - Versitile theme for any <strong>wordpress lisings</strong></li>
 					<li><a href='http://www.beprosoftware.com/shop/folioprojects/'>FolioProjects</a> - Best used for <strong>Wordpress portfolios</strong></li>
 					<li><a href='http://www.beprosoftware.com/shop/mt-classifieds/'>MT CLassifieds</a> - Great <strong>Wordpress Classifieds Theme</strong></li>
 					<li><a href='http://www.beprosoftware.com/shop/whatlocalscallit/'>WhatLocalsCallIt</a> - Perfect <strong>Wordpress Directory Theme</strong></li>
+					<li><a href='http://www.beprosoftware.com/shop/mp-directory/'>MP Directory</a> - Another great <strong>Wordpress Directory Theme</strong></li>
 				</ul>
 				
 				<p>Check them all out on the <a href='http://www.beprosoftware.com/products/bepro-listings/'>BePro Lisitngs documentation</a> page along with <b>shortcodes</b> and <b>instructions</b></p>
@@ -247,7 +248,7 @@
 	//if selected, show link in footer
 	function footer_message(){
 		echo '<div id="bepro_lisings_footer">
-								<a href="http://www.beprosoftware.com/products/bepro-listings" title="Wordpress Classifieds & Directory Plugin" rel="generator">Proudly powered by BePro Lisitngs</a>
+								<a href="http://www.beprosoftware.com/products/bepro-listings" title="Wordpress Directory Plugin" rel="generator">Proudly powered by BePro Lisitngs</a>
 			</div>';
 	}
 	

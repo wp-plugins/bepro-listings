@@ -1,7 +1,7 @@
 === BePro Listings ===
 Contributors: BeyondPrograms
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: affiliate, appointment, ajax, booking, buddypress, catalogue, csv, classifieds, directory, document, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, music, mp3, mp4, pets, player, pdf, portfolio, product, responsive, reviews, star, store, vehicle, video, vimeo, youtube
+Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
 Stable tag: 2.1.32
@@ -99,7 +99,7 @@ Our Addons provide lots of new ways to customize your listings experinece. We ha
 	10. Favorites - Engage your visitors! Record theirs likes and dislikes to figure out the most popular listings.
 	11. Authors - Publicize your authors and give their listings more visibility.
 	12. PMPro - Use Paid Membership Pro to charge users to post listings on your website, with this integration.
-	13. Booking (New) - Setup your availability and allow users to schedule time. Perfect for real estate, vehicle, hotel, and other niche sites
+	13. Booking - Setup your availability and allow users to schedule time. Perfect for real estate, vehicle, hotel, and other niche sites
 	14. Business Directory - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.
 	15. Vehicles - Lists cars, boats, trucks, planes, and other automobiles with their details
 	16. Reviews - Users can leave and search by star ratings

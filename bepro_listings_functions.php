@@ -155,6 +155,7 @@
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-vehicles/'>Vehicles</a> (New) - Lists cars, boats, trucks, planes, and other automobiles with their details</li>
 					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-reviews/'>Reviews</a> (New) - Users can leave and search by star ratings</li>
 					<li><a href='http://www.beprosoftware.com/shop/origami/'>Origami</a> (New) - Run multiple directories on the same domain like a true classifieds website</li>
+					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-search/'>Search</a> (New) - Add predictive google maps address lookup and auto complete enhancements to the basic search feature</li>
 				</ul>
 				<h2>Classifieds / Porfolio / Directory Themes</h2>
 				<p>We also have several $1 one dollar wordpress themes you can purchase with free data. This provides a great tutorial and / or way to get setup quickly</p>

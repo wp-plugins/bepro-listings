@@ -100,10 +100,11 @@ Our Addons provide lots of new ways to customize your listings experinece. We ha
 	11. Authors - Publicize your authors and give their listings more visibility.
 	12. PMPro - Use Paid Membership Pro to charge users to post listings on your website, with this integration.
 	13. Booking (New) - Setup your availability and allow users to schedule time. Perfect for real estate, vehicle, hotel, and other niche sites
-	14. Business Directory (New) - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.
-	15. Vehicles (New) - Lists cars, boats, trucks, planes, and other automobiles with their details
-	16. Reviews(New) - Users can leave and search by star ratings
+	14. Business Directory - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.
+	15. Vehicles - Lists cars, boats, trucks, planes, and other automobiles with their details
+	16. Reviews - Users can leave and search by star ratings
 	17. Origami (New) - Run multiple directories on the same domain like a true classifieds website
+	18. Search (New) - Add predictive google maps address lookup and auto complete enhancements to the basic search feature
 
 = THEMES =
 

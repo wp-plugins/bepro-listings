@@ -310,7 +310,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.31' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.32' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -382,7 +382,7 @@
 		$bepro_listings_version = get_option("bepro_listings_version");
 		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
 		$bepro_listings_version = get_option("bepro_listings_version");
-			$data["title_length"] = 18;
+			$data["permalink"] = "/".BEPRO_LISTINGS_SEARCH_SLUG;
 			update_option("bepro_listings", $data);
 		}
 	}
@@ -717,7 +717,9 @@
 			'not_found_in_trash' => __('Nothing found in Trash'),
 			'parent_item_colon' => ''
 		);
-	 
+		
+		$options = get_option("bepro_listings");
+		$slug = !empty($options["permalink"])? stripslashes($options["permalink"]):"listings";
 		$args = array(
 			'labels' => $labels,
 			'public' => true,
@@ -725,7 +727,7 @@
 			'show_ui' => true,
 			'query_var' => true,
 			'menu_icon' => plugins_url("images/blogs.png", __FILE__ ) ,
-			'rewrite' => array("slug" => "listings", 'with_front' => false),
+			'rewrite' => array("slug" => $slug, 'with_front' => false),
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			'menu_position' => null,
@@ -780,7 +782,7 @@
 			return true;
 		}
 	}
-	
+
 	function bepro_listings_placeholder_img_src() {
 		return plugins_url("images/no_img.jpg", __FILE__ );
 	}

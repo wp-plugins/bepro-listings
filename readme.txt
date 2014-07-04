@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: affiliate, appointment, ajax, booking, buddypress, catalogue, csv, classifieds, directory, document, fallback, finder, flash, front end upload, gallery, google, HTML5, image, listings, location, locator, map, media, music, mp3, mp4, pets, player, pdf, portfolio, product, responsive, reviews, star, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
-Stable tag: 2.1.31
+Stable tag: 2.1.32
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -258,6 +258,11 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 
 == Changelog ==
+
+= 2.1.32 (July 4th, 2014) =
+
+* Added ability to change the permalink slug settings 
+* Fixed buddypress and profile security issue regarding editing listings
 
 = 2.1.31 (Jun 20th, 2014) =
 

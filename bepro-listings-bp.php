@@ -65,9 +65,19 @@
 	function update_listing_content(){
 		global $wpdb, $bp, $post;
 		$data = get_option("bepro_listings");
+		$listing_url = $bp->loggedin_user->domain.$bp->current_component."/";
 		//get information 
 		$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE id = ".$bp->action_variables[0]);
+		if(!$item){
+			header("Location: ".$listing_url."?message=Listing Does not exist");
+			exit;
+		}	
 		$post_data = get_post($item->post_id);
+		$user_id = get_current_user_id();
+		if($post_data->post_author != $user_id){
+			header("Location: ".$listing_url."?message=You do not own this listing");
+			exit;
+		}
 		//get categories
 		$raw_categories = listing_types_by_post($item->post_id);
 		$categories = array();

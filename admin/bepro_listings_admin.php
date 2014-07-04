@@ -22,6 +22,10 @@
 		if($data["show_cost"] == (1 || "on"))add_meta_box("cost_meta", "Cost $", "cost_meta", "bepro_listings", "side", "low");
 		if($data["show_con"] == (1 || "on"))add_meta_box("contact_details_meta", "Lisiting Details", "contact_details_meta", "bepro_listings", "normal", "low");
 		if($data["show_geo"] == (1 || "on"))add_meta_box("geographic_details_meta", "Geographic Details", "geographic_details_meta", "bepro_listings", "normal", "low");
+		
+		
+		permalink_save_options();
+		permalink_admin_init();
 	}
 	
 	function bepro_admin_head(){
@@ -64,6 +68,38 @@
 			</script>
 		';
 	}
+	
+	function permalink_admin_init(){
+		add_settings_field(
+			'bl_permalink_url',
+			'Listing Permalink',
+			'permalink_setting_input',
+			'permalink',
+			'optional'
+		);
+	}
+	
+	function permalink_setting_input() {
+		// get option 'boss_email' value from the database
+		$options = get_option( 'bepro_listings' );
+		$value = $options['permalink'];
+		
+		// echo the field
+		?>
+	<code><?php bloginfo("url"); ?></code><input id='bl_permalink_option' name='bl_permalink_option'
+	 type='text' value='<?php echo esc_attr( $value ); ?>' /> e.g. /listings
+		<?php
+	}
+	
+	// Validate user input and return validated data
+	function permalink_save_options( ) {
+		if(isset($_POST["bl_permalink_option"])){
+			$options = get_option( 'bepro_listings' );
+			$options["permalink"] = $_POST["bl_permalink_option"];
+			update_option("bepro_listings", $options);
+		}
+	}
+	
 	function cost_meta(){
 	  global $wpdb, $post;
 	  $listing = $wpdb->get_row("SELECT cost FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);

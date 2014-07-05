@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
 
 == Description ==
-BePro Listings facilitates infinite custom combinations of themes, addons, and templates for creating any type of directory. Search, filter and showcase information in various ways including **google maps**, categories and multiple listing templates. Configure results to highlight various **media** including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
+BePro Listings facilitates infinite custom combinations of themes, addons, and templates for creating any type of directory or combination of directories (**origami**). Search, filter and showcase information in various ways including **google maps**, categories and multiple listing templates. Configure results to highlight various **media** including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 

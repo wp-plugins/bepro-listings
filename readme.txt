@@ -30,7 +30,7 @@ Thats it, everything works on one page (**google maps**, listings, categories, s
 
 1. Yes you can charge users to post with the base free plugin. We offer membership addons for limiting features by level
 2. Yes the free version is multisite compatible. Alternatively, we offer an addon to feature multiple directory types on one domain
-3. Yes everything has its own template which explains how we can simular any directory and you can add/remove most features
+3. Yes everything has its own template which explains how we can simulate any directory and you can add/remove most features
 
 = Popular Uses =
 

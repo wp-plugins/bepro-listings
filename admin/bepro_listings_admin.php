@@ -624,6 +624,7 @@
 						<p><b>THANK YOU</b> for your interest and support of this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>
 						<h2>Support For You</h2>
 						<ul style="border:1px solid; padding:10px">
+							<li>Subscriptions - We offer various <a href="http://beprosoftware.com/subscriptions" target="_blank">subscription</a> options for discounts, freebies, videos, newsletters and access to other unique wordpress / BePro Listings related content</li>
 							<li>Support Forum - Join our <a href="http://beprosoftware.com/forums" target="_blank">forums</a> for any support questions</li>
 							<li>Documentation - Instructions, videos, shortcodes, and more on <a href="http://beprosoftware.com/products/bepro-listings/">this dedicated page</a></li>
 							<li>Contact Us - Send us an email via our <a href="http://www.beprosoftware.com/contact-us/">Contact Us</a> Page</li>

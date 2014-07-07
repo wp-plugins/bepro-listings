@@ -34,29 +34,30 @@ Don't be locked down by popular **"theme frameworks"** and **toolsets**. Our cod
 
 1. Don't like our gallery? Simply use another or interface with ours. Don't like our video player... document reader... audio player... etc
 
-2. The listings and detail pages are templates. Yes, they can be rearanged, sections removed, and be completely restyled. Thats why you can use our plugin for so many different listing niches.
+2. The listings and detail pages are templates. Yes, they can be rearanged, sections removed, and be completely restyled. Thats why you can use this plugin for so many different listing niches
 
 3. Our addons all communicate. You can create a new addon which can communicate with them too.
 
 = Popular Uses =
 
-BePro Listings can be integrated into your current **theme**. Configure options like, # of uploads, **ajax search filter**, default search distance, and item page details. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+BePro Listings can be integrated into your current **theme** and simulate any directory type. Configure options affecting, search/filter, front end submission, detail pages and more. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 	* Paid Listings - Use our s2member or PMPro addons to charge users for listing on your website
 	* Store Finder - List your store or shop branches including, location and contact details 
 	* Directory - Employee, staff, members, pets, Business, Job Search, Job Board, or any other type of directory listings site
-	* Vehicles - List your dealer inventory, cars, trucks, etc. Or use geo features for Fleet Tracking
-	* Affiliate - List, price, and link to amazon products and other popular affilate projects.
-	* Classifieds - Sell ad space or use the system like a bullitin board
+	* Vehicles - List your dealer inventory, cars, trucks, boats, planes etc. Or use geo features for Fleet Tracking
+	* Affiliate - List, price, and link to amazon products or other popular affilate campaigns.
+	* Advertising - Sell ad space or use the system like a bullitin board
+	* Classifieds - Run mutiple directory types consecutively on the same domain (Requires Origami) or multisite support is included
 	* Products & Services - List them yourself or allow members to list products and/or services e.g. product catalogue
 	* Informational - Tourism, points of interest, and other details best shown via google maps
 	* Front End Uploads - Using the submission form shortcode, users can contribute blog posts for you to review and publish
 	* Image website - Artists are using the new Gallery features to categorize, manage, and showcase their work
-	* Video Listings - Feature HTML5 videos (w/ flash fallback) from sites like youtube or videos uploaded to your server.
-	* Podcast & Music - List and categorize all of your audio files including mp3 and wav then play them on a HTML5 player  (w/ flv fallback)
-	* Document Directory - Showcase multiple file types allowing users to search and view them on your website
+	* Video Listings - Feature HTML5 videos (w/ flash fallback) from sites like youtube or videos uploaded to your server with our videos addon.
+	* Podcast & Music - List and categorize all of your audio files including mp3 and wav then play them on a HTML5 player  (w/ flv fallback) with our audio addon
+	* Document Directory - Showcase multiple file types allowing users to search and view them on your website with our documents addon
 	* Portfolio - Feature your work in various ways, allowing users to view details and comment. Best solution for showcasing portfolio projects.
-	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a BePro Listings Realestate addon
+	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a free BePro Listings Realestate addon
 	* Google Maps - We have one of the most feature rich google map options available for wordpress. Many users choose us just for this feature.
 
 = KEY FEATURES =
@@ -103,7 +104,7 @@ Our Addons provide lots of new ways to customize your listings experinece. We ha
 	14. Business Directory - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.
 	15. Vehicles - Lists cars, boats, trucks, planes, and other automobiles with their details
 	16. Reviews - Users can leave and search by star ratings
-	17. Origami (New) - Run multiple directories on the same domain like a true classifieds website
+	17. Origami (New) - Run multiple directories consecutively on the same domain like a true classifieds website
 	18. Search (New) - Add predictive google maps address lookup and auto complete enhancements to the basic search feature
 
 = THEMES =
@@ -118,11 +119,11 @@ BePro Listings has spawned the famous **$1 one dollar wordpress themes**. The pl
 
 = WHATS THE DIFFERENCE? =
 
-We created BePro Listings and its addons to be *modular*. This allows you to only add the features you need, effectively speeding up the *load time* of your website. The prices of our Addons start at $5 and our themes at $1. You can also purchase subscriptions, reward points, or *bundles* of plugins and themes for great discounts. Effectively, we are offering you, the freedom to interchange options, at a very *cost effective* rate.
+We created BePro Listings and its addons to be *modular*. This allows you to have multiple directory types and features on the same website at the same time. Using only what you need speeds up the *load time* of your website. The prices of our Addons start at $5 and our themes at $1. You can also purchase subscriptions, reward points, or *bundles* of plugins and themes for great discounts. We are offering you the freedom to interchange options, at a very *cost conscious* rate.
 
-Out of the box, BePro Listings works with buddypress and many **gallery plugins** (e.g. galleria). Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This open architecture, makes it extreamly easy and quick to add the best combinations of features for extending your **directory** / **classifieds** / **portfolio** / **Catalogue** site. 
+Out of the box, BePro Listings works with buddypress and many **gallery plugins**. Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This open architecture, makes it extreamly easy and quick to add the best combinations of features for extending your **directory** / **classifieds** / **portfolio** / **Catalogue** site. 
 
-Most importantly, BePro Listings is built for various levels of users. Novice users will appreciate our $1 themes, **ajax features** and *"all in one"* shortcodes. Intermediate users will appreiate the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
+Most importantly, BePro Listings is built for various levels of users. Novice users will appreciate our $1 themes, **ajax features** and *"all in one"* shortcodes. Intermediate users will like the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 
 = SHORTCODES =
 These all have options and you can check them out via the documentation link above.
@@ -185,7 +186,7 @@ Yes, it works anywhere shortcodes are accepted
 
 Yes, if they are on the page where a form submission is received, they will react to the submission. The easiest way to do this is with our [bl_all_in_one] shortcode
 
-= How can I customize the layout? =
+= How can I customize the style and layout? =
 
 You should alter the /css/bepro_listings.css file as needed and there are several php templates. Ultimately, the templates are little more than wordpress hooks so its easy to create your own.
 
@@ -205,10 +206,6 @@ The latest X listings added to the system
 
 [generate_map paging=1]
 
-= Does the map have its own paging display? =
-
-Not currently. Do you think that would be a good feature?
-
 = Issues Generating Lat/Lng coordinates?  =
 
 Try changing the query type under map in the admin
@@ -220,6 +217,10 @@ Yes, our development team created the plugin and continue to offer free support 
 = I need more features, is there more? =
 
 Yes, there are add-ons and themes available for this plugin. Check our website beprosoftware.com/shop
+
+= Can I operate multiple directory types at the same time? =
+
+Yes, you will need our origami addon and any niche addons that specify compatibility like our vehicles and Real Estate addons
 
 = Can this work with buddypress? =
 
@@ -233,7 +234,7 @@ No. Since 2.1.17 we supply a standalone profile which can be implemented via sho
 
 No, but you can extend the fields via wordpress hooks and filters. We offer this as a service on our website
 
-= Are there ways to extend the features? =
+= Are there ways to extend the plugin myself? =
 
 Yes, there are lots of wordpress hooks/filters and templates (listings/page)
 
@@ -241,7 +242,7 @@ Yes, there are lots of wordpress hooks/filters and templates (listings/page)
 
 Yes, you can specify categories and flag the listings as featured via options for the [display_listings] shortcode. Consult the shortcode documentation.
 
-= Do i need to create templates for detail pages if i use ajax pages? =
+= Do I need to create templates for detail pages if i use ajax pages? =
 
 Yes, listing detail pages are generated whether you use them or not. This is a huge asset for seo reasons. There is a strong chance that users will first visit your website via one of those pages. Its within your interest to either a) use one of our $1 themes or b) create the necessary template files to integrate this plugin into your theme's layout
 

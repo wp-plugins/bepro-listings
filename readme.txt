@@ -4,14 +4,14 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
-Stable tag: 2.1.32
+Stable tag: 2.1.33
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
 
 == Description ==
-BePro Listings facilitates infinite custom combinations of themes, addons, and templates for creating any type of directory or combination of directories (**origami**). Search, filter and showcase information in various ways including **google maps**, categories and multiple listing templates. Configure results to highlight various **media** including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
+Charge users to post, offer free listings or create content yourself. BePro Listings facilitates infinite custom combinations of themes, addons, and templates for creating any type of directory. Search, filter and showcase information in various ways including **google maps**, categories and multiple listing templates. Configure results to highlight various **media** including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
@@ -26,23 +26,17 @@ BePro Listings facilitates infinite custom combinations of themes, addons, and t
 
 Thats it, everything works on one page (**google maps**, listings, categories, search, etc). When you are ready for *custom configurations*, we have a plethora of extra shortcodes and options. If you prefer an alternative to the DIY method, check out our **$1 one dollar wordpress themes** and **wordpress support** available on our website.
 
-Remember, unlike other solutions, just about everything in BePro Listings can be set to an **off state** i.e. removed. So, if your solution does not need **Google Maps**, ajax, or cost related info, then simply turn off the options in the admin. Then use the shortcodes that do focus on your needs.
+= QUICK FACTS =
 
-= TRUE FREEDOM! =
-
-Don't be locked down by popular **"theme frameworks"** and **toolsets**. Our codebase is extreamly flexible, inviting customizaion, extention, and unique mashups which **simulate any Directory**.
-
-1. Don't like our gallery? Simply use another or interface with ours. Don't like our video player... document reader... audio player... etc
-
-2. The listings and detail pages are templates. Yes, they can be rearanged, sections removed, and be completely restyled. Thats why you can use this plugin for so many different listing niches
-
-3. Our addons all communicate. You can create a new addon which can communicate with them too.
+1. Yes you can charge users to post with the base free plugin. We offer membership addons for limiting features by level
+2. Yes the free version is multisite compatible. Alternatively, we offer an addon to feature multiple directory types on one domain
+3. Yes everything has its own template which explains how we can simular any directory and you can remove and add/edit/rememove any feature
 
 = Popular Uses =
 
-BePro Listings can be integrated into your current **theme** and simulate any directory type. Configure options affecting, search/filter, front end submission, detail pages and more. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
+BePro Listings can be integrated into your current **theme** and simulate any directory type. D Configure options affecting, search/filter, front end submission, detail pages and more. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). id we mention you can **make money** with it too? Look at some of the ways people are using the plugin:
 
-	* Paid Listings - Use our s2member or PMPro addons to charge users for listing on your website
+	* Paid Listings - Charge users points to post. Or use one of our membership addons to limit listings and features by level
 	* Store Finder - List your store or shop branches including, location and contact details 
 	* Directory - Employee, staff, members, pets, Business, Job Search, Job Board, or any other type of directory listings site
 	* Vehicles - List your dealer inventory, cars, trucks, boats, planes etc. Or use geo features for Fleet Tracking
@@ -84,6 +78,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	19. Upload CSV (NEW) - Upload your lisings via a csv document
 	20. Currency - Setup cost and implement any curreny sign you want. Allow users to search by cost
 	21. Responsive - Our listings and detail pages are all responsive. Perfect for integrating into your mobile compatible theme.
+	22. Charge users - Require cubepoints for users to create listings. Great revenue generator
 
 = ADD ONS =
 Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, **Star Reviews** and **availability / booking**. 3) We create niche market addons like **real estate** and **Business**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
@@ -121,7 +116,7 @@ BePro Listings has spawned the famous **$1 one dollar wordpress themes**. The pl
 
 We created BePro Listings and its addons to be *modular*. This allows you to have multiple directory types and features on the same website at the same time. Using only what you need speeds up the *load time* of your website. The prices of our Addons start at $5 and our themes at $1. You can also purchase subscriptions, reward points, or *bundles* of plugins and themes for great discounts. We are offering you the freedom to interchange options, at a very *cost conscious* rate.
 
-Out of the box, BePro Listings works with buddypress and many **gallery plugins**. Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This open architecture, makes it extreamly easy and quick to add the best combinations of features for extending your **directory** / **classifieds** / **portfolio** / **Catalogue** site. 
+Out of the box, BePro Listings works with buddypress, cubepoints and many **gallery plugins**. Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This open architecture, makes it extreamly easy and quick to add the best combinations of features for extending your **directory** / **classifieds** / **portfolio** / **Catalogue** site. 
 
 Most importantly, BePro Listings is built for various levels of users. Novice users will appreciate our $1 themes, **ajax features** and *"all in one"* shortcodes. Intermediate users will like the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 
@@ -259,6 +254,15 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 
 == Changelog ==
+
+= 2.1.33 (July 7th, 2014) =
+
+* New feature, cubepoints integration allowing admin to charge users points to post
+* Admin label changes and new options related to new feature
+* New hooks and filters added
+* Add "new listing" link to My Listings profile shortcode page
+* Add "Cancel" link to My Listing edit and add pages
+* Remove preselected portion on listing create/edit frontend form, when there are none
 
 = 2.1.32 (July 4th, 2014) =
 

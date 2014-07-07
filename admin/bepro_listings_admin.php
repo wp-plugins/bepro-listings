@@ -394,19 +394,19 @@
 		}
 		</style>
 	<script type="text/javascript">
-	// Deals with calling the WordPress Media popup box
-	function myMediaPopupHandler(version)
-	{
-		window.send_to_editor = function(html) {
-			imgurl = jQuery('img',html).attr('src');
-			jQuery('#upload_image' + version).val(imgurl);
-			tb_remove();
-		}
+		// Deals with calling the WordPress Media popup box
+		function myMediaPopupHandler(version)
+		{
+			window.send_to_editor = function(html) {
+				imgurl = jQuery('img',html).attr('src');
+				jQuery('#upload_image' + version).val(imgurl);
+				tb_remove();
+			}
 
-		formfield = jQuery('#upload_image' + version).attr('name');
-		tb_show('', '<?php echo admin_url(); ?>media-upload.php?type=image&tab=library&TB_iframe=true');
-		return false;
-	}
+			formfield = jQuery('#upload_image' + version).attr('name');
+			tb_show('', '<?php echo admin_url(); ?>media-upload.php?type=image&tab=library&TB_iframe=true');
+			return false;
+		}
 	</script>
 		<?php
 	}
@@ -459,8 +459,9 @@
 			//map
 			$data["map_query_type"] = $_POST["map_query_type"];
 			
-			//buddypress
+			//3rd party
 			$data["buddypress"] = $_POST["buddypress"];
+			$data["cubepoints"] = $_POST["cubepoints"];
 			
 			//Support
 			$data["footer_link"] = $_POST["footer_link"];
@@ -511,7 +512,7 @@
 						<li><a href="#tabs-3">Search/Listings</a></li>
 						<li><a href="#tabs-4">Page/Post</a></li>
 						<li><a href="#tabs-5">Map</a></li>
-						<li><a href="#tabs-6">Buddypress</a></li>
+						<li><a href="#tabs-6">3rd Party</a></li>
 						<li><a href="#tabs-7">CSV Upload</a></li>
 						<li><a href="#tabs-8">Support</a></li>
 					</ul>
@@ -607,7 +608,12 @@
 						</select>	
 					</div>
 					<div id="tabs-6">
-						<span class="form_label"><?php _e("Buddypress", "bepro-listings"); ?></span><input type="checkbox" name="buddypress" <?php echo ($data["buddypress"]== (1 || "on"))? 'checked="checked"':"" ?>>
+						<span class="form_label"><?php _e("Buddypress", "bepro-listings"); ?></span><input type="checkbox" name="buddypress" <?php echo ($data["buddypress"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Cubepoints", "bepro-listings"); ?></span><select id="bl_cubepoints" name="cubepoints">
+							<option value="0" <?php echo ($data["cubepoints"] == 0)? "selected='selected'": ""; ?>>Do Not Charge</option>
+							<option value="1" <?php echo ($data["cubepoints"] == 1)? "selected='selected'": ""; ?>>Charge Flat Rate</option>
+						</select>
+						
 					</div>
 					<div id="tabs-7">
 						<p>CSV upload documenation avaialble <a href="http://beprosoftware.com/products/bepro-listings" target="_blank">here</a></p>

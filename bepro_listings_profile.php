@@ -55,6 +55,7 @@
 			LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
 			
 			$listing_url = "?bl_manage=1&bl_id=";
+			echo "<p><a href='".$listing_url."'>Add a Listing</a></p>";
 			require( dirname( __FILE__ ) . '/templates/list.php' );
 		}
 	}
@@ -111,10 +112,13 @@
 		$cat_drop = $data["cat_drop"];
 		
 		$listing_url = "?bl_manage=1&bl_id=";
+		$url = get_permalink( $post->ID );
+		echo "<p><a href='".$url."'>Cancel</a></p>";
 		require( dirname( __FILE__ ) . '/templates/form.php' );
 	}
 	
 	function bl_profile_add_listing_content(){
+		global $post;
 		//get settings
 		$data = get_option("bepro_listings");
 		$default_user_id = $data["default_user_id"];
@@ -125,6 +129,8 @@
 		$show_geo = $data["show_geo"];
 		
 		$listing_url = "?bl_manage=1&bl_id=";
+		$url = get_permalink( $post->ID );
+		echo "<p><a href='".$url."'>Cancel</a></p>";
 		require( dirname( __FILE__ ) . '/templates/form.php' );
 	}
 

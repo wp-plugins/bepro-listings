@@ -3,8 +3,8 @@
 Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
-Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, buddypress integration, ajax search and filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for other shortcodes
-Version: 2.1.32
+Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, cubepoints, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
+Version: 2.1.33
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -46,6 +46,7 @@ class Bepro_listings{
 		include(dirname( __FILE__ ) . '/admin/bepro_listings_widgets.php');
 		include(dirname( __FILE__ ) . '/bepro_listings_frontend.php');
 		include(dirname( __FILE__ ) . '/bepro_listings_profile.php');
+		include(dirname( __FILE__ ) . '/bepro_listings_cubepoints.php');
 		
 		add_action('init', 'bepro_create_post_type' );
 		add_action('init', array($this, 'check_flush_permalinks') );
@@ -85,6 +86,7 @@ class Bepro_listings{
 		if($data["footer_link"] == ("on" || 1)){
 			add_action("wp_footer", "footer_message");
 		}
+		
 		add_action( ((!empty($data['bepro_listings_item_title_template']))? $data['bepro_listings_item_title_template']:'bepro_listings_item_title'), 'bepro_listings_item_title_template');
 		add_action( ((!empty($data['bepro_listings_item_gallery_template']))? $data['bepro_listings_item_gallery_template']:'bepro_listings_item_gallery'), 'bepro_listings_item_gallery_template');
 		add_action( ((!empty($data['bepro_listings_item_after_gallery_template']))? $data['bepro_listings_item_after_gallery_template']:'bepro_listings_item_after_gallery'), 'bepro_listings_item_after_gallery_template');

@@ -1,4 +1,5 @@
 <?php
+	do_action("bepro_listing_form_before", $post_data);
 	
 		if(!empty($validate) && ($validate == "on")){
 			echo '
@@ -46,12 +47,12 @@
 				</script>
 			';
 		}
-	
+		
 		echo '
 			<form method="post" enctype="multipart/form-data" id="bepro_create_listings_form">
 				<input type="hidden" name="save_bepro_listing" value="1">
 				<input type="hidden" name="bepro_post_id" value="'.$post_data->ID.'">';
-		do_action("bepro_listing_form_start", $post_data);		
+		do_action("bepro_listing_form_start", $post_data);
 		echo '
 			<div class="add_listing_form_info bepro_form_section">
 				<h3>'.__("Item Information", "bepro-listings").'</h3>
@@ -77,7 +78,11 @@
 							$normal_list .= '<span class="bepro_form_cat"><span class="form_label">'.$cat->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$cat->term_id.'"></span>';
 						}
 					}
-					echo $cat_section = "<div class='bepro_listing_category_section'><h3>Categories : </h3><p><strong>Pre Selected</strong></p>".(empty($required_list)?"None":$required_list)."<div style='clear:both'><br /></div><p><strong>Optional</strong></p>".$normal_list."</div>";
+					
+					//category section
+					echo "<div class='bepro_listing_category_section'><h3>Categories : </h3>";
+					echo (empty($required_list)? "" : "<p><strong>Pre Selected</strong></p>".$required_list);
+					echo "<div style='clear:both'><br /></div><p><strong>Optional</strong></p>".$normal_list."</div>";
 				}
 				echo "<div style='clear:both'></div>";
 				

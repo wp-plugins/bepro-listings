@@ -310,7 +310,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.32' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.33' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -358,8 +358,11 @@
 			$data["show_content"] = "on";
 			//map
 			$data["map_query_type"] = "curl";
-			//buddypress
+			//3rd party
 			$data["buddypress"] = 0;
+			$data["cubepoints"] = 0;
+			$data["redirect_need_funds"] = 1;
+			$data["charge_amount"] = 1;
 			//Support
 			$data["footer_link"] = 0;
 			//item page template
@@ -456,6 +459,12 @@
 	function bepro_listings_save($post_id = false, $return_post_id = false){
 		global $wpdb;
 		if(!empty($_POST["save_bepro_listing"])){
+			//tie in for custom and addon error checking
+			$check = apply_filters("scan_incoming_bl_listing",array());
+			if(!$check || !empty($check)){
+				return false;
+			}
+			
 			//get settings
 			$wp_upload_dir = wp_upload_dir();
 			$data = get_option("bepro_listings");
@@ -795,34 +804,7 @@
 		return get_metadata( 'bepro_listing_types', $term_id, $key, $single );
 	}
 
-	function bepro_listings_description_tab(){
-		include(plugin_dir_path( __FILE__ )."templates/tabs/tab-description.php");
-	}
 	
-	function bepro_listings_comments_tab(){
-		include(plugin_dir_path( __FILE__ )."templates/tabs/tab-comments.php");
-	}
-	
-	function bepro_listings_maps_tab(){
-		$data = get_option("bepro_listings");
-		if($data["show_geo"] == "on")
-			include(plugin_dir_path( __FILE__ )."templates/tabs/tab-maps.php");
-	}
-	
-	function bepro_listings_description_panel(){
-		include(plugin_dir_path( __FILE__ )."templates/tabs/description.php");
-	}
-	
-	function bepro_listings_comments_panel(){
-		include(plugin_dir_path( __FILE__ )."templates/tabs/comments.php");
-	}
-	
-	function bepro_listings_maps_panel(){
-		$data = get_option("bepro_listings");
-		if($data["show_geo"] == "on")
-			include(plugin_dir_path( __FILE__ )."templates/tabs/maps.php");
-	}
-
 
 
 ?>

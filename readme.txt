@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
 
 == Description ==
-Charge users to post, offer free listings or create content yourself. BePro Listings facilitates infinite custom combinations of themes, addons, and templates for creating any type of directory. Search, filter and showcase information in various ways including **google maps**, categories and multiple listing templates. Configure results to highlight various **media** including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
+**Charge users** to post, offer free listings or create content yourself. BePro Listings facilitates infinite custom combinations of themes, addons, and templates for creating any type of directory. Search, filter and showcase information in various ways including **google maps**, categories and multiple listing templates. Configure results to highlight various **media** including, images, documents, audio, and videos. Choose between our easy one page/shortcode setup with **ajax features** or **unmatched** configurable distributed architechture.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://beprosoftware.com/forums/) | [Documentation & Add Ons](http://beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
@@ -30,11 +30,11 @@ Thats it, everything works on one page (**google maps**, listings, categories, s
 
 1. Yes you can charge users to post with the base free plugin. We offer membership addons for limiting features by level
 2. Yes the free version is multisite compatible. Alternatively, we offer an addon to feature multiple directory types on one domain
-3. Yes everything has its own template which explains how we can simular any directory and you can remove and add/edit/rememove any feature
+3. Yes everything has its own template which explains how we can simular any directory and you can add/edit/remove any feature
 
 = Popular Uses =
 
-BePro Listings can be integrated into your current **theme** and simulate any directory type. D Configure options affecting, search/filter, front end submission, detail pages and more. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). id we mention you can **make money** with it too? Look at some of the ways people are using the plugin:
+BePro Listings can be integrated into your current **theme** and simulate any directory type. Configure options affecting, search/filter, front end submission, detail pages and more. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). Did we mention you can **make money** with it too? Look at some of the ways people are using the plugin:
 
 	* Paid Listings - Charge users points to post. Or use one of our membership addons to limit listings and features by level
 	* Store Finder - List your store or shop branches including, location and contact details 

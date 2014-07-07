@@ -1,7 +1,7 @@
 === BePro Listings ===
 Contributors: BeyondPrograms
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
+Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, paid, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
 Stable tag: 2.1.33
@@ -28,13 +28,13 @@ Thats it, everything works on one page (**google maps**, listings, categories, s
 
 = QUICK FACTS =
 
-1. Yes you can charge users to post with the base free plugin. We offer membership addons for limiting features by level
-2. Yes the free version is multisite compatible. Alternatively, we offer an addon to feature multiple directory types on one domain
-3. Yes everything has its own template which explains how we can simulate any directory and you can add/remove most features
+1. Yes you can make money by charging users to post with the base free plugin. We offer membership addons for limiting features by level
+2. Yes the free version is multisite compatible. Alternatively, we offer an addon to feature multiple directory types on one domain like craigslist or kijiji
+3. Yes everything is generated via templates which explains how we can simulate any directory and you can add/remove most features
 
 = Popular Uses =
 
-BePro Listings can be integrated into your current **theme** and simulate any directory type. Configure options affecting, search/filter, front end submission, detail pages and more. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). Did we mention you can **make money** with it too? Look at some of the ways people are using the plugin:
+BePro Listings can be integrated into your current **theme** and simulate any directory type. Configure options affecting, search/filter, front end submission, **Paid Submissions**, detail pages and more. With our profile shortcode, you can allow your members to control their own submissions (add/edit/delete). Look at some of the ways people are using the plugin:
 
 	* Paid Listings - Charge users points to post. Or use one of our membership addons to limit listings and features by level
 	* Store Finder - List your store or shop branches including, location and contact details 
@@ -78,7 +78,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	19. Upload CSV (NEW) - Upload your lisings via a csv document
 	20. Currency - Setup cost and implement any curreny sign you want. Allow users to search by cost
 	21. Responsive - Our listings and detail pages are all responsive. Perfect for integrating into your mobile compatible theme.
-	22. Charge users - Require cubepoints for users to create listings. Great revenue generator
+	22. Make Money - Require cubepoints for users to create listings. Great revenue generator
 
 = ADD ONS =
 Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, **Star Reviews** and **availability / booking**. 3) We create niche market addons like **real estate** and **Business**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
@@ -172,6 +172,10 @@ The usefulness of BePro Listings beyond english, is very important to us. If you
 * Consider creating a template file for the Listing Detail Pages.
 
 == Frequently Asked Questions ==
+
+= Can I make Money With this Plugin? =
+
+Yes, you can charge users points to post a listing
 
 = Does this work with posts and pages? =
 

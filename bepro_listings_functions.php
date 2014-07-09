@@ -17,7 +17,7 @@
 */	
  
 	function bepro_listings_wphead() {
-		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('css/bepro_listings.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/easy-responsive-tabs.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" ><meta name=\"plugin\" content=\"Bepro Listings wordpress directory\">
+		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('css/bepro_listings.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/easy-responsive-tabs.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" ><meta name="generator" content="BePro Listings '.BEPRO_LISTINGS_VERSION.'">
 		
 		';
 		

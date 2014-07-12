@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, cubepoints, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.33
+Version: 2.1.34
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -297,10 +297,17 @@ class Bepro_listings{
 						<td>
 						<span class='searchlabel'>".__($cat_heading, "bepro-listings")."</span><br />
 						";
-			$options = listing_types();
+						
+			$options = get_terms( array('bepro_listing_types'), array("parent" => 0, "hide_empty" => 0));
 			foreach($options as $opt){
 				$checked = (isset($types[$opt->term_id]))? "checked='checked'":"";
 				$search_form .= '<input type="checkbox" name="l_type[]" value="'.$opt->term_id.'" '.$checked.'/><span class="searchcheckbox">'.$opt->name.'</span><br />';
+				
+				$inner_options = get_terms( array('bepro_listing_types'), array("parent" => $opt->term_id, "hide_empty" => 0));
+				foreach($inner_options as $inner_opts){
+					$checked = (isset($types[$inner_opts->term_id]))? "checked='checked'":"";
+					$search_form .= '<input type="checkbox" class="sub_cat_checkbox" name="l_type[]" value="'.$inner_opts->term_id.'" '.$checked.'/><span class="searchcheckbox">'.$inner_opts->name.'</span><br />';
+				}
 			}
 
 			$search_form .= '</td>

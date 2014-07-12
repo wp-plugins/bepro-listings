@@ -310,7 +310,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.33' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.34' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -461,7 +461,7 @@
 		if(!empty($_POST["save_bepro_listing"])){
 			//tie in for custom and addon error checking
 			$check = apply_filters("scan_incoming_bl_listing",array());
-			if(!$check || !empty($check)){
+			if(@$check && !empty($check)){
 				return false;
 			}
 			

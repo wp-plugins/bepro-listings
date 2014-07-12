@@ -298,6 +298,9 @@
 .filter_search_form .searchcheckbox{
 	margin-left:5px;
 }
+.filter_search_form input[type=checkbox].sub_cat_checkbox{
+	margin-left:10px;
+}
 /* Category listings results */
 
 #listings_area h3{

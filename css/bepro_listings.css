@@ -298,8 +298,14 @@
 .filter_search_form .searchcheckbox{
 	margin-left:5px;
 }
-.filter_search_form input[type=checkbox].sub_cat_checkbox{
+.filter_search_form input[type=checkbox].sub_cat_checkbox_1{
 	margin-left:10px;
+}
+.filter_search_form input[type=checkbox].sub_cat_checkbox_2{
+	margin-left:20px;
+}
+.filter_search_form input[type=checkbox].sub_cat_checkbox_3{
+	margin-left:30px;
 }
 /* Category listings results */
 

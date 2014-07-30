@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, cubepoints, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.34
+Version: 2.1.35
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -291,33 +291,30 @@ class Bepro_listings{
 			<form id='filter_search_form' method='post' action='".$listing_page."'>
 				<input type='hidden' name='name_search' value='".$_POST["name_search"]."'>
 				<input type='hidden' name='addr_search' value='".$_POST["addr_search"]."'>
+				<input type='hidden' name='order_dir' value='".$_POST["order_dir"]."'>
 				<input type='hidden' name='filter_search' value='1'>
-				<table>
+				<table>";
+		$search_form .= apply_filters("bepro_listings_search_filter_start","");
+
+		$search_form .= "
 					<tr>
 						<td>
 						<span class='searchlabel'>".__($cat_heading, "bepro-listings")."</span><br />
 						";
 						
-			$options = get_terms( array('bepro_listing_types'), array("parent" => 0, "hide_empty" => 0));
-			foreach($options as $opt){
-				$checked = (isset($types[$opt->term_id]))? "checked='checked'":"";
-				$search_form .= '<input type="checkbox" name="l_type[]" value="'.$opt->term_id.'" '.$checked.'/><span class="searchcheckbox">'.$opt->name.'</span><br />';
-				
-				$inner_options = get_terms( array('bepro_listing_types'), array("parent" => $opt->term_id, "hide_empty" => 0));
-				foreach($inner_options as $inner_opts){
-					$checked = (isset($types[$inner_opts->term_id]))? "checked='checked'":"";
-					$search_form .= '<input type="checkbox" class="sub_cat_checkbox" name="l_type[]" value="'.$inner_opts->term_id.'" '.$checked.'/><span class="searchcheckbox">'.$inner_opts->name.'</span><br />';
-				}
-			}
+			
+			
 
+			$search_form .= bl_build_cat_checkbox(0, "l_type[]", 0, $types);
 			$search_form .= '</td>
 			</tr>';
 			///////////////////////////////////////////////////////////////////////
-			if($data["show_geo"] == (1||"on"))	
+			if(($data["show_geo"] == 1)|| ($data["show_geo"] == "on"))	
 			$search_form .= '
 				<tr><td>
 					'.__("Distance", "bepro-listings").': <select name="distance">
 						<option value="">None</option>
+						<option value="10" '.(($_POST["distance"] == 10)? 'selected="selected"':"").'>10 miles</option>
 						<option value="50" '.(($_POST["distance"] == 50)? 'selected="selected"':"").'>50 miles</option>
 						<option value="150" '.((($_POST["distance"] == 150) || empty($_POST["distance"]))? 'selected="selected"':"").'>150 miles</option>
 						<option value="250" '.(($_POST["distance"] == 250)? 'selected="selected"':"").'>250 miles</option>

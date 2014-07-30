@@ -63,8 +63,11 @@
 			
 		</script>';
 		
-		if($data["ajax_on"] == "on")
+		if($data["ajax_on"] == "on"){
 			$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings_ajax.js"></script>';
+		}else{
+			$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings_no_ajax.js"></script>';
+		}		
 			
 		echo $scripts;
 		return;
@@ -310,7 +313,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.34' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.35' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -355,6 +358,7 @@
 			$data["gallery_cols"] = 3;
 			$data["show_details"] = "on";
 			$data["add_detail_links"] = "on";
+			$data["protect_contact"] = "";
 			$data["show_content"] = "on";
 			//map
 			$data["map_query_type"] = "curl";
@@ -374,7 +378,7 @@
 			
 			//item list template
 			$data['bepro_listings_list_template_1'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_above_image" => "bepro_listings_list_featured_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_image" => "bepro_listings_list_image_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_1.css", __FILE__ ), "template_file" => plugin_dir_path( __FILE__ ).'/templates/listings/generic_1.php');
-			$data['bepro_listings_list_template_2'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_above_image" => "bepro_listings_list_featured_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_above_title" => "bepro_listings_list_image_template","bepro_listings_list_image" => "bepro_listings_list_geo_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_2.css", __FILE__ ), "template_file" => plugin_dir_path( __FILE__ ).'/templates/listings/generic_2.php');
+			$data['bepro_listings_list_template_2'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_above_image" => "bepro_listings_list_featured_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_above_title" => "bepro_listings_list_image_template","bepro_listings_list_image" => "bepro_listings_list_geo_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_after_content" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_2.css", __FILE__ ), "template_file" => plugin_dir_path( __FILE__ ).'/templates/listings/generic_2.php');
 			
 			//save
 			update_option("bepro_listings", $data);
@@ -790,6 +794,17 @@
 		}else{
 			return true;
 		}
+	}
+	
+	function bl_build_cat_checkbox($cat_parent, $form_input_name, $level, $incoming = array()){
+		$options = get_terms( array('bepro_listing_types'), array("parent" => $cat_parent, "hide_empty" => 0));
+		foreach($options as $opt){
+			$checked = (isset($incoming[$opt->term_id]))? "checked='checked'":"";
+			$search_form .= '<input type="checkbox"  class="sub_cat_checkbox_'.$level.'" name="'.$form_input_name.'" value="'.$opt->term_id.'" '.$checked.'/><span class="searchcheckbox">'.$opt->name.'</span><br />';
+			
+			$search_form .= bl_build_cat_checkbox($opt->term_id, $form_input_name, ($level + 1),$incoming);
+		}
+		return $search_form;
 	}
 
 	function bepro_listings_placeholder_img_src() {

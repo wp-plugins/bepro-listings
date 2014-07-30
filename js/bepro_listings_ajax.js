@@ -238,10 +238,30 @@ function get_bl_shortcode_vals(){
 		returnstr = returnstr + "&limit=" + jQuery("#bl_limit").html();
 	if(jQuery("#bl_type"))
 		returnstr = returnstr + "&type=" + jQuery("#bl_type").html();
+	if(jQuery("#bl_order"))
+		returnstr = returnstr + "&order_dir=" + jQuery("#bl_order").html();
 	if(jQuery("#bl_show_paging"))
 		returnstr = returnstr + "&show_paging=" + jQuery("#bl_show_paging").html();
 		
 	return returnstr;	
+}
+
+function clear_bl_shortcode_vals(){
+	if(jQuery("#bl_size"))
+		jQuery("#bl_size").remove();
+	if(jQuery("#bl_pop_up"))
+		jQuery("#bl_pop_up").remove();
+	if(jQuery("#bl_ctype"))
+		jQuery("#bl_ctype").remove();;
+	if(jQuery("#bl_limit"))
+		jQuery("#bl_limit").remove();
+	if(jQuery("#bl_type"))
+		jQuery("#bl_type").remove();
+	if(jQuery("#bl_order"))
+		jQuery("#bl_order").remove();
+	if(jQuery("#bl_show_paging"))
+		jQuery("#bl_show_paging").remove();
+		
 }
 
 function bl_ajax_init(){
@@ -249,6 +269,7 @@ function bl_ajax_init(){
 }
 
 function bl_ajax_complete(){
+	clear_bl_shortcode_vals();
 	jQuery('body').css('cursor', 'default'); 
 }
 

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, paid, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
-Stable tag: 2.1.34
+Stable tag: 2.1.35
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -258,6 +258,13 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 
 == Changelog ==
+
+= 2.1.35 (July 30th, 2014) =
+
+* Tweak to search filter distance options
+* Fix for listing "order direction" being loss after page change
+* New admin option for protecting contact details on listing pages
+* Fix "clear search" feature for when ajax is turned off
 
 = 2.1.34 (July 12th, 2014) =
 

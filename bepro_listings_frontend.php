@@ -517,8 +517,11 @@
 			$hidden_limit_text = "<div id='bl_limit' class='bl_shortcode_selected'>$limit</div>";
 		}
 		
+		if(is_numeric($order_dir))
+			$bl_order = "<div id='bl_order' class='bl_shortcode_selected'>$order_dir</div>";
+		
 		$results = "<div id='shortcode_list$l_featured_id'>".$results."</div>";
-		$results .= "$hidden_limit_text $show_bl_type $show_paging";
+		$results .= "$hidden_limit_text $show_bl_type $show_paging $bl_order";
 		if($echo_this){
 			echo $results;
 		}else{	
@@ -864,22 +867,27 @@
 				//If we have geographic data then we can show this listings address information
 				if($item->lat){
 					$map_url = "http://maps.google.com/maps?&z=10&q=".$item->lat."+".$item->lon."+(".urlencode($item->address_line1.", ".$item->city.", ".$item->state.", ".$item->country).")&mrt=yp ";
-					echo "<div class='bepro_address_info'><span class='item_label'>".__("Address", "bepro-listings")."</span> - <a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a></div>";
+					$address_val = ($data["protect_contact"] == "on")? "<a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a>" : $item->address_line1.", ".$item->city.", ".$item->state.", ".$item->country;
+					echo "<div class='bepro_address_info'><span class='item_label'>".__("Address", "bepro-listings")."</span> - $address_val</div>";
 				}
 				//If there is contact information then show it
 				if($data["show_con"] == "on"){
 					if(!empty($item->email)){
 						if($add_detail_links){
-							$email = "<span class='item_label'>".__("Email", "bepro-listings")."</span> - <a href='mailto:".$item->email."'>".$item->email."</a><br />";
+							$email_txt = ($data["protect_contact"] == "on")? "Click to View":$item->email;
+							$email = "<span class='item_label'>".__("Email", "bepro-listings")."</span> - <a href='mailto:".$item->email."'>".$email_txt."</a><br />";
 						}else{
-							$email = "<span class='item_label'>".__("Email", "bepro-listings")."</span> - ".$item->email."<br />";
+							$email_txt = ($data["protect_contact"] == "on")? "Private":$item->email;
+							$email = "<span class='item_label'>".__("Email", "bepro-listings")."</span> - ".$email_txt."<br />";
 						}
 					}
 					if(!empty($item->phone)){
 						if($add_detail_links){
-							$phone = "<span class='item_label'>".__("Phone", "bepro-listings")."</span> - <a href='tel:".$item->phone."'>".$item->phone."</a>";
+							$phone_txt = ($data["protect_contact"] == "on")? "Click to Call":$item->phone;
+							$phone = "<span class='item_label'>".__("Phone", "bepro-listings")."</span> - <a href='tel:".$item->phone."'>".$phone_txt."</a>";
 						}else{
-							$phone = "<span class='item_label'>".__("Phone", "bepro-listings")."</span> - ".$item->phone;
+							$phone_txt = ($data["protect_contact"] == "on")? "Private":$item->phone;
+							$phone = "<span class='item_label'>".__("Phone", "bepro-listings")."</span> - ".$phone_txt;
 						}
 					}
 					echo "<div class='item_contactinfo'>

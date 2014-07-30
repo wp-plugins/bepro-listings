@@ -454,6 +454,7 @@
 			$data["gallery_cols"] = $_POST["gallery_cols"];
 			$data["show_details"] = $_POST["show_details"];
 			$data["add_detail_links"] = $_POST["add_detail_links"];
+			$data["protect_contact"] = $_POST["protect_contact"];
 			$data["show_content"] = $_POST["show_content"];
 			
 			//map
@@ -597,9 +598,10 @@
 							<option value="5" <?php echo ($data["gallery_cols"]== 5)? 'selected="selected"':"" ?>>5</option>
 							<option value="8" <?php echo ($data["gallery_cols"]== 8)? 'selected="selected"':"" ?>>8</option>
 						</select><br />
-						<span class="form_label"><?php _e("Show Details", "bepro-listings"); ?></span><input type="checkbox" name="show_details" <?php echo ($data["show_details"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
-						<span class="form_label"><?php _e("Links on Details", "bepro-listings"); ?></span><input type="checkbox" name="add_detail_links" <?php echo ($data["add_detail_links"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
-						<span class="form_label"><?php _e("Show Content", "bepro-listings"); ?></span><input type="checkbox" name="show_content" <?php echo ($data["show_content"]== (1 || "on"))? 'checked="checked"':"" ?>>
+						<span class="form_label"><?php _e("Show Details", "bepro-listings"); ?></span><input type="checkbox" name="show_details" <?php echo (($data["show_details"]==1) || ($data["show_details"] == "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Links on Details", "bepro-listings"); ?></span><input type="checkbox" name="add_detail_links" <?php echo (($data["add_detail_links"]==1) || ($data["add_detail_links"] == "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Protect Contact", "bepro-listings"); ?></span><input type="checkbox" name="protect_contact" <?php echo (($data["protect_contact"]== 1) || ($data["protect_contact"] == "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Show Content", "bepro-listings"); ?></span><input type="checkbox" name="show_content" <?php echo (($data["show_content"]==1) || ($data["show_content"] == "on"))? 'checked="checked"':"" ?>>
 					</div>
 					<div id="tabs-5">
 						<span class="form_label"><?php _e("Query Type", "bepro-listings"); ?></span><select name="map_query_type">

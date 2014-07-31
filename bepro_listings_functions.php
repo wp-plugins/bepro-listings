@@ -334,6 +334,7 @@
 			$data["cat_heading"] = "Categories";
 			$data["cat_empty"] = "No Categories";
 			$data["cat_singular"] = "Category";
+			$data["permalink"] = "/".BEPRO_LISTINGS_SEARCH_SLUG;
 			//forms
 			$data["validate_form"] = "on";
 			$data["success_message"] = 'Listing Created and pending admin approval.';			
@@ -388,8 +389,7 @@
 		
 		$bepro_listings_version = get_option("bepro_listings_version");
 		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
-		$bepro_listings_version = get_option("bepro_listings_version");
-			$data["permalink"] = "/".BEPRO_LISTINGS_SEARCH_SLUG;
+			$bepro_listings_version = get_option("bepro_listings_version");
 			update_option("bepro_listings", $data);
 		}
 	}

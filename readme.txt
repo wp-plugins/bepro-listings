@@ -65,7 +65,7 @@ BePro Listings can be integrated into your **current theme** and simulate **any 
 	* Google Maps - We have one of the most feature rich google map options available for wordpress. Many users choose us just for this feature.
 
 = ADD ONS =
-Our Addons provide lots of new ways to customize your listings experinece. We have (4) four major categories of addons. 1) There are **HTML5 media** addons like, **Videos** and **Audio** with flash fallback. 2) There are customer engagement addons like, **Star Reviews** and **availability / booking**. 3) We create niche market addons like **real estate** and **Business**. 4) Also addons which tie into 3rd party solutions like s2member and PMPro. Current available add-ons include:
+Our Addons provide lots of new ways to customize your listings experinece. Current available add-ons include:
 
 	1. Tags - Now you and your members can tag your listings and allow users to search them via the tag widget
 	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
@@ -88,7 +88,7 @@ Our Addons provide lots of new ways to customize your listings experinece. We ha
 
 = THEMES =
 
-BePro Listings has spawned the famous **$1 one dollar wordpress themes**. The plugin has so many options, that we felt a practical tutorial would be the best introduction. The goal of our $1 wordpress themes, is to showcase BePro Listings features; However, they posses all of the features of any other theme. Some of our $1 one dollar wordpress themes are **complete themes**, while others are **child themes** built on free solutions. We want to prove that you can integrate BePro Listings into any theme and create any type of listings site. **CHALLENGE US!** 
+BePro Listings has spawned the famous **$1 one dollar wordpress themes**. Some of our $1 one dollar wordpress themes are **complete themes**, while others are **child themes** built on free solutions. We want to prove that you can integrate BePro Listings into any theme and create any type of listings site. **CHALLENGE US!** 
 
 	1. ByCater - This responsive directory theme features a home page template utilizing (google map, search, categories, and listings). It also integrates with typical wordpress features like, sidebar, menu, etc
 	2. FolioProjects - Responsive Child theme for the stock wordpress twentyfourteen teamplate. Perfect for gallery, portfolio, and other sites where you want to emphasize the featured images. Comes with three templates

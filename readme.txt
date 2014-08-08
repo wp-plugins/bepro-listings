@@ -13,7 +13,7 @@ Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (goog
 == Description ==
 This plugin helps you to build directory websites. With its modular architechture, you decide how users search, filter and view information. Use base features like **google maps**, categories, ajax search / filter and **front end submission**. Our **unmatched** template architechture facilitates solutions for, Real Estate, Business, Portfolio, Classifieds and other niche information
 
-[BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://www.beprosoftware.com/forums/) | [Documentation & Add Ons](http://www.beprosoftware.com/products/bepro-listings/) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
+[BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://www.beprosoftware.com/forums/) | [Documentation](http://www.beprosoftware.com/documentation/bepro-listings/ ) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
 = INTRO VIDEO =
 

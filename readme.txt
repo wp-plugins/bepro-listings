@@ -139,19 +139,19 @@ The usefulness of BePro Listings beyond english, is very important to us. If you
 
 == Installation ==
 
-* Download the plugin files to your plugin directory and activate.
+* Download and install the plugin via the wordpress admin. Go to the "plugins->Add New" menu, search for BePro Listings, and click install
 
-* Install and Activate the plugin
+* Immediately after installation, you will be asked if you want to activate. Click activate
 
-* Consider altering the options located under the newly created admin menu for BePro Listings
+* Consider altering the options located under the newly created admin menu for BePro Listings. Go to the "BePro Listings->options" menu
 
-* It is strongly recommended that beginners keep the "Ajax on" option selected. This simplifies the use of widgets and shortcodes, since you won't have to worry about url forwarding.
+* It is strongly recommended that beginners keep the "Ajax on" option selected. Look under the "Search/listings" tab. This simplifies the use of widgets and shortcodes, since you won't have to worry about url forwarding.
 
-* Use shortcodes and/or widgets for user interaction. Try the easiest one [bl_all_in_one]
+* Use shortcodes and/or widgets for user interaction. Create a wordpress page, name it "listings" and place this shortcode in the content area [bl_all_in_one]
 
-* Install any needed add-ons
+* Install any needed add-ons. Visit our website to view addon options which expand functionality
 
-* Consider creating a template file for the Listing Detail Pages.
+* Consider creating a template file for the Listing Detail Pages. This requires php knowledge and documentation is available on our website
 
 == Frequently Asked Questions ==
 

@@ -13,7 +13,7 @@ Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (goog
 == Description ==
 This plugin helps you to build directory websites. With its modular architechture, you decide how users search, filter and view information. Use base features like **google maps**, categories, ajax search / filter and **front end submission**. Our **unmatched** template architechture facilitates solutions for, Real Estate, Business, Portfolio, Classifieds and other niche information
 
-[BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://www.beprosoftware.com/forums/) | [Documentation](http://www.beprosoftware.com/documentation/bepro-listings/ ) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
+[BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://www.beprosoftware.com/forums/) | [Documentation](http://www.beprosoftware.com/documentation/bepro-listings/ ) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/) | [How To Install?](http://www.beprosoftware.com/documentation/setting-up-bepro-listings/)
 
 = INTRO VIDEO =
 
@@ -138,6 +138,8 @@ Currently, this plugin supports, English, French, and Spanish. You can contribut
 The usefulness of BePro Listings beyond english, is very important to us. If you find deficiencies in our use of localization, please reach out.
 
 == Installation ==
+
+You can watch a video of how to [install BePro Listings](http://www.beprosoftware.com/documentation/setting-up-bepro-listings/) on our website
 
 * Download and install the plugin via the wordpress admin. Go to the "plugins->Add New" menu, search for BePro Listings, and click install
 

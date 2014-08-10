@@ -147,11 +147,15 @@ The usefulness of BePro Listings beyond english, is very important to us. If you
 
 * It is strongly recommended that beginners keep the "Ajax on" option selected. Look under the "Search/listings" tab. This simplifies the use of widgets and shortcodes, since you won't have to worry about url forwarding.
 
-* Use shortcodes and/or widgets for user interaction. Create a wordpress page, name it "listings" and place this shortcode in the content area [bl_all_in_one]
+* Use shortcodes for user interaction. Create a wordpress page, name it "listings" and place this shortcode in the content area [bl_all_in_one]
 
-* Install any needed add-ons. Visit our website to view addon options which expand functionality
+* (optional) Use widgets for user interaction. Add the search filter widget to your sidebars. Go to "Appearance->widgets" and add the search filter to your sidebar.
 
-* Consider creating a template file for the Listing Detail Pages. This requires php knowledge and documentation is available on our website
+* (optional) If interested in having user submit listings to your website, create another page an call it "submit a listing". In the content of that page, place the following shortcode [create_listing_form]
+
+* (optional) Install any needed add-ons. Visit our website to view addon options which expand functionality
+
+* (optional) Consider creating a template file for the Listing Detail Pages. This requires php knowledge and documentation is available on our website
 
 == Frequently Asked Questions ==
 

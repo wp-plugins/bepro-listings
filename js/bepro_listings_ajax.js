@@ -11,7 +11,7 @@ jQuery(document).ready(function(){
 			jQuery("#filter_search_form input[type=checkbox]").prop('checked', false);
 			fairy_dust = jQuery("#filter_search_form").serialize();
 		}else if(jQuery("#listingsearchform")){
-			if(jQuery("input[name=filter_search]").val(l_type))
+			if(jQuery("input[name=filter_search]").val() == 1)
 				fairy_dust = jQuery("#listingsearchform").serialize();
 		}
 
@@ -57,7 +57,7 @@ jQuery(document).ready(function(){
 		if(jQuery("#filter_search_form")){
 			fairy_dust = jQuery("#filter_search_form").serialize();
 		}else if(jQuery("#listingsearchform")){
-			if(jQuery("input[name=filter_search]").val(l_type))
+			if(jQuery("input[name=filter_search]").val() == 1)
 				fairy_dust = jQuery("#listingsearchform").serialize();
 		}
 
@@ -226,7 +226,7 @@ jQuery(document).ready(function(){
 	});
 });
 
-function get_bl_shortcode_vals(){
+function get_bl_shortcode_vals(){ 
 	returnstr = '';
 	if(jQuery("#bl_size"))
 		returnstr = returnstr + "&size=" + jQuery("#bl_size").html();

@@ -247,6 +247,10 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 == Changelog ==
 
+= 2.1.38 (August 15th, 2014) =
+
+* More fixes for ajax paging
+
 = 2.1.37 (August 12th, 2014) =
 
 * More fixes for ajax paging

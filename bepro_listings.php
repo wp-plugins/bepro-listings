@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, cubepoints, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.37
+Version: 2.1.38
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -130,7 +130,7 @@ class Bepro_listings{
 			<div class="search_listings">
 				<form method="post" name="searchform" id="listingsearchform" action="'.get_bloginfo("url")."/".$listing_page.'">
 					<input type="hidden" name="filter_search" value="1">
-					<input type="hidden" name="l_type" value="'.$_POST["l_type"].'">
+					<input type="hidden" name="l_type" value="'.$_REQUEST["l_type"].'">
 					<input type="hidden" name="distance" value="'.$_POST["distance"].'">
 					<input type="hidden" name="min_date" value="'.$_POST["min_date"].'">
 					<input type="hidden" name="max_date" value="'.$_POST["max_date"].'">

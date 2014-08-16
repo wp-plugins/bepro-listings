@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, cubepoints, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.38
+Version: 2.1.39
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -278,14 +278,18 @@ class Bepro_listings{
 		$data = get_option("bepro_listings");
 		
 		//Process user requested Bepro listing types 
-		if(!empty($_POST["l_type"])){
-			$l_type = $_POST["l_type"];
-			foreach($l_type as $raw_t){
-				$types[$raw_t] = 1; 
+		if(!empty($_REQUEST["l_type"])){
+			$l_type = $_REQUEST["l_type"];
+			if(is_array($l_type)){
+				foreach($l_type as $raw_t){
+					$types[$raw_t] = 1; 
+				}
+			}else if(is_numeric($_REQUEST["l_type"])){
+				$types[$_REQUEST["l_type"]]=1;
 			}
 		}	
 		
-		$cat_heading = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $data["cat_empty"]:$data["cat_heading"];
+		$cat_heading = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $data["cat_heading"]:$data["cat_empty"];
 		
 		$search_form = "<div class='filter_search_form'>
 			<form id='filter_search_form' method='post' action='".$listing_page."'>

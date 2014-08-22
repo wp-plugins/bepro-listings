@@ -163,7 +163,7 @@ You can watch a video of how to [install BePro Listings](http://www.beprosoftwar
 
 = Can I make Money With this Plugin? =
 
-Yes, you can charge users points to post a listing
+Yes, you can charge users points to post a listing or you can use one of our membership addons
 
 = Does this work with posts and pages? =
 

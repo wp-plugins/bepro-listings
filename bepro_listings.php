@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, cubepoints, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.39
+Version: 2.1.40
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -200,8 +200,9 @@ class Bepro_listings{
 		
 		//Query google for lat/lon of users requested address
 		$distance = (empty($_POST["distance"]))? $data["distance"]:addslashes(strip_tags($_POST["distance"]));
-		if(!empty($l_city) && isset($l_city)){ 
-			//newest edits aug, 12, 2012
+		$block_geo = apply_filters("bepro_block_geo_search", "");
+		if(!empty($l_city) && isset($l_city) && empty($block_geo)){ 
+			//newest edits Sep, 02, 2014
 			$addresstofind = sprintf('http://maps.googleapis.com/maps/api/geocode/json?address=%s&output=csv&sensor=false',rawurlencode($l_city));
 			$ch = curl_init();
 			$timeout = 5; 
@@ -289,7 +290,7 @@ class Bepro_listings{
 			}
 		}	
 		
-		$cat_heading = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $data["cat_heading"]:$data["cat_empty"];
+		$cat_heading = $data["cat_heading"];
 		
 		$search_form = "<div class='filter_search_form'>
 			<form id='filter_search_form' method='post' action='".$listing_page."'>
@@ -315,7 +316,7 @@ class Bepro_listings{
 			///////////////////////////////////////////////////////////////////////
 			if(($data["show_geo"] == 1)|| ($data["show_geo"] == "on"))	
 			$search_form .= '
-				<tr><td>
+				<tr class="bl_distance_search_option"><td>
 					'.__("Distance", "bepro-listings").': <select name="distance">
 						<option value="">None</option>
 						<option value="10" '.(($_POST["distance"] == 10)? 'selected="selected"':"").'>10 miles</option>

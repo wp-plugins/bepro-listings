@@ -643,7 +643,7 @@
 
 			///////////////////////////////////////////////////////////////////////
 			if($data["show_geo"] == (1||"on"))	
-			$search_form .= "<div>".__("Distance", "bepro-listings").': <select name="distance">
+			$search_form .= "<div class='bl_distance_search_option'>".__("Distance", "bepro-listings").': <select name="distance">
 						<option value="">None</option>
 						<option value="50" '.(($_POST["distance"] == 50)? 'selected="selected"':"").'>50 miles</option>
 						<option value="150" '.((($_POST["distance"] == 150) || empty($_POST["distance"]))? 'selected="selected"':"").'>150 miles</option>

@@ -12,7 +12,7 @@ Description: Responsive Ajax Directories (Real Estate, Classifieds, Business, et
 
 BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architechture and configuration options facilitates unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously.
 
-The base free plugin is filled with features used in most directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listings website you can create 
+The base free plugin is filled with features used in most directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listings website you can create.
 
 == Description ==
 This plugin helps you to build directory websites. With its modular architechture, you decide how users search, filter and view information. Use base features like **google maps**, categories, ajax search / filter and **front end submission**. Our **unmatched** template architechture facilitates solutions for, Real Estate, Business, Portfolio, Classifieds and other niche information
@@ -139,10 +139,10 @@ You can support the development of this plugin via the donations link on the rig
 
 You can contribute languages that are not yet supported by the plugin. Documentation regarding how to do this is available on our website. If you find deficiencies in our use of localization, please reach out. The usefulness of BePro Listings beyond english, is very important to us. Here is a list of currently supported languages
 
-Spanish (Spain) - BePro Software Team
-French (France) - BePro Software Team
-Portuguese (Portugal) - Joao
-Serbian (Russian) - Ognjen
+* Spanish (Spain) - BePro Software Team
+* French (France) - BePro Software Team
+* Portuguese (Portugal) - Joao
+* Serbian (Russian) - Ognjen
 
 == Installation ==
 

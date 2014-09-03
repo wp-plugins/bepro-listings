@@ -1,0 +1,219 @@
+# Translation for BePro Listings
+# Copyright (C) 2012 Beyond Programs LTD (beyondprograms.com)
+# This file is distributed under the same license as BePro Listings.
+# BePro Software Team <support@beprosoftware.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: BePro Listings Translation 1.0\n"
+"Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2012-09-14 16:20+0200\n"
+"PO-Revision-Date: 2014-03-06 12:15+0100\n"
+"Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
+"Language-Team: BePro Software\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+msgid "Item Information"
+msgstr "Informacije o stavki"
+
+#: bepro_listings_frontend.php:321
+msgid "Item Name"
+msgstr "Ime stavke"
+
+#: bepro_listings_frontend.php:322
+msgid "Cost"
+msgstr "Cena"
+
+#: bepro_listings_frontend.php:323
+msgid "Description"
+msgstr "Opis"
+
+#: bepro_listings_frontend.php:334
+msgid "Image"
+msgstr "Slika"
+
+#: bepro_listings_frontend.php:324
+msgid "Categories"
+msgstr "Kategorije"
+
+#: bepro_listings_frontend.php:345
+msgid "Contact Information"
+msgstr "Kontakt informacije"
+
+#: bepro_listings_frontend.php:346
+msgid "First Name"
+msgstr " Ime"
+
+#: bepro_listings_frontend.php:347
+msgid "Last Name"
+msgstr "Prezime"
+
+#: bepro_listings_frontend.php:348
+msgid "Email"
+msgstr "Email"
+
+#: bepro_listings_frontend.php:349
+msgid "Phone"
+msgstr "Telefon"
+
+#: bepro_listings_frontend.php:350
+msgid "Website"
+msgstr "Website"
+
+#: bepro_listings_frontend.php:356
+msgid "Location Information"
+msgstr "Informacije o lokaciji"
+
+#: bepro_listings_frontend.php:357
+msgid "Address"
+msgstr "Adresa"
+
+#: bepro_listings_frontend.php:358
+msgid "City"
+msgstr "Grad"
+
+#: bepro_listings_frontend.php:359
+msgid "State"
+msgstr "Država"
+
+#: bepro_listings_frontend.php:360
+msgid "Country"
+msgstr "Zemlja"
+
+#: bepro_listings_frontend.php:361
+msgid "Zip / Postal"
+msgstr "Zip / Poštanski kod"
+
+msgid "Filter Listings"
+msgstr "Listing filtera"
+
+msgid "Listings Map"
+msgstr "Listing mape"
+
+#: bepro_listings.php:261
+msgid "From"
+msgstr "Od"
+
+#: bepro_listings.php:261
+msgid "To"
+msgstr "Za"
+
+#: bepro_listings.php:264
+msgid "Date Range"
+msgstr "Raspon datuma"
+
+#: bepro_listings.php:261
+msgid "Price Range"
+msgstr "Raspon cena"
+
+#: bepro_listings.php:268
+msgid "Refine Search"
+msgstr "Preraditi pretragu"
+
+#: bepro_listings.php:248
+msgid "Distance"
+msgstr "Razdaljina"
+
+#: bepro_listings.php:79
+msgid "Where"
+msgstr "Gde"
+
+#: bepro_listings.php:82
+msgid "Name"
+msgstr "Ime"
+
+#: bepro_listings.php:85
+msgid "Search Listings"
+msgstr "Pretraga listinga"
+
+#: bepro_listings_frontend.php:370
+msgid "Username"
+msgstr "Korisničko ime"
+
+#: bepro_listings_frontend.php:371
+msgid "Password"
+msgstr "Šifra"
+
+#: bepro_listings_frontend.php:369
+msgid "Login / Register"
+msgstr "Login / Registracija"
+
+#: bepro_listings_frontend.php:375
+msgid "Create Listing"
+msgstr "Stvoriti listing"
+
+#: bepro_listings.php:234
+msgid "Listing Types"
+msgstr "Tipovi listinga"
+
+#: bepro_listings.php:276
+msgid "Free"
+msgstr "Besplatno"
+
+#: bepro_listings.php:278
+msgid "Please Contact"
+msgstr "Molim vas kontakt"
+
+#: bepro_listings.php:285
+msgid "View Map"
+msgstr "Pregledaj mapu"
+
+#: bepro_listings_admin.php:258
+msgid "Show Cost"
+msgstr "Prikaži trošak"
+
+#: bepro_listings_admin.php:259
+msgid "Show Contact"
+msgstr "Prikaži kontakt"
+
+#: bepro_listings_admin.php:260
+msgid "Show Geography"
+msgstr "Prikaži geografiju"
+
+#: bepro_listings_admin.php:261
+msgid "# Of Images"
+msgstr "# slika"
+
+#: bepro_listings_admin.php:274
+msgid "Validate Form"
+msgstr "Forma za validaciju"
+
+#: bepro_listings_admin.php:275
+msgid "Default User Id"
+msgstr "Default ID korisnika"
+
+#: bepro_listings_admin.php:276
+msgid "Success Message"
+msgstr "Uspeh poruke"
+
+#: bepro_listings_admin.php:279
+msgid "Default Listing Image"
+msgstr "Default listing slike"
+
+#: bepro_listings_admin.php:280
+msgid "Default # Listings"
+msgstr "Default # Listings"
+
+#: bepro_listings_admin.php:288
+msgid "Default Search Distance (Mi)"
+msgstr "Default pretraga razdaljine(Mi)"
+
+#: bepro_listings_admin.php:299
+msgid "Gallery Size"
+msgstr "Veličina galerije"
+
+#: bepro_listings_admin.php:305
+msgid "Show Details"
+msgstr "Prikazati detalje"
+
+#: bepro_listings_admin.php:306
+msgid "Show Content"
+msgstr "Prikazati sadržaj"
+
+#: bepro_listings_admin.php:319
+msgid "Our Link in your footer?"
+msgstr "Naš link na footer-u?"

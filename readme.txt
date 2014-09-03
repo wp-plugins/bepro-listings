@@ -4,11 +4,15 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, paid, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 3.9
-Stable tag: 2.1.40
+Stable tag: 2.1.41
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
+Description: Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
+
+BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architechture and configuration options facilitates unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously.
+
+The base free plugin is filled with features used in most directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listings website you can create 
 
 == Description ==
 This plugin helps you to build directory websites. With its modular architechture, you decide how users search, filter and view information. Use base features like **google maps**, categories, ajax search / filter and **front end submission**. Our **unmatched** template architechture facilitates solutions for, Real Estate, Business, Portfolio, Classifieds and other niche information
@@ -133,9 +137,12 @@ You can support the development of this plugin via the donations link on the rig
 
 = TRANSLATIONS =
 
-Currently, this plugin supports, English, French, and Spanish. You can contribute other languages. Documentation regarding how to do this is available on our website.
+You can contribute languages that are not yet supported by the plugin. Documentation regarding how to do this is available on our website. If you find deficiencies in our use of localization, please reach out. The usefulness of BePro Listings beyond english, is very important to us. Here is a list of currently supported languages
 
-The usefulness of BePro Listings beyond english, is very important to us. If you find deficiencies in our use of localization, please reach out.
+Spanish (Spain) - BePro Software Team
+French (France) - BePro Software Team
+Portuguese (Portugal) - Joao
+Serbian (Russian) - Ognjen
 
 == Installation ==
 
@@ -247,6 +254,10 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 == Changelog ==
 
+= 2.1.41 (September 3rd, 2014) =
+
+* Translation for Portuguese added by Joao
+* Translation for Serbian added by Ognjen
 
 = 2.1.40 (September 2nd, 2014) =
 

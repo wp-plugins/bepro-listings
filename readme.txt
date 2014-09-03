@@ -10,10 +10,6 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
 
-BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architechture and configuration options facilitates unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously.
-
-The base free plugin is filled with features used in most directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listings website you can create.
-
 == Description ==
 This plugin helps you to build directory websites. With its modular architechture, you decide how users search, filter and view information. Use base features like **google maps**, categories, ajax search / filter and **front end submission**. Our **unmatched** template architechture facilitates solutions for, Real Estate, Business, Portfolio, Classifieds and other niche information
 
@@ -251,6 +247,11 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 7. Configure Listing Options
 8. Optional Category Layout w/ images
 
+== Other Notes ==
+
+BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architechture and configuration options facilitates unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously.
+
+The base free plugin is filled with features used in most directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listings website you can create.
 
 == Changelog ==
 

@@ -8,7 +8,7 @@ Stable tag: 2.1.41
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Description: Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
+Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
 
 BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architechture and configuration options facilitates unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously.
 

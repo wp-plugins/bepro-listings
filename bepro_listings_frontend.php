@@ -884,10 +884,17 @@
 					if(!empty($item->phone)){
 						if($add_detail_links){
 							$phone_txt = ($data["protect_contact"] == "on")? "Click to Call":$item->phone;
-							$phone = "<span class='item_label'>".__("Phone", "bepro-listings")."</span> - <a href='tel:".$item->phone."'>".$phone_txt."</a>";
+							$phone = "<span class='item_label'>".__("Phone", "bepro-listings")."</span> - <a href='tel:".$item->phone."'>".$phone_txt."</a><br />";
 						}else{
 							$phone_txt = ($data["protect_contact"] == "on")? "Private":$item->phone;
-							$phone = "<span class='item_label'>".__("Phone", "bepro-listings")."</span> - ".$phone_txt;
+							$phone = "<span class='item_label'>".__("Phone", "bepro-listings")."</span> - ".$phone_txt."<br />";
+						}
+					}
+					if(!empty($item->website)){
+						if($add_detail_links){
+							$website = "<span class='item_label'>".__("Website", "bepro-listings")."</span> - <a href='".$item->website."'>".$item->website."</a>";
+						}else{
+							$website = "<span class='item_label'>".__("Website", "bepro-listings")."</span> - ".$item->website;
 						}
 					}
 					echo "<div class='item_contactinfo'>
@@ -895,6 +902,7 @@
 							".(empty($item->last_name)? "":"<span class='item_label'>".__("Last Name", "bepro-listings")."</span> - ".$item->last_name."<br />")."
 							".$email."
 							".$phone."
+							".$website."
 						</div>";
 				}
 			echo "</span>";
@@ -942,7 +950,9 @@
 		}
 		ob_start();
 		
-		include( dirname( __FILE__ )."/templates/form.php");
+		$frontend_form = dirname( __FILE__ )."/templates/form.php";
+		$frontend_form = apply_filters("bl_change_upload_form", $frontend_form);
+		include($frontend_form);
 		$results = ob_get_contents();
 		ob_end_clean();	
 		

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, paid, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.41
+Stable tag: 2.1.42
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -254,6 +254,9 @@ BePro Listings is the most advanced Direcotory and front end upload plugin avail
 The base free plugin is filled with features used in most directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listings website you can create.
 
 == Changelog ==
+= 2.1.42 (September 8th, 2014) =
+* New filter for replacing upload form
+* re-introduce website link to details page
 
 = 2.1.41 (September 3rd, 2014) =
 

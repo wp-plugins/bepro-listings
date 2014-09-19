@@ -42,6 +42,8 @@
 					jQuery("#min_date").datepicker();
 				if(jQuery("#max_date"))	
 					jQuery("#max_date").datepicker();
+				if(jQuery(".bl_date_input"))	
+					jQuery(".bl_date_input").datepicker();
 					
 				jQuery(".delete_link").click(function(element){
 					element.preventDefault();
@@ -141,6 +143,7 @@
 				  'post_author' => $user_id,
 				  'post_content' => "<p>This is your first listing. Delete this one in your admin and create one of your own. If you need help, our <a href='http://www.beprosoftware.com/services/'>Wordpress Development</a> team can help. Also note we have tons of <a href='beprosoftware.com/products/bepro-listings'>Wordpress Directory Plugins</a> and <a href='beprosoftware.com/products/bepro-listings'>Wordpress Directory Themes</a> for this plugin like: </p>
 				  <ul>
+					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-form-builder/'>Form Builder</a> - Use the Drag and Drop interface to create your own custom Front End Upload Form</li>
 					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-tags/'>Tags</a> - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget</li>
 					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-contact/'>Contact</a> - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing</li>
 					<li><a href='www.beprosoftware.com/shop/bepro-listings-galleries/'>Gallery</a> - Three 3 gallery options including slider &amp; lightbox, plus three new listings templates</li>
@@ -313,7 +316,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.42' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.43' );
 		}	
 		
 		$data = get_option("bepro_listings");

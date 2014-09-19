@@ -838,14 +838,23 @@
 		echo "<div class='bepro_listing_gallery'>".apply_filters("bepro_listings_item_gallery_feature", $gallery)."</div>";
 	}
 	function bepro_listings_item_after_gallery_template(){
-		$data = get_option("bepro_listings");
-		$page_id = get_the_ID();
-		//show categories
-		$cats = get_the_term_list($page_id, 'bepro_listing_types', '', ', ','');
-		if($cats) 
-		echo $cat_section = "<div class='bepro_listing_category_section'><h3>".__($data["cat_heading"], "bepro-listings")."  </h3>".$cats."</div>";
+		$override = false;
+		$if_override = apply_filters("bepro_listings_override_page_categories",$override);
+		
+		if(!$if_override){
+			$data = get_option("bepro_listings");
+			$page_id = get_the_ID();
+			//show categories
+			$cats = get_the_term_list($page_id, 'bepro_listing_types', '', ', ','');
+			if($cats) 
+			echo $cat_section = "<div class='bepro_listing_category_section'><h3>".__($data["cat_heading"], "bepro-listings")."  </h3>".$cats."</div>";
+		}
 	}
 	function bepro_listings_item_details_template(){
+		$override = false;
+		$if_override = apply_filters("bepro_listings_override_page_content",$override);
+		if($if_override) return;
+		
 		global $wpdb;
 		$page_id = get_the_ID();
 		$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id = ".$page_id);

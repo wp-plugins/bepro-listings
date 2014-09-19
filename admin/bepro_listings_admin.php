@@ -483,6 +483,8 @@
 						}
 						
 						if(!empty($csv_titles[0])){
+							//check for multiple categories
+							$_POST["categories"] = (!empty($_POST["categories"]) && !is_numeric($_POST["categories"]) && (strpos($_POST["categories"],'-') !== false))? str_replace("-",",",$_POST["categories"]):$_POST["categories"]; 
 							$_POST["save_bepro_listing"] = 1;
 							$post_id = bepro_listings_save(false, true);
 							

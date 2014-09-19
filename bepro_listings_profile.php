@@ -114,7 +114,11 @@
 		$listing_url = "?bl_manage=1&bl_id=";
 		$url = get_permalink( $post->ID );
 		echo "<p><a href='".$url."'>Cancel</a></p>";
-		require( dirname( __FILE__ ) . '/templates/form.php' );
+		
+		$frontend_form = dirname( __FILE__ )."/templates/form.php";
+		$frontend_form = apply_filters("bl_change_upload_form", $frontend_form);
+		if($frontend_form)
+		require( $frontend_form);
 	}
 	
 	function bl_profile_add_listing_content(){
@@ -131,7 +135,10 @@
 		$listing_url = "?bl_manage=1&bl_id=";
 		$url = get_permalink( $post->ID );
 		echo "<p><a href='".$url."'>Cancel</a></p>";
-		require( dirname( __FILE__ ) . '/templates/form.php' );
+		
+		$frontend_form = dirname( __FILE__ )."/templates/form.php";
+		$frontend_form = apply_filters("bl_change_upload_form", $frontend_form);
+		require( $frontend_form );
 	}
 
 ?>

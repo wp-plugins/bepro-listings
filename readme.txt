@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, paid, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.42
+Stable tag: 2.1.43
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -67,7 +67,7 @@ BePro Listings can be integrated into your **current theme** and simulate **any 
 = ADD ONS =
 Our Addons provide lots of new ways to customize your listings experinece. Current available add-ons include:
 
-	1. Tags - Now you and your members can tag your listings and allow users to search them via the tag widget
+	1. Form Builder (NEW) - Use the drag and drop interface to create your own front end upload form
 	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
 	3. Gallery - Three 3 gallery options including slider & lightbox, plus three new listings templates
 	4. Video - Improve on the Gallery plugin with the ability to upload file types like (mp4, mpeg, avi, wmv, webm). Also link videos from sites like, youtube, vimeo, & dailymotion. Uploaded videos are played using HTML5 or fallback to flassh
@@ -85,6 +85,7 @@ Our Addons provide lots of new ways to customize your listings experinece. Curre
 	16. Reviews - Users can leave and search by star ratings
 	17. Origami (New) - Run multiple directories consecutively on the same domain like a true classifieds website
 	18. Search (New) - Add predictive google maps address lookup and auto complete enhancements to the basic search feature
+	19. Tags - You and your members can tag your listings and allow users to search them via the tag widget
 
 = THEMES =
 
@@ -254,6 +255,11 @@ BePro Listings is the most advanced Direcotory and front end upload plugin avail
 The base free plugin is filled with features used in most directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listings website you can create.
 
 == Changelog ==
+= 2.1.43 (September 18th, 2014) =
+* New hooks and filters added in preparation for new Form Builder Addon
+* Fix front end form not showing stored categories
+* CSV enhancement to manage multiple categories
+
 = 2.1.42 (September 8th, 2014) =
 * New filter for replacing upload form
 * re-introduce website link to details page

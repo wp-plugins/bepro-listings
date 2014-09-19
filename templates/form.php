@@ -63,7 +63,7 @@
 				$data = get_option("bepro_listings");
 				$exclude = explode(",",$data["bepro_listings_cat_exclude"]);
 				$required = explode(",",$data["bepro_listings_cat_required"]);
-				$page_id = get_the_ID();
+				
 				//show categories
 				$cats = get_terms( array('bepro_listing_types'), array("hide_empty" => false));
 				$required_list = "";
@@ -75,7 +75,8 @@
 						}elseif(!empty($required) && in_array($cat->term_id, array_values($required))){
 							$required_list .= '<span class="bepro_form_cat"><span class="form_label">'.$cat->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$cat->term_id.'" checked="checked" disabled="disabled"></span>';
 						}else{
-							$normal_list .= '<span class="bepro_form_cat"><span class="form_label">'.$cat->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$cat->term_id.'"></span>';
+							$checked = isset($categories[$cat->term_id])? "checked='checked'":"";
+							$normal_list .= '<span class="bepro_form_cat"><span class="form_label">'.$cat->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$cat->term_id.'" '.$checked.'></span>';
 						}
 					}
 					

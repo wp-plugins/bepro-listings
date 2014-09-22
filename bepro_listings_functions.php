@@ -302,8 +302,8 @@
 			define( 'BEPRO_LISTINGS_CATEGORY', "bepro_listing_types" );
 		
 		// The Main table name (check if multisite)
-		if (function_exists('is_multisite') && is_multisite()) {
-			global $wpdb;
+		global $wpdb;
+		if (!is_numeric(substr($wpdb->prefix, -2, 1)) && is_multisite()) {
 			$cur_blog_id = ($wpdb->blogid == 1)? "":$wpdb->blogid.'_';
 			define( 'BEPRO_LISTINGS_TABLE_NAME', $cur_blog_id.'bepro_listings' );
 		}else if ( !defined( 'BEPRO_LISTINGS_TABLE_NAME' ) ){
@@ -316,7 +316,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.43' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.44' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -579,7 +579,6 @@
 					$post_data["lon"] = $lon;
 					$post_data["cost"] = $cost;
 					$listing = $wpdb->get_row("SELECT id FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post_id);
-					
 					if($listing){
 						$result = bepro_update_post($post_data);
 					}else{

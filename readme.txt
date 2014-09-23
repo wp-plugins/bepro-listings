@@ -165,6 +165,10 @@ You can watch a video of how to [install BePro Listings](http://www.beprosoftwar
 
 == Frequently Asked Questions ==
 
+= How do I implement custom form fields? =
+
+You will need our form builder addon
+
 = Can I make Money With this Plugin? =
 
 Yes, you can charge users points to post a listing or you can use one of our membership addons
@@ -252,7 +256,13 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architechture and configuration options facilitates unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously.
 
-The base free plugin is filled with features used in most directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listings website you can create.
+Our **Drag and Drop Form Builder** addon is unique and takes advantage our our advanced architechture. It truely allows you to **Visually build** custom directories in whatever language you need. The typical issue with form builders is how they store information. It makes it impossible to search anything more than the title. With our approach, we are light years ahead over any other form builder or directory. We store the information in different ways exposing many aspects to search and filter. You **cannot find this solution** anywhere else.
+
+The base free plugin is filled with features used in most, directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listing website you can create.
+
+Do you want to run multiple directories like a real classifieds website? Well the base free plugin is Multi Site compatible. If you would prefer to run all directories on the same domain, then we provide our Origami addon. You **cannot find this solution** anywhere else.
+
+Many of what we give away for free, others with charge you for e.g. clusterd google maps and csv support. Look closely at our feature set and you see that we allow you to build a complete product with the free base plugin. When interested in enhancing these features, we provide meaningful opportunities to do so.
 
 == Changelog ==
 = 2.1.44 (September 22nd, 2014) =

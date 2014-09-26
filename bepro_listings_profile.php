@@ -138,6 +138,7 @@
 		
 		$frontend_form = dirname( __FILE__ )."/templates/form.php";
 		$frontend_form = apply_filters("bl_change_upload_form", $frontend_form);
+		if($frontend_form)
 		require( $frontend_form );
 	}
 

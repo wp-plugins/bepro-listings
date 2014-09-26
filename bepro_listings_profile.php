@@ -32,10 +32,14 @@
 		if(isset($_POST["save_bepro_listing"]) && !empty($_POST["save_bepro_listing"])){
 			$success = false;
 			$success = bepro_listings_save();
-			if($success)
-				$message = urlencode("Success saving listing");
-			else
-				$message = urlencode("Error saving listing");
+			if($success){
+				$success_message = apply_filters("bepro_form_success_message","Listing Successfully Saved");
+				$message =  urlencode("<span class='bl_succsss_message'>".$success_message."</span>");
+			}else{
+				$fail_message = apply_filters("bepro_form_fail_message","Issue saving your listing. Please contact the website administrator");
+				$message =  urlencode("<span class='bl_succsss_message'>".$fail_message."</span>");
+			}
+			
 			$current_user = wp_get_current_user();
 			$current_url = get_permalink( $post->ID );
 			wp_redirect($current_url ."?message=".$message);

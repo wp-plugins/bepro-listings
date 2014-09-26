@@ -952,9 +952,11 @@
 		if(!empty($_POST["save_bepro_listing"])){
 			$wp_upload_dir = wp_upload_dir();
 			if(bepro_listings_save()){
-				echo "<h2>Listing Successfully Saved</h2>";
+				$success_message = apply_filters("bepro_form_success_message","Listing Successfully Saved");
+				echo "<h2>".$success_message."</h2>";
 			}else{
-				echo "<h2>Issue saving your listing. Please contact the website administrator</h2>";
+				$fail_message = apply_filters("bepro_form_fail_message","Issue saving your listing. Please contact the website administrator");
+				echo "<h2>".$fail_message."</h2>";
 			}
 		}
 		ob_start();

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, paid, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.47
+Stable tag: 2.1.48
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -265,6 +265,10 @@ Do you want to run multiple directories like a real classifieds website? Well th
 Many of what we give away for free, others with charge you for e.g. clusterd google maps and csv support. Look closely at our feature set and you see that we allow you to build a complete product with the free base plugin. When interested in enhancing these features, we provide meaningful opportunities to do so.
 
 == Changelog ==
+= 2.1.48 (September 26th, 2014) =
+
+* Upgrading Buddypress forms to work with new Form Builder
+
 = 2.1.47 (September 26th, 2014) =
 
 * New filters added so that form builder can change success & failure messages for form sumission

@@ -253,7 +253,7 @@
 			$link = 'window.location.href = "'.$permalink.'"';
 		}
 		
-		return 'var infowindow_'.$counter.' = new google.maps.InfoWindow( { content: "<div class=\"marker_content\"><span class=\"marker_detais\">'.$result->post_title.'</span></div>", size: new google.maps.Size(50,50)});
+		return 'var infowindow_'.$counter.' = new google.maps.InfoWindow( { content: "<div class=\"marker_content\"><span class=\"marker_detais\">'.addslashes($result->post_title).'</span></div>", size: new google.maps.Size(50,50)});
 				  google.maps.event.addListener(marker_'.$counter.', "mouseover", function() {
 					if(openwindow){
 						eval(openwindow).close();

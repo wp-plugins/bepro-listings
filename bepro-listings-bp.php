@@ -59,7 +59,10 @@
 		$show_geo = $data["show_geo"];
 		
 		$listing_url = $bp->loggedin_user->domain.$bp->current_component;
-		require( dirname( __FILE__ ) . '/templates/form.php' );
+		$frontend_form = dirname( __FILE__ )."/templates/form.php";
+		$frontend_form = apply_filters("bl_change_upload_form", $frontend_form);
+		if($frontend_form)
+			require( $frontend_form );
 	}
 	
 	function update_listing_content(){

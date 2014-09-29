@@ -316,7 +316,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.48' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.49' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -483,8 +483,8 @@
 			$default_status = empty($data["default_status"])? "pending":$data["default_status"];
 			$return_message = false;
 			
-			$item_name = $wpdb->escape($_POST["item_name"]);
-			$content = $wpdb->escape(strip_tags($_POST["content"]));
+			$item_name = addslashes(strip_tags($_POST["item_name"]));
+			$content = addslashes(strip_tags($_POST["content"]));
 			$categories = $wpdb->escape($_POST["categories"]);
 			$username = $wpdb->escape(strip_tags($_POST["username"]));
 			$password = $wpdb->escape(strip_tags($_POST["password"]));

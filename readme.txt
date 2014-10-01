@@ -64,11 +64,23 @@ BePro Listings can be integrated into your **current theme** and simulate **any 
 	* Document Directory - Showcase multiple file types allowing users to search and view them on your website with our documents addon
 	* Google Maps - We have one of the most feature rich google map options available for wordpress. Many users choose us just for this feature.
 
+
 = ADD ONS =
+
+> ### FEATURED ADDON
+>
+> 
+
+>  **Visual Form Builder**
+> 
+> * Use our visual [Form Builder Addon](https://www.beprosoftware.com/shop/bepro-listings-form-builder/) to create a custom front end form. Gather info for, google maps, galleries, and so much more. Search and filter submissions like any other listing. We challenge you to find another **directory form builder** with the features of BePro Listings.
+> 
+> 
+
 Our Addons provide lots of new ways to customize your listings experinece. Current available add-ons include:
 
 	1. Form Builder (NEW) - Use the drag and drop interface to create your own front end upload form
-	2. Contact - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing
+	2. Contact - Receive notifications when someone submits a listing. Also add a contact form to your listing detail pages.
 	3. Gallery - Three 3 gallery options including slider & lightbox, plus three new listings templates
 	4. Video - Improve on the Gallery plugin with the ability to upload file types like (mp4, mpeg, avi, wmv, webm). Also link videos from sites like, youtube, vimeo, & dailymotion. Uploaded videos are played using HTML5 or fallback to flassh
 	5. Documents - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)

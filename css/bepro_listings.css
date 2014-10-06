@@ -112,7 +112,18 @@
 	float:left;
 	clear:left;
 }
+/*Details page*/
 
+.bl_succsss_message{
+	font-weight: bold;
+	text-decoration: underline;
+	color: green;
+} 
+.bl_fail_message{
+	font-weight: bold;
+	text-decoration: underline;
+	color: red;
+} 
 .bepro_listings_tabs{
 	clear:both;
 }

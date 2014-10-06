@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 	function bl_my_listings(){
 		global $wpdb, $post;
@@ -34,16 +34,15 @@
 			$success = bepro_listings_save();
 			if($success){
 				$success_message = apply_filters("bepro_form_success_message","Listing Successfully Saved");
-				$message =  urlencode("<span class='bl_succsss_message'>".$success_message."</span>");
+				$message =  "<span class='bl_succsss_message'>".$success_message."</span>";
 			}else{
 				$fail_message = apply_filters("bepro_form_fail_message","Issue saving your listing. Please contact the website administrator");
-				$message =  urlencode("<span class='bl_succsss_message'>".$fail_message."</span>");
+				$message =  "<span class='bl_fail_message'>".$fail_message."</span>";
 			}
 			
 			$current_user = wp_get_current_user();
 			$current_url = get_permalink( $post->ID );
-			wp_redirect($current_url ."?message=".$message);
-			exit;
+			echo "<span class='classified_message'>".$message."</span>";
 		}
 		
 		if(!empty($_GET["bl_manage"])){

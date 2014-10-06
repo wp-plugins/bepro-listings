@@ -484,7 +484,7 @@
 						
 						if(!empty($csv_titles[0])){
 							//check for multiple categories
-							$_POST["categories"] = (!empty($_POST["categories"]) && !is_numeric($_POST["categories"]) && (strpos($_POST["categories"],'-') !== false))? str_replace("-",",",$_POST["categories"]):$_POST["categories"]; 
+							$_POST["categories"] = (!empty($_POST["categories"]) && !is_numeric($_POST["categories"]) && (strpos($_POST["categories"],'|') !== false))? str_replace("|",",",$_POST["categories"]):$_POST["categories"]; 
 							$_POST["save_bepro_listing"] = 1;
 							$post_id = bepro_listings_save(false, true);
 							
@@ -620,7 +620,7 @@
 						
 					</div>
 					<div id="tabs-7">
-						<p>CSV upload documenation avaialble <a href="http://beprosoftware.com/products/bepro-listings" target="_blank">here</a></p>
+						<p>CSV upload documenation avaialble <a href="https://www.beprosoftware.com/documentation/listing-csv-upload/" target="_blank">here</a></p>
 						<span class="form_label"><?php _e("CSV File", "bepro-listings"); ?></span><input type="file" name="csv_upload" value=""><br />
 						<span class="form_label"><?php _e("Delimiter", "bepro-listings"); ?></span><select name="csv_upload_delimiter">
 							<option value=";">;</option>

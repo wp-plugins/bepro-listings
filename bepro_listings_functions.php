@@ -127,7 +127,7 @@
 				created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 				PRIMARY KEY  (id),
 				UNIQUE KEY `post_id` (`post_id`)
-			);";
+			)ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
 
 			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 			dbDelta($sql);
@@ -233,7 +233,7 @@
 		global $wpdb;
 	 
 		if (!empty ($wpdb->charset))
-			$charset_collate = "DEFAULT CHARACTER SET {$wpdb->charset}";
+			$charset_collate = "DEFAULT CHARACTER SET utf8";
 		if (!empty ($wpdb->collate))
 			$charset_collate .= " COLLATE {$wpdb->collate}";
 				 
@@ -245,7 +245,7 @@
 			meta_value longtext DEFAULT NULL,
 					 
 			UNIQUE KEY meta_id (meta_id)
-		) {$charset_collate};";
+		) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
 		 
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 		dbDelta($sql);
@@ -316,7 +316,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.49' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.5' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -393,6 +393,17 @@
 		$bepro_listings_version = get_option("bepro_listings_version");
 		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
 			$bepro_listings_version = get_option("bepro_listings_version");
+			
+			//upgrade tables to utf8
+			if ((is_numeric(substr($wpdb->prefix, -2, 1)) && is_multisite())){ 
+				$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+				foreach($blogids as $blogid_x){
+					$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.$blogid_x."_".BEPRO_LISTINGS_TABLE_BASE." CONVERT TO CHARACTER SET utf8;");
+				}
+			}else{
+				$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.BEPRO_LISTINGS_TABLE_BASE." CONVERT TO CHARACTER SET utf8;");
+			}
+			
 			update_option("bepro_listings", $data);
 		}
 	}
@@ -680,6 +691,7 @@
 	function bepro_add_post($post){
 		global $wpdb;
 		do_action("bepro_listings_add_listing", $post);
+		$wpdb->query("SET NAMES utf8");
 		return $wpdb->query("INSERT INTO ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET
 			first_name    = '".$wpdb->escape(strip_tags($post['first_name']))."',
 			last_name     = '".$wpdb->escape(strip_tags($post['last_name']))."',
@@ -700,6 +712,7 @@
 	function bepro_update_post($post){
 		global $wpdb;
 		do_action("bepro_listings_update_listing", $post);
+		$wpdb->query("SET NAMES 'utf8'");
 		return $wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET
 			cost    = '".$wpdb->escape(strip_tags($post['cost']))."',
 			first_name    = '".$wpdb->escape(strip_tags($post['first_name']))."',

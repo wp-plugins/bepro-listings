@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 	function bl_my_listings(){
 		global $wpdb, $post;

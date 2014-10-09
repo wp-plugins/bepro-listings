@@ -4,11 +4,11 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, paid, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.51
+Stable tag: 2.1.52
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Responsive Ajax Directories (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
+Responsive Ajax Directory (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
 
 == Description ==
 This plugin helps you to build directory websites. With its modular architechture, you decide how users search, filter and view information. Use base features like **google maps**, categories, ajax search / filter and **front end submission**. Our **unmatched** template architechture facilitates solutions for, Real Estate, Business, Portfolio, Classifieds and other niche information
@@ -47,13 +47,13 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 
 BePro Listings can be integrated into your **current theme** and simulate **any directory type**. Look at some of the ways people are using the plugin:
 
-	* Portfolio - Feature your work in various ways, allowing users to view details and comment. Best solution for showcasing portfolio projects.
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a free BePro Listings Realestate addon
+	* Car Dealer - List your vehicle inventory, cars, trucks, boats, planes etc. Or use geo features for Fleet Tracking
+	* Affiliate - List, price, and link to amazon products or other popular affilate campaigns.
+	* Portfolio - Feature your work in various ways, allowing users to view details and comment. Best solution for showcasing portfolio projects.
 	* Paid Listings - Charge users points to post. Or use one of our membership addons to limit listings and features by level
 	* Store Finder - List your store or shop branches including, location and contact details 
 	* Directory - Employee, staff, members, pets, Business, Job Search, Job Board, or any other type of directory listings site
-	* Vehicles - List your dealer inventory, cars, trucks, boats, planes etc. Or use geo features for Fleet Tracking
-	* Affiliate - List, price, and link to amazon products or other popular affilate campaigns.
 	* Advertising - Sell ad space or use the system like a bullitin board
 	* Classifieds - Run mutiple directory types consecutively on the same domain (Requires Origami) or multisite support is included
 	* Products & Services - List them yourself or allow members to list products and/or services e.g. product catalogue
@@ -63,7 +63,7 @@ BePro Listings can be integrated into your **current theme** and simulate **any 
 	* Podcast & Music - List and categorize all of your audio files including mp3 and wav then play them on a HTML5 player  (w/ flv fallback) with our audio addon
 	* Document Directory - Showcase multiple file types allowing users to search and view them on your website with our documents addon
 	* Google Maps - We have one of the most feature rich google map options available for wordpress. Many users choose us just for this feature.
-
+	* Job Board - Use categories as job types, then allow users to search and filter through various opportunities.
 
 = ADD ONS =
 
@@ -266,17 +266,19 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 == Other Notes ==
 
-BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architechture and configuration options facilitates unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously.
+BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architechture and configuration options facilitate unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously via multisite or on one domain with our origami addon.
 
 Our **Drag and Drop Form Builder** addon is unique and takes advantage our our advanced architechture. It truely allows you to **Visually build** custom directories in whatever language you need. The typical issue with form builders is how they store information. It makes it impossible to search anything more than the title. With our approach, we are light years ahead over any other form builder or directory. We store the information in different ways exposing many aspects to search and filter. You **cannot find this solution** anywhere else.
 
 The base free plugin is filled with features used in most, directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listing website you can create.
 
-Do you want to run multiple directories like a real classifieds website? Well the base free plugin is Multi Site compatible. If you would prefer to run all directories on the same domain, then we provide our Origami addon. You **cannot find this solution** anywhere else.
-
-Many of what we give away for free, others with charge you for e.g. clusterd google maps and csv support. Look closely at our feature set and you see that we allow you to build a complete product with the free base plugin. When interested in enhancing these features, we provide meaningful opportunities to do so.
+Many of what we give away for free, others with charge you for e.g. clusterd google maps and csv import. Look closely at our feature set and you see that we allow you to build a complete product with the free base plugin. When interested in enhancing these features, we provide meaningful opportunities to do so.
 
 == Changelog ==
+= 2.1.52 (October 8th, 2014) =
+
+* Updated password field on front end form to be an actual password field instead of text
+
 = 2.1.51 (October 7th, 2014) =
 
 * Repaired file encoding which caused php errors

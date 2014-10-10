@@ -3,6 +3,7 @@
 	
 		if(!empty($validate) && ($validate == "on")){
 			echo '
+			<script type="text/javascript" src="'.plugins_url("bepro-listings/js/jquery.maskedinput-1.3.min.js", "bepro-listings" ).'"></script>
 				<script type="text/javascript">
 					jQuery(document).ready(function(){
 						jQuery("#bepro_create_listings_form").validate({

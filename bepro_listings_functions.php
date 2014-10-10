@@ -26,12 +26,13 @@
 	function bepro_listings_javascript() {
 		$data = get_option("bepro_listings");
 		wp_enqueue_script('jquery');
+		wp_enqueue_script('validate',plugins_url("js/jquery.validate.min.js", __FILE__ ), array('jquery'), true);
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_print_scripts('jquery-ui-tabs');
 		wp_enqueue_script('google-maps' , 'http://maps.google.com/maps/api/js' , false , '3.5&sensor=false');
 		$plugindir = plugins_url("bepro-listings");
 		
-		$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings.js"></script><script type="text/javascript" src="'.plugins_url("js/markerclusterer.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/jquery.validate.min.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/jquery.maskedinput-1.3.min.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/easyResponsiveTabs.js", __FILE__ ).'"></script>';
+		$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings.js"></script><script type="text/javascript" src="'.plugins_url("js/markerclusterer.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/easyResponsiveTabs.js", __FILE__ ).'"></script>';
 		
 		$scripts .= '
 		<script type="text/javascript">
@@ -316,7 +317,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.52' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.53' );
 		}	
 		
 		$data = get_option("bepro_listings");

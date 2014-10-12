@@ -23,6 +23,7 @@ class bepro_widgets {
 		  <p><label>Listing Page url<input name="listing_page"
 		type="text" value="<?php echo $data['listing_page']; ?>" /></label></p>
 	  <?php
+	  do_action("bl_search_widget_control");
   }
   function filter_search_widget($args){
 	$data = get_option('filter_search_widget');
@@ -36,6 +37,7 @@ class bepro_widgets {
 	  if ($_POST["id_base"] == "bepro-listings-search-filter"){
 		$data['listing_page'] = attribute_escape($_POST['listing_page']);
 		update_option('filter_search_widget', $data);
+		do_action("bl_save_search_widget_action");
 		echo 'success';
 	  }
 	  if ($_POST["id_base"] == "bepro-listings-map"){

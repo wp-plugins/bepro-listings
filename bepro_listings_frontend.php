@@ -661,7 +661,7 @@
 				$search_form .= '
 					<div><span class="label_sep">'.__("Date Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_date" id="min_date" value="'.$_POST["min_date"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_date" id="max_date" value="'.$_POST["max_date"].'"></div>';
 				
-				$search_form .= apply_filters("bepro_listings_search_filter_shortcode","");
+				$search_form .= apply_filters("bepro_listings_search_filter_shortcode","", $atts);
 				
 				$search_form .= '
 						<div><input type="submit" class="form-submit" value="'.__("Filter", "bepro-listings").'" id="edit-submit" name="find">

@@ -144,25 +144,26 @@
 				  'post_author' => $user_id,
 				  'post_content' => "<p>This is your first listing. Delete this one in your admin and create one of your own. If you need help, our <a href='http://www.beprosoftware.com/services/'>Wordpress Development</a> team can help. Also note we have tons of <a href='beprosoftware.com/products/bepro-listings'>Wordpress Directory Plugins</a> and <a href='beprosoftware.com/products/bepro-listings'>Wordpress Directory Themes</a> for this plugin like: </p>
 				  <ul>
-					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-form-builder/'>Form Builder</a> - Use the Drag and Drop interface to create your own custom Front End Upload Form</li>
-					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-tags/'>Tags</a> - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget</li>
-					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-contact/'>Contact</a> - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing</li>
-					<li><a href='www.beprosoftware.com/shop/bepro-listings-galleries/'>Gallery</a> - Three 3 gallery options including slider &amp; lightbox, plus three new listings templates</li>
-					<li><a href='www.beprosoftware.com/shop/bepro-listings-videos/'>Video</a> - Improve on the Gallery plugin with the ability to add and feature videos in your listings from website like youtube and uploaded documents (mp4, mpeg, avi, wmv, webm, etc)</li>
-					<li><a href='www.beprosoftware.com/shop/bepro-listings-documents/'>Documents</a> - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)</li>
-					<li><a href='www.beprosoftware.com/shop/bepro-listings-icons/'>Icons</a> - Tons of google map icons from the 'Map Icons Collection' by Nicolas Mollet</li>
-					<li><a href='www.beprosoftware.com/shop/bepro-listings-realestate/'>Real Estate</a> - Everything needed to run a realestate website, including related info (# rooms, #baths, etc) and search options</li>
-					<li><a href='www.beprosoftware.com/shop/bepro-listings-s2member/'>S2Member</a> - For those interested in running a paid directory/classifieds, this plugin integrates with the popular membershp plugin 's2member'</li>
-					<li><a href='www.beprosoftware.com/shop/bepro-listings-audio/'>Audio</a> - Create a, podcasts, music, or any other type of audio focused website. We support, wav, mp3, and several file types</li>
-					<li><a href='www.beprosoftware.com/shop/bepro-listings-favorites/'>Favorites</a> - Allow visitors and registered users to interact with listings. They can record their likes/dislikes and view them via shortcodes</li>
-					<li><a href='www.beprosoftware.com/shop/bepro-listings-authors/'>Authors</a> - Give your Blog writers and their listings more visibility. With this plugin you add their profile info to their listing pages.</li>
-					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-pmpro/'>PMPro</a> (New) - Use Paid Membership Pro to charge users to post listings on your website, with this integration.</li>
-					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-bookings/'>Booking</a> (New) - Setup your availability and allow users to schedule time. Perfect for real estate, vehicle, hotel, and other niche sites</li>
-					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-business-directory/'>Business Directory</a> (New) - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.</li>
-					<li><a href='www.beprosoftware.com/shop/bepro-listings-vehicles/'>Vehicles</a> (New) - Lists cars, boats, trucks, planes, and other automobiles with their details</li>
-					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-reviews/'>Reviews</a> (New) - Users can leave and search by star ratings</li>
-					<li><a href='http://www.beprosoftware.com/shop/origami/'>Origami</a> (New) - Run multiple directories on the same domain like a true classifieds website</li>
-					<li><a href='http://www.beprosoftware.com/shop/bepro-listings-search/'>Search</a> (New) - Add predictive google maps address lookup and auto complete enhancements to the basic search feature</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-form-builder/'>Form Builder</a> - Use the Drag and Drop interface to create your own custom Front End Upload Form</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-recaptcha/'>reCAPTCHA</a> - Reduce spam and malicious submissions with a captcha system powered by google</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-tags/'>Tags</a> - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-contact/'>Contact</a> - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-galleries/'>Gallery</a> - Three 3 gallery options including slider &amp; lightbox, plus three new listings templates</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-videos/'>Video</a> - Improve on the Gallery plugin with the ability to add and feature videos in your listings from website like youtube and uploaded documents (mp4, mpeg, avi, wmv, webm, etc)</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-documents/'>Documents</a> - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-icons/'>Icons</a> - Tons of google map icons from the 'Map Icons Collection' by Nicolas Mollet</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-realestate/'>Real Estate</a> - Everything needed to run a realestate website, including related info (# rooms, #baths, etc) and search options</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-s2member/'>S2Member</a> - For those interested in running a paid directory/classifieds, this plugin integrates with the popular membershp plugin 's2member'</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-audio/'>Audio</a> - Create a, podcasts, music, or any other type of audio focused website. We support, wav, mp3, and several file types</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-favorites/'>Favorites</a> - Allow visitors and registered users to interact with listings. They can record their likes/dislikes and view them via shortcodes</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-authors/'>Authors</a> - Give your Blog writers and their listings more visibility. With this plugin you add their profile info to their listing pages.</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-pmpro/'>PMPro</a> (New) - Use Paid Membership Pro to charge users to post listings on your website, with this integration.</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-bookings/'>Booking</a> (New) - Setup your availability and allow users to schedule time. Perfect for real estate, vehicle, hotel, and other niche sites</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-business-directory/'>Business Directory</a> (New) - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-vehicles/'>Vehicles</a> (New) - Lists cars, boats, trucks, planes, and other automobiles with their details</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-reviews/'>Reviews</a> (New) - Users can leave and search by star ratings</li>
+					<li><a href='https://www.beprosoftware.com/shop/origami/'>Origami</a> (New) - Run multiple directories on the same domain like a true classifieds website</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-search/'>Search</a> (New) - Add predictive google maps address lookup and auto complete enhancements to the basic search feature</li>
 				</ul>
 				<h2>Classifieds / Porfolio / Directory Themes</h2>
 				<p>We also have several $1 one dollar wordpress themes you can purchase with free data. This provides a great tutorial and / or way to get setup quickly</p>

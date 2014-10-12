@@ -98,6 +98,7 @@ Our Addons provide lots of new ways to customize your listings experinece. Curre
 	17. Origami (New) - Run multiple directories consecutively on the same domain like a true classifieds website
 	18. Search (New) - Add predictive google maps address lookup and auto complete enhancements to the basic search feature
 	19. Tags - You and your members can tag your listings and allow users to search them via the tag widget
+	20. reCAPTCHA - Prevent spam and malicious submissions with this google reCAPTCHA system
 
 = THEMES =
 

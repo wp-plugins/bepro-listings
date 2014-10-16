@@ -64,6 +64,15 @@
 					}
 					jQuery(".bepro_listings_admin_form").css("display","block");
 					jQuery(".bepro_listings_loading_msg").css("display","none");
+					jQuery("#require_payment").change(function(rp){
+						if(jQuery(this).val() == 2){
+							jQuery("#flat_fee_details").css("display", "block");
+						}else{
+							jQuery("#flat_fee_details").css("display", "none");
+						}
+					});
+					if(jQuery("#require_payment").val() != 2)
+						jQuery("#flat_fee_details").css("display", "none");
 				});
 			</script>
 		';
@@ -122,6 +131,10 @@
 		<span class="form_label">Email</span><input type="text" name="email" value="'.$listing->email.'"><br />
 		<span class="form_label">Website</span><input type="text" name="website" value="'.$listing->website.'"><br />
 	  ';
+		$data = get_option("bepro_listings");
+		if(isset($data["days_until_expire"])){
+			echo '<span class="form_label">Expire Date</span><input class="bl_date_input" type="text" name="expires" value="'.$listing->expires.'" placeholder="yyyy-mm-dd HH:mm:ss">';
+		}
 	}
 	
 	function geographic_details_meta($post) {
@@ -161,6 +174,7 @@
 			"description" => "Description");
 		if($data["show_geo"]) $columns["lat_lon"] =  "Lat/Lon?";	
 		if($data["show_cost"]) $columns["cost"] =   "Cost";	
+		$columns["notices"] = "Notices";
 		$columns["listing_types"] = "Listing Types";
 		$columns["date"] =  "Date";
 	 
@@ -170,7 +184,7 @@
 	//Admin Bepro Listing table data
 	function bepro_listings_custom_columns($column){
 	  global $post;
-	 
+		
 	  switch ($column) {
 		case "description":
 		  the_excerpt();
@@ -184,6 +198,30 @@
 		  global $wpdb;
 		  $custom = $wpdb->get_row("SELECT cost FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 		  echo $custom->cost;
+		  break;
+		case "notices":
+			global $wpdb;
+			$data = get_option("bepro_listings");
+			$notice = "None";
+			$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
+			$status = (($post->post_status == "publish")? "Published":"Pending");
+			if(isset($data["days_until_expire"]) && ($status == "Published")){
+				$notice = "Expires: ".(empty($item->expires)? "Never":date("M, d Y", strtotime($item->expires)));
+			}else if(!empty($data["require_payment"])  && ($status == "Pending")){
+				if(is_numeric($item->bepro_cart_id)){
+					$notice = "Paid";
+				}else if($data["require_payment"] == 1){
+					//category option
+					$cost = bepro_get_total_cat_cost($item->post_id);
+				}else if($data["require_payment"] == 2){
+					$cost = $data["flat_fee"];
+				}
+				
+				if($cost > 0){
+					$notice = "Requires: $".$cost;
+				}
+			}
+			echo $notice;
 		  break;
 		case "listing_types":
 		  echo get_the_term_list($post->ID, 'bepro_listing_types', '', ', ','');
@@ -423,6 +461,7 @@
 			$data["cat_heading"] = $_POST["cat_heading"];
 			$data["cat_empty"] = $_POST["cat_empty"];
 			$data["cat_singular"] = $_POST["cat_singular"];
+			$data["days_until_expire"] = (is_numeric($_POST["days_until_expire"]) && ($_POST["days_until_expire"] > 0))? $_POST["days_until_expire"]:0;
 	
 			//forms
 			$data["validate_form"] = $_POST["validate_form"];
@@ -462,7 +501,11 @@
 			
 			//3rd party
 			$data["buddypress"] = $_POST["buddypress"];
-			$data["cubepoints"] = $_POST["cubepoints"];
+			
+			//payment
+			$data["require_payment"] = $_POST["require_payment"];
+			$data["flat_fee"] = is_numeric($_POST["flat_fee"])?$_POST["flat_fee"]:0;
+			$data["publish_after_payment"] = $_POST["publish_after_payment"];
 			
 			//Support
 			$data["footer_link"] = $_POST["footer_link"];
@@ -517,7 +560,8 @@
 						<li><a href="#tabs-5">Map</a></li>
 						<li><a href="#tabs-6">3rd Party</a></li>
 						<li><a href="#tabs-7">CSV Upload</a></li>
-						<li><a href="#tabs-8">Support</a></li>
+						<li><a href="#tabs-8">Payments</a></li>
+						<li><a href="#tabs-9">Support</a></li>
 					</ul>
 				
 					<div id="tabs-1">
@@ -539,6 +583,7 @@
 						<span class="form_label"><?php _e("Category Heading", "bepro-listings"); ?></span><input type="input" name="cat_heading" value="<?php echo $data["cat_heading"]; ?>"><br />
 						<span class="form_label"><?php _e("Category Empty", "bepro-listings"); ?></span><input type="input" name="cat_empty" value="<?php echo $data["cat_empty"]; ?>"><br />
 						<span class="form_label"><?php _e("Category Singular", "bepro-listings"); ?></span><input type="input" name="cat_singular" value="<?php echo $data["cat_singular"]; ?>"><br />
+						<span class="form_label"><?php _e("Days until Listings Expire?", "bepro-listings"); ?></span><input type="text" name="days_until_expire" value="<?php echo $data["days_until_expire"];?>" <?php echo $disabled; ?>><br />
 					</div>
 					<div id="tabs-2">
 						<span class="form_label"><?php _e("Validate Form", "bepro-listings"); ?></span><input type="checkbox" name="validate_form" <?php echo ($data["validate_form"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
@@ -612,12 +657,7 @@
 						</select>	
 					</div>
 					<div id="tabs-6">
-						<span class="form_label"><?php _e("Buddypress", "bepro-listings"); ?></span><input type="checkbox" name="buddypress" <?php echo ($data["buddypress"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
-						<span class="form_label"><?php _e("Cubepoints", "bepro-listings"); ?></span><select id="bl_cubepoints" name="cubepoints">
-							<option value="0" <?php echo ($data["cubepoints"] == 0)? "selected='selected'": ""; ?>>Do Not Charge</option>
-							<option value="1" <?php echo ($data["cubepoints"] == 1)? "selected='selected'": ""; ?>>Charge Flat Rate</option>
-						</select>
-						
+						<span class="form_label"><?php _e("Buddypress", "bepro-listings"); ?></span><input type="checkbox" name="buddypress" <?php echo ($data["buddypress"]== (1 || "on"))? 'checked="checked"':"" ?>>
 					</div>
 					<div id="tabs-7">
 						<p>CSV upload documenation avaialble <a href="https://www.beprosoftware.com/documentation/listing-csv-upload/" target="_blank">here</a></p>
@@ -629,6 +669,25 @@
 						</select>
 					</div>
 					<div id="tabs-8">
+						<?php 
+							if(!class_exists("Bepro_cart")){
+								$disabled = "disabled='disabled'";
+								echo "<p>You need to download and install <a href='https://www.beprosoftware.com/shop/bepro-cart' target='_blank'>BePro Cart</a> to activate payment features.</p>";
+							}else{
+								$disabled = "";
+							}
+						?>
+						<span class="form_label"><?php _e("Accept Payments?", "bepro-listings"); ?></span><select name="require_payment" id="require_payment" <?php echo $disabled; ?>>
+							<option value="">Do Not Charge</option>
+							<option value="1" <?php echo ($data["require_payment"] == 1)? "selected='selected'":""; ?>>Charge Per Category</option>
+							<option value="2" <?php echo ($data["require_payment"] == 2)? "selected='selected'":""; ?>>Charge Flat Fee</option>
+						</select><br />
+						<div id="flat_fee_details">
+							<span class="form_label"><?php _e("Flat Fee", "bepro-listings"); ?></span><input type="text" name="flat_fee" value="<?php echo $data["flat_fee"];?>" <?php echo $disabled; ?>><br />
+						</div>
+						<span class="form_label"><?php _e("Publish after confirm Paid?", "bepro-listings"); ?></span><input type="checkbox" name="publish_after_payment" value="1" <?php echo ($data["publish_after_payment"] == 1)? "checked='checked'":""; ?> <?php echo $disabled; ?>><br /><br />
+					</div>
+					<div id="tabs-9">
 						<a href="http://beprosoftware.com"><img src="<?php echo BEPRO_LISTINGS_PLUGIN_PATH."/images/bepro_software_logo.png"; ?>"></a><br />
 						<iframe width="560" height="315" src="//www.youtube.com/embed/D5YpZX0go88" frameborder="0" allowfullscreen></iframe>
 						<p><b>THANK YOU</b> for your interest and support of this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>

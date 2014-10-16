@@ -3,8 +3,8 @@
 Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
-Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, cubepoints, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.54
+Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
+Version: 2.1.55
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -46,7 +46,6 @@ class Bepro_listings{
 		include(dirname( __FILE__ ) . '/admin/bepro_listings_widgets.php');
 		include(dirname( __FILE__ ) . '/bepro_listings_frontend.php');
 		include(dirname( __FILE__ ) . '/bepro_listings_profile.php');
-		include(dirname( __FILE__ ) . '/bepro_listings_cubepoints.php');
 		
 		add_action('init', 'bepro_create_post_type' );
 		add_action('init', array($this, 'check_flush_permalinks') );
@@ -85,6 +84,23 @@ class Bepro_listings{
 		$data = get_option("bepro_listings");
 		if($data["footer_link"] == ("on" || 1)){
 			add_action("wp_footer", "footer_message");
+		}
+		
+		//payment features?
+		if(($data["require_payment"] == 1) && (class_exists("Bepro_cart"))){
+			add_action( 'bepro_listing_types_add_form_fields', 'bepro_listings_edit_category_fee_field');
+			add_action( 'bepro_listing_types_edit_form_fields', 'bepro_listings_edit_category_fee_field', 11,2 );
+			add_action( 'created_term', 'bepro_listings_category_fee_field_save', 11,3 );
+			add_action( 'edit_term', 'bepro_listings_category_fee_field_save', 11,3 );
+			add_action( 'bepro_cart_item_payment_complete', 'bepro_payment_completed', 10, 2);
+		}else if(!empty($data) && !class_exists("Bepro_cart")){
+			$data["require_payment"] = "";
+			update_option("bepro_listings", $data);
+		}
+		
+		//expiration features?
+		if(is_numeric($data["days_until_expire"]) && ($data["days_until_expire"] > 0)){
+			add_filter("bepro_listings_add_to_clause", "bepro_search_remove_expiring");
 		}
 		
 		add_action( ((!empty($data['bepro_listings_item_title_template']))? $data['bepro_listings_item_title_template']:'bepro_listings_item_title'), 'bepro_listings_item_title_template');

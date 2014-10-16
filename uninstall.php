@@ -21,6 +21,9 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
 	exit ();
 
 delete_option('bepro_listings');
+// For site options in multisite
+delete_site_option('bepro_listings'); 
+
 global $wpdb;
 $listings = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."bepro_listings");
 foreach($listings as $listing){

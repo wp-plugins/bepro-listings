@@ -125,6 +125,8 @@
 				website varchar(155) DEFAULT NULL,
 				lat varchar(15) DEFAULT NULL,
 				lon varchar(15) DEFAULT NULL,
+				bepro_cart_id int(9) DEFAULT NULL,
+				expires DATETIME DEFAULT NULL,
 				created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 				PRIMARY KEY  (id),
 				UNIQUE KEY `post_id` (`post_id`)
@@ -186,8 +188,6 @@
 				
 			//Create post
 			$post_id = wp_insert_post( $post, $wp_error ); 
-			
-			
 			
 			//setup category
 			$my_cat_id = term_exists( "Business", "bepro_listing_types"); 
@@ -318,7 +318,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.54' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.55' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -340,6 +340,8 @@
 			$data["cat_empty"] = "No Categories";
 			$data["cat_singular"] = "Category";
 			$data["permalink"] = "/".BEPRO_LISTINGS_SEARCH_SLUG;
+			$data["days_until_expire"] = 0;
+			
 			//forms
 			$data["validate_form"] = "on";
 			$data["success_message"] = 'Listing Created and pending admin approval.';			
@@ -370,9 +372,12 @@
 			$data["map_query_type"] = "curl";
 			//3rd party
 			$data["buddypress"] = 0;
-			$data["cubepoints"] = 0;
 			$data["redirect_need_funds"] = 1;
 			$data["charge_amount"] = 1;
+			//Payment
+			$data["require_payment"] = "";
+			$data["flat_fee"] = "";
+			$data["publish_after_payment"] = "";
 			//Support
 			$data["footer_link"] = 0;
 			//item page template
@@ -401,8 +406,10 @@
 				$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
 				foreach($blogids as $blogid_x){
 					$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.$blogid_x."_".BEPRO_LISTINGS_TABLE_BASE." CONVERT TO CHARACTER SET utf8;");
+					$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.$blogid_x."_".BEPRO_LISTINGS_TABLE_BASE." ADD COLUMN bepro_cart_id int(9) DEFAULT NULL AFTER lon, ADD COLUMN expires DATETIME DEFAULT NULL AFTER lon;");
 				}
 			}else{
+				$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.BEPRO_LISTINGS_TABLE_BASE." ADD COLUMN bepro_cart_id int(9) DEFAULT NULL AFTER lon, ADD COLUMN expires DATETIME DEFAULT NULL AFTER lon;");
 				$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.BEPRO_LISTINGS_TABLE_BASE." CONVERT TO CHARACTER SET utf8;");
 			}
 			
@@ -428,7 +435,8 @@
 				LEFT JOIN ".$wpdb->prefix."terms t ON t.term_id = tax.term_id";
 				
 		$join_filter = apply_filters("bepro_listings_search_join_clause","");
-
+		$returncaluse = apply_filters("bepro_listings_add_to_clause",$returncaluse);
+		
 		if(!empty($returncaluse)){//if we have a search query
 			$raw_results = $wpdb->get_results("SELECT geo.*, posts.post_title, posts.post_content, posts.post_status FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 
 		LEFT JOIN ".$wpdb->prefix."posts as posts on posts.ID = geo.post_id $cat_finder $join_filter WHERE (posts.post_status = 'publish' OR posts.post_status = 'private') $returncaluse GROUP BY geo.post_id $limit_clause");
@@ -708,7 +716,8 @@
 			post_id         = '".$post['post_id']."',
 			phone         = '".$wpdb->escape(strip_tags($post['phone']))."',
 			lat           = '".$wpdb->escape(strip_tags($post['lat']))."',
-			lon           = '".$wpdb->escape(strip_tags($post['lon']))."'");
+			lon           = '".$wpdb->escape(strip_tags($post['lon']))."',
+			expires           = '".(!empty($post['expires'])? date("Y-m-d H:i:s", strtotime($post['expires'])):"")."'");
 	}
 	
 	function bepro_update_post($post){
@@ -728,7 +737,8 @@
 			country       = '".$wpdb->escape(strip_tags($post['country']))."',
 			lat           = '".$wpdb->escape(strip_tags($post['lat']))."',
 			lon           = '".$wpdb->escape(strip_tags($post['lon']))."',
-			website       = '".$wpdb->escape(strip_tags($_POST['website']))."'
+			website       = '".$wpdb->escape(strip_tags($_POST['website']))."',
+			expires       = '".(!empty($post['expires'])? date("Y-m-d H:i:s", strtotime($post['expires'])):"")."',
 			WHERE post_id ='".$wpdb->escape(strip_tags($post['post_id']))."'");
 	}
 	
@@ -835,8 +845,73 @@
 	function get_bepro_listings_term_meta( $term_id, $key, $single = true ) {
 		return get_metadata( 'bepro_listing_types', $term_id, $key, $single );
 	}
-
 	
+	/**
+	 * Edit category map fee field.
+	 *
+	 * @access public
+	 * @param mixed $term Term (category) being edited
+	 * @param mixed $taxonomy Taxonomy of the term being edited
+	 * @return void
+	 */
+	function bepro_listings_edit_category_fee_field( $term = false, $taxonomy = false ) {
+		$data = get_option("bepro_listings");		
+	
+		if($term)
+			$bepro_flat_fee = get_bepro_listings_term_meta( $term->term_id, 'bepro_flat_fee', true );
+		?>
+		<tr class="form-field">
+			<th scope="row" valign="top"><label><?php _e('Fee', 'bepro_listings'); ?></label></th>
+			<td>
+				<input type="text" name="bepro_flat_fee" id="bepro_flat_fee" size="5" value="<?php echo $bepro_flat_fee; ?>" />
+				<div class="clear"></div>
+			</td>
+		</tr>
+		<?php
+	
+	}
 
 
+
+	/**
+	 * bepro_listings_category_thumbnail_field_save function.
+	 *
+	 * @access public
+	 * @param mixed $term_id Term ID being saved
+	 * @param mixed $tt_id
+	 * @param mixed $taxonomy Taxonomy of the term being saved
+	 * @return void
+	 */
+	function bepro_listings_category_fee_field_save( $term_id, $tt_id, $taxonomy ) {
+		if ( isset( $_POST['bepro_flat_fee'] ) )
+			update_bepro_listings_term_meta( $term_id, 'bepro_flat_fee', $_POST['bepro_flat_fee'] );
+	}
+	
+	function bepro_payment_completed($item, $bepro_cart_id){
+		global $wpdb;
+		$data = get_option("bepro_listings");
+		$expiration = "";
+		$post_id = $item["item_number"];
+		if($data["listings_expire"] && $data["days_until_expire"]){
+			$expiration = date('Y-m-d H:i:s', strtotime("+".$data["days_until_expire"]." days"));
+		}
+		
+		$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set expires = '".$expiration."', bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
+		$raw_post = get_post($post_id);
+		$raw_post->post_status = "Publish";
+		wp_update_post($raw_post);
+	}
+	
+	function bepro_get_total_cat_cost($post_id){
+		$types = get_the_terms($post_id, 'bepro_listing_types');
+		$cost = 0;
+		foreach($types as $type){
+			$cost += get_bepro_listings_term_meta($type->term_id, 'bepro_flat_fee', true );
+		}
+		return $cost;
+	}
+	
+	function bepro_search_remove_expiring($return_clause){
+		return $return_clause." AND ((geo.expires IS NULL) || (geo.expires > NOW()))";
+	}
 ?>

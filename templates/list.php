@@ -46,7 +46,7 @@
 						if($item->post_status == "publish"){ 
 							echo "<a href='".get_permalink($item->post_id)."' target='_blank'>View</a>";
 						}else if($cost > 0){
-							echo "<div style='float:left'>".do_shortcode("[wp_cart_button item_number='".$item->post_id."' name='".$item->post_title."' price='".$cost."']")."</div>";
+							echo "<div style='float:left'>".do_shortcode("[bepro_cart_button item_number='".$item->post_id."' name='".$item->post_title."' price='".$cost."']")."</div>";
 						}else{
 							echo "Wait";
 						}

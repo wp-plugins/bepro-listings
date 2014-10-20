@@ -30,4 +30,10 @@ foreach($listings as $listing){
 	wp_delete_post($listing->post_id);
 }
 $wpdb->query("DROP TABLE ".$wpdb->prefix."bepro_listings");
+
+//remove BePro Emails if exists
+if(class_exists("bepro_email")){
+	$bepro_email = new Bepro_email();
+	$bepro_email->delete_all_owner_emails("bepro_listings");
+}
 ?>

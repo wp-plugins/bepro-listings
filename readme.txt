@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, payments, paid, paypal, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.56
+Stable tag: 2.1.57
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	19. Custom posts - Listings are separate to your other posts in the admin and front end.
 	20. Shortcodes - Several ways to feature the information and engage your visitor. There are currently 7 shortcodes in the free plugin and several more available through addons
 	21. Hooks & Filters - Developers will love the documentation & ability to easily extend features.
+	22. Email Notifications - Requires BePro Email (100% free). Add, edit, delete notifications
 
 = POPULAR USES =
 
@@ -279,6 +280,12 @@ The base free plugin is filled with features used in most, directory, classified
 Many of what we give away for free, others with charge you for e.g. clusterd google maps and csv import. Look closely at our feature set and you see that we allow you to build a complete product with the free base plugin. When interested in enhancing these features, we provide meaningful opportunities to do so.
 
 == Changelog ==
+= 2.1.57 (October 20th, 2014) =
+
+* New admin menu icon
+* Integration with BePro Email
+* Improved upgrade process
+
 = 2.1.56 (October 17th, 2014) =
 
 * Fix to payment button

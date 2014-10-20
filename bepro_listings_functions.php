@@ -96,7 +96,6 @@
 	//Setup database for multisite
 	function bepro_listings_install_table($blog_id = false) {
 		global $wpdb;
-		$bepro_listings_version = BEPRO_LISTINGS_VERSION;
 
 		//Manage Multi Site
 		if($blog_id && ($blog_id != 1)){
@@ -220,9 +219,6 @@
 		}
 		$var_name = "bepro_listing_typesmeta";
 		$wpdb->$var_name = $meta_table;
-		
-		//set version
-		update_option('bepro_listings_version', $bepro_listings_version);
 
 		//add first post
 		$lat = floatval('44.6470678');
@@ -318,7 +314,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.56' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.57' );
 		}	
 		
 		$data = get_option("bepro_listings");
@@ -396,27 +392,64 @@
 		}
 		
 		//Things that need to change only if there is an upgrade
-		
 		$bepro_listings_version = get_option("bepro_listings_version");
-		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
-			$bepro_listings_version = get_option("bepro_listings_version");
-			
+		if(version_compare($bepro_listings_version, '2.1.5', '<')){
 			//upgrade tables to utf8
 			if ((is_numeric(substr($wpdb->prefix, -2, 1)) && is_multisite())){ 
 				$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
 				foreach($blogids as $blogid_x){
 					$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.$blogid_x."_".BEPRO_LISTINGS_TABLE_BASE." CONVERT TO CHARACTER SET utf8;");
+				}
+			}else{
+				$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.BEPRO_LISTINGS_TABLE_BASE." CONVERT TO CHARACTER SET utf8;");
+			}
+		}
+		if(version_compare($bepro_listings_version, '2.1.55', '<')){
+			//support for BePro Cart
+			if ((is_numeric(substr($wpdb->prefix, -2, 1)) && is_multisite())){ 
+				$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+				foreach($blogids as $blogid_x){
 					$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.$blogid_x."_".BEPRO_LISTINGS_TABLE_BASE." ADD COLUMN bepro_cart_id int(9) DEFAULT NULL AFTER lon, ADD COLUMN expires DATETIME DEFAULT NULL AFTER lon;");
 				}
 			}else{
 				$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.BEPRO_LISTINGS_TABLE_BASE." ADD COLUMN bepro_cart_id int(9) DEFAULT NULL AFTER lon, ADD COLUMN expires DATETIME DEFAULT NULL AFTER lon;");
-				$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.BEPRO_LISTINGS_TABLE_BASE." CONVERT TO CHARACTER SET utf8;");
+			}
+		}
+		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
+			$bepro_listings_version = BEPRO_LISTINGS_VERSION;
+			
+			//BePro Email Integration
+			if(class_exists("Bepro_email")){
+				$bepro_email = new Bepro_email();
+				//email 1
+				$email["post_title"] = "Hello [username]";
+				$email["post_content"] = "Your submission to [website_url] has been received. Thank you";
+				$email["bpe_owner"] = "bepro_listings";
+				$email["bpe_times_sent"] = "0";
+				$email["bpe_mail_agent"] = "wp_mail";
+				$email["bpe_email_to"] = "[user_email]";
+				$email["bpe_hook"] = "bepro_listings_add_listing";
+				$email["bpe_tracker"] = "bl_email1";
+				$email["bpe_max_send"] = "";
+				$bepro_email->bepro_add_edit_email($email);
+				
+				//email 2
+				$email["post_title"] = "New Listing";
+				$email["post_content"] = "Your received a new submission on [website_url].";
+				$email["bpe_owner"] = "bepro_listings";
+				$email["bpe_times_sent"] = "0";
+				$email["bpe_mail_agent"] = "wp_mail";
+				$email["bpe_email_to"] = "[admin_user_email]";
+				$email["bpe_hook"] = "bepro_listings_add_listing";
+				$email["bpe_tracker"] = "bl_email2";
+				$email["bpe_max_send"] = "";
+				$bepro_email->bepro_add_edit_email($email);
 			}
 			
-			update_option("bepro_listings", $data);
+			//set version
+			update_option('bepro_listings_version', $bepro_listings_version);
 		}
 	}
-	
 	
 	//Search wordpress table hierarchy for custom post type 'bepro_listing_types'
 	function listing_types(){
@@ -766,7 +799,7 @@
 			'publicly_queryable' => true,
 			'show_ui' => true,
 			'query_var' => true,
-			'menu_icon' => plugins_url("images/blogs.png", __FILE__ ) ,
+			'menu_icon' => 'dashicons-images-alt2',
 			'rewrite' => array("slug" => $slug, 'with_front' => false),
 			'capability_type' => 'post',
 			'hierarchical' => false,

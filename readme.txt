@@ -116,7 +116,7 @@ BePro Listings has spawned the famous **$1 one dollar wordpress themes**. Some o
 
 We created BePro Listings and its addons to be *modular*. In addition, our templates are very dynamic. This combination creates a platform for creating any type of directory. For example, with addons you can create a **real Classifieds website** featuring multiple directories simultaneously.
 
-Out of the box, BePro Listings works with buddypress, BePro Cart and many **gallery plugins**. Via addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This open and inclusive architecture, makes it extreamly easy to add the best combinations of features for your **directory** / **classifieds** / **portfolio** / **Catalogue** site. 
+Out of the box, BePro Listings works with buddypress, BePro Cart, BePro Email and many **gallery plugins**. Via paid addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This open and inclusive architecture, makes it extreamly easy to add the best combinations of features for your **directory** / **classifieds** / **portfolio** / **Catalogue** site. 
 
 Most importantly, BePro Listings is built for various levels of users. Novice users will appreciate our $1 themes, **ajax features** and *"all in one"* shortcodes. Intermediate users will like the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 
@@ -271,13 +271,13 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 == Other Notes ==
 
-BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architechture and configuration options facilitate unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously via multisite or on one domain with our origami addon.
+BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architecture and configuration options facilitate unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously via multisite or on one domain with our origami addon.
 
-Our **Drag and Drop Form Builder** addon is unique and takes advantage our our advanced architechture. It truely allows you to **Visually build** custom directories in whatever language you need. The typical issue with form builders is how they store information. It makes it impossible to search anything more than the title. With our approach, we are light years ahead over any other form builder or directory. We store the information in different ways exposing many aspects to search and filter. You **cannot find this solution** anywhere else.
+Our **Drag and Drop Form Builder** addon is unique and takes advantage of our advanced architecture. It truely allows you to **Visually build** custom directories in whatever language you need. The typical issue with form builders is how they store information. It makes it impossible to search anything more than the title. With our approach, we are light years ahead of any other form builder or directory. We store the information in different ways, exposing many aspects to search and filter. What we are offering is unique, it can scale to millions of listings and you **cannot find this solution** anywhere else.
 
-The base free plugin is filled with features used in most, directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listing website you can create.
+The base free plugin is filled with features used in most, directory, classifieds and portfolio websites. Our addons facilitate tons of added features that are only applicable to a subset of users e.g. Real Estate agents, Car Dealers, etc. With this level of control, there is no limit to the type of listing website you can create.  
 
-Many of what we give away for free, others with charge you for e.g. clusterd google maps and csv import. Look closely at our feature set and you see that we allow you to build a complete product with the free base plugin. When interested in enhancing these features, we provide meaningful opportunities to do so.
+Many of what we give away for free, others will charge you for e.g. clusterd google maps and csv import. Also note our optional payment and notification features. You will need to download the free plugins BePro Cart and BePro Email to implement these features. We invite you to start **making money** today and take advantage of what we consider to be the most **advanced email notification plugin** available. These addons continue our trend of offering you a flexible way to build the directory experience that your users require. 
 
 == Changelog ==
 = 2.1.57 (October 20th, 2014) =

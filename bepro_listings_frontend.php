@@ -160,8 +160,12 @@
 			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
 			  'show_paging' => $wpdb->escape($_POST["show_paging"]),
 			  'map_id' => $wpdb->escape($_POST["map_id"]),
+			  'bl_form_id' => $wpdb->escape($_REQUEST["bl_form_id"]),
 			  'bl_post_id' => $wpdb->escape($_POST["bl_post_id"])
 		 ), $atts));
+		 
+		//form builder integration
+		$_POST["bl_form_id"] = $bl_form_id;
 		 
 		//Setup data
 		$data = get_option("bepro_listings");
@@ -427,9 +431,15 @@
 			  'order_by' => $wpdb->escape($_POST["order_by"]),
 			  'l_ids' => $wpdb->escape($_REQUEST["l_ids"]),
 			  'limit' => $wpdb->escape($_REQUEST["limit"]),
+			  'origami' => $wpdb->escape($_REQUEST["origami"]),
+			  'bl_form_id' => $wpdb->escape($_REQUEST["bl_form_id"]),
 			  'show_paging' => $wpdb->escape($_POST["show_paging"])
 		 ), $atts));
 		 
+		//form builder and origami integration
+		$_POST["bl_form_id"] = $bl_form_id;
+		$_POST["origami"] = $origami;
+		
 		$data = get_option("bepro_listings");
 		$num_results = (empty($limit)|| !is_numeric($limit))? $data["num_listings"]:$limit; 
 		$type = empty($type)? 1:$type;
@@ -930,10 +940,13 @@
 		global $wpdb;
 		
 		extract(shortcode_atts(array(
+			  'bl_form_id' => $wpdb->escape($_POST["bl_form_id"]),
 			  'origami' => $wpdb->escape($_POST["origami"]),
 			  'register' => $wpdb->escape($_POST["register"])
 		 ), $atts));
-		 
+		
+		//addon tie ins
+		$_POST["bl_form_id"] = $bl_form_id; 
 		$_POST["origami"] = $origami; 
 		//get settings
 		$data = get_option("bepro_listings");

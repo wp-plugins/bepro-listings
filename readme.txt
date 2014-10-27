@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, payments, paid, paypal, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.57
+Stable tag: 2.1.58
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,7 +57,7 @@ BePro Listings can be integrated into your **current theme** and simulate **any 
 	* Store Finder - List your store or shop branches including, location and contact details 
 	* Directory - Employee, staff, members, pets, Business, Job Search, Job Board, or any other type of directory listings site
 	* Advertising - Sell ad space or use the system like a bullitin board
-	* Classifieds - Run mutiple directory types consecutively on the same domain (Requires Origami) or multisite support is included
+	* Classifieds - Run mutiple directory types consecutively on the same domain (Requires Form Builder) or multisite support is included
 	* Products & Services - List them yourself or allow members to list products and/or services e.g. product catalogue
 	* Informational - Tourism, points of interest, and other details best shown via google maps
 	* Front End Uploads - Using the submission form shortcode, users can contribute blog posts for you to review and publish
@@ -75,13 +75,13 @@ BePro Listings can be integrated into your **current theme** and simulate **any 
 
 >  **Visual Form Builder**
 > 
-> * Use our visual [Form Builder Addon](https://www.beprosoftware.com/shop/bepro-listings-form-builder/) to create a custom front end form. Gather info for, google maps, galleries, and so much more. Search and filter submissions like any other listing. We challenge you to find another **directory form builder** with the features of BePro Listings.
+> * Use our visual [Form Builder Addon](https://www.beprosoftware.com/shop/bepro-listings-form-builder/) to create **unlimited custom front end forms** and listing types. Gather info for, google maps, galleries, and so much more. Search and filter submissions like any other listing. We challenge you to find another **directory form builder** with the features of BePro Listings.
 > 
 > 
 
 Our Addons provide lots of new ways to customize your listings experinece. Current available add-ons include:
 
-	1. Form Builder (NEW) - Use the drag and drop interface to create your own front end upload form
+	1. Form Builder (NEW) - Use the drag and drop interface to create multiple front end upload forms and listing types
 	2. Contact - Receive notifications when someone submits a listing. Also add a contact form to your listing detail pages.
 	3. Gallery - Three 3 gallery options including slider & lightbox, plus three new listings templates
 	4. Video - Improve on the Gallery plugin with the ability to upload file types like (mp4, mpeg, avi, wmv, webm). Also link videos from sites like, youtube, vimeo, & dailymotion. Uploaded videos are played using HTML5 or fallback to flassh
@@ -97,8 +97,8 @@ Our Addons provide lots of new ways to customize your listings experinece. Curre
 	14. Business Directory - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.
 	15. Vehicles - Lists cars, boats, trucks, planes, and other automobiles with their details
 	16. Reviews - Users can leave and search by star ratings
-	17. Origami (New) - Run multiple directories consecutively on the same domain like a true classifieds website
-	18. Search (New) - Add predictive google maps address lookup and auto complete enhancements to the basic search feature
+	17. Origami - Separate search features when running multiple listing types on one website
+	18. Search - Add predictive google maps address lookup and auto complete enhancements to the basic search feature
 	19. Tags - You and your members can tag your listings and allow users to search them via the tag widget
 	20. reCAPTCHA - Prevent spam and malicious submissions with this google reCAPTCHA system
 
@@ -232,7 +232,7 @@ Yes, there are add-ons and themes available for this plugin. Check our website b
 
 = Can I operate multiple directory types at the same time? =
 
-Yes, you will need our origami addon and any niche addons that specify compatibility like our vehicles and Real Estate addons
+Yes, you will need our From Builder addon. Depending on your specific directory, you may also need the Origami addon
 
 = Can this work with buddypress? =
 
@@ -271,7 +271,7 @@ Yes, listing detail pages are generated whether you use them or not. This is a h
 
 == Other Notes ==
 
-BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architecture and configuration options facilitate unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously via multisite or on one domain with our origami addon.
+BePro Listings is the most advanced Direcotory and front end upload plugin available. Its dynamic architecture and configuration options facilitate unique and feature filled solutions. This allows BePro Listings to transform into any type of directory. In fact, you can run multiple directories simultaneously via multisite or on one domain with our Form Builder addon.
 
 Our **Drag and Drop Form Builder** addon is unique and takes advantage of our advanced architecture. It truely allows you to **Visually build** custom directories in whatever language you need. The typical issue with form builders is how they store information. It makes it impossible to search anything more than the title. With our approach, we are light years ahead of any other form builder or directory. We store the information in different ways, exposing many aspects to search and filter. What we are offering is unique, it can scale to millions of listings and you **cannot find this solution** anywhere else.
 
@@ -280,6 +280,10 @@ The base free plugin is filled with features used in most, directory, classified
 Many of what we give away for free, others will charge you for e.g. clusterd google maps and csv import. Also note our optional payment and notification features. You will need to download the free plugins BePro Cart and BePro Email to implement these features. We invite you to start **making money** today and take advantage of what we consider to be the most **advanced email notification plugin** available. These addons continue our trend of offering you a flexible way to build the directory experience that your users require. 
 
 == Changelog ==
+= 2.1.58 (October 26th, 2014) =
+
+* Support for newest version of From builder 1.0.1
+
 = 2.1.57 (October 20th, 2014) =
 
 * New admin menu icon

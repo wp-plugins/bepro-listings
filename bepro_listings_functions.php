@@ -145,7 +145,7 @@
 				  'post_author' => $user_id,
 				  'post_content' => "<p>This is your first listing. Delete this one in your admin and create one of your own. If you need help, our <a href='http://www.beprosoftware.com/services/'>Wordpress Development</a> team can help. Also note we have tons of <a href='beprosoftware.com/products/bepro-listings'>Wordpress Directory Plugins</a> and <a href='beprosoftware.com/products/bepro-listings'>Wordpress Directory Themes</a> for this plugin like: </p>
 				  <ul>
-					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-form-builder/'>Form Builder</a> - Use the Drag and Drop interface to create your own custom Front End Upload Form</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-form-builder/'>Form Builder</a> - Use the drag and drop interface to create multiple front end upload forms and listing types</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-recaptcha/'>reCAPTCHA</a> - Reduce spam and malicious submissions with a captcha system powered by google</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-tags/'>Tags</a> - This was definitely an achilles heel for this plugin. Now you and your members can tag your listings and allow users to search them via the tag widget</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-contact/'>Contact</a> - Add a contact form to your listing pages. This provides the option to have all emails go to one address or the address for the person who created the listing</li>
@@ -163,7 +163,7 @@
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-business-directory/'>Business Directory</a> (New) - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-vehicles/'>Vehicles</a> (New) - Lists cars, boats, trucks, planes, and other automobiles with their details</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-reviews/'>Reviews</a> (New) - Users can leave and search by star ratings</li>
-					<li><a href='https://www.beprosoftware.com/shop/origami/'>Origami</a> (New) - Run multiple directories on the same domain like a true classifieds website</li>
+					<li><a href='https://www.beprosoftware.com/shop/origami/'>Origami</a> - Separate search features when running multiple listing types on one website</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-search/'>Search</a> (New) - Add predictive google maps address lookup and auto complete enhancements to the basic search feature</li>
 				</ul>
 				<h2>Classifieds / Porfolio / Directory Themes</h2>
@@ -314,7 +314,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.57' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.58' );
 		}	
 		
 		$data = get_option("bepro_listings");

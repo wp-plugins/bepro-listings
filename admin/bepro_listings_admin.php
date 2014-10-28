@@ -86,17 +86,35 @@
 			'permalink',
 			'optional'
 		);
+		add_settings_field(
+			'bl_cat_permalink_url',
+			'Listing Category Permalink',
+			'cat_permalink_setting_input',
+			'permalink',
+			'optional'
+		);
 	}
 	
 	function permalink_setting_input() {
-		// get option 'boss_email' value from the database
 		$options = get_option( 'bepro_listings' );
-		$value = $options['permalink'];
+		$permalink = $options['permalink'];
 		
 		// echo the field
 		?>
 	<code><?php bloginfo("url"); ?></code><input id='bl_permalink_option' name='bl_permalink_option'
-	 type='text' value='<?php echo esc_attr( $value ); ?>' /> e.g. /listings
+	 type='text' value='<?php echo esc_attr( $permalink ); ?>' /> e.g. /listings<br />
+		<?php
+	}
+
+	function cat_permalink_setting_input() {
+		// get option 'boss_email' value from the database
+		$options = get_option( 'bepro_listings' );
+		$cat_permalink = $options['cat_permalink'];
+		
+		// echo the field
+		?>
+	<code><?php bloginfo("url"); ?></code><input id='bl_cat_permalink_option' name='bl_cat_permalink_option'
+	 type='text' value='<?php echo esc_attr( $cat_permalink ); ?>' /> e.g. <?php echo BEPRO_LISTINGS_CATEGORY_SLUG;?><br />
 		<?php
 	}
 	
@@ -105,6 +123,7 @@
 		if(isset($_POST["bl_permalink_option"])){
 			$options = get_option( 'bepro_listings' );
 			$options["permalink"] = $_POST["bl_permalink_option"];
+			$options["cat_permalink"] = $_POST["bl_cat_permalink_option"];
 			update_option("bepro_listings", $options);
 		}
 	}

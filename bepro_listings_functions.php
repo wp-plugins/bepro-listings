@@ -290,14 +290,14 @@
 		// The plugin path
 		if ( !defined( 'BEPRO_LISTINGS_PLUGIN_PATH' ) )
 			define( 'BEPRO_LISTINGS_PLUGIN_PATH', plugins_url("", __FILE__ ) );
-			
+		
 		// Plugin Slug
 		if ( !defined( 'BEPRO_LISTINGS_CATEGORY' ) )
 			define( 'BEPRO_LISTINGS_CATEGORY', "bepro_listing_types" );
 			
 		// Category Slug
-		if ( !defined( 'BEPRO_LISTINGS_CATEGORY' ) )
-			define( 'BEPRO_LISTINGS_CATEGORY', "bepro_listing_types" );
+		if ( !defined( 'BEPRO_LISTINGS_CATEGORY_SLUG' ) )
+			define( 'BEPRO_LISTINGS_CATEGORY_SLUG', "listing_types" );
 		
 		// The Main table name (check if multisite)
 		global $wpdb;
@@ -314,16 +314,18 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.58' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.59' );
 		}	
-		
+	}
+	
+	function bl_complete_startup(){
+		global $wpdb;
 		$data = get_option("bepro_listings");
 		if(empty($data))
 			Bepro_listings::bepro_listings_activate();
 		
 		//Load Languages
 		load_plugin_textdomain( 'bepro-listings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-		
 		
 		//load default options if they dont already exist		
 		if(empty($data["bepro_listings_list_template_1"])){
@@ -336,6 +338,7 @@
 			$data["cat_empty"] = "No Categories";
 			$data["cat_singular"] = "Category";
 			$data["permalink"] = "/".BEPRO_LISTINGS_SEARCH_SLUG;
+			$data["cat_permalink"] = "/".BEPRO_LISTINGS_CATEGORY_SLUG;
 			$data["days_until_expire"] = 0;
 			
 			//forms
@@ -777,6 +780,7 @@
 	
 	//Create BePro Listings custom post type.
 	function bepro_create_post_type() {
+		load_constants();
 		$labels = array(
 			'name' => _x('BePro Listings', 'post type general name'),
 			'singular_name' => _x('Listing', 'post type singular name'),
@@ -808,9 +812,13 @@
 		  ); 
 	 
 		register_post_type( 'bepro_listings' , $args );
-		register_taxonomy("bepro_listing_types", 
+		
+		$cat_slug = !empty($options["cat_permalink"])? stripslashes($options["cat_permalink"]):BEPRO_LISTINGS_CATEGORY_SLUG;
+		register_taxonomy(BEPRO_LISTINGS_CATEGORY, 
 			"bepro_listings", 
 			array('hierarchical' 			=> true,
+				'public' => true,
+				'publicly_queryable' => true,
 	            'label' 				=> __( 'BePro Listing Categories', 'bepro_listings'),
 	            'labels' => array(
 	                    'name' 				=> __( 'Listing Categories', 'bepro_listings'),
@@ -827,10 +835,10 @@
 	            	),
 	            'show_ui' 				=> true,
 	            'query_var' 			=> true,
-				'rewrite' => array("slug" => "listing_types", 'with_front' => false))
+				'rewrite' => array("slug" => $cat_slug, 'with_front' => false))
 			);	 
 			register_taxonomy_for_object_type( 'bepro_listing_types', 'bepro_listings' );
-			load_constants();
+			bl_complete_startup();
 	}
 	
 	function bepro_listings_setup_category(){

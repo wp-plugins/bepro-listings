@@ -3,8 +3,9 @@
 	function bl_my_listings(){
 		global $wpdb, $post;
 		$current_url =  get_permalink( $post->ID );
+		$return_text = "";
 		if(!is_user_logged_in()){
-			echo "<p>You need to be Logged In to see your Listings.</p>";
+			$return_text .= "<p>You need to be Logged In to see your Listings.</p>";
 			$args = array(
 					'echo'           => true,
 					'redirect'       => $current_url, 
@@ -58,8 +59,11 @@
 			LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
 			
 			$listing_url = "?bl_manage=1&bl_id=";
-			echo "<p><a href='".$listing_url."'>Add a Listing</a></p>";
+			$return_text .= "<p><a href='".$listing_url."'>Add a Listing</a></p>";
+			ob_start(); 
 			require( dirname( __FILE__ ) . '/templates/list.php' );
+			$return_text .= ob_get_clean(); 
+			return $return_text;
 		}
 	}
 	

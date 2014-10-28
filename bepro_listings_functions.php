@@ -314,7 +314,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.59' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.6' );
 		}	
 	}
 	
@@ -541,7 +541,7 @@
 			$return_message = false;
 			
 			$item_name = addslashes(strip_tags($_POST["item_name"]));
-			$content = addslashes(strip_tags($_POST["content"]));
+			$content = addslashes(strip_tags(strip_shortcodes($_POST["content"])));
 			$categories = $wpdb->escape($_POST["categories"]);
 			$username = $wpdb->escape(strip_tags($_POST["username"]));
 			$password = $wpdb->escape(strip_tags($_POST["password"]));

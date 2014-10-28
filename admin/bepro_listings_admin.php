@@ -114,7 +114,7 @@
 		// echo the field
 		?>
 	<code><?php bloginfo("url"); ?></code><input id='bl_cat_permalink_option' name='bl_cat_permalink_option'
-	 type='text' value='<?php echo esc_attr( $cat_permalink ); ?>' /> e.g. <?php echo BEPRO_LISTINGS_CATEGORY_SLUG;?><br />
+	 type='text' value='<?php echo esc_attr( $cat_permalink ); ?>' /> e.g. /<?php echo BEPRO_LISTINGS_CATEGORY_SLUG;?><br />
 		<?php
 	}
 	

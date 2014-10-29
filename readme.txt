@@ -1,7 +1,7 @@
 === BePro Listings ===
 Contributors: BeyondPrograms, BeProSoftware
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: auto, affiliate, address, ajax, booking, buddypress, car, catalogue, csv, classifieds, directory, document, finder, front end upload, gallery, google maps, HTML5, listings, location, media, mp3, mp4, payments, paid, paypal, pets, player, pdf, portfolio, product, responsive, star reviews, search, store, vehicle, video, vimeo, youtube
+Tags: auto, address, booking, buddypress, business directory, car, catalogue, csv, classifieds, directory, document, finder, form builder, front end upload, google maps, HTML5, listings, location, media, mp3, payments, paid, paypal, pets, pdf, portfolio, product, real estate, search, star reviews, submission, vehicle, video, youtube
 Requires at least: 3.0.1
 Tested up to: 4.0
 Stable tag: 2.1.6
@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Responsive Ajax Directory (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
 
 == Description ==
-This plugin helps you to build directory websites. With its modular architecture, you decide how users search, filter and view information. Use base features like **google maps**, paypal payments, categories, ajax search / filter and **front end submission**. Our **unmatched** template architecture facilitates solutions for, Real Estate, Business, Portfolio, Classifieds and other niche information
+BePro Listings is the most advanced directory builder plugin. With its modular architecture, you decide how users search, filter and view information. Use optional base features like **google maps**, paypal payments, categories, ajax search / filter and **front end submission**. Our **unmatched** template architecture facilitates solutions for, Real Estate, Business, Portfolio, Classifieds and other niche information
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://www.beprosoftware.com/forums/) | [Documentation](http://www.beprosoftware.com/documentation/bepro-listings/ ) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
@@ -75,7 +75,7 @@ BePro Listings can be integrated into your **current theme** and simulate **any 
 
 >  **Visual Form Builder**
 > 
-> * Use our visual [Form Builder Addon](https://www.beprosoftware.com/shop/bepro-listings-form-builder/) to create **unlimited custom front end forms** and listing types. Gather info for, google maps, galleries, and so much more. Search and filter submissions like any other listing. We challenge you to find another **directory form builder** with the features of BePro Listings.
+> * Use our visual Drag & Drop [Form Builder Addon](https://www.beprosoftware.com/shop/bepro-listings-form-builder/) to create **unlimited custom front end forms** and listing types. Gather info for, google maps, galleries, and so much more. Search and filter submissions like any other listing. There is no other **directory form builder** with the features of BePro Listings.
 > 
 > 
 
@@ -104,7 +104,7 @@ Our Addons provide lots of new ways to customize your listings experinece. Curre
 
 = THEMES =
 
-BePro Listings has spawned the famous **$1 one dollar wordpress themes**. Some of our $1 one dollar wordpress themes are **complete themes**, while others are **child themes** built on free solutions. We want to prove that you can integrate BePro Listings into any theme and create any type of listings site. **CHALLENGE US!** 
+BePro Listings has spawned the famous **$1 one dollar wordpress themes**. Some of our $1 one dollar wordpress themes are **complete themes**, while others are **child themes** built on free solutions. We want to prove that you can integrate BePro Listings into any theme and create any type of listings site.
 
 	1. ByCater - This responsive directory theme features a home page template utilizing (google map, search, categories, and listings). It also integrates with typical wordpress features like, sidebar, menu, etc
 	2. FolioProjects - Responsive Child theme for the stock wordpress twentyfourteen teamplate. Perfect for gallery, portfolio, and other sites where you want to emphasize the featured images. Comes with three templates
@@ -114,7 +114,7 @@ BePro Listings has spawned the famous **$1 one dollar wordpress themes**. Some o
 
 = WHATS THE DIFFERENCE? =
 
-We created BePro Listings and its addons to be *modular*. In addition, our templates are very dynamic. This combination creates a platform for creating any type of directory. For example, with addons you can create a **real Classifieds website** featuring multiple directories simultaneously.
+We created BePro Listings and its addons to be *modular*. In addition, our templates are very dynamic. This combination creates a platform for creating any type of directory. For example, with our form builder addon, you can create a **real Classifieds website** featuring multiple directories simultaneously.
 
 Out of the box, BePro Listings works with buddypress, BePro Cart, BePro Email and many **gallery plugins**. Via paid addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This open and inclusive architecture, makes it extreamly easy to add the best combinations of features for your **directory** / **classifieds** / **portfolio** / **Catalogue** site. 
 

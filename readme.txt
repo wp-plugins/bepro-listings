@@ -1,7 +1,7 @@
 === BePro Listings ===
 Contributors: BeyondPrograms, BeProSoftware
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: auto, address, booking, buddypress, business directory, car, catalogue, csv, classifieds, directory, document, finder, form builder, front end upload, google maps, HTML5, listings, location, media, mp3, payments, paid, paypal, pets, pdf, portfolio, product, real estate, search, star reviews, submission, vehicle, video, youtube
+Tags: auto, address, buddypress, buddypress directory, business, car, catalogue, csv, classifieds, directory, directory plugin, document, finder, form builder, front end upload, front end submission, google maps, HTML5, listings, location, mp3, payments, paid, paypal, pets, pdf, portfolio, product, product catalogue, real estate, search, star reviews, submission, upload vehicle, video, youtube, wordpress directory, wordpress directory plugin, wordpress classifieds
 Requires at least: 3.0.1
 Tested up to: 4.0
 Stable tag: 2.1.6

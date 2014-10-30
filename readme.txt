@@ -8,10 +8,10 @@ Stable tag: 2.1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Responsive Ajax Directory (Real Estate, Classifieds, Business, Products etc) with (google maps, front end upload, search / filter, payments & more)
+Responsive Directory (Real Estate, Classifieds, Business, Products etc) w/ (google maps, front end upload, search / filter, payments & more)
 
 == Description ==
-BePro Listings is the best **wordpress directory plugin** available. With its modular architecture, you decide how users search, filter and view information. Use optional base features like, clustered google maps, **paypal payments**, email notifications, ajax search / filter and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business, Portfolio, Classifieds and other niche information.
+BePro Listings is the best **wordpress directory plugin** available. With its modular architecture, you decide how users search, filter and view information. Use optional base features like, clustered google maps, **paypal payments**, email notifications, ajax search / filter and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business, Product cataglogues, Classifieds and other niche information.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://www.beprosoftware.com/forums/) | [Documentation](http://www.beprosoftware.com/documentation/bepro-listings/ ) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 

@@ -8,10 +8,10 @@ Stable tag: 2.1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Responsive Ajax Directory (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & more)
+Responsive Ajax Directory (Real Estate, Classifieds, Business, etc) with (google maps, front end upload, search / filter, & payments)
 
 == Description ==
-BePro Listings is the most advanced directory builder plugin. With its modular architecture, you decide how users search, filter and view information. Use optional base features like **google maps**, paypal payments, categories, ajax search / filter and **front end submission**. Our **unmatched** template architecture facilitates solutions for, Real Estate, Business, Portfolio, Classifieds and other niche information
+BePro Listings is the best **wordpress directory plugin** available. With its modular architecture, you decide how users search, filter and view information. Use optional base features like, clustered google maps, **paypal payments**, **email notifications**, ajax search / filter and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business, Portfolio, Classifieds and other niche information.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://www.beprosoftware.com/forums/) | [Documentation](http://www.beprosoftware.com/documentation/bepro-listings/ ) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
@@ -26,7 +26,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	2. Upload CSV - Upload your lisings via a csv document
 	3. Front end Submission  - Allow visitors to post, or lock it to members only, or it submits to you as pending.
 	4. Search and filter - Allow users to search and filter by name, location, categories, price and other data points
-	5. Google Maps - Great for showing listings via a map with no need for API keys.
+	5. Clustered Google Maps - Great for showing listings via a map with no need for API keys.
 	6. Categories - Assign images or not. Choose from our 4 different directory style layouts
 	7. Gallery - Works with the wordpress gallery shortcode, so its compatible with many gallery plugins
 	8. Listings - Two templates including a ("Featured") banner option, come with the base plugin and they can be extended. 
@@ -47,7 +47,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 
 = POPULAR USES =
 
-BePro Listings can be integrated into your **current theme** and simulate **any directory type**. Look at some of the ways people are using the plugin:
+BePro Listings can be integrated into your **current theme** and capture specifically the information that your directory needs. Look at some of the ways people are using the plugin:
 
 	* Paid Listings - Charge users per category or charge a flat fee to submit a listing (BePro Cart required). Or use one of our membership addons to limit listings and features by level
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a free BePro Listings Realestate addon
@@ -75,13 +75,13 @@ BePro Listings can be integrated into your **current theme** and simulate **any 
 
 >  **Visual Form Builder**
 > 
-> * Use our visual Drag & Drop [Form Builder Addon](https://www.beprosoftware.com/shop/bepro-listings-form-builder/) to create **unlimited custom front end forms** and listing types. Gather info for, google maps, galleries, and so much more. Search and filter submissions like any other listing. There is no other **directory form builder** with the features of BePro Listings.
+> * Use our visual Drag & Drop [Form Builder Addon](https://www.beprosoftware.com/shop/bepro-listings-form-builder/) to create **unlimited custom front end forms** with unlimited recipients. Allow users to upload and search through various types of directory content on one website. This **directory form builder** is unique
 > 
 > 
 
 Our Addons provide lots of new ways to customize your listings experinece. Current available add-ons include:
 
-	1. Form Builder (NEW) - Use the drag and drop interface to create multiple front end upload forms and listing types
+	1. Form Builder (NEW) - Use the visual drag and drop interface to create multiple front end upload forms and directory listing types
 	2. Contact - Receive notifications when someone submits a listing. Also add a contact form to your listing detail pages.
 	3. Gallery - Three 3 gallery options including slider & lightbox, plus three new listings templates
 	4. Video - Improve on the Gallery plugin with the ability to upload file types like (mp4, mpeg, avi, wmv, webm). Also link videos from sites like, youtube, vimeo, & dailymotion. Uploaded videos are played using HTML5 or fallback to flassh
@@ -180,6 +180,8 @@ You can watch a video of how to [install BePro Listings](http://www.beprosoftwar
 
 * (optional) Install BePro Cart (100% free) to facilitate payments. Download it from our website www.beprosoftware.com 
 
+* (optional) Install BePro Email (100% free) to facilitate unlimited customizable email notifications. Download it from our website www.beprosoftware.com 
+
 == Frequently Asked Questions ==
 
 = How do I implement custom form fields? =
@@ -188,7 +190,11 @@ You will need our form builder addon
 
 = Can I make Money With this Plugin? =
 
-Yes, you can charge users per category they select, or charge a flat rate. You must use our FREE BePro Cart plugin for this feature. Download it from our website. Alternatively, you can use one of our paid membership addons to limit features by membership level.
+Yes, you can charge users per category, or charge a flat rate. You must use our FREE BePro Cart plugin for this feature. Download it from our website. Alternatively, you can use one of our paid membership addons to limit features by membership level.
+
+= How do i setup notification emails? =
+
+You will need the plugin BePro Email which is FREE. If its intstalled, BePro Listings will load notification emails into BePro Email. You can then add new notifcations or edit the ones created by BePro Listings
 
 = Does this work with posts and pages? =
 
@@ -224,7 +230,7 @@ Try changing the query type under map in the admin
 
 = Is there support? =
 
-Yes, our development team created the plugin and continue to offer free support via our support forums and paid support via our website beprosoftware.com. You can also get monthly support.
+Yes, our development team created the plugin and continue to offer free support via our website beprosoftware.com. You can also get paid monthly support.
 
 = I need more features, is there more? =
 
@@ -242,13 +248,13 @@ Since 1.2.0. Version 2.0.60 added integration with activity feeds
 
 No. Since 2.1.17 we supply a standalone profile which can be implemented via shortcode
 
-= Does your user submission form implement custom profile fields? =
+= Does your user submission form utilize custom fields? =
 
-No, but you can extend the fields via wordpress hooks and filters. We offer this as a service on our website
+No, but you can extend the fields via wordpress hooks and filters. Or you can just use the Form Builder addon
 
 = Are there ways to extend the plugin myself? =
 
-Yes, there are lots of wordpress hooks/filters and templates (listings/page)
+Yes, there are lots of wordpress hooks/filters and templates (listings/page). There is nothing stopping you from creating your own custom addons
 
 = Can I setup featured listings? =
 

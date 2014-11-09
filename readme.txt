@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, address, buddypress, buddypress directory, business, business directory, car, catalog, catalogue, classifieds, classifieds directory, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, location, payments, paid, paypal, pets, plugin, portfolio directory, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress business, wordpress directory, wordpress directory plugin, wordpress directory theme, wordpress classifieds, wordpress catalog, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.61
+Stable tag: 2.1.62
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -289,6 +289,12 @@ The base free plugin is filled with features used in most, directory, classified
 Many of what we give away for free, others will charge you for e.g. clusterd google maps and csv import. Also note our optional payment and notification features. You will need to download the free plugins BePro Cart and BePro Email to implement these features. We invite you to start **making money** today and take advantage of what we consider to be the most **advanced email notification plugin** available. These addons continue our trend of offering you a flexible way to build the directory experience that your users require. 
 
 == Changelog ==
+
+= 2.1.62 (November 9th, 2014) =
+
+* Security enhancement
+* Tweak category check function to accept strings and arrays.
+
 = 2.1.61 (November 5th, 2014) =
 
 * Tweak listing type 2 layout

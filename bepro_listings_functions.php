@@ -314,7 +314,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.61' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.62' );
 		}	
 	}
 	
@@ -851,16 +851,15 @@
 	
 	//function to check if string is a valid category syntax
 	function bl_check_is_valid_cat($cat_to_check){
-		$raw_cat = explode(",",$cat_to_check);
-		$cats = (is_array($raw_cat))? $raw_cat:"";
+		$cats = (is_array($cat_to_check))? $cat_to_check:explode(",",addslashes(strip_tags($cat_to_check)));
 		$is_int = array();
 		foreach($cats as $cat){
 			$is_int[] = is_numeric($cat)? true:false;
 		}
-		if(in_array(false,array_values($is_int))){
+		if(empty($is_int) || in_array(false,array_values($is_int))){
 			return false;
 		}else{
-			return true;
+			return implode(",",$cats);
 		}
 	}
 	

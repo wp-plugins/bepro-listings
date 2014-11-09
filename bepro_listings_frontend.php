@@ -84,16 +84,10 @@
 	}
 	
 	function result_page_back_button(){
-		$l_type = "";
-		if(!empty($_POST["l_type"]))
-		foreach($_POST["l_type"] as $check_l_type){
-			if(is_numeric($check_l_type))
-				$l_type .='<input type="hidden" name="l_type[]" value="'.$check_l_type.'">';
-		}
 		$button = '
 			<form method="post" id="result_page_back_button">
 				<input type="hidden" name="filter_search" value="1">
-				'.$l_type.'
+				<input type="hidden" name="l_type[]" value="'.(bl_check_is_valid_cat($_REQUEST["l_type"])? bl_check_is_valid_cat($_REQUEST["l_type"]):"").'">
 				<input type="hidden" name="distance" value="'.$_POST["distance"].'">
 				<input type="hidden" name="min_date" value="'.$_POST["min_date"].'">
 				<input type="hidden" name="max_date" value="'.$_POST["max_date"].'">

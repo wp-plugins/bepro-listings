@@ -40,36 +40,40 @@ This file is part of BePro Listings.
 
 jQuery(document).ready(function($) {
 
-	$('.bepro_listings_tabs .panel').hide();
+	launch_bepro_listing_tabs();
+});	
+
+function launch_bepro_listing_tabs(){
+	jQuery('.bepro_listings_tabs .panel').hide();
 	
-	$('.bepro_listings_tabs ul.tabs li a').click(function(){
+	jQuery('.bepro_listings_tabs ul.tabs li a').click(function(){
 		
-		var $tab = $(this);
-		var $tabs_wrapper = $tab.closest('.bepro_listings_tabs');
+		var jQuerytab = jQuery(this);
+		var jQuerytabs_wrapper = jQuerytab.closest('.bepro_listings_tabs');
 		
-		$('ul.tabs li', $tabs_wrapper).removeClass('active');
-		$('div.panel', $tabs_wrapper).hide();
-		$('div' + $tab.attr('href')).show();
-		$tab.parent().addClass('active');
+		jQuery('ul.tabs li', jQuerytabs_wrapper).removeClass('active');
+		jQuery('div.panel', jQuerytabs_wrapper).hide();
+		jQuery('div' + jQuerytab.attr('href')).show();
+		jQuerytab.parent().addClass('active');
 		
 		return false;	
 	});
 	
-	$('.bepro_listings_tabs').each(function() {
+	jQuery('.bepro_listings_tabs').each(function() {
 		var hash = window.location.hash;
 		if (hash.toLowerCase().indexOf("comment-") >= 0) {
-			$('ul.tabs li.reviews_tab a', $(this)).click();
+			jQuery('ul.tabs li.reviews_tab a', jQuery(this)).click();
 		} else {
-			$('ul.tabs li:first a', $(this)).click();
+			jQuery('ul.tabs li:first a', jQuery(this)).click();
 		}
 	});
 	
-	if($("#bepro_listings_tabs")){
-		$( "#bepro_listings_tabs" ).tabs();
+	if(jQuery("#bepro_listings_tabs")){
+		jQuery( "#bepro_listings_tabs" ).tabs();
 	}
 	
 	map_count = 0;
-	$(".frontend_bepro_listings_vert_tabs").easyResponsiveTabs({           
+	jQuery(".frontend_bepro_listings_vert_tabs").easyResponsiveTabs({           
 	type: 'vertical',           
 	width: 'auto',
 	fit: true,
@@ -80,4 +84,4 @@ jQuery(document).ready(function($) {
 		} 
 	}
 	});
-});	
+}

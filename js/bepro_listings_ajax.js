@@ -30,7 +30,7 @@ jQuery(document).ready(function(){
 				jQuery("#shortcode_list").replaceWith(options.listings);
 			if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
 				jQuery("#filter_search_form").replaceWith(options.filter);
-			if(((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
+			if((options.short_filter) && ((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
@@ -76,7 +76,7 @@ jQuery(document).ready(function(){
 					jQuery("#shortcode_list").replaceWith(options.listings);
 				if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
 					jQuery("#filter_search_form").replaceWith(options.filter);
-				if(((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
+				if((options.short_filter) && ((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
 					jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 				if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 					jQuery(".search_listings").replaceWith(options.search);
@@ -107,7 +107,7 @@ jQuery(document).ready(function(){
 				jQuery("#shortcode_list").replaceWith(options.listings);
 			if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
 				jQuery("#filter_search_form").replaceWith(options.filter);
-			if(((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
+			if((options.short_filter) && ((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
@@ -134,7 +134,7 @@ jQuery(document).ready(function(){
 				jQuery("#shortcode_list").replaceWith(options.listings);
 			if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
 				jQuery("#filter_search_form").replaceWith(options.filter);
-			if(((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
+			if((options.short_filter) && ((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
@@ -162,7 +162,7 @@ jQuery(document).ready(function(){
 				jQuery("#shortcode_list").replaceWith(options.listings);
 			if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
 				jQuery("#filter_search_form").replaceWith(options.filter);
-			if(((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
+			if((options.short_filter) && ((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
@@ -189,7 +189,7 @@ jQuery(document).ready(function(){
 				jQuery("#shortcode_list").replaceWith(options.listings);
 			if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
 				jQuery("#filter_search_form").replaceWith(options.filter);
-			if(((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
+			if((options.short_filter) && ((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery("#listingsearchform").replaceWith(options.search);
@@ -216,7 +216,7 @@ jQuery(document).ready(function(){
 				jQuery("#shortcode_list").replaceWith(options.listings);
 			if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
 				jQuery("#filter_search_form").replaceWith(options.filter);
-			if(((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
+			if((options.short_filter) && ((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery("#listingsearchform").replaceWith(options.search);
@@ -297,13 +297,16 @@ function bl_ajax_get_page(post_id){
 			jQuery("#shortcode_cat").replaceWith(options.cat);
 		if(((options.listings).length > 0) && (jQuery("#shortcode_list")))
 			jQuery("#shortcode_list").replaceWith(options.listings);
-		if(((options.filter).length > 0) && (jQuery("#filter_search_form")))
+		if((options.filter) && ((options.filter).length > 0) && (jQuery("#filter_search_form")))
 			jQuery("#filter_search_form").replaceWith(options.filter);
-		if(((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
+		if((options.short_filter) && ((options.short_filter).length > 0) && (jQuery(".filter_search_form_shortcode")))
 			jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);	
 		if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 			jQuery(".search_listings").replaceWith(options.search);
 		if(((options.map).length > 0) && (jQuery("#shortcode_map")))
 			jQuery("#shortcode_map").replaceWith(options.map);
+			
+		launch_bepro_listing_tabs();
+		if(jQuery.isFunction("bl_launch_gallery"))bl_launch_gallery();
 	}});	
 }

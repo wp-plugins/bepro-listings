@@ -1,0 +1,219 @@
+# Translation for BePro Listings
+# Copyright (C) 2012 Beyond Programs LTD (beyondprograms.com)
+# This file is distributed under the same license as BePro Listings.
+# BePro Software Team <support@beprosoftware.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: BePro Listings Translation 1.0\n"
+"Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2012-09-14 16:20+0200\n"
+"PO-Revision-Date: 2014-11-11 13:15-0400\n"
+"Last-Translator: \n"
+"Language-Team: bepro software\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.7\n"
+"Language: pt_PT\n"
+
+msgid "Item Information"
+msgstr "Vareinformasjon"
+
+#: bepro_listings_frontend.php:321
+msgid "Item Name"
+msgstr "Elementnavn"
+
+#: bepro_listings_frontend.php:322
+msgid "Cost"
+msgstr "Kostnader"
+
+#: bepro_listings_frontend.php:323
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: bepro_listings_frontend.php:334
+msgid "Image"
+msgstr "Bilde"
+
+#: bepro_listings_frontend.php:324
+msgid "Categories"
+msgstr "Kategorier"
+
+#: bepro_listings_frontend.php:345
+msgid "Contact Information"
+msgstr "Kontaktinformasjon"
+
+#: bepro_listings_frontend.php:346
+msgid "First Name"
+msgstr "Fornavn"
+
+#: bepro_listings_frontend.php:347
+msgid "Last Name"
+msgstr "Etternavn"
+
+#: bepro_listings_frontend.php:348
+msgid "Email"
+msgstr "E-post"
+
+#: bepro_listings_frontend.php:349
+msgid "Phone"
+msgstr "Telefon"
+
+#: bepro_listings_frontend.php:350
+msgid "Website"
+msgstr "Nettsted"
+
+#: bepro_listings_frontend.php:356
+msgid "Location Information"
+msgstr "Stedsinformasjon"
+
+#: bepro_listings_frontend.php:357
+msgid "Address"
+msgstr "Adresse"
+
+#: bepro_listings_frontend.php:358
+msgid "City"
+msgstr "Byen"
+
+#: bepro_listings_frontend.php:359
+msgid "State"
+msgstr "Tilstand"
+
+#: bepro_listings_frontend.php:360
+msgid "Country"
+msgstr "Land"
+
+#: bepro_listings_frontend.php:361
+msgid "Zip / Postal"
+msgstr "Zip- / postnummer"
+
+msgid "Filter Listings"
+msgstr "Filtrere oppføringer"
+
+msgid "Listings Map"
+msgstr "Oppføringer kart"
+
+#: bepro_listings.php:261
+msgid "From"
+msgstr "Fra"
+
+#: bepro_listings.php:261
+msgid "To"
+msgstr "Til"
+
+#: bepro_listings.php:264
+msgid "Date Range"
+msgstr "Datointervall"
+
+#: bepro_listings.php:261
+msgid "Price Range"
+msgstr "Prisklasse"
+
+#: bepro_listings.php:268
+msgid "Refine Search"
+msgstr "Søket"
+
+#: bepro_listings.php:248
+msgid "Distance"
+msgstr "Avstand"
+
+#: bepro_listings.php:79
+msgid "Where"
+msgstr "Hvor"
+
+#: bepro_listings.php:82
+msgid "Name"
+msgstr "navn"
+
+#: bepro_listings.php:85
+msgid "Search Listings"
+msgstr "Oppføringer"
+
+#: bepro_listings_frontend.php:370
+msgid "Username"
+msgstr "Brukernavn"
+
+#: bepro_listings_frontend.php:371
+msgid "Password"
+msgstr "Passord"
+
+#: bepro_listings_frontend.php:369
+msgid "Login / Register"
+msgstr "Logg inn / Registrer"
+
+#: bepro_listings_frontend.php:375
+msgid "Create Listing"
+msgstr "Lag liste"
+
+#: bepro_listings.php:234
+msgid "Listing Types"
+msgstr "Viser typer"
+
+#: bepro_listings.php:276
+msgid "Free"
+msgstr "Gratis"
+
+#: bepro_listings.php:278
+msgid "Please Contact"
+msgstr "Kontakt"
+
+#: bepro_listings.php:285
+msgid "View Map"
+msgstr "Vis kart"
+
+#: ------------Admin Area---------------- bepro_listings_admin.php:258
+msgid "Show Cost"
+msgstr "Vis Cost"
+
+#: bepro_listings_admin.php:259
+msgid "Show Contact"
+msgstr "Vis kontakt"
+
+#: bepro_listings_admin.php:260
+msgid "Show Geography"
+msgstr "Vis geografi"
+
+#: bepro_listings_admin.php:261
+msgid "# Of Images"
+msgstr "Antall bilder"
+
+#: bepro_listings_admin.php:274
+msgid "Validate Form"
+msgstr "Validere skjemaet"
+
+#: bepro_listings_admin.php:275
+msgid "Default User Id"
+msgstr "Standard bruker-Id"
+
+#: bepro_listings_admin.php:276
+msgid "Success Message"
+msgstr "Melding"
+
+#: bepro_listings_admin.php:279
+msgid "Default Listing Image"
+msgstr "Standardbildet for liste"
+
+#: bepro_listings_admin.php:280
+msgid "Default # Listings"
+msgstr "Standard # oppføringer"
+
+#: bepro_listings_admin.php:288
+msgid "Default Search Distance (Mi)"
+msgstr "Søk standardavstanden (Mi)"
+
+#: bepro_listings_admin.php:299
+msgid "Gallery Size"
+msgstr "Galleri størrelse"
+
+#: bepro_listings_admin.php:305
+msgid "Show Details"
+msgstr "Vis detaljer"
+
+#: bepro_listings_admin.php:306
+msgid "Show Content"
+msgstr "Vis innhold"
+
+#: bepro_listings_admin.php:319
+msgid "Our Link in your footer?"
+msgstr "Vår Link i bunnteksten?"

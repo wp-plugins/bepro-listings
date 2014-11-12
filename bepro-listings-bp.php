@@ -17,6 +17,10 @@
 		LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
 		
 		$listing_url = $bp->loggedin_user->domain.$bp->current_component."/".BEPRO_LISTINGS_CREATE_SLUG."/";
+		
+		$add_new_button = apply_filters("bl_change_add_listing_button", false, $listing_url);
+		if($add_new_button)
+			echo $add_new_button;
 		require( dirname( __FILE__ ) . '/templates/list.php' );
 	}
 	

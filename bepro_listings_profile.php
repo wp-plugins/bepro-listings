@@ -59,7 +59,8 @@
 			LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
 			
 			$listing_url = "?bl_manage=1&bl_id=";
-			$return_text .= "<p><a href='".$listing_url."'>Add a Listing</a></p>";
+			$add_listing_button = "<p><a href='".$listing_url."'>".__("Add a Listing")."</a></p>";
+			$return_text .= apply_filters("bl_change_add_listing_button", $add_listing_button, $listing_url);
 			ob_start(); 
 			require( dirname( __FILE__ ) . '/templates/list.php' );
 			$return_text .= ob_get_clean(); 

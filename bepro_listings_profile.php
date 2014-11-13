@@ -60,9 +60,15 @@
 			
 			$listing_url = "?bl_manage=1&bl_id=";
 			$add_listing_button = "<p><a href='".$listing_url."'>".__("Add a Listing")."</a></p>";
+			
+			//allow addons to override create listing button
 			$return_text .= apply_filters("bl_change_add_listing_button", $add_listing_button, $listing_url);
+			
+			//allow addons to change profile template
+			$bl_my_list_template = apply_filters("bl_change_my_list_template",dirname( __FILE__ ) . '/templates/list.php', $items);
+			
 			ob_start(); 
-			require( dirname( __FILE__ ) . '/templates/list.php' );
+			require( $bl_my_list_template );
 			$return_text .= ob_get_clean(); 
 			return $return_text;
 		}

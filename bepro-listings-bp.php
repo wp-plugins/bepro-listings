@@ -18,10 +18,14 @@
 		
 		$listing_url = $bp->loggedin_user->domain.$bp->current_component."/".BEPRO_LISTINGS_CREATE_SLUG."/";
 		
+		//allow addons to override create listing button. The default for buddypress is to not have a button
 		$add_new_button = apply_filters("bl_change_add_listing_button", false, $listing_url);
 		if($add_new_button)
 			echo $add_new_button;
-		require( dirname( __FILE__ ) . '/templates/list.php' );
+		
+		//allow addons to change profile template
+		$bl_my_list_template = apply_filters("bl_change_my_list_template",dirname( __FILE__ ) . '/templates/list.php', $items);
+		require( $bl_my_list_template );
 	}
 	
     function create_listings() {

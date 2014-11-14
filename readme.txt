@@ -83,7 +83,7 @@ BePro Listings can be integrated into your **current theme** and capture specifi
 Our Addons provide lots of new ways to customize your listings experinece. Current available add-ons include:
 
 	1. Form Builder (NEW) - Use the visual drag and drop interface to create multiple front end upload forms and directory listing types
-	2. Contact - Receive notifications when someone submits a listing. Also add a contact form to your listing detail pages.
+	2. Claim Listing (NEW) - Allow users to claim listings from the frontend
 	3. Gallery - Three 3 gallery options including slider & lightbox, plus three new listings templates
 	4. Video - Improve on the Gallery plugin with the ability to upload file types like (mp4, mpeg, avi, wmv, webm). Also link videos from sites like, youtube, vimeo, & dailymotion. Uploaded videos are played using HTML5 or fallback to flassh
 	5. Documents - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)
@@ -102,6 +102,7 @@ Our Addons provide lots of new ways to customize your listings experinece. Curre
 	18. Search - Add predictive google maps address lookup and auto complete enhancements to the basic search feature
 	19. Tags - You and your members can tag your listings and allow users to search them via the tag widget
 	20. reCAPTCHA - Prevent spam and malicious submissions with this google reCAPTCHA system
+	21. Contact - Receive notifications when someone submits a listing. Also add a contact form to your listing detail pages.
 
 = THEMES =
 

@@ -20,12 +20,28 @@
 		
 		//allow addons to override create listing button. The default for buddypress is to not have a button
 		$add_new_button = apply_filters("bl_change_add_listing_button", false, $listing_url);
-		if($add_new_button)
+		if($add_new_button && bp_is_my_profile())
 			echo $add_new_button;
 		
 		//allow addons to change profile template
 		$bl_my_list_template = apply_filters("bl_change_my_list_template",dirname( __FILE__ ) . '/templates/list.php', $items);
-		require( $bl_my_list_template );
+		if($bl_my_list_template)
+			require( $bl_my_list_template );
+	}
+	
+	function show_visitor_profile($template, $items){
+		$ids = array();
+		foreach($items as $item){
+			$ids[] = $item->page_id;
+		}
+		echo "<h2>My Listings</h2>";
+		if(sizeof($ids) > 0){
+			echo do_shortcode("[display_listings l_ids='".explode(",", $ids)."' type='2' show_paging=1]");
+		}else{
+			echo "<p>No live listings for this user</p>";
+		}
+		echo "<div style='clear:both'><br /></div>";
+		return "";
 	}
 	
     function create_listings() {
@@ -178,7 +194,10 @@
 			
 			bp_core_new_subnav_item( array( 'name' => __( BEPRO_LISTINGS_LIST_SLUG, 'buddypress' ), 'slug' => BEPRO_LISTINGS_LIST_SLUG, 'parent_url' => $settings_link, 'parent_slug' => BEPRO_LISTINGS_SLUG, 'screen_function' => 'display_item_list', 'position' => 10) );
 			
-			bp_core_new_subnav_item( array( 'name' => __( BEPRO_LISTINGS_CREATE_SLUG, 'buddypress' ), 'slug' => BEPRO_LISTINGS_CREATE_SLUG, 'parent_url' => $settings_link, 'parent_slug' => BEPRO_LISTINGS_SLUG, 'screen_function' => 'create_listings', 'position' => 90, 'user_has_access' => bp_is_my_profile() ) );
+			//if there is a 3rd party plugin which takes over the creation of listings, then don't show the button
+			$add_new_button = apply_filters("bl_change_add_listing_button", false, $listing_url);
+			if(!$add_new_button)
+				bp_core_new_subnav_item( array( 'name' => __( BEPRO_LISTINGS_CREATE_SLUG, 'buddypress' ), 'slug' => BEPRO_LISTINGS_CREATE_SLUG, 'parent_url' => $settings_link, 'parent_slug' => BEPRO_LISTINGS_SLUG, 'screen_function' => 'create_listings', 'position' => 90, 'user_has_access' => bp_is_my_profile() ) );
 
 
 		  // Change the order of menu items

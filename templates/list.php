@@ -3,19 +3,18 @@
 		$data = get_option("bepro_listings");
 		
 		if(isset($_GET["message"]))echo "<span class='classified_message'>".$_GET["message"]."</span>";
-		echo "
-			<h2>My Item Listings</h2>
-			<table id='classified_listings_table'><tr>
-				<td>Name</td>
-				<td>Type</td>
-				<td>Image</td>
-				<td>Address</td>
-				<td>Notices</td>
-				<td>Status</td>
-				<td>Actions</td>
-			</tr>
-		";
+		echo "<h2>My Item Listings</h2>";
 		if(sizeof($items) > 0){
+			echo "<table id='classified_listings_table'><tr>
+					<td>Name</td>
+					<td>Type</td>
+					<td>Image</td>
+					<td>Address</td>
+					<td>Notices</td>
+					<td>Status</td>
+					<td>Actions</td>
+				</tr>
+			";
 			foreach($items as $item){
 				$notice = "None";
 				$status = (($item->post_status == "publish")? "Published":"Pending");
@@ -30,7 +29,7 @@
 					}
 					
 					if($cost > 0){
-						$notice = "Pay: $".$cost;
+						$notice = "Pay: ".$data["currency_sign"].$cost;
 					}
 				}
 				echo "
@@ -56,10 +55,11 @@
 				";
 			}
 		}else{
-			if($bp->displayed_user->id == $bp->loggedin_user->id){
-				echo "<tr><td colspan=7>No Live listings. Why not create one for free <a href='$listing_url'>here</a></td></tr>";
+			echo "<table id=''>";
+			if(@bp_is_my_profile()){
+				echo "<tr><td colspan=7>No Live listings created yet. You Should create one</a></td></tr>";
 			}else{
-				echo "<tr><td colspan=7>No Live listings for this user</td></tr>";
+				echo "<tr><td colspan=7>No live listings for this user</td></tr>";
 			}
 		}		
 		echo "</table>";

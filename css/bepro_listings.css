@@ -328,8 +328,14 @@
 	margin:10px 0;
 	float: left;
 }
+/* buddypress */
 
-
+#classified_listings_table td{
+	border:1px solid #CCC; 
+}
+#classified_listings_table tr td:last-child{
+	width:20%;
+}
 /* Paging */
 .paging{
 	float:right;

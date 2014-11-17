@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, address, buddypress, buddypress directory, business, business directory, car, catalog, catalogue, classifieds, classifieds directory, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, location, payments, paid, paypal, pets, plugin, portfolio directory, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress business, wordpress directory, wordpress directory plugin, wordpress directory theme, wordpress classifieds, wordpress catalog, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.66
+Stable tag: 2.1.67
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -293,9 +293,10 @@ Many of what we give away for free, others will charge you for e.g. clusterd goo
 
 == Changelog ==
 
-= 2.1.66 (November 17th, 2014) =
+= 2.1.67 (November 17th, 2014) =
 
 * Buddypress profile visitors now see paged listings
+* Fixed buddypress issue introduced in version 2.1.66 where visitors saw listings unrelated to the profile owner
 * Tweak profile layout for logged in users
 * Now using currency sign from admin settings, for the "pay" option on the user profile
 * New filters added for better management of "create listing" feature

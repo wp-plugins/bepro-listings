@@ -1,0 +1,255 @@
+# Translation for BePro Listings
+# Copyright (C) 2012 Beyond Programs LTD (beyondprograms.com)
+# This file is distributed under the same license as BePro Listings.
+# BePro Software Team <support@beprosoftware.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: BePro Listings Translation 1.0\n"
+"Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2012-09-14 16:20+0200\n"
+"PO-Revision-Date: 2014-11-20 18:04-0400\n"
+"Last-Translator: \n"
+"Language-Team: bepro software\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.7\n"
+"Language: pt_PT\n"
+
+msgid "Item Information"
+msgstr "Informazioni sull'elemento"
+
+#: bepro_listings_frontend.php:321
+msgid "Item Name"
+msgstr "Nome dell'articolo"
+
+#: bepro_listings_frontend.php:322
+msgid "Cost"
+msgstr "Costo"
+
+#: bepro_listings_frontend.php:323
+msgid "Description"
+msgstr "Descrizione"
+
+#: bepro_listings_frontend.php:334
+msgid "Image"
+msgstr "Immagine"
+
+#: bepro_listings_frontend.php:324
+msgid "Categories"
+msgstr "Categorie"
+
+#: bepro_listings_frontend.php:345
+msgid "Contact Information"
+msgstr "Informazioni di contatto"
+
+#: bepro_listings_frontend.php:346
+msgid "First Name"
+msgstr "Nome"
+
+#: bepro_listings_frontend.php:347
+msgid "Last Name"
+msgstr "Cognome"
+
+#: bepro_listings_frontend.php:348
+msgid "Email"
+msgstr "Posta elettronica"
+
+#: bepro_listings_frontend.php:349
+msgid "Phone"
+msgstr "Telefono"
+
+#: bepro_listings_frontend.php:350
+msgid "Website"
+msgstr "Sito Web"
+
+#: bepro_listings_frontend.php:356
+msgid "Location Information"
+msgstr "Informazioni sulla posizione"
+
+#: bepro_listings_frontend.php:357
+msgid "Address"
+msgstr "Indirizzo"
+
+#: bepro_listings_frontend.php:358
+msgid "City"
+msgstr "Città"
+
+#: bepro_listings_frontend.php:359
+msgid "State"
+msgstr "Stato"
+
+#: bepro_listings_frontend.php:360
+msgid "Country"
+msgstr "Paese"
+
+#: bepro_listings_frontend.php:361
+msgid "Zip / Postal"
+msgstr "Zip / Postal"
+
+msgid "Filter Listings"
+msgstr "Filtro annunci"
+
+msgid "Listings Map"
+msgstr "Mappa di inserzioni"
+
+#: bepro_listings.php:261
+msgid "From"
+msgstr "Da"
+
+#: bepro_listings.php:261
+msgid "To"
+msgstr "A"
+
+#: bepro_listings.php:264
+msgid "Date Range"
+msgstr "Intervallo di date"
+
+#: bepro_listings.php:261
+msgid "Price Range"
+msgstr "Fascia di prezzo"
+
+#: bepro_listings.php:268
+msgid "Refine Search"
+msgstr "Affinare la ricerca"
+
+#: bepro_listings.php:248
+msgid "Distance"
+msgstr "Distanza"
+
+#: bepro_listings.php:79
+msgid "Where"
+msgstr "Dove"
+
+#: bepro_listings.php:82
+msgid "Name"
+msgstr "Nome"
+
+#: bepro_listings.php:85
+msgid "Search Listings"
+msgstr "Cerca annunci"
+
+#: bepro_listings_frontend.php:370
+msgid "Username"
+msgstr "Nome utente"
+
+#: bepro_listings_frontend.php:371
+msgid "Password"
+msgstr "Password"
+
+#: bepro_listings_frontend.php:369
+msgid "Login / Register"
+msgstr "Login / Register"
+
+#: bepro_listings_frontend.php:375
+msgid "Create Listing"
+msgstr "Crea inserzione"
+
+#: bepro_listings.php:234
+msgid "Listing Types"
+msgstr "Elenco tipi"
+
+#: bepro_listings.php:276
+msgid "Free"
+msgstr "Gratis"
+
+#: bepro_listings.php:278
+msgid "Please Contact"
+msgstr "Si prega di contattare"
+
+#: bepro_listings.php:285
+msgid "View Map"
+msgstr "Vedi mappa"
+
+#: ------------Admin Area---------------- bepro_listings_admin.php:258
+msgid "Show Cost"
+msgstr "Toon kostenVisualizza il costo"
+
+#: bepro_listings_admin.php:259
+msgid "Show Contact"
+msgstr "Visualizza contatto"
+
+#: bepro_listings_admin.php:260
+msgid "Show Geography"
+msgstr "Visualizza geografia"
+
+#: bepro_listings_admin.php:261
+msgid "# Of Images"
+msgstr "# Di immagini"
+
+#: bepro_listings_admin.php:274
+msgid "Validate Form"
+msgstr "Convalidare la forma"
+
+#: bepro_listings_admin.php:275
+msgid "Default User Id"
+msgstr "Id utente predefinito"
+
+#: bepro_listings_admin.php:276
+msgid "Success Message"
+msgstr "Messaggio di successo"
+
+#: bepro_listings_admin.php:279
+msgid "Default Listing Image"
+msgstr "Immagine predefinita dall'elenco"
+
+#: bepro_listings_admin.php:280
+msgid "Default # Listings"
+msgstr "Default # inserzioni"
+
+#: bepro_listings_admin.php:288
+msgid "Default Search Distance (Mi)"
+msgstr "Distanza di ricerca predefinita (Mi)"
+
+#: bepro_listings_admin.php:299
+msgid "Gallery Size"
+msgstr "Galleria dimensione"
+
+#: bepro_listings_admin.php:305
+msgid "Show Details"
+msgstr "Visualizza dettagli"
+
+#: bepro_listings_admin.php:306
+msgid "Show Content"
+msgstr "Visualizza contenuto"
+
+#: bepro_listings_admin.php:319
+msgid "Our Link in your footer?"
+msgstr "Il nostro Link nel tuo piè di pagina?"
+
+#: bepro_listings_admin.php:575
+msgid "General"
+msgstr "Generale"
+
+#: bepro_listings_admin.php:576
+msgid "Forms"
+msgstr "Forme"
+
+#: bepro_listings_admin.php:577
+msgid "Search/Listings"
+msgstr "Ricerca/Inserzioni"
+
+#: bepro_listings_admin.php:578
+msgid "Page/Post"
+msgstr "Pagina/Post"
+
+#: bepro_listings_admin.php:579
+msgid "Map"
+msgstr "Mappa"
+
+#: bepro_listings_admin.php:580
+msgid "3rd Party"
+msgstr "3a parte"
+
+#: bepro_listings_admin.php:581
+msgid "CSV Upload"
+msgstr "CSV Upload"
+
+#: bepro_listings_admin.php:582
+msgid "Payments"
+msgstr "Pagamenti"
+
+#: bepro_listings_admin.php:583
+msgid "Support"
+msgstr "Supporto"

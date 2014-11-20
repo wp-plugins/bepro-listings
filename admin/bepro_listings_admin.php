@@ -566,21 +566,21 @@
 		
 		
 		?>
-		<h1>BePro Listings Options</h1>
+		<h1><?php _e("BePro Listings Options", "bepro-listings"); ?></h1>
 		<div class="wrap bepro_listings_admin_form">
 			<form class="bepro_listings" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="update_options" value="1" />
 				<div id="bepro_listings_tabs">
 					<ul>
-						<li><a href="#tabs-1">General</a></li>
-						<li><a href="#tabs-2">Forms</a></li>
-						<li><a href="#tabs-3">Search/Listings</a></li>
-						<li><a href="#tabs-4">Page/Post</a></li>
-						<li><a href="#tabs-5">Map</a></li>
-						<li><a href="#tabs-6">3rd Party</a></li>
-						<li><a href="#tabs-7">CSV Upload</a></li>
-						<li><a href="#tabs-8">Payments</a></li>
-						<li><a href="#tabs-9">Support</a></li>
+						<li><a href="#tabs-1"><?php _e("General", "bepro-listings"); ?></a></li>
+						<li><a href="#tabs-2"><?php _e("Forms", "bepro-listings"); ?></a></li>
+						<li><a href="#tabs-3"><?php _e("Search/Listings", "bepro-listings"); ?></a></li>
+						<li><a href="#tabs-4"><?php _e("Page/Post", "bepro-listings"); ?></a></li>
+						<li><a href="#tabs-5"><?php _e("Map", "bepro-listings"); ?></a></li>
+						<li><a href="#tabs-6"><?php _e("3rd Party", "bepro-listings"); ?></a></li>
+						<li><a href="#tabs-7"><?php _e("CSV Upload", "bepro-listings"); ?></a></li>
+						<li><a href="#tabs-8"><?php _e("Payments", "bepro-listings"); ?></a></li>
+						<li><a href="#tabs-9"><?php _e("Support", "bepro-listings"); ?></a></li>
 					</ul>
 				
 					<div id="tabs-1">
@@ -619,10 +619,10 @@
 					<div id="tabs-3">
 						<span class="form_label"><?php _e("Default Listing Image", "bepro-listings"); ?></span><input type="text" name="default_image" value="<?php echo $data["default_image"]; ?>" /></br>
 						<span class="form_label"><?php _e("How Links Open", "bepro-listings"); ?></span><select name="link_new_page">
-							<option value="1" <?php echo ($data["link_new_page"] == 1)? 'selected="selected"':"" ?>>Go To Page</option>
-							<option value="2" <?php echo ($data["link_new_page"] == 2)? 'selected="selected"':"" ?>>New Tab</option>
-							<option value="3" <?php echo ($data["link_new_page"] == 3)? 'selected="selected"':"" ?>>Ajax Page</option>
-							<option value="4" <?php echo ($data["link_new_page"] == 4)? 'selected="selected"':"" ?>>Hide Internal</option>
+							<option value="1" <?php echo ($data["link_new_page"] == 1)? 'selected="selected"':"" ?>><?php _e("Go To Page", "bepro-listings"); ?></option>
+							<option value="2" <?php echo ($data["link_new_page"] == 2)? 'selected="selected"':"" ?>><?php _e("New Tab", "bepro-listings"); ?></option>
+							<option value="3" <?php echo ($data["link_new_page"] == 3)? 'selected="selected"':"" ?>><?php _e("Ajax Page", "bepro-listings"); ?></option>
+							<option value="4" <?php echo ($data["link_new_page"] == 4)? 'selected="selected"':"" ?>><?php _e("Hide Internal", "bepro-listings"); ?></option>
 						</select><br />
 						<span class="form_label"><?php _e("Ajax On?", "bepro-listings"); ?></span><input type="checkbox" name="ajax_on" <?php echo ($data["ajax_on"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Default # Listings", "bepro-listings"); ?></span><select name="num_listings">
@@ -733,7 +733,7 @@
 					</div>
 				</div>
 				<span style="clear:both;display: block;"><br /></span>
-				<input type="submit" name="submit" value="Update BePro Listings Options &raquo" />
+				<input type="submit" name="submit" value="<?php _e("Update BePro Listings Options", "bepro-listings"); ?> &raquo" />
 			</form>
 		</div>
 		<div class="bepro_listings_loading_msg">

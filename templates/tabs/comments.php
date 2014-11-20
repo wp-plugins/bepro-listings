@@ -11,7 +11,7 @@ global $post;
 if ( comments_open() ) : ?>
 	<div class="panel entry-content" id="tab-comments">
 
-		<?php comments_template(); ?>
+		<?php echo get_template_part( "comments" ); ?>
 
 	</div>
 <?php endif; ?>

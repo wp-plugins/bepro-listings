@@ -12,11 +12,15 @@ if ( comments_open() ) : ?>
 	<div class="panel entry-content" id="tab-comments">
 
 		<?php 
-			
-			$comments = get_template_part( "comments" ); 
-			
-			if(empty($comments))
+			ob_start();
+			get_template_part( "comments" );
+			$comments = ob_get_contents();
+			ob_end_clean();
+			if(empty($comments)){
 				comments_template();
+			}else{
+				echo $comments;
+			}
 		?>
 
 	</div>

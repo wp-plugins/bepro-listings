@@ -195,7 +195,13 @@
 			bp_core_new_subnav_item( array( 'name' => __( BEPRO_LISTINGS_LIST_SLUG, 'buddypress' ), 'slug' => BEPRO_LISTINGS_LIST_SLUG, 'parent_url' => $settings_link, 'parent_slug' => BEPRO_LISTINGS_SLUG, 'screen_function' => 'display_item_list', 'position' => 10) );
 			
 			//if there is a 3rd party plugin which takes over the creation of listings, then don't show the button
-			bp_core_new_subnav_item( array( 'name' => __( BEPRO_LISTINGS_CREATE_SLUG, 'buddypress' ), 'slug' => BEPRO_LISTINGS_CREATE_SLUG, 'parent_url' => $settings_link, 'parent_slug' => BEPRO_LISTINGS_SLUG, 'screen_function' => 'create_listings', 'position' => 90) );
+			$add_new_button = apply_filters("bl_change_add_listing_button", false, $listing_url);
+			$item_css_id = "";
+			if($add_new_button){
+				$item_css_id = "bl_hide_bp_create_menu";
+			}
+		
+			bp_core_new_subnav_item( array( 'name' => __( BEPRO_LISTINGS_CREATE_SLUG, 'buddypress' ), 'slug' => BEPRO_LISTINGS_CREATE_SLUG, 'parent_url' => $settings_link, 'parent_slug' => BEPRO_LISTINGS_SLUG, 'screen_function' => 'create_listings', 'position' => false, 'user_has_access' => bp_is_my_profile(), 'item_css_id' => $item_css_id) );
 
 
 		  // Change the order of menu items

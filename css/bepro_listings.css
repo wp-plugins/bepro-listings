@@ -336,6 +336,9 @@
 #classified_listings_table tr td:last-child{
 	width:20%;
 }
+#bl_hide_bp_create_menu{
+	display:none !important;
+}
 /* Paging */
 .paging{
 	float:right;

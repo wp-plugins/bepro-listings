@@ -196,8 +196,8 @@
 				var currentlon;
 				markers = new Array();
 				positions = new Array();
-				var currentlat = $currlat;
-				var currentlon = $currlon;
+				var currentlat = '$currlat';
+				var currentlon = '$currlon';
 				var openwindow = false;
 				var latlng = new google.maps.LatLng(currentlat, currentlon);
 				icon_1 = new google.maps.MarkerImage('".plugins_url("images/icons/icon_1.png", __FILE__)."');

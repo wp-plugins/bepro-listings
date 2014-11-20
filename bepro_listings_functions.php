@@ -315,7 +315,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.69' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.70' );
 		}	
 	}
 	
@@ -627,14 +627,16 @@
 						$lon = $_POST['lon'];
 					}else{
 						$latlon = get_bepro_lat_lon();
-						$lat = $latlon["lat"];
-						$lon = $latlon["lon"];
+						if(sizeof($latlon) > 0){
+							$lat = $latlon["lat"];
+							$lon = $latlon["lon"];
+						}
 					}
 					
 					$post_data = $_POST;
 					$post_data["post_id"] = $post_id;
-					$post_data["lat"] = $lat;
-					$post_data["lon"] = $lon;
+					$post_data["lat"] = @$lat;
+					$post_data["lon"] = @$lon;
 					$post_data["cost"] = $cost;
 					$listing = $wpdb->get_row("SELECT id FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post_id);
 					if($listing){
@@ -775,7 +777,7 @@
 			lat           = '".$wpdb->escape(strip_tags($post['lat']))."',
 			lon           = '".$wpdb->escape(strip_tags($post['lon']))."',
 			website       = '".$wpdb->escape(strip_tags($_POST['website']))."',
-			expires       = '".(!empty($post['expires'])? date("Y-m-d H:i:s", strtotime($post['expires'])):"")."',
+			expires       = '".(!empty($post['expires'])? date("Y-m-d H:i:s", strtotime($post['expires'])):"")."'
 			WHERE post_id ='".$wpdb->escape(strip_tags($post['post_id']))."'");
 	}
 	

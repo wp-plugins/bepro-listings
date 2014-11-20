@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, address, buddypress, buddypress directory, business, business directory, car, catalog, catalogue, classifieds, classifieds directory, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, location, payments, paid, paypal, pets, plugin, portfolio directory, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress business, wordpress directory, wordpress directory plugin, wordpress directory theme, wordpress classifieds, wordpress catalog, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.69
+Stable tag: 2.1.70
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -293,9 +293,11 @@ Many of what we give away for free, others will charge you for e.g. clusterd goo
 
 == Changelog ==
 
-= 2.1.69 (November 20th, 2014) =
+= 2.1.70 (November 20th, 2014) =
 
 * Buddypress create tab can now be hidden by 3rd party addons like the form builder
+* Fixed issue with updating listings
+* Fixed ajax paging issue when geo features are on but no lat/lon provided
 
 = 2.1.68 (November 19th, 2014) =
 

@@ -1012,12 +1012,13 @@
 	
 	function bepro_listings_maps_panel(){
 		$data = get_option("bepro_listings");
-		if($data["show_geo"] == "on")
+		if($data["show_geo"] == "on"){
 			global $wpdb;
 			$page_id = get_the_ID();
 			$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id = ".$page_id);
 			if(@$item && !empty($item->lat) && !empty($item->lon))
 				include(plugin_dir_path( __FILE__ )."templates/tabs/maps.php");
+		}
 	}
 
 	

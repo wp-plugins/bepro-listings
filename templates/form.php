@@ -156,7 +156,7 @@
 			echo '
 				<div class="add_listing_form_register bepro_form_section">
 					<h3>'.__("Login / Register", "bepro-listings").'</h3>
-					<span class="form_label">'.__("Username", "bepro-listings").'</span><input type="text" id="user_name" name="user_name">
+					<span class="form_label">'.__("Username", "bepro-listings").'</span><input type="text" id="user_name" name="username">
 					<span class="form_label">'.__("Password", "bepro-listings").'</span><input type="password" id="password" name="password">';
 			do_action("bepro_listing_form_after_register", $post_data);			
 			echo '	</div>';

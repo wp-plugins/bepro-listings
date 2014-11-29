@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.73
+Version: 2.1.74
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -143,17 +143,17 @@ class Bepro_listings{
 					<input type="hidden" name="max_date" value="'.$_POST["max_date"].'">
 					<input type="hidden" name="min_cost" value="'.$_POST["min_cost"].'">
 					<input type="hidden" name="max_cost" value="'.$_POST["max_cost"].'">';	
-		if($data["show_geo"] == (1||"on"))$return_text .= '
+		if(($data["show_geo"] == 1) || ($data["show_geo"] == "on"))$return_text .= '
 					<span class="blsearchwhere">
 						<span class="searchlabel">'.__("Where", "bepro-listings").'</span>
 						<input type="text" name="addr_search" value="'.$_POST["addr_search"].'">
 					</span>';
-		$return_text .=	'
+		if(($data["show_con"] == 1) ||($data["show_con"] == "on"))$return_text .=	'
 					<span class="blsearchname">
 						<span class="searchlabel">'.__("Name", "bepro-listings").'</span>
 						<input type="text" name="name_search" id="name_search" value="'.$_POST["name_search"].'">
-					</span>
-					<span class="blsearchbuttons">
+					</span>';
+				$return_text .=	'	<span class="blsearchbuttons">
 					<input type="submit" value="'.__("Search Listings", "bepro-listings").'">
 										<a class="clear_search" href="'.get_bloginfo("url")."/".$listing_page.'"><button>Clear Search</button></a>
 					</span>					

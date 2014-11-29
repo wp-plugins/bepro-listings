@@ -315,7 +315,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.73' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.74' );
 		}	
 	}
 	
@@ -423,8 +423,9 @@
 			$bepro_listings_version = BEPRO_LISTINGS_VERSION;
 			
 			//BePro Email Integration
-			if(class_exists("Bepro_email")){
+			if(@class_exists("Bepro_email")){
 				$bepro_email = new Bepro_email();
+				$bepro_email->delete_all_owner_emails("bepro_listings");
 				//email 1
 				$email["post_title"] = "Hello [username]";
 				$email["post_content"] = "Your submission to [website_url] has been received. Thank you";

@@ -52,7 +52,7 @@ BePro Listings can be integrated into your **current theme** and capture specifi
 	* Paid Listings - Charge users per category or charge a flat fee to submit a listing (BePro Cart required). Or use one of our membership addons to limit listings and features by level
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a free BePro Listings Realestate addon
 	* Car Dealer - List your vehicle inventory, cars, trucks, boats, planes etc. Or use geo features for Fleet Tracking
-	* Affiliate - List, price, and link to amazon products or other popular affilate campaigns.
+	* Link Directory - List, price, and link to amazon products or other popular affilate campaigns.
 	* Portfolio - Feature your work in various ways, allowing users to view details and comment. Great for showcasing your projects.
 	* Pet Directory - Showcase information on any animal and allow users to search and filter through them 
 	* Store Finder - List your store or shop branches including, location and contact details 
@@ -561,7 +561,7 @@ Many of what we give away for free, others will charge you for e.g. clusterd goo
 
 = 2.1.19 (Saturday Apr 10th 2014) =
 
-* New listing link option in admin for affiliate projects
+* New listing link option in admin for link directory projects
 * New filter for listing titles
 * Listing titles are now linked
 * Listing links depend on listing link option in admin. This includes images

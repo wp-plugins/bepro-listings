@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.74
+Version: 2.1.75
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -148,12 +148,12 @@ class Bepro_listings{
 						<span class="searchlabel">'.__("Where", "bepro-listings").'</span>
 						<input type="text" name="addr_search" value="'.$_POST["addr_search"].'">
 					</span>';
-		if(($data["show_con"] == 1) ||($data["show_con"] == "on"))$return_text .=	'
+		if(@$data["search_names"] != 4)$return_text .=	'
 					<span class="blsearchname">
 						<span class="searchlabel">'.__("Name", "bepro-listings").'</span>
 						<input type="text" name="name_search" id="name_search" value="'.$_POST["name_search"].'">
 					</span>';
-				$return_text .=	'	<span class="blsearchbuttons">
+					$return_text .=	'<span class="blsearchbuttons">
 					<input type="submit" value="'.__("Search Listings", "bepro-listings").'">
 										<a class="clear_search" href="'.get_bloginfo("url")."/".$listing_page.'"><button>Clear Search</button></a>
 					</span>					
@@ -234,13 +234,23 @@ class Bepro_listings{
 	   }
 	   
 	   //Query BePro Listing Name 'LIKE' user query
-	   if(!empty($l_name)){
+	   if(!empty($l_name) && (@$data["search_names"] != 4)){
 			$listing_table_name = (!empty($wp_site) && is_numeric($wp_site) && ($wp_site > 0))?
 				$wpdb->prefix.$wp_site.'_bepro_listings':$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME;
-	   
+			$search_names = ((@$data["search_names"] == 2) || (@$data["search_names"] == 3))? "first_name LIKE '%$l_name%' OR last_name LIKE '%$l_name%'":"";
+			$search_title = ((@empty($data["search_names"])) || (@$data["search_names"] == 1) || (@$data["search_names"] == 3))?"post_title LIKE '%$l_name%'":"";
+		
+			if(@$data["search_names"] == 2){
+				$where_name_search = $search_names;
+			}else if(@$data["search_names"] == 3){
+				$where_name_search = $search_title." OR ".$search_names;
+			}else{
+				$where_name_search = $search_title;
+			}
+			
 			$check_avail = $wpdb->get_row("SELECT bl.* FROM ".$listing_table_name." as bl
 			LEFT JOIN ".$wpdb->prefix."posts as posts ON posts.ID = bl.post_id
-			WHERE post_title LIKE '%$l_name%' LIMIT 1");
+			WHERE $where_name_search LIMIT 1");
 			 
 			if($check_avail){
 				//If distance, find listings 'LIKE' user supplied request within radius
@@ -251,7 +261,7 @@ class Bepro_listings{
 					$y2 = 'geo.lon';
 					$distance_clause = "AND (3958 * 3.1415926 * SQRT(({$y2} - {$y}) * ({$y2} - {$y}) + COS({$y2} / 57.29578) * COS({$y} / 57.29578) * ({$x2} - {$x}) * ({$x2} - {$x})) / $distance) <= {$distance}";
 				}
-				$returncaluse .= " AND posts.post_title LIKE '%$l_name%' $distance_clause AND geo.lat IS NOT NULL AND geo.lon IS NOT NULL";
+				$returncaluse .= " AND $where_name_search $distance_clause AND geo.lat IS NOT NULL AND geo.lon IS NOT NULL";
 			}
 	   }
 	 

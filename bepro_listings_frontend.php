@@ -319,10 +319,11 @@
 		$cat_heading = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $data["cat_empty"]:$data["cat_heading"];
 		
 		$parent = (!empty($cat) && is_numeric($cat))? $cat:0;
-		$parent = (!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])))? $_REQUEST["l_type"]:0; 
 		
-		$query_args = array('orderby'=>'count', "parent" => 0);
-		$parent =(is_array($parent) || (is_numeric($parent)))? $query_args['include'] = $parent:$query_args['parent'] = $parent; 
+		$query_args = array('orderby'=>'count', "parent" => $parent);
+		if(!empty($_REQUEST["l_type"]) && (is_numeric($_REQUEST["l_type"]) || is_array($_REQUEST["l_type"])) && (@$_REQUEST["l_type"][0] != 0) ){
+			$query_args['include'] = $_REQUEST["l_type"];
+		}
 		
 		$categories = get_terms( array('bepro_listing_types'), $query_args);
 		
@@ -330,7 +331,7 @@
 		
 		if($categories && (count($categories) > 0)){
 			//If only one category was selected then show its name in the heading
-			if((is_numeric($_REQUEST["l_type"]) || (is_array($_REQUEST["l_type"]) && (count($_REQUEST["l_type"]) == 1))) && !empty($categories)){
+			if((is_numeric($_REQUEST["l_type"]) || (is_array($_REQUEST["l_type"]) && (@$_REQUEST["l_type"][0] != 0) && (count($_REQUEST["l_type"]) == 1))) && !empty($categories)){
 				$cat = $categories[0];
 				$cat_list .= "<h3>".$cat->name." ".$data["cat_singular"]."</h3>";
 			}else{
@@ -344,7 +345,7 @@
 		}
 		$cat_list.= "</div>";
 		
-		$cat_list.= "<div id='bl_ctype' class='bl_shortcode_selected'>$ctype</div>";
+		$cat_list.= "<div id='bl_cat' class='bl_shortcode_selected'>$parent</div><div id='bl_ctype' class='bl_shortcode_selected'>$ctype</div>";
 		if($echo_this){
 			echo $cat_list;
 		}else{	
@@ -459,6 +460,7 @@
 		//Create the GUI layout for the listings
 		if(empty($raw_results) || is_null($raw_results)){
 			$results = "<p>your criteria returned no results.</p>";
+			$results = apply_filters("bl_search_no_results", $results);
 		}else{
 			//item listing template
 			$list_templates = isset($data['bepro_listings_list_template_'.$type])? $data['bepro_listings_list_template_'.$type]: $data['bepro_listings_list_template_1'];
@@ -668,7 +670,7 @@
 				$search_form .= apply_filters("bepro_listings_search_filter_shortcode","", $atts);
 				
 				$search_form .= '
-						<div><input type="submit" class="form-submit" value="'.__("Filter", "bepro-listings").'" id="edit-submit" name="find">
+						<div id="search_filter_shortcode_button"><input type="submit" class="form-submit" value="'.__("Filter", "bepro-listings").'" id="edit-submit" name="find">
 						<a class="clear_search" href="'.get_bloginfo("url")."/".$listing_page.'"><button>Clear</button></a></div>
 		</form></div>
 		';
@@ -936,7 +938,8 @@
 		extract(shortcode_atts(array(
 			  'bl_form_id' => $wpdb->escape($_POST["bl_form_id"]),
 			  'origami' => $wpdb->escape($_POST["origami"]),
-			  'register' => $wpdb->escape($_POST["register"])
+			  'register' => $wpdb->escape($_POST["register"]),
+			  'redirect' => $wpdb->escape($_POST["redirect"])
 		 ), $atts));
 		
 		//addon tie ins
@@ -959,6 +962,10 @@
 		if(!empty($_POST["save_bepro_listing"])){
 			$wp_upload_dir = wp_upload_dir();
 			if(bepro_listings_save()){
+				if(!empty($_POST["redirect"])){
+					header("LOCATION: ".get_bloginfo("url").$_POST["redirect"]);
+					exit;
+				}
 				$success_message = apply_filters("bepro_form_success_message","Listing Successfully Saved");
 				echo "<h2>".$success_message."</h2>";
 			}else{

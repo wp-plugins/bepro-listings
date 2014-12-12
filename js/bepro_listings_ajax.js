@@ -36,6 +36,7 @@ jQuery(document).ready(function(){
 				jQuery(".search_listings").replaceWith(options.search);
 			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
+			bl_ajax_end();
 		
 		}});	
 	});
@@ -82,6 +83,7 @@ jQuery(document).ready(function(){
 					jQuery(".search_listings").replaceWith(options.search);
 				if(((options.map).length > 0) && (jQuery("#shortcode_map")))
 					jQuery("#shortcode_map").replaceWith(options.map);	
+				bl_ajax_end();
 			}
 		});	
 	});
@@ -113,6 +115,7 @@ jQuery(document).ready(function(){
 				jQuery(".search_listings").replaceWith(options.search);
 			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
+			bl_ajax_end();
 		}});
 	});
 	
@@ -140,7 +143,7 @@ jQuery(document).ready(function(){
 				jQuery(".search_listings").replaceWith(options.search);
 			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
-		
+			bl_ajax_end();
 		}});
 	});
 	
@@ -168,7 +171,7 @@ jQuery(document).ready(function(){
 				jQuery(".search_listings").replaceWith(options.search);
 			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
-		
+			bl_ajax_end();
 		}});
 	});
 	jQuery("body").on("submit","#filter_search_form", function(element){
@@ -195,6 +198,7 @@ jQuery(document).ready(function(){
 				jQuery("#listingsearchform").replaceWith(options.search);
 			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
+			bl_ajax_end();
 		}});
 	});
 	
@@ -222,6 +226,7 @@ jQuery(document).ready(function(){
 				jQuery("#listingsearchform").replaceWith(options.search);
 			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
+			bl_ajax_end();
 		}});
 	});
 });
@@ -234,6 +239,8 @@ function get_bl_shortcode_vals(){
 		returnstr = returnstr + "&pop_up=" + jQuery("#bl_pop_up").html();
 	if(jQuery("#bl_ctype"))
 		returnstr = returnstr + "&ctype=" + jQuery("#bl_ctype").html();
+	if(jQuery("#bl_cat"))
+		returnstr = returnstr + "&cat=" + jQuery("#bl_cat").html();
 	if(jQuery("#bl_limit"))
 		returnstr = returnstr + "&limit=" + jQuery("#bl_limit").html();
 	if(jQuery("#bl_type"))
@@ -253,6 +260,8 @@ function clear_bl_shortcode_vals(){
 		jQuery("#bl_pop_up").remove();
 	if(jQuery("#bl_ctype"))
 		jQuery("#bl_ctype").remove();;
+	if(jQuery("#bl_cat"))
+		jQuery("#bl_cat").remove();;
 	if(jQuery("#bl_limit"))
 		jQuery("#bl_limit").remove();
 	if(jQuery("#bl_type"))
@@ -271,6 +280,11 @@ function bl_ajax_init(){
 function bl_ajax_complete(){
 	clear_bl_shortcode_vals();
 	jQuery('body').css('cursor', 'default'); 
+}
+
+function bl_ajax_end(){
+	if(jQuery(".bl_date_input"))
+		jQuery(".bl_date_input").datepicker();
 }
 
 function bl_ajax_get_page(post_id){	

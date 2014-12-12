@@ -315,7 +315,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.74' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.75' );
 		}	
 	}
 	
@@ -356,6 +356,7 @@
 			$data["ajax_on"] = "on";
 			$data["num_listings"] = 3;
 			$data["distance"] = 150;
+			$data["search_names"] = 1;
 			$data["title_length"] = 18;
 			$data["details_link"] = "Item";
 			$data["show_web_link"] = "";

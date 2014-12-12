@@ -501,6 +501,7 @@
 			$data["ajax_on"] = $_POST["ajax_on"];
 			$data["num_listings"] = $_POST["num_listings"];
 			$data["distance"] = $_POST["distance"];
+			$data["search_names"] = $_POST["search_names"];
 			$data["title_length"] = is_numeric($_POST["title_length"])?$_POST["title_length"]:$data["title_length"];
 			$data["details_link"] = $_POST["details_link"];
 			$data["show_web_link"] = $_POST["show_web_link"];
@@ -645,6 +646,12 @@
 							<option value="1000" <?php echo ($data["distance"]== 1000)? 'selected="selected"':"" ?>>1000</option>
 						</select>
 						<span style="clear:both;display: block;"><br /></span>
+						<span class="form_label"><?php _e("Name Search", "bepro-listings"); ?></span><select name="search_names">
+							<option value="1" <?php echo ($data["search_names"]== 1)? 'selected="selected"':"" ?>>Title Only</option>
+							<option value="2" <?php echo ($data["search_names"]== 2)? 'selected="selected"':"" ?>>Contact Name Only</option>
+							<option value="3" <?php echo ($data["search_names"]== 3)? 'selected="selected"':"" ?>>Both</option>
+							<option value="4" <?php echo ($data["search_names"]== 4)? 'selected="selected"':"" ?>>None</option>
+						</select><br />
 						<span class="form_label"><?php _e("Title Length", "bepro-listings"); ?></span><input type="text" name="title_length" value="<?php echo $data["title_length"]; ?>" /></br>
 						<span class="form_label"><?php _e("Details Link Text", "bepro-listings"); ?></span><input type="text" name="details_link" value="<?php echo $data["details_link"]; ?>" /></br>
 						<span class="form_label"><?php _e("Show Website Link?", "bepro-listings"); ?></span><input type="checkbox" name="show_web_link" <?php echo (($data["show_web_link"]==1) || ($data["show_web_link"]== "on"))? 'checked="checked"':"" ?> value="1"><br />

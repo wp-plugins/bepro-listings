@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.75
+Version: 2.1.76
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -251,8 +251,9 @@ class Bepro_listings{
 			$check_avail = $wpdb->get_row("SELECT bl.* FROM ".$listing_table_name." as bl
 			LEFT JOIN ".$wpdb->prefix."posts as posts ON posts.ID = bl.post_id
 			WHERE $where_name_search LIMIT 1");
-			 
-			if($check_avail){
+			
+			//if($check_avail){
+				
 				//If distance, find listings 'LIKE' user supplied request within radius
 				if(!empty($_POST["distance"])){
 					$x = $check_avail->lat;
@@ -262,7 +263,7 @@ class Bepro_listings{
 					$distance_clause = "AND (3958 * 3.1415926 * SQRT(({$y2} - {$y}) * ({$y2} - {$y}) + COS({$y2} / 57.29578) * COS({$y} / 57.29578) * ({$x2} - {$x}) * ({$x2} - {$x})) / $distance) <= {$distance}";
 				}
 				$returncaluse .= " AND $where_name_search $distance_clause AND geo.lat IS NOT NULL AND geo.lon IS NOT NULL";
-			}
+			
 	   }
 	 
 		//min/max cost setup 

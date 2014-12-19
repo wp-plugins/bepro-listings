@@ -515,6 +515,7 @@
 			$data["add_detail_links"] = $_POST["add_detail_links"];
 			$data["protect_contact"] = $_POST["protect_contact"];
 			$data["show_content"] = $_POST["show_content"];
+			$data["tabs_type"] = $_POST["tabs_type"];
 			
 			//map
 			$data["map_query_type"] = $_POST["map_query_type"];
@@ -674,7 +675,11 @@
 						<span class="form_label"><?php _e("Show Details", "bepro-listings"); ?></span><input type="checkbox" name="show_details" <?php echo (($data["show_details"]==1) || ($data["show_details"] == "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Links on Details", "bepro-listings"); ?></span><input type="checkbox" name="add_detail_links" <?php echo (($data["add_detail_links"]==1) || ($data["add_detail_links"] == "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Protect Contact", "bepro-listings"); ?></span><input type="checkbox" name="protect_contact" <?php echo (($data["protect_contact"]== 1) || ($data["protect_contact"] == "on"))? 'checked="checked"':"" ?>><br />
-						<span class="form_label"><?php _e("Show Content", "bepro-listings"); ?></span><input type="checkbox" name="show_content" <?php echo (($data["show_content"]==1) || ($data["show_content"] == "on"))? 'checked="checked"':"" ?>>
+						<span class="form_label"><?php _e("Show Content", "bepro-listings"); ?></span><input type="checkbox" name="show_content" <?php echo (($data["show_content"]==1) || ($data["show_content"] == "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Tab Direction", "bepro-listings"); ?></span><select name="tabs_type">
+							<option value="1" <?php echo ($data["tabs_type"] == 1)? 'selected="selected"':""; ?>>Vertical</option>
+							<option value="2" <?php echo ($data["tabs_type"] == 2)? 'selected="selected"':""; ?>>Horizontal</option>
+						</select>	
 					</div>
 					<div id="tabs-5">
 						<span class="form_label"><?php _e("Query Type", "bepro-listings"); ?></span><select name="map_query_type">

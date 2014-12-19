@@ -189,6 +189,7 @@
 			$counter++;
 		}
 		$declare_for_map = apply_filters("bepro_listings_declare_for_map", '');
+		$zoom = (empty($currlat) || empty($currlon))? 2:10;
 		//javascript initialization of the map
 		$map = "<script type='text/javascript'>
 			jQuery(document).ready(function(){
@@ -202,7 +203,7 @@
 				var latlng = new google.maps.LatLng(currentlat, currentlon);
 				icon_1 = new google.maps.MarkerImage('".plugins_url("images/icons/icon_1.png", __FILE__)."');
 				var myOptions = {
-					zoom:10,
+					zoom:$zoom,
 					center: latlng,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				}

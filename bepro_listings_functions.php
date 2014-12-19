@@ -25,11 +25,12 @@
 
 	function bepro_listings_javascript() {
 		$data = get_option("bepro_listings");
+		$secure_url = (!empty($data["https"]))? "https":"http";
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('validate',plugins_url("js/jquery.validate.min.js", __FILE__ ), array('jquery'), true);
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_print_scripts('jquery-ui-tabs');
-		wp_enqueue_script('google-maps' , 'http://maps.google.com/maps/api/js' , false , '3.5&sensor=false');
+		wp_enqueue_script('google-maps' , '//maps.google.com/maps/api/js' , false , '3.5&sensor=false');
 		$plugindir = plugins_url("bepro-listings");
 		
 		$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings.js"></script><script type="text/javascript" src="'.plugins_url("js/markerclusterer.js", __FILE__ ).'"></script><script type="text/javascript" src="'.plugins_url("js/easyResponsiveTabs.js", __FILE__ ).'"></script>';
@@ -71,6 +72,25 @@
 		}else{
 			$scripts .= "\n".'<script type="text/javascript" src="'.$plugindir.'/js/bepro_listings_no_ajax.js"></script>';
 		}		
+		$tabs_type = (@$data["tabs_type"] == 2)? "horizontal":"vertical";
+		$scripts.= '
+			<script type="text/javascript">	
+		function launch_bepro_listing_tabs(){
+			map_count = 0;
+			jQuery(".frontend_bepro_listings_vert_tabs").easyResponsiveTabs({           
+			type: "'.$tabs_type.'",           
+			width: "auto",
+			fit: true,
+			activate: function(event) { 
+				if((event.target.className == "map_tab resp-tab-item resp-tab-active") && (map_count == 0)){
+					launch_frontend_map();
+					map_count++;
+				} 
+			}
+			});
+		}
+		</script>
+		';
 			
 		echo $scripts;
 		return;
@@ -315,7 +335,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.75' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.76' );
 		}	
 	}
 	
@@ -369,6 +389,7 @@
 			$data["add_detail_links"] = "on";
 			$data["protect_contact"] = "";
 			$data["show_content"] = "on";
+			$data["tabs_type"] = 1;
 			//map
 			$data["map_query_type"] = "curl";
 			//3rd party

@@ -305,7 +305,11 @@
 				';
 	}
 	
-	//Show categories Called from shortcode
+	//Show categories Called from shortcode. Also filter by search criteria affecting categories.
+	/*
+		* cat - Set the category parent we are filtering by 
+		* ctype - Which layout template to use
+	*/
 	function display_listing_categories($atts = array(), $echo_this = false){
 		global $wpdb;
 		$data = get_option("bepro_listings");
@@ -526,9 +530,15 @@
 		
 		if(is_numeric($order_dir))
 			$bl_order = "<div id='bl_order' class='bl_shortcode_selected'>$order_dir</div>";
+			
+		if(is_numeric($bl_form_id))
+			$bl_form_id = "<div id='bl_form_id' class='bl_shortcode_selected'>$bl_form_id</div>";
+			
+		If(!empty($l_type))
+			$bl_l_type = "<div id='bl_l_type' class='bl_shortcode_selected'>".$l_type."</div>";
 		
 		$results = "<div id='shortcode_list$l_featured_id'>".$results."</div>";
-		$results .= "$hidden_limit_text $show_bl_type $show_paging $bl_order";
+		$results .= "$hidden_limit_text $show_bl_type $show_paging $bl_order $bl_form_id $bl_l_type";
 		if($echo_this){
 			echo $results;
 		}else{	

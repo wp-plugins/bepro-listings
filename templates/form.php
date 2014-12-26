@@ -52,7 +52,8 @@
 		echo '
 			<form method="post" enctype="multipart/form-data" id="bepro_create_listings_form">
 				<input type="hidden" name="save_bepro_listing" value="1">
-				<input type="hidden" name="bepro_post_id" value="'.$post_data->ID.'">';
+				<input type="hidden" name="bepro_post_id" value="'.$post_data->ID.'">
+				<input type="hidden" name="redirect" value="'.$redirect.'">';
 		do_action("bepro_listing_form_start", $post_data);
 		echo '
 			<div class="add_listing_form_info bepro_form_section">

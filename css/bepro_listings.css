@@ -22,6 +22,14 @@
 	width:25%;
 	height:25%;
 }
+.ui-datepicker-header{
+	background:#000;
+	color:#fff;
+}
+.ui-datepicker .ui-state-disabled .ui-state-default{
+	background:green;
+	color: #fff;
+}
 
 /* bepro listings map */
 #secondary #map{

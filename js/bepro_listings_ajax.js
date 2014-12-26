@@ -241,6 +241,8 @@ function get_bl_shortcode_vals(){
 		returnstr = returnstr + "&ctype=" + jQuery("#bl_ctype").html();
 	if(jQuery("#bl_cat"))
 		returnstr = returnstr + "&cat=" + jQuery("#bl_cat").html();
+	if(jQuery("#bl_l_type"))
+		returnstr = returnstr + "&l_type=" + jQuery("#bl_l_type").html();
 	if(jQuery("#bl_limit"))
 		returnstr = returnstr + "&limit=" + jQuery("#bl_limit").html();
 	if(jQuery("#bl_type"))
@@ -249,6 +251,8 @@ function get_bl_shortcode_vals(){
 		returnstr = returnstr + "&order_dir=" + jQuery("#bl_order").html();
 	if(jQuery("#bl_show_paging"))
 		returnstr = returnstr + "&show_paging=" + jQuery("#bl_show_paging").html();
+	if(jQuery("#bl_form_id"))
+		returnstr = returnstr + "&bl_form_id=" + jQuery("#bl_form_id").html();
 		
 	return returnstr;	
 }
@@ -270,7 +274,10 @@ function clear_bl_shortcode_vals(){
 		jQuery("#bl_order").remove();
 	if(jQuery("#bl_show_paging"))
 		jQuery("#bl_show_paging").remove();
-		
+	if(jQuery("#bl_form_id"))
+		jQuery("#bl_form_id").remove();
+	if(jQuery("#bl_l_type"))
+		jQuery("#bl_l_type").remove();
 }
 
 function bl_ajax_init(){

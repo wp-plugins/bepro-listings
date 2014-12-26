@@ -335,7 +335,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.76' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.77' );
 		}	
 	}
 	
@@ -449,28 +449,28 @@
 				$bepro_email = new Bepro_email();
 				$bepro_email->delete_all_owner_emails("bepro_listings");
 				//email 1
-				$email["post_title"] = "Hello [username]";
-				$email["post_content"] = "Your submission to [website_url] has been received. Thank you";
-				$email["bpe_owner"] = "bepro_listings";
-				$email["bpe_times_sent"] = "0";
-				$email["bpe_mail_agent"] = "wp_mail";
-				$email["bpe_email_to"] = "[user_email]";
-				$email["bpe_hook"] = "bepro_listings_add_listing";
-				$email["bpe_tracker"] = "bl_email1";
-				$email["bpe_max_send"] = "";
-				$bepro_email->bepro_add_edit_email($email);
+				$email1["post_title"] = "Hello [username]";
+				$email1["post_content"] = "Your submission to [website_url] has been received. Thank you";
+				$email1["bpe_owner"] = "bepro_listings";
+				$email1["bpe_times_sent"] = "0";
+				$email1["bpe_mail_agent"] = "wp_mail";
+				$email1["bpe_email_to"] = "[user_email]";
+				$email1["bpe_hook"] = "bepro_listings_add_listing";
+				$email1["bpe_tracker"] = "bl_email1";
+				$email1["bpe_max_send"] = "";
+				$bepro_email->bepro_add_edit_email($email1);
 				
 				//email 2
-				$email["post_title"] = "New Listing";
-				$email["post_content"] = "Your received a new submission on [website_url].";
-				$email["bpe_owner"] = "bepro_listings";
-				$email["bpe_times_sent"] = "0";
-				$email["bpe_mail_agent"] = "wp_mail";
-				$email["bpe_email_to"] = "[admin_user_email]";
-				$email["bpe_hook"] = "bepro_listings_add_listing";
-				$email["bpe_tracker"] = "bl_email2";
-				$email["bpe_max_send"] = "";
-				$bepro_email->bepro_add_edit_email($email);
+				$email2["post_title"] = "New Listing";
+				$email2["post_content"] = "Your received a new submission on [website_url].";
+				$email2["bpe_owner"] = "bepro_listings";
+				$email2["bpe_times_sent"] = "0";
+				$email2["bpe_mail_agent"] = "wp_mail";
+				$email2["bpe_email_to"] = "[admin_user_email]";
+				$email2["bpe_hook"] = "bepro_listings_add_listing";
+				$email2["bpe_tracker"] = "bl_email2";
+				$email2["bpe_max_send"] = "";
+				$bepro_email->bepro_add_edit_email($email2);
 			}
 			
 			//set version
@@ -979,5 +979,15 @@
 	
 	function bepro_search_remove_expiring($return_clause){
 		return $return_clause." AND ((geo.expires IS NULL) || (geo.expires > NOW()))";
+	}
+	
+	function save_data_and_redirect(){
+		if(!empty($_POST["save_bepro_listing"]) && !empty($_POST["redirect"])){
+			$wp_upload_dir = wp_upload_dir();
+			if(bepro_listings_save()){
+				header("LOCATION: ".$_POST["redirect"]);
+				exit;
+			}
+		}
 	}
 ?>

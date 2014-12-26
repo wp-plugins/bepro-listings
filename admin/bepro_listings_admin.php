@@ -144,14 +144,14 @@
 	  global $wpdb;
 	  $listing = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 	  echo '
-		<span class="form_label">First Name</span><input type="text" name="first_name" value="'.$listing->first_name.'"><br />
-		<span class="form_label">Last Name</span><input type="text" name="last_name" value="'.$listing->last_name.'"><br />
-		<span class="form_label">Phone</span><input type="text" name="phone" value="'.$listing->phone.'"><br />
-		<span class="form_label">Email</span><input type="text" name="email" value="'.$listing->email.'"><br />
-		<span class="form_label">Website</span><input type="text" name="website" value="'.$listing->website.'"><br />
+		<span class="form_label">'.__("First Name").'</span><input type="text" name="first_name" value="'.$listing->first_name.'"><br />
+		<span class="form_label">'.__("Last Name").'</span><input type="text" name="last_name" value="'.$listing->last_name.'"><br />
+		<span class="form_label">'.__("Phone").'</span><input type="text" name="phone" value="'.$listing->phone.'"><br />
+		<span class="form_label">'.__("Email").'</span><input type="text" name="email" value="'.$listing->email.'"><br />
+		<span class="form_label">'.__("Website").'</span><input type="text" name="website" value="'.$listing->website.'"><br />
 	  ';
 		$data = get_option("bepro_listings");
-		if(isset($data["days_until_expire"])){
+		if(isset($data["days_until_expire"]) && ($data["days_until_expire"] > 0)){
 			echo '<span class="form_label">Expire Date</span><input class="bl_date_input" type="text" name="expires" value="'.$listing->expires.'" placeholder="yyyy-mm-dd HH:mm:ss">';
 		}
 	}
@@ -224,7 +224,7 @@
 			$notice = "None";
 			$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 			$status = (($post->post_status == "publish")? "Published":"Pending");
-			if(isset($data["days_until_expire"]) && ($status == "Published")){
+			if(isset($data["days_until_expire"]) && ($data["days_until_expire"] > 0) && ($status == "Published")){
 				$notice = "Expires: ".(empty($item->expires)? "Never":date("M, d Y", strtotime($item->expires)));
 			}else if(!empty($data["require_payment"])  && ($status == "Pending")){
 				if(is_numeric($item->bepro_cart_id)){

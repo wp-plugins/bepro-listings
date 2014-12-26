@@ -528,13 +528,16 @@
 			$hidden_limit_text = "<div id='bl_limit' class='bl_shortcode_selected'>$limit</div>";
 		}
 		
+		$order_dir = "";
 		if(is_numeric($order_dir))
 			$bl_order = "<div id='bl_order' class='bl_shortcode_selected'>$order_dir</div>";
-			
+		
+		$bl_form_id = "";
 		if(is_numeric($bl_form_id))
 			$bl_form_id = "<div id='bl_form_id' class='bl_shortcode_selected'>$bl_form_id</div>";
-			
-		If(!empty($l_type))
+		
+		$bl_l_type = "";
+		If(!empty($l_type) && empty($l_featured))
 			$bl_l_type = "<div id='bl_l_type' class='bl_shortcode_selected'>".$l_type."</div>";
 		
 		$results = "<div id='shortcode_list$l_featured_id'>".$results."</div>";

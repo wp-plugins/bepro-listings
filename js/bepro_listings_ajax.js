@@ -233,25 +233,25 @@ jQuery(document).ready(function(){
 
 function get_bl_shortcode_vals(){ 
 	returnstr = '';
-	if(jQuery("#bl_size"))
+	if(jQuery("#bl_size").length > 0)
 		returnstr = returnstr + "&size=" + jQuery("#bl_size").html();
-	if(jQuery("#bl_pop_up"))
+	if(jQuery("#bl_pop_up").length > 0)
 		returnstr = returnstr + "&pop_up=" + jQuery("#bl_pop_up").html();
-	if(jQuery("#bl_ctype"))
+	if(jQuery("#bl_ctype").length > 0)
 		returnstr = returnstr + "&ctype=" + jQuery("#bl_ctype").html();
-	if(jQuery("#bl_cat"))
+	if(jQuery("#bl_cat").length > 0)
 		returnstr = returnstr + "&cat=" + jQuery("#bl_cat").html();
-	if(jQuery("#bl_l_type"))
+	if(jQuery("#bl_l_type").length > 0)
 		returnstr = returnstr + "&l_type=" + jQuery("#bl_l_type").html();
-	if(jQuery("#bl_limit"))
+	if(jQuery("#bl_limit").length > 0)
 		returnstr = returnstr + "&limit=" + jQuery("#bl_limit").html();
-	if(jQuery("#bl_type"))
+	if(jQuery("#bl_type").length > 0)
 		returnstr = returnstr + "&type=" + jQuery("#bl_type").html();
-	if(jQuery("#bl_order"))
+	if(jQuery("#bl_order").length > 0)
 		returnstr = returnstr + "&order_dir=" + jQuery("#bl_order").html();
-	if(jQuery("#bl_show_paging"))
+	if(jQuery("#bl_show_paging").length > 0)
 		returnstr = returnstr + "&show_paging=" + jQuery("#bl_show_paging").html();
-	if(jQuery("#bl_form_id"))
+	if(jQuery("#bl_form_id").length > 0)
 		returnstr = returnstr + "&bl_form_id=" + jQuery("#bl_form_id").html();
 		
 	return returnstr;	

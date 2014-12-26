@@ -335,7 +335,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.77' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.78' );
 		}	
 	}
 	
@@ -958,7 +958,7 @@
 		$data = get_option("bepro_listings");
 		$expiration = "";
 		$post_id = $item["item_number"];
-		if($data["listings_expire"] && $data["days_until_expire"]){
+		if($data["days_until_expire"] && ($data["days_until_expire"] > 0)){
 			$expiration = date('Y-m-d H:i:s', strtotime("+".$data["days_until_expire"]." days"));
 		}
 		

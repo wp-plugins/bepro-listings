@@ -335,7 +335,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.78' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.79' );
 		}	
 	}
 	
@@ -642,6 +642,7 @@
 							}
 							$counter++;
 						}
+						BL_Meta_Box_Listing_Images::save($post_id, $post_after);
 					}
 					
 					//manage lat/lon
@@ -682,6 +683,27 @@
 			return $post_id;
 		
 		return $return_message;
+	}
+	
+	//Gallery functions
+	function bl_get_listing_images($post_id){
+		$attachments = array();
+		$post_thumbnail_id = get_post_thumbnail_id( $post_id );
+		
+		if ( metadata_exists( 'post', $post_id, '_listing_image_gallery' ) ) {
+			$listing_image_gallery = get_post_meta( $post_id, '_listing_image_gallery', true );
+			$attachments = array_filter( explode( ',', $listing_image_gallery ) );
+		}else{
+			$raw_images = get_children(array('post_parent'=>$post_id), ARRAY_A);
+			$attachments = array_keys($raw_images);
+			//remove featured image for reassignment later
+			unset($raw_images[$post_thumbnail_id]);
+		}
+		
+		//add featured image infront of others
+		if($post_thumbnail_id)
+			array_unshift($attachments, $post_thumbnail_id);
+		return $attachments;
 	}
 	
 	//function to get a file via url, upload it, and attach to a post

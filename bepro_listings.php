@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.78
+Version: 2.1.79
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -43,6 +43,7 @@ class Bepro_listings{
 	function __construct() {
 		include(dirname( __FILE__ ) . '/bepro_listings_functions.php');
 		include(dirname( __FILE__ ) . '/admin/bepro_listings_admin.php');
+		include(dirname( __FILE__ ) . '/admin/meta/gallery_meta.php');
 		include(dirname( __FILE__ ) . '/admin/bepro_listings_widgets.php');
 		include(dirname( __FILE__ ) . '/bepro_listings_frontend.php');
 		include(dirname( __FILE__ ) . '/bepro_listings_profile.php');
@@ -57,7 +58,7 @@ class Bepro_listings{
 		add_action('admin_enqueue_scripts', 'bepro_listings_adminhead');
 		add_action('admin_menu', 'bepro_listings_menus');
 		add_action("widgets_init", "register_bepro_listings_widgets");
-		add_action('post_updated', 'bepro_admin_save_details' );
+		add_action('post_updated', 'bepro_admin_save_details', 10, 3);
 		add_action('delete_post', 'bepro_delete_post' );
 		add_action('wp_ajax_save-widget', 'bepro_save_widget' );
 		add_action("manage_posts_custom_column",  "bepro_listings_custom_columns");

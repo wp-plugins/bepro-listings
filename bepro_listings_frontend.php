@@ -850,11 +850,15 @@
 		echo get_the_title();
 	}
 	function bepro_listings_item_gallery_template(){
+		$post_id = get_the_ID();
 		$data = get_option("bepro_listings");
 		$num_images = $data["num_images"];
 		
+		//get images
+		$attachments = bl_get_listing_images($post_id);
+		
 		//Show wordpress gallery for this page
-		$gallery = ($num_images == 0)? "":do_shortcode("[gallery size='".$data["gallery_size"]."' columns=".((!empty($data["gallery_cols"]))? $data["gallery_cols"]:3)."]");
+		$gallery = ($num_images == 0)? "":do_shortcode("[gallery size='".$data["gallery_size"]."' columns=".((!empty($data["gallery_cols"]))? $data["gallery_cols"]:3)." ids='".implode(",",$attachments)."']");
 		echo "<div class='bepro_listing_gallery'>".apply_filters("bepro_listings_item_gallery_feature", $gallery)."</div>";
 	}
 	function bepro_listings_item_after_gallery_template(){
@@ -920,8 +924,9 @@
 						}
 					}
 					if(!empty($item->website)){
+						$http_check = substr(@$item->website, 0, 4);
 						if($add_detail_links){
-							$website = "<span class='item_label'>".__("Website", "bepro-listings")."</span> - <a href='".$item->website."'>".$item->website."</a>";
+							$website = "<span class='item_label'>".__("Website", "bepro-listings")."</span> - <a href='".((@$item->website && ($http_check != "http"))? "http://":"").(@$item->website)."'>".(@$item->website)."</a>";
 						}else{
 							$website = "<span class='item_label'>".__("Website", "bepro-listings")."</span> - ".$item->website;
 						}

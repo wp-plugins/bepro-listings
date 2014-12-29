@@ -18,11 +18,12 @@
 
 	function bepro_admin_init(){
 		$data = get_option("bepro_listings");
-		add_meta_box("contact_general_meta", " ", "contact_general_meta", "bepro_listings", "normal", "low");
-		if($data["show_cost"] == (1 || "on"))add_meta_box("cost_meta", "Cost $", "cost_meta", "bepro_listings", "side", "low");
-		if($data["show_con"] == (1 || "on"))add_meta_box("contact_details_meta", "Lisiting Details", "contact_details_meta", "bepro_listings", "normal", "low");
-		if($data["show_geo"] == (1 || "on"))add_meta_box("geographic_details_meta", "Geographic Details", "geographic_details_meta", "bepro_listings", "normal", "low");
+		add_meta_box("contact_general_meta", " ", "BL_Meta_Box_Listing_Images::contact_general_meta", "bepro_listings", "normal", "low");
+		if($data["show_cost"] == (1 || "on"))add_meta_box("cost_meta", "Cost $", "BL_Meta_Box_Listing_Images::cost_meta", "bepro_listings", "side", "low");
+		if($data["show_con"] == (1 || "on"))add_meta_box("contact_details_meta", "Lisiting Details", "BL_Meta_Box_Listing_Images::contact_details_meta", "bepro_listings", "normal", "low");
+		if($data["show_geo"] == (1 || "on"))add_meta_box("geographic_details_meta", "Geographic Details", "BL_Meta_Box_Listing_Images::geographic_details_meta", "bepro_listings", "normal", "low");
 		
+		add_meta_box( 'bepro-listings-images', __( 'Listing Gallery', 'bepro-listings' ), 'BL_Meta_Box_Listing_Images::gallery_images_meta', 'bepro_listings', 'side' );
 		
 		permalink_save_options();
 		permalink_admin_init();
@@ -30,6 +31,7 @@
 	
 	function bepro_admin_head(){
 		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('../css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" >';
+		echo '<script type="text/javascript" src="'.plugins_url('../js/bepro_listings_admin.js', __FILE__ ).'" ></script>';
 		echo "<style type='text/css'>.bepro_listings input[type=checkbox]{margin:11px 0;}</style>";
 		echo "<style>
 		  .ui-tabs-vertical { width: 55em; }
@@ -39,6 +41,66 @@
 		  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
 		  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
 		  .bepro_listings_admin_form{display:none;}
+		  #bepro-listings-images .inside #listing_images_container ul li.image {
+			width: 80px;
+			float: left;
+			border: 1px solid #d5d5d5;
+			margin: 9px 9px 0 0;
+			background: #f7f7f7;
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			border-radius: 2px;
+			position: relative;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			}
+			#bepro-listings-images .inside #listing_images_container ul ul.actions li {
+			float: right;
+			margin: 0 0 0 2px;
+			}
+			#bepro-listings-images .inside #listing_images_container ul ul.actions li a.delete:before {
+				font-family: 'dashicons' !important;
+				speak: none;
+				font-weight: 400;
+				font-variant: normal;
+				text-transform: none;
+				line-height: 1;
+				-webkit-font-smoothing: antialiased;
+				margin: 0;
+				text-indent: 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				content: '\f156';
+				color: #fff;
+				background-color: #000;
+				-webkit-border-radius: 100%;
+				border-radius: 100%;
+				box-shadow: 0 1px 2px rgba(0,0,0,.2);
+			}
+			#bepro-listings-images .inside #listing_images_container ul li img{
+				width:100%;
+				display: block;
+				height: auto;
+			}
+			#bepro-listings-images .add_listing_images {
+				display:block;
+				clear:both;
+			}
+			#bepro-listings-images .inside #listing_images_container ul ul.actions {
+				position: absolute;
+				top: -8px;
+				right: -8px;
+				padding: 2px;
+				display: none;
+			}
+			#listing_images_container ul ul.actions li a.delete{display:block;text-indent:-9999px;position:relative;height:1em;width:1em;font-size:1.4em}
+			#listing_images_container ul ul.actions li a.delete:hover:before{background-color:#a00}
+			#bepro-listings-images .inside #listing_images_container ul li:hover ul.actions{display:block}
 		  </style>
 		  ";
 		echo '
@@ -128,51 +190,8 @@
 		}
 	}
 	
-	function cost_meta(){
-	  global $wpdb, $post;
-	  $listing = $wpdb->get_row("SELECT cost FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
-	  ?>
-	  <span class="form_label">Cost:</span>
-	  <input name="cost" value="<?php echo $listing->cost; ?>" />
-	  <?php
-	}
-	 
-	function contact_general_meta($post) {
-		echo '<input type="hidden" name="save_bepro_listing" value="1">';
-	}
-	function contact_details_meta($post) {
-	  global $wpdb;
-	  $listing = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
-	  echo '
-		<span class="form_label">'.__("First Name").'</span><input type="text" name="first_name" value="'.$listing->first_name.'"><br />
-		<span class="form_label">'.__("Last Name").'</span><input type="text" name="last_name" value="'.$listing->last_name.'"><br />
-		<span class="form_label">'.__("Phone").'</span><input type="text" name="phone" value="'.$listing->phone.'"><br />
-		<span class="form_label">'.__("Email").'</span><input type="text" name="email" value="'.$listing->email.'"><br />
-		<span class="form_label">'.__("Website").'</span><input type="text" name="website" value="'.$listing->website.'"><br />
-	  ';
-		$data = get_option("bepro_listings");
-		if(isset($data["days_until_expire"]) && ($data["days_until_expire"] > 0)){
-			echo '<span class="form_label">Expire Date</span><input class="bl_date_input" type="text" name="expires" value="'.$listing->expires.'" placeholder="yyyy-mm-dd HH:mm:ss">';
-		}
-	}
-	
-	function geographic_details_meta($post) {
-	  global $wpdb;
-	  $listing = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
-	  
-	  echo '
-		<span class="form_label">Lat</span><input type="test" name="lat" value="'.$listing->lat.'"><br />
-		<span class="form_label">Lon</span><input type="test" name="lon" value="'.$listing->lon.'"><br />
-		<span class="form_label">Address</span><input type="text" name="address_line1" value="'.$listing->address_line1.'"><br />
-		<span class="form_label">City</span><input type="text" name="city" value="'.$listing->city.'"><br />
-		<span class="form_label">State</span><input type="text" name="state" value="'.$listing->state.'"><br />
-		<span class="form_label">Country</span><input type="text" name="country" value="'.$listing->country.'"><br />
-		<span class="form_label">postcode</span><input type="text" name="postcode" value="'.$listing->postcode.'"><br />
-	  ';
-	}
-	
 	//Save Bepro Listing
-	function bepro_admin_save_details($post_id){
+	function bepro_admin_save_details($post_id, $post_after, $post_before){
 		global $wpdb;
 		if (!isset($_POST['save_bepro_listing'])) return; 
 		if ($parent_id = wp_is_post_revision($post_id)) 

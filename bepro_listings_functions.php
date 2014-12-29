@@ -694,7 +694,7 @@
 			$listing_image_gallery = get_post_meta( $post_id, '_listing_image_gallery', true );
 			$attachments = array_filter( explode( ',', $listing_image_gallery ) );
 		}else{
-			$raw_images = get_children(array('post_parent'=>$post_id), ARRAY_A);
+			$raw_images = get_children(array('post_parent'=>$post_id,'post_mime_type' => 'image'), ARRAY_A);
 			$attachments = array_keys($raw_images);
 			//remove featured image for reassignment later
 			unset($raw_images[$post_thumbnail_id]);

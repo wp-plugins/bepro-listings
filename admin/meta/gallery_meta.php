@@ -53,7 +53,7 @@ class BL_Meta_Box_Listing_Images {
 	}
 	
 	
-	function cost_meta(){
+	public static function cost_meta(){
 	  global $wpdb, $post;
 	  $listing = $wpdb->get_row("SELECT cost FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 	  ?>
@@ -62,10 +62,11 @@ class BL_Meta_Box_Listing_Images {
 	  <?php
 	}
 	 
-	function contact_general_meta($post) {
+	public static function contact_general_meta($post) {
 		echo '<input type="hidden" name="save_bepro_listing" value="1">';
 	}
-	function contact_details_meta($post) {
+	
+	public static function contact_details_meta($post) {
 	  global $wpdb;
 	  $listing = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 	  echo '
@@ -81,7 +82,7 @@ class BL_Meta_Box_Listing_Images {
 		}
 	}
 	
-	function geographic_details_meta($post) {
+	public static function geographic_details_meta($post) {
 	  global $wpdb;
 	  $listing = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 	  

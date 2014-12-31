@@ -455,9 +455,9 @@
 	//Admin css and javascript
 	function bepro_listings_adminhead() {
 			wp_admin_css('thickbox');
-			wp_print_scripts('editor');
-			wp_print_scripts('media-upload');
-			wp_print_scripts('jquery-ui-tabs');
+			wp_enqueue_script('editor');
+			wp_enqueue_script('media-upload');
+			wp_enqueue_script('jquery-ui-tabs');
 			if(function_exists('wp_tiny_mce')) wp_tiny_mce();
 					do_action('admin_print_styles');
 		?><style type="text/css">

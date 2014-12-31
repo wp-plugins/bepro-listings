@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.79
+Version: 2.1.80
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -70,6 +70,8 @@ class Bepro_listings{
 		add_action( 'wp_ajax_nopriv_bl_ajax_result_page', 'bl_ajax_result_page' );
 		add_action( 'wp_ajax_bl_ajax_frontend_update', 'bl_ajax_frontend_update' );
 		add_action( 'wp_ajax_nopriv_bl_ajax_frontend_update', 'bl_ajax_frontend_update' );
+		add_action( 'wp_ajax_bepro_listings_shortcode_dialog', 'bepro_listings_shortcode_dialog' );
+		add_action( 'wp_ajax_nopriv_bepro_listings_shortcode_dialog', 'bepro_listings_shortcode_dialog' );
 		add_action( 'wpmu_new_blog', 'bepro_new_blog', 10, 6);   
 		add_action( 'bepro_listing_types_add_form_fields', 'bepro_listings_add_category_thumbnail_field' );
 		add_action( 'bepro_listing_types_edit_form_fields', 'bepro_listings_edit_category_thumbnail_field', 10,2 );
@@ -112,6 +114,8 @@ class Bepro_listings{
 		add_filter('bepro_listings_return_clause', array( $this, 'bepro_listings_return_clause_return'), 1);
 		add_filter("bepro_listings_declare_for_map", "bepro_listings_vars_for_map");
 		add_filter("bepro_listings_map_marker", "bepro_listings_generate_map_marker", 1, 3);
+		add_filter("mce_external_plugins", "bl_tinymce_add_buttons");
+		add_filter('mce_buttons', 'bl_tinymce_register_buttons');
 		
 		//shortcodes
 		add_shortcode("search_form", array( $this, "searchform"));

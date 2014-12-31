@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, address, buddypress, buddypress directory, business, business directory, car, catalog, catalogue, classifieds, classifieds directory, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, location, payments, paid, paypal, pets, plugin, portfolio directory, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress business, wordpress directory, wordpress directory plugin, wordpress directory theme, wordpress classifieds, wordpress catalogues, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.79
+Stable tag: 2.1.80
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -44,6 +44,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	20. Shortcodes - Several ways to feature the information and engage your visitor. There are currently 7 shortcodes in the free plugin and several more available through addons
 	21. Hooks & Filters - Developers will love the documentation & ability to easily extend features.
 	22. Email Notifications - Requires BePro Email (100% free). Add, edit, delete notifications
+	23. Shortcode Builder - Use our tinymce button to build the shortcodes easily
 
 = POPULAR USES =
 
@@ -176,7 +177,7 @@ You can watch a video of how to [install BePro Listings](http://www.beprosoftwar
 
 * Via admin options, it is strongly recommended that beginners keep the "Ajax on" option selected. Look under the "Search/listings" tab. This simplifies the use of widgets and shortcodes, since you won't have to worry about url forwarding.
 
-* Use shortcodes for user interaction. Create a wordpress page, name it "listings" and place this shortcode in the content area [bl_all_in_one]
+* Use shortcodes for user interaction. Create a wordpress page, name it "listings" and place this shortcode in the content area [bl_all_in_one]. Alternatively, use the shortcode builder button
 
 * (optional) Use widgets for user interaction. Add the search filter widget to your sidebars. Go to "Appearance->widgets" and add the search filter to your sidebar.
 
@@ -296,6 +297,10 @@ The base free plugin is filled with features used in most, directory, classified
 Many of what we give away for free, others will charge you for e.g. clusterd google maps and csv import. Also note our optional payment and notification features. You will need to download the free plugins BePro Cart and BePro Email to implement these features. We invite you to start **making money** today and take advantage of what we consider to be the most **advanced email notification plugin** available. These addons continue our trend of offering you a flexible way to build the directory experience that your users require. 
 
 == Changelog ==
+
+= 2.1.80 (December 30th, 2014) =
+
+* New Shortcode button while editing pages
 
 = 2.1.79 (December 29th, 2014) =
 

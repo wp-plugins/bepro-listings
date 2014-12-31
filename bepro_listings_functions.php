@@ -335,7 +335,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.79' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.80' );
 		}	
 	}
 	
@@ -476,6 +476,7 @@
 			//set version
 			update_option('bepro_listings_version', $bepro_listings_version);
 		}
+		
 	}
 	
 	//Search wordpress table hierarchy for custom post type 'bepro_listing_types'

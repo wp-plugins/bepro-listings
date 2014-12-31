@@ -792,4 +792,181 @@
 		</div>
 		<?php
 	}
+	
+	function bl_tinymce_add_buttons($plugin_array){
+		$plugin_array['bepro_listings'] = plugins_url('../js/bl_tinymce_buttons.js', __FILE__ );
+		return $plugin_array;
+	}
+	
+	function bl_tinymce_register_buttons($buttons){
+		array_push( $buttons, 'beprolistings'); 
+		return $buttons;
+	}
+	
+	function bepro_listings_shortcode_dialog(){
+		wp_print_scripts("jquery");
+		echo '
+		<style type="text/css">
+			.shorcode_options{
+				padding: 2px 5px;
+				margin: 5px 0;
+				border: 1px solid;
+			}
+			.shorcode_options p{
+				background-color:#dfdfdf;
+				padding: 0px 3px;
+			}
+			.hide_options{
+				display:none;
+			}
+			.shortcode_label{
+				width: 140px !important;
+				display: inline-block;
+			}
+		</style>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery("#send_bl_shortcode").click(function(){
+					val = jQuery("#bl_shortcode_type").val();
+					shortcode = "[" + val;
+					
+					form = "form_" + val;
+					form_vals = jQuery("#" + form).serialize();
+					if(form_vals.length > 0){
+						form_vals = form_vals.split("&");
+						for(i=0; i< form_vals.length; i++){
+							input_vals = form_vals[i].split("=");
+							if((input_vals[0].length > 0) && (input_vals[1].length > 0)){
+								shortcode = shortcode + " " + input_vals[0] + "= \'" + decodeURIComponent(input_vals[1]) + "\'"
+							}
+						}
+					}
+					
+					shortcode = shortcode + "]";
+					parent.tinyMCE.activeEditor.execCommand( "mceInsertContent", false, shortcode );
+					parent.tinyMCE.activeEditor.windowManager.close(window);
+				});
+			
+				jQuery("#bl_shortcode_type").change(function(e){
+					val = jQuery(this).val();
+					id = "tab_" + val;
+					
+					jQuery(".shorcode_options").addClass("hide_options");
+					jQuery("#" + id).removeClass("hide_options");
+				});
+			});
+		</script>
+		';
+		
+		
+		echo "
+			<p><a href='https://www.beprosoftware.com/documentation/bepro-listings-shortcodes/' target='_blank'>Click here</a> to view complete shortcode documentation</p>
+			<span class='shortcode_label'>Select Shortcode</span> <select id='bl_shortcode_type'>
+				<option value='bl_all_in_one'>All In One</option>
+				<option value='display_listings'>Show Listings</option>
+				<option value='filter_form'>Filter Form</option>
+				<option value='bl_search_filter'>Search Filter</option>
+				<option value='search_form'>Search Form</option>
+				<option value='generate_map'>Show Map</option>
+				<option value='display_listing_categories'>Show Categories</option>
+				<option value='create_listing_form'>Front End Form</option>
+				<option value='bl_my_listings'>My Listings</option>
+			</select><br />
+			
+			<div id='tab_bl_all_in_one' class='shorcode_options'>
+				<p class='shortcode_desc'>All In one shortcode is an easy way to get started. It calls other shortcodes for you, delivering several features at once. Its easy to switch between the available options or simply use the shortcodes you need. </p>
+				<form id='form_bl_all_in_one' method='post'>
+					<span class='shortcode_label'>Template</span><select name='l_type'>
+						<option value=''>Full Width Map</option>
+						<option value='a1'>Small Map</option>
+						<option value='a2'>Med Map</option>
+						<option value='a3'>Large Map</option>
+						<option value='a4'>No Map</option>
+					</select>
+				</form>
+			</div>
+			<div id='tab_display_listings' class='shorcode_options hide_options'>
+				<p class='shortcode_desc'>Show Listings and search results. By default, the latest x Listings are shown. X (# of listings) is a setting in the admin</p>
+				<form id='form_display_listings' method='post'>
+					<span class='shortcode_label'>Show Paging?</span><input type='checkbox' value=1 name='show_paging' /></br />
+					<span class='shortcode_label'>Template</span><select name='type'>
+						<option value='1'>Small</option>
+						<option value='2'>Large</option>
+					</select><br />
+					<span class='shortcode_label'>Order By</span><select name='order_by'>
+						<option value='1'>Post Title</option>
+						<option value='2'>Randomize</option>
+						<option value='2'>Last Name</option>
+					</select><br />
+					<span class='shortcode_label'>Order Dir</span><select name='order_dir'>
+						<option value='1'>Asc</option>
+						<option value='2'>Desc</option>
+					</select><br />
+					<span class='shortcode_label'>Featured?</span><input type='checkbox' value=1 name='l_featured' /></br />
+					<span class='shortcode_label'>Listing ID's</span><input type='text' name='l_ids' placeholder='e.g. 13,34,55,22'/><br />
+					<span class='shortcode_label'>Exclude Categories</span><input type='text' name='ex_type' placeholder='e.g. 13,34,55,22'/>
+				</form>
+			</div>
+			<div id='tab_filter_form' class='shorcode_options hide_options'>
+				<p class='shortcode_desc'>Show the Filter with a table layout</p>
+				<form id='form_filter_form' method='post'>
+					<span class='shortcode_label'>Listing page</span><input type='text' name='listing_page' />
+				</form>
+			</div>
+			<div id='tab_bl_search_filter' class='shorcode_options hide_options'>
+				<p class='shortcode_desc'>Show the Search filter with a CSS layout.</p>
+				<form id='form_bl_search_filter' method='post'>
+					<span class='shortcode_label'>Listing page</span><input type='text' name='listing_page' /></br />
+					<span class='shortcode_label'>Category ID</span><input type='text' name='l_type'  size=1 placeholder='e.g. 5'/></br />
+				</form>
+			</div>
+			<div id='tab_search_form' class='shorcode_options hide_options'>
+				<p class='shortcode_desc'>Search form with name and location. If you have geo features turned off, the location option will not be available</p>
+				<form id='form_search_form' method='post'>
+					<span class='shortcode_label'>Listing page</span><input type='text' name='listing_page' />
+				</form>
+			</div>
+			<div id='tab_generate_map' class='shorcode_options hide_options'>
+				<p class='shortcode_desc'>Show the google map with markers for each listing</p>
+				<form id='form_generate_map' method='post'>
+					<span class='shortcode_label'>Category ID's</span><input type='text' name='l_type' placeholder='e.g. 11,21,43' /><br />
+					<span class='shortcode_label'>Size</span><select name='size'>
+						<option value='1'>Small</option>
+						<option value='2'>Medium</option>
+						<option value='3'>Large</option>
+						<option value='4'>Full Width</option>
+					</select><br />
+					<span class='shortcode_label'>Pop Up?</span><input type='checkbox' value=1 name='pop_up' />
+				</form>
+			</div>
+			<div id='tab_display_listing_categories' class='shorcode_options hide_options'>
+				<p class='shortcode_desc'>Show the Listing categories with listings assigned to them.</p>
+				<form id='form_display_listing_categories' method='post'>
+					<span class='shortcode_label'>URL</span><input type='text' name='url_input' /><br />
+					<span class='shortcode_label'>Template</span><select name='ctype'>
+						<option value=''>Title Only</option>
+						<option value='1'>image & title</option>
+						<option value='2'>Image, title, desc</option>
+						<option value='3'>title, desc</option>
+					</select><br />			
+					<span class='shortcode_label'>Category ID</span><input type='text' name='cat' size=1 placeholder='e.g. 6'/>
+				</form>
+			</div>
+			<div id='tab_create_listing_form' class='shorcode_options hide_options'>
+				<p class='shortcode_desc'>Show the front end form to capture user information</p>
+				<form id='form_create_listing_form' method='post'>
+					<span class='shortcode_label'>Register?</span><input type='checkbox' value=1 name='register' /></br />
+					<span class='shortcode_label'>Redirect URL</span><input type='text' name='redirect' /><br />
+				</form>
+			</div>
+			<div id='tab_bl_my_listings' class='shorcode_options hide_options'>
+				<p class='shortcode_desc'>Show the user profile page, allowing them to edit their listings</p>
+				<form id='form_bl_my_listings' method='post'>
+				
+				</form>
+			</div>
+			<button id='send_bl_shortcode'>Use ShortCode</button>";
+		exit;
+	}
+	
 ?>

@@ -4,14 +4,14 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, address, buddypress, buddypress directory, business, business directory, car, catalog, catalogue, classifieds, classifieds directory, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, location, payments, paid, paypal, pets, plugin, portfolio directory, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress business, wordpress directory, wordpress directory plugin, wordpress directory theme, wordpress classifieds, wordpress catalogues, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.82
+Stable tag: 2.1.83
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Responsive Directory (Real Estate, Classifieds, Business, Products etc) w/ (google maps, front end upload, search / filter, payments & more)
 
 == Description ==
-BePro Listings is the best **wordpress directory plugin** available. With its modular architecture, you decide how users search, filter and view information. Use optional base features like, clustered google maps, **paypal payments**, email notifications, ajax search / filter and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business, Product Catalogues, Classifieds and other niche information.
+BePro Listings is the best **wordpress directory plugin** available. With its modular architecture, you decide how users search, filter and view information. Use optional base features like, clustered google maps, **paypal payments**, email notifications, ajax search / filter and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business, Product Catalogues, Events, Classifieds and other niche information.
 
 [BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://www.beprosoftware.com/forums/) | [Documentation](http://www.beprosoftware.com/documentation/bepro-listings/ ) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
 
@@ -68,6 +68,7 @@ BePro Listings can be integrated into your **current theme** and capture specifi
 	* Document Directory - Showcase multiple file types allowing users to search and view them on your website with our documents addon
 	* Google Maps - We have one of the most feature rich google map options available for wordpress. Many users choose us just for this feature.
 	* Job Board - Use categories as job types, then allow users to search and filter through various opportunities.
+	* Events & Appointments - Use the bookings addon to add searchable availability to each listing.
 
 = ADD ONS =
 
@@ -107,7 +108,7 @@ Our Addons provide lots of new ways to customize your listings experinece. Curre
 
 = THEMES =
 
-BePro Listings has spawned the famous **$1 one dollar wordpress themes**. Some of our $1 one dollar wordpress themes are **complete themes**, while others are **child themes** built on free solutions. We want to prove that you can integrate BePro Listings into any theme and create any type of listings site.
+BePro Listings has spawned the famous **$1 one dollar wordpress themes**. Some of our $1 one dollar wordpress themes are **complete themes**, while others are **child themes** built on free solutions. We hope they prove that you can integrate BePro Listings into any theme and create any type of listings site.
 
 	1. ByCater - This responsive directory theme features a home page template utilizing (google map, search, categories, and listings). It also integrates with typical wordpress features like, sidebar, menu, etc
 	2. FolioProjects - Responsive Child theme for the stock wordpress twentyfourteen teamplate. Perfect for gallery, portfolio, and other sites where you want to emphasize the featured images. Comes with three templates
@@ -124,17 +125,17 @@ Out of the box, BePro Listings works with buddypress, BePro Cart, BePro Email an
 Most importantly, BePro Listings is built for various levels of users. Novice users will appreciate our $1 themes, **ajax features** and *"all in one"* shortcodes. Intermediate users will like the plethora of, configuration options, widgets and extra shortcodes. Also we didn't forget developers and advanced users with our long list of wordpress hooks and filters.
 
 = SHORTCODES =
-These all have options and you can check them out via the documentation link above.
+There is a shortcode builder available while editing any page. This tool makes it extreamly easy to use the various features provided by BePro Listings. Below you will find a general list of available shortcodes. For more details like shortcode options, visit our documentation link above.
 
-	* All In One (NEW) - Use one shortcode to implement several features at once. Various configurations available [bl_all_in_one].
-	* Google Map - Setup a map anywhere showing the last listings on your site e.g. [generate_map]
+	* All In One (NEW) - Use one shortcode to implement several features at once. Templates available [bl_all_in_one]
+	* Google Map - Setup a map anywhere showing the last X listings on your site e.g. [generate_map]
 	* Basic Search - Allow users to search listings e.g. [search_form]
 	* Filter Search Table - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]
 	* Filter Search CSS - Allow users to do more in depth search including, cost, date, etc e.g. [bl_search_filter]
-	* Listings - Show listings with optional paging e.g. [display_listings]
-	* Front end Upload Form - Give your users the ability to submit from any page or post. You can set a default user id for the listing or force registration. e.g. [create_listing_form]
+	* Listings - Show listings and search results with optional paging e.g. [display_listings]
+	* Front end Upload Form - Give your users the ability to submit from any page or post e.g. [create_listing_form]
 	* Category Links - Allow users to navigate your directory/listings using category links e.g. [display_listing_categories]
-	* Profile - Use our standalone profile shortcode, no need for buddypress or any other plugin [bl_my_listings]
+	* Profile - Use our standalone profile shortcode [bl_my_listings]
 
 = TROUBLE SHOOTING =
 
@@ -177,7 +178,7 @@ You can watch a video of how to [install BePro Listings](http://www.beprosoftwar
 
 * Via admin options, it is strongly recommended that beginners keep the "Ajax on" option selected. Look under the "Search/listings" tab. This simplifies the use of widgets and shortcodes, since you won't have to worry about url forwarding.
 
-* Use shortcodes for user interaction. Create a wordpress page, name it "listings" and place this shortcode in the content area [bl_all_in_one]. Alternatively, use the shortcode builder button
+* Use shortcodes for user interaction. Create a wordpress page, name it "listings" and place this shortcode in the content area [bl_all_in_one]. Use the shortcode builder to help you with options
 
 * (optional) Use widgets for user interaction. Add the search filter widget to your sidebars. Go to "Appearance->widgets" and add the search filter to your sidebar.
 
@@ -194,6 +195,10 @@ You can watch a video of how to [install BePro Listings](http://www.beprosoftwar
 * (optional) Install BePro Email (100% free) to facilitate unlimited customizable email notifications. Download it from our website www.beprosoftware.com 
 
 == Frequently Asked Questions ==
+
+= What is the shortcode builder? =
+
+This tool allows you to select from a list of available shortcodes and their options. To reveal the tool, while editing a page or post, click the BePro tinymce button located above the description. 
 
 = How do I implement custom form fields? =
 
@@ -298,8 +303,12 @@ Many of what we give away for free, others will charge you for e.g. clusterd goo
 
 == Changelog ==
 
-= 2.1.82 (December 31st, 2014) =
+= 2.1.83 (December 31st, 2014) =
 
+* Fix for deprication issue
+* Refine startup process 
+* Increased multisite compatibility, especially blog deletion
+* New settings and support links on plugins panel
 * Fix issue with admin meta options
 * Fix js conflict issue
 

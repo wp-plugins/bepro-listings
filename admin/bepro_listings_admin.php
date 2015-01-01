@@ -454,12 +454,14 @@
 	
 	//Admin css and javascript
 	function bepro_listings_adminhead() {
-			wp_admin_css('thickbox');
-			wp_enqueue_script('editor');
-			wp_enqueue_script('media-upload');
-			wp_enqueue_script('jquery-ui-tabs');
-			if(function_exists('wp_tiny_mce')) wp_tiny_mce();
-					do_action('admin_print_styles');
+		wp_admin_css('thickbox');
+		wp_enqueue_script('editor');
+		wp_enqueue_script('media-upload');
+		wp_enqueue_script('jquery-ui-tabs');
+		wp_enqueue_script('tiny_mce');
+		wp_enqueue_script('editor');
+		
+		do_action('admin_print_styles');
 		?><style type="text/css">
 		.form_label {
 			clear: left;
@@ -969,4 +971,9 @@
 		exit;
 	}
 	
+	function bepro_listings_add_settings_link($links) {
+		$links[] = '<a href="edit.php?post_type=bepro_listings&page=bepro_listings_options">' . (__("Settings", "bepro-listings")) . '</a>';
+		$links[] = '<a href="https://www.beprosoftware.com/forums">' . (__("Support", "bepro-listings")) . '</a>';
+		return $links;
+	}
 ?>

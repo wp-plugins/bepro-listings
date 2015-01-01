@@ -110,7 +110,15 @@
 	//setup for multisite 
 	function bepro_new_blog($blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 		global $wpdb;
-		bepro_listings_install_table($blog_id);
+		if ( is_plugin_active_for_network( 'bepro-listings/bepro_listings.php' ) || is_plugin_active_for_network( 'bepro_listings/bepro_listings.php' ) ) {
+			bepro_listings_install_table($blog_id);
+		}
+	}
+	
+	function bepro_delete_blog($tables ) {
+		global $wpdb;
+		$tables[] = $wpdb->prefix . BEPRO_LISTINGS_TABLE_BASE;
+		return $tables;
 	}
 	
 	//Setup database for multisite
@@ -160,6 +168,16 @@
 			
 			//initial bepro listing
 			$user_id = get_current_user_id();
+			$any_listings = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME);
+			if(!$any_listings || ($wpdb->num_rows == 0)){
+			
+			//setup category
+			$my_cat_id = term_exists( "Test Category", "bepro_listing_types"); 
+			if(is_array($my_cat_id)){
+				$my_cat_id = $my_cat_id["term_id"];
+			}else{
+				$my_cat_id = wp_insert_term("Test Category", "bepro_listing_types");
+			}
 			
 			$post = array(
 				  'post_author' => $user_id,
@@ -206,14 +224,11 @@
 				  'post_type' => "bepro_listings"
 				);  
 				
-			//Create post
-			$post_id = wp_insert_post( $post, $wp_error ); 
+				//Create post
 			
-			//setup category
-			$my_cat_id = term_exists( "Business", "bepro_listing_types"); 
-			if(is_array($my_cat_id)) $my_cat_id = $my_cat_id["term_id"];
-			wp_set_post_terms( $post_id, array($my_cat_id), "bepro_listing_types", false );
-			wp_set_object_terms( $post_id, $my_cat_id, "bepro_listing_types", false);
+				$post_id = wp_insert_post( $post, $wp_error );				wp_set_object_terms( $post_id, $my_cat_id, "bepro_listing_types", false);
+			}
+			
 			
 			//add first image
 			
@@ -335,7 +350,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.82' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.83' );
 		}	
 	}
 	

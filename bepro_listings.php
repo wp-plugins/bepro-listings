@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.82
+Version: 2.1.83
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -116,6 +116,8 @@ class Bepro_listings{
 		add_filter("bepro_listings_map_marker", "bepro_listings_generate_map_marker", 1, 3);
 		add_filter("mce_external_plugins", "bl_tinymce_add_buttons");
 		add_filter('mce_buttons', 'bl_tinymce_register_buttons');
+		add_filter( 'wpmu_drop_tables', 'bepro_delete_blog' );
+		add_filter('plugin_action_links_'. plugin_basename(__FILE__), 'bepro_listings_add_settings_link');
 		
 		//shortcodes
 		add_shortcode("search_form", array( $this, "searchform"));
@@ -417,10 +419,16 @@ class Bepro_listings{
 		global $wpdb;  
 		Bepro_listings::flush_permalinks();	
 		
-		if (function_exists('is_multisite') && is_multisite()){ 
-			$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
-			foreach($blogids as $blogid_x){
-				bepro_listings_install_table($blogid_x);
+		if (function_exists('is_multisite') && is_multisite()){
+			$blog_id = get_current_blog_id();
+			//network admin?
+			if($blog_id == 1){
+				$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+				foreach($blogids as $blogid_x){
+					bepro_listings_install_table($blogid_x);
+				}
+			}else{
+				bepro_listings_install_table($blog_id);
 			}
 		}else{
 			bepro_listings_install_table();

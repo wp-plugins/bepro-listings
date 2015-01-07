@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2014-04-29 22:47-0400\n"
+"PO-Revision-Date: 2015-01-07 00:52-0400\n"
 "Last-Translator: BePro Software Team <support@beprosoftware.com>\n"
 "Language-Team: bepro software\n"
 "Language: fr\n"
@@ -59,7 +59,7 @@ msgid "Location Information"
 msgstr "Information de contact"
 
 msgid "Address"
-msgstr "l'adresse ;"
+msgstr "l'adresse"
 
 msgid "City"
 msgstr "Ville"
@@ -100,6 +100,9 @@ msgstr "Où"
 msgid "Name"
 msgstr "Nom"
 
+msgid "Type"
+msgstr "Nom"
+
 #: bepro_listings.php:234
 msgid "Listing Types"
 msgstr "Liste des Types"
@@ -138,7 +141,7 @@ msgstr "Valider le formulaire"
 
 #: bepro_listings_admin.php:275
 msgid "Default User Id"
-msgstr "Default User Id"
+msgstr "Id utilisateur par défaut"
 
 #: bepro_listings_admin.php:276
 msgid "Success Message"
@@ -179,3 +182,152 @@ msgstr "Commentaires"
 #: bepro_listings_frontend.php:729
 msgid "Details"
 msgstr "Détails"
+
+#: bepro_listings_admin.php:613
+msgid "# Of Uploads"
+msgstr "Nbre d'Uploads"
+
+#: bepro_listings_admin.php:625
+msgid "Category Heading"
+msgstr "Titre de la catégorie"
+
+#: bepro_listings_admin.php:626
+msgid "Category Empty"
+msgstr "Catégorie vide"
+
+#: bepro_listings_admin.php:627
+msgid "Category Singular"
+msgstr "Catégorie singulier"
+
+#: bepro_listings_admin.php:628
+msgid "Days until Listings Expire?"
+msgstr "Jours jusqu'à l'expirant des annonces?"
+
+#: bepro_listings_admin.php:633
+msgid "Default Status"
+msgstr "Statut par défaut"
+
+#: bepro_listings_admin.php:638
+msgid "Fail Message"
+msgstr "Pas de Message"
+
+#: bepro_listings_admin.php:639
+msgid "Required Categories"
+msgstr "Catégories requises"
+
+#: bepro_listings_admin.php:640
+msgid "Exclude Categories"
+msgstr "Exclure des catégories"
+
+#: bepro_listings_admin.php:644
+msgid "How Links Open"
+msgstr "Comment ouvrent les liens"
+
+#: bepro_listings_admin.php:650
+msgid "Ajax On?"
+msgstr "Ajax sur?"
+
+#: bepro_listings_admin.php:671
+msgid "Name Search"
+msgstr "Recherche par nom"
+
+#: bepro_listings_admin.php:677
+msgid "Title Length"
+msgstr "Titre durée"
+
+#: bepro_listings_admin.php:678
+msgid "Details Link Text"
+msgstr "Texte du lien Détails"
+
+#: bepro_listings_admin.php:679
+msgid "Show Website Link?"
+msgstr "Montrer le lien de site Web?"
+
+#: bepro_listings_admin.php:680
+msgid "Currency Sign?"
+msgstr "Symbole de devise?"
+
+#: bepro_listings_admin.php:681
+msgid "Show Date filter?"
+msgstr "Afficher le filtre Date?"
+
+#: bepro_listings_admin.php:691
+msgid "# Gallery Columns"
+msgstr "# Galerie colonnes"
+
+#: bepro_listings_admin.php:697
+msgid "Links on Details"
+msgstr "Liens sur les détails"
+
+#: bepro_listings_admin.php:698
+msgid "Protect Contact"
+msgstr "Protéger le Contact"
+
+#: bepro_listings_admin.php:700
+msgid "Tab Direction"
+msgstr "Onglet orientation"
+
+#: bepro_listings_admin.php:706
+msgid "Query Type"
+msgstr "Type de requête"
+
+#: bepro_listings_admin.php:716
+msgid "CSV File"
+msgstr "Fichier CSV"
+
+#: bepro_listings_admin.php:717
+msgid "Delimiter"
+msgstr "Valider le formulaireDélimiteur"
+
+#: bepro_listings_admin.php:732
+msgid "Accept Payments?"
+msgstr "Accepter les paiements?"
+
+#: bepro_listings_admin.php:740
+msgid "Publish after confirm Paid?"
+msgstr "Publier après confirmez payé?"
+
+#: ------------Front end---------------- templates/list.php:6
+msgid "My Item Listings"
+msgstr "Mes listes d'éléments"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Notices"
+msgstr "Avis"
+
+msgid "Actions"
+msgstr "Actions"
+
+#: templates/list.php:32
+msgid "View"
+msgstr "Vue"
+
+#: templates/list.php:32
+msgid "Edit"
+msgstr "Edit"
+
+#: templates/list.php:32
+msgid "Delete"
+msgstr "Supprimer"
+
+#: templates/list.php:22
+msgid "Expires"
+msgstr "Expire"
+
+#: templates/list.php:32
+msgid "Pay"
+msgstr "Payer"
+
+#: templates/list.php:50
+msgid "Wait"
+msgstr "Attendre"
+
+#: templates/list.php:60
+msgid "No Live listings created"
+msgstr "Aucune offres Live créés"
+
+#: templates/list.php:62
+msgid "No live listings for this user"
+msgstr "Pas d'annonces direct pour cet utilisateur"

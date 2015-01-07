@@ -350,7 +350,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.83' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.84' );
 		}	
 	}
 	

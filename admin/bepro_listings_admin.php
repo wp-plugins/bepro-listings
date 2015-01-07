@@ -688,7 +688,7 @@
 							<option value="large" <?php echo ($data["gallery_size"]== "large")? 'selected="selected"':"" ?>>large</option>
 							<option value="full" <?php echo ($data["gallery_size"]== "full")? 'selected="selected"':"" ?>>full</option>
 						</select><br />
-						<span class="form_label"><?php _e("#Gallery Columns", "bepro-listings"); ?></span><select name="gallery_cols">
+						<span class="form_label"><?php _e("# Gallery Columns", "bepro-listings"); ?></span><select name="gallery_cols">
 							<option value="3" <?php echo ($data["gallery_cols"]== 3)? 'selected="selected"':"" ?>>3</option>
 							<option value="5" <?php echo ($data["gallery_cols"]== 5)? 'selected="selected"':"" ?>>5</option>
 							<option value="8" <?php echo ($data["gallery_cols"]== 8)? 'selected="selected"':"" ?>>8</option>
@@ -796,11 +796,13 @@
 	}
 	
 	function bl_tinymce_add_buttons($plugin_array){
+		if(get_post_type(get_the_ID()) == "bepro_listings") return $plugin_array;
 		$plugin_array['bepro_listings'] = plugins_url('../js/bl_tinymce_buttons.js', __FILE__ );
 		return $plugin_array;
 	}
 	
 	function bl_tinymce_register_buttons($buttons){
+		if(get_post_type(get_the_ID()) == "bepro_listings") return $buttons;
 		array_push( $buttons, 'beprolistings'); 
 		return $buttons;
 	}
@@ -866,8 +868,8 @@
 			<span class='shortcode_label'>Select Shortcode</span> <select id='bl_shortcode_type'>
 				<option value='bl_all_in_one'>All In One</option>
 				<option value='display_listings'>Show Listings</option>
-				<option value='filter_form'>Filter Form</option>
-				<option value='bl_search_filter'>Search Filter</option>
+				<option value='filter_form'>Search Filter Table</option>
+				<option value='bl_search_filter'>Search Filter Css</option>
 				<option value='search_form'>Search Form</option>
 				<option value='generate_map'>Show Map</option>
 				<option value='display_listing_categories'>Show Categories</option>
@@ -910,20 +912,20 @@
 				</form>
 			</div>
 			<div id='tab_filter_form' class='shorcode_options hide_options'>
-				<p class='shortcode_desc'>Show the Filter with a table layout</p>
+				<p class='shortcode_desc'>Show the Search Filter with a table layout. This is the exact same component as the search filter widget.</p>
 				<form id='form_filter_form' method='post'>
 					<span class='shortcode_label'>Listing page</span><input type='text' name='listing_page' />
 				</form>
 			</div>
 			<div id='tab_bl_search_filter' class='shorcode_options hide_options'>
-				<p class='shortcode_desc'>Show the Search filter with a CSS layout.</p>
+				<p class='shortcode_desc'>Show the Search filter with a CSS layout. This responsive element will adapt to the space you put it in.</p>
 				<form id='form_bl_search_filter' method='post'>
 					<span class='shortcode_label'>Listing page</span><input type='text' name='listing_page' /></br />
 					<span class='shortcode_label'>Category ID</span><input type='text' name='l_type'  size=1 placeholder='e.g. 5'/></br />
 				</form>
 			</div>
 			<div id='tab_search_form' class='shorcode_options hide_options'>
-				<p class='shortcode_desc'>Search form with name and location. If you have geo features turned off, the location option will not be available</p>
+				<p class='shortcode_desc'>Search form with name and location. If you have geo features turned off, the location option will not be available. Name refers to the contact name, title or both depending on your admin configuration</p>
 				<form id='form_search_form' method='post'>
 					<span class='shortcode_label'>Listing page</span><input type='text' name='listing_page' />
 				</form>

@@ -111,8 +111,17 @@ class BL_Recent_Listings_Widget extends WP_Widget {
 		$title = empty($data["heading"])? __("Recent Listings", "bepro-listings"):$data["heading"];
 		$after_title = $args['after_title'];
 		$num_posts = empty($data["num"])? 5:$data["num"];
+		$cat = empty($data["bepro_cat"])? 0: $data["bepro_cat"];
 		
-		$r = new WP_Query(array("posts_per_page" => $num_posts, "post_type" => "bepro_listings"));
+		if($cat)
+			$r = new WP_Query(array("posts_per_page" => $num_posts, "post_type" => "bepro_listings",'tax_query' =>
+			array(array(
+				'taxonomy' => 'bepro_listing_types',
+				'terms'    => $cat
+			))
+			));
+		else
+			$r = new WP_Query(array("posts_per_page" => $num_posts, "post_type" => "bepro_listings"));
 
 		if ( $r->have_posts() ) {
 
@@ -121,20 +130,24 @@ class BL_Recent_Listings_Widget extends WP_Widget {
 			if ( $title )
 				echo $before_title . $title . $after_title;
 
-			echo '<ul class="recent_listings_widget">';
+			$check = apply_filters("bl_recent_widget_override", array(), $r);
+			if(empty($check)){
+				echo '<ul class="recent_listings_widget">';
 
-			while ( $r->have_posts()) {
-				$r->the_post();
+				while ( $r->have_posts()) {
+					$r->the_post();
 
-				echo '<li>
-					<a href="' . get_permalink() . '" class="sidebar_recent_imgs">
-						' . get_the_post_thumbnail( $r->post->ID, 'bepro_listings' ) . '</a>';
-				echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>
-				</li>';
+					echo '<li>
+						<a href="' . get_permalink() . '" class="sidebar_recent_imgs">
+							' . get_the_post_thumbnail( $r->post->ID, 'bepro_listings' ) . '</a>';
+					echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>
+					</li>';
+				}
+
+				echo '</ul>';
+			}else{
+				echo $check;
 			}
-
-			echo '</ul>';
-
 			echo $after_widget;
 		} 
 		echo $args['after_widget'];
@@ -145,6 +158,7 @@ class BL_Recent_Listings_Widget extends WP_Widget {
 		if ($_POST["id_base"] == "bl_recent_listings_widget"){
 			$data['heading'] = attribute_escape($_POST['heading']);
 			$data['num'] = attribute_escape($_POST['num']);
+			$data['bepro_cat'] = attribute_escape($_POST['bepro_cat']);
 			update_option('bepro_recent_widget', $data);
 			echo "success";
 		}
@@ -154,8 +168,9 @@ class BL_Recent_Listings_Widget extends WP_Widget {
 		// Output admin widget options form
 		$data = get_option('bepro_recent_widget');
 	    ?>
-		  <p><label>Heading<input type="text" name="heading" value="<?php echo $data['heading']; ?>"></label></p>
-		  <p><label>Num Listings<select name="num">
+		  <p><label>Heading <input type="text" name="heading" value="<?php echo $data['heading']; ?>"></label></p>
+		  <p><label>Category <?php wp_dropdown_categories( array('show_option_all' => 'All','selected' => (@$data["bepro_cat"]),'name' => 'bepro_cat','taxonomy' => 'bepro_listing_types') ); ?></label></p>
+		  <p><label>Num Listings <select name="num">
 		  <option value="" <?php echo ($data['num'] == "")? "selected='selected'":""; ?> >Select One</option>
 		  <option value="1" <?php echo ($data['num'] == 1)? "selected='selected'":""; ?> >1</option>
 		  <option value="2" <?php echo ($data['num'] == 2)? "selected='selected'":""; ?>>2</option>

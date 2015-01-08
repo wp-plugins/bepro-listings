@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2014-12-18 22:06-0400\n"
+"PO-Revision-Date: 2015-01-07 23:46-0400\n"
 "Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
 "Language-Team: BePro Software\n"
 "Language: en\n"
@@ -217,3 +217,160 @@ msgstr "Visa innehåll"
 #: bepro_listings_admin.php:319
 msgid "Our Link in your footer?"
 msgstr "Vår länk i sidfoten?"
+
+#: templates\tabs\tab-comments.php:10
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: bepro_listings_frontend.php:729
+msgid "Details"
+msgstr "Detaljer"
+
+#: bepro_listings_admin.php:613
+msgid "# Of Uploads"
+msgstr "# Av uppladdningar"
+
+#: bepro_listings_admin.php:625
+msgid "Category Heading"
+msgstr "Kategorirubriken"
+
+#: bepro_listings_admin.php:626
+msgid "Category Empty"
+msgstr "Kategori tomt"
+
+#: bepro_listings_admin.php:627
+msgid "Category Singular"
+msgstr "Kategori Singular"
+
+#: bepro_listings_admin.php:628
+msgid "Days until Listings Expire?"
+msgstr "Dagar tills listor löper ut?"
+
+#: bepro_listings_admin.php:633
+msgid "Default Status"
+msgstr "Standardstatus"
+
+#: bepro_listings_admin.php:638
+msgid "Fail Message"
+msgstr "Misslyckas meddelande"
+
+#: bepro_listings_admin.php:639
+msgid "Required Categories"
+msgstr "Krävs kategorier"
+
+#: bepro_listings_admin.php:640
+msgid "Exclude Categories"
+msgstr "Utesluta kategorier"
+
+#: bepro_listings_admin.php:644
+msgid "How Links Open"
+msgstr "Hur länkar öppnas"
+
+#: bepro_listings_admin.php:650
+msgid "Ajax On?"
+msgstr "Ajax på?"
+
+#: bepro_listings_admin.php:671
+msgid "Name Search"
+msgstr "Namn Sök"
+
+#: bepro_listings_admin.php:677
+msgid "Title Length"
+msgstr "Titel längd"
+
+#: bepro_listings_admin.php:678
+msgid "Details Link Text"
+msgstr "Detaljer länktext"
+
+#: bepro_listings_admin.php:679
+msgid "Show Website Link?"
+msgstr "Visa webbplatslänk?"
+
+#: bepro_listings_admin.php:680
+msgid "Currency Sign?"
+msgstr "Valuta tecken?"
+
+#: bepro_listings_admin.php:681
+msgid "Show Date filter?"
+msgstr "Visa Datumfilter?"
+
+#: bepro_listings_admin.php:691
+msgid "# Gallery Columns"
+msgstr "# Gallery kolumner"
+
+#: bepro_listings_admin.php:697
+msgid "Links on Details"
+msgstr "Länkar på Detaljer"
+
+#: bepro_listings_admin.php:698
+msgid "Protect Contact"
+msgstr "Skydda kontakt"
+
+#: bepro_listings_admin.php:700
+msgid "Tab Direction"
+msgstr "Fliken riktning"
+
+#: bepro_listings_admin.php:706
+msgid "Query Type"
+msgstr "Frågetyp"
+
+#: bepro_listings_admin.php:716
+msgid "CSV File"
+msgstr "CSV-fil"
+
+#: bepro_listings_admin.php:717
+msgid "Delimiter"
+msgstr "Avgränsare"
+
+#: bepro_listings_admin.php:732
+msgid "Accept Payments?"
+msgstr "Acceptera betalningar?"
+
+#: bepro_listings_admin.php:740
+msgid "Publish after confirm Paid?"
+msgstr "Publicera efter bekräfta betald?"
+
+#: ------------Front end---------------- templates/list.php:6
+msgid "My Item Listings"
+msgstr "Min post listor"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Notices"
+msgstr "Meddelanden"
+
+msgid "Actions"
+msgstr "Åtgärder"
+
+#: templates/list.php:32
+msgid "View"
+msgstr "Visa"
+
+#: templates/list.php:32
+msgid "Edit"
+msgstr "Redigera"
+
+#: templates/list.php:32
+msgid "Delete"
+msgstr "Ta bort"
+
+#: templates/list.php:22
+msgid "Expires"
+msgstr "Upphör att gälla"
+
+#: templates/list.php:32
+msgid "Pay"
+msgstr "Betala"
+
+#: templates/list.php:50
+msgid "Wait"
+msgstr "AttendreVänta"
+
+#: templates/list.php:60
+msgid "No Live listings created"
+msgstr "Inga levande listor skapade"
+
+#: templates/list.php:62
+msgid "No live listings for this user"
+msgstr "Inga levande listor för den här användaren"

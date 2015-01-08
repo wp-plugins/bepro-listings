@@ -350,7 +350,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.84' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.85' );
 		}	
 	}
 	
@@ -846,16 +846,20 @@
 	function bepro_create_post_type() {
 		load_constants();
 		$labels = array(
-			'name' => _x('BePro Listings', 'post type general name'),
-			'singular_name' => _x('Listing', 'post type singular name'),
-			'add_new' => _x('Add New', 'Listing'),
-			'add_new_item' => __('Add New Listing'),
-			'edit_item' => __('Edit Listing'),
-			'new_item' => __('New Listing'),
-			'view_item' => __('View Listing'),
-			'search_items' => __('Search Listing'),
-			'not_found' =>  __('Nothing found'),
-			'not_found_in_trash' => __('Nothing found in Trash'),
+			'name' => _x('BePro Listings', 'post type general name', 'bepro-listings'),
+			'singular_name' => _x('Listing', 'post type singular name', 'bepro-listings'),
+			'menu_name' => _x( 'Listings', 'admin menu', 'bepro-listings' ),
+			'name_admin_bar'  => _x( 'Listing', 'add new on admin bar', 'bepro-listings' ),
+			'add_new' => _x('Add New', 'Listing', 'bepro-listings'),
+			'add_new_item' => __('Add New Listing', 'bepro-listings'),
+			'edit_item' => __('Edit Listing', 'bepro-listings'),
+			'new_item' => __('New Listing', 'bepro-listings'),
+			'view_item' => __('View Listing', 'bepro-listings'),
+			'all_items' => __( 'All Listings', 'bepro-listings'),
+			'search_items' => __('Search Listings', 'bepro-listings'),
+			'parent_item_colon'  => __( 'Parent Listings:','bepro-listings'),
+			'not_found' =>  __('Nothing found', 'bepro-listings'),
+			'not_found_in_trash' => __('Nothing found in Trash', 'bepro-listings'),
 			'parent_item_colon' => ''
 		);
 		

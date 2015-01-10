@@ -101,6 +101,7 @@ class BL_Meta_Box_Listing_Images {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+		if(!is_admin()) return;
 		$post_thumbnail_id = get_post_thumbnail_id( $post_id );
 		$raw_old_images = get_children(array('post_parent'=>$post_id), ARRAY_A);
 		unset($raw_old_images[$post_thumbnail_id]);
@@ -114,19 +115,20 @@ class BL_Meta_Box_Listing_Images {
 			//unattach
 			foreach($diff as $del_this)
 				$wpdb->update($wpdb->posts, array('post_parent'=>0), array('id'=>$del_this, 'post_type'=>'attachment'));
+				
+			
+			//save new
+			foreach($new_images as $add_this)
+				$wpdb->update($wpdb->posts, array('post_parent'=>$post_id), array('id'=>$add_this, 'post_type'=>'attachment'));
+				
+					
+			//save order of images
+			$attachment_ids = array_filter( $new_images );
+			update_post_meta( $post_id, '_listing_image_gallery', implode( ',', $attachment_ids ) );
 		}else{
 			//unattach
 			foreach($old_images as $del_this)
 				$wpdb->update($wpdb->posts, array('post_parent'=>0), array('id'=>$del_this, 'post_type'=>'attachment'));
 		}
-		
-		//save new
-		foreach($new_images as $add_this)
-			$wpdb->update($wpdb->posts, array('post_parent'=>$post_id), array('id'=>$add_this, 'post_type'=>'attachment'));
-			
-		
-		//save order of images
-		$attachment_ids = array_filter( $new_images );
-		update_post_meta( $post_id, '_listing_image_gallery', implode( ',', $attachment_ids ) );
 	}
 }

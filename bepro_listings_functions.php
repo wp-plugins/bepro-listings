@@ -174,7 +174,7 @@
 			//setup category
 			$my_cat_id = term_exists( "Test Category", "bepro_listing_types"); 
 			if(is_array($my_cat_id)){
-				$my_cat_id = $my_cat_id["term_id"];
+				$my_cat_id = (int)$my_cat_id["term_id"];
 			}else{
 				$my_cat_id = wp_insert_term("Test Category", "bepro_listing_types");
 			}
@@ -350,7 +350,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.85' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.86' );
 		}	
 	}
 	
@@ -848,8 +848,8 @@
 		$labels = array(
 			'name' => _x('BePro Listings', 'post type general name', 'bepro-listings'),
 			'singular_name' => _x('Listing', 'post type singular name', 'bepro-listings'),
-			'menu_name' => _x( 'Listings', 'admin menu', 'bepro-listings' ),
-			'name_admin_bar'  => _x( 'Listing', 'add new on admin bar', 'bepro-listings' ),
+			'menu_name' => _x( 'BePro Listings', 'admin menu', 'bepro-listings' ),
+			'name_admin_bar'  => _x( 'BePro Listing', 'add new on admin bar', 'bepro-listings' ),
 			'add_new' => _x('Add New', 'Listing', 'bepro-listings'),
 			'add_new_item' => __('Add New Listing', 'bepro-listings'),
 			'edit_item' => __('Edit Listing', 'bepro-listings'),

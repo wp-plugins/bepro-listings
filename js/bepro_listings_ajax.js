@@ -4,7 +4,7 @@ jQuery(document).ready(function(){
 		href = jQuery(this).attr("href");
 		raw_val = href.split("l_type=");
 		l_type = raw_val[1];
-		shortcode_vals = get_bl_shortcode_vals();
+		shortcode_vals = get_bl_shortcode_vals_no_cat();
 		bl_ajax_init();
 		fairy_dust = "";
 		if(jQuery("#filter_search_form").length > 0){
@@ -150,7 +150,7 @@ jQuery(document).ready(function(){
 	jQuery("body").on("submit","#listingsearchform", function(element){
 		element.preventDefault();
 		fairy_dust = jQuery("#listingsearchform").serialize();
-		shortcode_vals = get_bl_shortcode_vals();
+		shortcode_vals = get_bl_shortcode_vals_no_cat();
 		bl_ajax_init();
 		jQuery.ajax({
 			type : "POST",
@@ -177,7 +177,7 @@ jQuery(document).ready(function(){
 	jQuery("body").on("submit","#filter_search_form", function(element){
 		element.preventDefault();
 		fairy_dust = jQuery("#filter_search_form").serialize();
-		shortcode_vals = get_bl_shortcode_vals();
+		shortcode_vals = get_bl_shortcode_vals_no_cat();
 		bl_ajax_init();
 		jQuery.ajax({
 			type : "POST",
@@ -205,7 +205,7 @@ jQuery(document).ready(function(){
 	jQuery("body").on("submit","#filter_search_shortcode_form", function(element){
 		element.preventDefault();
 		fairy_dust = jQuery("#filter_search_shortcode_form").serialize();
-		shortcode_vals = get_bl_shortcode_vals();
+		shortcode_vals = get_bl_shortcode_vals_no_cat();
 		bl_ajax_init();
 		jQuery.ajax({
 			type : "POST",
@@ -243,6 +243,28 @@ function get_bl_shortcode_vals(){
 		returnstr = returnstr + "&cat=" + jQuery("#bl_cat").html();
 	if(jQuery("#bl_l_type").length > 0)
 		returnstr = returnstr + "&l_type=" + jQuery("#bl_l_type").html();
+	if(jQuery("#bl_limit").length > 0)
+		returnstr = returnstr + "&limit=" + jQuery("#bl_limit").html();
+	if(jQuery("#bl_type").length > 0)
+		returnstr = returnstr + "&type=" + jQuery("#bl_type").html();
+	if(jQuery("#bl_order").length > 0)
+		returnstr = returnstr + "&order_dir=" + jQuery("#bl_order").html();
+	if(jQuery("#bl_show_paging").length > 0)
+		returnstr = returnstr + "&show_paging=" + jQuery("#bl_show_paging").html();
+	if(jQuery("#bl_form_id").length > 0)
+		returnstr = returnstr + "&bl_form_id=" + jQuery("#bl_form_id").html();
+		
+	return returnstr;	
+}
+
+function get_bl_shortcode_vals_no_cat(){ 
+	returnstr = '';
+	if(jQuery("#bl_size").length > 0)
+		returnstr = returnstr + "&size=" + jQuery("#bl_size").html();
+	if(jQuery("#bl_pop_up").length > 0)
+		returnstr = returnstr + "&pop_up=" + jQuery("#bl_pop_up").html();
+	if(jQuery("#bl_ctype").length > 0)
+		returnstr = returnstr + "&ctype=" + jQuery("#bl_ctype").html();
 	if(jQuery("#bl_limit").length > 0)
 		returnstr = returnstr + "&limit=" + jQuery("#bl_limit").html();
 	if(jQuery("#bl_type").length > 0)

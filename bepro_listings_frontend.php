@@ -18,6 +18,7 @@
 
 	//ajax update front end
 	function bl_ajax_frontend_update(){
+		$_REQUEST["l_type"] = (!empty($_REQUEST["l_type"]) && !is_numeric($_REQUEST["l_type"]) && !is_array($_REQUEST["l_type"]))? explode(",", $_REQUEST["l_type"]):$_REQUEST["l_type"];
 		$map = bepro_generate_map();
 		$cat = display_listing_categories();
 		$listings = display_listings();
@@ -455,6 +456,7 @@
 				
 		}
 		
+		
 		//make presumption to randomize featured listings
 		if(empty($order_by) && !empty($l_featured))$order_by = 2;
 		if(empty($order_dir))$order_dir = 1;
@@ -537,8 +539,11 @@
 			$bl_form_id = "<div id='bl_form_id' class='bl_shortcode_selected'>$bl_form_id</div>";
 		
 		$bl_l_type = "";
-		If(!empty($l_type) && empty($l_featured))
+		
+		If(!empty($l_type) && empty($l_featured)){
+			$l_type = is_array($l_type)? implode(",",array_values($l_type)):$l_type;
 			$bl_l_type = "<div id='bl_l_type' class='bl_shortcode_selected'>".$l_type."</div>";
+		}
 		
 		$results = "<div id='shortcode_list$l_featured_id'>".$results."</div>";
 		$results .= "$hidden_limit_text $show_bl_type $show_paging $bl_order $bl_form_id $bl_l_type";
@@ -634,7 +639,7 @@
 						<span class='searchlabel'>".__($data["cat_heading"], "bepro-listings")."</span>
 						";
 			if($l_type){	
-				$l_type = $l_type[0];			
+				$l_type = is_array($l_type)?$l_type[0]:$l_type;			
 				$parent = (is_numeric($l_type) && ($l_type != "0"))? $l_type:" ";
 			}else{
 				$parent = "";

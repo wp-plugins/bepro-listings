@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2014-11-20 18:05-0400\n"
+"PO-Revision-Date: 2015-01-18 19:31-0400\n"
 "Last-Translator: \n"
 "Language-Team: bepro software\n"
 "MIME-Version: 1.0\n"
@@ -253,3 +253,160 @@ msgstr "Betalingen"
 #: bepro_listings_admin.php:583
 msgid "Support"
 msgstr "Ondersteuning"
+
+#: templates\tabs\tab-comments.php:10
+msgid "Comments"
+msgstr "Opmerkingen"
+
+#: bepro_listings_frontend.php:729
+msgid "Details"
+msgstr "Details"
+
+#: bepro_listings_admin.php:613
+msgid "# Of Uploads"
+msgstr "# Voor Uploads"
+
+#: bepro_listings_admin.php:625
+msgid "Category Heading"
+msgstr "Categorie Rubriek"
+
+#: bepro_listings_admin.php:626
+msgid "Category Empty"
+msgstr "Categorie lege"
+
+#: bepro_listings_admin.php:627
+msgid "Category Singular"
+msgstr "Categorie Singular"
+
+#: bepro_listings_admin.php:628
+msgid "Days until Listings Expire?"
+msgstr "Dagen tot aanbiedingen aflopen?"
+
+#: bepro_listings_admin.php:633
+msgid "Default Status"
+msgstr "Standaardstatus"
+
+#: bepro_listings_admin.php:638
+msgid "Fail Message"
+msgstr "Bericht mislukt"
+
+#: bepro_listings_admin.php:639
+msgid "Required Categories"
+msgstr "Vereiste Categorieën"
+
+#: bepro_listings_admin.php:640
+msgid "Exclude Categories"
+msgstr "Categorieën uit te sluiten"
+
+#: bepro_listings_admin.php:644
+msgid "How Links Open"
+msgstr "Hoe Links openen"
+
+#: bepro_listings_admin.php:650
+msgid "Ajax On?"
+msgstr "Ajax op?"
+
+#: bepro_listings_admin.php:671
+msgid "Name Search"
+msgstr "Zoeken op naam"
+
+#: bepro_listings_admin.php:677
+msgid "Title Length"
+msgstr "Titel lengte"
+
+#: bepro_listings_admin.php:678
+msgid "Details Link Text"
+msgstr "Details Koppelingstekst"
+
+#: bepro_listings_admin.php:679
+msgid "Show Website Link?"
+msgstr "Websitelink Toon?"
+
+#: bepro_listings_admin.php:680
+msgid "Currency Sign?"
+msgstr "Valutateken?"
+
+#: bepro_listings_admin.php:681
+msgid "Show Date filter?"
+msgstr "Toon Datumfilter?"
+
+#: bepro_listings_admin.php:691
+msgid "# Gallery Columns"
+msgstr "# Galerie kolommen"
+
+#: bepro_listings_admin.php:697
+msgid "Links on Details"
+msgstr "Links op Details"
+
+#: bepro_listings_admin.php:698
+msgid "Protect Contact"
+msgstr "Beschermen van Contact"
+
+#: bepro_listings_admin.php:700
+msgid "Tab Direction"
+msgstr "Tabblad richting"
+
+#: bepro_listings_admin.php:706
+msgid "Query Type"
+msgstr "Query Type"
+
+#: bepro_listings_admin.php:716
+msgid "CSV File"
+msgstr "CSV-bestand"
+
+#: bepro_listings_admin.php:717
+msgid "Delimiter"
+msgstr "Scheidingsteken"
+
+#: bepro_listings_admin.php:732
+msgid "Accept Payments?"
+msgstr "Betalingen accepteren?"
+
+#: bepro_listings_admin.php:740
+msgid "Publish after confirm Paid?"
+msgstr "Publiceren na bevestigen betaald?"
+
+#: ------------Front end---------------- templates/list.php:6
+msgid "My Item Listings"
+msgstr "Mijn aanbiedingen"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Notices"
+msgstr "Aankondigingen"
+
+msgid "Actions"
+msgstr "Acties"
+
+#: templates/list.php:32
+msgid "View"
+msgstr "Weergave"
+
+#: templates/list.php:32
+msgid "Edit"
+msgstr "Bewerken"
+
+#: templates/list.php:32
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: templates/list.php:22
+msgid "Expires"
+msgstr "Verloopt"
+
+#: templates/list.php:32
+msgid "Pay"
+msgstr "Betalen"
+
+#: templates/list.php:50
+msgid "Wait"
+msgstr "Wachten"
+
+#: templates/list.php:60
+msgid "No Live listings created"
+msgstr "Geen Live aanbiedingen gemaakt"
+
+#: templates/list.php:62
+msgid "No live listings for this user"
+msgstr "Geen levende aanbiedingen voor deze gebruiker"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2014-11-11 13:15-0400\n"
+"PO-Revision-Date: 2015-01-18 20:35-0400\n"
 "Last-Translator: \n"
 "Language-Team: bepro software\n"
 "MIME-Version: 1.0\n"
@@ -128,7 +128,7 @@ msgstr "navn"
 
 #: bepro_listings.php:85
 msgid "Search Listings"
-msgstr "Oppføringer"
+msgstr "Suche Inserate"
 
 #: bepro_listings_frontend.php:370
 msgid "Username"
@@ -217,3 +217,196 @@ msgstr "Vis innhold"
 #: bepro_listings_admin.php:319
 msgid "Our Link in your footer?"
 msgstr "Vår Link i bunnteksten?"
+
+#: bepro_listings_admin.php:575
+msgid "General"
+msgstr "Generelt"
+
+#: bepro_listings_admin.php:576
+msgid "Forms"
+msgstr "Skjemaer"
+
+#: bepro_listings_admin.php:577
+msgid "Search/Listings"
+msgstr "Søk/oppføringer"
+
+#: bepro_listings_admin.php:578
+msgid "Page/Post"
+msgstr "siden/innlegg"
+
+#: bepro_listings_admin.php:579
+msgid "Map"
+msgstr "Kart"
+
+#: bepro_listings_admin.php:580
+msgid "3rd Party"
+msgstr "tredjepart"
+
+#: bepro_listings_admin.php:581
+msgid "CSV Upload"
+msgstr "CSV opplasting"
+
+#: bepro_listings_admin.php:582
+msgid "Payments"
+msgstr "Betalinger"
+
+#: bepro_listings_admin.php:583
+msgid "Support"
+msgstr "Støtte"
+
+#: templates\tabs\tab-comments.php:10
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: bepro_listings_frontend.php:729
+msgid "Details"
+msgstr "Detaljer"
+
+#: bepro_listings_admin.php:613
+msgid "# Of Uploads"
+msgstr "# Av opplastinger"
+
+#: bepro_listings_admin.php:625
+msgid "Category Heading"
+msgstr "Kategorioverskriften"
+
+#: bepro_listings_admin.php:626
+msgid "Category Empty"
+msgstr "Kategorien tom"
+
+#: bepro_listings_admin.php:627
+msgid "Category Singular"
+msgstr "Kategori entall"
+
+#: bepro_listings_admin.php:628
+msgid "Days until Listings Expire?"
+msgstr "Dager inntil oppføringer utløper?"
+
+#: bepro_listings_admin.php:633
+msgid "Default Status"
+msgstr "Standardstatus"
+
+#: bepro_listings_admin.php:638
+msgid "Fail Message"
+msgstr "Mislykkes melding"
+
+#: bepro_listings_admin.php:639
+msgid "Required Categories"
+msgstr "Nødvendig kategorier"
+
+#: bepro_listings_admin.php:640
+msgid "Exclude Categories"
+msgstr "Utelukke kategorier"
+
+#: bepro_listings_admin.php:644
+msgid "How Links Open"
+msgstr "Hvor åpnes"
+
+#: bepro_listings_admin.php:650
+msgid "Ajax On?"
+msgstr "Ajax på?"
+
+#: bepro_listings_admin.php:671
+msgid "Name Search"
+msgstr "Navnsøk"
+
+#: bepro_listings_admin.php:677
+msgid "Title Length"
+msgstr "Tittelen lengde"
+
+#: bepro_listings_admin.php:678
+msgid "Details Link Text"
+msgstr "Detaljer koblingsteksten"
+
+#: bepro_listings_admin.php:679
+msgid "Show Website Link?"
+msgstr "Vis nettsted?"
+
+#: bepro_listings_admin.php:680
+msgid "Currency Sign?"
+msgstr "Valuta tegn?"
+
+#: bepro_listings_admin.php:681
+msgid "Show Date filter?"
+msgstr "Vis Datofilter?"
+
+#: bepro_listings_admin.php:691
+msgid "# Gallery Columns"
+msgstr "# Galleri kolonner"
+
+#: bepro_listings_admin.php:697
+msgid "Links on Details"
+msgstr "Koblinger på detaljer"
+
+#: bepro_listings_admin.php:698
+msgid "Protect Contact"
+msgstr "Beskytte kontakt"
+
+#: bepro_listings_admin.php:700
+msgid "Tab Direction"
+msgstr "Tabulatorretningen"
+
+#: bepro_listings_admin.php:706
+msgid "Query Type"
+msgstr "Spørringstype"
+
+#: bepro_listings_admin.php:716
+msgid "CSV File"
+msgstr "CSV-fil"
+
+#: bepro_listings_admin.php:717
+msgid "Delimiter"
+msgstr "Skilletegn"
+
+#: bepro_listings_admin.php:732
+msgid "Accept Payments?"
+msgstr "Godta betalinger?"
+
+#: bepro_listings_admin.php:740
+msgid "Publish after confirm Paid?"
+msgstr "Publisere etter bekrefte betalt?"
+
+#: ------------Front end---------------- templates/list.php:6
+msgid "My Item Listings"
+msgstr "Min elementet reiseaktører"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Notices"
+msgstr "Merknader"
+
+msgid "Actions"
+msgstr "Handlinger"
+
+#: templates/list.php:32
+msgid "View"
+msgstr "Vis"
+
+#: templates/list.php:32
+msgid "Edit"
+msgstr "Rediger"
+
+#: templates/list.php:32
+msgid "Delete"
+msgstr "Slette"
+
+#: templates/list.php:22
+msgid "Expires"
+msgstr "Utløper"
+
+#: templates/list.php:32
+msgid "Pay"
+msgstr "Betale"
+
+#: templates/list.php:50
+msgid "Wait"
+msgstr "vent"
+
+#: templates/list.php:60
+msgid "No Live listings created"
+msgstr "Ingen Live oppføringer opprettet"
+
+#: templates/list.php:62
+msgid "No live listings for this user"
+msgstr "Ingen live oppføringer for denne brukeren"

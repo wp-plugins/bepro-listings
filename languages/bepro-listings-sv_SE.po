@@ -128,7 +128,7 @@ msgstr "Namn"
 
 #: bepro_listings.php:85
 msgid "Search Listings"
-msgstr "Söklistor"
+msgstr "Suche Inserate"
 
 #: bepro_listings_frontend.php:370
 msgid "Username"
@@ -162,6 +162,7 @@ msgstr "Kontakta"
 msgid "View Map"
 msgstr "Visa karta"
 
+#: ------------Admin Area---------------- bepro_listings_admin.php:258
 #: bepro_listings_admin.php:258
 msgid "Show Cost"
 msgstr "Visa kostnaden"
@@ -217,6 +218,42 @@ msgstr "Visa innehåll"
 #: bepro_listings_admin.php:319
 msgid "Our Link in your footer?"
 msgstr "Vår länk i sidfoten?"
+ 
+#: bepro_listings_admin.php:575
+msgid "General"
+msgstr "Generale"
+
+#: bepro_listings_admin.php:576
+msgid "Forms"
+msgstr "Forme"
+
+#: bepro_listings_admin.php:577
+msgid "Search/Listings"
+msgstr "Ricerca/Inserzioni"
+
+#: bepro_listings_admin.php:578
+msgid "Page/Post"
+msgstr "Pagina/Post"
+
+#: bepro_listings_admin.php:579
+msgid "Map"
+msgstr "Mappa"
+
+#: bepro_listings_admin.php:580
+msgid "3rd Party"
+msgstr "3a parte"
+
+#: bepro_listings_admin.php:581
+msgid "CSV Upload"
+msgstr "CSV Upload"
+
+#: bepro_listings_admin.php:582
+msgid "Payments"
+msgstr "Pagamenti"
+
+#: bepro_listings_admin.php:583
+msgid "Support"
+msgstr "Supporto"
 
 #: templates\tabs\tab-comments.php:10
 msgid "Comments"

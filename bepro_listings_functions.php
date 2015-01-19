@@ -350,7 +350,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.87' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.88' );
 		}	
 	}
 	
@@ -425,8 +425,7 @@
 			$data['bepro_listings_item_content_template'] = 'bepro_listings_item_content_info';
 			
 			//item list template
-			$data['bepro_listings_list_template_1'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_above_image" => "bepro_listings_list_featured_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_image" => "bepro_listings_list_image_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_1.css", __FILE__ ), "template_file" => plugin_dir_path( __FILE__ ).'/templates/listings/generic_1.php');
-			$data['bepro_listings_list_template_2'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_above_image" => "bepro_listings_list_featured_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_above_title" => "bepro_listings_list_image_template","bepro_listings_list_image" => "bepro_listings_list_geo_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_after_content" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_2.css", __FILE__ ), "template_file" => plugin_dir_path( __FILE__ ).'/templates/listings/generic_2.php');
+			$data = create_result_listing_templates($data);
 			
 			//save
 			update_option("bepro_listings", $data);
@@ -459,41 +458,50 @@
 		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
 			$bepro_listings_version = BEPRO_LISTINGS_VERSION;
 			
-			//BePro Email Integration
-			if(@class_exists("Bepro_email")){
-				$bepro_email = new Bepro_email();
-				$bepro_email->delete_all_owner_emails("bepro_listings");
-				//email 1
-				$email1["post_title"] = "Hello [username]";
-				$email1["post_content"] = "Your submission to [website_url] has been received. Thank you";
-				$email1["bpe_owner"] = "bepro_listings";
-				$email1["bpe_times_sent"] = "0";
-				$email1["bpe_mail_agent"] = "wp_mail";
-				$email1["bpe_email_to"] = "[user_email]";
-				$email1["bpe_hook"] = "bepro_listings_add_listing";
-				$email1["bpe_tracker"] = "bl_email1";
-				$email1["bpe_max_send"] = "";
-				$bepro_email->bepro_add_edit_email($email1);
-				
-				//email 2
-				$email2["post_title"] = "New Listing";
-				$email2["post_content"] = "Your received a new submission on [website_url].";
-				$email2["bpe_owner"] = "bepro_listings";
-				$email2["bpe_times_sent"] = "0";
-				$email2["bpe_mail_agent"] = "wp_mail";
-				$email2["bpe_email_to"] = "[admin_user_email]";
-				$email2["bpe_hook"] = "bepro_listings_add_listing";
-				$email2["bpe_tracker"] = "bl_email2";
-				$email2["bpe_max_send"] = "";
-				$bepro_email->bepro_add_edit_email($email2);
-			}
+			create_bepro_emails_for_bepro_listings();
 			
 			//set version
 			update_option('bepro_listings_version', $bepro_listings_version);
 		}
-		
 	}
 	
+	//create templates for search results
+	function create_result_listing_templates($data){
+		$data['bepro_listings_list_template_1'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_above_image" => "bepro_listings_list_featured_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_image" => "bepro_listings_list_image_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_1.css", __FILE__ ), "template_file" => plugin_dir_path( __FILE__ ).'/templates/listings/generic_1.php');
+		$data['bepro_listings_list_template_2'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_above_image" => "bepro_listings_list_featured_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_above_title" => "bepro_listings_list_image_template","bepro_listings_list_image" => "bepro_listings_list_geo_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_after_content" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_2.css", __FILE__ ), "template_file" => plugin_dir_path( __FILE__ ).'/templates/listings/generic_2.php');
+		return $data;
+	}
+	
+	//BePro Email Integration
+	function create_bepro_emails_for_bepro_listings(){
+		if(@class_exists("Bepro_email")){
+			$bepro_email = new Bepro_email();
+			$bepro_email->delete_all_owner_emails("bepro_listings");
+			//email 1
+			$email1["post_title"] = "Hello [username]";
+			$email1["post_content"] = "Your submission to [website_url] has been received. Thank you";
+			$email1["bpe_owner"] = "bepro_listings";
+			$email1["bpe_times_sent"] = "0";
+			$email1["bpe_mail_agent"] = "wp_mail";
+			$email1["bpe_email_to"] = "[user_email]";
+			$email1["bpe_hook"] = "bepro_listings_add_listing";
+			$email1["bpe_tracker"] = "bl_email1";
+			$email1["bpe_max_send"] = "";
+			$bepro_email->bepro_add_edit_email($email1);
+			
+			//email 2
+			$email2["post_title"] = "New Listing";
+			$email2["post_content"] = "Your received a new submission on [website_url].";
+			$email2["bpe_owner"] = "bepro_listings";
+			$email2["bpe_times_sent"] = "0";
+			$email2["bpe_mail_agent"] = "wp_mail";
+			$email2["bpe_email_to"] = "[admin_user_email]";
+			$email2["bpe_hook"] = "bepro_listings_add_listing";
+			$email2["bpe_tracker"] = "bl_email2";
+			$email2["bpe_max_send"] = "";
+			$bepro_email->bepro_add_edit_email($email2);
+		}
+	}
 	//Search wordpress table hierarchy for custom post type 'bepro_listing_types'
 	function listing_types(){
 		global $wpdb;
@@ -684,7 +692,7 @@
 					}else{
 						$result = bepro_add_post($post_data);
 					}
-					if(!$wp_error){
+					if($result){
 						$return_message = true;
 					}else{
 						$return_message = false;
@@ -697,7 +705,7 @@
 		
 		if($return_post_id)
 			return $post_id;
-		
+			
 		return $return_message;
 	}
 	
@@ -1006,8 +1014,10 @@
 		
 		$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set expires = '".$expiration."', bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
 		$raw_post = get_post($post_id);
-		$raw_post->post_status = "Publish";
-		wp_update_post($raw_post);
+		if($raw_post){
+			$raw_post->post_status = "Publish";
+			wp_update_post($raw_post);
+		}
 	}
 	
 	function bepro_get_total_cat_cost($post_id){
@@ -1026,10 +1036,27 @@
 	function save_data_and_redirect(){
 		if(!empty($_POST["save_bepro_listing"]) && !empty($_POST["redirect"])){
 			$wp_upload_dir = wp_upload_dir();
-			if(bepro_listings_save()){
+			if($post_id = bepro_listings_save(false, true)){
+				$data = get_option("bepro_listings");
+				//add to cart and redirect?
+				if(is_numeric($data["require_payment"]) && empty($_POST["bepro_post_id"]) && class_exists("Bepro_cart")){
+					if($data["require_payment"] == 1){
+						$cost = bepro_get_total_cat_cost($item->post_id);
+					}else if($data["require_payment"] == 2){
+						$cost = $data["flat_fee"];
+					}
+					if(!empty($cost) && function_exists("bpc_cart_actions_handler") ){
+						$_POST["addcart"] = 1;
+						$_POST["price"] = $cost;
+						$_POST["item_number"] = $post_id;
+						$_POST["product"] = __("Listing Submission");
+						bpc_cart_actions_handler();
+					}
+				}
 				header("LOCATION: ".$_POST["redirect"]);
 				exit;
 			}
 		}
+		
 	}
 ?>

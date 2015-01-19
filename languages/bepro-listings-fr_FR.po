@@ -100,8 +100,25 @@ msgstr "Où"
 msgid "Name"
 msgstr "Nom"
 
-msgid "Type"
-msgstr "Nom"
+#: bepro_listings.php:85
+msgid "Search Listings"
+msgstr "Suche Inserate"
+
+#: bepro_listings_frontend.php:370
+msgid "Username"
+msgstr "Benutzername"
+
+#: bepro_listings_frontend.php:371
+msgid "Password"
+msgstr "Passwort"
+
+#: bepro_listings_frontend.php:369
+msgid "Login / Register"
+msgstr "Login / Registrieren"
+
+#: bepro_listings_frontend.php:375
+msgid "Create Listing"
+msgstr "Liste erstellen"
 
 #: bepro_listings.php:234
 msgid "Listing Types"
@@ -174,6 +191,42 @@ msgstr "Afficher le contenu"
 #: bepro_listings_admin.php:319
 msgid "Our Link in your footer?"
 msgstr "Notre lien à votre pied de page ?"
+
+#: bepro_listings_admin.php:575
+msgid "General"
+msgstr "Generale"
+
+#: bepro_listings_admin.php:576
+msgid "Forms"
+msgstr "Forme"
+
+#: bepro_listings_admin.php:577
+msgid "Search/Listings"
+msgstr "Ricerca/Inserzioni"
+
+#: bepro_listings_admin.php:578
+msgid "Page/Post"
+msgstr "Pagina/Post"
+
+#: bepro_listings_admin.php:579
+msgid "Map"
+msgstr "Mappa"
+
+#: bepro_listings_admin.php:580
+msgid "3rd Party"
+msgstr "3a parte"
+
+#: bepro_listings_admin.php:581
+msgid "CSV Upload"
+msgstr "CSV Upload"
+
+#: bepro_listings_admin.php:582
+msgid "Payments"
+msgstr "Pagamenti"
+
+#: bepro_listings_admin.php:583
+msgid "Support"
+msgstr "Supporto"
 
 #: templates\tabs\tab-comments.php:10
 msgid "Comments"

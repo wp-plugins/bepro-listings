@@ -129,12 +129,20 @@
 					jQuery("#require_payment").change(function(rp){
 						if(jQuery(this).val() == 2){
 							jQuery("#flat_fee_details").css("display", "block");
+							jQuery("#payment_options").css("display", "block");
+						}else if(jQuery(this).val() == 1){
+							jQuery("#payment_options").css("display", "block");
 						}else{
 							jQuery("#flat_fee_details").css("display", "none");
+							jQuery("#payment_options").css("display", "none");
 						}
 					});
 					if(jQuery("#require_payment").val() != 2)
 						jQuery("#flat_fee_details").css("display", "none");
+						
+					if(jQuery("#require_payment").val() == "")
+						jQuery("#payment_options").css("display", "none");
+						
 				});
 			</script>
 		';
@@ -547,7 +555,16 @@
 			//payment
 			$data["require_payment"] = $_POST["require_payment"];
 			$data["flat_fee"] = is_numeric($_POST["flat_fee"])?$_POST["flat_fee"]:0;
+			$data["add_to_cart"] = $_POST["add_to_cart"];
 			$data["publish_after_payment"] = $_POST["publish_after_payment"];
+			
+			//repair
+			if(!empty($_POST["recreate_templates"]) && ($_POST["recreate_templates"] == 2)){
+				$data = create_result_listing_templates($data);
+			}
+			if(!empty($_POST["bepro_email_notifications"]) && ($_POST["bepro_email_notifications"] == 2)){
+				create_bepro_emails_for_bepro_listings();
+			}
 			
 			//Support
 			$data["footer_link"] = $_POST["footer_link"];
@@ -585,6 +602,7 @@
 				}
 				fclose($file);
 			}
+			
 		}
 		
 		
@@ -603,7 +621,8 @@
 						<li><a href="#tabs-6"><?php _e("3rd Party", "bepro-listings"); ?></a></li>
 						<li><a href="#tabs-7"><?php _e("CSV Upload", "bepro-listings"); ?></a></li>
 						<li><a href="#tabs-8"><?php _e("Payments", "bepro-listings"); ?></a></li>
-						<li><a href="#tabs-9"><?php _e("Support", "bepro-listings"); ?></a></li>
+						<li><a href="#tabs-9"><?php _e("Repair", "bepro-listings"); ?></a></li>
+						<li><a href="#tabs-10"><?php _e("Support", "bepro-listings"); ?></a></li>
 					</ul>
 				
 					<div id="tabs-1">
@@ -737,9 +756,24 @@
 						<div id="flat_fee_details">
 							<span class="form_label"><?php _e("Flat Fee", "bepro-listings"); ?></span><input type="text" name="flat_fee" value="<?php echo $data["flat_fee"];?>" <?php echo $disabled; ?>><br />
 						</div>
-						<span class="form_label"><?php _e("Publish after confirm Paid?", "bepro-listings"); ?></span><input type="checkbox" name="publish_after_payment" value="1" <?php echo ($data["publish_after_payment"] == 1)? "checked='checked'":""; ?> <?php echo $disabled; ?>><br /><br />
+						<div id="payment_options">
+							<span class="form_label"><?php _e("Add price to cart?", "bepro-listings"); ?></span><input type="checkbox" name="add_to_cart" value="1" <?php echo ($data["add_to_cart"] == 1)? "checked='checked'":""; ?> <?php echo $disabled; ?>><br />
+							<span class="form_label"><?php _e("Publish after confirm Paid?", "bepro-listings"); ?></span><input type="checkbox" name="publish_after_payment" value="1" <?php echo ($data["publish_after_payment"] == 1)? "checked='checked'":""; ?> <?php echo $disabled; ?>><br /><br />
+						</div>
 					</div>
 					<div id="tabs-9">
+						<?php 
+							if(!class_exists("Bepro_email")){
+								$disabled = "disabled='disabled'";
+								echo "<p>You need to download and install <a href='https://www.beprosoftware.com/shop/bepro-email' target='_blank'>BePro Email</a> to activate notification features.</p>";
+							}else{
+								$disabled = "";
+							}
+						?>
+						<span class="form_label"><?php _e("Recreate Search Result Templates", "bepro-listings"); ?></span><input type="checkbox" name="recreate_templates" value="2"><br /><br />
+						<span class="form_label"><?php _e("Recreate BePro Email Notifications", "bepro-listings"); ?></span><input type="checkbox" name="bepro_email_notifications" <?php echo $disabled; ?> value="2"><br />
+					</div>
+					<div id="tabs-10">
 						<a href="http://beprosoftware.com"><img src="<?php echo BEPRO_LISTINGS_PLUGIN_PATH."/images/bepro_software_logo.png"; ?>"></a><br />
 						<iframe width="560" height="315" src="//www.youtube.com/embed/D5YpZX0go88" frameborder="0" allowfullscreen></iframe>
 						<p><b>THANK YOU</b> for your interest and support of this plugin. Our BePro Software Team is dedicated to providing you with the tools needed for great websites. You can get involved in any of the following ways:</p>

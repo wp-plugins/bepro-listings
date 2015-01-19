@@ -4,7 +4,7 @@
 		
 		if(isset($_GET["message"]))echo "<span class='classified_message'>".$_GET["message"]."</span>";
 		echo "<h2>".__("My Item Listings", "bepro-listings")."</h2>";
-		if(sizeof($items) > 0){
+		if((@$items) && (sizeof($items) > 0)){
 			echo "<table id='classified_listings_table'><tr>
 					<td>".__("Name", "bepro-listings")."</td>
 					<td>".__("Type", "bepro-listings")."</td>
@@ -15,6 +15,7 @@
 					<td>".__("Actions", "bepro-listings")."</td>
 				</tr>
 			";
+			
 			foreach($items as $item){
 				$notice = "None";
 				$status = (($item->post_status == "publish")? "Published":"Pending");

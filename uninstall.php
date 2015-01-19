@@ -24,12 +24,15 @@ delete_option('bepro_listings');
 // For site options in multisite
 delete_site_option('bepro_listings'); 
 
-global $wpdb;
-$listings = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."bepro_listings");
+//delete listings and table
+$listings = get_posts(array('post_type' => 'bepro_listings'));
 foreach($listings as $listing){
-	wp_delete_post($listing->post_id);
+	wp_delete_post($listing->ID);
 }
+//recreate table
+global $wpdb;
 $wpdb->query("DROP TABLE ".$wpdb->prefix."bepro_listings");
+$wpdb->query("DROP TABLE ".$wpdb->prefix."bepro_listing_typesmeta");
 
 //remove BePro Emails if exists
 if(class_exists("bepro_email")){

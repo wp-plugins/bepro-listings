@@ -1,14 +1,14 @@
 === BePro Listings ===
 Contributors: BeyondPrograms, BeProSoftware
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: auto, address, buddypress, buddypress directory, business, business directory, car, catalog, catalogue, classifieds, classifieds directory, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, location, payments, paid, paypal, pets, plugin, portfolio directory, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress business, wordpress directory, wordpress directory plugin, wordpress directory theme, wordpress classifieds, wordpress catalogues, yellow pages
+Tags: auto, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds directory, classifieds plugin, directory, directory builder, directory plugin, directory listings, event directory, event listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio directory, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress directory plugin, wordpress classifieds, wordpress catalogues, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 2.1.87
+Stable tag: 2.1.88
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Responsive Directory (Real Estate, Classifieds, Business, Products etc) w/ (google maps, front end upload, search / filter, payments & more)
+Responsive Directory (Real Estate, Classifieds, Business, Events etc) w/ (google maps, front end upload, search / filter, payments & more)
 
 == Description ==
 BePro Listings is the best **wordpress directory plugin** available. With its modular architecture, you decide how users search, filter and view information. Use optional base features like, clustered google maps, **paypal payments**, email notifications, ajax search / filter and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business, Product Catalogues, Events, Classifieds and other niche information.
@@ -29,7 +29,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	5. Clustered Google Maps - Great for showing listings via a map with no need for API keys.
 	6. Categories - Assign images or not. Choose from our 4 different directory style layouts
 	7. Gallery - Works with the wordpress gallery shortcode, so its compatible with many gallery plugins
-	8. Listings - Two templates including a ("Featured") banner option, come with the base plugin and they can be extended. 
+	8. Listing Results - Two templates for search results including a ("Featured") banner option, are available and they can be extended. 
 	10. Ajax - Search and filter on one page. Yes, wow is the correct phrase to use!
 	11. User Profile - Use Buddypress or our standalone profile shortcode to allow your users to manage their submissions
 	12. Expiration - Set an expiration length for new listings
@@ -143,7 +143,7 @@ There is a shortcode builder available while editing any page. This tool makes i
 
 * Google Maps - If google map controls look weird, this is a css style related issue (your theme). Specifically, its the addition of max-width declarations to images. For details, you can *google* the issue (**google maps** max-width). Lots of bootstrap themes use this css declaration.
 
-* Displaced sidebar - If the details page has a displaced sidebar i.e. obviously broken template, you will need to create one for BePro Listings. Details about how to do that are included in the documentation link above. Every plugin which creates pages from custom post types, has this issue and requires its own template file.
+* Breaks Template - If the details page has a displaced sidebar i.e. obviously broken template, you will need to create one for BePro Listings. Details about how to do that are included in the documentation link above. Every plugin which creates pages from custom post types, has this issue and requires its own template files e.g. buddypress
 
 = CONTRIBUTING =
 
@@ -303,12 +303,24 @@ Many of what we give away for free, others will charge you for e.g. clusterd goo
 
 == Changelog ==
 
+= 2.1.88 (January 19th, 2015) =
+
+* Option to redirect users to shopping cart after form submission
+* Added new repair features
+* Refined uninstall procedure
+* Improved Dutch translation
+* Improved Italian translation
+* Improved Norwegian translation
+* Improved Poilish translation **
+* Remove Serbian translation
+* Tweaked "My Listings" shortcode display when no listings found
+
 = 2.1.87 (January 10th, 2015) =
 
 * Fix image upload issues from frontend which were introduced with new admin gallery manager
 * Improved startup, especially category selection for initial listing
 * Fixed admin menu text
-* Fix search features, espcially consecutive searches
+* Fix search features, espcially compounded search results
 
 = 2.1.85 (January 8th, 2015) =
 

@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.87
+Version: 2.1.88
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -84,7 +84,7 @@ class Bepro_listings{
 		add_action( 'bepro_listings_tab_panels', 'bepro_listings_comments_panel', 20 );
 		add_action( 'bepro_listings_tab_panels', 'bepro_listings_maps_panel', 21 );
 		
-		//item page template
+		//link in footer?
 		$data = get_option("bepro_listings");
 		if($data["footer_link"] == ("on" || 1)){
 			add_action("wp_footer", "footer_message");
@@ -98,6 +98,7 @@ class Bepro_listings{
 			add_filter("bepro_listings_add_to_clause", "bepro_search_remove_expiring");
 		}
 		
+		//building the page template
 		add_action( ((!empty($data['bepro_listings_item_title_template']))? $data['bepro_listings_item_title_template']:'bepro_listings_item_title'), 'bepro_listings_item_title_template');
 		add_action( ((!empty($data['bepro_listings_item_gallery_template']))? $data['bepro_listings_item_gallery_template']:'bepro_listings_item_gallery'), 'bepro_listings_item_gallery_template');
 		add_action( ((!empty($data['bepro_listings_item_after_gallery_template']))? $data['bepro_listings_item_after_gallery_template']:'bepro_listings_item_after_gallery'), 'bepro_listings_item_after_gallery_template');

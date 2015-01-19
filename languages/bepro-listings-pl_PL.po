@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2014-11-20 18:17-0400\n"
+"PO-Revision-Date: 2015-01-19 00:11-0400\n"
 "Last-Translator: \n"
 "Language-Team: bepro software\n"
 "MIME-Version: 1.0\n"
@@ -253,3 +253,160 @@ msgstr "Płatności"
 #: bepro_listings_admin.php:583
 msgid "Support"
 msgstr "Wsparcie"
+
+#: templates\tabs\tab-comments.php:10
+msgid "Comments"
+msgstr "Komentarze"
+
+#: bepro_listings_frontend.php:729
+msgid "Details"
+msgstr "Szczegóły"
+
+#: bepro_listings_admin.php:613
+msgid "# Of Uploads"
+msgstr "# Przesyłania"
+
+#: bepro_listings_admin.php:625
+msgid "Category Heading"
+msgstr "Nagłówek kategorii"
+
+#: bepro_listings_admin.php:626
+msgid "Category Empty"
+msgstr "Kategoria pusty"
+
+#: bepro_listings_admin.php:627
+msgid "Category Singular"
+msgstr "Pojedynczej kategorii"
+
+#: bepro_listings_admin.php:628
+msgid "Days until Listings Expire?"
+msgstr "Dni, do czasu wygaśnięcia oferty?"
+
+#: bepro_listings_admin.php:633
+msgid "Default Status"
+msgstr "Domyślny stan"
+
+#: bepro_listings_admin.php:638
+msgid "Fail Message"
+msgstr "Niepowodzenie wiadomość"
+
+#: bepro_listings_admin.php:639
+msgid "Required Categories"
+msgstr "Wymagane Kategorie"
+
+#: bepro_listings_admin.php:640
+msgid "Exclude Categories"
+msgstr "Wyklucza Kategorie"
+
+#: bepro_listings_admin.php:644
+msgid "How Links Open"
+msgstr "Jak otworzyć linki"
+
+#: bepro_listings_admin.php:650
+msgid "Ajax On?"
+msgstr "AJAX na?"
+
+#: bepro_listings_admin.php:671
+msgid "Name Search"
+msgstr "Nazwa wyszukiwania"
+
+#: bepro_listings_admin.php:677
+msgid "Title Length"
+msgstr "Długość tytuł"
+
+#: bepro_listings_admin.php:678
+msgid "Details Link Text"
+msgstr "Szczegóły Link Text"
+
+#: bepro_listings_admin.php:679
+msgid "Show Website Link?"
+msgstr "Pokaż na stronie Link?"
+
+#: bepro_listings_admin.php:680
+msgid "Currency Sign?"
+msgstr "Znak waluty?"
+
+#: bepro_listings_admin.php:681
+msgid "Show Date filter?"
+msgstr "Pokaż filtr daty?"
+
+#: bepro_listings_admin.php:691
+msgid "# Gallery Columns"
+msgstr "# Galeria kolumny"
+
+#: bepro_listings_admin.php:697
+msgid "Links on Details"
+msgstr "Linki na szczegóły"
+
+#: bepro_listings_admin.php:698
+msgid "Protect Contact"
+msgstr "Chronić kontakt"
+
+#: bepro_listings_admin.php:700
+msgid "Tab Direction"
+msgstr "Kierunek tabulatorów"
+
+#: bepro_listings_admin.php:706
+msgid "Query Type"
+msgstr "Typ kwerendy"
+
+#: bepro_listings_admin.php:716
+msgid "CSV File"
+msgstr "Pliku CSV"
+
+#: bepro_listings_admin.php:717
+msgid "Delimiter"
+msgstr "Ogranicznik"
+
+#: bepro_listings_admin.php:732
+msgid "Accept Payments?"
+msgstr "Akceptujemy płatności?"
+
+#: bepro_listings_admin.php:740
+msgid "Publish after confirm Paid?"
+msgstr "Publikować po potwierdzenie płatny?"
+
+#: ------------Front end---------------- templates/list.php:6
+msgid "My Item Listings"
+msgstr "Moje aukcje przedmiotów"
+
+msgid "Status"
+msgstr "Stan"
+
+msgid "Notices"
+msgstr "Ogłoszenia"
+
+msgid "Actions"
+msgstr "Działania"
+
+#: templates/list.php:32
+msgid "View"
+msgstr "Widok"
+
+#: templates/list.php:32
+msgid "Edit"
+msgstr "Edycja"
+
+#: templates/list.php:32
+msgid "Delete"
+msgstr "SupprimerUsuń"
+
+#: templates/list.php:22
+msgid "Expires"
+msgstr "Wygasa"
+
+#: templates/list.php:32
+msgid "Pay"
+msgstr "Zapłacić"
+
+#: templates/list.php:50
+msgid "Wait"
+msgstr "AttendreCzekać"
+
+#: templates/list.php:60
+msgid "No Live listings created"
+msgstr "Nie oferty Live stworzony"
+
+#: templates/list.php:62
+msgid "No live listings for this user"
+msgstr "Nie żyć aukcji tego użytkownika"

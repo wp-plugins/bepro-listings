@@ -162,7 +162,6 @@ You can contribute languages that are not yet supported by the plugin. Documenta
 * Norwegian (Norway) - BePro Software Team
 * Polish (Poland) - BePro Software Team
 * Portuguese (Portugal) - Joao
-* Serbian (Russia) - Ognjen
 * Spanish (Spain) - BePro Software Team
 * Swedish (Sweden) - BePro Software Team
 

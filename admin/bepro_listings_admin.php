@@ -19,9 +19,9 @@
 	function bepro_admin_init(){
 		$data = get_option("bepro_listings");
 		add_meta_box("contact_general_meta", " ", "BL_Meta_Box_Listing_Images::contact_general_meta", "bepro_listings", "normal", "low");
-		if($data["show_cost"] == (1 || "on"))add_meta_box("cost_meta", "Cost $", "BL_Meta_Box_Listing_Images::cost_meta", "bepro_listings", "side", "low");
-		if($data["show_con"] == (1 || "on"))add_meta_box("contact_details_meta", "Lisiting Details", "BL_Meta_Box_Listing_Images::contact_details_meta", "bepro_listings", "normal", "low");
-		if($data["show_geo"] == (1 || "on"))add_meta_box("geographic_details_meta", "Geographic Details", "BL_Meta_Box_Listing_Images::geographic_details_meta", "bepro_listings", "normal", "low");
+		if(($data["show_cost"]==1) || ($data["show_cost"] == "on"))add_meta_box("cost_meta", "Cost $", "BL_Meta_Box_Listing_Images::cost_meta", "bepro_listings", "side", "low");
+		if(($data["show_con"]==1) || ($data["show_con"] == "on"))add_meta_box("contact_details_meta", "Lisiting Details", "BL_Meta_Box_Listing_Images::contact_details_meta", "bepro_listings", "normal", "low");
+		if(($data["show_geo"]==1) || ($data["show_geo"] == "on"))add_meta_box("geographic_details_meta", "Geographic Details", "BL_Meta_Box_Listing_Images::geographic_details_meta", "bepro_listings", "normal", "low");
 		
 		add_meta_box( 'bepro-listings-images', __( 'Listing Gallery', 'bepro-listings' ), 'BL_Meta_Box_Listing_Images::gallery_images_meta', 'bepro_listings', 'side' );
 		
@@ -31,7 +31,8 @@
 	
 	function bepro_admin_head(){
 		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('../css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" >';
-		echo '<script type="text/javascript" src="'.plugins_url('../js/bepro_listings_admin.js', __FILE__ ).'" ></script>';
+		if($_GET["post_type"] == "bepro_listings")
+			echo '<script type="text/javascript" src="'.plugins_url('../js/bepro_listings_admin.js', __FILE__ ).'" ></script>';
 		echo "<style type='text/css'>.bepro_listings input[type=checkbox]{margin:11px 0;}</style>";
 		echo "<style>
 		  .ui-tabs-vertical { width: 55em; }
@@ -505,6 +506,7 @@
 			$data["show_cost"] = $_POST["show_cost"];
 			$data["show_con"] = $_POST["show_con"];
 			$data["show_geo"] = $_POST["show_geo"];
+			$data["show_imgs"] = $_POST["show_imgs"];
 			$data["num_images"] = $_POST["num_images"];
 			$data["cat_heading"] = $_POST["cat_heading"];
 			$data["cat_empty"] = $_POST["cat_empty"];
@@ -548,6 +550,8 @@
 			
 			//map
 			$data["map_query_type"] = $_POST["map_query_type"];
+			$data["map_use_api"] = $_POST["map_use_api"];
+			$data["map_zoom"] = $_POST["map_zoom"];
 			
 			//3rd party
 			$data["buddypress"] = $_POST["buddypress"];
@@ -626,9 +630,10 @@
 					</ul>
 				
 					<div id="tabs-1">
-						<span class="form_label"><?php _e("Show Cost", "bepro-listings"); ?></span><input type="checkbox" name="show_cost" <?php echo ($data["show_cost"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
-						<span class="form_label"><?php _e("Show Contact", "bepro-listings"); ?></span><input type="checkbox" name="show_con" <?php echo ($data["show_con"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
-						<span class="form_label"><?php _e("Show Geography", "bepro-listings"); ?></span><input type="checkbox" name="show_geo" <?php echo ($data["show_geo"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Show Cost", "bepro-listings"); ?></span><input type="checkbox" name="show_cost" <?php echo (($data["show_cost"]==1) || ($data["show_cost"] == "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Show Contact", "bepro-listings"); ?></span><input type="checkbox" name="show_con" <?php echo (($data["show_con"]==1) || ($data["show_con"] == "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Show Geography", "bepro-listings"); ?></span><input type="checkbox" name="show_geo" <?php echo (($data["show_geo"]==1) || ($data["show_geo"] == "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Show Images", "bepro-listings"); ?></span><input type="checkbox" name="show_imgs" <?php echo (($data["show_imgs"]==1) || ($data["show_imgs"] == "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("# Of Uploads", "bepro-listings"); ?></span><select name="num_images"><br />
 							<option value="1" <?php echo ($data["num_images"]== 1)? 'selected="selected"':"" ?>>1</option>
 							<option value="2" <?php echo ($data["num_images"]== 2)? 'selected="selected"':"" ?>>2</option>
@@ -725,7 +730,30 @@
 						<span class="form_label"><?php _e("Query Type", "bepro-listings"); ?></span><select name="map_query_type">
 							<option value="curl" <?php echo ($data["map_query_type"] == "curl")? 'selected="selected"':""; ?>>Curl</option>
 							<option value="file_get_contents" <?php echo ($data["map_query_type"] == "file_get_contents")? 'selected="selected"':""; ?>>file_get_contents</option>
-						</select>	
+						</select>	<br />
+						<span class="form_label"><?php _e("Use Google Map Api?", "bepro-listings"); ?></span><input type="checkbox" name="map_use_api" value="1" <?php echo (($data["map_use_api"]==1) || ($data["map_use_api"] == "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Map Zoom", "bepro-listings"); ?></span><select name="map_zoom">
+							<option value="0" <?php echo ($data["map_zoom"] == "1")? 'selected="selected"':""; ?>>0</option>
+							<option value="1" <?php echo ($data["map_zoom"] == "1")? 'selected="selected"':""; ?>>1</option>
+							<option value="2" <?php echo ($data["map_zoom"] == "2")? 'selected="selected"':""; ?>>2</option>
+							<option value="3" <?php echo ($data["map_zoom"] == "3")? 'selected="selected"':""; ?>>3</option>
+							<option value="4" <?php echo ($data["map_zoom"] == "4")? 'selected="selected"':""; ?>>4</option>
+							<option value="5" <?php echo ($data["map_zoom"] == "5")? 'selected="selected"':""; ?>>5</option>
+							<option value="6" <?php echo ($data["map_zoom"] == "6")? 'selected="selected"':""; ?>>6</option>
+							<option value="7" <?php echo ($data["map_zoom"] == "7")? 'selected="selected"':""; ?>>7</option>
+							<option value="8" <?php echo ($data["map_zoom"] == "8")? 'selected="selected"':""; ?>>8</option>
+							<option value="9" <?php echo ($data["map_zoom"] == "9")? 'selected="selected"':""; ?>>9</option>
+							<option value="10" <?php echo ($data["map_zoom"] == "10")? 'selected="selected"':""; ?>>10</option>
+							<option value="11" <?php echo ($data["map_zoom"] == "11")? 'selected="selected"':""; ?>>11</option>
+							<option value="12" <?php echo ($data["map_zoom"] == "12")? 'selected="selected"':""; ?>>12</option>
+							<option value="13" <?php echo ($data["map_zoom"] == "13")? 'selected="selected"':""; ?>>13</option>
+							<option value="14" <?php echo ($data["map_zoom"] == "14")? 'selected="selected"':""; ?>>14</option>
+							<option value="15" <?php echo ($data["map_zoom"] == "15")? 'selected="selected"':""; ?>>15</option>
+							<option value="16" <?php echo ($data["map_zoom"] == "16")? 'selected="selected"':""; ?>>16</option>
+							<option value="17" <?php echo ($data["map_zoom"] == "17")? 'selected="selected"':""; ?>>17</option>
+							<option value="18" <?php echo ($data["map_zoom"] == "18")? 'selected="selected"':""; ?>>18</option>
+							<option value="19" <?php echo ($data["map_zoom"] == "19")? 'selected="selected"':""; ?>>19</option>
+						</select>	<br />
 					</div>
 					<div id="tabs-6">
 						<span class="form_label"><?php _e("Buddypress", "bepro-listings"); ?></span><input type="checkbox" name="buddypress" <?php echo ($data["buddypress"]== (1 || "on"))? 'checked="checked"':"" ?>>

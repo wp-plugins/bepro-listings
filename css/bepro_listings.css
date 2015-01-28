@@ -210,6 +210,7 @@
 .cat_lists{
 	float:left;
 	clear:both;
+	width: 100%;
 }
 .cat_list_item{
 	float:left;

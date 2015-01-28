@@ -1,4 +1,7 @@
-<div class="shortcode_results_1">
+<?php
+	$data = get_option("bepro_listings");
+?>
+<div class="shortcode_results_1 <?php echo empty($data["show_imgs"])? "no_img":""; ?>">
 <?php
 	do_action( 'bepro_listings_list_above_title', $result );
 	do_action( 'bepro_listings_list_title', $result);

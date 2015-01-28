@@ -190,7 +190,8 @@
 			$counter++;
 		}
 		$declare_for_map = apply_filters("bepro_listings_declare_for_map", '');
-		$zoom = (empty($currlat) || empty($currlon))? 2:10;
+		$default_zoom = empty($data["map_zoom"])? 10:$data["map_zoom"];
+		$zoom = (empty($currlat) || empty($currlon))? 2:$default_zoom;
 		//javascript initialization of the map
 		$map = "<script type='text/javascript'>
 			jQuery(document).ready(function(){
@@ -753,6 +754,7 @@
 	}
 	function bepro_listings_list_image_template($bp_listing){
 		$data = get_option("bepro_listings");
+		if(empty($data["show_imgs"]))return;
 		if($data["link_new_page"] == 4){
 			$permalink = $bp_listing->website;
 		}else{
@@ -857,6 +859,7 @@
 	function bepro_listings_item_gallery_template(){
 		$post_id = get_the_ID();
 		$data = get_option("bepro_listings");
+		if(empty($data["show_imgs"]))return;
 		$num_images = $data["num_images"];
 		
 		//get images

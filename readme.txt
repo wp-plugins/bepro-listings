@@ -13,7 +13,7 @@ Responsive Directory (Real Estate, Classifieds, Business, Events etc) w/ (google
 == Description ==
 BePro Listings is the best **wordpress directory plugin** available. With its modular architecture, you decide how users search, filter and view information. Use optional base features like, clustered google maps, **paypal payments**, email notifications, ajax search / filter and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business, Product Catalogues, Events, Classifieds and other niche information.
 
-[BePro Listings](http://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](http://www.beprosoftware.com/forums/) | [Documentation](http://www.beprosoftware.com/documentation/bepro-listings/ ) | [Bundles](http://www.beprosoftware.com/bundles/) | [Themes](http://www.beprosoftware.com/themes/)
+[BePro Listings](https://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](https://www.beprosoftware.com/forums/) | [Documentation](https://www.beprosoftware.com/documentation/bepro-listings/ ) | [Bundles](https://www.beprosoftware.com/bundles/) | [Themes](https://www.beprosoftware.com/themes/) | [Demos](http://www.beprothemes.com)
 
 = INTRO VIDEO =
 
@@ -54,6 +54,7 @@ BePro Listings can be integrated into your **current theme** and capture specifi
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a free BePro Listings Realestate addon
 	* Car Dealer - List your vehicle inventory, cars, trucks, boats, planes etc. Or use geo features for Fleet Tracking
 	* Link Directory - List, price, and link to amazon products or other popular affilate campaigns.
+	* Knowledgebase - Remove images and allow users to search through your complex structured and unstructured information.
 	* Portfolio - Feature your work in various ways, allowing users to view details and comment. Great for showcasing your projects.
 	* Pet Directory - Showcase information on any animal and allow users to search and filter through them 
 	* Store Finder - List your store or shop branches including, location and contact details 

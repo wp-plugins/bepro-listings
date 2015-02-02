@@ -671,11 +671,12 @@
 			if($data["show_geo"] == (1||"on"))	
 			$search_form .= "<div class='bl_distance_search_option'>".__("Distance", "bepro-listings").': <select name="distance">
 						<option value="">None</option>
-						<option value="50" '.(($_POST["distance"] == 50)? 'selected="selected"':"").'>50 miles</option>
-						<option value="150" '.((($_POST["distance"] == 150) || empty($_POST["distance"]))? 'selected="selected"':"").'>150 miles</option>
-						<option value="250" '.(($_POST["distance"] == 250)? 'selected="selected"':"").'>250 miles</option>
-						<option value="500" '.(($_POST["distance"] == 500)? 'selected="selected"':"").'>500 miles</option>
-						<option value="1000" '.(($_POST["distance"] == 1000)? 'selected="selected"':"").'>1000 miles</option>
+						<option value="10" '.(($_POST["distance"] == 10)||((empty($_POST["distance"])) && $data["distance"] == 10)? 'selected="selected"':"").'>10 miles</option>
+						<option value="50" '.(($_POST["distance"] == 50)||((empty($_POST["distance"])) && $data["distance"] == 50)? 'selected="selected"':"").'>50 miles</option>
+						<option value="150" '.((($_POST["distance"] == 150) || ((empty($_POST["distance"])) && $data["distance"] == 150))? 'selected="selected"':"").'>150 miles</option>
+						<option value="250" '.(($_POST["distance"] == 250)||((empty($_POST["distance"])) && $data["distance"] == 250)? 'selected="selected"':"").'>250 miles</option>
+						<option value="500" '.(($_POST["distance"] == 500)||((empty($_POST["distance"])) && $data["distance"] == 500)? 'selected="selected"':"").'>500 miles</option>
+						<option value="1000" '.(($_POST["distance"] == 1000)||((empty($_POST["distance"])) && $data["distance"] == 1000)? 'selected="selected"':"").'>1000 miles</option>
 					</select></div>';
 				
 				//min/max cost

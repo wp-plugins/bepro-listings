@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.89
+Version: 2.1.90
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -41,9 +41,12 @@ class Bepro_listings{
 	 
 	//Start
 	function __construct() {
+		$data = get_option("bepro_listings");
+		
 		include(dirname( __FILE__ ) . '/bepro_listings_functions.php');
 		include(dirname( __FILE__ ) . '/admin/bepro_listings_admin.php');
-		include(dirname( __FILE__ ) . '/admin/meta/gallery_meta.php');
+		if(!empty($data["show_imgs"]))
+			include(dirname( __FILE__ ) . '/admin/meta/gallery_meta.php');
 		include(dirname( __FILE__ ) . '/admin/bepro_listings_widgets.php');
 		include(dirname( __FILE__ ) . '/bepro_listings_frontend.php');
 		include(dirname( __FILE__ ) . '/bepro_listings_profile.php');
@@ -85,7 +88,6 @@ class Bepro_listings{
 		add_action( 'bepro_listings_tab_panels', 'bepro_listings_maps_panel', 21 );
 		
 		//link in footer?
-		$data = get_option("bepro_listings");
 		if($data["footer_link"] == ("on" || 1)){
 			add_action("wp_footer", "footer_message");
 		}
@@ -345,12 +347,12 @@ class Bepro_listings{
 				<tr class="bl_distance_search_option"><td>
 					'.__("Distance", "bepro-listings").': <select name="distance">
 						<option value="">None</option>
-						<option value="10" '.(($_POST["distance"] == 10)? 'selected="selected"':"").'>10 miles</option>
-						<option value="50" '.(($_POST["distance"] == 50)? 'selected="selected"':"").'>50 miles</option>
-						<option value="150" '.((($_POST["distance"] == 150) || empty($_POST["distance"]))? 'selected="selected"':"").'>150 miles</option>
-						<option value="250" '.(($_POST["distance"] == 250)? 'selected="selected"':"").'>250 miles</option>
-						<option value="500" '.(($_POST["distance"] == 500)? 'selected="selected"':"").'>500 miles</option>
-						<option value="1000" '.(($_POST["distance"] == 1000)? 'selected="selected"':"").'>1000 miles</option>
+						<option value="10" '.(($_POST["distance"] == 10)||((empty($_POST["distance"])) && $data["distance"] == 10)? 'selected="selected"':"").'>10 miles</option>
+						<option value="50" '.(($_POST["distance"] == 50)||((empty($_POST["distance"])) && $data["distance"] == 50)? 'selected="selected"':"").'>50 miles</option>
+						<option value="150" '.((($_POST["distance"] == 150) || ((empty($_POST["distance"])) && $data["distance"] == 150))? 'selected="selected"':"").'>150 miles</option>
+						<option value="250" '.(($_POST["distance"] == 250)||((empty($_POST["distance"])) && $data["distance"] == 250)? 'selected="selected"':"").'>250 miles</option>
+						<option value="500" '.(($_POST["distance"] == 500)||((empty($_POST["distance"])) && $data["distance"] == 500)? 'selected="selected"':"").'>500 miles</option>
+						<option value="1000" '.(($_POST["distance"] == 1000)||((empty($_POST["distance"])) && $data["distance"] == 1000)? 'selected="selected"':"").'>1000 miles</option>
 					</select>
 				</td></tr>';
 				

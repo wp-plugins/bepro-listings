@@ -516,6 +516,7 @@
 			//forms
 			$data["validate_form"] = $_POST["validate_form"];
 			$data["default_user_id"] = $_POST["default_user_id"];
+			$data["use_tiny_mce"] = $_POST["use_tiny_mce"];
 			$data["default_status"] = $_POST["default_status"];
 			$data["success_message"] = $_POST["success_message"];			
 			$data["fail_message"] = $_POST["fail_message"];		
@@ -652,12 +653,13 @@
 						<span class="form_label"><?php _e("Days until Listings Expire?", "bepro-listings"); ?></span><input type="text" name="days_until_expire" value="<?php echo $data["days_until_expire"];?>" <?php echo $disabled; ?>><br />
 					</div>
 					<div id="tabs-2">
-						<span class="form_label"><?php _e("Validate Form", "bepro-listings"); ?></span><input type="checkbox" name="validate_form" <?php echo ($data["validate_form"]== (1 || "on"))? 'checked="checked"':"" ?>><br />
+						<span class="form_label"><?php _e("Validate Form", "bepro-listings"); ?></span><input type="checkbox" name="validate_form" <?php echo (($data["validate_form"]== 1) || ($data["validate_form"] == "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Default User Id", "bepro-listings"); ?></span><input type="text" name="default_user_id" value="<?php echo $data["default_user_id"]; ?>"><br />
 						<span class="form_label"><?php _e("Default Status", "bepro-listings"); ?></span><select name="default_status">
 							<option value="pending" <?php echo ($data["default_status"]== "pending")? 'selected="selected"':"" ?>>Pending</option>
 							<option value="publish" <?php echo ($data["default_status"]== "publish")? 'selected="selected"':"" ?>>Published</option>
 						</select></br>
+						<span class="form_label"><?php _e("Tinymce Description?", "bepro-listings"); ?></span><input type="checkbox" name="use_tiny_mce" <?php echo (($data["use_tiny_mce"]== 1) || ($data["use_tiny_mce"] == "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Success Message", "bepro-listings"); ?></span><textarea name="success_message"><?php echo $data["success_message"]; ?></textarea><br />
 						<span class="form_label"><?php _e("Fail Message", "bepro-listings"); ?></span><textarea name="fail_message"><?php echo $data["fail_message"]; ?></textarea><br />
 						<span class="form_label"><?php _e("Required Categories", "bepro-listings"); ?></span><input type="text" name="bepro_listings_cat_required" value="<?php echo $data["bepro_listings_cat_required"]; ?>" /></br>
@@ -971,6 +973,7 @@
 					<span class='shortcode_label'>Featured?</span><input type='checkbox' value=1 name='l_featured' /></br />
 					<span class='shortcode_label'>Listing ID's</span><input type='text' name='l_ids' placeholder='e.g. 13,34,55,22'/><br />
 					<span class='shortcode_label'>Exclude Categories</span><input type='text' name='ex_type' placeholder='e.g. 13,34,55,22'/>
+					<span class='shortcode_label'>Required Categories</span><input type='text' name='l_type' placeholder='e.g. 13,34,55,22'/>
 				</form>
 			</div>
 			<div id='tab_filter_form' class='shorcode_options hide_options'>

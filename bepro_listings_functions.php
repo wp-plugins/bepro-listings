@@ -352,7 +352,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.89' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.90' );
 		}	
 	}
 	
@@ -381,12 +381,13 @@
 			
 			//forms
 			$data["validate_form"] = "on";
-			$data["success_message"] = 'Listing Created and pending admin approval.';			
-			$data["default_status"] = 'pending';			
-			$data["default_user_id"] = get_current_user_id();	
-			$data["fail_message"] = "Issue saving listing. Try again or contact the Admin";			
-			$data["bepro_listings_cat_required"] = "";					
-			$data["bepro_listings_cat_exclude"] = "";					
+			$data["success_message"] = 'Listing Created and pending admin approval.';
+			$data["use_tiny_mce"] = 1;
+			$data["default_status"] = 'pending';
+			$data["default_user_id"] = get_current_user_id();
+			$data["fail_message"] = "Issue saving listing. Try again or contact the Admin";
+			$data["bepro_listings_cat_required"] = "";
+			$data["bepro_listings_cat_exclude"] = "";
 			//search listings
 			$data["default_image"] = plugins_url("images/no_img.jpg", __FILE__ );
 			$data["link_new_page"] = 1;
@@ -413,12 +414,12 @@
 			$data["map_zoom"] = "10";
 			//3rd party
 			$data["buddypress"] = 0;
-			$data["redirect_need_funds"] = 1;
-			$data["charge_amount"] = 1;
 			//Payment
 			$data["require_payment"] = "";
 			$data["flat_fee"] = "";
 			$data["publish_after_payment"] = "";
+			$data["redirect_need_funds"] = 1;
+			$data["charge_amount"] = 1;
 			//Support
 			$data["footer_link"] = 0;
 			//item page template
@@ -462,12 +463,16 @@
 			}
 		}
 		
-		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
-			$bepro_listings_version = BEPRO_LISTINGS_VERSION;
-			//new features
+		if(version_compare($bepro_listings_version, '2.1.90', '<')){
 			$data["map_use_api"] = 1;
 			$data["map_zoom"] = "10";
 			$data["show_imgs"] = 1;
+		}
+		
+		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
+			$bepro_listings_version = BEPRO_LISTINGS_VERSION;
+			//new features
+			$data["use_tiny_mce"] = 1;
 			
 			//save
 			update_option("bepro_listings", $data);

@@ -13,7 +13,7 @@
 				{
 				  file   : ajaxurl + '?action=bepro_listings_shortcode_dialog',
 				  width  : 420,
-				  height : 350,
+				  height : 370,
 				  inline : 1,
 				  title  : 'BePro Listings Shortcodes'
 				}, 

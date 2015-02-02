@@ -1,6 +1,6 @@
 <?php
 	do_action("bepro_listing_form_before", $post_data);
-	
+	$data = get_option("bepro_listings");
 		if(!empty($validate) && ($validate == "on")){
 			echo '
 			<script type="text/javascript" src="'.plugins_url("bepro-listings/js/jquery.maskedinput-1.3.min.js", "bepro-listings" ).'"></script>
@@ -58,11 +58,19 @@
 		echo '
 			<div class="add_listing_form_info bepro_form_section">
 				<h3>'.__("Item Information", "bepro-listings").'</h3>
-				<span class="form_heading">'.__("Item Name", "bepro-listings").'</span><input type="" id="item_name" name="item_name" value="'.$post_data->post_title.'" '.(isset($post_data->post_title)?'readonly="readonly"':"").'><br />
-				<span class="form_heading">'.__("Description", "bepro-listings").'</span><textarea name="content" id="content">'.$post_data->post_content.'</textarea>';
+				<span class="form_heading">'.__("Item Name", "bepro-listings").'</span><input type="" id="item_name" name="item_name" value="'.$post_data->post_title.'" '.(isset($post_data->post_title)?'readonly="readonly"':"").'><br />';
+				
+				if(@$data["use_tiny_mce"]){
+					ob_start();
+					wp_editor( $post_data->post_content, "content", array( 'textarea_name' =>  "content", "media_buttons" => false, "teeny" =>true, "quicktags"=>false) );
+					$editor = ob_get_contents();
+					ob_end_clean();
+					echo '<span class="form_heading">'.__("Description", "bepro-listings").'</span>'.$editor;
+				}else{
+					echo '<span class="form_heading">'.__("Description", "bepro-listings").'</span><textarea name="content" id="content">'.$post_data->post_content.'</textarea>';
+				}
 				
 				//show categories
-				$data = get_option("bepro_listings");
 				$exclude = explode(",",$data["bepro_listings_cat_exclude"]);
 				$required = explode(",",$data["bepro_listings_cat_required"]);
 				

@@ -352,7 +352,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.90' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.91' );
 		}	
 	}
 	
@@ -371,6 +371,7 @@
 			$data["show_cost"] = "on";
 			$data["show_con"] = "on";
 			$data["show_geo"] = "on";
+			$data["show_imgs"] = "on";
 			$data["num_images"] = 3;
 			$data["cat_heading"] = "Categories";
 			$data["cat_empty"] = "No Categories";
@@ -382,7 +383,7 @@
 			//forms
 			$data["validate_form"] = "on";
 			$data["success_message"] = 'Listing Created and pending admin approval.';
-			$data["use_tiny_mce"] = 1;
+			$data["use_tiny_mce"] = "";
 			$data["default_status"] = 'pending';
 			$data["default_user_id"] = get_current_user_id();
 			$data["fail_message"] = "Issue saving listing. Try again or contact the Admin";
@@ -471,11 +472,11 @@
 		
 		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
 			$bepro_listings_version = BEPRO_LISTINGS_VERSION;
+			
 			//new features
-			$data["use_tiny_mce"] = 1;
 			
 			//save
-			update_option("bepro_listings", $data);
+			//update_option("bepro_listings", $data);
 			
 			//set version
 			update_option('bepro_listings_version', $bepro_listings_version);
@@ -683,7 +684,8 @@
 							}
 							$counter++;
 						}
-						BL_Meta_Box_Listing_Images::save($post_id, $post_after);
+						if(!empty($data["show_imgs"]))
+							BL_Meta_Box_Listing_Images::save($post_id, $post_after);
 					}
 					
 					//manage lat/lon

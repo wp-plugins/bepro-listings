@@ -99,7 +99,7 @@
 				
 		do_action("bepro_listing_form_in_item_before_images", $post_data);		
 			
-				if(!empty($num_images) && ($num_images > 0)){
+				if(!empty($num_images) && ($num_images > 0) && (!empty($data["show_imgs"]))){
 					$counter = 1;
 					echo "<span class='bepro_form_images'><span class='form_heading'>Files (".apply_filters("bepro_listings_upload_file_heading","imgs").")</span>";
 					while($counter <= $num_images){

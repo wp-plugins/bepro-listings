@@ -19,8 +19,12 @@
 			foreach($items as $item){
 				$notice = "None";
 				$status = (($item->post_status == "publish")? "Published":"Pending");
-				if(isset($data["days_until_expire"]) && ($status == "Published")){
-					$notice = __("Expires", "bepro-listings").": ".(empty($item->expires)? "Never":date("M, d Y", strtotime($item->expires)));
+				if(@$data["days_until_expire"] && ($data["days_until_expire"] > 0) && ($status == "Published")){
+					if(@$item->expires){
+						$notice = __("Expires", "bepro-listings").": ".(empty($item->expires)? "Never":date("M, d Y", strtotime($item->expires)));
+					}else{
+						$notice = "Exempt";
+					}
 				}else if(!empty($data["require_payment"])  && ($status == "Pending")){
 					if($data["require_payment"] == 1){
 						//category option

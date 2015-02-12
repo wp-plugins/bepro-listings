@@ -352,7 +352,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.91' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.92' );
 		}	
 	}
 	
@@ -1028,11 +1028,12 @@
 		$data = get_option("bepro_listings");
 		$expiration = "";
 		$post_id = $item["item_number"];
-		if($data["days_until_expire"] && ($data["days_until_expire"] > 0)){
+		if(@$data["days_until_expire"] && ($data["days_until_expire"] > 0)){
 			$expiration = date('Y-m-d H:i:s', strtotime("+".$data["days_until_expire"]." days"));
+			$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set expires = '".$expiration."', bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
+		}else{
+			$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
 		}
-		
-		$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set expires = '".$expiration."', bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
 		$raw_post = get_post($post_id);
 		if($raw_post){
 			$raw_post->post_status = "Publish";

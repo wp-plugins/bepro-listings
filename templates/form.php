@@ -56,7 +56,15 @@
 				<input type="hidden" name="redirect" value="'.$redirect.'">';
 		do_action("bepro_listing_form_start", $post_data);
 		echo '
-			<div class="add_listing_form_info bepro_form_section">
+			<div class="add_listing_form_info bepro_form_section">';
+			if(($data["require_payment"] == 2)){
+				if(@$post_data->ID){
+					bl_form_package_field($post_data->ID);
+				}else{
+					bl_form_package_field();
+				}
+			}
+			echo '
 				<h3>'.__("Item Information", "bepro-listings").'</h3>
 				<span class="form_heading">'.__("Item Name", "bepro-listings").'</span><input type="" id="item_name" name="item_name" value="'.$post_data->post_title.'" '.(isset($post_data->post_title)?'readonly="readonly"':"").'><br />';
 				

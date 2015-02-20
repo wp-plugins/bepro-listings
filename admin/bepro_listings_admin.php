@@ -23,7 +23,7 @@
 		if(($data["show_con"]==1) || ($data["show_con"] == "on"))add_meta_box("contact_details_meta", "Lisiting Details", "BL_Meta_Box_Listing_Images::contact_details_meta", "bepro_listings", "normal", "low");
 		if(($data["show_geo"]==1) || ($data["show_geo"] == "on"))add_meta_box("geographic_details_meta", "Geographic Details", "BL_Meta_Box_Listing_Images::geographic_details_meta", "bepro_listings", "normal", "low");
 		
-		add_meta_box( 'bepro-listings-images', __( 'Listing Gallery', 'bepro-listings' ), 'BL_Meta_Box_Listing_Images::gallery_images_meta', 'bepro_listings', 'side' );
+		if(($data["show_imgs"]==1) || ($data["show_imgs"] == "on"))add_meta_box( 'bepro-listings-images', __( 'Listing Gallery', 'bepro-listings' ), 'BL_Meta_Box_Listing_Images::gallery_images_meta', 'bepro_listings', 'side' );
 		
 		permalink_save_options();
 		permalink_admin_init();
@@ -106,6 +106,7 @@
 		  ";
 		echo '
 			<script type="text/javascript">
+				flat_price = 2;
 				jQuery(document).ready(function(){
 					if(jQuery("#bepro_listings_tabs")){
 						jQuery( "#bepro_listings_tabs" ).tabs();
@@ -144,6 +145,11 @@
 					if(jQuery("#require_payment").val() == "")
 						jQuery("#payment_options").css("display", "none");
 						
+					jQuery("#admin_add_fee").click(function(e){
+						e.preventDefault();
+						jQuery("#flat_fee_details").append(\'<span class="form_label">Package \'+flat_price+\'</span><input type="text" name="flat_fee_\'+flat_price+\'" value="" placeholder="fee"><input type="text" name="flat_fee_duration_\'+flat_price+\'" value="" placeholder="'.__("Days","bepro-listings").' e.g. 30"><br />\');
+						flat_price++;
+					});
 				});
 			</script>
 		';
@@ -261,13 +267,22 @@
 					//category option
 					$cost = bepro_get_total_cat_cost($item->post_id);
 				}else if($data["require_payment"] == 2){
-					$cost = $data["flat_fee"];
+					$cost = get_post_meta($item->post_id, "fee", true);
+					if(!$cost){
+						$notice = "Package: Required";
+					}else if($cost > 0){
+						$notice = __("Pay", "bepro-listings").": ".$data["currency_sign"].$cost;
+					}
 				}
 				
 				if($cost > 0){
 					$notice = "Requires: $".$cost;
 				}
 			}
+			
+			
+			
+			
 			echo $notice;
 		  break;
 		case "listing_types":
@@ -559,7 +574,12 @@
 			
 			//payment
 			$data["require_payment"] = $_POST["require_payment"];
-			$data["flat_fee"] = is_numeric($_POST["flat_fee"])?$_POST["flat_fee"]:0;
+			$fee_count = 1;
+			$data["flat_fee"] = array();
+			while(is_numeric($_POST["flat_fee_duration_".$fee_count]) && is_numeric($_POST["flat_fee_".$fee_count])){
+				$data["flat_fee"][$_POST["flat_fee_".$fee_count]] = $_POST["flat_fee_duration_".$fee_count];
+				$fee_count++;
+			}
 			$data["add_to_cart"] = $_POST["add_to_cart"];
 			$data["publish_after_payment"] = $_POST["publish_after_payment"];
 			
@@ -650,7 +670,7 @@
 						<span class="form_label"><?php _e("Category Heading", "bepro-listings"); ?></span><input type="input" name="cat_heading" value="<?php echo $data["cat_heading"]; ?>"><br />
 						<span class="form_label"><?php _e("Category Empty", "bepro-listings"); ?></span><input type="input" name="cat_empty" value="<?php echo $data["cat_empty"]; ?>"><br />
 						<span class="form_label"><?php _e("Category Singular", "bepro-listings"); ?></span><input type="input" name="cat_singular" value="<?php echo $data["cat_singular"]; ?>"><br />
-						<span class="form_label"><?php _e("Days until Listings Expire?", "bepro-listings"); ?></span><input type="text" name="days_until_expire" value="<?php echo $data["days_until_expire"];?>"><br />
+						<span class="form_label"><?php _e("Default Duration (Days)?", "bepro-listings"); ?></span><input type="text" name="days_until_expire" value="<?php echo $data["days_until_expire"];?>"><br />
 					</div>
 					<div id="tabs-2">
 						<span class="form_label"><?php _e("Validate Form", "bepro-listings"); ?></span><input type="checkbox" name="validate_form" <?php echo (($data["validate_form"]== 1) || ($data["validate_form"] == "on"))? 'checked="checked"':"" ?>><br />
@@ -784,7 +804,23 @@
 							<option value="2" <?php echo ($data["require_payment"] == 2)? "selected='selected'":""; ?>>Charge Flat Fee</option>
 						</select><br />
 						<div id="flat_fee_details">
-							<span class="form_label"><?php _e("Flat Fee", "bepro-listings"); ?></span><input type="text" name="flat_fee" value="<?php echo $data["flat_fee"];?>" <?php echo $disabled; ?>><br />
+							
+							<?php 
+								$fee_counter = 1;
+								if(!empty($data["flat_fee"]) && is_array($data["flat_fee"])){
+								foreach($data["flat_fee"] as $fee => $duration){
+									echo '<span class="form_label">'.__("Package", "bepro-listings")." ".$fee_counter.'</span><input type="text" name="flat_fee_'.$fee_counter.'" value="'.$fee.'" placeholder="fee"><input type="text" name="flat_fee_duration_'.$fee_counter.'" value="'.$duration.'" placeholder="'.__("Days","bepro-listings").' e.g. 30">';
+									if($fee_counter == 1){
+										echo '<button id="admin_add_fee">+</button><br />';
+									}else{
+										echo "<br />";
+									}
+									$fee_counter++;
+								}
+								}else{
+									echo '<span class="form_label">'.__("Package", "bepro-listings").'1</span><input type="text" name="flat_fee_1" value="" placeholder="fee"><input type="text" name="flat_fee_duration_1" value="" placeholder="'.__("Days","bepro-listings").' e.g. 30"><button id="admin_add_fee">+</button><br />';
+								}
+							?>
 						</div>
 						<div id="payment_options">
 							<span class="form_label"><?php _e("Add price to cart?", "bepro-listings"); ?></span><input type="checkbox" name="add_to_cart" value="1" <?php echo ($data["add_to_cart"] == 1)? "checked='checked'":""; ?> <?php echo $disabled; ?>><br />

@@ -241,6 +241,7 @@
 	list-style-type:none;
 }
 /* form layout */
+.package_option{float:left;}
 .form_label{
 	width:90px; 
 	margin-right:10px;

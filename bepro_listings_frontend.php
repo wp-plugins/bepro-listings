@@ -531,7 +531,6 @@
 			$hidden_limit_text = "<div id='bl_limit' class='bl_shortcode_selected'>$limit</div>";
 		}
 		
-		$order_dir = "";
 		if(is_numeric($order_dir))
 			$bl_order = "<div id='bl_order' class='bl_shortcode_selected'>$order_dir</div>";
 		
@@ -1056,5 +1055,22 @@
 		}
 	}
 
+	function bl_form_package_field($post_id = null){
+		$data = get_option("bepro_listings");
+		if($post_id){
+			$cost = get_post_meta($post_id, "fee", true);
+			if($cost) return;
+		}
+		echo '<div id="flat_fee">';
+		$fee_counter = 0;
+		if(@$data["flat_fee"] && (is_array($data["flat_fee"])) && !empty($data["flat_fee"])){
+			echo '<h3>'.__("Available Packages", "bepro-listings").'</h3>';
+			foreach($data["flat_fee"] as $fee => $duration){
+				echo '<div class="package_option"><span class="form_heading">'.$duration." ".__("Days", "bepro-listings")." (".$data["currency_sign"].$fee.')</span><input type="checkbox" name="bl_package" value="'.$fee_counter.'"></div>';
+				$fee_counter++;
+			}
+		}
+		echo '</div><div style="clear:both"></div>';
+	}
 	
 ?>

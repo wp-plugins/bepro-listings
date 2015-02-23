@@ -132,15 +132,22 @@
 						if(jQuery(this).val() == 2){
 							jQuery("#flat_fee_details").css("display", "block");
 							jQuery("#payment_options").css("display", "block");
+							jQuery("#cat_fee_details").css("display", "none");
 						}else if(jQuery(this).val() == 1){
 							jQuery("#payment_options").css("display", "block");
+							jQuery("#flat_fee_details").css("display", "none");
+							jQuery("#cat_fee_details").css("display", "block");
 						}else{
 							jQuery("#flat_fee_details").css("display", "none");
 							jQuery("#payment_options").css("display", "none");
+							jQuery("#cat_fee_details").css("display", "none");
 						}
 					});
 					if(jQuery("#require_payment").val() != 2)
 						jQuery("#flat_fee_details").css("display", "none");
+						
+					if(jQuery("#require_payment").val() != 1)
+						jQuery("#cat_fee_details").css("display", "none");
 						
 					if(jQuery("#require_payment").val() == "")
 						jQuery("#payment_options").css("display", "none");
@@ -256,13 +263,14 @@
 			global $wpdb;
 			$data = get_option("bepro_listings");
 			$notice = "None";
+			$cost = 0;
 			$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 			$status = (($post->post_status == "publish")? "Published":"Pending");
-			if(isset($data["days_until_expire"]) && ($data["days_until_expire"] > 0) && ($status == "Published")){
-				$notice = "Expires: ".(empty($item->expires)? "Never":date("M, d Y", strtotime($item->expires)));
+			if(!empty($data["require_payment"]) && ($status == "Published")){
+				$notice = "Expires: ".((empty($item->expires) || ($item->expires == "0000-00-00 00:00:00"))? "Never":date("M, d Y", strtotime($item->expires)));
 			}else if(!empty($data["require_payment"])  && ($status == "Pending")){
 				if(is_numeric($item->bepro_cart_id)){
-					$notice = "Paid";
+					$notice = "Paid: Processing";
 				}else if($data["require_payment"] == 1){
 					//category option
 					$cost = bepro_get_total_cat_cost($item->post_id);
@@ -270,18 +278,13 @@
 					$cost = get_post_meta($item->post_id, "fee", true);
 					if(!$cost){
 						$notice = "Package: Required";
-					}else if($cost > 0){
-						$notice = __("Pay", "bepro-listings").": ".$data["currency_sign"].$cost;
 					}
 				}
 				
-				if($cost > 0){
-					$notice = "Requires: $".$cost;
+				if(@$cost && ($cost > 0)){
+					$notice = __("Pay", "bepro-listings").": ".$data["currency_sign"].$cost;
 				}
 			}
-			
-			
-			
 			
 			echo $notice;
 		  break;
@@ -526,7 +529,6 @@
 			$data["cat_heading"] = $_POST["cat_heading"];
 			$data["cat_empty"] = $_POST["cat_empty"];
 			$data["cat_singular"] = $_POST["cat_singular"];
-			$data["days_until_expire"] = (is_numeric($_POST["days_until_expire"]) && ($_POST["days_until_expire"] > 0))? $_POST["days_until_expire"]:0;
 	
 			//forms
 			$data["validate_form"] = $_POST["validate_form"];
@@ -670,7 +672,6 @@
 						<span class="form_label"><?php _e("Category Heading", "bepro-listings"); ?></span><input type="input" name="cat_heading" value="<?php echo $data["cat_heading"]; ?>"><br />
 						<span class="form_label"><?php _e("Category Empty", "bepro-listings"); ?></span><input type="input" name="cat_empty" value="<?php echo $data["cat_empty"]; ?>"><br />
 						<span class="form_label"><?php _e("Category Singular", "bepro-listings"); ?></span><input type="input" name="cat_singular" value="<?php echo $data["cat_singular"]; ?>"><br />
-						<span class="form_label"><?php _e("Default Duration (Days)?", "bepro-listings"); ?></span><input type="text" name="days_until_expire" value="<?php echo $data["days_until_expire"];?>"><br />
 					</div>
 					<div id="tabs-2">
 						<span class="form_label"><?php _e("Validate Form", "bepro-listings"); ?></span><input type="checkbox" name="validate_form" <?php echo (($data["validate_form"]== 1) || ($data["validate_form"] == "on"))? 'checked="checked"':"" ?>><br />
@@ -803,6 +804,9 @@
 							<option value="1" <?php echo ($data["require_payment"] == 1)? "selected='selected'":""; ?>>Charge Per Category</option>
 							<option value="2" <?php echo ($data["require_payment"] == 2)? "selected='selected'":""; ?>>Charge Flat Fee</option>
 						</select><br />
+						<div id="cat_fee_details">
+							<span class="form_label"><?php echo __("Duration", "bepro-listings"); ?></span><input type="text" name="cat_fee_duration" value="<?php echo $data["cat_fee_duration"]; ?>" placeholder="in days e.g. 30">
+						</div>
 						<div id="flat_fee_details">
 							
 							<?php 

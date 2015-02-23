@@ -19,29 +19,24 @@
 			foreach($items as $item){
 				$notice = "None";
 				$status = (($item->post_status == "publish")? "Published":"Pending");
-				if(@$data["days_until_expire"] && ($data["days_until_expire"] > 0) && ($status == "Published")){
-					if(@$item->expires){
-						$notice = __("Expires", "bepro-listings").": ".((empty($item->expires) || ($item->expires == "0000-00-00 00:00:00"))? "Never":date("M, d Y", strtotime($item->expires)));
-					}else{
-						$notice = "Exempt";
-					}
+				if(!empty($data["require_payment"]) && ($status == "Published")){
+					$notice = "Expires: ".((empty($item->expires) || ($item->expires == "0000-00-00 00:00:00"))? "Never":date("M, d Y", strtotime($item->expires)));
 				}else if(!empty($data["require_payment"])  && ($status == "Pending")){
-					if($data["require_payment"] == 1){
+					if(is_numeric($item->bepro_cart_id)){
+						$notice = "Paid: Processing";
+					}else if($data["require_payment"] == 1){
 						//category option
 						$cost = bepro_get_total_cat_cost($item->post_id);
-						if($cost > 0){
-							$notice = __("Pay", "bepro-listings").": ".$data["currency_sign"].$cost;
-						}
-					}else if($data["require_payment"] == 2){	
+					}else if($data["require_payment"] == 2){
 						$cost = get_post_meta($item->post_id, "fee", true);
 						if(!$cost){
 							$notice = "Package: Required";
-						}else if($cost > 0){
-							$notice = __("Pay", "bepro-listings").": ".$data["currency_sign"].$cost;
 						}
 					}
 					
-					
+					if(@$cost && ($cost > 0)){
+						$notice = __("Pay", "bepro-listings").": ".$data["currency_sign"].$cost;
+					}
 				}
 				echo "
 					<tr>

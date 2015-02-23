@@ -77,7 +77,7 @@ class BL_Meta_Box_Listing_Images {
 		<span class="form_label">'.__("Website").'</span><input type="text" name="website" value="'.$listing->website.'"><br />
 	  ';
 		$data = get_option("bepro_listings");
-		if(isset($data["days_until_expire"]) && ($data["days_until_expire"] > 0)){
+		if(isset($data["require_payment"]) && ($data["require_payment"] > 0)){
 			echo '<span class="form_label">Expire Date</span><input class="bl_date_input" type="text" name="expires" value="'.$listing->expires.'" placeholder="yyyy-mm-dd HH:mm:ss">';
 		}
 	}

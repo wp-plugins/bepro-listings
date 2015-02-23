@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.93
+Version: 2.1.94
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -95,7 +95,7 @@ class Bepro_listings{
 		add_action( 'plugins_loaded', array($this, 'check_load_payment') );
 		
 		//expiration features?
-		if(is_numeric($data["days_until_expire"]) && ($data["days_until_expire"] > 0)){
+		if(is_numeric($data["require_payment"]) && ($data["require_payment"] > 0)){
 			add_filter("bepro_listings_add_to_clause", "bepro_search_remove_expiring");
 		}
 		

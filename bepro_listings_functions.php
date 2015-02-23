@@ -352,7 +352,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.93' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.94' );
 		}	
 	}
 	
@@ -378,7 +378,6 @@
 			$data["cat_singular"] = "Category";
 			$data["permalink"] = "/".BEPRO_LISTINGS_SEARCH_SLUG;
 			$data["cat_permalink"] = "/".BEPRO_LISTINGS_CATEGORY_SLUG;
-			$data["days_until_expire"] = 0;
 			
 			//forms
 			$data["validate_form"] = "on";
@@ -605,6 +604,7 @@
 			$default_status = empty($data["default_status"])? "pending":$data["default_status"];
 			$return_message = false;
 			
+			//retrieve variables
 			$item_name = addslashes(strip_tags($_POST["item_name"]));
 			$content = addslashes(strip_tags(strip_shortcodes($_POST["content"])));
 			$categories = $wpdb->escape($_POST["categories"]);
@@ -614,6 +614,8 @@
 			$cost =  trim(addslashes(strip_tags($_POST["cost"])));
 			$cost = str_replace(array("$",","), array("",""), $cost);
 			$cost = (!is_numeric($cost) || ($cost < 0))? "NULL": $cost; 
+			$duration = 0;
+			$fee = 0;
 
 			//Figure out user_id
 			if(is_user_logged_in()){
@@ -624,7 +626,7 @@
 			if(empty($user_id))$user_id = $default_user_id;
 			
 			$user_id = apply_filters("bl_save_listing_user_id_overide", $user_id);
-			
+			//create listing in wordpress
 			if(!empty($user_id) && ($user_id != 0)){
 				if(empty($post_id)){
 					$post = array(
@@ -640,7 +642,7 @@
 					$wpdb->query("UPDATE ".$wpdb->prefix."posts SET post_content = '".$content."' WHERE ID=".$post_id);
 				}
 			
-				if(empty($wp_error)){
+				if(empty($wp_error) && is_numeric($post_id)){
 					$post_data = get_post($post_id);
 					//setup custom bepro listing post categories
 					if(!empty($categories))wp_set_post_terms($post_id,$categories,'bepro_listing_types');
@@ -699,6 +701,7 @@
 						}
 					}
 					
+					//prepare for save to BePro Listings tables
 					$post_status = $post_data->post_status;
 					$post_data = $_POST;
 					$post_data["post_id"] = $post_id;
@@ -706,19 +709,26 @@
 					$post_data["lon"] = @$lon;
 					$post_data["cost"] = $cost;
 					
-					//calculate duration
+					//calculate cost and duration
 					if(@$_POST["bl_package"] && !empty($_POST["bl_package"]) && is_array($data["flat_fee"])){
+						//calculate for flat fee
 						$package_count = $_POST["bl_package"];
 						$fee_keys = array_keys($data["flat_fee"]);
-						$fee = $fee_keys[$package_count];
-						$duration = $data["flat_fee"][$fee];
-						if(($default_status == "pending") && ($post_status == "pending")){
-							update_post_meta($post_id, "fee", $fee);
-						}else{
-							$post_data["expire"] = date('Y-m-d H:i:s', strtotime("+".$duration." days"));
+						if(isset($fee_keys[$package_count])){
+							$fee = $fee_keys[$package_count];
+							$duration = @$data["flat_fee"][$fee];
 						}
+					}else if(!empty($data["require_payment"]) && ($data["require_payment"] == 1)){ 
+						//calculate for categories
+						$fee = bepro_get_total_cat_cost($post_id);
+						$duration = $data["cat_fee_duration"];
 					}
-					
+					//does this listing need a payment or is time assigned
+					if(($default_status == "pending") && ($post_status == "pending") && ($fee != 0)){
+						update_post_meta($post_id, "fee", $fee);
+					}else if(@is_numeric($duration) && ($duration != 0)){
+						$post_data["expire"] = date('Y-m-d H:i:s', strtotime("+".$duration." days"));
+					}
 					
 					$listing = $wpdb->get_row("SELECT id FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post_id);
 					if($listing){
@@ -730,7 +740,7 @@
 					if($result === false){
 						$return_message = false;
 					}else{
-						$return_message = true;
+						$return_message = true; //everything updated ok
 					}
 				}
 			}else{
@@ -1043,27 +1053,47 @@
 		$data = get_option("bepro_listings");
 		$expiration = "";
 		$post_id = $item["item_number"];
+		$block_update = false; //stop post from being published?
 		//if flat fee
 		if((@$data["require_payment"] == 2) && (is_array($data["flat_fee"]))){
 			$fee = get_post_meta($post_id, "fee", true);
 			$duration = 0;
 			if(is_numeric($data["flat_fee"][$fee])){
+				//check to see if this payment corresponds with a package
 				$duration = $data["flat_fee"][$fee];
 			}else{
-				$duration = empty($data["days_until_expire"])? 0:$data["days_until_expire"];
+				//someone just paid at a different price to existing packages
+				$block_update = true;
 			}
-			$expiration = date('Y-m-d H:i:s', strtotime("+".$duration." days"));
-			$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set expires = '".$expiration."', bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
-		}else if(@$data["days_until_expire"] && ($data["days_until_expire"] > 0)){
-			$expiration = date('Y-m-d H:i:s', strtotime("+".$data["days_until_expire"]." days"));
-			$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set expires = '".$expiration."', bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
+			
+			if(!$block_update && ($duration != 0)){
+				$expiration = date('Y-m-d H:i:s', strtotime("+".$duration." days"));
+				$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set expires = '".$expiration."', bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
+			}else{
+				$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
+			}
+		}else if(!empty($data["require_payment"]) && ($data["require_payment"] == 1)){
+			$duration = $data["cat_fee_duration"];
+			
+			if(@$duration && ($duration != 0)){
+				$expiration = date('Y-m-d H:i:s', strtotime("+".$duration." days"));
+				$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set expires = '".$expiration."', bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
+			}else{
+				$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
+			}
 		}else{
+			//we have a random payment thats not accounted for
 			$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set bepro_cart_id=".$bepro_cart_id." WHERE post_id = '".$post_id."'");
+			$block_update = true;
 		}
-		$raw_post = get_post($post_id);
-		if($raw_post){
-			$raw_post->post_status = "Publish";
-			wp_update_post($raw_post);
+	
+		//If payment passes requirements, then set post as published
+		if(!$block_update){
+			$raw_post = get_post($post_id);
+			if($raw_post){
+				$raw_post->post_status = "Publish";
+				wp_update_post($raw_post);
+			}
 		}
 	}
 	
@@ -1088,7 +1118,7 @@
 				//add to cart and redirect?
 				if(is_numeric($data["require_payment"]) && empty($_POST["bepro_post_id"]) && class_exists("Bepro_cart")){
 					if($data["require_payment"] == 1){
-						$cost = bepro_get_total_cat_cost($item->post_id);
+						$cost = get_post_meta($post_id, "fee", true);
 					}else if(($data["require_payment"] == 2) && (is_numeric($_POST["bl_package"]))){
 						//bepro edits
 						$cost = get_post_meta($post_id, "fee", true);

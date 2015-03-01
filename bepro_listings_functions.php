@@ -352,7 +352,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.94' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.95' );
 		}	
 	}
 	
@@ -712,7 +712,7 @@
 					//calculate cost and duration
 					if(@$_POST["bl_package"] && !empty($_POST["bl_package"]) && is_array($data["flat_fee"])){
 						//calculate for flat fee
-						$package_count = $_POST["bl_package"];
+						$package_count = $_POST["bl_package"] - 1; //added one in form so we reduce here
 						$fee_keys = array_keys($data["flat_fee"]);
 						if(isset($fee_keys[$package_count])){
 							$fee = $fee_keys[$package_count];

@@ -1062,7 +1062,7 @@
 			if($cost) return;
 		}
 		echo '<div id="flat_fee">';
-		$fee_counter = 0;
+		$fee_counter = 1;
 		if(@$data["flat_fee"] && (is_array($data["flat_fee"])) && !empty($data["flat_fee"])){
 			echo '<h3>'.__("Available Packages", "bepro-listings").'</h3>';
 			foreach($data["flat_fee"] as $fee => $duration){

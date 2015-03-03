@@ -296,7 +296,7 @@
 	}
 	
 	
-	function load_constants(){
+	function bl_load_constants(){
 		// The main slug
 		if ( !defined( 'BEPRO_LISTINGS_SLUG' ) )
 			define( 'BEPRO_LISTINGS_SLUG', 'Listings' );
@@ -352,7 +352,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.95' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.96' );
 		}	
 	}
 	
@@ -897,7 +897,7 @@
 	
 	//Create BePro Listings custom post type.
 	function bepro_create_post_type() {
-		load_constants();
+		bl_load_constants();
 		$labels = array(
 			'name' => _x('BePro Listings', 'post type general name', 'bepro-listings'),
 			'singular_name' => _x('Listing', 'post type singular name', 'bepro-listings'),

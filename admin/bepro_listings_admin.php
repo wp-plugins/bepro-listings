@@ -31,7 +31,7 @@
 	
 	function bepro_admin_head(){
 		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('../css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" >';
-		if($_GET["post_type"] == "bepro_listings")
+		if(get_post_type( get_the_ID() ) == "bepro_listings")
 			echo '<script type="text/javascript" src="'.plugins_url('../js/bepro_listings_admin.js', __FILE__ ).'" ></script>';
 		echo "<style type='text/css'>.bepro_listings input[type=checkbox]{margin:11px 0;}</style>";
 		echo "<style>

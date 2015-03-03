@@ -4,14 +4,14 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds directory, classifieds plugin, directory, directory builder, directory plugin, directory listings, event directory, event listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio directory, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress directory plugin, wordpress classifieds, wordpress catalogues, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 2.1.95
+Stable tag: 2.1.96
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Responsive Directory (Real Estate, Classifieds, Business, Events etc) w/ (google maps, front end upload, search / filter, payments & more)
 
 == Description ==
-BePro Listings is a **wordpress directory plugin** with the features you need for success. With its modular architecture, you decide how users, search, filter and view information. Use optional base features like, clustered google maps, **paypal payments**, email notifications, ajax search / filter and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business, Product Catalogues, Events, Classifieds and other niche information.
+BePro Listings is a **wordpress directory plugin** which is easy to setup and customize. With its modular architecture, you decide how users, search, filter and view information. Use optional base features like, clustered google maps, **paypal payments**, email notifications, ajax search / filter and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business, Product Catalogues, Events, Classifieds and other niche information.
 
 [BePro Listings](https://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](https://www.beprosoftware.com/forums/) | [Documentation](https://www.beprosoftware.com/documentation/bepro-listings/ ) | [Bundles](https://www.beprosoftware.com/bundles/) | [Themes](https://www.beprosoftware.com/themes/) | [Demos](http://www.beprothemes.com)
 
@@ -298,6 +298,11 @@ The base free plugin is filled with features used in most, directory, classified
 Many of what we give away for free, others will charge you for e.g. clusterd google maps and csv import. Also note our optional payment and notification features facilitated by the free BePro Cart and BePro Email plugins. We invite you to start **making money** today and take advantage of what we consider to be the most **advanced email notification plugin** available. These addons continue our trend of offering you a flexible way to build the directory experience that your users require. 
 
 == Changelog ==
+
+= 2.1.96 (Mar 2nd, 2015) =
+
+* Fix how js is loaded in admin
+* Tweak function names
 
 = 2.1.95 (Feb 28th, 2015) =
 

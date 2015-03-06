@@ -30,6 +30,14 @@
 	}
 	
 	function bepro_admin_head(){
+		wp_enqueue_script('jquery-ui-datepicker');
+		wp_enqueue_script(
+			'BlTimePicker',
+			plugins_url("../js/jquery.ui.timepicker.js", __FILE__ ),
+			array('jquery', 'jquery-ui-tabs'),
+			'',
+			true
+		);
 		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('../css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" >';
 		if(get_post_type( get_the_ID() ) == "bepro_listings")
 			echo '<script type="text/javascript" src="'.plugins_url('../js/bepro_listings_admin.js', __FILE__ ).'" ></script>';
@@ -103,6 +111,7 @@
 			#listing_images_container ul ul.actions li a.delete:hover:before{background-color:#a00}
 			#bepro-listings-images .inside #listing_images_container ul li:hover ul.actions{display:block}
 		  </style>
+		  <link rel='stylesheet' href='".plugins_url("../css/jquery.ui.timepicker.css", __FILE__ )."' />
 		  ";
 		echo '
 			<script type="text/javascript">
@@ -111,6 +120,10 @@
 					if(jQuery("#bepro_listings_tabs")){
 						jQuery( "#bepro_listings_tabs" ).tabs();
 					}
+					if(jQuery(".bl_date_input"))	
+						jQuery(".bl_date_input").datepicker({dateFormat: "yy-mm-dd"});
+					if(jQuery(".bl_time_input"))	
+						jQuery(".bl_time_input").timepicker();
 					if(jQuery("#bepro_listings_addon_tabs")){
 						jQuery( "#bepro_listings_addon_tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
 						jQuery( "#bepro_listings_addon_tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );

@@ -18,9 +18,8 @@
  
 	function bepro_listings_wphead() {
 		echo '<link type="text/css" rel="stylesheet" href="'.plugins_url('css/bepro_listings.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/easy-responsive-tabs.css', __FILE__ ).'" ><link type="text/css" rel="stylesheet" href="'.plugins_url('css/jquery-ui-1.8.18.custom.css', __FILE__ ).'" ><meta name="generator" content="BePro Listings '.BEPRO_LISTINGS_VERSION.'">
-		
+		<link rel="stylesheet" href="'.plugins_url("css/jquery.ui.timepicker.css", __FILE__ ).'" />
 		';
-		
 	} 
 
 	function bepro_listings_javascript() {
@@ -30,6 +29,13 @@
 		wp_enqueue_script('validate',plugins_url("js/jquery.validate.min.js", __FILE__ ), array('jquery'), true);
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_print_scripts('jquery-ui-tabs');
+		wp_enqueue_script(
+			'BlTimePicker',
+			plugins_url("js/jquery.ui.timepicker.js", __FILE__ ),
+			array('jquery', 'jquery-ui-tabs'),
+			'',
+			true
+		);
 		
 		if(!empty($data["map_use_api"]) && !empty($data["show_geo"]))
 			wp_enqueue_script('google-maps' , '//maps.google.com/maps/api/js' , false , '3.5&sensor=false');
@@ -43,11 +49,13 @@
 					var ajaxurl = "'.admin_url('admin-ajax.php').'";
             jQuery(document).ready(function(){
 				if(jQuery("#min_date"))
-					jQuery("#min_date").datepicker();
+					jQuery("#min_date").datepicker({dateFormat: "yy-mm-dd"});
 				if(jQuery("#max_date"))	
-					jQuery("#max_date").datepicker();
+					jQuery("#max_date").datepicker({dateFormat: "yy-mm-dd"});
 				if(jQuery(".bl_date_input"))	
-					jQuery(".bl_date_input").datepicker();
+					jQuery(".bl_date_input").datepicker({dateFormat: "yy-mm-dd"});
+				if(jQuery(".bl_time_input"))	
+					jQuery(".bl_time_input").timepicker();
 					
 				jQuery(".delete_link").click(function(element){
 					element.preventDefault();
@@ -352,7 +360,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.96' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.97' );
 		}	
 	}
 	

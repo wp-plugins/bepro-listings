@@ -1,0 +1,386 @@
+# Translation for BePro Listings
+# Copyright (C) 2012 Beyond Programs LTD (beyondprograms.com)
+# This file is distributed under the same license as BePro Listings.
+# BePro Software Team <support@beprosoftware.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: BePro Listings Translation 1.0\n"
+"Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2012-09-14 16:20+0200\n"
+"PO-Revision-Date: 2015-01-08 00:15-0400\n"
+"Last-Translator: BePro Software Team <support@beprosoftware.com>\n"
+"Language-Team: bepro software\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+msgid "Item Information"
+msgstr "Élément Information"
+
+#: wpGoogleMaps.php:882
+msgid "Item Name"
+msgstr "Nom de l'élément"
+
+#: wpGoogleMaps.php:882
+msgid "Cost"
+msgstr "Coût"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Image"
+msgstr "Image"
+
+msgid "Categories"
+msgstr "Catégories"
+
+msgid "Contact Information"
+msgstr "Information de contact"
+
+msgid "First Name"
+msgstr "Prénom"
+
+msgid "Last Name"
+msgstr "Nom"
+
+msgid "Email"
+msgstr "Courrier électronique"
+
+msgid "Phone"
+msgstr "Téléphone"
+
+msgid "Website"
+msgstr "Site web"
+
+msgid "Location Information"
+msgstr "Information de contact"
+
+msgid "Address"
+msgstr "l'adresse"
+
+msgid "City"
+msgstr "Ville"
+
+msgid "State"
+msgstr "Etat"
+
+msgid "Country"
+msgstr "Pays"
+
+msgid "Zip / Postal"
+msgstr "Zip / Postal"
+
+msgid "Filter Map"
+msgstr "Type de filtre"
+
+msgid "Listings Map"
+msgstr "Carte des listes"
+
+msgid "From"
+msgstr "De"
+
+msgid "To"
+msgstr "À"
+
+msgid "Date Range"
+msgstr "Plage de date"
+
+msgid "Price Range"
+msgstr "Intervalle d'impression"
+
+msgid "Distance"
+msgstr "Distance"
+
+msgid "Where"
+msgstr "Où"
+
+msgid "Name"
+msgstr "Nom"
+
+#: bepro_listings.php:85
+msgid "Search Listings"
+msgstr "Suche Inserate"
+
+#: bepro_listings_frontend.php:370
+msgid "Username"
+msgstr "Benutzername"
+
+#: bepro_listings_frontend.php:371
+msgid "Password"
+msgstr "Passwort"
+
+#: bepro_listings_frontend.php:369
+msgid "Login / Register"
+msgstr "Login / Registrieren"
+
+#: bepro_listings_frontend.php:375
+msgid "Create Listing"
+msgstr "Liste erstellen"
+
+#: bepro_listings.php:234
+msgid "Listing Types"
+msgstr "Liste des Types"
+
+#: bepro_listings.php:276
+msgid "Free"
+msgstr "Libre"
+
+#: bepro_listings.php:278
+msgid "Please Contact"
+msgstr "Fusionner le contact"
+
+#: bepro_listings.php:285
+msgid "View Map"
+msgstr "Voir la carte"
+
+#: ------------Admin Area---------------- bepro_listings_admin.php:258
+msgid "Show Cost"
+msgstr "Indiquer le coût"
+
+#: bepro_listings_admin.php:259
+msgid "Show Contact"
+msgstr "Afficher le contact"
+
+#: bepro_listings_admin.php:260
+msgid "Show Geography"
+msgstr "Afficher le graphique "
+
+#: bepro_listings_admin.php:261
+msgid "# Of Images"
+msgstr "# d'Images"
+
+#: bepro_listings_admin.php:274
+msgid "Validate Form"
+msgstr "Valider le formulaire"
+
+#: bepro_listings_admin.php:275
+msgid "Default User Id"
+msgstr "Id utilisateur par défaut"
+
+#: bepro_listings_admin.php:276
+msgid "Success Message"
+msgstr "Message de réussite"
+
+#: bepro_listings_admin.php:279
+msgid "Default Listing Image"
+msgstr "Image de liste par défaut"
+
+#: bepro_listings_admin.php:280
+msgid "Default # Listings"
+msgstr "Annonces # par défaut"
+
+#: bepro_listings_admin.php:288
+msgid "Default Search Distance (Mi)"
+msgstr "Distance de recherche (Mi)"
+
+#: bepro_listings_admin.php:299
+msgid "Gallery Size"
+msgstr "Taille de la galerie"
+
+#: bepro_listings_admin.php:305
+msgid "Show Details"
+msgstr "Afficher les détails"
+
+#: bepro_listings_admin.php:306
+msgid "Show Content"
+msgstr "Afficher le contenu"
+
+#: bepro_listings_admin.php:319
+msgid "Our Link in your footer?"
+msgstr "Notre lien à votre pied de page ?"
+
+#: bepro_listings_admin.php:575
+msgid "General"
+msgstr "Generale"
+
+#: bepro_listings_admin.php:576
+msgid "Forms"
+msgstr "Forme"
+
+#: bepro_listings_admin.php:577
+msgid "Search/Listings"
+msgstr "Ricerca/Inserzioni"
+
+#: bepro_listings_admin.php:578
+msgid "Page/Post"
+msgstr "Pagina/Post"
+
+#: bepro_listings_admin.php:579
+msgid "Map"
+msgstr "Mappa"
+
+#: bepro_listings_admin.php:580
+msgid "3rd Party"
+msgstr "3a parte"
+
+#: bepro_listings_admin.php:581
+msgid "CSV Upload"
+msgstr "CSV Upload"
+
+#: bepro_listings_admin.php:582
+msgid "Payments"
+msgstr "Pagamenti"
+
+#: bepro_listings_admin.php:583
+msgid "Support"
+msgstr "Supporto"
+
+#: templates\tabs\tab-comments.php:10
+msgid "Comments"
+msgstr "Commentaires"
+
+#: bepro_listings_frontend.php:729
+msgid "Details"
+msgstr "Détails"
+
+#: bepro_listings_admin.php:613
+msgid "# Of Uploads"
+msgstr "Nbre d'Uploads"
+
+#: bepro_listings_admin.php:625
+msgid "Category Heading"
+msgstr "Titre de la catégorie"
+
+#: bepro_listings_admin.php:626
+msgid "Category Empty"
+msgstr "Catégorie vide"
+
+#: bepro_listings_admin.php:627
+msgid "Category Singular"
+msgstr "Catégorie singulier"
+
+#: bepro_listings_admin.php:628
+msgid "Days until Listings Expire?"
+msgstr "Jours jusqu'à l'expirant des annonces?"
+
+#: bepro_listings_admin.php:633
+msgid "Default Status"
+msgstr "Statut par défaut"
+
+#: bepro_listings_admin.php:638
+msgid "Fail Message"
+msgstr "Pas de Message"
+
+#: bepro_listings_admin.php:639
+msgid "Required Categories"
+msgstr "Catégories requises"
+
+#: bepro_listings_admin.php:640
+msgid "Exclude Categories"
+msgstr "Exclure des catégories"
+
+#: bepro_listings_admin.php:644
+msgid "How Links Open"
+msgstr "Comment ouvrent les liens"
+
+#: bepro_listings_admin.php:650
+msgid "Ajax On?"
+msgstr "Ajax sur?"
+
+#: bepro_listings_admin.php:671
+msgid "Name Search"
+msgstr "Recherche par nom"
+
+#: bepro_listings_admin.php:677
+msgid "Title Length"
+msgstr "Titre durée"
+
+#: bepro_listings_admin.php:678
+msgid "Details Link Text"
+msgstr "Texte du lien Détails"
+
+#: bepro_listings_admin.php:679
+msgid "Show Website Link?"
+msgstr "Montrer le lien de site Web?"
+
+#: bepro_listings_admin.php:680
+msgid "Currency Sign?"
+msgstr "Symbole de devise?"
+
+#: bepro_listings_admin.php:681
+msgid "Show Date filter?"
+msgstr "Afficher le filtre Date?"
+
+#: bepro_listings_admin.php:691
+msgid "# Gallery Columns"
+msgstr "# Galerie colonnes"
+
+#: bepro_listings_admin.php:697
+msgid "Links on Details"
+msgstr "Liens sur les détails"
+
+#: bepro_listings_admin.php:698
+msgid "Protect Contact"
+msgstr "Protéger le Contact"
+
+#: bepro_listings_admin.php:700
+msgid "Tab Direction"
+msgstr "Onglet orientation"
+
+#: bepro_listings_admin.php:706
+msgid "Query Type"
+msgstr "Type de requête"
+
+#: bepro_listings_admin.php:716
+msgid "CSV File"
+msgstr "Fichier CSV"
+
+#: bepro_listings_admin.php:717
+msgid "Delimiter"
+msgstr "Délimiteur"
+
+#: bepro_listings_admin.php:732
+msgid "Accept Payments?"
+msgstr "Accepter les paiements?"
+
+#: bepro_listings_admin.php:740
+msgid "Publish after confirm Paid?"
+msgstr "Publier après confirmez payé?"
+
+#: ------------Front end---------------- templates/list.php:6
+msgid "My Item Listings"
+msgstr "Mes listes d'éléments"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Notices"
+msgstr "Avis"
+
+msgid "Actions"
+msgstr "Actions"
+
+#: templates/list.php:32
+msgid "View"
+msgstr "Vue"
+
+#: templates/list.php:32
+msgid "Edit"
+msgstr "Edit"
+
+#: templates/list.php:32
+msgid "Delete"
+msgstr "Supprimer"
+
+#: templates/list.php:22
+msgid "Expires"
+msgstr "Expire"
+
+#: templates/list.php:32
+msgid "Pay"
+msgstr "Payer"
+
+#: templates/list.php:50
+msgid "Wait"
+msgstr "Attendre"
+
+#: templates/list.php:60
+msgid "No Live listings created"
+msgstr "Aucune offres Live créés"
+
+#: templates/list.php:62
+msgid "No live listings for this user"
+msgstr "Pas d'annonces direct pour cet utilisateur"

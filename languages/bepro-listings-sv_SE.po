@@ -1,0 +1,413 @@
+# Translation for BePro Listings
+# Copyright (C) 2012 Beyond Programs LTD (beyondprograms.com)
+# This file is distributed under the same license as BePro Listings.
+# BePro Software Team <support@beprosoftware.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: BePro Listings Translation 1.0\n"
+"Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2012-09-14 16:20+0200\n"
+"PO-Revision-Date: 2015-01-07 23:46-0400\n"
+"Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
+"Language-Team: BePro Software\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+msgid "Item Information"
+msgstr "Artikelinformation"
+
+#: bepro_listings_frontend.php:321
+msgid "Item Name"
+msgstr "Artikelnamn"
+
+#: bepro_listings_frontend.php:322
+msgid "Cost"
+msgstr "kostnad"
+
+#: bepro_listings_frontend.php:323
+msgid "Description"
+msgstr "Beskrivning"
+
+#: bepro_listings_frontend.php:334
+msgid "Image"
+msgstr "Bild"
+
+#: bepro_listings_frontend.php:324
+msgid "Categories"
+msgstr "Kategorier"
+
+#: bepro_listings_frontend.php:345
+msgid "Contact Information"
+msgstr "Kontaktinformation"
+
+#: bepro_listings_frontend.php:346
+msgid "First Name"
+msgstr "Förnamn"
+
+#: bepro_listings_frontend.php:347
+msgid "Last Name"
+msgstr "Efternamn"
+
+#: bepro_listings_frontend.php:348
+msgid "Email"
+msgstr "E-post"
+
+#: bepro_listings_frontend.php:349
+msgid "Phone"
+msgstr "Telefon"
+
+#: bepro_listings_frontend.php:350
+msgid "Website"
+msgstr "Hemsida"
+
+#: bepro_listings_frontend.php:356
+msgid "Location Information"
+msgstr "Platsinformation"
+
+#: bepro_listings_frontend.php:357
+msgid "Address"
+msgstr "Adress"
+
+#: bepro_listings_frontend.php:358
+msgid "City"
+msgstr "Staden"
+
+#: bepro_listings_frontend.php:359
+msgid "State"
+msgstr "Staten"
+
+#: bepro_listings_frontend.php:360
+msgid "Country"
+msgstr "Land"
+
+#: bepro_listings_frontend.php:361
+msgid "Zip / Postal"
+msgstr "Zip / postnummer"
+
+msgid "Filter Listings"
+msgstr "Filtrera listor"
+
+msgid "Listings Map"
+msgstr "Listor karta"
+
+#: bepro_listings.php:261
+msgid "From"
+msgstr "Från"
+
+#: bepro_listings.php:261
+msgid "To"
+msgstr "Till"
+
+#: bepro_listings.php:264
+msgid "Date Range"
+msgstr "Datumintervall"
+
+#: bepro_listings.php:261
+msgid "Price Range"
+msgstr "Prisklass"
+
+#: bepro_listings.php:268
+msgid "Refine Search"
+msgstr "Förfina sökning"
+
+#: bepro_listings.php:248
+msgid "Distance"
+msgstr "Avstånd"
+
+#: bepro_listings.php:79
+msgid "Where"
+msgstr "GdeDär"
+
+#: bepro_listings.php:82
+msgid "Name"
+msgstr "Namn"
+
+#: bepro_listings.php:85
+msgid "Search Listings"
+msgstr "Suche Inserate"
+
+#: bepro_listings_frontend.php:370
+msgid "Username"
+msgstr "Användarnamn"
+
+#: bepro_listings_frontend.php:371
+msgid "Password"
+msgstr "Lösenord"
+
+#: bepro_listings_frontend.php:369
+msgid "Login / Register"
+msgstr "Logga in / registrera dig"
+
+#: bepro_listings_frontend.php:375
+msgid "Create Listing"
+msgstr "Skapa notering"
+
+#: bepro_listings.php:234
+msgid "Listing Types"
+msgstr "Förteckning över typer"
+
+#: bepro_listings.php:276
+msgid "Free"
+msgstr "gratis"
+
+#: bepro_listings.php:278
+msgid "Please Contact"
+msgstr "Kontakta"
+
+#: bepro_listings.php:285
+msgid "View Map"
+msgstr "Visa karta"
+
+#: ------------Admin Area---------------- bepro_listings_admin.php:258
+#: bepro_listings_admin.php:258
+msgid "Show Cost"
+msgstr "Visa kostnaden"
+
+#: bepro_listings_admin.php:259
+msgid "Show Contact"
+msgstr "Visa kontakt"
+
+#: bepro_listings_admin.php:260
+msgid "Show Geography"
+msgstr "Visa geografi"
+
+#: bepro_listings_admin.php:261
+msgid "# Of Images"
+msgstr "# Bilder"
+
+#: bepro_listings_admin.php:274
+msgid "Validate Form"
+msgstr "Validera formulär"
+
+#: bepro_listings_admin.php:275
+msgid "Default User Id"
+msgstr "Standard användar-Id"
+
+#: bepro_listings_admin.php:276
+msgid "Success Message"
+msgstr "Meddelande"
+
+#: bepro_listings_admin.php:279
+msgid "Default Listing Image"
+msgstr "Standard lista bilden"
+
+#: bepro_listings_admin.php:280
+msgid "Default # Listings"
+msgstr "# Programtablåerna"
+
+#: bepro_listings_admin.php:288
+msgid "Default Search Distance (Mi)"
+msgstr "Standard Sök avstånd (Mi)"
+
+#: bepro_listings_admin.php:299
+msgid "Gallery Size"
+msgstr "Galleri storlek"
+
+#: bepro_listings_admin.php:305
+msgid "Show Details"
+msgstr "Visa Detaljer"
+
+#: bepro_listings_admin.php:306
+msgid "Show Content"
+msgstr "Visa innehåll"
+
+#: bepro_listings_admin.php:319
+msgid "Our Link in your footer?"
+msgstr "Vår länk i sidfoten?"
+ 
+#: bepro_listings_admin.php:575
+msgid "General"
+msgstr "Generale"
+
+#: bepro_listings_admin.php:576
+msgid "Forms"
+msgstr "Forme"
+
+#: bepro_listings_admin.php:577
+msgid "Search/Listings"
+msgstr "Ricerca/Inserzioni"
+
+#: bepro_listings_admin.php:578
+msgid "Page/Post"
+msgstr "Pagina/Post"
+
+#: bepro_listings_admin.php:579
+msgid "Map"
+msgstr "Mappa"
+
+#: bepro_listings_admin.php:580
+msgid "3rd Party"
+msgstr "3a parte"
+
+#: bepro_listings_admin.php:581
+msgid "CSV Upload"
+msgstr "CSV Upload"
+
+#: bepro_listings_admin.php:582
+msgid "Payments"
+msgstr "Pagamenti"
+
+#: bepro_listings_admin.php:583
+msgid "Support"
+msgstr "Supporto"
+
+#: templates\tabs\tab-comments.php:10
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: bepro_listings_frontend.php:729
+msgid "Details"
+msgstr "Detaljer"
+
+#: bepro_listings_admin.php:613
+msgid "# Of Uploads"
+msgstr "# Av uppladdningar"
+
+#: bepro_listings_admin.php:625
+msgid "Category Heading"
+msgstr "Kategorirubriken"
+
+#: bepro_listings_admin.php:626
+msgid "Category Empty"
+msgstr "Kategori tomt"
+
+#: bepro_listings_admin.php:627
+msgid "Category Singular"
+msgstr "Kategori Singular"
+
+#: bepro_listings_admin.php:628
+msgid "Days until Listings Expire?"
+msgstr "Dagar tills listor löper ut?"
+
+#: bepro_listings_admin.php:633
+msgid "Default Status"
+msgstr "Standardstatus"
+
+#: bepro_listings_admin.php:638
+msgid "Fail Message"
+msgstr "Misslyckas meddelande"
+
+#: bepro_listings_admin.php:639
+msgid "Required Categories"
+msgstr "Krävs kategorier"
+
+#: bepro_listings_admin.php:640
+msgid "Exclude Categories"
+msgstr "Utesluta kategorier"
+
+#: bepro_listings_admin.php:644
+msgid "How Links Open"
+msgstr "Hur länkar öppnas"
+
+#: bepro_listings_admin.php:650
+msgid "Ajax On?"
+msgstr "Ajax på?"
+
+#: bepro_listings_admin.php:671
+msgid "Name Search"
+msgstr "Namn Sök"
+
+#: bepro_listings_admin.php:677
+msgid "Title Length"
+msgstr "Titel längd"
+
+#: bepro_listings_admin.php:678
+msgid "Details Link Text"
+msgstr "Detaljer länktext"
+
+#: bepro_listings_admin.php:679
+msgid "Show Website Link?"
+msgstr "Visa webbplatslänk?"
+
+#: bepro_listings_admin.php:680
+msgid "Currency Sign?"
+msgstr "Valuta tecken?"
+
+#: bepro_listings_admin.php:681
+msgid "Show Date filter?"
+msgstr "Visa Datumfilter?"
+
+#: bepro_listings_admin.php:691
+msgid "# Gallery Columns"
+msgstr "# Gallery kolumner"
+
+#: bepro_listings_admin.php:697
+msgid "Links on Details"
+msgstr "Länkar på Detaljer"
+
+#: bepro_listings_admin.php:698
+msgid "Protect Contact"
+msgstr "Skydda kontakt"
+
+#: bepro_listings_admin.php:700
+msgid "Tab Direction"
+msgstr "Fliken riktning"
+
+#: bepro_listings_admin.php:706
+msgid "Query Type"
+msgstr "Frågetyp"
+
+#: bepro_listings_admin.php:716
+msgid "CSV File"
+msgstr "CSV-fil"
+
+#: bepro_listings_admin.php:717
+msgid "Delimiter"
+msgstr "Avgränsare"
+
+#: bepro_listings_admin.php:732
+msgid "Accept Payments?"
+msgstr "Acceptera betalningar?"
+
+#: bepro_listings_admin.php:740
+msgid "Publish after confirm Paid?"
+msgstr "Publicera efter bekräfta betald?"
+
+#: ------------Front end---------------- templates/list.php:6
+msgid "My Item Listings"
+msgstr "Min post listor"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Notices"
+msgstr "Meddelanden"
+
+msgid "Actions"
+msgstr "Åtgärder"
+
+#: templates/list.php:32
+msgid "View"
+msgstr "Visa"
+
+#: templates/list.php:32
+msgid "Edit"
+msgstr "Redigera"
+
+#: templates/list.php:32
+msgid "Delete"
+msgstr "Ta bort"
+
+#: templates/list.php:22
+msgid "Expires"
+msgstr "Upphör att gälla"
+
+#: templates/list.php:32
+msgid "Pay"
+msgstr "Betala"
+
+#: templates/list.php:50
+msgid "Wait"
+msgstr "AttendreVänta"
+
+#: templates/list.php:60
+msgid "No Live listings created"
+msgstr "Inga levande listor skapade"
+
+#: templates/list.php:62
+msgid "No live listings for this user"
+msgstr "Inga levande listor för den här användaren"

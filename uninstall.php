@@ -1,0 +1,42 @@
+<?php
+/*
+	This file is part of BePro Listings.
+
+    BePro Listings is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    BePro Listings is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with BePro Listings.  If not, see <http://www.gnu.org/licenses/>.
+*/	
+ 
+	//if uninstall not called from WordPress exit
+if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
+	exit ();
+
+delete_option('bepro_listings');
+// For site options in multisite
+delete_site_option('bepro_listings'); 
+
+//delete listings and table
+$listings = get_posts(array('post_type' => 'bepro_listings'));
+foreach($listings as $listing){
+	wp_delete_post($listing->ID);
+}
+//recreate table
+global $wpdb;
+$wpdb->query("DROP TABLE ".$wpdb->prefix."bepro_listings");
+$wpdb->query("DROP TABLE ".$wpdb->prefix."bepro_listing_typesmeta");
+
+//remove BePro Emails if exists
+if(class_exists("bepro_email")){
+	$bepro_email = new Bepro_email();
+	$bepro_email->delete_all_owner_emails("bepro_listings");
+}
+?>

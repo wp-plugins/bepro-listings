@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds directory, classifieds plugin, directory, directory builder, directory plugin, directory listings, event directory, event listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio directory, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress directory plugin, wordpress classifieds, wordpress catalogues, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 2.1.97
+Stable tag: 2.1.98
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,7 +48,7 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 
 = POPULAR USES =
 
-Use any BePro Listings compatible theme for plug and play functionality. Also, BePro Listings can be integrated into your **current theme** with some developer help and capture specifically the information that your directory needs. Look at some of the ways people are using the plugin:
+Compatible with most themes. Look at some of the ways people are using the plugin:
 
 	* Paid Listings - Paypal, Stripe, 2CO payment gateways via BePro Cart. Or use one of our membership addons to limit listings and features by level
 	* Real Estate - Perfect way to showcase, buildings, apartments, hotels, and other locations. In fact, we have a free BePro Listings Realestate addon
@@ -138,11 +138,7 @@ There is a shortcode builder available while editing any page. This tool makes i
 
 = TROUBLE SHOOTING =
 
-* 404 Error - If Listing pages produce a 404 error, try resetting your permalink settings in the admin. Simply re-save your current settings, so that they are reset for all urls. The option is under your settings menu.
-
-* Google Maps - If google map controls look weird, this is a css style related issue (your theme). Specifically, its the addition of max-width declarations to images. For details, you can *google* the issue (**google maps** max-width). Lots of bootstrap themes use this css declaration.
-
-* Breaks Template - If the details page has a displaced sidebar i.e. obviously broken template, you will need to create one for BePro Listings. Details about how to do that are included in the documentation link above. Every plugin which creates pages from custom post types, has this issue and requires its own template files e.g. buddypress
+View our troubleshooting article via the documentation link above
 
 = CONTRIBUTING =
 
@@ -183,8 +179,6 @@ You can watch a video of how to [install BePro Listings](http://www.beprosoftwar
 * (optional) If interested in having user submit listings to your website, create another page and call it "submit a listing". In the content of that page, place the following shortcode [create_listing_form]
 
 * (optional) If interested in having users manage their own listings, create a profile page and name it "My Listings". In the content of that page, place the following shortcode [bl_my_listings]
-
-* (optional) Consider creating a template file for the Listing Detail Pages. This requires php knowledge and documentation is available on our website
 
 * (optional) Install any needed add-ons. Visit our website to view addon options which expand functionality
 
@@ -274,9 +268,9 @@ Yes, there are lots of wordpress hooks, filters and templates (listings/page). T
 
 Yes, you can specify categories and flag the listings as featured via options for the [display_listings] shortcode. Consult the shortcode documentation.
 
-= Do I need to create templates for detail pages if i use ajax pages? =
+= Do I need to create templates for detail pages? =
 
-Yes, listing detail pages are generated whether you use them or not. This is a huge asset for seo reasons. There is a strong chance that users will first visit your website via one of those pages. Its within your interest to either a) use one of our $1 themes or b) create the necessary template files to integrate this plugin into your theme's layout
+No. If interested, you can
 
 == Screenshots ==
 
@@ -298,6 +292,11 @@ The base free plugin is filled with features used in most, directory, classified
 Many of what we give away for free, others will charge you for e.g. clusterd google maps and csv import. Also note our optional payment and notification features facilitated by the free BePro Cart and BePro Email plugins. We invite you to start **making money** today and take advantage of what we consider to be the most **advanced email notification plugin** available. These addons continue our trend of offering you a flexible way to build the directory experience that your users require. 
 
 == Changelog ==
+
+= 2.1.98 (Mar 20th, 2015) =
+
+* Added new localization for translation
+* Better theme compatibility with option to choose frontend template type
 
 = 2.1.97 (Mar 5th, 2015) =
 

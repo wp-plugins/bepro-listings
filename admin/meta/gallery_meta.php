@@ -57,7 +57,7 @@ class BL_Meta_Box_Listing_Images {
 	  global $wpdb, $post;
 	  $listing = $wpdb->get_row("SELECT cost FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 	  ?>
-	  <span class="form_label">Cost:</span>
+	  <span class="form_label"><?php echo __("Cost","bepro-listings"); ?>:</span>
 	  <input name="cost" value="<?php echo $listing->cost; ?>" />
 	  <?php
 	}
@@ -70,11 +70,11 @@ class BL_Meta_Box_Listing_Images {
 	  global $wpdb;
 	  $listing = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 	  echo '
-		<span class="form_label">'.__("First Name").'</span><input type="text" name="first_name" value="'.$listing->first_name.'"><br />
-		<span class="form_label">'.__("Last Name").'</span><input type="text" name="last_name" value="'.$listing->last_name.'"><br />
-		<span class="form_label">'.__("Phone").'</span><input type="text" name="phone" value="'.$listing->phone.'"><br />
-		<span class="form_label">'.__("Email").'</span><input type="text" name="email" value="'.$listing->email.'"><br />
-		<span class="form_label">'.__("Website").'</span><input type="text" name="website" value="'.$listing->website.'"><br />
+		<span class="form_label">'.__("First Name","bepro-listings").'</span><input type="text" name="first_name" value="'.$listing->first_name.'"><br />
+		<span class="form_label">'.__("Last Name","bepro-listings").'</span><input type="text" name="last_name" value="'.$listing->last_name.'"><br />
+		<span class="form_label">'.__("Phone","bepro-listings").'</span><input type="text" name="phone" value="'.$listing->phone.'"><br />
+		<span class="form_label">'.__("Email","bepro-listings").'</span><input type="text" name="email" value="'.$listing->email.'"><br />
+		<span class="form_label">'.__("Website","bepro-listings").'</span><input type="text" name="website" value="'.$listing->website.'"><br />
 	  ';
 		$data = get_option("bepro_listings");
 		if(isset($data["require_payment"]) && ($data["require_payment"] > 0)){
@@ -87,13 +87,13 @@ class BL_Meta_Box_Listing_Images {
 	  $listing = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id =".$post->ID);
 	  
 	  echo '
-		<span class="form_label">Lat</span><input type="test" name="lat" value="'.$listing->lat.'"><br />
-		<span class="form_label">Lon</span><input type="test" name="lon" value="'.$listing->lon.'"><br />
-		<span class="form_label">Address</span><input type="text" name="address_line1" value="'.$listing->address_line1.'"><br />
-		<span class="form_label">City</span><input type="text" name="city" value="'.$listing->city.'"><br />
-		<span class="form_label">State</span><input type="text" name="state" value="'.$listing->state.'"><br />
-		<span class="form_label">Country</span><input type="text" name="country" value="'.$listing->country.'"><br />
-		<span class="form_label">postcode</span><input type="text" name="postcode" value="'.$listing->postcode.'"><br />
+		<span class="form_label">'.__("Lat","bepro-listings").'</span><input type="test" name="lat" value="'.$listing->lat.'"><br />
+		<span class="form_label">'.__("Lon","bepro-listings").'</span><input type="test" name="lon" value="'.$listing->lon.'"><br />
+		<span class="form_label">'.__("Address","bepro-listings").'</span><input type="text" name="address_line1" value="'.$listing->address_line1.'"><br />
+		<span class="form_label">'.__("City","bepro-listings").'</span><input type="text" name="city" value="'.$listing->city.'"><br />
+		<span class="form_label">'.__("State","bepro-listings").'</span><input type="text" name="state" value="'.$listing->state.'"><br />
+		<span class="form_label">'.__("Country","bepro-listings").'</span><input type="text" name="country" value="'.$listing->country.'"><br />
+		<span class="form_label">'.__("Postcode","bepro-listings").'</span><input type="text" name="postcode" value="'.$listing->postcode.'"><br />
 	  ';
 	}
 

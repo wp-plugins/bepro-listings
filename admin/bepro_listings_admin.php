@@ -573,6 +573,7 @@
 			//Page/post
 			$data["gallery_size"] = $_POST["gallery_size"];
 			$data["gallery_cols"] = $_POST["gallery_cols"];
+			$data["page_template"] = $_POST["page_template"];
 			$data["show_details"] = $_POST["show_details"];
 			$data["add_detail_links"] = $_POST["add_detail_links"];
 			$data["protect_contact"] = $_POST["protect_contact"];
@@ -752,6 +753,10 @@
 							<option value="3" <?php echo ($data["gallery_cols"]== 3)? 'selected="selected"':"" ?>>3</option>
 							<option value="5" <?php echo ($data["gallery_cols"]== 5)? 'selected="selected"':"" ?>>5</option>
 							<option value="8" <?php echo ($data["gallery_cols"]== 8)? 'selected="selected"':"" ?>>8</option>
+						</select><br />
+						<span class="form_label"><?php _e("Template Type", "bepro-listings"); ?></span><select name="page_template">
+							<option value="1" <?php echo ($data["page_template"]== 1)? 'selected="selected"':"" ?>>Internal</option>
+							<option value="2" <?php echo ($data["page_template"]== 2)? 'selected="selected"':"" ?>>File</option>
 						</select><br />
 						<span class="form_label"><?php _e("Show Details", "bepro-listings"); ?></span><input type="checkbox" name="show_details" <?php echo (($data["show_details"]==1) || ($data["show_details"] == "on"))? 'checked="checked"':"" ?>><br />
 						<span class="form_label"><?php _e("Links on Details", "bepro-listings"); ?></span><input type="checkbox" name="add_detail_links" <?php echo (($data["add_detail_links"]==1) || ($data["add_detail_links"] == "on"))? 'checked="checked"':"" ?>><br />

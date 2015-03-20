@@ -137,8 +137,8 @@
 
 		//Manage Multi Site
 		if($blog_id && ($blog_id != 1)){
-			$table_name = $wpdb->prefix.$blog_id."_".BEPRO_LISTINGS_TABLE_BASE;
-			$meta_table = $wpdb->prefix.$blog_id."_"."bepro_listing_typesmeta";
+			$table_name = $wpdb->base_prefix.$blog_id."_".BEPRO_LISTINGS_TABLE_BASE;
+			$meta_table = $wpdb->base_prefix.$blog_id."_"."bepro_listing_typesmeta";
 		}else{
 			$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_BASE;
 			$meta_table = $wpdb->prefix."bepro_listing_typesmeta";
@@ -284,10 +284,8 @@
 		  $sql = "CREATE TABLE IF NOT EXISTS {$table_name} (
 			meta_id bigint(20) NOT NULL AUTO_INCREMENT,
 			{$type}_id bigint(20) NOT NULL default 0,
-		 
 			meta_key varchar(255) DEFAULT NULL,
 			meta_value longtext DEFAULT NULL,
-					 
 			UNIQUE KEY meta_id (meta_id)
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
 		 
@@ -360,7 +358,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.97' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.98' );
 		}	
 	}
 	
@@ -411,6 +409,7 @@
 			//Page/post
 			$data["gallery_size"] = "thumbnail";
 			$data["gallery_cols"] = 3;
+			$data["gallery_cols"] = 1;
 			$data["show_details"] = "on";
 			$data["add_detail_links"] = "on";
 			$data["protect_contact"] = "";

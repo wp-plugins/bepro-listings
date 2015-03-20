@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.97
+Version: 2.1.98
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -110,7 +110,14 @@ class Bepro_listings{
 		add_filter('manage_edit-bepro_listing_types_columns', 'bepro_edit_listing_types_column', 10, 3 );
 		add_filter('manage_bepro_listing_types_custom_column', 'bepro_listing_types_column', 10, 3 );
 		add_filter("manage_edit-bepro_listings_columns", "bepro_listings_edit_columns");
-		add_filter('single_template', array( $this, 'post_page_single'), 15);
+		if(empty($data["page_template"]) || ($data["page_template"] == 1)){
+			add_filter('the_content', array( $this, 'bl_post_page_content'), 10);
+			add_filter('post_thumbnail_html', array( $this, 'bl_post_page_thumbnail' ) );
+			add_filter('the_title', array( $this, 'bl_post_page_title' ) );
+			add_filter('comments_template', array( $this, 'bl_post_page_comments' ) );
+		}else{
+			add_filter('single_template', array( $this, 'post_page_single'), 10);
+		}
 		add_filter('bepro_listings_search_filter', array( $this, 'bepro_listings_search_filter_return'), 1);
 		add_filter('bepro_listings_search_join_clause', array( $this, 'bepro_listings_search_join_clause_return'), 1);
 		add_filter('bepro_listings_return_clause', array( $this, 'bepro_listings_return_clause_return'), 1);
@@ -118,7 +125,7 @@ class Bepro_listings{
 		add_filter("bepro_listings_map_marker", "bepro_listings_generate_map_marker", 1, 3);
 		add_filter("mce_external_plugins", "bl_tinymce_add_buttons");
 		add_filter('mce_buttons', 'bl_tinymce_register_buttons');
-		add_filter( 'wpmu_drop_tables', 'bepro_delete_blog' );
+		add_filter('wpmu_drop_tables', 'bepro_delete_blog' );
 		add_filter('plugin_action_links_'. plugin_basename(__FILE__), 'bepro_listings_add_settings_link');
 		
 		//shortcodes
@@ -387,7 +394,7 @@ class Bepro_listings{
 		}
 	}
 	
-	//show listing on pages created for it
+	//show listing on pages created for it by using file templates
 	function post_page_single($content){
 		if(get_post_type() == 'bepro_listings'){
 			include(plugin_dir_path( __FILE__ )."templates/single-listing.php");
@@ -395,6 +402,51 @@ class Bepro_listings{
 			return $content;
 		}
 		exit;
+	}
+	
+	//show listing on pages created for it by internal page setup
+	function bl_post_page_content($content){
+		global $post;
+		if ( ! is_singular( 'bepro_listings' ) || ! in_the_loop() ) {
+			return $content;
+		}
+		remove_filter( 'the_content', array( $this, 'bl_post_page_content' ) );
+		remove_filter( 'post_thumbnail_html', array( $this, 'bl_post_page_thumbnail' ) );
+		remove_filter( 'get_the_title', array( $this, 'bl_post_page_title' ) );
+		remove_filter( 'comments_template', array( $this, 'bl_post_page_comments' ) );
+		
+		if(get_post_type() === 'bepro_listings'){
+			ob_start();
+			include(plugin_dir_path( __FILE__ )."templates/internal-page.php");
+			$content = ob_get_clean();
+		}
+		
+		add_filter( 'the_content', array( $this, 'bl_post_page_content' ) );
+		add_filter( 'post_thumbnail_html', array( $this, 'bl_post_page_thumbnail' ) );
+		add_filter( 'get_the_title', array( $this, 'bl_post_page_title' ) );
+		add_filter( 'comments_template', array( $this, 'bl_post_page_comments' ) );
+		
+		return $content;
+	}
+	
+	function bl_post_page_comments($comment){
+		if ( ! is_singular( 'bepro_listings' ) || ! in_the_loop() ) {
+			return $comment;
+		}
+		return plugin_dir_path( __FILE__ )."templates/no_comments.php";
+	}
+	
+	function bl_post_page_thumbnail($thumb){
+		if ( ! is_singular( 'bepro_listings' ) || ! in_the_loop() ) {
+			return $thumb;
+		}
+		return;
+	}
+	function bl_post_page_title($title){
+		if ( ! is_singular( 'bepro_listings' ) || ! in_the_loop() ) {
+			return $title;
+		}
+		return;
 	}
 	
 	//buddypress hook

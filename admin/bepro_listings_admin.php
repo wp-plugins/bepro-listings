@@ -17,6 +17,7 @@
 */	
 
 	function bepro_admin_init(){
+		bl_scd_redirect_dashboard();
 		$data = get_option("bepro_listings");
 		add_meta_box("contact_general_meta", " ", "BL_Meta_Box_Listing_Images::contact_general_meta", "bepro_listings", "normal", "low");
 		if(($data["show_cost"]==1) || ($data["show_cost"] == "on"))add_meta_box("cost_meta", "Cost $", "BL_Meta_Box_Listing_Images::cost_meta", "bepro_listings", "side", "low");
@@ -34,7 +35,7 @@
 		wp_enqueue_script(
 			'BlTimePicker',
 			plugins_url("../js/jquery.ui.timepicker.js", __FILE__ ),
-			array('jquery', 'jquery-ui-tabs'),
+			array('jquery', 'jquery-ui-tabs', 'jquery-effects-core'),
 			'',
 			true
 		);
@@ -50,6 +51,9 @@
 		  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
 		  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
 		  .bepro_listings_admin_form{display:none;}
+		  #bepro_help_links{display:block; clear:both:}
+		  #bepro_help_links button{border-radius:5px; border:1px solid;}
+		  #bepro_help_links button:hover{background-color:grey; color:#fff;cursor:pointer;}
 		  #bepro-listings-images .inside #listing_images_container ul li.image {
 			width: 80px;
 			float: left;
@@ -110,6 +114,21 @@
 			#listing_images_container ul ul.actions li a.delete{display:block;text-indent:-9999px;position:relative;height:1em;width:1em;font-size:1.4em}
 			#listing_images_container ul ul.actions li a.delete:hover:before{background-color:#a00}
 			#bepro-listings-images .inside #listing_images_container ul li:hover ul.actions{display:block}
+			.swMain h2{background-color: grey;width: auto;display: table;border-radius: 0 10px 10px 0;padding: 10px;margin-left: 10px;color:#fff;}
+			.swMain ul.anchor{clear:both;display:block;float:left;width:100%}
+			.swMain ul.anchor li{float:left;}
+			.swMain ul.anchor li div.selected{background-color:grey;color:#fff;font-weight:bold;}
+			.swMain table{border-collapse:collapse;}
+			.swMain table tr td{border:1px solid #000}
+			.swMain .wizard_info h3{margin: 0 auto;background-color: grey;padding: 10px;display: table;border-radius: 5px;color: #fff;}
+			.swMain .wizard_info table tr:first-child{background-color:grey; font-weight:bold; color:#fff;text-align:center;}
+			.swMain form input[type=submit]{margin-top:10px;}
+			.swMain form input[type=checkbox]{margin:auto;display:block;}
+			#form_3_wizard input{width:150px}
+			.swMain .wizard_info{float:left;display:block;width:49%;}
+			.swMain .wizard_info:nth-child(2){padding:0 10px;}
+			.bl_skip_wizard_step{color:blue;cursor:pointer}
+			.tab-pane{background-color: #dfdfdf;float: left;width: 95%;border: 1px solid;padding: 5px;}
 		  </style>
 		  <link rel='stylesheet' href='".plugins_url("../css/jquery.ui.timepicker.css", __FILE__ )."' />
 		  ";
@@ -169,6 +188,55 @@
 						e.preventDefault();
 						jQuery("#flat_fee_details").append(\'<span class="form_label">Package \'+flat_price+\'</span><input type="text" name="flat_fee_\'+flat_price+\'" value="" placeholder="fee"><input type="text" name="flat_fee_duration_\'+flat_price+\'" value="" placeholder="'.__("Days","bepro-listings").' e.g. 30"><br />\');
 						flat_price++;
+					});
+					slide_counter = 1;
+					function advance_slide(){
+						slide_counter = slide_counter + 1;
+						jQuery(".tab-pane").removeClass("active");
+						jQuery(".tab-pane").addClass("hidden");
+						jQuery("#tb1_" + slide_counter).removeClass("hidden");
+						jQuery("#tb1_" + slide_counter).effect( "slide", {"direction":"right"}, 1000, "" );
+						jQuery("#tb1_" + slide_counter).addClass("active");
+						hightlight_slide(slide_counter);
+					}
+					function hightlight_slide(slide_counter){
+						jQuery(".swMain ul li div").removeClass("selected");
+						jQuery("#tb1_" + slide_counter + "_highlight").addClass("selected");
+					}
+					jQuery("#form_1_wizard").submit(function(e){
+						e.preventDefault();
+						jQuery("#form_1_wizard input[type=submit]").replaceWith("<br />Processing...");
+						jQuery.post(ajaxurl,jQuery(this).serialize(),function(r){
+							pages = jQuery.parseJSON(r);
+							for(i=0; i < pages.length; i++){
+								jQuery("#next_steps").append("<li>View the "+ pages[i] +" Page you created</li>");
+							}
+							advance_slide();
+						});
+						
+					});
+					
+					jQuery("#form_2_wizard").submit(function(e){
+						e.preventDefault();
+						jQuery("#form_2_wizard input[type=submit]").replaceWith("<br />Processing...");
+						jQuery.post(ajaxurl,jQuery(this).serialize(),function(r){
+							advance_slide();
+						});
+						
+					});
+					
+					jQuery("#form_3_wizard").submit(function(e){
+						e.preventDefault();
+						jQuery("#form_3_wizard input[type=submit]").replaceWith("<br />Processing...");
+						jQuery.post(ajaxurl,jQuery(this).serialize(),function(r){
+							advance_slide();
+						});
+						
+					});
+					
+					jQuery(".bl_skip_wizard_step").click(function(e){
+						e.preventDefault();
+						advance_slide();
 					});
 				});
 			</script>
@@ -527,6 +595,11 @@
 		}
 	</script>
 		<?php
+	}
+	
+	function bepro_listings_support_message(){
+		if(isset($_GET["post_type"]) && ($_GET["post_type"] == "bepro_listings"))
+			echo "<div id='bepro_help_links'><img src='".plugins_url('../images/bepro_shortcode_icon.png', __FILE__ )."' /> BePro Listings Version: ".BEPRO_LISTINGS_VERSION." <a href='https://www.beprosoftware.com/documentation/bepro-listings/' target='_blank'><button>Documentation</button></a> <a href='https://www.beprosoftware.com/forums/' target='_blank'><button>Forums</button></a></div>";
 	}
 
 	//Options Page
@@ -1100,5 +1173,96 @@
 		$links[] = '<a href="edit.php?post_type=bepro_listings&page=bepro_listings_options">' . (__("Settings", "bepro-listings")) . '</a>';
 		$links[] = '<a href="https://www.beprosoftware.com/forums">' . (__("Support", "bepro-listings")) . '</a>';
 		return $links;
+	}
+	
+	function bl_scd_redirect_dashboard() {
+		// Bail if no activation redirect transient is set
+		$welcome = get_transient( '_bepro_listings_activation_redirect' );
+		$wizard = get_transient( '_bepro_listings_activation_wizard' );
+	    if ( !$welcome && !$wizard ) {
+			return;
+	    }
+		 if ( ! current_user_can( 'manage_options' ) ) {
+	    	return;
+	    }
+		
+		// Bail if activating from network, or bulk, or within an iFrame
+		if ( is_network_admin() || isset( $_GET['activate-multi'] ) || defined( 'IFRAME_REQUEST' ) ) {
+			return;
+		}
+		
+		if( is_admin() ) {
+			if($wizard)
+				wp_redirect( admin_url( 'index.php?page=bepro-listngs-dashboard&show_wizard=1' ) );
+			else
+				wp_redirect( admin_url( 'index.php?page=bepro-listngs-dashboard' ) );
+		}
+
+	}
+	
+	
+	
+	function bl_scd_register_menu() {
+		$welcome = get_transient( '_bepro_listings_activation_redirect' );
+		if($welcome || (!empty($_GET["show_wizard"])) || (!empty($_GET["page"]) && ($_GET["page"] == "bepro-listngs-dashboard")))
+			add_dashboard_page( 'BePro Listings Dashboard', 'BePro Listings Dashboard', 'read', 'bepro-listngs-dashboard', "bl_scd_create_dashboard" );
+	}
+	
+	function bl_scd_create_dashboard() {
+		$wizard = get_transient( '_bepro_listings_activation_wizard' );
+		
+		if($wizard || (!empty($_GET["show_wizard"]) ))
+			include_once( 'bepro_listings_wizard.php'  );
+		else
+			include_once( 'bepro_listings_dashboard.php'  );
+		
+		// Delete the redirect transient
+		delete_transient( '_bepro_listings_activation_redirect' );
+		delete_transient( '_bepro_listings_activation_wizard' );
+	}
+	
+	function bl_create_demo_pages(){
+		$demo_pages = $_POST["demo_pages"];
+		$options = array("My Listings" => "[bl_my_listings]", "Listings" => "[bl_all_in_one]", "Submissions" => "[create_listing_form]");
+		$pages = array();
+		foreach($demo_pages as $title){
+			$page_data = array(
+				'post_status'    => 'publish',
+				'post_type'      => 'page',
+				'post_author'    => 1,
+				'post_name'      => sanitize_title( $title ),
+				'post_title'     => $title,
+				'post_content'   => $options[$title],
+				'post_parent'    => 0,
+				'comment_status' => 'closed'
+			);
+			
+			if($page_id = wp_insert_post( $page_data )){
+				$page[] = "<a href='".get_permalink($page_id)."' target='_blank'>".$title."</a>";
+			}
+		}
+		echo json_encode($page);
+		exit;
+	}
+	
+	function bl_update_demo_options(){
+		$options = get_option("bepro_listings");
+		$options["show_imgs"] = $_POST["show_imgs"];
+		$options["show_con"] = $_POST["show_con"];
+		$options["show_cost"] = $_POST["show_cost"];
+		$options["show_geo"] = $_POST["show_geo"];
+		update_option("bepro_listings", $options);
+		exit;
+	}
+	
+	function bl_update_demo_labels(){
+		$options = get_option("bepro_listings");
+		$options["cat_heading"] = !(empty($_POST["cat_heading"]))? $_POST["cat_heading"]:$options["cat_heading"];
+		$options["cat_empty"] = !(empty($_POST["cat_empty"]))? $_POST["cat_empty"]:$options["cat_empty"];
+		$options["cat_singular"] = !(empty($_POST["cat_singular"]))? $_POST["cat_singular"]:$options["cat_singular"];
+		$options["cat_permalink"] = !(empty($_POST["cat_permalink"]))? $_POST["cat_permalink"]:$options["cat_permalink"];
+		$options["permalink"] = !(empty($_POST["permalink"]))? $_POST["permalink"]:$options["permalink"];
+		update_option("bepro_listings", $options);
+		exit;
 	}
 ?>

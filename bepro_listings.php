@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.98
+Version: 2.1.99
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -55,6 +55,8 @@ class Bepro_listings{
 		add_action('init', 'save_data_and_redirect' );
 		add_action('admin_init', 'bepro_admin_init' );
 		add_action('admin_head', 'bepro_admin_head' );
+		add_action('admin_notices', 'bepro_listings_support_message' );
+		add_action('admin_menu', 'bl_scd_register_menu' );
 		add_action('wp_head', 'bepro_listings_wphead', 1);
 		add_action('wp_footer', 'bepro_listings_javascript');
 		add_action('admin_enqueue_scripts', 'bepro_listings_adminhead');
@@ -66,6 +68,8 @@ class Bepro_listings{
 		add_action("manage_posts_custom_column",  "bepro_listings_custom_columns");
 		add_action( "plugins_loaded",  "bepro_listings_setup_category");
 		add_action( 'bp_init', array( $this, "start_bp_addon") );
+		
+		//ajax
 		add_action( 'wp_ajax_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
 		add_action( 'wp_ajax_nopriv_bepro_ajax_delete_post', 'bepro_ajax_delete_post' );
 		add_action( 'wp_ajax_bl_ajax_result_page', 'bl_ajax_result_page' );
@@ -74,7 +78,17 @@ class Bepro_listings{
 		add_action( 'wp_ajax_nopriv_bl_ajax_frontend_update', 'bl_ajax_frontend_update' );
 		add_action( 'wp_ajax_bepro_listings_shortcode_dialog', 'bepro_listings_shortcode_dialog' );
 		add_action( 'wp_ajax_nopriv_bepro_listings_shortcode_dialog', 'bepro_listings_shortcode_dialog' );
+		add_action( 'wp_ajax_bl_create_demo_pages', 'bl_create_demo_pages' );
+		add_action( 'wp_ajax_nopriv_bl_create_demo_pages', 'bl_create_demo_pages' );
+		add_action( 'wp_ajax_bl_update_demo_options', 'bl_update_demo_options' );
+		add_action( 'wp_ajax_nopriv_bl_update_demo_options', 'bl_update_demo_options' );
+		add_action( 'wp_ajax_bl_update_demo_labels', 'bl_update_demo_labels' );
+		add_action( 'wp_ajax_nopriv_bl_update_demo_labels', 'bl_update_demo_labels' );
+		
+		//wpmu
 		add_action( 'wpmu_new_blog', 'bepro_new_blog', 10, 6);   
+		
+		//Templates
 		add_action( 'bepro_listing_types_add_form_fields', 'bepro_listings_add_category_thumbnail_field' );
 		add_action( 'bepro_listing_types_edit_form_fields', 'bepro_listings_edit_category_thumbnail_field', 10,2 );
 		add_action( 'created_term', 'bepro_listings_category_thumbnail_field_save', 10,3 );

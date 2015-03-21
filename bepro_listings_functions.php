@@ -257,6 +257,7 @@
 				wp_update_attachment_metadata( $attach_id, $attach_data );
 			}
 			if($blog_id)restore_current_blog();
+			set_transient( '_bepro_listings_activation_wizard', 1, HOUR_IN_SECONDS );
 		}
 		
 		
@@ -358,7 +359,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.98' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.99' );
 		}	
 	}
 	
@@ -441,6 +442,7 @@
 			
 			//save
 			update_option("bepro_listings", $data);
+			
 		}
 		
 		//Things that need to change only if there is an upgrade
@@ -481,8 +483,8 @@
 			
 			//new features
 			
-			//save
-			//update_option("bepro_listings", $data);
+			//show welcome screen to new users
+			set_transient( '_bepro_listings_activation_redirect', 1, HOUR_IN_SECONDS );
 			
 			//set version
 			update_option('bepro_listings_version', $bepro_listings_version);

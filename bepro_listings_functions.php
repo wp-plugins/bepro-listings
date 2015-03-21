@@ -359,7 +359,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.99' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.991' );
 		}	
 	}
 	
@@ -968,6 +968,11 @@
 				'rewrite' => array("slug" => $cat_slug, 'with_front' => false))
 			);	 
 			register_taxonomy_for_object_type( 'bepro_listing_types', 'bepro_listings' );
+			if($options["perm_chng"]){
+				flush_rewrite_rules();
+				$options["perm_chng"] = "";
+				update_option("bepro_listings", $options);
+			}
 			bl_complete_startup();
 	}
 	

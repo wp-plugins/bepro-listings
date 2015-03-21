@@ -1262,7 +1262,9 @@
 		$options["cat_singular"] = !(empty($_POST["cat_singular"]))? $_POST["cat_singular"]:$options["cat_singular"];
 		$options["cat_permalink"] = !(empty($_POST["cat_permalink"]))? $_POST["cat_permalink"]:$options["cat_permalink"];
 		$options["permalink"] = !(empty($_POST["permalink"]))? $_POST["permalink"]:$options["permalink"];
+		$options["perm_chng"] = !(empty($_POST["permalink"]))? true:"";
 		update_option("bepro_listings", $options);
+		flush_rewrite_rules();
 		exit;
 	}
 ?>

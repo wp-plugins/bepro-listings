@@ -245,11 +245,11 @@ No. However, if interested, you can.
 
 == Other Notes ==
 
-BePro Listings is very easy to setup and its compatible with most themes. This makes it ideal for user types ranging from novices to wordpress experts. This plugin is adaptable to various directory needs because of its configurable architechture. We package features typically used for directory related niches like, real estate, portfolio, knowledgebase and business listings
+BePro Listings is very easy to setup and its compatible with most themes. This makes it ideal for various user types ranging from novices to wordpress experts. This plugin is adaptable to multiple directory needs because of its configurable architechture. We package features typically used for directory related niches like, real estate, portfolio, knowledgebase and business listings
 
-Because of the configuration options, the plugin's footprint is very lite. It only loads the features your website needs. When ready to extend the core functionality, our over 20 addons facilitate tons of added features that are only applicable to a subset of users e.g. Event Managers, Car Dealers, Piad submission directories, etc. This allows you to confirm BePro Listings can make your project successful before extending with addons
+Because of the configuration options, the plugin's footprint is very lite. It only loads the features your website needs. When ready to extend the core functionality, our over 20 addons facilitate tons of added features that are only applicable to a subset of users e.g. Event Managers, Car Dealers, Paid submission directories, etc. 
 
-Note that BePro Listings is part of the BePro Software Suite of products. Maintained by the BePro Software Team, you know that this product will be well supported for years to come. As part of our suite, it also integrates with other software we create like BePro Points and BePro Cart. This integration guarantees compatability and continue our trend of offering you a flexible way to build the directory experience that your users require.  
+Note that BePro Listings is part of the BePro Software Suite of products. Maintained by the BePro Software Team, you know that this product will be well supported for years to come. As part of our suite, it also integrates with other software we create like BePro Email and BePro Cart. This integration guarantees compatability and continues our trend of offering you a flexible way to build the directory experience that your users require.  
 
 == Changelog ==
 

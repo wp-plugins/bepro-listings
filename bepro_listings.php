@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.993
+Version: 2.1.994
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -422,7 +422,7 @@ class Bepro_listings{
 	//show listing on pages created for it by internal page setup
 	function bl_post_page_content($content){
 		global $post;
-		if ( ! is_singular( 'bepro_listings' ) || ! in_the_loop() ) {
+		if ( !is_singular( 'bepro_listings' ) ) {
 			return $content;
 		}
 		remove_filter( 'the_content', array( $this, 'bl_post_page_content' ) );
@@ -446,16 +446,16 @@ class Bepro_listings{
 	
 	function bl_post_page_comments($comment){
 		if ( is_singular( 'bepro_listings' ) && in_the_loop() ) {
-			return $comment;
+			return plugin_dir_path( __FILE__ )."templates/no_comments.php";
 		}
-		return plugin_dir_path( __FILE__ )."templates/no_comments.php";
+		return  $comment;
 	}
 	
 	function bl_post_page_thumbnail($thumb){
 		if ( is_singular( 'bepro_listings' ) &&  in_the_loop() ) {
-			return $thumb;
+			return;
 		}
-		return;
+		return $thumb;
 	}
 	function bl_post_page_title($title){
 		if ( is_singular( 'bepro_listings' ) && in_the_loop() ) {

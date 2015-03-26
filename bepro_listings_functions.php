@@ -390,7 +390,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.993' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.994' );
 		}	
 	}
 	
@@ -800,7 +800,7 @@
 					$post_data["cost"] = $cost;
 					$package_id = is_numeric($_POST["bpl_package"])?$_POST["bpl_package"]:"";
 					//calculate cost and duration
-					if(is_numeric($data["require_payment"]) && (["require_payment"] > 0)){
+					if(is_numeric($data["require_payment"]) && ($data["require_payment"] > 0)){
 						//Get package cost and duration
 						if(!empty($data["require_payment"]) && ($data["require_payment"] == 1)){ 
 							//if category already has an order ID then reuse it

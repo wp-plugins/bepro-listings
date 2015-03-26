@@ -200,29 +200,25 @@ You will need the Free BePro Email plugin available on our website. If its intst
 
 Yes, it works anywhere shortcodes are accepted
 
-= Issues Generating Lat/Lng coordinates?  =
+= 404 Error?  =
 
-Try changing the query type under the "map" tab on the BePro Listings->options page in the admin
+Try resaving your permalink settings via your wordpress admin menu Settings->Permalinks (Resave them)
 
-= Is there support? =
+= Is support available? =
 
 Yes, our development team created the plugin and continue to offer free support via our forums on beprosoftware.com. You can also get paid premium support.
 
-= I need more features, is there more? =
+= I need more features, are there more? =
 
 Yes, there are add-ons and themes available for this plugin. Check our website www.beprosoftware.com/shop
 
-= Can I operate multiple directory types at the same time? =
+= Can I operate multiple "submission forms"/"directory types" at the same time? =
 
 Yes, you will need our From Builder addon. Depending on your specific directory, you may also need the Origami addon
 
 = Can this work with buddypress? =
 
 Yes, it adds a new menu item to user profiles allowing them to manage their listings
-
-= Can I setup featured listings? =
-
-Yes, you can specify categories and flag the listings as featured via options for the [display_listings] shortcode. Consult the shortcode documentation.
 
 = How can I customize the style and layout? =
 
@@ -249,11 +245,9 @@ No. However, if interested, you can.
 
 == Other Notes ==
 
-BePro Listings is very easy to setup and its compatible with most themes. This makes it ideal for various user types ranging from novices to wordpress experts. This plugin is adaptable to multiple directory needs because of its configurable architechture. We package features typically used for directory related niches like, real estate, portfolio, knowledgebase and business listings
+BePro Listings is part of the BePro Software Suite of products. Maintained by the BePro Software Team, you know that this product will be well supported for years to come. As part of our suite, it also integrates with other software we create like BePro Email and BePro Cart. This integration guarantees compatability and continues our trend of offering you a flexible way to build the website experience that your users require.  
 
-Because of the configuration options, the plugin's footprint is very lite. It only loads the features your website needs. When ready to extend the core functionality, our over 20 addons facilitate tons of added features that are only applicable to a subset of users e.g. Event Managers, Car Dealers, Paid submission directories, etc. 
-
-Note that BePro Listings is part of the BePro Software Suite of products. Maintained by the BePro Software Team, you know that this product will be well supported for years to come. As part of our suite, it also integrates with other software we create like BePro Email and BePro Cart. This integration guarantees compatability and continues our trend of offering you a flexible way to build the directory experience that your users require.  
+Integration with other plugins in our suite is always free and integrated into the core of our plugins. For example, activating payment features for BePro Listings requires that you have BePro Cart installed. The notification features are similar, requiring BePro Email to be installed. This separation allows us to develop multiple products with extensive payment and notification features. Most importantly, this architecture provides a central and familiar interface for you to managing these feeautures.
 
 == Changelog ==
 

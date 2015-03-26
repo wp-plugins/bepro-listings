@@ -241,7 +241,11 @@
 	list-style-type:none;
 }
 /* form layout */
-.package_option{float:left;}
+.package_option{float: left;
+width: 45%;
+border: 1px solid;
+margin-left: 5px;
+padding: 5px;}
 .form_label{
 	width:90px; 
 	margin-right:10px;

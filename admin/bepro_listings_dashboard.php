@@ -25,8 +25,8 @@
 			<h4><?php _e( 'Easy Setup', "bepro-listings" ); ?></h4>
 			<p><?php _e( 'BePro Listngs is now compatible with more themes than ever. The key is our new method of implementing our template system. Now, novices can easily setup BePro Listings without any developer help. Users still interested in creating custom templates can still do that. More is explained in <a href="https://www.beprosoftware.com/blog/bepro-listings-2-1-98/" target="_blank">this article</a>', "bepro-listings" ); ?></p>
 	
-			<h4><?php _e( 'Welcome Screen', "bepro-listings" ); ?></h4>
-			<p><?php _e( 'This page is new. Now when you upgrade BePro Listings, it will be easier to quickly see what new things are happening. From screencast videos, to documentation and updates, there is a lot to keep up with. This is just another way to keep you informed about our progress.', "bepro-listings" ); ?></p>
+			<h4><?php _e( 'Payment Features', "bepro-listings" ); ?></h4>
+			<p><?php _e( 'Its now easier than ever to collect payments with BePro Listings and BePro Cart. Now, when you select flat payment, two new menu options will apprear (packages and orders). There you can setup the available payment packages and see orders users are making.', "bepro-listings" ); ?></p>
 			
 			<h4><?php _e( 'Support Us', "bepro-listings" ); ?></h4>
 			<p><?php _e( 'Hopefully you like BePro Listings. Consider sharing your experience with other users by leaving a <a href="http://wordpress.org/support/view/plugin-reviews/bepro-listings" target="_blank">review on wordpress.org</a>. Your feedback helps to support development of this free solution and informs fellow wordpress users of its usefulness.', "bepro-listings" ); ?></p>

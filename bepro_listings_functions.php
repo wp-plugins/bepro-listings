@@ -390,7 +390,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.994' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.995' );
 		}	
 	}
 	
@@ -850,7 +850,6 @@
 							
 							$duration = get_post_meta($package_id, "package_duration", true);
 						}
-						
 						//save purchase association info to bepro listing
 						$post_data["bl_order_id"] = $bl_order_id;
 					}
@@ -998,12 +997,12 @@
 			phone         = '".$wpdb->escape(strip_tags($post['phone']))."',
 			lat           = '".$wpdb->escape(strip_tags($post['lat']))."',
 			lon           = '".$wpdb->escape(strip_tags($post['lon']))."',
-			bl_order_id           = '".$wpdb->escape(strip_tags($post['bl_order_id']))."',
+			bl_order_id   = '".$wpdb->escape(strip_tags($post['bl_order_id']))."',
 			expires           = '".(!empty($post['expires'])? date("Y-m-d H:i:s", strtotime($post['expires'])):"")."'");
 	}
 	
 	function bepro_update_post($post){
-		global $wpdb;
+	global $wpdb;
 		do_action("bepro_listings_update_listing", $post);
 		$wpdb->query("SET NAMES 'utf8'");
 		return $wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." SET
@@ -1019,8 +1018,8 @@
 			country       = '".$wpdb->escape(strip_tags($post['country']))."',
 			lat           = '".$wpdb->escape(strip_tags($post['lat']))."',
 			lon           = '".$wpdb->escape(strip_tags($post['lon']))."',
-			website       = '".$wpdb->escape(strip_tags($_POST['website']))."',
-			bl_order_id   = '".$wpdb->escape(strip_tags($_POST['bl_order_id']))."',
+			website       = '".$wpdb->escape(strip_tags($post['website']))."',
+			bl_order_id   = '".$wpdb->escape(strip_tags($post['bl_order_id']))."',
 			expires       = '".(!empty($post['expires'])? date("Y-m-d H:i:s", strtotime($post['expires'])):"")."'
 			WHERE post_id ='".$wpdb->escape(strip_tags($post['post_id']))."'");
 	}

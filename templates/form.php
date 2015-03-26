@@ -161,7 +161,7 @@
 					<span class="form_label">'.__("City", "bepro-listings").'</span><input type="text" name="city" value="'.$item->city.'">
 					<span class="form_label">'.__("State", "bepro-listings").'</span><input type="text" name="state" value="'.$item->state.'">
 					<span class="form_label">'.__("Country", "bepro-listings").'</span><input type="text" id="country" name="country" value="'.$item->country.'">
-					<span class="form_label">'.__("Zip / Postal", "bepro-listings").'</span><input type="text" name="postal" value="'.$item->postal.'">';
+					<span class="form_label">'.__("Zip / Postal", "bepro-listings").'</span><input type="text" name="postcode" value="'.$item->postcode.'">';
 					
 			do_action("bepro_listing_form_after_location", $post_data);		
 			echo '	</div>';

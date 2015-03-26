@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds directory, classifieds plugin, directory, directory builder, directory plugin, directory listings, event directory, event listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio directory, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress directory plugin, wordpress classifieds, wordpress catalogues, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 2.1.991
+Stable tag: 2.1.992
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -252,6 +252,14 @@ Because of the configuration options, the plugin's footprint is very lite. It on
 Note that BePro Listings is part of the BePro Software Suite of products. Maintained by the BePro Software Team, you know that this product will be well supported for years to come. As part of our suite, it also integrates with other software we create like BePro Email and BePro Cart. This integration guarantees compatability and continues our trend of offering you a flexible way to build the directory experience that your users require.  
 
 == Changelog ==
+
+= 2.1.992 (Mar 25th, 2015) =
+
+* Improved multisite capability
+* Improved payment package features
+* Label tweaks
+* Improved uninstall procedure
+* Tweaked new template system
 
 = 2.1.991 (Mar 21th, 2015) =
 

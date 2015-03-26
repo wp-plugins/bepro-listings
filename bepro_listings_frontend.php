@@ -1055,19 +1055,42 @@
 		}
 	}
 
-	function bl_form_package_field($post_id = null){
+	function bl_form_package_field($bl_order_id = null){
 		$data = get_option("bepro_listings");
-		if($post_id){
-			$cost = get_post_meta($post_id, "fee", true);
-			if($cost) return;
+		$order = false;
+		if($bl_order_id){
+			$order = bl_get_payment_order($bl_order_id);
+			//allow user to change which package this listing is associated with
+			if($order->status == 1)
+			echo "<p>".__("Package Selected and Active","bepro-listings")."</p>";
 		}
+		
 		echo '<div id="flat_fee">';
-		$fee_counter = 1;
-		if(@$data["flat_fee"] && (is_array($data["flat_fee"])) && !empty($data["flat_fee"])){
+		if(@$data["require_payment"] && ($data["require_payment"] == 2)){
+			$packages = get_posts(array("post_type" => "bpl_packages"));
+			if(!$packages || (sizeof($packages) < 1)) return;
+			
 			echo '<h3>'.__("Available Packages", "bepro-listings").'</h3>';
-			foreach($data["flat_fee"] as $fee => $duration){
-				echo '<div class="package_option"><span class="form_heading">'.$duration." ".__("Days", "bepro-listings")." (".$data["currency_sign"].$fee.')</span><input type="checkbox" name="bl_package" value="'.$fee_counter.'"></div>';
-				$fee_counter++;
+			foreach($packages as $packages){
+				$num_listings = get_post_meta($packages->ID, "num_package_listings", true);
+				$duration = get_post_meta($packages->ID, "package_duration", true);
+				$cost = get_post_meta($packages->ID, "package_cost", true);
+				
+				//this is a package, we need to know how many listings are possible
+				if(!$num_listings || !is_numeric($num_listings) || ($num_listings < 1)) return; 
+				
+				$package_div[] = array();
+				echo '<div class="package_option"><input type="checkbox" name="bpl_package" id="package_sel_'.$packages->ID.'" value="'.$packages->ID.'" '.((@$order && ($order->feature_id == $packages->ID))? "checked='checked'":"").'><span class="package_head">'.$packages->post_title."  (".$data["currency_sign"].$cost.')</span>
+				<span class="package_options">
+					<ul>
+						<li># '.__("Days","bepro-listings").' '.$duration.'</li>
+						<li># '.__("Listings","bepro-listings").' '.$num_listings.'</li>
+						<li>'.$data["currency_sign"].$cost.'</li>
+					</ul>
+				<span>
+				<span class="package_details">'.$packages->post_content.'<span>
+				</div>';
+				
 			}
 		}
 		echo '</div><div style="clear:both"></div>';

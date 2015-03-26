@@ -344,8 +344,9 @@
 	border:1px solid #CCC; 
 }
 #classified_listings_table tr td:last-child{
-	width:22%;
+	width:23%;
 }
+#classified_listings_table{margin:10px 0}
 #bl_hide_bp_create_menu{
 	display:none !important;
 }

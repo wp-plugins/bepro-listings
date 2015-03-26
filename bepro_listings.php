@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Create any directory website (Business, classifieds, real estate, etc). Base features include, front end upload, gallery, paypal payments, buddypress, & ajax search/filter. Use google maps and various listing templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.991
+Version: 2.1.992
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -99,6 +99,7 @@ class Bepro_listings{
 		add_action( 'bepro_listings_tab_panels', 'bepro_listings_description_panel', 10 );
 		add_action( 'bepro_listings_tab_panels', 'bepro_listings_comments_panel', 20 );
 		add_action( 'bepro_listings_tab_panels', 'bepro_listings_maps_panel', 21 );
+		add_action( 'bl_before_frontend_listings', 'bl_show_user_missing_payments', 10 );
 		
 		//link in footer?
 		if($data["footer_link"] == ("on" || 1)){
@@ -426,7 +427,7 @@ class Bepro_listings{
 		}
 		remove_filter( 'the_content', array( $this, 'bl_post_page_content' ) );
 		remove_filter( 'post_thumbnail_html', array( $this, 'bl_post_page_thumbnail' ) );
-		remove_filter( 'get_the_title', array( $this, 'bl_post_page_title' ) );
+		remove_filter( 'the_title', array( $this, 'bl_post_page_title' ) );
 		remove_filter( 'comments_template', array( $this, 'bl_post_page_comments' ) );
 		
 		if(get_post_type() === 'bepro_listings'){
@@ -437,30 +438,30 @@ class Bepro_listings{
 		
 		add_filter( 'the_content', array( $this, 'bl_post_page_content' ) );
 		add_filter( 'post_thumbnail_html', array( $this, 'bl_post_page_thumbnail' ) );
-		add_filter( 'get_the_title', array( $this, 'bl_post_page_title' ) );
+		add_filter( 'the_title', array( $this, 'bl_post_page_title' ) );
 		add_filter( 'comments_template', array( $this, 'bl_post_page_comments' ) );
 		
 		return $content;
 	}
 	
 	function bl_post_page_comments($comment){
-		if ( ! is_singular( 'bepro_listings' ) || ! in_the_loop() ) {
+		if ( is_singular( 'bepro_listings' ) && in_the_loop() ) {
 			return $comment;
 		}
 		return plugin_dir_path( __FILE__ )."templates/no_comments.php";
 	}
 	
 	function bl_post_page_thumbnail($thumb){
-		if ( ! is_singular( 'bepro_listings' ) || ! in_the_loop() ) {
+		if ( is_singular( 'bepro_listings' ) &&  in_the_loop() ) {
 			return $thumb;
 		}
 		return;
 	}
 	function bl_post_page_title($title){
-		if ( ! is_singular( 'bepro_listings' ) || ! in_the_loop() ) {
-			return $title;
+		if ( is_singular( 'bepro_listings' ) && in_the_loop() ) {
+			return;
 		}
-		return;
+		return $title;
 	}
 	
 	//buddypress hook
@@ -487,16 +488,11 @@ class Bepro_listings{
 		global $wpdb;  
 		Bepro_listings::flush_permalinks();	
 		
-		if (function_exists('is_multisite') && is_multisite()){
-			$blog_id = get_current_blog_id();
-			//network admin?
-			if($blog_id == 1){
-				$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
-				foreach($blogids as $blogid_x){
-					bepro_listings_install_table($blogid_x);
-				}
-			}else{
-				bepro_listings_install_table($blog_id);
+		//network admin activate?
+		if (function_exists('is_multisite') && is_multisite() && is_network_admin()){
+			$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+			foreach($blogids as $blogid_x){
+				bepro_listings_install_table($blogid_x);
 			}
 		}else{
 			bepro_listings_install_table();

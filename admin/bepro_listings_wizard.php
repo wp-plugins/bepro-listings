@@ -72,7 +72,7 @@
 							<tr><td><?php _e("Select","bepro-listings"); ?></td><td><?php _e("Feature","bepro-listings"); ?></td><td><?php _e("Description","bepro-listings"); ?></td></tr>
 							<tr><td><input type="checkbox" name="show_imgs" checked="checked"></td><td><?php _e("Show Images","bepro-listings"); ?></td><td><?php _e("Show images on the listings","bepro-listings"); ?></td></tr>
 							<tr><td><input type="checkbox" name="show_cost" checked="checked"></td><td><?php _e("Show Cost","bepro-listings"); ?></td><td><?php _e("Show Prices on Listings","bepro-listings"); ?></td></tr>
-							<tr><td><input type="checkbox" name="show_con" checked="checked"></td><td><?php _e("Show Contact","bepro-listings"); ?></td><td><?php _e("Show and search, name, phone, and other contact info","bepro-listings"); ?></td></tr>
+							<tr><td><input type="checkbox" name="show_con" checked="checked"></td><td><?php _e("Show Contact","bepro-listings"); ?></td><td><?php _e("Show and search names and other contact info","bepro-listings"); ?></td></tr>
 							<tr><td><input type="checkbox" name="show_geo" checked="checked"></td><td><?php _e("Show Geo","bepro-listings"); ?></td><td><?php _e("Load Google Maps and address search","bepro-listings"); ?></td></tr>
 						</table>
 						<input type="submit" value="Save Options &rsaquo;&rsaquo;">
@@ -123,7 +123,7 @@
 						<li><?php _e("Leave a","bepro-listings"); ?> <a href="https://www.beprosoftware.com/shop/bepro-listings" target="_blank"><?php _e("Review","bepro-listings"); ?></a> <?php _e("on beprosoftware.com","bepro-listings"); ?></li>
 						<li><?php _e("Say Hi on Twitter","bepro-listings"); ?> <a href="https://twitter.com/beprosoftware" target="_blank">@BeProSoftware</a></li>
 						<li><?php _e("Submit code on","bepro-listings"); ?> <a href="https://github.com/beprosoftware" target="_blank">github</a></li>
-						<li><?php _e("We also appreciate","bepro-listings"); ?> <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings" target="_blank"><?php _e("Donations","bepro-listings"); ?></a><?php _e("via paypal","bepro-listings"); ?> </li>
+						<li><?php _e("We also appreciate","bepro-listings"); ?> <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings" target="_blank"><?php _e("Donations","bepro-listings"); ?></a> <?php _e("via paypal","bepro-listings"); ?> </li>
 					</ul>
 				</div>
 				<div class="wizard_info">

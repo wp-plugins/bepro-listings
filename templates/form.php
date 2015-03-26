@@ -58,8 +58,8 @@
 		echo '
 			<div class="add_listing_form_info bepro_form_section">';
 			if(($data["require_payment"] == 2)){
-				if(@$post_data->ID){
-					bl_form_package_field($post_data->ID);
+				if(@$item->bl_order_id){
+					bl_form_package_field($item->bl_order_id);
 				}else{
 					bl_form_package_field();
 				}

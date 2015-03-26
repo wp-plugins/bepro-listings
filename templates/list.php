@@ -1,9 +1,9 @@
 <?php
 		global $wpdb, $bp;
 		$data = get_option("bepro_listings");
-		
+		do_action("bl_before_frontend_listings");
 		if(isset($_GET["message"]))echo "<span class='classified_message'>".$_GET["message"]."</span>";
-		echo "<h2>".__("My Item Listings", "bepro-listings")."</h2>";
+		echo "<h2>".__("My Item Listings", "bepro-listings")."</h2>"; 
 		if((@$items) && (sizeof($items) > 0)){
 			echo "<table id='classified_listings_table'><tr>
 					<td>".__("Name", "bepro-listings")."</td>
@@ -22,21 +22,15 @@
 				if(!empty($data["require_payment"]) && ($status == "Published")){
 					$notice = "Expires: ".((empty($item->expires) || ($item->expires == "0000-00-00 00:00:00"))? "Never":date("M, d Y", strtotime($item->expires)));
 				}else if(!empty($data["require_payment"])  && ($status == "Pending")){
-					if(is_numeric($item->bepro_cart_id)){
+					$order = bl_get_payment_order($item->bl_order_id);
+					if($order->status == 1){
 						$notice = "Paid: Processing";
-					}else if($data["require_payment"] == 1){
-						//category option
-						$cost = bepro_get_total_cat_cost($item->post_id);
-					}else if($data["require_payment"] == 2){
-						$cost = get_post_meta($item->post_id, "fee", true);
-						if(!$cost){
-							$notice = "Package: Required";
-						}
+					}else if($order->status == 2){
+						$notice = "Pay: Required";
+					}else if($order->status == 3){
+						$notice = "Pay: Failed";
 					}
 					
-					if(@$cost && ($cost > 0)){
-						$notice = __("Pay", "bepro-listings").": ".$data["currency_sign"].$cost;
-					}
 				}
 				echo "
 					<tr>
@@ -50,8 +44,8 @@
 						
 						if($item->post_status == "publish"){ 
 							echo "<a href='".get_permalink($item->post_id)."' target='_blank'>".__("View", "bepro-listings")."</a>";
-						}else if($cost > 0){
-							echo "<div style='float:left'>".do_shortcode("[bepro_cart_button item_number='".$item->post_id."' name='".$item->post_title."' price='".$cost."']")."</div>";
+						}else if($order->status != 1){
+							echo "<div style='float:left'>Pay</div>";
 						}else{
 							echo __("Wait", "bepro-listings");
 						}
@@ -62,7 +56,7 @@
 			}
 		}else{
 			echo "<table id=''>";
-			if(@bp_is_my_profile()){
+			if(function_exists("bp_is_my_profile") && @bp_is_my_profile()){
 				echo "<tr><td colspan=7>".__("No Live listings created", "bepro-listings")."</a></td></tr>";
 			}else{
 				echo "<tr><td colspan=7>".__("No live listings for this user", "bepro-listings")."</td></tr>";

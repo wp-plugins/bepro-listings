@@ -152,7 +152,11 @@
 		
 		$listing_url = "?bl_manage=1&bl_id=";
 		$url = get_permalink( $post->ID );
-		echo "<p><a href='".$url."'>Cancel</a></p>";
+		if(!empty($_POST["save_bepro_listing"])){
+			echo "<p><a href='".$url."'>".__("Return to My List","bepro-listings")."</a></p>";
+		}else{
+			echo "<p><a href='".$url."'>".__("Cancel","bepro-listings")."</a></p>";
+		}
 		
 		$frontend_form = dirname( __FILE__ )."/templates/form.php";
 		$frontend_form = apply_filters("bl_change_upload_form", $frontend_form);

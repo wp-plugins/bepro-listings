@@ -34,8 +34,8 @@
 		if($data["require_payment"] == 2){
 			add_meta_box("package_general_meta", "Package Details", "package_general_meta", "bpl_packages", "normal", "high");
 		}
-		if($data["require_payment"] > 1){
-			add_meta_box("order_general_meta", "BePr Listings Details", "bl_order_general_meta", "bpl_orders", "normal", "high");
+		if(!empty($data["require_payment"])){
+			add_meta_box("order_general_meta", "BePro Listings Details", "bl_order_general_meta", "bpl_orders", "normal", "high");
 		}
 	}
 	
@@ -356,6 +356,7 @@
 			
 			//payment
 			$data["require_payment"] = $_POST["require_payment"];
+			$data["cat_fee_duration"] = $_POST["cat_fee_duration"];
 			$fee_count = 1;
 			$data["add_to_cart"] = $_POST["add_to_cart"];
 			$data["publish_after_payment"] = $_POST["publish_after_payment"];
@@ -947,7 +948,7 @@
 						</ul>
 						<p>NOTE: We can help with customizing this plugin to fit any of your needs. Simply <a href="http://www.beprosoftware.com/contact-us/" target="_blank">reach out</a>. You will receive a personalized responce from a senior member of our <b>BePro Software Team</b></p>
 						<hr />
-						<p><b>BePro Software&trade;</b> is a service owned and operated by <a href="http://beyondprograms.ca" target="_blank">Beyond Programs Ltd.</a> a Canadian company.</p>
+						<p><b>BePro Software</b> is a service owned and operated by <a href="http://beyondprograms.ca" target="_blank">Beyond Programs Ltd.</a> a Canadian company.</p>
 					</div>
 				</div>
 				<span style="clear:both;display: block;"><br /></span>

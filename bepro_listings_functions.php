@@ -148,18 +148,18 @@
  		if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'")!=$table_name) {
 
 			$sql = "CREATE TABLE " . $table_name . " (
-				id mediumint(9) NOT NULL AUTO_INCREMENT,
-				email tinytext DEFAULT NULL,
-				phone tinytext DEFAULT NULL,
+				id int(9) NOT NULL AUTO_INCREMENT,
+				email varchar(100) DEFAULT NULL,
+				phone varchar(15) DEFAULT NULL,
 				cost float DEFAULT NULL,
 				post_id int(9) NOT NULL,
-				first_name tinytext DEFAULT NULL,
-				last_name tinytext DEFAULT NULL,
-				address_line1 tinytext DEFAULT NULL,
-				city tinytext DEFAULT NULL,
-				state tinytext DEFAULT NULL,
-				country tinytext DEFAULT NULL,
-				postcode tinytext DEFAULT NULL,
+				first_name varchar(100) DEFAULT NULL,
+				last_name varchar(100) DEFAULT NULL,
+				address_line1 varchar(150) DEFAULT NULL,
+				city varchar(150) DEFAULT NULL,
+				state varchar(150) DEFAULT NULL,
+				country varchar(100) DEFAULT NULL,
+				postcode varchar(12) DEFAULT NULL,
 				website varchar(155) DEFAULT NULL,
 				lat varchar(15) DEFAULT NULL,
 				lon varchar(15) DEFAULT NULL,
@@ -390,7 +390,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.995' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.996' );
 		}	
 	}
 	
@@ -1127,7 +1127,7 @@
 			}
 			
 			//pagement if $options["require_payment"] == 2+
-			if($options["require_payment"] > 1){
+			if(!empty($options["require_payment"])){
 				$labels = array(
 					'name' => _x('BPL Orders', 'post type general name', 'bepro-listings'),
 					'singular_name' => _x('Order', 'post type singular name', 'bepro-listings'),

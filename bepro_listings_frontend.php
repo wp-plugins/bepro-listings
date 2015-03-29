@@ -167,6 +167,9 @@
 		$num_results = $data["num_listings"]; 
 		$size = empty($size)? 1:$size;
 		
+		//bail if geo features aren't turned on
+		if(empty($data["show_geo"])) return;
+		
 		//check map id
 		$map_id = empty($map_id)? "map":$map_id;
 		

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2015-01-08 14:54-0400\n"
+"PO-Revision-Date: 2015-04-18 09:04-0400\n"
 "Last-Translator: BePro Software Team <support@beprosoftware.com>\n"
 "Language-Team: bepro software\n"
 "Language: es\n"
@@ -374,3 +374,53 @@ msgstr "No Live listings created"
 #: templates/list.php:62
 msgid "No live listings for this user"
 msgstr "No live listings for this user"
+
+#: ------------DASHBOARD---------------- admin/bepro_listings_dashboard.php:
+#: #BePro_Edits admin/bepro_listings_wizard.php:6
+msgid "Welcome to BePro Listings!"
+msgstr "Welcome to BePro Listings!"
+
+#: admin/bepro_listings_wizard.php:12
+msgid ""
+"Congratulations, you are now using the latest version of BePro Listings. "
+"With lots of ways to customize, this software is ideal for creating your "
+"custom directory listing needs. This page shows the new features packaged "
+"with the plugin."
+msgstr ""
+"Congratulations, you are now using the latest version of BePro Listings. "
+"With lots of ways to customize, this software is ideal for creating your "
+"custom directory listing needs. This page shows the new features packaged "
+"with the plugin."
+
+#: admin/bepro_listings_wizard.php:17
+msgid "What's New"
+msgstr "What's New"
+
+#: admin/bepro_listings_wizard.php:22
+msgid "You are using"
+msgstr "You are using"
+
+#: admin/bepro_listings_wizard.php:22
+msgid "BePro Listings Version:"
+msgstr "BePro Listings Version:"
+
+#: ------------INSTALLATION WIZARD----------------
+#: admin/bepro_listings_wizard.php admin/bepro_listings_wizard.php:6
+msgid "BePro Listings INSTALLATION WIZARD"
+msgstr "BePro Listings INSTALLATION WIZARD"
+
+#: admin/bepro_listings_wizard.php:7
+msgid "Use the following steps to help you setup BePro Listings. Otherwise,"
+msgstr "Use the following steps to help you setup BePro Listings. Otherwise,"
+
+#: admin/bepro_listings_wizard.php:7
+msgid "Click Here"
+msgstr "Click Here"
+
+#: admin/bepro_listings_wizard.php:7
+msgid "to skip"
+msgstr "to skip"
+
+#: admin/bepro_listings_wizard.php:47
+msgid "STEP 1: CREATE WORDPRESS PAGES"
+msgstr "STEP 1: CREATE WORDPRESS PAGES"

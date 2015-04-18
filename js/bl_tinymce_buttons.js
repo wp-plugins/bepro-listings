@@ -6,6 +6,8 @@
             ed.addButton('beprolistings', {
                 title : 'BePro Listings Shortcodes',
                 cmd : 'bepro_listings_button_click',
+				icon: true,
+				text: 'Listings',
                 image : url + '/../images/bepro_shortcode_icon.png'
             });
 			ed.addCommand('bepro_listings_button_click', function() {

@@ -390,7 +390,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.996' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.997' );
 		}	
 	}
 	
@@ -509,7 +509,7 @@
 					$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.$blogid_x.BEPRO_LISTINGS_TABLE_BASE." ADD COLUMN bl_order_id int(9) DEFAULT NULL AFTER lon, DROP COLUMN bepro_cart_id;");
 					
 					//install new payments table
-					create_bl_order_table($wpdb->base_prefix.$blogid_x.BEPRO_LISTINGS_ORDERS_TABLE_NAME);
+					create_bl_order_table($wpdb->base_prefix.$blogid_x.BEPRO_LISTINGS_ORDERS_TABLE_BASE);
 				}
 			}else{
 				$wpdb->query("ALTER TABLE ".$wpdb->base_prefix.BEPRO_LISTINGS_TABLE_BASE." ADD COLUMN bl_order_id int(9) DEFAULT NULL AFTER lon, DROP COLUMN bepro_cart_id;");
@@ -819,7 +819,7 @@
 							if(@$listing && $listing->bl_order_id){
 								$order = bl_get_payment_order($listing->bl_order_id);
 								//check order to see if its the same package selected
-								if($order->feature_id == $package_id){
+								if(@$order->feature_id == $package_id){
 									$bl_order_id = $listing->bl_order_id;
 									//set this listng as published since its paid
 									if(($order->status == 1) && (!empty($data["publish_after_payment"]))){
@@ -1163,7 +1163,7 @@
 				register_post_type( 'bpl_orders' , $args );  
 			}
 			
-			if($options["perm_chng"]){
+			if(@$options["perm_chng"]){
 				flush_rewrite_rules();
 				$options["perm_chng"] = "";
 				update_option("bepro_listings", $options);
@@ -1298,20 +1298,11 @@
 				
 				$posts = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE bl_order_id = ".$bl_order_id);
 				
+				remove_action( 'post_updated', "bepro_admin_save_details" );
 				foreach($posts as $post){
-					remove_action( 'post_updated', "bepro_admin_save_details" );
 					wp_update_post(array("ID" => $post->post_id, "post_status" => "publish"));
-					remove_action( 'post_updated', "bepro_admin_save_details" );
 				}
-			}
-		
-			//If payment passes requirements, then set post as published
-			if($allow_update){
-				$raw_post = get_post($post_id);
-				if($raw_post){
-					$raw_post->post_status = "Publish";
-					wp_update_post($raw_post);
-				}
+				add_action( 'post_updated', "bepro_admin_save_details" );
 			}
 		}
 	}

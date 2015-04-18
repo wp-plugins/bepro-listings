@@ -720,7 +720,10 @@
 	
 	function bepro_listings_support_message(){
 		if(isset($_GET["post_type"]) && (($_GET["post_type"] == "bepro_listings") || ($_GET["post_type"] == "bpl_packages") || ($_GET["post_type"] == "bpl_orders")))
-			echo "<div id='bepro_help_links'><img src='".plugins_url('../images/bepro_shortcode_icon.png', __FILE__ )."' /> BePro Listings Version: ".BEPRO_LISTINGS_VERSION." <a href='https://www.beprosoftware.com/documentation/bepro-listings/' target='_blank'><button>Documentation</button></a> <a href='https://www.beprosoftware.com/forums/' target='_blank'><button>Forums</button></a></div>";
+			echo "<div id='bepro_help_links'><img src='".plugins_url('../images/bepro_shortcode_icon.png', __FILE__ )."' /> ".__(
+			"BePro Listings Version:","bepro-listings")." ".BEPRO_LISTINGS_VERSION." <a href='https://www.beprosoftware.com/documentation/bepro-listings/' target='_blank'><button>".__(
+			"Documentation","bepro-listings")."</button></a> <a href='https://www.beprosoftware.com/forums/' target='_blank'><button>".__(
+			"Forums","bepro-listings")."</button></a></div>";
 	}
 
 	//Options Page

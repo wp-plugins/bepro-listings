@@ -808,7 +808,7 @@
 				setlocale(LC_MONETARY, "en_US");
 				$cost = ($bp_listing->cost == 0)? "Free" : $data["currency_sign"].sprintf('%01.2f', $bp_listing->cost);
 			}else{
-				$cost = "Please Contact";
+				$cost = __("Please Contact", "bepro-listings");
 			} 
 			//cost
 			echo '<span class="result_cost">'.apply_filters("bl_cost_listing_value",$cost).'</span>';
@@ -1083,7 +1083,7 @@
 				if(!$num_listings || !is_numeric($num_listings) || ($num_listings < 1)) return; 
 				
 				$package_div[] = array();
-				echo '<div class="package_option"><input type="checkbox" name="bpl_package" id="package_sel_'.$packages->ID.'" value="'.$packages->ID.'" '.((@$order && ($order->feature_id == $packages->ID))? "checked='checked'":"").'><span class="package_head">'.$packages->post_title."  (".$data["currency_sign"].$cost.')</span>
+				echo '<div class="package_option"><input type="radio" name="bpl_package" id="package_sel_'.$packages->ID.'" value="'.$packages->ID.'" '.((@$order && ($order->feature_id == $packages->ID))? "checked='checked'":"").'><span class="package_head">'.$packages->post_title."  (".$data["currency_sign"].$cost.')</span>
 				<span class="package_options">
 					<ul>
 						<li># '.__("Days","bepro-listings").' '.$duration.'</li>

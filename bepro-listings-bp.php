@@ -215,7 +215,7 @@
 			
 			$user_id = $bp->displayed_user->id;
 			// This will probably only work on BP 1.3+
-			if ( !empty( $bp->bp_nav[BEPRO_LISTINGS_SLUG]) ) {
+			if ( !empty( $bp->bp_nav[BEPRO_LISTINGS_SLUG]) && $user_id && (is_numeric($user_id))) {
 				$current_tab_name = $bp->bp_nav[BEPRO_LISTINGS_SLUG]['name'];
 
 				$item_count = $wpdb->get_row("SELECT count(*) as item_count FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 

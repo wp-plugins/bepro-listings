@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2015-01-18 20:35-0400\n"
+"PO-Revision-Date: 2015-04-18 09:13-0400\n"
 "Last-Translator: \n"
 "Language-Team: bepro software\n"
 "MIME-Version: 1.0\n"
@@ -410,3 +410,52 @@ msgstr "Ingen Live oppføringer opprettet"
 #: templates/list.php:62
 msgid "No live listings for this user"
 msgstr "Ingen live oppføringer for denne brukeren"
+
+#: ------------DASHBOARD---------------- admin/bepro_listings_dashboard.php:
+#: #BePro_Edits admin/bepro_listings_wizard.php:6
+msgid "Welcome to BePro Listings!"
+msgstr "Velkommen til BePro Listings!"
+
+#: admin/bepro_listings_wizard.php:12
+msgid ""
+"Congratulations, you are now using the latest version of BePro Listings. "
+"With lots of ways to customize, this software is ideal for creating your "
+"custom directory listing needs. This page shows the new features packaged "
+"with the plugin."
+msgstr ""
+"Gratulerer, bruker du nå den nyeste versjonen av BePro Listings. Mange måter "
+"å tilpasse, er denne programvaren ideelt for å lage din egendefinerte "
+"mappevisning behov. Denne siden viser de nye funksjonene pakket med plugg."
+
+#: admin/bepro_listings_wizard.php:17
+msgid "What's New"
+msgstr "Noe nytt"
+
+#: admin/bepro_listings_wizard.php:22
+msgid "You are using"
+msgstr "Du bruker"
+
+#: admin/bepro_listings_wizard.php:22
+msgid "BePro Listings Version:"
+msgstr "BePro Listings versjon:"
+
+#: ------------INSTALLATION WIZARD----------------
+#: admin/bepro_listings_wizard.php admin/bepro_listings_wizard.php:6
+msgid "BePro Listings INSTALLATION WIZARD"
+msgstr "BePro Listings  INSTALLASJONSVEIVISEREN"
+
+#: admin/bepro_listings_wizard.php:7
+msgid "Use the following steps to help you setup BePro Listings. Otherwise,"
+msgstr "Bruk fremgangsmåten nedenfor til å setup BePro Listings. Ellers"
+
+#: admin/bepro_listings_wizard.php:7
+msgid "Click Here"
+msgstr "Klikk her"
+
+#: admin/bepro_listings_wizard.php:7
+msgid "to skip"
+msgstr "å hoppe"
+
+#: admin/bepro_listings_wizard.php:47
+msgid "STEP 1: CREATE WORDPRESS PAGES"
+msgstr "TRINN 1: OPPRETTE WORDPRESS SIDER"

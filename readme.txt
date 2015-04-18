@@ -1,26 +1,26 @@
 === BePro Listings ===
 Contributors: BeyondPrograms, BeProSoftware
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: auto, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds directory, classifieds plugin, directory, directory builder, directory plugin, directory listings, event directory, event listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio directory, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress directory plugin, wordpress classifieds, wordpress catalogues, yellow pages
+Tags: auto, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 2.1.996
+Stable tag: 2.1.997
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Responsive Directory (Real Estate, Classifieds, Business, Events etc) w/ (google maps, front end upload, search / filter, payments & more)
+Responsive Listings (Product, Classifieds, Business Directory, Events etc) w/ (google maps, front end upload, search, payments & more)
 
 == Description ==
-BePro Listings is a **wordpress directory plugin** which is easy to setup and customize. With its modular architecture, you decide how users, search, filter and view information. Use optional base features like, clustered google maps, **paypal payments**, email notifications, ajax search / filter and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business, Product Catalogues, Events, Classifieds and other niche information.
+BePro Listings is a feature rich listings plugin, which is easy to setup and customize. With its modular architecture, you decide how users find and view information. Use optional base features like, clustered google maps, **paypal payments**, photo galleries, ajax search results and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business Directories, Product Catalogues, Event Booking, Classifieds and other niche information.
 
-[BePro Listings](https://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](https://www.beprosoftware.com/forums/) | [Documentation](https://www.beprosoftware.com/documentation/bepro-listings/ ) | [Bundles](https://www.beprosoftware.com/bundles/) | [Themes](https://www.beprosoftware.com/themes/) | [Demos](http://www.beprothemes.com)
+[BePro Listings](https://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](https://www.beprosoftware.com/forums/) | [Documentation](https://www.beprosoftware.com/documentation/bepro-listings/ ) | [Themes](https://www.beprosoftware.com/themes/) | [Demos](http://www.beprothemes.com)
 
 = INTRO VIDEO =
 
 [youtube http://www.youtube.com/watch?v=zg2o1XK7vKk&hd=1]
 
 = KEY FEATURES =
-Our BePro Software Team is constantly developing new features for this plugin. The following features are included with the base plugin:
+Our BePro Software Team is constantly developing new features. The following functionality is included with the base plugin:
 
 	1. Accept Payments - Unlimited payment packages or charge per category. "BePro Cart" plugin is required (100% free)
 	2. Upload CSV - Upload your lisings via a csv document
@@ -29,8 +29,8 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	5. Clustered Google Maps - Great for showing listings via a map with no need for API keys.
 	6. Categories - Assign images or not. Choose from our 4 different directory style layouts
 	7. Gallery - Compatible with many gallery plugins and can be removed altogether
-	8. Listing Results - Two templates for search results including a ("Featured") banner option, are available and they can be extended. 
-	10. Ajax - Search and filter on one page. Yes, wow is the correct phrase to use!
+	8. Listing Templates - Two templates for search results including a ("Featured") banner option, are available and they can be extended. 
+	10. Ajax Results - Search and filter on one page. Yes, wow is the correct phrase to use!
 	11. User Profile - Use Buddypress or our standalone profile shortcode to allow your users to manage their submissions
 	12. Expiration - Set an expiration length for new listings
 	12. Currency - Setup cost as searchable data and implement any currency sign
@@ -39,12 +39,11 @@ Our BePro Software Team is constantly developing new features for this plugin. T
 	15. Responsive - Our listings and detail pages are all responsive. Perfect for integrating into your mobile compatible theme.
 	16. Widgets - Several widgets are available including, recent listings and search filter.
 	17. Admin Options - Control the ability for users to intereact with features and information.
-	18. On page google map - Now all listings have their own google map showing listing location in a tab
-	19. Custom posts - Listings are separate to your other posts in the admin and front end.
-	20. Shortcodes - Several ways to feature the information and engage your visitor.
-	21. Hooks & Filters - Developers will love the documentation & ability to easily extend features.
-	22. Email Notifications - Add, edit, delete notifications. Requires BePro Email (100% free) 
-	23. Shortcode Builder - Use our tinymce button to build the shortcodes easily
+	18. Custom posts - Listings are separate to your other posts in the admin and front end.
+	19. Shortcodes - Several ways to feature the information and engage your visitor.
+	20. Hooks & Filters - Developers will love the documentation & ability to easily extend features.
+	21. Email Notifications - Add, edit, delete notifications. Requires BePro Email (100% free) 
+	22. Shortcode Builder - Use our tinymce button to build the shortcodes easily
 
 = POPULAR USES =
 
@@ -55,7 +54,7 @@ Compatible with most themes. Look at some of the ways people are using the plugi
 	* Car Dealer - List your vehicle inventory, cars, trucks, boats, planes etc. Or use geo features for Fleet Tracking
 	* Link Directory - List, price, and link to amazon products or other popular affilate campaigns.
 	* Knowledgebase - Remove images and allow users to search through your complex structured and unstructured information.
-	* Portfolio - Feature your work in various ways, allowing users to view details and comment. Great for showcasing your projects.
+	* Projects - Feature your work in various ways, allowing users to view details and comment. Great for showcasing your projects.
 	* Pet Directory - Showcase information on any animal and allow users to search and filter through them 
 	* Store Finder - List your store or shop branches including, location and contact details 
 	* Business Directory - Employee, staff, members or any other type of directory listings site
@@ -64,7 +63,8 @@ Compatible with most themes. Look at some of the ways people are using the plugi
 	* Product Catalogue - List them yourself or allow members to list products and/or services e.g.
 	* Informational - Tourism, points of interest, and other details best shown via google maps
 	* Front End Uploads - Using the submission form shortcode, users can contribute blog posts for you to review and publish
-	* Video Listings - Feature HTML5 videos (w/ flash fallback) from sites like youtube or videos uploaded to your server with our videos addon.
+	* Video Portfolio - Feature HTML5 videos (w/ flash fallback) from sites like youtube or videos uploaded to your server with our videos addon.
+	* Photo Galleries - Feature images in search results and allow users to navigate your gallery listings
 	* Podcast & Music - List and categorize all of your audio files including mp3 and wav then play them on a HTML5 player  (w/ flv fallback) with our audio addon
 	* Document Directory - Showcase multiple file types allowing users to search and view them on your website with our documents addon
 	* Google Maps - We have one of the most feature rich google map options available for wordpress. Many users choose us just for this feature.
@@ -83,15 +83,15 @@ Compatible with most themes. Look at some of the ways people are using the plugi
 > 
 > 
 
-Our Addons provide lots of new ways to customize your listings experinece. Current available add-ons include:
+Customize the listings experinece for managers and visitors with our growing list of add-ons:
 
 	1. Form Builder - Use the visual drag and drop interface to create multiple front end upload forms and directory listing types
 	2. Claim Listing - Allow users to claim listings from the frontend
 	3. Gallery - Three 3 gallery options including slider & lightbox, plus three new listings templates
 	4. Video - Improve on the Gallery plugin with the ability to upload file types like (mp4, mpeg, avi, wmv, webm). Also link videos from sites like, youtube, vimeo, & dailymotion. Uploaded videos are played using HTML5 or fallback to flassh
 	5. Documents - Allow users to add and manage document listings on your website from the front end (zip, doc, pdf, odt, csv, etc)
-	6. Icons - Tons of google map markers/icons from the "Map Icons Collection" by Nicolas Mollet and also allows other addons to place icons on listings, video, documents, etc
-	7. Realestate - Add realestate directory related information to listings & the ability to search/filter by realestate details
+	6. Icons - Tons of google map markers/icons from the "Map Icons Collection" by Nicolas Mollet and also allows other addons to place icons on search results like, video, documents, etc
+	7. Real Estate - Add realestate directory related information to listings & the ability to search/filter by realestate details
 	8. S2Member - Limit & get paid for your listings depending on membership levels, using this s2member integration
 	9. Audio - List your podcasts and music on wordpress with this addon. We support several file types including wav, wma, mp3 and m4a. Uploaded audio is played using HTML5 or fallback to flash
 	10. Favorites - Engage your visitors! Record theirs likes and dislikes to figure out the most popular listings.
@@ -109,7 +109,7 @@ Our Addons provide lots of new ways to customize your listings experinece. Curre
 
 = THEMES =
 
-We have created a few themes to work with BePro Lisitings. They come with templates designed to use the shortcodes provided by the plugin.
+We have created a few themes, which use BePro Listings shortcodes in custom templates:
 
 	1. ByCater - This responsive directory theme features a home page template utilizing (google map, search, categories, and listings). It also integrates with typical wordpress features like, sidebar, menu, etc
 	2. FolioProjects - Responsive Child theme for the stock wordpress twentyfourteen teamplate. Perfect for gallery, portfolio, and other sites where you want to emphasize the featured images. Comes with three templates
@@ -119,7 +119,7 @@ We have created a few themes to work with BePro Lisitings. They come with templa
 
 = WHATS THE DIFFERENCE? =
 
-BePro Listings is easy to setup. We spent special attention to helping you get started, with tools like our *"shortcode builder"* and installation wizard. With our feature rich and configurable foundation, BePro Listings can be setup to fit the needs of most directories. When ready to extend your experience, we provide many options in the form of themes and addons. An exciting example of whats possible, is the ability to create a **Classifieds website** featuring multiple directories simultaneously, using our Form Builder addon.
+BePro Listings is easy to setup. We spent special attention to helping you get started, with tools like our *"shortcode builder"* and installation wizard. With our feature rich and configurable foundation, BePro Listings can be setup to fit the needs of most directories. When ready to extend your experience, we provide many options in the form of themes and addons. An exciting example of whats possible, is the ability to create a **Classifieds website**, which features multiple directories simultaneously via our Form Builder addon.
 
 Out of the box, BePro Listings works with, buddypress, BePro Cart, BePro Email and many **gallery plugins**. Via paid addons, we also integrate with s2member, paid membership pro, and several other popular plugins. This open and inclusive architecture, makes it extreamly easy to add the best combinations of features for your **directory** / **classifieds** / **portfolio** / **Catalogue** site. As you can imagine, it also makes the plugin lite, loading only the features your website needs. 
 
@@ -250,6 +250,16 @@ BePro Listings is part of the BePro Software Suite of products. Maintained by th
 Integration with other plugins in our suite is always free and integrated into the core of our plugins. For example, activating payment features for BePro Listings requires that you have BePro Cart installed. The notification features are similar, requiring BePro Email to be installed. This separation allows us to develop multiple products with extensive payment and notification features. Most importantly, this architecture provides a central and familiar interface for you to manage these features.
 
 == Changelog ==
+
+= 2.1.997 (Apr 18th, 2015) =
+
+* Tweak Shortcode builder button
+* Fixes for php notices
+* Tweak wordpress.org page
+* Made more text translatable
+* Added translations for each supported language
+* Buddypress profile tweaks to fix sql errors
+* Tweak multisite compatibility
 
 = 2.1.996 (Mar 29th, 2015) =
 

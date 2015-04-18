@@ -119,7 +119,7 @@
 					<h4><?php _e("CONTRIBUTE","bepro-listings"); ?></h4>
 					<p><?php _e("Hopefully you like our plugin. Consider leaving a review or feedback. Spreading the word is one of the best ways to help support free solutions like this one.","bepro-listings"); ?> </p>
 					<ul id="say_hi">
-						<li><?php _e("Leave a","bepro-listings"); ?> <a href="http://wordpress.org/support/view/plugin-reviews/bepro-listings" target="_blank"><?php _e("Review","bepro-listings"); ?></a> <?php _e("on wordpress.org","bepro-listings"); ?></li>
+						<li><?php _e("Leave a","bepro-listings"); ?> <a href="https://wordpress.org/support/view/plugin-reviews/bepro-listings?filter=5" target="_blank"><?php _e("Review","bepro-listings"); ?></a> <?php _e("on wordpress.org","bepro-listings"); ?></li>
 						<li><?php _e("Leave a","bepro-listings"); ?> <a href="https://www.beprosoftware.com/shop/bepro-listings" target="_blank"><?php _e("Review","bepro-listings"); ?></a> <?php _e("on beprosoftware.com","bepro-listings"); ?></li>
 						<li><?php _e("Say Hi on Twitter","bepro-listings"); ?> <a href="https://twitter.com/beprosoftware" target="_blank">@BeProSoftware</a></li>
 						<li><?php _e("Submit code on","bepro-listings"); ?> <a href="https://github.com/beprosoftware" target="_blank">github</a></li>

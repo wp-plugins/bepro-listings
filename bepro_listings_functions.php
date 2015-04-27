@@ -390,7 +390,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.997' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.998' );
 		}	
 	}
 	
@@ -1317,7 +1317,7 @@
 	}
 	
 	function bepro_search_remove_expiring($return_clause){
-		return $return_clause." AND ((geo.expires IS NULL) || (geo.expires > NOW()))";
+		return $return_clause." AND ((geo.expires IS NULL) || (geo.expires > NOW()) || (geo.expires = '0000-00-00 00:00:00'))";
 	}
 	
 	

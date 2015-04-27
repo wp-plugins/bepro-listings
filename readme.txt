@@ -4,14 +4,14 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 2.1.997
+Stable tag: 2.1.998
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Responsive Listings (Product, Classifieds, Business Directory, Events etc) w/ (google maps, front end upload, search, payments & more)
 
 == Description ==
-BePro Listings is a feature rich listings plugin, which is easy to setup and customize. With its modular architecture, you decide how users find and view information. Use optional base features like, clustered google maps, **paypal payments**, photo galleries, ajax search results and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business Directories, Product Catalogues, Event Booking, Classifieds and other niche information.
+This plugin proivdes a highly customizable listings experience. With its modular architecture, you decide how users, contribute, search and view information. Use optional base features like, clustered google maps, **paypal payments**, photo galleries, ajax search results and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business Directories, Product Catalogues, Event Booking, Classifieds and other niche information. 
 
 [BePro Listings](https://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](https://www.beprosoftware.com/forums/) | [Documentation](https://www.beprosoftware.com/documentation/bepro-listings/ ) | [Themes](https://www.beprosoftware.com/themes/) | [Demos](http://www.beprothemes.com)
 
@@ -83,7 +83,7 @@ Compatible with most themes. Look at some of the ways people are using the plugi
 > 
 > 
 
-Customize the listings experinece for managers and visitors with our growing list of add-ons:
+Customize the experience for managers and visitors with our growing list of add-ons:
 
 	1. Form Builder - Use the visual drag and drop interface to create multiple front end upload forms and directory listing types
 	2. Claim Listing - Allow users to claim listings from the frontend
@@ -126,7 +126,7 @@ Out of the box, BePro Listings works with, buddypress, BePro Cart, BePro Email a
 = SHORTCODES =
 There is a shortcode builder available while editing any page. This tool makes it extreamly easy to use the various features provided by BePro Listings. Below you will find a general list of available shortcodes. For more details like shortcode options, visit our documentation link above.
 
-	* All In One (NEW) - Use one shortcode to implement several features at once. Templates available [bl_all_in_one]
+	* All In One  - Use one shortcode to implement several features at once. Templates available [bl_all_in_one]
 	* Google Map - Setup a map anywhere showing the last X listings on your site e.g. [generate_map]
 	* Basic Search - Allow users to search listings e.g. [search_form]
 	* Filter Search Table - Allow users to do a more in depth search including, cost, date, etc e.g. [filter_form]
@@ -250,6 +250,11 @@ BePro Listings is part of the BePro Software Suite of products. Maintained by th
 Integration with other plugins in our suite is always free and integrated into the core of our plugins. For example, activating payment features for BePro Listings requires that you have BePro Cart installed. The notification features are similar, requiring BePro Email to be installed. This separation allows us to develop multiple products with extensive payment and notification features. Most importantly, this architecture provides a central and familiar interface for you to manage these features.
 
 == Changelog ==
+
+= 2.1.998 (Apr 27th, 2015) =
+
+* Fix disappearing listings which are valid, when payments are activated
+* Better support for time search filters
 
 = 2.1.997 (Apr 18th, 2015) =
 

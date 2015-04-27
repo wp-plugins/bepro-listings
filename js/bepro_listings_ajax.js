@@ -314,6 +314,8 @@ function bl_ajax_complete(){
 function bl_ajax_end(){
 	if(jQuery(".bl_date_input"))
 		jQuery(".bl_date_input").datepicker();
+	if(jQuery(".bl_time_input"))	
+		jQuery(".bl_time_input").timepicker();
 }
 
 function bl_ajax_get_page(post_id){	

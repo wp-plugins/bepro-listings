@@ -13,8 +13,15 @@
 		$user_id = $bp->displayed_user->id;
 		
 		// get records
-		$items = $wpdb->get_results("SELECT geo.*, wp_posts.post_title, wp_posts.post_status FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 
-		LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
+		$data = get_option("bepro_listings");
+		if(@$data["require_payment"]){
+			$items = $wpdb->get_results("SELECT geo.*, orders.status as order_status, orders.expires, wp_posts.post_title, wp_posts.post_status FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 
+			LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id 
+			LEFT JOIN ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." AS orders on orders.bl_order_id = geo.bl_order_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
+		}else{
+			$items = $wpdb->get_results("SELECT geo.*, wp_posts.post_title, wp_posts.post_status FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 
+			LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
+		}
 		
 		$listing_url = $bp->loggedin_user->domain.$bp->current_component."/".BEPRO_LISTINGS_CREATE_SLUG."/";
 		

@@ -35,10 +35,10 @@
 			$success = bepro_listings_save();
 			if($success){
 				$success_message = apply_filters("bepro_form_success_message","Listing Successfully Saved");
-				$message =  "<span class='bl_succsss_message'>".$success_message."</span>";
+				$message =  "<span class='bl_succsss_message'>".__($success_message,"bepro-listings")."</span>";
 			}else{
 				$fail_message = apply_filters("bepro_form_fail_message","Issue saving your listing. Please contact the website administrator");
-				$message =  "<span class='bl_fail_message'>".$fail_message."</span>";
+				$message =  "<span class='bl_fail_message'>".__($fail_message,"bepro-listings")."</span>";
 			}
 			
 			$current_user = wp_get_current_user();
@@ -53,10 +53,16 @@
 				bl_profile_add_listing_content();
 			}
 		}else{
-		
+			$data = get_option("bepro_listings");
 			// get records
-			$items = $wpdb->get_results("SELECT geo.*, wp_posts.post_title, wp_posts.post_status FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 
-			LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
+			if(@$data["require_payment"]){
+				$items = $wpdb->get_results("SELECT geo.*, orders.status as order_status, orders.expires, wp_posts.post_title, wp_posts.post_status FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 
+				LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id 
+				LEFT JOIN ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." AS orders on orders.bl_order_id = geo.bl_order_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
+			}else{
+				$items = $wpdb->get_results("SELECT geo.*, wp_posts.post_title, wp_posts.post_status FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as geo 
+				LEFT JOIN ".$wpdb->prefix."posts as wp_posts on wp_posts.ID = geo.post_id WHERE wp_posts.post_status != 'trash' AND wp_posts.post_author = ".$user_id);
+			}
 			
 			$listing_url = "?bl_manage=1&bl_id=";
 			$add_listing_button = "<p><a href='".$listing_url."'>".__("Add a Listing")."</a></p>";

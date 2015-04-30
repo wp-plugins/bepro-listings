@@ -1,9 +1,8 @@
 <?php
 		global $wpdb, $bp;
-		$data = get_option("bepro_listings");
 		do_action("bl_before_frontend_listings");
 		if(isset($_GET["message"]))echo "<span class='classified_message'>".$_GET["message"]."</span>";
-		echo "<h2>".__("My Item Listings", "bepro-listings")."</h2>"; 
+		echo "<h3>".__("My Item Listings", "bepro-listings")."</h3>"; 
 		if((@$items) && (sizeof($items) > 0)){
 			echo "<table id='classified_listings_table'><tr>
 					<td>".__("Name", "bepro-listings")."</td>
@@ -18,19 +17,25 @@
 			
 			foreach($items as $item){
 				$notice = "None";
-				$status = (($item->post_status == "publish")? "Published":"Pending");
-				if(!empty($data["require_payment"]) && ($status == "Published")){
-					$notice = "Expires: ".((empty($item->expires) || ($item->expires == "0000-00-00 00:00:00"))? "Never":date("M, d Y", strtotime($item->expires)));
-				}else if(!empty($data["require_payment"])  && ($status == "Pending")){
-					$order = bl_get_payment_order($item->bl_order_id);
-					if($order->status == 1){
-						$notice = "Paid: Processing";
-					}else if($order->status == 2){
-						$notice = "Pay: Required";
-					}else if($order->status == 3){
-						$notice = "Pay: Failed";
+				$post_status = (($item->post_status == "publish")? "Published":"Pending");
+				$order_status = $item->order_status;
+				
+				if(!empty($data["require_payment"]) && ($post_status == "Published")){
+					if(@$item->order_status && ($item->order_status!= 1)){
+						$notice = __("Payment Issue");
+					}else{
+						$notice = "Expires: ".((empty($item->expires) || ($item->expires == "0000-00-00 00:00:00"))? "Never":date("M, d Y", strtotime($item->expires)));
 					}
-					
+				}else if(!empty($data["require_payment"])  && ($post_status == "Pending")){
+					if($order_status == 1){
+						$notice = __("Paid: Processing","bepro-listings");
+					}else if($order_status == 2){
+						$notice = __("Pay: Required","bepro-listings");
+					}else if($order_status == 3){
+						$notice = __("Pay: Failed","bepro-listings");
+					}else{
+						$notice = __("Options: Missing","bepro-listings");
+					}
 				}
 				echo "
 					<tr>
@@ -39,13 +44,15 @@
 						<td>".((has_post_thumbnail( $item->post_id ))?"Yes":"No")."</td>
 						<td>".((isset($item->lat) && isset($item->lon))?"Valid":"Not Valid")."</td>
 						<td>".$notice."</td>
-						<td>".$status."</td>
+						<td>".$post_status."</td>
 						<td>";
 						
-						if($item->post_status == "publish"){ 
+						if($post_status == "Published"){ 
 							echo "<a href='".get_permalink($item->post_id)."' target='_blank'>".__("View", "bepro-listings")."</a>";
-						}else if($order->status != 1){
-							echo "<div style='float:left'>Pay</div>";
+						}else if((@$order_status) && ($order_status != 1)){
+							echo __("Pay","bepro-listings");
+						}else if(empty($item->bl_order_id) && ($post_status != "publish")){
+							echo $data["currency_sign"]."???";
 						}else{
 							echo __("Wait", "bepro-listings");
 						}

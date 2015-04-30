@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.1.998
+Stable tag: 2.1.999
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -238,8 +238,8 @@ No. However, if interested, you can.
 2. Gallery Features on FolioProjects $1 Theme
 3. E.g. alternate Search and filter design
 4. Listing page with addons
-5. Buddypress Profile listing Manager
-6. Manage Listings
+5. Manage Listings and Orders on the front end
+6. Manage Listings in the admin
 7. Configure Listing Options
 8. Optional Category Layout w/ images
 
@@ -250,6 +250,17 @@ BePro Listings is part of the BePro Software Suite of products. Maintained by th
 Integration with other plugins in our suite is always free and integrated into the core of our plugins. For example, activating payment features for BePro Listings requires that you have BePro Cart installed. The notification features are similar, requiring BePro Email to be installed. This separation allows us to develop multiple products with extensive payment and notification features. Most importantly, this architecture provides a central and familiar interface for you to manage these features.
 
 == Changelog ==
+
+= 2.1.999 (Apr 30th, 2015) =
+
+* New ability to visually manage orders via front end profile
+* New ability to purchase packages without any listings
+* Tweaked notices and actions for listings on profile page
+* Fixed bug with creating listing without any package selected when its actually required
+* Cloned new profile features to buddypress profile
+* New admin link to restart installation wizard
+* New admin link to visit the BePro Listings Dashboard page
+* New method for managing expired listings from the frontend profile
 
 = 2.1.998 (Apr 27th, 2015) =
 

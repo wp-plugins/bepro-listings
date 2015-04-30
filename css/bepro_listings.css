@@ -241,6 +241,10 @@
 	list-style-type:none;
 }
 /* form layout */
+#bepro_listings_package_tabs{
+	margin-bottom:10px;
+}
+.bl_package_options_table td:nth-child(2){width:36%}
 .package_option{float: left;
 width: 45%;
 border: 1px solid;

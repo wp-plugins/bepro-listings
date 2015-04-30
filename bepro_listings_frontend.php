@@ -1083,7 +1083,7 @@
 				if(!$num_listings || !is_numeric($num_listings) || ($num_listings < 1)) return; 
 				
 				$package_div[] = array();
-				echo '<div class="package_option"><input type="radio" name="bpl_package" id="package_sel_'.$packages->ID.'" value="'.$packages->ID.'" '.((@$order && ($order->feature_id == $packages->ID))? "checked='checked'":"").'><span class="package_head">'.$packages->post_title."  (".$data["currency_sign"].$cost.')</span>
+				echo '<div class="package_option"><input type="radio" name="bpl_package" id="package_sel_'.$packages->ID.'" value="'.$packages->ID.'" '.((@$order && ($order->feature_id == $packages->ID))? "checked='checked'":"").'><span class="package_head">'.$packages->post_title.'  ('.$data["currency_sign"].$cost.')</span>
 				<span class="package_options">
 					<ul>
 						<li># '.__("Days","bepro-listings").' '.$duration.'</li>

@@ -56,6 +56,8 @@
 					jQuery(".bl_date_input").datepicker({dateFormat: "yy-mm-dd"});
 				if(jQuery(".bl_time_input"))	
 					jQuery(".bl_time_input").timepicker();
+				if(jQuery("#bepro_listings_package_tabs"))
+					jQuery( "#bepro_listings_package_tabs" ).tabs();
 					
 				jQuery(".delete_link").click(function(element){
 					element.preventDefault();
@@ -164,7 +166,6 @@
 				lat varchar(15) DEFAULT NULL,
 				lon varchar(15) DEFAULT NULL,
 				bl_order_id int(9) DEFAULT NULL,
-				expires DATETIME DEFAULT NULL,
 				created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 				PRIMARY KEY  (id),
 				UNIQUE KEY `post_id` (`post_id`)
@@ -291,6 +292,7 @@
 				bepro_cart_id int(9) DEFAULT NULL,
 				status int(1) DEFAULT 2,
 				feature_type varchar(50) DEFAULT NULL,
+				expires DATETIME DEFAULT NULL,
 				date_paid DATETIME DEFAULT NULL,
 				created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 				PRIMARY KEY  (id),
@@ -390,7 +392,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.998' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.999' );
 		}	
 	}
 	
@@ -519,6 +521,39 @@
 			
 			//flat fee now works differently
 			if($data["flat_fee"]) unset($data["flat_fee"]);
+		}
+		
+		if(version_compare($bepro_listings_version, '2.1.999', '<')){
+			if ((is_numeric(substr($wpdb->prefix, -2, 1)) && is_multisite())){ 
+				$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+				foreach($blogids as $blogid_x){
+					if($blogid_x == 1)
+						$blogid_x = "";
+					else
+						$blogid_x = $blogid_x."_";
+					$tbl_1 = $wpdb->base_prefix.$blogid_x.BEPRO_LISTINGS_ORDERS_TABLE_BASE;
+					$tbl_2 = $wpdb->base_prefix.$blogid_x.BEPRO_LISTINGS_TABLE_BASE;
+					$wpdb->query("ALTER TABLE ".$tbl_1." ADD COLUMN expires DATETIME DEFAULT NULL AFTER date_paid;");
+					$orders = $wpdb->get_results("SELECT * FROM ".$tbl_1);
+					foreach($orders as $order){
+						$record = $wpdb->get_row("SELECT * FROM ".$tbl_2." WHERE bl_order_id = ".$order->bl_order_id." LIMIT 1");
+						if($record)
+							$wpdb->query("UPDATE ".$tbl_1." SET expires = '".$record->expires."' WHERE bl_order_id = ".$record->bl_order_id);
+					}
+					$wpdb->query("ALTER TABLE ".$tbl_2." DROP COLUMN expires;");
+				}
+			}else{
+				$tbl_1 = $wpdb->prefix.BEPRO_LISTINGS_ORDERS_TABLE_BASE;
+				$tbl_2 = $wpdb->prefix.BEPRO_LISTINGS_TABLE_BASE;
+				$wpdb->query("ALTER TABLE ".$tbl_1." ADD COLUMN expires DATETIME DEFAULT NULL AFTER date_paid;");
+				$orders = $wpdb->get_results("SELECT * FROM ".$tbl_1);
+				foreach($orders as $order){
+					$record = $wpdb->get_row("SELECT * FROM ".$tbl_2." WHERE bl_order_id = ".$order->bl_order_id." LIMIT 1");
+					if(@$record)
+						$wpdb->query("UPDATE ".$tbl_1." SET expires = '".$record->expires."' WHERE bl_order_id = ".$record->bl_order_id);
+				}
+				$wpdb->query("ALTER TABLE ".$tbl_2." DROP COLUMN expires;");
+			}
 		}
 		
 		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){
@@ -799,6 +834,7 @@
 					$post_data["lon"] = @$lon;
 					$post_data["cost"] = $cost;
 					$package_id = is_numeric($_POST["bpl_package"])?$_POST["bpl_package"]:"";
+					$bl_order_id = "";
 					//calculate cost and duration
 					if(is_numeric($data["require_payment"]) && ($data["require_payment"] > 0)){
 						//Get package cost and duration
@@ -808,13 +844,20 @@
 								$bl_order_id = $listing->bl_order_id;
 							else
 								$bl_order_id = bl_get_vacant_order_id($user_id, $data["require_payment"]);
-								
-							bl_create_payment_order(array("bl_order_id" => $bl_order_id, "feature_id" => $post_id, "cust_user_id" => $user_id, "feature_type" => 1));
+							
 							//calculate for categories
 							$fee = bepro_get_total_cat_cost($post_id);
 							$duration = $data["cat_fee_duration"];
+							
+							//If there is no cost but there is a duration set, then set the duration
+							if(@is_numeric($duration) && ($duration != 0) && (!$fee || ($fee == 0))){
+								$expires = date('Y-m-d H:i:s', strtotime("+".$duration." days"));
+							}
+							bl_create_payment_order(array("bl_order_id" => $bl_order_id, "feature_id" => $post_id, "cust_user_id" => $user_id, "feature_type" => 1, "status" => 2, "expires" => $expires));
 						}else if(is_numeric($package_id) && !empty($data["require_payment"]) && ($data["require_payment"] == 2)){
 							$pay_fee = true;
+							$status = 2; // post status
+							
 							//if we already created an order ID lets make some checks
 							if(@$listing && $listing->bl_order_id){
 								$order = bl_get_payment_order($listing->bl_order_id);
@@ -842,21 +885,27 @@
 									$pay_fee = false;
 								}
 							}
-							//add info to order table
-							bl_create_payment_order(array("bl_order_id" => $bl_order_id, "feature_id" => $package_id, "cust_user_id" => $user_id, "feature_type" => 2));
 							
-							if($pay_fee)
+							if($pay_fee){
 								$fee = get_post_meta($package_id, "package_cost", true);
+							}else{
+								//this is paid so active status
+								$status = 1;
+							}
 							
+							//Calculate expiration
 							$duration = get_post_meta($package_id, "package_duration", true);
+							if(@is_numeric($duration) && ($duration != 0) && (!$fee || ($fee == 0))){
+								$expires = date('Y-m-d H:i:s', strtotime("+".$duration." days"));
+							}
+							
+							//add info to order table
+							bl_create_payment_order(array("bl_order_id" => $bl_order_id, "feature_id" => $package_id, "cust_user_id" => $user_id, "feature_type" => 2, "status" => $status, "expires" => $expires));
 						}
 						//save purchase association info to bepro listing
 						$post_data["bl_order_id"] = $bl_order_id;
 					}
-					//If there is no cost but there is a duration set, then set the duration
-					if(@is_numeric($duration) && ($duration != 0) && (!$fee || ($fee == 0))){
-						$post_data["expires"] = date('Y-m-d H:i:s', strtotime("+".$duration." days"));
-					}
+					
 					
 					if($listing){
 						$result = bepro_update_post($post_data);
@@ -997,8 +1046,7 @@
 			phone         = '".$wpdb->escape(strip_tags($post['phone']))."',
 			lat           = '".$wpdb->escape(strip_tags($post['lat']))."',
 			lon           = '".$wpdb->escape(strip_tags($post['lon']))."',
-			bl_order_id   = '".$wpdb->escape(strip_tags($post['bl_order_id']))."',
-			expires           = '".(!empty($post['expires'])? date("Y-m-d H:i:s", strtotime($post['expires'])):"")."'");
+			bl_order_id   = '".$wpdb->escape(strip_tags($post['bl_order_id']))."'");
 	}
 	
 	function bepro_update_post($post){
@@ -1020,7 +1068,6 @@
 			lon           = '".$wpdb->escape(strip_tags($post['lon']))."',
 			website       = '".$wpdb->escape(strip_tags($post['website']))."',
 			bl_order_id   = '".$wpdb->escape(strip_tags($post['bl_order_id']))."',
-			expires       = '".(!empty($post['expires'])? date("Y-m-d H:i:s", strtotime($post['expires'])):"")."'
 			WHERE post_id ='".$wpdb->escape(strip_tags($post['post_id']))."'");
 	}
 	
@@ -1260,44 +1307,45 @@
 	//bepro edits
 	function bepro_payment_completed($item, $bepro_cart_id){
 		global $wpdb;
+		
+		//Collect Variables
 		$data = get_option("bepro_listings");
 		$duration = 0;
 		$bl_order_id = $item["item_number"];
+		$update_payment["bepro_cart_id"] = $bepro_cart_id;
+		$update_payment["date_paid"] = date("Y-m-d H:i:s");
+		$update_payment["status"] = 1;
 		
-		if($order = bl_get_payment_order($bl_order_id)){
-			$allow_update = true; //stop post from being published?
-			$update_payment["bepro_cart_id"] = $bepro_cart_id;
-			$update_payment["date_paid"] = date("Y-m-d H:i:s");
-			$update_payment["status"] = 1;
+		if(stristr($bl_order_id, "BPL_PACKAGE-")){
+			$feature_id = explode("-",$bl_order_id);
+			$update_payment["cust_user_id"] = get_current_user_id();
+			$update_payment["feature_type"] = $data["require_payment"];
+			$update_payment["feature_id"] = @$feature_id[1];
+			$update_payment["bl_order_id"] = bl_get_vacant_order_id($order->cust_user_id, false);
+		}else{
+			$order = bl_get_payment_order($bl_order_id);
 			$update_payment["bl_order_id"] = $bl_order_id;
 			$update_payment["cust_user_id"] = $order->cust_user_id;
 			$update_payment["feature_type"] = $order->feature_type;
 			$update_payment["feature_id"] = $order->feature_id;
+		}
+		//duration for categories is calculated differently to durations for packages
+		if(@$update_payment["feature_id"] && (@$data["require_payment"] == 2) && (get_post($update_payment["feature_id"]))){
+			$duration = get_post_meta($update_payment["feature_id"], "package_duration", true);
+		}else if(!empty($data["require_payment"]) && ($data["require_payment"] == 1)){
+			$duration = $data["cat_fee_duration"];
+		}
+		
+		//set expiration
+		if($duration != 0)
+			$update_payment["expires"] = date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s')." +".$duration." days"));
+
+		
+		//save purchase details & publish all listings attached to the package
+		if(bl_create_payment_order($update_payment) && ($duration != 0)){
+			$posts = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE bl_order_id = ".$update_payment["bl_order_id"]);
 			
-			//if payment saves
-			if(bl_create_payment_order($update_payment)){
-				if(@$update_payment["feature_id"] && (@$data["require_payment"] == 2) && (get_post($update_payment["feature_id"]))){
-					$duration = get_post_meta($update_payment["feature_id"], "package_duration", true);
-				}else if(!empty($data["require_payment"]) && ($data["require_payment"] == 1)){
-					$duration = $data["cat_fee_duration"];
-				}else{
-					//someone just paid at a different price to existing packages
-					$check_addons = apply_filters("some_other_bl_payment", $item, $bepro_cart_id);
-					if($check_addons == $item){
-						$allow_update = false;
-					}
-				}
-			}else{
-				$allow_update = false;
-			}
-			
-			//set all related listings to the purchased expire date
-			if($allow_update && ($duration != 0)){
-				$expiration = date('Y-m-d H:i:s', strtotime("+".$duration." days"));
-				$wpdb->query("UPDATE ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." set expires = '".$expiration."' WHERE bl_order_id = '".$bl_order_id."'");
-				
-				$posts = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE bl_order_id = ".$bl_order_id);
-				
+			if($posts && ($wpdb->num_rows > 0)){
 				remove_action( 'post_updated', "bepro_admin_save_details" );
 				foreach($posts as $post){
 					wp_update_post(array("ID" => $post->post_id, "post_status" => "publish"));
@@ -1316,10 +1364,14 @@
 		return $cost;
 	}
 	
-	function bepro_search_remove_expiring($return_clause){
-		return $return_clause." AND ((geo.expires IS NULL) || (geo.expires > NOW()) || (geo.expires = '0000-00-00 00:00:00'))";
+	function bepro_search_load_orders($join_str){
+		global $wpdb;
+		return $join_str." LEFT JOIN ".$wpdb->base_prefix.BEPRO_LISTINGS_ORDERS_TABLE_BASE." AS orders ON orders.bl_order_id = geo.bl_order_id";
 	}
-	
+	//bepro edits
+	function bepro_search_remove_expiring($return_clause){
+		return $return_clause." AND ((orders.expires IS NULL) || (orders.expires > NOW()) || (orders.expires = '0000-00-00 00:00:00'))";
+	}
 	
 	//bepro edits
 	function save_data_and_redirect(){
@@ -1355,9 +1407,9 @@
 		if(empty($order) || !is_array($order)) return false;
 		
 		if($curr_record = bl_get_payment_order($order["bl_order_id"])){
-			return $wpdb->query("UPDATE ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." SET feature_id = ".$order["feature_id"].", cust_user_id = ".$order["cust_user_id"].", bepro_cart_id = ".$order["bepro_cart_id"].", status = ".$order["status"].", feature_type = ".$order["feature_type"].", date_paid = '".@$order["date_paid"]."' WHERE bl_order_id = ".$order["bl_order_id"]);
+			return $wpdb->query("UPDATE ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." SET feature_id = ".$order["feature_id"].", cust_user_id = ".$order["cust_user_id"].", bepro_cart_id = ".$order["bepro_cart_id"].", status = ".$order["status"].", feature_type = ".$order["feature_type"].", expires = '".@$order["expires"]."', date_paid = '".@$order["date_paid"]."' WHERE bl_order_id = ".$order["bl_order_id"]);
 		}else{
-			return $wpdb->query("INSERT INTO ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." (bl_order_id, feature_id, cust_user_id, bepro_cart_id, status, feature_type, date_paid) VALUES(".$order["bl_order_id"].",".$order["feature_id"].",".$order["cust_user_id"].",'".$order["bepro_cart_id"]."','".$order["status"]."',".$order["feature_type"].",'".$order["date_paid"]."')");
+			return $wpdb->query("INSERT INTO ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." (bl_order_id, feature_id, cust_user_id, bepro_cart_id, status, feature_type, date_paid, expires) VALUES(".$order["bl_order_id"].",".$order["feature_id"].",".$order["cust_user_id"].",'".$order["bepro_cart_id"]."','".$order["status"]."',".$order["feature_type"].",'".$order["date_paid"]."','".$order["expires"]."')");
 		}
 	}
 	
@@ -1388,11 +1440,11 @@
 				$max_num_listings = get_post_meta($feature_id, "num_package_listings", true);
 				foreach($check_orders as $check_order){
 					$bl_order_id = $check_order->bl_order_id;
-					$get_num_listings = $wpdb->get_row("SELECT COUNT(*) as num_listings FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE bl_order_id = ".$bl_order_id);
+					$get_num_listings = $wpdb->get_row("SELECT COUNT(*) as num_listings FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_BASE." WHERE bl_order_id = ".$bl_order_id);
 					if($max_num_listings > $get_num_listings->num_listings){
 						return $bl_order_id;
 					}
-				}
+				} 
 			}
 		}
 		
@@ -1416,22 +1468,107 @@
 		global $wpdb;
 		$data = get_option("bepro_listings");
 		if(($data["require_payment"] != 1) && ($data["require_payment"] != 2)) return;
-		$user_id = get_current_user_id();
-		$missing = $wpdb->get_results("SELECT * FROM ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." WHERE cust_user_id = ".$user_id." AND status != 1 AND (feature_type = 1 OR feature_type = 2)");
-		if($wpdb->num_rows > 0){
-			echo "<table id='bl_payment_required_table'>
-			<tr><td>Name</td><td>Cost</td><td>Action</td></tr>";
-			foreach($missing as $pay_this){
-				$feature = get_post($pay_this->feature_id);
-				$bl_order_id = $pay_this->bl_order_id;
-				if($data["require_payment"] == 1){
-					$cost = bepro_get_total_cat_cost($pay_this->feature_id);
-				}else{
-					$cost = get_post_meta($pay_this->feature_id, "package_cost", true);
-				}
-				echo "<tr><td>".$feature->post_title."</td><td>".$data["currency_sign"].$cost."</td><td>".do_shortcode("[bepro_cart_button item_number='".$bl_order_id."' name='".$feature->post_title."' price='".$cost."']")."</td></tr>";
-			}
-			echo "</table>";
+		$packages = get_posts(array("post_type" => "bpl_packages"));
+		//if no packages, then warn user and exit
+		if(($data["require_payment"] == 2) && empty($packages)){
+			echo "<p class='bl_fail_message'>NOTICE: Notify admin to create payment packaged in wp-admin!</p>";
+			return;
 		}
+		echo "<h3>".__("ORDERS","bepro-listings")."</h3>";
+		$user_id = get_current_user_id(); 
+		$active = $wpdb->get_results("SELECT * FROM ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." WHERE cust_user_id = ".$user_id." AND status = 1 AND (feature_type = 1 OR feature_type = 2) AND expires > NOW()");
+		$expired = $wpdb->get_results("SELECT * FROM ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." WHERE cust_user_id = ".$user_id." AND status = 1 AND (feature_type = 1 OR feature_type = 2) AND expires < NOW()");
+		$pending = $wpdb->get_results("SELECT * FROM ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." WHERE cust_user_id = ".$user_id." AND status != 1 AND (feature_type = 1 OR feature_type = 2)");
+		?>
+		
+		<div id="bepro_listings_package_tabs">
+			<ul>
+				<li><a href="#tabs-1"><?php _e("Pending", "bepro-listings"); ?></a></li>
+				<li><a href="#tabs-2"><?php _e("Create", "bepro-listings"); ?></a></li>
+				<li><a href="#tabs-3"><?php _e("Active", "bepro-listings"); ?></a></li>
+				<li><a href="#tabs-4"><?php _e("Expired", "bepro-listings"); ?></a></li>
+			</ul>
+				
+			<div id="tabs-1">
+				<?php
+					echo '<h4>'.__("Payment Required", "bepro-listings").'</h4>';
+					if(sizeof($pending) > 0){
+						echo "<table class='bl_payment_required_table'>
+						<tr><td>Name</td><td>Cost</td><td>Action</td></tr>";
+						foreach($pending as $pay_this){
+							$feature = get_post($pay_this->feature_id);
+							$bl_order_id = $pay_this->bl_order_id;
+							if($data["require_payment"] == 1){
+								$cost = bepro_get_total_cat_cost($pay_this->feature_id);
+							}else{
+								$cost = get_post_meta($pay_this->feature_id, "package_cost", true);
+							}
+							echo "<tr><td>".$feature->post_title."</td><td>".$data["currency_sign"].$cost."</td><td>".do_shortcode("[bepro_cart_button item_number='".$bl_order_id."' name='".$feature->post_title."' price='".$cost."']")."</td></tr>";
+						}
+						echo "</table>";
+					}else{
+						echo "<p>".__("No Records Found.","bepro-listings")."</p>";
+					}
+				?>
+			</div>
+			<div id="tabs-2">
+				<?php
+					echo '<h4>'.__("Available Options", "bepro-listings").'</h4>';
+					if($packages){
+						echo "<table class='bl_package_options_table'>
+						<tr><td>".__("Name","bepro-listings")."</td><td>".__("Description","bepro-listings")."</td><td># ".__("Listings","bepro-listings")."</td><td># ".__("Days","bepro-listings")."</td><td>".__("Cost","bepro-listings")."</td><td>".__("Action","bepro-listings")."</td></tr>";
+						foreach($packages as $package){
+							$num_listings = get_post_meta($package->ID, "num_package_listings", true);
+							$duration = get_post_meta($package->ID, "package_duration", true);
+							$cost = get_post_meta($package->ID, "package_cost", true);
+							echo "<tr><td>".$package->post_title."</td><td>".$package->post_content."</td><td>".$num_listings."</td><td>".$duration."</td><td>".$data["currency_sign"].$cost."</td><td>".do_shortcode("[bepro_cart_button item_number='BPL_PACKAGE-".$package->ID."' name='".$package->post_title."' price='".$cost."']")."</td></tr>";
+						}
+						echo "</table>";
+					}else{
+						echo "<p>".__("No Records Found.","bepro-listings")."</p>";
+					}
+				?>
+			</div>
+			<div id="tabs-3">
+			<?php
+				echo '<h4>'.__("Paid Orders", "bepro-listings").'</h4>';
+				if(sizeof($active) > 0){
+					echo "<table class='bl_payment_required_table'>
+					<tr><td>".__("Name","bepro-listings")."</td><td># ".__("Attached Listings","bepro-listings")."</td><td>".__("Expires","bepro-listings")."</td></tr>";
+					foreach($active as $pay_this){
+						$feature = get_post($pay_this->feature_id);
+						$related = $wpdb->get_row("SELECT COUNT(*) as num_listings FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_BASE." WHERE bl_order_id = ".$pay_this->bl_order_id);
+						echo "<tr><td>".$feature->post_title."</td><td>".((@$related->num_listings)? $related->num_listings:0)."</td><td>".date("M, dS Y", strtotime($pay_this->expires))."</td></tr>";
+					}
+					echo "</table>";
+				}else{
+					echo "<p>".__("No Records Found.","bepro-listings")."</p>";
+				}
+			?>
+			</div>
+			<div id="tabs-4">
+				<?php
+					echo '<h4>'.__("Expired Orders", "bepro-listings").'</h4>';
+					if(sizeof($expired) > 0){
+						echo "<table class='bl_payment_required_table'>
+						<tr><td>Name</td><td>Cost</td><td>Date</td><td>Action</td></tr>";
+						foreach($expired as $pay_this){
+							$feature = get_post($pay_this->feature_id);
+							$bl_order_id = $pay_this->bl_order_id;
+							if($data["require_payment"] == 1){
+								$cost = bepro_get_total_cat_cost($pay_this->feature_id);
+							}else{
+								$cost = get_post_meta($pay_this->feature_id, "package_cost", true);
+							}
+							echo "<tr><td>".$feature->post_title."</td><td>".$data["currency_sign"].$cost."</td><td>".date("M, dS Y", strtotime($pay_this->expires))."</td><td>".do_shortcode("[bepro_cart_button item_number='".$bl_order_id."' name='".$feature->post_title."' price='".$cost."']")."</td></tr>";
+						}
+						echo "</table>";
+					}else{
+						echo "<p>".__("No Records Found.","bepro-listings")."</p>";
+					}
+				?>
+			</div>
+		</div>
+		<?php
 	}
 ?>

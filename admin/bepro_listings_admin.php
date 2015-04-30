@@ -942,6 +942,8 @@
 							<li>Services - We offer <a href="http://www.beprosoftware.com/services/" target="_blank">Various services</a> including support starting at $15/hr</li>
 							<li>Social - Our <a href="https://twitter.com/BeProSoftware" target="_blank">Twitter Page</a></li>
 							<li>Youtube - Our <a href="http://www.youtube.com/playlist?list=PLMzIqO2N1YpjMx4QfiCjwFsxxfHVy1goG" target="_blank">Youtube Playlist</a> managed by <a href="http://www.adcoordinates.com" target="_blank">Ad Coordinates</a></li>
+							<li>Installation Wizard - To restart the wizard, <a href="<?php echo admin_url( 'index.php?page=bepro-listngs-dashboard&show_wizard=1' ); ?>" target="_blank"> Click Here</a></li>
+							<li>View Dashbard - View latest updated features on the <a href="<?php echo admin_url( 'index.php?page=bepro-listngs-dashboard' ); ?>" target="_blank"> BePro Listings Dashboard</a></li>
 						</ul>
 						<h2>Support For The Plugin</h2>
 						<ul style="border:1px solid; padding:10px">		

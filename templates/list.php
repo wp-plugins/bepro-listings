@@ -51,7 +51,7 @@
 							echo "<a href='".get_permalink($item->post_id)."' target='_blank'>".__("View", "bepro-listings")."</a>";
 						}else if((@$order_status) && ($order_status != 1)){
 							echo __("Pay","bepro-listings");
-						}else if(empty($item->bl_order_id) && ($post_status != "publish")){
+						}else if(empty($item->bl_order_id) && ($post_status != "publish") && !empty($data["require_payment"])){
 							echo $data["currency_sign"]."???";
 						}else{
 							echo __("Wait", "bepro-listings");

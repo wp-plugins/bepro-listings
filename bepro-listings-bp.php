@@ -45,7 +45,7 @@
 		if((sizeof($ids) > 0) && ($ids[0] != NULL)){
 			echo do_shortcode("[display_listings l_ids='".implode(",", $ids)."' type='2' show_paging=1]");
 		}else{
-			echo "<p>No live listings for this user</p>";
+			echo "<p>".__("No live listings for this user","bepro-listings")."</p>";
 		}
 		echo "<div style='clear:both'><br /></div>";
 		return "";
@@ -62,9 +62,9 @@
 			$success = false;
 			$success = bepro_listings_save();
 			if($success)
-				$message = urlencode("Success saving listing");
+				$message = urlencode(__("Success saving listing","bepro-listings"));
 			else
-				$message = urlencode("Error saving listing");
+				$message = urlencode(__("Error saving listing","bepro-listings"));
 			$current_user = wp_get_current_user();
 			$bp_profile_link = bp_core_get_user_domain( $bp->displayed_user->id);
 			wp_redirect($bp_profile_link  . BEPRO_LISTINGS_SLUG ."?message=".$message);
@@ -109,7 +109,7 @@
 		$post_data = get_post($item->post_id);
 		$user_id = get_current_user_id();
 		if($post_data->post_author != $user_id){
-			header("Location: ".$listing_url."?message=You do not own this listing");
+			header("Location: ".$listing_url."?message=".__("You do not own this listing","bepro-listings"));
 			exit;
 		}
 		//get categories

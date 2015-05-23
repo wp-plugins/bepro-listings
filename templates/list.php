@@ -1,5 +1,6 @@
 <?php
 		global $wpdb, $bp;
+
 		do_action("bl_before_frontend_listings");
 		if(isset($_GET["message"]))echo "<span class='classified_message'>".$_GET["message"]."</span>";
 		echo "<h3>".__("My Item Listings", "bepro-listings")."</h3>"; 
@@ -17,14 +18,14 @@
 			
 			foreach($items as $item){
 				$notice = "None";
-				$post_status = (($item->post_status == "publish")? "Published":"Pending");
+				$post_status = (($item->post_status == "publish")? __("Published","bepro-listings"):__("Pending","bepro-listings"));
 				$order_status = $item->order_status;
 				
 				if(!empty($data["require_payment"]) && ($post_status == "Published")){
 					if(@$item->order_status && ($item->order_status!= 1)){
-						$notice = __("Payment Issue");
+						$notice = __("Payment Issue","bepro-listings");
 					}else{
-						$notice = "Expires: ".((empty($item->expires) || ($item->expires == "0000-00-00 00:00:00"))? "Never":date("M, d Y", strtotime($item->expires)));
+						$notice = __("Expires:","bepro-listings")." ".((empty($item->expires) || ($item->expires == "0000-00-00 00:00:00"))? __("Never","bepro-listings"):date("M, d Y", strtotime($item->expires)));
 					}
 				}else if(!empty($data["require_payment"])  && ($post_status == "Pending")){
 					if($order_status == 1){
@@ -56,7 +57,7 @@
 						}else{
 							echo __("Wait", "bepro-listings");
 						}
-						if($bp->displayed_user->id == $bp->loggedin_user->id)echo " | <a href='$listing_url".$item->id."'>".__("Edit", "bepro-listings")."</a> | <a id='file::".$item->post_id."::".$item->post_title."' href='#' class='delete_link'>".__("Delete", "bepro-listings")."</a>";
+						if((!function_exists("bp_is_my_profile")) ||($bp->displayed_user->id == $bp->loggedin_user->id))echo " | <a href='$listing_url".$item->id."'>".__("Edit", "bepro-listings")."</a> | <a id='file::".$item->post_id."::".$item->post_title."' href='#' class='delete_link'>".__("Delete", "bepro-listings")."</a>";
 				echo "	</td>
 					</tr>
 				";

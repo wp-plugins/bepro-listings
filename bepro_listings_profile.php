@@ -5,7 +5,7 @@
 		$current_url =  get_permalink( $post->ID );
 		$return_text = "";
 		if(!is_user_logged_in()){
-			$return_text .= "<p>You need to be Logged In to see your Listings.</p>";
+			$return_text .= "<p>".__("You need to be Logged In to see your Listings.", "bepro-listings")."</p>";
 			$args = array(
 					'echo'           => true,
 					'redirect'       => $current_url, 
@@ -37,7 +37,7 @@
 				$success_message = apply_filters("bepro_form_success_message","Listing Successfully Saved");
 				$message =  "<span class='bl_succsss_message'>".__($success_message,"bepro-listings")."</span>";
 			}else{
-				$fail_message = apply_filters("bepro_form_fail_message","Issue saving your listing. Please contact the website administrator");
+				$fail_message = apply_filters("bepro_form_fail_message",__("Issue saving your listing. Please contact the website administrator","bepro-listings"));
 				$message =  "<span class='bl_fail_message'>".__($fail_message,"bepro-listings")."</span>";
 			}
 			

@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Customizable listings used for, Business directory, classifieds, real estate, oortfolio, etc. Optional base features include, front end upload, gallery, paypal payments & buddypress suppoprt. Use google maps and various result templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.999
+Version: 2.1.9991
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -161,16 +161,19 @@ class Bepro_listings{
 	function searchform($atts = array(), $echo_this=false){
 		global $wpdb;
 		extract(shortcode_atts(array(
-			  'listing_page' => $wpdb->escape($_POST["listing_page"])
+			  'listing_page' => $wpdb->escape($_POST["listing_page"]),
+			  'l_type' => $wpdb->escape($_POST["l_type"])
 		 ), $atts));
 		
 		$data = get_option("bepro_listings");
-		
+		if(@$_REQUEST["l_type"] && is_numeric($_REQUEST["l_type"]) && bl_check_is_valid_cat($_REQUEST["l_type"])){
+			$l_type = bl_check_is_valid_cat($_REQUEST["l_type"]);
+		}
 		$return_text = '
 			<div class="search_listings">
 				<form method="post" name="searchform" id="listingsearchform" action="'.get_bloginfo("url")."/".$listing_page.'">
 					<input type="hidden" name="filter_search" value="1">
-					<input type="hidden" name="l_type" value="'.(bl_check_is_valid_cat($_REQUEST["l_type"])? bl_check_is_valid_cat($_REQUEST["l_type"]):"").'">
+					<input type="hidden" name="l_type" value="'.$l_type .'">
 					<input type="hidden" name="distance" value="'.$_POST["distance"].'">
 					<input type="hidden" name="min_date" value="'.$_POST["min_date"].'">
 					<input type="hidden" name="max_date" value="'.$_POST["max_date"].'">
@@ -368,13 +371,13 @@ class Bepro_listings{
 			$search_form .= '
 				<tr class="bl_distance_search_option"><td>
 					'.__("Distance", "bepro-listings").': <select name="distance">
-						<option value="">None</option>
-						<option value="10" '.(($_POST["distance"] == 10)||((empty($_POST["distance"])) && $data["distance"] == 10)? 'selected="selected"':"").'>10 miles</option>
-						<option value="50" '.(($_POST["distance"] == 50)||((empty($_POST["distance"])) && $data["distance"] == 50)? 'selected="selected"':"").'>50 miles</option>
-						<option value="150" '.((($_POST["distance"] == 150) || ((empty($_POST["distance"])) && $data["distance"] == 150))? 'selected="selected"':"").'>150 miles</option>
-						<option value="250" '.(($_POST["distance"] == 250)||((empty($_POST["distance"])) && $data["distance"] == 250)? 'selected="selected"':"").'>250 miles</option>
-						<option value="500" '.(($_POST["distance"] == 500)||((empty($_POST["distance"])) && $data["distance"] == 500)? 'selected="selected"':"").'>500 miles</option>
-						<option value="1000" '.(($_POST["distance"] == 1000)||((empty($_POST["distance"])) && $data["distance"] == 1000)? 'selected="selected"':"").'>1000 miles</option>
+						<option value="">'.__("None","bepro-listings").'</option>
+						<option value="10" '.(($_POST["distance"] == 10)||((empty($_POST["distance"])) && $data["distance"] == 10)? 'selected="selected"':"").'>'.__("10 miles","bepro-listings").'</option>
+						<option value="50" '.(($_POST["distance"] == 50)||((empty($_POST["distance"])) && $data["distance"] == 50)? 'selected="selected"':"").'>'.__("50 miles","bepro-listings").'</option>
+						<option value="150" '.((($_POST["distance"] == 150) || ((empty($_POST["distance"])) && $data["distance"] == 150))? 'selected="selected"':"").'>'.__("150 miles","bepro-listings").'</option>
+						<option value="250" '.(($_POST["distance"] == 250)||((empty($_POST["distance"])) && $data["distance"] == 250)? 'selected="selected"':"").'>'.__("250 miles","bepro-listings").'</option>
+						<option value="500" '.(($_POST["distance"] == 500)||((empty($_POST["distance"])) && $data["distance"] == 500)? 'selected="selected"':"").'>'.__("500 miles","bepro-listings").'</option>
+						<option value="1000" '.(($_POST["distance"] == 1000)||((empty($_POST["distance"])) && $data["distance"] == 1000)? 'selected="selected"':"").'>'.__("1000 miles","bepro-listings").'</option>
 					</select>
 				</td></tr>';
 				
@@ -397,7 +400,7 @@ class Bepro_listings{
 				<tr>
 					<td>
 						<input type="submit" class="form-submit" value="'.__("Search", "bepro-listings").'" id="edit-submit" name="find">
-						<a class="clear_search" href="'.get_bloginfo("url")."/".$listing_page.'"><button>Clear</button></a>
+						<a class="clear_search" href="'.get_bloginfo("url")."/".$listing_page.'"><button>'.__("Clear","bepro-listings").'</button></a>
 					</td>
 				</tr>
 			</table>

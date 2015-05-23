@@ -65,12 +65,12 @@
 					
 					file = jQuery(this)[0].id;
 					file = file.split("::");
-					check = confirm("are you sure you want to delete " +file[2]+ "?");
+					check = confirm("'.__("are you sure you want to delete","bepro-listings").' " +file[2]+ "?");
 					if(check){
 						jQuery.post(ajaxurl, { "action":"bepro_ajax_delete_post", post_id:file[1] }, function(i, message) {
 						   var obj = jQuery.parseJSON(i);
 						   alert(obj["status"]);
-						   if(obj["status"] == "Deleted Successfully!")
+						   if(obj["status"] == "'.__("Deleted Successfully!","bepro-listings").'")
 						   tr_element.css("display","none");
 						});
 					}
@@ -328,7 +328,7 @@
 	//if selected, show link in footer
 	function footer_message(){
 		echo '<div id="bepro_lisings_footer">
-								<a href="http://www.beprosoftware.com/products/bepro-listings" title="Wordpress Directory Plugin" rel="generator">Proudly powered by BePro Lisitngs</a>
+								<a href="http://www.beprosoftware.com/products/bepro-listings" title="Wordpress Directory Plugin" rel="generator">WP Directory powered by BePro Lisitngs</a>
 			</div>';
 	}
 	
@@ -392,7 +392,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.999' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.9991' );
 		}	
 	}
 	
@@ -413,19 +413,19 @@
 			$data["show_geo"] = "on";
 			$data["show_imgs"] = "on";
 			$data["num_images"] = 3;
-			$data["cat_heading"] = "Categories";
-			$data["cat_empty"] = "No Categories";
-			$data["cat_singular"] = "Category";
+			$data["cat_heading"] = __("Categories","bepro-listings");
+			$data["cat_empty"] = __("No Categories","bepro-listings");
+			$data["cat_singular"] = __("Category","bepro-listings");
 			$data["permalink"] = "/".BEPRO_LISTINGS_SEARCH_SLUG;
 			$data["cat_permalink"] = "/".BEPRO_LISTINGS_CATEGORY_SLUG;
 			
 			//forms
 			$data["validate_form"] = "on";
-			$data["success_message"] = 'Listing Created and pending admin approval.';
+			$data["success_message"] = __('Listing Created and pending admin approval.',"bepro-listings");
 			$data["use_tiny_mce"] = "";
 			$data["default_status"] = 'pending';
 			$data["default_user_id"] = get_current_user_id();
-			$data["fail_message"] = "Issue saving listing. Try again or contact the Admin";
+			$data["fail_message"] = __("Issue saving listing. Try again or contact the Admin","bepro-listings");
 			$data["bepro_listings_cat_required"] = "";
 			$data["bepro_listings_cat_exclude"] = "";
 			//search listings
@@ -436,7 +436,7 @@
 			$data["distance"] = 150;
 			$data["search_names"] = 1;
 			$data["title_length"] = 18;
-			$data["details_link"] = "Item";
+			$data["details_link"] = __("Item","bepro-listings");
 			$data["show_web_link"] = "";
 			$data["currency_sign"] = "$";
 			$data["show_date"] = 1;
@@ -699,11 +699,11 @@
 		$post_data = get_post($post_id);
 		if(is_admin() || ($post_data->post_author == $user_data->ID)){
 			$ans = wp_delete_post( $post_id, true );
-			if($ans){$message["status"] = "Deleted Successfully!";
-			}else{$message["status"] = "Problem Deleting Listing";
+			if($ans){$message["status"] = __("Deleted Successfully!","bepro-listings");
+			}else{$message["status"] = __("Problem Deleting Listing","bepro-listings");
 			}
 		}else{
-			$message["status"] = "Problem Deleting Listing";;
+			$message["status"] = __("Problem Deleting Listing","bepro-listings");
 		}
 		echo json_encode($message);
 		exit;
@@ -906,7 +906,6 @@
 						$post_data["bl_order_id"] = $bl_order_id;
 					}
 					
-					
 					if($listing){
 						$result = bepro_update_post($post_data);
 					}else{
@@ -1067,7 +1066,7 @@
 			lat           = '".$wpdb->escape(strip_tags($post['lat']))."',
 			lon           = '".$wpdb->escape(strip_tags($post['lon']))."',
 			website       = '".$wpdb->escape(strip_tags($post['website']))."',
-			bl_order_id   = '".$wpdb->escape(strip_tags($post['bl_order_id']))."',
+			bl_order_id   = '".$wpdb->escape(strip_tags($post['bl_order_id']))."'
 			WHERE post_id ='".$wpdb->escape(strip_tags($post['post_id']))."'");
 	}
 	
@@ -1358,8 +1357,10 @@
 	function bepro_get_total_cat_cost($post_id){
 		$types = get_the_terms($post_id, 'bepro_listing_types');
 		$cost = 0;
-		foreach($types as $type){
-			$cost += get_bepro_listings_term_meta($type->term_id, 'bepro_flat_fee', true );
+		if(@$types){
+			foreach($types as $type){
+				$cost += get_bepro_listings_term_meta($type->term_id, 'bepro_flat_fee', true );
+			}
 		}
 		return $cost;
 	}
@@ -1471,7 +1472,7 @@
 		$packages = get_posts(array("post_type" => "bpl_packages"));
 		//if no packages, then warn user and exit
 		if(($data["require_payment"] == 2) && empty($packages)){
-			echo "<p class='bl_fail_message'>NOTICE: Notify admin to create payment packaged in wp-admin!</p>";
+			echo "<p class='bl_fail_message'>".__("NOTICE: Notify admin to create payment packaged in wp-admin!","bepro-listings")."</p>";
 			return;
 		}
 		echo "<h3>".__("ORDERS","bepro-listings")."</h3>";
@@ -1494,7 +1495,7 @@
 					echo '<h4>'.__("Payment Required", "bepro-listings").'</h4>';
 					if(sizeof($pending) > 0){
 						echo "<table class='bl_payment_required_table'>
-						<tr><td>Name</td><td>Cost</td><td>Action</td></tr>";
+						<tr><td>".__("Name","bepro-listings")."</td><td>".__("Cost","bepro-listings")."</td><td>".__("Action","bepro-listings")."</td></tr>";
 						foreach($pending as $pay_this){
 							$feature = get_post($pay_this->feature_id);
 							$bl_order_id = $pay_this->bl_order_id;
@@ -1551,7 +1552,7 @@
 					echo '<h4>'.__("Expired Orders", "bepro-listings").'</h4>';
 					if(sizeof($expired) > 0){
 						echo "<table class='bl_payment_required_table'>
-						<tr><td>Name</td><td>Cost</td><td>Date</td><td>Action</td></tr>";
+						<tr><td>".__("Name","bepro-listings")."</td><td>".__("Cost","bepro-listings")."</td><td>".__("Date","bepro-listings")."</td><td>".__("Action","bepro-listings")."</td></tr>";
 						foreach($expired as $pay_this){
 							$feature = get_post($pay_this->feature_id);
 							$bl_order_id = $pay_this->bl_order_id;

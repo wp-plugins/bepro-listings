@@ -537,7 +537,7 @@
 		if(is_numeric($order_dir))
 			$bl_order = "<div id='bl_order' class='bl_shortcode_selected'>$order_dir</div>";
 		
-		$bl_form_id = "";
+		
 		if(is_numeric($bl_form_id))
 			$bl_form_id = "<div id='bl_form_id' class='bl_shortcode_selected'>$bl_form_id</div>";
 		
@@ -642,8 +642,9 @@
 						<span class='searchlabel'>".__($data["cat_heading"], "bepro-listings")."</span>
 						";
 			if($l_type){	
-				$l_type = is_array($l_type)?$l_type[0]:$l_type;			
+				$l_type = is_array($l_type)?$l_type[0]:$l_type;
 				$parent = (is_numeric($l_type) && ($l_type != "0"))? $l_type:" ";
+				$include = (stristr($l_type, ","))? $l_type:" ";
 			}else{
 				$parent = "";
 			}
@@ -655,6 +656,7 @@
 					'hide_empty'         => 1, 
 					'child_of'           => 0,
 					'exclude'            => '',
+					'include'            => @$include,
 					'echo'               => 0,
 					'selected'           => $parent,
 					'hierarchical'       => 0, 
@@ -672,13 +674,13 @@
 			///////////////////////////////////////////////////////////////////////
 			if($data["show_geo"] == (1||"on"))	
 			$search_form .= "<div class='bl_distance_search_option'>".__("Distance", "bepro-listings").': <select name="distance">
-						<option value="">None</option>
-						<option value="10" '.(($_POST["distance"] == 10)||((empty($_POST["distance"])) && $data["distance"] == 10)? 'selected="selected"':"").'>10 miles</option>
-						<option value="50" '.(($_POST["distance"] == 50)||((empty($_POST["distance"])) && $data["distance"] == 50)? 'selected="selected"':"").'>50 miles</option>
-						<option value="150" '.((($_POST["distance"] == 150) || ((empty($_POST["distance"])) && $data["distance"] == 150))? 'selected="selected"':"").'>150 miles</option>
-						<option value="250" '.(($_POST["distance"] == 250)||((empty($_POST["distance"])) && $data["distance"] == 250)? 'selected="selected"':"").'>250 miles</option>
-						<option value="500" '.(($_POST["distance"] == 500)||((empty($_POST["distance"])) && $data["distance"] == 500)? 'selected="selected"':"").'>500 miles</option>
-						<option value="1000" '.(($_POST["distance"] == 1000)||((empty($_POST["distance"])) && $data["distance"] == 1000)? 'selected="selected"':"").'>1000 miles</option>
+						<option value="">'.__("None","bepro-listings").'</option>
+						<option value="10" '.(($_POST["distance"] == 10)||((empty($_POST["distance"])) && $data["distance"] == 10)? 'selected="selected"':"").'>'.__("10 miles","bepro-listings").'</option>
+						<option value="50" '.(($_POST["distance"] == 50)||((empty($_POST["distance"])) && $data["distance"] == 50)? 'selected="selected"':"").'>'.__("50 miles","bepro-listings").'</option>
+						<option value="150" '.((($_POST["distance"] == 150) || ((empty($_POST["distance"])) && $data["distance"] == 150))? 'selected="selected"':"").'>'.__("150 miles","bepro-listings").'</option>
+						<option value="250" '.(($_POST["distance"] == 250)||((empty($_POST["distance"])) && $data["distance"] == 250)? 'selected="selected"':"").'>'.__("250 miles","bepro-listings").'</option>
+						<option value="500" '.(($_POST["distance"] == 500)||((empty($_POST["distance"])) && $data["distance"] == 500)? 'selected="selected"':"").'>'.__("500 miles","bepro-listings").'</option>
+						<option value="1000" '.(($_POST["distance"] == 1000)||((empty($_POST["distance"])) && $data["distance"] == 1000)? 'selected="selected"':"").'>'.__("1000 miles","bepro-listings").'</option>
 					</select></div>';
 				
 				//min/max cost
@@ -806,7 +808,7 @@
 			if(is_numeric($bp_listing->cost)){ 
 				//formats the price to have comas and dollar sign like currency.
 				setlocale(LC_MONETARY, "en_US");
-				$cost = ($bp_listing->cost == 0)? "Free" : $data["currency_sign"].sprintf('%01.2f', $bp_listing->cost);
+				$cost = ($bp_listing->cost == 0)? __("Free","bepro-listings") : $data["currency_sign"].sprintf('%01.2f', $bp_listing->cost);
 			}else{
 				$cost = __("Please Contact", "bepro-listings");
 			} 
@@ -831,7 +833,7 @@
 		*/		
 		if($target == 2){
 			if(!empty($bp_listing->website) && !empty($show_web_link))
-				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'"  target="_blank">Website</a></span>';
+				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'"  target="_blank">'.__("Website","bepro-listings").'</a></span>';
 			
 			if($bp_listing->post_status == "publish")
 				echo '<span class="result_button"><a href="'.$permalink.'" target="_blank">'.$details_link.'</a></span>';
@@ -840,10 +842,10 @@
 				echo '<span class="result_button"><a class="bl_ajax_result_page" post_id="'.$bp_listing->post_id.'" href="'.$permalink.'" '.$target.'>'.$details_link.'</a></span>';
 		}elseif($target == 4){
 				$website = (stristr($bp_listing->website,"http"))? $bp_listing->website:"http://".$bp_listing->website;
-				echo '<span class="result_button"><a href="'.$website.'"  target="_blank">Website</a></span>';
+				echo '<span class="result_button"><a href="'.$website.'"  target="_blank">'.__("Website","bepro-listings").'</a></span>';
 		}else{
 			if(!empty($bp_listing->website) && !empty($show_web_link))
-				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'">Website</a></span>';
+				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'">'.__("Website","bepro-listings").'</a></span>';
 			
 			if($bp_listing->post_status == "publish")
 				echo '<span class="result_button"><a href="'.$permalink.'">'.$details_link.'</a></span>';
@@ -975,6 +977,7 @@
 		//addon tie ins
 		$_POST["bl_form_id"] = $bl_form_id; 
 		$_POST["origami"] = $origami; 
+		$_POST["redirect"] = $redirect; 
 		//get settings
 		$data = get_option("bepro_listings");
 		$default_user_id = $data["default_user_id"];
@@ -985,7 +988,7 @@
 		$show_geo = $data["show_geo"];
 		
 		if(empty($default_user_id) && empty($register)){
-			echo "You must provide a 'default user id' in the admin settings or use the registration=1 option.";	
+			echo __("You must provide a 'default user id' in the admin settings or use the registration=1 option.","bepro-listings");	
 			return;
 		}
 		
@@ -996,10 +999,10 @@
 					header("LOCATION: ".get_bloginfo("url").$_POST["redirect"]);
 					exit;
 				}
-				$success_message = apply_filters("bepro_form_success_message","Listing Successfully Saved");
+				$success_message = apply_filters("bepro_form_success_message",__("Listing Successfully Saved","bepro-listings"));
 				echo "<h2>".$success_message."</h2>";
 			}else{
-				$fail_message = apply_filters("bepro_form_fail_message","Issue saving your listing. Please contact the website administrator");
+				$fail_message = apply_filters("bepro_form_fail_message",__("Issue saving your listing. Please contact the website administrator","bepro-listings"));
 				echo "<h2>".$fail_message."</h2>";
 			}
 		}

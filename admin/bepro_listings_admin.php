@@ -920,7 +920,7 @@
 						<?php 
 							if(!class_exists("Bepro_email")){
 								$disabled = "disabled='disabled'";
-								echo "<p>You need to download and install <a href='https://www.beprosoftware.com/shop/bepro-email' target='_blank'>BePro Email</a> to activate notification features.</p>";
+								echo __("<p>You need to download and install <a href='https://www.beprosoftware.com/shop/bepro-email' target='_blank'>BePro Email</a> to activate notification features.</p>","bepro-listings");
 							}else{
 								$disabled = "";
 							}
@@ -961,7 +961,7 @@
 			</form>
 		</div>
 		<div class="bepro_listings_loading_msg">
-		<p>Jquery is loading... Please wait</p>
+		<p><?php echo __("Jquery is loading... Please wait","bepro-listings"); ?></p>
 		</div>	
 			<?php	
 	}
@@ -981,7 +981,7 @@
 			</div>	
 		</div>
 		<div class="bepro_listings_loading_msg">
-		<p>Jquery is loading... Please wait</p>
+		<p><?php echo __("Jquery is loading... Please wait","bepro-listings"); ?></p>
 		</div>
 		<?php
 	}
@@ -1055,8 +1055,8 @@
 		
 		
 		echo "
-			<p><a href='https://www.beprosoftware.com/documentation/bepro-listings-shortcodes/' target='_blank'>Click here</a> to view complete shortcode documentation</p>
-			<span class='shortcode_label'>Select Shortcode</span> <select id='bl_shortcode_type'>
+			<p><a href='https://www.beprosoftware.com/documentation/bepro-listings-shortcodes/' target='_blank'>".__("Click here","bepro-listings")."</a> ".__("to view complete shortcode documentation","bepro-listings")."</p>
+			<span class='shortcode_label'>".__("Select Shortcode","bepro-listings")."</span> <select id='bl_shortcode_type'>
 				<option value='bl_all_in_one'>All In One</option>
 				<option value='display_listings'>Show Listings</option>
 				<option value='filter_form'>Search Filter Table</option>
@@ -1069,7 +1069,7 @@
 			</select><br />
 			
 			<div id='tab_bl_all_in_one' class='shorcode_options'>
-				<p class='shortcode_desc'>All In one shortcode is an easy way to get started. It calls other shortcodes for you, delivering several features at once. Its easy to switch between the available options or simply use the shortcodes you need. </p>
+				<p class='shortcode_desc'>".__("All In one shortcode is an easy way to get started. It calls other shortcodes for you, delivering several features at once. Its easy to switch between the available options or simply use the shortcodes you need.","bepro-listings")."</p>
 				<form id='form_bl_all_in_one' method='post'>
 					<span class='shortcode_label'>Template</span><select name='l_type'>
 						<option value=''>Full Width Map</option>
@@ -1081,7 +1081,7 @@
 				</form>
 			</div>
 			<div id='tab_display_listings' class='shorcode_options hide_options'>
-				<p class='shortcode_desc'>Show Listings and search results. By default, the latest x Listings are shown. X (# of listings) is a setting in the admin</p>
+				<p class='shortcode_desc'>".__('Show Listings and search results. By default, the latest x Listings are shown. X (# of listings) is a setting in the admin',"bepro-listings")."</p>
 				<form id='form_display_listings' method='post'>
 					<span class='shortcode_label'>Show Paging?</span><input type='checkbox' value=1 name='show_paging' /></br />
 					<span class='shortcode_label'>Template</span><select name='type'>
@@ -1110,20 +1110,20 @@
 				</form>
 			</div>
 			<div id='tab_bl_search_filter' class='shorcode_options hide_options'>
-				<p class='shortcode_desc'>Show the Search filter with a CSS layout. This responsive element will adapt to the space you put it in.</p>
+				<p class='shortcode_desc'>".__("Show the Search filter with a CSS layout. This responsive element will adapt to the space you put it in.","bepro-listings")."</p>
 				<form id='form_bl_search_filter' method='post'>
 					<span class='shortcode_label'>Listing page</span><input type='text' name='listing_page' /></br />
 					<span class='shortcode_label'>Category ID</span><input type='text' name='l_type'  size=1 placeholder='e.g. 5'/></br />
 				</form>
 			</div>
 			<div id='tab_search_form' class='shorcode_options hide_options'>
-				<p class='shortcode_desc'>Search form with name and location. If you have geo features turned off, the location option will not be available. Name refers to the contact name, title or both depending on your admin configuration</p>
+				<p class='shortcode_desc'>".__("Search form with name and location. If you have geo features turned off, the location option will not be available. Name refers to the contact name, title or both depending on your admin configuration","bepro-listings")."</p>
 				<form id='form_search_form' method='post'>
 					<span class='shortcode_label'>Listing page</span><input type='text' name='listing_page' />
 				</form>
 			</div>
 			<div id='tab_generate_map' class='shorcode_options hide_options'>
-				<p class='shortcode_desc'>Show the google map with markers for each listing</p>
+				<p class='shortcode_desc'>".__("Show the google map with markers for each listing","bepro-listings")."</p>
 				<form id='form_generate_map' method='post'>
 					<span class='shortcode_label'>Category ID's</span><input type='text' name='l_type' placeholder='e.g. 11,21,43' /><br />
 					<span class='shortcode_label'>Size</span><select name='size'>
@@ -1136,7 +1136,7 @@
 				</form>
 			</div>
 			<div id='tab_display_listing_categories' class='shorcode_options hide_options'>
-				<p class='shortcode_desc'>Show the Listing categories with listings assigned to them.</p>
+				<p class='shortcode_desc'>".__("Show the Listing categories with listings assigned to them.","bepro-listings")."</p>
 				<form id='form_display_listing_categories' method='post'>
 					<span class='shortcode_label'>URL</span><input type='text' name='url_input' /><br />
 					<span class='shortcode_label'>Template</span><select name='ctype'>
@@ -1161,13 +1161,13 @@
 				
 				</form>
 			</div>
-			<button id='send_bl_shortcode'>Use ShortCode</button>";
+			<button id='send_bl_shortcode'>".__("Use ShortCode","bepro-listings")."</button>";
 		exit;
 	}
 	
 	function bepro_listings_add_settings_link($links) {
 		$links[] = '<a href="edit.php?post_type=bepro_listings&page=bepro_listings_options">' . (__("Settings", "bepro-listings")) . '</a>';
-		$links[] = '<a href="https://www.beprosoftware.com/forums">' . (__("Support", "bepro-listings")) . '</a>';
+		$links[] = '<a href="https://www.beprosoftware.com/forums">' . __("Support", "bepro-listings") . '</a>';
 		return $links;
 	}
 	
@@ -1266,9 +1266,9 @@
 	
 	function package_general_meta($post){
 		echo '<div id="package_general_meta">
-			<span class="form_label">Num Listings</span><input type="text" name="num_package_listings" value="'.get_post_meta($post->ID, "num_package_listings", true).'" placeholder="e.g. 1"/> <br />
-			<span class="form_label">Listing Duration</span><input type="text" name="package_duration"  value="'.get_post_meta($post->ID, "package_duration", true).'" placeholder="# in days" /> <br />
-			<span class="form_label">Cost</span><input type="text" name="package_cost"  value="'.get_post_meta($post->ID, "package_cost", true).'" placeholder="e.g. 5.86"/> <br />
+			<span class="form_label">'.__("Num Listings","bepro-listings").'</span><input type="text" name="num_package_listings" value="'.get_post_meta($post->ID, "num_package_listings", true).'" placeholder="e.g. 1"/> <br />
+			<span class="form_label">'.__("Listing Duration","bepro-listings").'</span><input type="text" name="package_duration"  value="'.get_post_meta($post->ID, "package_duration", true).'" placeholder="'.__("# in days","bepro-listings").'" /> <br />
+			<span class="form_label">'.__("Cost","bepro-listings").'</span><input type="text" name="package_cost"  value="'.get_post_meta($post->ID, "package_cost", true).'" placeholder="e.g. 5.86"/> <br />
 		</div>
 		';
 	}
@@ -1286,20 +1286,20 @@
 		$order = bl_get_payment_order($post->ID);
 		echo '<div id="bl_order_general_meta">
 			<span class="form_label">Cust User ID</span><input type="text" name="cust_user_id" value="'.@$order->cust_user_id.'" '.((@$order->cust_user_id)? "disabled='disabled'":"").'/> <br />
-			<span class="form_label">Status</span><select name="status" '.@$order->status.'" '.((@$order->status)? "disabled='disabled'":"").'> 
+			<span class="form_label">'.__("Status","bepro-listings").'</span><select name="status" '.@$order->status.'" '.((@$order->status)? "disabled='disabled'":"").'> 
 				<option value="">'.__("Select", "bepro-listings").'</option>
-				<option value="1" '.((@$order->status == 1)? "selected='selected'":"").'>Paid</option>
-				<option value="2" '.((@$order->status == 2)? "selected='selected'":"").'>Pending</option>
-				<option value="3" '.((@$order->status == 3)? "selected='selected'":"").'>Failed</option>
+				<option value="1" '.((@$order->status == 1)? "selected='selected'":"").'>'.__("Paid","bepro-listings").'</option>
+				<option value="2" '.((@$order->status == 2)? "selected='selected'":"").'>'.__("Pending","bepro-listings").'</option>
+				<option value="3" '.((@$order->status == 3)? "selected='selected'":"").'>'.__("Failed","bepro-listings").'</option>
 			</select><br />
 			<span class="form_label">BePro Cart ID</span><input type="text" name="bepro_cart_id"  value="'.@$order->bepro_cart_id.'" '.@$order->bepro_cart_id.'" '.((@$order->bepro_cart_id)? "disabled='disabled'":"").'/> <br />
 			<span class="form_label">Feature Type</span><select name="feature_type" '.@$order->feature_type.'" '.((@$order->feature_type)? "disabled='disabled'":"").'> 
 				<option value="">'.__("Select", "bepro-listings").'</option>
-				<option value="1" '.((@$order->feature_type == 1)? "selected='selected'":"").'>Category Listing</option>
-				<option value="2" '.((@$order->feature_type == 2)? "selected='selected'":"").'>Package</option>
+				<option value="1" '.((@$order->feature_type == 1)? "selected='selected'":"").'>'.__("Category Listing","bepro-listings").'</option>
+				<option value="2" '.((@$order->feature_type == 2)? "selected='selected'":"").'>'.__("Package","bepro-listings").'</option>
 			</select><br />
-			<span class="form_label">Feature ID</span><input type="text" name="feature_id"  value="'.@$order->feature_id.'" '.@$order->feature_id.'" '.((@$order->feature_id)? "disabled='disabled'":"").'/> <br />
-			<span class="form_label">Date Paid</span><input class="bl_date_input" type="text" name="date_paid"  value="'.((@$order->date_paid && (@$order->date_paid != "0000-00-00 00:00:00"))? $order->date_paid:"").'" /> 
+			<span class="form_label">'.__("Feature ID","bepro-listings").'</span><input type="text" name="feature_id"  value="'.@$order->feature_id.'" '.@$order->feature_id.'" '.((@$order->feature_id)? "disabled='disabled'":"").'/> <br />
+			<span class="form_label">'.__("Date Paid","bepro-listings").'</span><input class="bl_date_input" type="text" name="date_paid"  value="'.((@$order->date_paid && (@$order->date_paid != "0000-00-00 00:00:00"))? $order->date_paid:"").'" /> 
 		</div>
 		';
 	}

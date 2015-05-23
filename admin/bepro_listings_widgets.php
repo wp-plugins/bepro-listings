@@ -76,7 +76,7 @@ class BL_Map_Widget extends WP_Widget {
 		if ($_POST["id_base"] == "bl_map_widget"){
 			$data['size'] = attribute_escape($_POST['size']);
 			update_option('bepro_map_widget', $data);
-			echo "success";
+			echo __("success","bepro-listings");
 		}
 	}
 

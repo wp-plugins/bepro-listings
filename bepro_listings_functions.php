@@ -259,7 +259,7 @@
 				wp_update_attachment_metadata( $attach_id, $attach_data );
 			}
 			if($blog_id)restore_current_blog();
-			set_transient( '_bepro_listings_activation_wizard', 1, HOUR_IN_SECONDS );
+			//set_transient( '_bepro_listings_activation_wizard', 1, HOUR_IN_SECONDS );
 		}
 		
 		
@@ -392,7 +392,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.9991' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.9992' );
 		}	
 	}
 	
@@ -562,7 +562,7 @@
 			//new features
 			
 			//show welcome screen to new users
-			set_transient( '_bepro_listings_activation_redirect', 1, HOUR_IN_SECONDS );
+			//set_transient( '_bepro_listings_activation_redirect', 1, HOUR_IN_SECONDS );
 			
 			//set version
 			update_option('bepro_listings_version', $bepro_listings_version);
@@ -1072,8 +1072,11 @@
 	
 	//Create BePro Listings custom post type.
 	function bepro_create_post_type() {
+		//some stuff we wanna tie to init. This must move
 		bl_load_constants();
 		permalink_save_options();
+		
+		//register custom post types
 		$labels = array(
 			'name' => _x('BePro Listings', 'post type general name', 'bepro-listings'),
 			'singular_name' => _x('Listing', 'post type singular name', 'bepro-listings'),
@@ -1571,5 +1574,16 @@
 			</div>
 		</div>
 		<?php
+	}
+	
+	function bpl_check_api_call($app, $call){
+		if($app == "bepro_listings"){
+			if(@$call->records->listing[0]){
+				$pickup = new bepro_listings_api();
+				$pickup->answer($call);
+			}else{
+				echo "<response><error>2</error></response>";
+			}
+		}
 	}
 ?>

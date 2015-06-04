@@ -155,16 +155,18 @@
 			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
 			  'show_paging' => $wpdb->escape($_POST["show_paging"]),
 			  'map_id' => $wpdb->escape($_POST["map_id"]),
+			  'limit' => $wpdb->escape($_REQUEST["limit"]),
 			  'bl_form_id' => $wpdb->escape($_REQUEST["bl_form_id"]),
 			  'bl_post_id' => $wpdb->escape($_POST["bl_post_id"])
 		 ), $atts));
+		 
 		 
 		//form builder integration
 		$_POST["bl_form_id"] = $bl_form_id;
 		 
 		//Setup data
 		$data = get_option("bepro_listings");
-		$num_results = $data["num_listings"]; 
+		$num_results = (empty($limit)|| !is_numeric($limit))? $data["num_listings"]:$limit; 
 		$size = empty($size)? 1:$size;
 		
 		//bail if geo features aren't turned on

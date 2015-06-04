@@ -4,6 +4,7 @@
 		do_action("bl_before_frontend_listings");
 		if(isset($_GET["message"]))echo "<span class='classified_message'>".$_GET["message"]."</span>";
 		echo "<h3>".__("My Item Listings", "bepro-listings")."</h3>"; 
+		
 		if((@$items) && (sizeof($items) > 0)){
 			echo "<table id='classified_listings_table'><tr>
 					<td>".__("Name", "bepro-listings")."</td>
@@ -57,7 +58,7 @@
 						}else{
 							echo __("Wait", "bepro-listings");
 						}
-						if((!function_exists("bp_is_my_profile")) ||($bp->displayed_user->id == $bp->loggedin_user->id))echo " | <a href='$listing_url".$item->id."'>".__("Edit", "bepro-listings")."</a> | <a id='file::".$item->post_id."::".$item->post_title."' href='#' class='delete_link'>".__("Delete", "bepro-listings")."</a>";
+						if((!function_exists("bp_is_my_profile")) ||($bp->displayed_user->id == $bp->loggedin_user->id) || ($data["buddypress"] == false))echo " | <a href='$listing_url".$item->id."'>".__("Edit", "bepro-listings")."</a> | <a id='file::".$item->post_id."::".$item->post_title."' href='#' class='delete_link'>".__("Delete", "bepro-listings")."</a>";
 				echo "	</td>
 					</tr>
 				";

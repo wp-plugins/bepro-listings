@@ -259,7 +259,7 @@
 				wp_update_attachment_metadata( $attach_id, $attach_data );
 			}
 			if($blog_id)restore_current_blog();
-			//set_transient( '_bepro_listings_activation_wizard', 1, HOUR_IN_SECONDS );
+			set_transient( '_bepro_listings_activation_wizard', 1, HOUR_IN_SECONDS );
 		}
 		
 		
@@ -392,7 +392,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.9992' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.9993' );
 		}	
 	}
 	
@@ -561,8 +561,8 @@
 			
 			//new features
 			
-			//show welcome screen to new users
-			//set_transient( '_bepro_listings_activation_redirect', 1, HOUR_IN_SECONDS );
+			//show welcome screen to users who are updating
+			set_transient( '_bepro_listings_activation_redirect', 1, HOUR_IN_SECONDS );
 			
 			//set version
 			update_option('bepro_listings_version', $bepro_listings_version);
@@ -1577,12 +1577,36 @@
 	}
 	
 	function bpl_check_api_call($app, $call){
+		bl_load_constants();
 		if($app == "bepro_listings"){
 			if(@$call->records->listing[0]){
 				$pickup = new bepro_listings_api();
 				$pickup->answer($call);
 			}else{
 				echo "<response><error>2</error></response>";
+			}
+		}
+	}
+	
+	/* Display a notice that can be dismissed */
+	function bpl_admin_notice() {
+		global $current_user ;
+		$user_id = $current_user->ID;
+		/* Check that the user hasn't already clicked to ignore the message */
+		if ( ! get_user_meta($user_id, 'bpl_nag_ignore') ) {
+			echo '<div class="updated"><p>'; 
+			printf(__('BePro Listings has been Updated. <a href="'.admin_url( 'index.php?page=bepro-listngs-dashboard' ).'">Click here</a> to see whats new. | <a href="%1$s">Hide Notice</a>'), '?bpl_nag_ignore=0');
+			echo "</p></div>";
+		}
+	}
+
+	function bpl_nag_ignore() {
+		if(is_admin()){
+			global $current_user;
+			$user_id = $current_user->ID;
+			/* If user clicks to ignore the notice, add that to their user meta */
+			if ( isset($_GET['bpl_nag_ignore']) && '0' == $_GET['bpl_nag_ignore'] ) {
+				 add_user_meta($user_id, 'bpl_nag_ignore', 'true', true);
 			}
 		}
 	}

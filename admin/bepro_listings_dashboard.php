@@ -22,6 +22,9 @@
 		<h3><?php _e( 'You are using', "bepro-listings" ); _e( 'BePro Listings Version:', "bepro-listings" ); echo " ".BEPRO_LISTINGS_VERSION; ?>   </h3>
 	
 		<div class="feature-section images-stagger-right">
+			<h4><?php _e( 'API', "bepro-listings" ); ?></h4>
+			<p><?php _e( 'Manage your listings remotely or integrate with a third party system. Now you can move millions of listings to and from your website with ease. You will need the BePro Software API plugin to access this feature. <a href="https://www.beprosoftware.com/documentation/bepro-listings-api/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
+			
 			<h4><?php _e( 'Payment Features', "bepro-listings" ); ?></h4>
 			<p><?php _e( 'Its now easier than ever to collect payments with BePro Listings and BePro Cart. Now, when you select flat payment, two new menu options will apprear (packages and orders). There you can setup the available payment packages and see packages users are creating. Don\'t worry, we still offer payments by category. With paypal and several available payment addons via BePro Cart, your directory has the tools to generate revenue. <a href="https://www.beprosoftware.com/documentation/bepro-listings-payments/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
 			

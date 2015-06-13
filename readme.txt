@@ -1,10 +1,10 @@
 === BePro Listings ===
 Contributors: BeyondPrograms, BeProSoftware
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: auto, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
+Tags: auto, api, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.1.9992
+Stable tag: 2.1.9993
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,7 @@ Customize the experience for managers and visitors with our growing list of add-
 	19. Tags - You and your members can tag your listings and allow users to search them via the tag widget
 	20. reCAPTCHA - Prevent spam and malicious submissions with this google reCAPTCHA system
 	21. Contact - Receive notifications when someone submits a listing. Also add a contact form to your listing detail pages.
+	22. API - Integrate with other apps. Add/update/delete millions or listings via our api system. Requires BePro Software Api
 
 = THEMES =
 
@@ -245,11 +246,18 @@ No. However, if interested, you can.
 
 == Other Notes ==
 
-BePro Listings is part of the BePro Software Suite of products. Maintained by the BePro Software Team, you know that this product will be well supported for years to come. As part of our suite, it also integrates with other software we create like BePro Email and BePro Cart. This integration guarantees compatability and continues our trend of offering you a flexible way to build the website experience that your users require.  
+BePro Listings is part of the BePro Software Suite of products. Maintained by the BePro Software Team, you know that this product will be well supported for years to come. As part of our suite, it also integrates with other software we create like BePro Email, BePro Software Api and BePro Cart. This integration guarantees compatability and continues our trend of offering you a flexible way to build the website experience that your users require.  
 
 Integration with other plugins in our suite is always free and integrated into the core of our plugins. For example, activating payment features for BePro Listings requires that you have BePro Cart installed. The notification features are similar, requiring BePro Email to be installed. This separation allows us to develop multiple products with extensive payment and notification features. Most importantly, this architecture provides a central and familiar interface for you to manage these features.
 
 == Changelog ==
+
+= 2.1.9993 (Jun 12th, 2015) =
+
+* Enhancements to new api feature.
+* Reintroduce welcome wizard
+* New method for update notice because of new wordpress update method
+* Show email in listing results, only if show contact is selected in admin
 
 = 2.1.9992 (Jun 4th, 2015) =
 

@@ -755,7 +755,8 @@
 		}
 	}
 	function bepro_listings_list_email_template($bp_listing){
-		if(!empty($bp_listing->email)){
+		$data = get_option("bepro_listings");
+		if(!empty($bp_listing->email) && !empty($data["show_con"])){
 			echo "<span class='result_email'>".__("Email", "bepro-listings")." - ".$bp_listing->email."</span>";	
 		}
 	}

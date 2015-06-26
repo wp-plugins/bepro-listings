@@ -20,7 +20,7 @@ This plugin proivdes a highly customizable listings experience. With its modular
 [youtube http://www.youtube.com/watch?v=zg2o1XK7vKk&hd=1]
 
 = KEY FEATURES =
-Our BePro Software Team is constantly developing new features. The following functionality is included with the base plugin:
+Our BePro Software Team is constantly developing new features. The following functionality is included with the base plugin
 
 	1. Accept Payments - Unlimited payment packages or charge per category. "BePro Cart" plugin is required (100% free)
 	2. Upload CSV - Upload your lisings via a csv document

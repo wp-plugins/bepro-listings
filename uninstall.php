@@ -20,22 +20,31 @@
 if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
 	exit ();
 
+//delete options
 delete_option('bepro_listings');
+delete_option("bpl_rate_ignore");
+delete_option("bpl_nag_ignore");
+
 // For site options in multisite
 delete_site_option('bepro_listings'); 
+delete_site_option('bpl_rate_ignore'); 
+delete_site_option('bpl_nag_ignore'); 
 
 //delete listings and table
-$listings = get_posts(array('post_type' => 'bepro_listings'));
+$listings = get_posts(array('post_type' => 'bepro_listings','posts_per_page'=>-1, 
+    'numberposts'=>-1));
 foreach($listings as $listing){
 	wp_delete_post($listing->ID, true);
 }
 //delete orders table
-$orders = get_posts(array('post_type' => 'bpl_orders'));
+$orders = get_posts(array('post_type' => 'bpl_orders','posts_per_page'=>-1, 
+    'numberposts'=>-1));
 foreach($orders as $order){
 	wp_delete_post($order->ID, true);
 }
 //delete packages table
-$packages = get_posts(array('post_type' => 'bpl_packages'));
+$packages = get_posts(array('post_type' => 'bpl_packages','posts_per_page'=>-1, 
+    'numberposts'=>-1));
 foreach($packages as $package){
 	wp_delete_post($package->ID, true);
 }
@@ -50,4 +59,5 @@ if(class_exists("bepro_email")){
 	$bepro_email = new Bepro_email();
 	$bepro_email->delete_all_owner_emails("bepro_listings");
 }
+
 ?>

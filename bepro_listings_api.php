@@ -77,7 +77,8 @@ class bepro_listings_api{
 		if(!$listings->listing->id) return "<response><error>4</error></response>";
 		if((string)$listings->listing->id == "*"){
 			try{
-				$all_listings = get_posts(array('post_type' => 'bepro_listings'));
+				$all_listings = get_posts(array('post_type' => 'bepro_listings', 'posts_per_page'=>-1, 
+    'numberposts'=>-1));
 				foreach($all_listings as $del_listing){
 					wp_delete_post($del_listing->ID, true);
 				}

@@ -97,6 +97,14 @@
 	display:block;
 	clear:both;
 }
+#bpl_page_location_tab{
+	float:left;
+	width:30%;
+}
+#page_details_map_wrap{
+	width:69%;
+	float:left;
+}
 .bepro_address_info{
 	width:100%;
 	display:block;
@@ -241,6 +249,9 @@
 	list-style-type:none;
 }
 /* form layout */
+.chosen-container {
+  min-width: 150px;
+}
 #bepro_listings_package_tabs{
 	margin-bottom:10px;
 }

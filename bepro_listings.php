@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Customizable listings used for, Business directory, classifieds, real estate, portfolio, etc. Optional base features include, front end upload, gallery, paypal payments & buddypress support. Use google maps and various result templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.9995
+Version: 2.1.9996
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -99,29 +99,29 @@ class Bepro_listings{
 		add_action( 'edit_term', 'bepro_listings_category_thumbnail_field_save', 10,3 );
 		add_action( 'bl_before_frontend_listings', 'bl_show_user_missing_payments', 10 );
 		
-		if($data["show_content"] == 2){
+		if(@$data["show_content"] == 2){
 			add_action( 'bepro_listings_item_before_details', 'bepro_listings_description_panel', 11 );
-		}else if($data["show_content"] == 1){
+		}else if(@$data["show_content"] == 1){
 			add_action( 'bepro_listings_tabs', 'bepro_listings_description_tab', 10 );
 			add_action( 'bepro_listings_tab_panels', 'bepro_listings_description_panel', 10 );
 		}
 
-		if($data["show_comments"] == 2){
+		if(@$data["show_comments"] == 2){
 			add_action( 'bepro_listings_item_before_details', 'bepro_listings_comments_panel', 20 );
-		}else if($data["show_comments"] == 1){
+		}else if(@$data["show_comments"] == 1){
 			add_action( 'bepro_listings_tabs', 'bepro_listings_comments_tab', 20 );
 			add_action( 'bepro_listings_tab_panels', 'bepro_listings_comments_panel', 20 );
 		}
-		if($data["show_geo"] == 2){
+		if(@$data["show_geo"] == 2){
 			add_action( 'bepro_listings_item_before_details', 'bepro_listings_page_geo', 21 );
-		}else if($data["show_geo"] == 1){ 
+		}else if(@$data["show_geo"] == 1){ 
 			add_action( 'bepro_listings_tabs', 'bepro_listings_maps_tab', 22 );
 			add_action( 'bepro_listings_tab_panels', 'bepro_listings_maps_panel', 22 );
 		}
 		
-		if($data["show_details"] == 2){
+		if(@$data["show_details"] == 2){
 			add_action( 'bepro_listings_item_before_details', 'bepro_listings_details_panel', 15);
-		}else if($data["show_details"] == 1){
+		}else if(@$data["show_details"] == 1){
 			add_filter( "bpl_show_page_tabs", "show_true");
 			add_action( 'bepro_listings_tabs', 'bepro_listings_details_tab', 15 );
 			add_action( 'bepro_listings_tab_panels', 'bepro_listings_details_panel', 15 );
@@ -129,7 +129,7 @@ class Bepro_listings{
 		
 		
 		//link in footer?
-		if($data["footer_link"] == ("on" || 1)){
+		if(@$data["footer_link"] == ("on" || 1)){
 			add_action("wp_footer", "footer_message");
 		}
 		
@@ -137,7 +137,7 @@ class Bepro_listings{
 		add_action( 'plugins_loaded', array($this, 'check_load_payment') );
 		
 		//expiration features?
-		if(is_numeric($data["require_payment"]) && ($data["require_payment"] > 0)){
+		if(@is_numeric($data["require_payment"]) && ($data["require_payment"] > 0)){
 			add_filter("bepro_listings_search_join_clause", "bepro_search_load_orders");
 			add_filter("bepro_listings_add_to_clause", "bepro_search_remove_expiring");
 		}

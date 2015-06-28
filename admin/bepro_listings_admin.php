@@ -300,7 +300,7 @@
 		}
 		
 		//admin options menu save
-		if(!empty($_POST["update_options"])){
+		if(!empty($_POST["bpl_update_options"])){
 			//general
 			$data["show_cost"] = $_POST["show_cost"];
 			$data["show_con"] = $_POST["show_con"];
@@ -738,7 +738,7 @@
 		<h1><?php _e("BePro Listings Options", "bepro-listings"); ?></h1>
 		<div class="wrap bepro_listings_admin_form">
 			<form class="bepro_listings" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="update_options" value="1" />
+				<input type="hidden" name="bpl_update_options" value="1" />
 				<div id="bepro_listings_tabs">
 					<ul>
 						<li><a href="#tabs-1"><?php _e("General", "bepro-listings"); ?></a></li>

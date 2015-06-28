@@ -394,7 +394,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.9996' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.9997' );
 		}	
 	}
 	
@@ -1617,8 +1617,8 @@
 			global $current_user;
 			$user_id = $current_user->ID;
 			/* If user clicks to ignore the notice, add that to their user meta */
-			if ( isset($_GET['bpl_nag_ignore']) && '0' == $_GET['bpl_nag_ignore'] ) {
-				 add_user_meta($user_id, 'bpl_nag_ignore', 'true', true);
+			if ( isset($_GET['bpl_nag_ignore']) && ('0' == $_GET['bpl_nag_ignore']) ) {
+				 @add_user_meta($user_id, 'bpl_nag_ignore', 'true', true);
 			}
 		}
 	}
@@ -1662,10 +1662,10 @@
 			global $current_user;
 			$user_id = $current_user->ID;
 			/* If user clicks to ignore the notice, add that to their user meta */
-			if ( isset($_GET['bpl_rate_ignore']) && '1' == $_GET['bpl_rate_ignore'] ) {
-				 add_user_meta($user_id, 'bpl_rate_ignore', 1, true);
-			}else if ( isset($_GET['bpl_rate_ignore']) && '2' == $_GET['bpl_rate_ignore'] ) {
-				 add_user_meta($user_id, 'bpl_rate_ignore', date("Y-m-d H:i:s"), true);
+			if ( isset($_GET['bpl_rate_ignore']) && ('1' == $_GET['bpl_rate_ignore']) ) {
+				 @add_user_meta($user_id, 'bpl_rate_ignore', 1, true);
+			}else if ( isset($_GET['bpl_rate_ignore']) && ('2' == $_GET['bpl_rate_ignore']) ) {
+				 @add_user_meta($user_id, 'bpl_rate_ignore', date("Y-m-d H:i:s"), true);
 			}
 		}
 	}

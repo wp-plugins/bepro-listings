@@ -394,7 +394,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.9999' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.99991' );
 		}	
 	}
 	

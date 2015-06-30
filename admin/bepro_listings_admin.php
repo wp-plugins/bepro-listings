@@ -2410,7 +2410,7 @@
 
 				$user_id = $current_user->ID;
 
-				delete_usermeta($user_id, "bpl_nag_ignore");
+				delete_user_meta($user_id, "bpl_nag_ignore");
 
 				add_action('admin_notices', 'bpl_admin_notice');
 

@@ -777,16 +777,16 @@
 	function bepro_listings_list_geo_template($bp_listing){
 		$data = get_option("bepro_listings");
 		if($data["show_geo"])
-			echo '<span class="result_title">'.$bp_listing->address_line1;
+			echo '<span class="result_title"><span class="bl_list_addr_element">'.$bp_listing->address_line1.", </span>";
 			
 			if(!empty($bp_listing->city)) 
-				echo ', '.$bp_listing->city;
+				echo '<span class="bl_list_addr_element">'.$bp_listing->city.', </span>';
 				
 			if(!empty($bp_listing->state)) 
-				echo ', '.$bp_listing->state;
+				echo '<span class="bl_list_addr_element">'.$bp_listing->state.', </span>';
 			
 			if(!empty($bp_listing->country))
-				echo ', '.$bp_listing->country;
+				echo '<span class="bl_list_addr_element">'.$bp_listing->country.'</span>';
 			
 			echo '</span>';
 	}

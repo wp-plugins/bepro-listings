@@ -22,8 +22,11 @@
 		<h3><?php _e( 'You are using', "bepro-listings" ); _e( 'BePro Listings Version:', "bepro-listings" ); echo " ".BEPRO_LISTINGS_VERSION; ?>   </h3>
 	
 		<div class="feature-section images-stagger-right">
-			<h4><?php _e( 'Payment Features', "bepro-listings" ); ?></h4>
-			<p><?php _e( 'Its now easier than ever to collect payments with BePro Listings and BePro Cart. Now, when you select flat payment, two new menu options will apprear (packages and orders). There you can setup the available payment packages and see packages users are creating. Don\'t worry, we still offer payments by category. With paypal and several available payment addons via BePro Cart, your directory has the tools to generate revenue. <a href="https://www.beprosoftware.com/documentation/bepro-listings-payments/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
+			<h4><?php _e( 'New Layouts', "bepro-listings" ); ?></h4>
+			<p><?php _e( 'More control over detail pages. Put more info in tabs or remove tabs altogether. <a href="https://www.beprosoftware.com/documentation/bepro-listings-payments/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
+			
+			<h4><?php _e( 'New Form Category option', "bepro-listings" ); ?></h4>
+			<p><?php _e( 'We heard you. Now you can select between a category select box or stay with the check boxes. The select box option removes the untidy label design issue affecting some users. <a href="https://www.beprosoftware.com/documentation/bepro-listings-payments/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
 			
 			<h4><?php _e( 'Translations', "bepro-listings" ); ?></h4>
 			<p><?php _e( 'BePro Listngs translations have been updated for the languages that we support. This continues our trend of supporting languages other than English. If you find deficiencies in our use of localization and would like to help, contact us today.', "bepro-listings" ); ?></p>

@@ -144,7 +144,7 @@
 		}
 		
 		
-		if(!empty($show_geo) && ($show_geo == "on")){
+		if(!empty($show_geo) && is_numeric($show_geo)){
 			echo '
 				<div class="add_listing_form_geo bepro_form_section">
 					<h3>'.__("Location Information", "bepro-listings").'</h3>

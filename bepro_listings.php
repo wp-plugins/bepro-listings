@@ -206,7 +206,7 @@ class Bepro_listings{
 					<input type="hidden" name="max_date" value="'.$_POST["max_date"].'">
 					<input type="hidden" name="min_cost" value="'.$_POST["min_cost"].'">
 					<input type="hidden" name="max_cost" value="'.$_POST["max_cost"].'">';	
-		if(($data["show_geo"] == 1) || ($data["show_geo"] == "on"))$return_text .= '
+		if(is_numeric($data["show_geo"]))$return_text .= '
 					<span class="blsearchwhere">
 						<span class="searchlabel">'.__("Where", "bepro-listings").'</span>
 						<input type="text" name="addr_search" value="'.$_POST["addr_search"].'">
@@ -394,7 +394,7 @@ class Bepro_listings{
 			$search_form .= '</td>
 			</tr>';
 			///////////////////////////////////////////////////////////////////////
-			if(($data["show_geo"] == 1)|| ($data["show_geo"] == "on"))	
+			if(is_numeric($data["show_geo"]))	
 			$search_form .= '
 				<tr class="bl_distance_search_option"><td>
 					'.__("Distance", "bepro-listings").': <select name="distance">

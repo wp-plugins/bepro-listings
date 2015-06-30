@@ -664,7 +664,7 @@
 				$search_form .= wp_dropdown_categories( $args )."</div>";
 
 			///////////////////////////////////////////////////////////////////////
-			if($data["show_geo"] == (1||"on"))	
+			if(is_numeric($data["show_geo"]))	
 			$search_form .= "<div class='bl_distance_search_option'>".__("Distance", "bepro-listings").': <select name="distance">
 						<option value="">'.__("None","bepro-listings").'</option>
 						<option value="10" '.(($_POST["distance"] == 10)||((empty($_POST["distance"])) && $data["distance"] == 10)? 'selected="selected"':"").'>'.__("10 miles","bepro-listings").'</option>
@@ -898,7 +898,7 @@
 			$cost = __("Please Contact", "bepro-listings");
 		}
 		
-		if(($data["show_geo"] == 1) || ($data["show_cost"] == "on") || ($data["show_con"] == "on") ){
+		if(is_numeric($data["show_geo"]) || ($data["show_cost"] == "on") || ($data["show_con"] == "on") ){
 			echo "<span class='bepro_listing_info'><h3>".__("Details", "bepro-listings")." </h3>";
 			if($data["show_cost"] == "on"){
 				echo "<div class='item_cost'>".__(apply_filters("bl_cost_listing_label","Cost"), "bepro-listings")." - ".apply_filters("bl_cost_listing_value",$cost)."</div>";

@@ -1059,22 +1059,23 @@
 		include(plugin_dir_path( __FILE__ )."templates/tabs/details.php");
 	}
 
-	function bl_form_package_field($bl_order_id = null){
+	function bl_form_package_field($bl_order_id = null, $return_this = false){
 		$data = get_option("bepro_listings");
 		$order = false;
+		$return_text = "";
 		if($bl_order_id){
 			$order = bl_get_payment_order($bl_order_id);
 			//allow user to change which package this listing is associated with
 			if($order->status == 1)
-			echo "<p>".__("Package Selected and Active","bepro-listings")."</p>";
+			$return_text .= "<p>".__("Package Selected and Active","bepro-listings")."</p>";
 		}
 		
-		echo '<div id="flat_fee">';
+		$return_text .= '<div id="flat_fee">';
 		if(@$data["require_payment"] && ($data["require_payment"] == 2)){
 			$packages = get_posts(array("post_type" => "bpl_packages"));
 			if(!$packages || (sizeof($packages) < 1)) return;
 			
-			echo '<h3>'.__("Available Packages", "bepro-listings").'</h3>';
+			$return_text .= '<h3>'.__("Available Packages", "bepro-listings").'</h3>';
 			foreach($packages as $packages){
 				$num_listings = get_post_meta($packages->ID, "num_package_listings", true);
 				$duration = get_post_meta($packages->ID, "package_duration", true);
@@ -1084,7 +1085,7 @@
 				if(!$num_listings || !is_numeric($num_listings) || ($num_listings < 1)) return; 
 				
 				$package_div[] = array();
-				echo '<div class="package_option"><input type="radio" name="bpl_package" id="package_sel_'.$packages->ID.'" value="'.$packages->ID.'" '.((@$order && ($order->feature_id == $packages->ID))? "checked='checked'":"").'><span class="package_head">'.$packages->post_title.'  ('.$data["currency_sign"].$cost.')</span>
+				$return_text .= '<div class="package_option"><input type="radio" name="bpl_package" id="package_sel_'.$packages->ID.'" value="'.$packages->ID.'" '.((@$order && ($order->feature_id == $packages->ID))? "checked='checked'":"").'><span class="package_head">'.$packages->post_title.'  ('.$data["currency_sign"].$cost.')</span>
 				<span class="package_options">
 					<ul>
 						<li># '.__("Days","bepro-listings").' '.$duration.'</li>
@@ -1097,7 +1098,10 @@
 				
 			}
 		}
-		echo '</div><div style="clear:both"></div>';
+		$return_text .= '</div><div style="clear:both"></div>';
+		if($return_this)
+			return $return_text;
+		echo $return_text;
 	}
 	
 	function get_form_cats($cats, $exclude = array(), $required = array()){

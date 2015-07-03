@@ -23,10 +23,10 @@
 	
 		<div class="feature-section images-stagger-right">
 			<h4><?php _e( 'New Layouts', "bepro-listings" ); ?></h4>
-			<p><?php _e( 'More control over detail pages. Put more info in tabs or remove tabs altogether. <a href="https://www.beprosoftware.com/documentation/bepro-listings-payments/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
+			<p><?php _e( 'More control over detail pages. Put more info in tabs or remove tabs altogether. <a href="https://www.beprosoftware.com/blog/bepro-listings-2-1-99991/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
 			
 			<h4><?php _e( 'New Form Category option', "bepro-listings" ); ?></h4>
-			<p><?php _e( 'We heard you. Now you can select between a category select box or stay with the check boxes. The select box option removes the untidy label design issue affecting some users. <a href="https://www.beprosoftware.com/documentation/bepro-listings-payments/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
+			<p><?php _e( 'We heard you. Now you can select between a category select box or stay with the check boxes. The select box option removes the untidy label design issue affecting some users. <a href="https://www.beprosoftware.com/blog/bepro-listings-2-1-99991/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
 			
 			<h4><?php _e( 'Translations', "bepro-listings" ); ?></h4>
 			<p><?php _e( 'BePro Listngs translations have been updated for the languages that we support. This continues our trend of supporting languages other than English. If you find deficiencies in our use of localization and would like to help, contact us today.', "bepro-listings" ); ?></p>

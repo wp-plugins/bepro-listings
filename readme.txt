@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, api, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.1.99992
+Stable tag: 2.1.99993
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -252,6 +252,12 @@ Integration with other plugins in our suite is always free and integrated into t
 
 == Changelog ==
 
+= 2.1.99993 (July 3rd, 2015) =
+
+* Tweak new form category layout and css
+* Enhance category function to return values instead of echo
+* Tweak form label css
+
 = 2.1.99992 (Jun 30th, 2015) =
 
 * repair front end form options.
@@ -265,6 +271,7 @@ Integration with other plugins in our suite is always free and integrated into t
 = 2.1.9995 (Jun 26th, 2015) =
 
 * Fixes to file encoding causing issues
+* Enhance uninstall process
 
 = 2.1.9994 (Jun 25th, 2015) =
 

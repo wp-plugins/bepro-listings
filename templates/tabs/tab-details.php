@@ -7,4 +7,4 @@
  */
 ?>
 
-<li class="details_tab"><?php _e('Details', 'bepro-listings'); ?></li>
+<li class="details_tab"><?php _e(apply_filters("bl_details_label",'Details'), 'bepro-listings'); ?></li>

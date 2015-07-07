@@ -79,6 +79,7 @@
 			<form method="post" id="result_page_back_button">
 				<input type="hidden" name="filter_search" value="1">
 				<input type="hidden" name="l_type[]" value="'.(bl_check_is_valid_cat($_REQUEST["l_type"])? bl_check_is_valid_cat($_REQUEST["l_type"]):"").'">
+				<input type="hidden" name="type" value="'.$_POST["type"].'">
 				<input type="hidden" name="distance" value="'.$_POST["distance"].'">
 				<input type="hidden" name="min_date" value="'.$_POST["min_date"].'">
 				<input type="hidden" name="max_date" value="'.$_POST["max_date"].'">
@@ -664,7 +665,7 @@
 				$search_form .= wp_dropdown_categories( $args )."</div>";
 
 			///////////////////////////////////////////////////////////////////////
-			if(is_numeric($data["show_geo"]))	
+			if(is_numeric($data["show_geo"]) && ($data["show_geo"] != 0))	
 			$search_form .= "<div class='bl_distance_search_option'>".__("Distance", "bepro-listings").': <select name="distance">
 						<option value="">'.__("None","bepro-listings").'</option>
 						<option value="10" '.(($_POST["distance"] == 10)||((empty($_POST["distance"])) && $data["distance"] == 10)? 'selected="selected"':"").'>'.__("10 miles","bepro-listings").'</option>
@@ -676,11 +677,11 @@
 					</select></div>';
 				
 				//min/max cost
-				if($data["show_cost"] == (1||"on"))
+				if(($data["show_cost"] == 1) || ($data["show_cost"] =="on"))
 				$search_form .= '
 					<div><span class="label_sep">'.__("Price Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_cost" value="'.$_POST["min_cost"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_cost" value="'.$_POST["max_cost"].'"></div>';
 				
-				if($data["show_date"] == (1))
+				if(($data["show_date"] == 1) || ($data["show_date"] =="on"))
 				$search_form .= '
 					<div><span class="label_sep">'.__("Date Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_date" id="min_date" value="'.$_POST["min_date"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_date" id="max_date" value="'.$_POST["max_date"].'"></div>';
 				
@@ -854,6 +855,7 @@
 	function bepro_listings_item_title_template(){
 		echo get_the_title();
 	}
+	
 	function bepro_listings_item_gallery_template(){
 		$post_id = get_the_ID();
 		$data = get_option("bepro_listings");
@@ -867,6 +869,7 @@
 		$gallery = ($num_images == 0)? "":do_shortcode("[gallery size='".$data["gallery_size"]."' columns=".((!empty($data["gallery_cols"]))? $data["gallery_cols"]:3)." ids='".implode(",",$attachments)."']");
 		echo "<div class='bepro_listing_gallery'>".apply_filters("bepro_listings_item_gallery_feature", $gallery)."</div>";
 	}
+	
 	function bepro_listings_item_after_gallery_template(){
 		$override = false;
 		$if_override = apply_filters("bepro_listings_override_page_categories",$override);
@@ -879,7 +882,20 @@
 			if($cats) 
 			echo $cat_section = "<div class='bepro_listing_category_section'><h3>".__($data["cat_heading"], "bepro-listings")."  </h3>".$cats."</div>";
 		}
-	}	function bepro_listings_page_geo(){		global $wpdb;		$data = get_option("bepro_listings");		$page_id = get_the_ID();		$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id = ".$page_id);		if( @$item->lat){			$map_url = "http://maps.google.com/maps?&z=10&q=".$item->lat."+".$item->lon."+(".urlencode($item->address_line1.", ".$item->city.", ".$item->state.", ".$item->country).")&mrt=yp ";			$address_val = ($data["protect_contact"] == "on")? "<a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a>" : $item->address_line1.", ".$item->city.", ".$item->state.", ".$item->country;			echo "<div class='bepro_address_info'><span class='item_label'>".__("Address", "bepro-listings")."</span> - $address_val</div>";		}	}	
+	}	
+	
+	function bepro_listings_page_geo(){		
+		global $wpdb;		
+		$data = get_option("bepro_listings");		
+		$page_id = get_the_ID();		
+		$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id = ".$page_id);		
+		if( @$item->lat){			
+			$map_url = "http://maps.google.com/maps?&z=10&q=".$item->lat."+".$item->lon."+(".urlencode($item->address_line1.", ".$item->city.", ".$item->state.", ".$item->country).")&mrt=yp ";			
+			$address_val = ($data["protect_contact"] == "on")? "<a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a>" : $item->address_line1.", ".$item->city.", ".$item->state.", ".$item->country;			
+			echo "<div class='bepro_address_info'><span class='item_label'>".__("Address", "bepro-listings")."</span> - $address_val</div>";		
+		}	
+	}
+	
 	function bepro_listings_item_details_template(){
 		$override = false;
 		$if_override = apply_filters("bepro_listings_override_page_content",$override);
@@ -898,14 +914,14 @@
 			$cost = __("Please Contact", "bepro-listings");
 		}
 		
-		if(is_numeric($data["show_geo"]) || ($data["show_cost"] == "on") || ($data["show_con"] == "on") ){
+		if(is_numeric($data["show_geo"]) || (!empty($data["show_cost"])) || (!empty($data["show_con"]))){
 			echo "<span class='bepro_listing_info'><h3>".__("Details", "bepro-listings")." </h3>";
-			if($data["show_cost"] == "on"){
+			if(is_numeric($data["show_cost"]) || ($data["show_cost"] == "on")){
 				echo "<div class='item_cost'>".__(apply_filters("bl_cost_listing_label","Cost"), "bepro-listings")." - ".apply_filters("bl_cost_listing_value",$cost)."</div>";
 			}	
 				//If we have geographic data then we can show this listings address information
 				//If there is contact information then show it
-				if($data["show_con"] == "on"){
+				if(is_numeric($data["show_con"]) || ($data["show_con"] == "on")){
 					if(!empty($item->email)){
 						if($add_detail_links){
 							$email_txt = ($data["protect_contact"] == "on")? "Click to View":$item->email;
@@ -1052,6 +1068,7 @@
 				include(plugin_dir_path( __FILE__ )."templates/tabs/maps.php");
 		}
 	}
+	
 	function show_true(){ 
 		return true;
 	}

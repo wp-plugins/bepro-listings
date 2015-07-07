@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Customizable listings used for, Business directory, classifieds, real estate, portfolio, etc. Optional base features include, front end upload, gallery, paypal payments & buddypress support. Use google maps and various result templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.99993
+Version: 2.1.99994
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -394,7 +394,7 @@ class Bepro_listings{
 			$search_form .= '</td>
 			</tr>';
 			///////////////////////////////////////////////////////////////////////
-			if(is_numeric($data["show_geo"]))	
+			if(is_numeric($data["show_geo"]) && ($data["show_geo"] != 0))	
 			$search_form .= '
 				<tr class="bl_distance_search_option"><td>
 					'.__("Distance", "bepro-listings").': <select name="distance">
@@ -409,13 +409,13 @@ class Bepro_listings{
 				</td></tr>';
 				
 				//min/max cost
-				if($data["show_cost"] == (1||"on"))
+				if(($data["show_cost"] == 1) || ($data["show_cost"] == "on"))
 				$search_form .= '
 				<tr><td>
 					<span class="label_sep">'.__("Price Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_cost" value="'.$_POST["min_cost"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_cost" value="'.$_POST["max_cost"].'">
 				</td></tr>';
 				
-				if($data["show_date"] == (1))
+				if(($data["show_date"] == 1) || ($data["show_date"] == "on"))
 				$search_form .= '
 				<tr><td>
 					<span class="label_sep">'.__("Date Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_date" id="min_date" value="'.$_POST["min_date"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_date" id="max_date" value="'.$_POST["max_date"].'">

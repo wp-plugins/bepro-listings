@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2015-04-18 09:05-0400\n"
-"Last-Translator: BePro Software Team <support@beprosoftware.com>\n"
+"PO-Revision-Date: 2015-07-07 00:20-0300\n"
+"Last-Translator: David MT <mr-david@orange.fr>\n"
 "Language-Team: bepro software\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.2\n"
 
 msgid "Item Information"
 msgstr "Élément Information"
@@ -71,7 +71,7 @@ msgid "Country"
 msgstr "Pays"
 
 msgid "Zip / Postal"
-msgstr "Zip / Postal"
+msgstr "Code postal"
 
 msgid "Filter Map"
 msgstr "Type de filtre"
@@ -89,48 +89,48 @@ msgid "Date Range"
 msgstr "Plage de date"
 
 msgid "Price Range"
-msgstr "Intervalle d'impression"
+msgstr "Prix"
 
 msgid "Distance"
 msgstr "Distance"
 
 msgid "Where"
-msgstr "Où"
+msgstr "Lieu"
 
 msgid "Name"
 msgstr "Nom"
 
 #: bepro_listings.php:85
 msgid "Search Listings"
-msgstr "Suche Inserate"
+msgstr "Rechercher"
 
 #: bepro_listings_frontend.php:370
 msgid "Username"
-msgstr "Benutzername"
+msgstr "Nom d'utilisateur"
 
 #: bepro_listings_frontend.php:371
 msgid "Password"
-msgstr "Passwort"
+msgstr "Mot de passe"
 
 #: bepro_listings_frontend.php:369
 msgid "Login / Register"
-msgstr "Login / Registrieren"
+msgstr "Connexion / Inscription"
 
 #: bepro_listings_frontend.php:375
 msgid "Create Listing"
-msgstr "Liste erstellen"
+msgstr "Créer une annonce"
 
 #: bepro_listings.php:234
 msgid "Listing Types"
-msgstr "Liste des Types"
+msgstr "Types d'annonces"
 
 #: bepro_listings.php:276
 msgid "Free"
-msgstr "Libre"
+msgstr "Gratuit"
 
 #: bepro_listings.php:278
 msgid "Please Contact"
-msgstr "Fusionner le contact"
+msgstr "S'il vous plaît contacter"
 
 #: bepro_listings.php:285
 msgid "View Map"
@@ -142,11 +142,11 @@ msgstr "Indiquer le coût"
 
 #: bepro_listings_admin.php:725 #BePro_Edits
 msgid "Documentation"
-msgstr "Dokumentation"
+msgstr "Documentation"
 
 #: bepro_listings_admin.php:725
 msgid "Forums"
-msgstr "Forum"
+msgstr "Forums"
 
 #: bepro_listings_admin.php:259
 msgid "Show Contact"
@@ -206,23 +206,23 @@ msgstr "Generale"
 
 #: bepro_listings_admin.php:576
 msgid "Forms"
-msgstr "Forme"
+msgstr "Formulaires"
 
 #: bepro_listings_admin.php:577
 msgid "Search/Listings"
-msgstr "Ricerca/Inserzioni"
+msgstr "Recherche/Entreprises"
 
 #: bepro_listings_admin.php:578
 msgid "Page/Post"
-msgstr "Pagina/Post"
+msgstr "Page/Publier"
 
 #: bepro_listings_admin.php:579
 msgid "Map"
-msgstr "Mappa"
+msgstr "Map"
 
 #: bepro_listings_admin.php:580
 msgid "3rd Party"
-msgstr "3a parte"
+msgstr "3ème partie"
 
 #: bepro_listings_admin.php:581
 msgid "CSV Upload"
@@ -230,11 +230,11 @@ msgstr "CSV Upload"
 
 #: bepro_listings_admin.php:582
 msgid "Payments"
-msgstr "Pagamenti"
+msgstr "Paiements"
 
 #: bepro_listings_admin.php:583
 msgid "Support"
-msgstr "Supporto"
+msgstr "Support"
 
 #: templates\tabs\tab-comments.php:10
 msgid "Comments"
@@ -262,7 +262,7 @@ msgstr "Catégorie singulier"
 
 #: bepro_listings_admin.php:628
 msgid "Days until Listings Expire?"
-msgstr "Jours jusqu'à l'expirant des annonces?"
+msgstr "Jours jusqu'à l'expiration des annonces?"
 
 #: bepro_listings_admin.php:633
 msgid "Default Status"
@@ -286,7 +286,7 @@ msgstr "Comment ouvrent les liens"
 
 #: bepro_listings_admin.php:650
 msgid "Ajax On?"
-msgstr "Ajax sur?"
+msgstr "Activé Ajax ?"
 
 #: bepro_listings_admin.php:671
 msgid "Name Search"
@@ -294,11 +294,11 @@ msgstr "Recherche par nom"
 
 #: bepro_listings_admin.php:677
 msgid "Title Length"
-msgstr "Titre durée"
+msgstr "Longueur du titre"
 
 #: bepro_listings_admin.php:678
 msgid "Details Link Text"
-msgstr "Texte du lien Détails"
+msgstr "Détails Texte du lien"
 
 #: bepro_listings_admin.php:679
 msgid "Show Website Link?"
@@ -338,7 +338,7 @@ msgstr "Fichier CSV"
 
 #: bepro_listings_admin.php:717
 msgid "Delimiter"
-msgstr "Délimiteur"
+msgstr "Séparateur"
 
 #: bepro_listings_admin.php:732
 msgid "Accept Payments?"
@@ -346,11 +346,11 @@ msgstr "Accepter les paiements?"
 
 #: bepro_listings_admin.php:740
 msgid "Publish after confirm Paid?"
-msgstr "Publier après confirmez payé?"
+msgstr "Publiez après confirmation du paiement ?"
 
 #: ------------Front end---------------- templates/list.php:6
 msgid "My Item Listings"
-msgstr "Mes listes d'éléments"
+msgstr "Mes listes"
 
 msgid "Status"
 msgstr "Statut"
@@ -363,11 +363,11 @@ msgstr "Actions"
 
 #: templates/list.php:32
 msgid "View"
-msgstr "Vue"
+msgstr "Voir"
 
 #: templates/list.php:32
 msgid "Edit"
-msgstr "Edit"
+msgstr "Editer"
 
 #: templates/list.php:32
 msgid "Delete"
@@ -387,11 +387,11 @@ msgstr "Attendre"
 
 #: templates/list.php:60
 msgid "No Live listings created"
-msgstr "Aucune offres Live créés"
+msgstr "Aucune annonce créés"
 
 #: templates/list.php:62
 msgid "No live listings for this user"
-msgstr "Pas d'annonces direct pour cet utilisateur"
+msgstr "Pas d'annonces pour cet utilisateur"
 
 #: ------------DASHBOARD---------------- admin/bepro_listings_dashboard.php:
 #: #BePro_Edits admin/bepro_listings_wizard.php:6
@@ -439,7 +439,7 @@ msgstr "Cliquez ici"
 
 #: admin/bepro_listings_wizard.php:7
 msgid "to skip"
-msgstr "pour sauter"
+msgstr "pour passer"
 
 #: admin/bepro_listings_wizard.php:47
 msgid "STEP 1: CREATE WORDPRESS PAGES"

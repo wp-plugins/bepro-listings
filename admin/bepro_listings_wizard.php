@@ -70,10 +70,10 @@
 						<input type="hidden" name="action" value="bl_update_demo_options" />
 						<table>
 							<tr><td><?php _e("Select","bepro-listings"); ?></td><td><?php _e("Feature","bepro-listings"); ?></td><td><?php _e("Description","bepro-listings"); ?></td></tr>
-							<tr><td><input type="checkbox" name="show_imgs" checked="checked"></td><td><?php _e("Show Images","bepro-listings"); ?></td><td><?php _e("Show images on the listings","bepro-listings"); ?></td></tr>
-							<tr><td><input type="checkbox" name="show_cost" checked="checked"></td><td><?php _e("Show Cost","bepro-listings"); ?></td><td><?php _e("Show Prices on Listings","bepro-listings"); ?></td></tr>
-							<tr><td><input type="checkbox" name="show_con" checked="checked"></td><td><?php _e("Show Contact","bepro-listings"); ?></td><td><?php _e("Show and search names and other contact info","bepro-listings"); ?></td></tr>
-							<tr><td><input type="checkbox" name="show_geo" checked="checked"></td><td><?php _e("Show Geo","bepro-listings"); ?></td><td><?php _e("Load Google Maps and address search","bepro-listings"); ?></td></tr>
+							<tr><td><input type="checkbox" name="show_imgs" value="1" checked="checked"></td><td><?php _e("Show Images","bepro-listings"); ?></td><td><?php _e("Show images on the listings","bepro-listings"); ?></td></tr>
+							<tr><td><input type="checkbox" name="show_cost" value="1" checked="checked"></td><td><?php _e("Show Cost","bepro-listings"); ?></td><td><?php _e("Show Prices on Listings","bepro-listings"); ?></td></tr>
+							<tr><td><input type="checkbox" name="show_con" value="1" checked="checked"></td><td><?php _e("Show Contact","bepro-listings"); ?></td><td><?php _e("Show and search names and other contact info","bepro-listings"); ?></td></tr>
+							<tr><td><input type="checkbox" name="show_geo" value="1" checked="checked"></td><td><?php _e("Show Geo","bepro-listings"); ?></td><td><?php _e("Load Google Maps and address search","bepro-listings"); ?></td></tr>
 						</table>
 						<input type="submit" value="Save Options &rsaquo;&rsaquo;">
 					</form>

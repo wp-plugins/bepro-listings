@@ -394,7 +394,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.99994' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.99995' );
 		}	
 	}
 	
@@ -447,10 +447,10 @@
 			$data["gallery_size"] = "thumbnail";
 			$data["gallery_cols"] = 3;
 			$data["gallery_cols"] = 1;
-			$data["show_details"] = "on";
+			$data["show_details"] = 2;
 			$data["add_detail_links"] = "on";
 			$data["protect_contact"] = "";
-			$data["show_content"] = "on";
+			$data["show_content"] = 1;
 			$data["tabs_type"] = 1;
 			//map
 			$data["map_query_type"] = "curl";
@@ -564,6 +564,15 @@
 			if(!empty($data["show_con"]))$data["show_con"] = 1;
 			if(!empty($data["show_geo"]))$data["show_geo"] = 1;
 			if(!empty($data["show_imgs"]))$data["show_imgs"] = 1;
+			$data["show_details"] = 2;
+			$data["show_content"] = 1;
+		}
+		
+		if(version_compare($bepro_listings_version, '2.1.99995', '<')){
+			if($data["show_details"] == "on" )$data["show_details"] = 2;
+			if($data["show_content"] == "on" )$data["show_content"] = 1;
+			if($data["show_geo"] == "on" )$data["show_geo"] = 1;
+			if($data["show_con"] == "on" )$data["show_con"] = 1;
 		}
 		
 		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){

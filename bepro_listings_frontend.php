@@ -914,7 +914,7 @@
 			$cost = __("Please Contact", "bepro-listings");
 		}
 		
-		if(is_numeric($data["show_geo"]) || (!empty($data["show_cost"])) || (!empty($data["show_con"]))){
+		if((!empty($data["show_cost"])) || (!empty($data["show_con"]))){
 			echo "<span class='bepro_listing_info'><h3>".__("Details", "bepro-listings")." </h3>";
 			if(is_numeric($data["show_cost"]) || ($data["show_cost"] == "on")){
 				echo "<div class='item_cost'>".__(apply_filters("bl_cost_listing_label","Cost"), "bepro-listings")." - ".apply_filters("bl_cost_listing_value",$cost)."</div>";

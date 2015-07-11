@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, api, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.1.99995
+Stable tag: 2.1.99996
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -152,7 +152,7 @@ You can support the development of this plugin via the donations link on the rig
 You can contribute languages that are not yet supported by the plugin. Documentation regarding how to do this is available on our website. If you find deficiencies in our use of localization, simply reach out. The usefulness of BePro Listings beyond english, is very important to us. Here is a list of currently supported languages
 
 * Dutch (Netherlands) - BePro Software Team
-* French (France) - BePro Software Team
+* French (France) - wnconcept
 * German (Germany) - BePro Software Team
 * Italian (Italy) - BePro Software Team
 * Norwegian (Norway) - BePro Software Team
@@ -251,6 +251,10 @@ BePro Listings is part of the BePro Software Suite of products. Maintained by th
 Integration with other plugins in our suite is always free and integrated into the core of our plugins. For example, activating payment features for BePro Listings requires that you have BePro Cart installed. The notification features are similar, requiring BePro Email to be installed. This separation allows us to develop multiple products with extensive payment and notification features. Most importantly, this architecture provides a central and familiar interface for you to manage these features.
 
 == Changelog ==
+
+= 2.1.99996 (July 11th, 2015) =
+
+* Small tweak to admin management of geo options
 
 = 2.1.99995 (July 8th, 2015) =
 

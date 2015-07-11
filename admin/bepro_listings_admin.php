@@ -58,7 +58,7 @@
 
 		if(($data["show_con"]==1) || ($data["show_con"] == "on"))add_meta_box("contact_details_meta", "Lisiting Details", "BL_Meta_Box_Listing_Images::contact_details_meta", "bepro_listings", "normal", "low");
 
-		if(is_numeric($data["show_geo"]) || ($data["show_geo"] == "on"))add_meta_box("geographic_details_meta", "Geographic Details", "BL_Meta_Box_Listing_Images::geographic_details_meta", "bepro_listings", "normal", "low");
+		if((is_numeric($data["show_geo"]) && ($data["show_geo"] > 0)) || ($data["show_geo"] == "on"))add_meta_box("geographic_details_meta", "Geographic Details", "BL_Meta_Box_Listing_Images::geographic_details_meta", "bepro_listings", "normal", "low");
 
 		
 

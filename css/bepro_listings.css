@@ -248,6 +248,9 @@
 	list-style-type:none;
 }
 /* form layout */
+#bepro_create_listings_form input[type="submit"],#bepro_create_listings_form hr{
+	clear:left;
+}
 .chosen-container {
   min-width: 150px;
 }

@@ -1121,7 +1121,11 @@
 		echo $return_text;
 	}
 	
-	function get_form_cats($cats, $exclude = array(), $required = array()){
+	/*
+		cats = all possible categories
+		categores = the selected categories
+	*/
+	function get_form_cats($cats, $exclude = array(), $required = array(), $categories = array()){
 		$data = get_option("bepro_listings");
 		foreach($cats as $cat){
 			if(!empty($exclude) && in_array($cat->term_id, array_values($exclude))){

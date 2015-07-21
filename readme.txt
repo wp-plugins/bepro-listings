@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, api, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.1.99997
+Stable tag: 2.1.99998
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -107,6 +107,7 @@ Customize the experience for managers and visitors with our growing list of add-
 	20. reCAPTCHA - Prevent spam and malicious submissions with this google reCAPTCHA system
 	21. Contact - Receive notifications when someone submits a listing. Also add a contact form to your listing detail pages.
 	22. API - Integrate with other apps. Add/update/delete millions or listings via our api system. Requires BePro Software Api
+	23. Export - Export records from BePro Listings and various addons
 
 = THEMES =
 
@@ -251,6 +252,13 @@ BePro Listings is part of the BePro Software Suite of products. Maintained by th
 Integration with other plugins in our suite is always free and integrated into the core of our plugins. For example, activating payment features for BePro Listings requires that you have BePro Cart installed. The notification features are similar, requiring BePro Email to be installed. This separation allows us to develop multiple products with extensive payment and notification features. Most importantly, this architecture provides a central and familiar interface for you to manage these features.
 
 == Changelog ==
+
+= 2.1.99998 (July 21st, 2015) =
+
+* Fix ajax when certain html elements are turned off.
+* New delimiter option added
+* Fix show_geo check for search shortcode
+* Fix clear search button not working
 
 = 2.1.99997 (July 15th, 2015) =
 

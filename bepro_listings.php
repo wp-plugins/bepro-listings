@@ -4,13 +4,13 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Customizable listings used for, Business directory, classifieds, real estate, portfolio, etc. Optional base features include, front end upload, gallery, paypal payments & buddypress support. Use google maps and various result templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.99997
+Version: 2.1.99998
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
 
 
-Copyright 2012 [Beyond Programs LTD.](http://www.beyondprograms.com/)
+Copyright 2012 [Beyond Programs LTD.](http://www.beyondprograms.ca/)
 
 Commercial users are requested to, but not required to contribute, promotion, 
 know-how, or money to plug-in development or to www.beprosoftware.com. 
@@ -206,7 +206,7 @@ class Bepro_listings{
 					<input type="hidden" name="max_date" value="'.$_POST["max_date"].'">
 					<input type="hidden" name="min_cost" value="'.$_POST["min_cost"].'">
 					<input type="hidden" name="max_cost" value="'.$_POST["max_cost"].'">';	
-		if(is_numeric($data["show_geo"]))$return_text .= '
+		if(is_numeric($data["show_geo"]) && ($data["show_geo"] > 0))$return_text .= '
 					<span class="blsearchwhere">
 						<span class="searchlabel">'.__("Where", "bepro-listings").'</span>
 						<input type="text" name="addr_search" value="'.$_POST["addr_search"].'">

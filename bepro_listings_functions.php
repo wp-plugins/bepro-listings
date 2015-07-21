@@ -211,13 +211,15 @@
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-audio/'>Audio</a> - Create a, podcasts, music, or any other type of audio focused website. We support, wav, mp3, and several file types</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-favorites/'>Favorites</a> - Allow visitors and registered users to interact with listings. They can record their likes/dislikes and view them via shortcodes</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-authors/'>Authors</a> - Give your Blog writers and their listings more visibility. With this plugin you add their profile info to their listing pages.</li>
-					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-pmpro/'>PMPro</a> (New) - Use Paid Membership Pro to charge users to post listings on your website, with this integration.</li>
-					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-bookings/'>Booking</a> (New) - Setup your availability and allow users to schedule time. Perfect for real estate, vehicle, hotel, and other niche sites</li>
-					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-business-directory/'>Business Directory</a> (New) - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.</li>
-					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-vehicles/'>Vehicles</a> (New) - Lists cars, boats, trucks, planes, and other automobiles with their details</li>
-					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-reviews/'>Reviews</a> (New) - Users can leave and search by star ratings</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-pmpro/'>PMPro</a> - Use Paid Membership Pro to charge users to post listings on your website, with this integration.</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-bookings/'>Booking</a>  - Setup your availability and allow users to schedule time. Perfect for real estate, vehicle, hotel, and other niche sites</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-business-directory/'>Business Directory</a> - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-vehicles/'>Vehicles</a>  - Lists cars, boats, trucks, planes, and other automobiles with their details</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-reviews/'>Reviews</a> - Users can leave and search by star ratings</li>
 					<li><a href='https://www.beprosoftware.com/shop/origami/'>Origami</a> - Separate search features when running multiple listing types on one website</li>
-					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-search/'>Search</a> (New) - Add predictive google maps address lookup and auto complete enhancements to the basic search feature</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-search/'>Search</a> - Add predictive google maps address lookup and auto complete enhancements to the basic search feature</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-software-api/'>Api</a> - Turn your website into a 24/7 remote content manager. Ideal for integration with other data feeds.</li>
+					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-export/'>Export</a> - Export search results from BePro Lisitngs and version addons</li>
 				</ul>
 				<h2>Classifieds / Porfolio / Directory Themes</h2>
 				<p>We also have several $1 one dollar wordpress themes you can purchase with free data. This provides a great tutorial and / or way to get setup quickly</p>
@@ -394,7 +396,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.99997' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.99998' );
 		}	
 	}
 	

@@ -34,7 +34,7 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+			if((options.map) && ((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
 			bl_ajax_end();
 		
@@ -81,7 +81,7 @@ jQuery(document).ready(function(){
 					jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 				if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 					jQuery(".search_listings").replaceWith(options.search);
-				if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+				if((options.map) && ((options.map).length > 0) (jQuery("#shortcode_map")))
 					jQuery("#shortcode_map").replaceWith(options.map);	
 				bl_ajax_end();
 			}
@@ -94,6 +94,7 @@ jQuery(document).ready(function(){
 	
 	jQuery("body").on("click",".clear_search",function(element){
 		element.preventDefault();
+		clear_bl_shortcode_vals();
 		shortcode_vals = get_bl_shortcode_vals();
 		bl_ajax_init();
 		jQuery.ajax({
@@ -113,7 +114,7 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+			if((options.map) && ((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
 			bl_ajax_end();
 		}});
@@ -141,7 +142,7 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+			if((options.map) && ((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
 			bl_ajax_end();
 		}});
@@ -169,7 +170,7 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+			if((options.map) && ((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
 			bl_ajax_end();
 		}});
@@ -196,7 +197,7 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery("#listingsearchform").replaceWith(options.search);
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+			if((options.map) && ((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
 			bl_ajax_end();
 		}});
@@ -224,7 +225,7 @@ jQuery(document).ready(function(){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery("#listingsearchform").replaceWith(options.search);
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+			if((options.map) && ((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);	
 			bl_ajax_end();
 		}});
@@ -348,7 +349,7 @@ function bl_ajax_get_page(post_id){
 				jQuery(".filter_search_form_shortcode").replaceWith(options.short_filter);	
 			if(((options.search).length > 0) && (jQuery("#listingsearchform")))
 				jQuery(".search_listings").replaceWith(options.search);
-			if(((options.map).length > 0) && (jQuery("#shortcode_map")))
+			if((options.map) && ((options.map).length > 0) && (jQuery("#shortcode_map")))
 				jQuery("#shortcode_map").replaceWith(options.map);
 				
 			launch_bepro_listing_tabs();

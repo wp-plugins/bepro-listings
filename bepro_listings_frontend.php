@@ -437,6 +437,7 @@
 		//form builder and origami integration
 		$_POST["bl_form_id"] = $bl_form_id;
 		$_POST["origami"] = $origami;
+		$_POST["l_featured"] = $origami;
 		
 		$data = get_option("bepro_listings");
 		$num_results = (empty($limit)|| !is_numeric($limit))? $data["num_listings"]:$limit; 

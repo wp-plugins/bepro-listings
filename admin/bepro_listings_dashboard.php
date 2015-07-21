@@ -23,9 +23,9 @@
 	
 		<div class="feature-section images-stagger-right">
 			<h4><?php _e( 'New Layout Options', "bepro-listings" ); ?></h4>
-			<p><?php _e( 'More control over detail pages. Put more info in tabs or remove tabs altogether. <a href="https://www.beprosoftware.com/blog/bepro-listings-2-1-99991/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
+			<p><?php _e( 'Now you have more control over the layout of detail pages. You can put more info in tabs or remove tabs altogether. When paired with existing tab controls, you have tons of ways to make your listings experience unique. <a href="https://www.beprosoftware.com/blog/bepro-listings-2-1-99991/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
 			
-			<h4><?php _e( 'New Form Category option', "bepro-listings" ); ?></h4>
+			<h4><?php _e( 'New Form Category Option', "bepro-listings" ); ?></h4>
 			<p><?php _e( 'We heard you. Now you can select between a category select box or stay with the check boxes. The select box option removes the untidy label design issue affecting some users. If you choose to stay with the checkbox option, you will notice that we have improved its css style. <a href="https://www.beprosoftware.com/blog/bepro-listings-2-1-99991/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
 			
 			<h4><?php _e( 'Translations', "bepro-listings" ); ?></h4>

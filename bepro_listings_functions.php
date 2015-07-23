@@ -396,7 +396,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.99998' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.1.99999' );
 		}	
 	}
 	
@@ -660,7 +660,7 @@
 	//Get the categores of a Bepro Listing
 	function listing_types_by_post($post_id){
 		global $wpdb;
-		return $wpdb->get_results("SELECT p.ID, t.term_id
+		return $wpdb->get_results("SELECT p.ID, t.term_id, t.name, t.slug
 				FROM ".$wpdb->prefix."posts p
 				LEFT JOIN ".$wpdb->prefix."term_relationships rel ON rel.object_id = p.ID
 				LEFT JOIN ".$wpdb->prefix."term_taxonomy tax ON tax.term_taxonomy_id = rel.term_taxonomy_id
@@ -762,7 +762,7 @@
 			$cost = (!is_numeric($cost) || ($cost < 0))? "NULL": $cost; 
 			$duration = 0;
 			$fee = 0;
-
+			
 			//Figure out user_id
 			if(is_user_logged_in()){
 				$user_id = $user_data->ID;
@@ -774,7 +774,17 @@
 			$user_id = apply_filters("bl_save_listing_user_id_overide", $user_id);
 			//create listing in wordpress
 			if(!empty($user_id) && ($user_id != 0)){
+				//Check for the post_id and create one if we don't have a valid one
+				$new_post = false;
 				if(empty($post_id)){
+					$new_post = true;
+				}if(get_post($post_id)){
+					$wpdb->query("UPDATE ".$wpdb->prefix."posts SET post_content = '".$content."' WHERE ID=".$post_id);
+				}else{
+					$new_post = true;
+				}
+				//if post_id is empty or wasn't found then create a new one
+				if($new_post){
 					$post = array(
 					  'post_author' => $user_id,
 					  'post_content' => $content,
@@ -784,13 +794,32 @@
 					);  
 					//Create post
 					$post_id = wp_insert_post( $post, $wp_error ); 
-				}else if(!is_admin()){
-					$wpdb->query("UPDATE ".$wpdb->prefix."posts SET post_content = '".$content."' WHERE ID=".$post_id);
 				}
 			
+				//once we figured out a post_id then proceed
 				if(empty($wp_error) && is_numeric($post_id)){
 					$post_data = get_post($post_id);
-					//setup custom bepro listing post categories
+					/*
+						//setup custom bepro listing post categories
+						1. if we get category names instead of ID's then we need to find the id's or create them
+						2. Once we have an array of category ID's, we can assign them to the current listing
+					*/
+					if(!is_array($categories) && stristr($categories, ",")){
+						$categories = explode(",",$categories);
+						if(!is_numeric($categories[0])){
+							$cat_array = array();
+							foreach($categories as $category){
+								$check_cat =  wp_insert_term( $category, "bepro_listing_types");
+								if(is_array($check_cat) && (!isset($check_cat["errors"]))){
+									$cat_array[] = $check_cat["term_id"];
+								}elseif(is_wp_error($check_cat)){
+									$cat = get_term_by( "name", $category, "bepro_listing_types");
+									$cat_array[] = $cat->term_id;
+								}
+							}
+							$categories = $cat_array;
+						}
+					}
 					if(!empty($categories))wp_set_post_terms($post_id,$categories,'bepro_listing_types');
 					
 					//setup post images
@@ -857,6 +886,10 @@
 					$post_data["cost"] = $cost;
 					$package_id = is_numeric($_POST["bpl_package"])?$_POST["bpl_package"]:"";
 					$bl_order_id = "";
+					
+					/*
+						Figuring out payment stuff if applicable to this listing.
+					*/
 					//calculate cost and duration
 					if(is_numeric($data["require_payment"]) && ($data["require_payment"] > 0)){
 						//Get package cost and duration
@@ -1096,7 +1129,6 @@
 	function bepro_create_post_type() {
 		//some stuff we wanna tie to init. This must move
 		bl_load_constants();
-		permalink_save_options();
 		
 		//register custom post types
 		$labels = array(
@@ -1233,12 +1265,13 @@
 			 
 				register_post_type( 'bpl_orders' , $args );  
 			}
-			
 			if(@$options["perm_chng"]){
 				flush_rewrite_rules();
 				$options["perm_chng"] = "";
 				update_option("bepro_listings", $options);
 			}
+			
+			permalink_save_options();
 			bl_complete_startup();
 	}
 	

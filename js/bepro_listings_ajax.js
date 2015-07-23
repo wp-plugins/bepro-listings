@@ -94,8 +94,7 @@ jQuery(document).ready(function(){
 	
 	jQuery("body").on("click",".clear_search",function(element){
 		element.preventDefault();
-		clear_bl_shortcode_vals();
-		shortcode_vals = get_bl_shortcode_vals();
+		shortcode_vals = get_bl_shortcode_vals_no_cat();
 		bl_ajax_init();
 		jQuery.ajax({
 			type : "POST",

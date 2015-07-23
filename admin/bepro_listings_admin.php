@@ -781,7 +781,6 @@
 							$_POST[$csv_titles[$key]] = $result;
 
 						}
-
 						
 
 						if(!empty($csv_titles[0])){
@@ -797,10 +796,19 @@
 							
 
 							if(!empty($_POST["photo"])){
+								//we only handle single photo uploads
+								if(stristr($_POST["photo"], ",")){
+									$photos = explode(",",$_POST["photo"]);
+									foreach($photos as $photo){
+										$remote_url = addslashes(strip_tags($_POST["photo"]));
+										bl_attach_remote_file($post_id, $remote_url);
+									}
+								}else{
+									$remote_url = addslashes(strip_tags($_POST["photo"]));
+									bl_attach_remote_file($post_id,$remote_url);
+								}
 
-								$remote_url = addslashes(strip_tags($_POST["photo"]));
-
-								bl_attach_remote_file($post_id, $remote_url);
+								
 
 							}
 
@@ -2640,6 +2648,16 @@
 
 	}
 
+	function bpl_admin_tool_bar($wp_admin_bar ) {
+		$args = array(
+			'id'    => 'bpl_options',
+			'title' => __('BPL Options',"bepro-listings"),
+			'href'  => admin_url('edit.php?post_type=bepro_listings&page=bepro_listings_options'),
+			'parent' => "site-name",
+			'meta'  => array( 'class' => 'my-toolbar-page' )
+		);
+		$wp_admin_bar->add_node( $args );		
+	}
 	
 
 	function bl_order_meta_save($bl_order_id){

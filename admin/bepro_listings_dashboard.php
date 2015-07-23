@@ -22,6 +22,9 @@
 		<h3><?php _e( 'You are using', "bepro-listings" ); _e( 'BePro Listings Version:', "bepro-listings" ); echo " ".BEPRO_LISTINGS_VERSION; ?>   </h3>
 	
 		<div class="feature-section images-stagger-right">
+			<h4><?php _e( 'Import / Export', "bepro-listings" ); ?></h4>
+			<p><?php _e( 'We have improved our CSV import process. Now you can list the category names instead of their IDs and upload multiple images. There is also a new delimiter option for csv imports. These changes make it easier to use our FREE csv import features for quickly uploading lots of data.', "bepro-listings" ); ?></p>
+			
 			<h4><?php _e( 'New Layout Options', "bepro-listings" ); ?></h4>
 			<p><?php _e( 'Now you have more control over the layout of detail pages. You can put more info in tabs or remove tabs altogether. When paired with existing tab controls, you have tons of ways to make your listings experience unique. <a href="https://www.beprosoftware.com/blog/bepro-listings-2-1-99991/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
 			

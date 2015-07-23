@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Customizable listings used for, Business directory, classifieds, real estate, portfolio, etc. Optional base features include, front end upload, gallery, paypal payments & buddypress support. Use google maps and various result templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.1.99998
+Version: 2.1.99999
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -59,6 +59,7 @@ class Bepro_listings{
 		add_action('init', 'save_data_and_redirect' );
 		add_action('admin_init', 'bepro_admin_init' );
 		add_action('admin_head', 'bepro_admin_head' );
+		add_action('admin_bar_menu', 'bpl_admin_tool_bar', 888 );
 		add_action('admin_notices', 'bepro_listings_support_message' );
 		add_action('admin_menu', 'bl_scd_register_menu' );
 		add_action('wp_head', 'bepro_listings_wphead', 1);

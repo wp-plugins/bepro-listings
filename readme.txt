@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, api, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.1.99998
+Stable tag: 2.1.99999
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -252,6 +252,16 @@ BePro Listings is part of the BePro Software Suite of products. Maintained by th
 Integration with other plugins in our suite is always free and integrated into the core of our plugins. For example, activating payment features for BePro Listings requires that you have BePro Cart installed. The notification features are similar, requiring BePro Email to be installed. This separation allows us to develop multiple products with extensive payment and notification features. Most importantly, this architecture provides a central and familiar interface for you to manage these features.
 
 == Changelog ==
+
+= 2.1.99999 (July 23rd, 2015) =
+
+* Small tweak to l_featured var in display_listings shortcode
+* Major advancement in how we manage category csv uploads. Now you can use the category names instead of id's.
+* Improve how we handle post_id's that don't exist during csv uploads
+* Handle multiple photo uploads via csv import
+* Extend listing_types_by_post function to also provide term name and slug
+* Further tweak to clear search feature.
+* New toolbar button for quick access to BPL Options
 
 = 2.1.99998 (July 21st, 2015) =
 

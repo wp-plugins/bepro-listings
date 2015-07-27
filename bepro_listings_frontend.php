@@ -246,22 +246,29 @@
 			$link = 'var win=window.open("'.$permalink.'", "_blank"); win.focus();';
 		}elseif($target == 3){
 			$link = 'bl_ajax_get_page("'.$result->post_id.'")';	
+		}elseif($target == 5){
+			$link = '';	
 		}else{
 			$link = 'window.location.href = "'.$permalink.'"';
 		}
 		
-		return 'var infowindow_'.$counter.' = new google.maps.InfoWindow( { content: "<div class=\"marker_content\"><span class=\"marker_detais\">'.addslashes($result->post_title).'</span></div>", size: new google.maps.Size(50,50)});
+		$return_txt = 'var infowindow_'.$counter.' = new google.maps.InfoWindow( { content: "<div class=\"marker_content\"><span class=\"marker_detais\">'.addslashes($result->post_title).'</span></div>", size: new google.maps.Size(50,50)});
 				  google.maps.event.addListener(marker_'.$counter.', "mouseover", function() {
 					if(openwindow){
 						eval(openwindow).close();
 					}
 					infowindow_'.$counter.'.open(map,marker_'.$counter.');
 					openwindow = infowindow_'.$counter.';
-				  });
+				  });';
+				  
+		if(!empty($link))
+			$return_txt = '
 				  google.maps.event.addListener(marker_'.$counter.', "click", function() {
 					'.$link.';
 				  });
 			';
+			
+		return $return_txt;
 	}
 	
 	function bepro_listings_detailed_infowindow($result, $counter){
@@ -272,12 +279,14 @@
 		if($target == 2){
 			$link = "<a href=\"http://".urlencode($result->website)."\" target='_blank'>Visit Website</a>";
 		}elseif($target == 3){
-			$link = $link = "<a href=\"http://".urlencode($result->website)."\" class='bl_ajax_result_page' post_id=\"".$result->post_id."\">Visit Website</a>";
+			$link =  "<a href=\"http://".urlencode($result->website)."\" class='bl_ajax_result_page' post_id=\"".$result->post_id."\">Visit Website</a>";
+		}elseif($target == 5){
+			$link = "";
 		}else{
 			$link ="<a href=\"http://".urlencode($result->website)."\" post_id=\"".$bp_listing->post_id."\">Visit Website</a>";
 		}
 		
-		return "var infowindow_".$counter." = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_title\">".addslashes(substr($result->post_title,0,18))."</span><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->address_line1.", ".$result->city.", ".$result->state.", ".$result->country."</span><span class=\"marker_links\">".$link."<br /><a href=\"".get_permalink($result->post_id)."\">View Listing</a></span></div>', size: new google.maps.Size(50,50)});
+		return "var infowindow_".$counter." = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_title\">".addslashes(substr($result->post_title,0,18))."</span><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->address_line1.", ".$result->city.", ".$result->state.", ".$result->country."</span>".(empty($link)?"":"<span class=\"marker_links\">".$link."<br /><a href=\"".get_permalink($result->post_id)."\">View Listing</a></span>")."</div>', size: new google.maps.Size(50,50)});
 				  google.maps.event.addListener(marker_".$counter.", \"click\", function() {
 					if(openwindow){
 						eval(openwindow).close();
@@ -708,6 +717,8 @@
 	function bepro_listings_list_title_template($bp_listing){
 		$data = get_option("bepro_listings");
 		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
+		
+		//if its an external link (4) then change the permalink
 		if($data["link_new_page"] == 4){
 			$permalink = $bp_listing->website;
 		}else{
@@ -717,25 +728,34 @@
 		$title = $bp_listing->post_title;
 		$title = substr($title,0, $title_length).((strlen($title) > $title_length)? "...":"");
 		$title = apply_filters("bl_list_title_temp",$title, $bp_listing);
-		
+		$title = stripslashes($title);
 			
 		/*
 		* 1 = go to page
 		* 2 = new window
 		* 3 = ajax page
 		* 4 = hide internal
+		* 5 = readonly
 		*/		
 		if($target == 2){
 			echo "<div class='result_name'><a href='".$permalink."' target='_blank'>".$title."</a></div>";	
 		}elseif($target == 3){
 			echo "<div class='result_name'><a class='bl_ajax_result_page' post_id='".$bp_listing->post_id."' href='".$permalink."' target='_blank'>".$title."</a></div>";
+		}elseif($target == 5){
+			echo "<div class='result_name'>".$title."</div>";
 		}else{
 			echo "<div class='result_name'><a href='".$permalink."'>".$title."</a></div>";	
 		}
 	}
 	
 	function bepro_listings_list_category_template($bp_listing){
-		echo '<span class="result_type">'.get_the_term_list($bp_listing->post_id, 'bepro_listing_types', '', ', ','').'</span>';
+		$terms = get_the_term_list($bp_listing->post_id, 'bepro_listing_types', '', ', ','');
+		$data = get_option("bepro_listings");
+	
+		if($data["link_new_page"] == 5)
+			$terms = strip_tags($terms);
+		
+		echo '<span class="result_type">'.$terms.'</span>';
 	}
 	function bepro_listings_list_featured_template($bp_listing){
 		if($bp_listing->featured)
@@ -772,6 +792,8 @@
 			echo '<span class="result_img"><a href="'.$permalink.'" target="_blank">'.$default_img.'</a></span>';
 		}elseif($target == 3){
 			echo '<span class="result_img"><a href="'.$permalink.'" class="bl_ajax_result_page" post_id="'.$bp_listing->post_id.'">'.$default_img.'</a></span>';	
+		}elseif($target == 5){
+			echo '<span class="result_img">'.$default_img.'</span>';	
 		}else{
 			echo '<span class="result_img"><a href="'.$permalink.'">'.$default_img.'</a></span>';
 		}
@@ -838,6 +860,8 @@
 		}elseif($target == 4){
 				$website = (stristr($bp_listing->website,"http"))? $bp_listing->website:"http://".$bp_listing->website;
 				echo '<span class="result_button"><a href="'.$website.'"  target="_blank">'.__("Website","bepro-listings").'</a></span>';
+		}elseif($target == 5){
+				//do nothing. this is readonly
 		}else{
 			if(!empty($bp_listing->website) && !empty($show_web_link))
 				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'">'.__("Website","bepro-listings").'</a></span>';

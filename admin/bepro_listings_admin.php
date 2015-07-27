@@ -125,6 +125,8 @@
 		  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
 
 		  .bepro_listings_admin_form{display:none;}
+		  
+		  .bpl_error{color:#ff0000;font-weight:bold};
 
 		  #bepro_help_links{display:block; clear:both:}
 
@@ -281,6 +283,10 @@
 			.bl_skip_wizard_step{color:blue;cursor:pointer}
 
 			.tab-pane{background-color: #dfdfdf;float: left;width: 95%;border: 1px solid;padding: 5px;}
+			
+			.bpl_status_display_table{width:90%; margin-top:10px; background-color:#fff}
+			.bpl_status_display_table thead tr td{border-bottom:1px solid #dfdfdf;font-weight:bold}
+			.bpl_status_display_table tr td:nth-of-type(1){width:35%}
 
 		  </style>
 
@@ -1608,7 +1614,9 @@
 
 							<option value="3" <?php echo ($data["link_new_page"] == 3)? 'selected="selected"':"" ?>><?php _e("Ajax Page", "bepro-listings"); ?></option>
 
-							<option value="4" <?php echo ($data["link_new_page"] == 4)? 'selected="selected"':"" ?>><?php _e("Hide Internal", "bepro-listings"); ?></option>
+							<option value="4" <?php echo ($data["link_new_page"] == 4)? 'selected="selected"':"" ?>><?php _e("External", "bepro-listings"); ?></option>
+							
+							<option value="5" <?php echo ($data["link_new_page"] == 5)? 'selected="selected"':"" ?>><?php _e("Read Only", "bepro-listings"); ?></option>
 
 						</select><br />
 
@@ -1964,6 +1972,48 @@
 
 	}
 
+	function bepro_listings_status(){
+		global $wpdb;
+		
+		$data = get_option("bepro_listings");
+		//setup google api check
+		$_POST["address_line1"] = "220 e university blvd";
+		$_POST["postcode"] = "32901";
+		$lat_lon = @get_bepro_lat_lon();
+		//setup database table checks
+		$table_name = $wpdb->prefix.BEPRO_LISTINGS_TABLE_BASE;
+		//setup filepath check
+		$plugin_url = @Bepro_listings::get_bpl_plugin_url();
+		
+		echo "
+			<h1>".__("BePro Listings Status","bepro-listings")."</h1>
+			<p>".__("This page shows how the plugin is performing. This is the first place to look when trying to diagnose issues.","bepro-listings")."</p>
+			<table class='bpl_status_display_table'>
+				<thead><tr><td colspan='2'>".__("BePro Listings","bepro-listings")."</td></tr></thead>
+				<tr><td>".__("Database Tables","bepro-listings")."</td><td>".($wpdb->get_var("SHOW TABLES LIKE '$table_name'")!=$table_name? "<span class='bpl_error'>".__("ERROR","bepro-listings")."</span>":"OK")."</td></tr>
+				<tr><td>".__("File Path","bepro-listings")."</td><td>".$plugin_url."</td></tr>
+				<tr><td>".__("Google API","bepro-listings")."</td><td>".$lat_lon["status"]."</td></tr>
+				<tr><td>".__("Result Templates","bepro-listings")."</td><td>".(empty($data["bepro_listings_list_template_1"])? "<span class='bpl_error'>".__("ERROR","bepro-listings")."</span>":"OK")."</td></tr>
+			</table>
+			<table class='bpl_status_display_table'>
+				<thead><tr><td colspan='2'>".__("PHP","bepro-listings")."</td></tr></thead>
+				<tr><td>".__("CURL","bepro-listings")."</td><td>".(function_exists('curl_version')? "OK":"<span class='bpl_error'>".__("ERROR","bepro-listings")."</span>")."</td></tr>
+				<tr><td>".__("File Get Contents","bepro-listings")."</td><td>".(function_exists('file_get_contents')? "OK":"<span class='bpl_error'>".__("ERROR","bepro-listings")."</span>")."</td></tr>
+				<tr><td>".__("Memory Limit","bepro-listings")."</td><td>".(ini_get("memory_limit"))."</td></tr>
+				<tr><td>".__("Max Upload Size","bepro-listings")."</td><td>".(ini_get("upload_max_filesize"))."</td></tr>
+				<tr><td>".__("PHP Time Limit","bepro-listings")."</td><td>".(ini_get("max_execution_time"))."</td></tr>
+			</table>
+			<table class='bpl_status_display_table'>
+				<thead><tr><td colspan='2'>".__("SERVER","bepro-listings")."</td></tr></thead>
+				<tr><td>".__("Type","bepro-listings")."</td><td>".($_SERVER["SERVER_SOFTWARE"])."</td></tr>
+				<tr><td>".__("IP Address","bepro-listings")."</td><td>".($_SERVER["SERVER_ADDR"])."</td></tr>
+				<tr><td>".__("Protocol","bepro-listings")."</td><td>".(empty($_SERVER["HTTPS"])? "HTTP":"HTTPS")."</td></tr>
+			</table>
+		";
+		
+		do_action("bpl_admin_status_page");
+		
+	}
 	
 
 	function bepro_listings_addons(){
@@ -2437,7 +2487,7 @@
 	
 
 	
-
+	//check if to show wizard
 	function bl_scd_register_menu() {
 
 		$welcome = get_transient( '_bepro_listings_activation_redirect' );

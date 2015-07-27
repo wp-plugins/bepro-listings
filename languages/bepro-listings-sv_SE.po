@@ -7,22 +7,22 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2015-04-18 09:03-0400\n"
+"PO-Revision-Date: 2015-07-27 12:05-0300\n"
 "Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
 "Language-Team: BePro Software\n"
-"Language: en\n"
+"Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.2\n"
 
 msgid "Item Information"
-msgstr "Artikelinformation"
+msgstr "ObjektInformation"
 
 #: bepro_listings_frontend.php:321
 msgid "Item Name"
-msgstr "Artikelnamn"
+msgstr "Objektnamn"
 
 #: bepro_listings_frontend.php:322
 msgid "Cost"
@@ -411,22 +411,17 @@ msgstr "Inga levande listor skapade"
 msgid "No live listings for this user"
 msgstr "Inga levande listor för den här användaren"
 
-#: ------------DASHBOARD---------------- admin/bepro_listings_dashboard.php:
-#: #BePro_Edits admin/bepro_listings_wizard.php:6
+#: ------------DASHBOARD---------------- admin/bepro_listings_dashboard.php: #BePro_Edits admin/bepro_listings_wizard.php:6
 msgid "Welcome to BePro Listings!"
 msgstr "Välkommen till BePro Listings!"
 
 #: admin/bepro_listings_wizard.php:12
 msgid ""
-"Congratulations, you are now using the latest version of BePro Listings. "
-"With lots of ways to customize, this software is ideal for creating your "
-"custom directory listing needs. This page shows the new features packaged "
-"with the plugin."
+"Congratulations, you are now using the latest version of BePro Listings. With lots of ways to customize, this software is ideal for creating your custom directory listing needs. This page shows the "
+"new features packaged with the plugin."
 msgstr ""
-"Grattis, använder du nu den senaste versionen av BePro Listings. Med massor "
-"av sätt att anpassa, är denna programvara perfekt för att skapa din egen "
-"kataloglista behov. Den här sidan visar de nya funktioner förpackade med "
-"plugin."
+"Grattis, använder du nu den senaste versionen av BePro Listings. Med massor av sätt att anpassa, är denna programvara perfekt för att skapa din egen kataloglista behov. Den här sidan visar de nya "
+"funktioner förpackade med plugin."
 
 #: admin/bepro_listings_wizard.php:17
 msgid "What's New"
@@ -440,8 +435,7 @@ msgstr "Du använder"
 msgid "BePro Listings Version:"
 msgstr "BePro Listings Version:"
 
-#: ------------INSTALLATION WIZARD----------------
-#: admin/bepro_listings_wizard.php admin/bepro_listings_wizard.php:6
+#: ------------INSTALLATION WIZARD---------------- admin/bepro_listings_wizard.php admin/bepro_listings_wizard.php:6
 msgid "BePro Listings INSTALLATION WIZARD"
 msgstr "BePro Listings INSTALLATIONSGUIDEN"
 
@@ -460,3 +454,23 @@ msgstr "att hoppa över"
 #: admin/bepro_listings_wizard.php:47
 msgid "STEP 1: CREATE WORDPRESS PAGES"
 msgstr "STEG 1: SKAPA WORDPRESS SIDOR"
+
+#: ------------RATING REQUEST---------------- bepro_listings_functions.php:1703
+msgid "CONGRATULATIONS. You have been using BePro Listings for %1$s days and successfully created %2$s listings. Please consider supporting this free product by spreading the word with a 5 star review."
+msgstr "Grattis. Du har använt BePro Listings för %1$ s dagar och framgångsrikt skapat %2$ s listor. Vänligen överväga att stödja denna gratis produkt genom att sprida ordet med en 5 stjärna översyn."
+
+#: bepro_listings_functions.php:1703
+msgid "No, not yet"
+msgstr "Nej, inte ännu"
+
+#: bepro_listings_functions.php:1703
+msgid "Already left a review"
+msgstr "Redan lämnat en översyn"
+
+#: bepro_listings_functions.php:1703
+msgid "Yeah, great product"
+msgstr "Ja, bra produkt"
+
+#: ------------STATUS ADMIN PAGE---------------- admin/bepro_listings_admin.php:1990
+msgid "This page shows how the plugin is performing. This is the first place to look when trying to diagnose issues."
+msgstr "Den här sidan visar hur plugin fungerar. Detta är det första stället att leta när man försöker diagnostisera problem."

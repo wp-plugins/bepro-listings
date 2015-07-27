@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2015-04-18 09:03-0400\n"
+"PO-Revision-Date: 2015-07-27 11:54-0300\n"
 "Last-Translator: \n"
 "Language-Team: bepro software\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.2\n"
 "Language: pt_PT\n"
 
 msgid "Item Information"
@@ -411,22 +411,14 @@ msgstr "Keine Live-Angebote erstellt wurden"
 msgid "No live listings for this user"
 msgstr "Keine live-Programmlisten für diesen Benutzer"
 
-#: ------------DASHBOARD---------------- admin/bepro_listings_dashboard.php:
-#: #BePro_Edits admin/bepro_listings_wizard.php:6
+#: ------------DASHBOARD---------------- admin/bepro_listings_dashboard.php: #BePro_Edits admin/bepro_listings_wizard.php:6
 msgid "Welcome to BePro Listings!"
 msgstr "Välkommen till BePro Listings!"
 
 #: admin/bepro_listings_wizard.php:12
 msgid ""
-"Congratulations, you are now using the latest version of BePro Listings. "
-"With lots of ways to customize, this software is ideal for creating your "
-"custom directory listing needs. This page shows the new features packaged "
-"with the plugin."
-msgstr ""
-"Grattis, använder du nu den senaste versionen av BePro Listings. Med massor "
-"av sätt att anpassa, är denna programvara perfekt för att skapa din egen "
-"kataloglista behov. Den här sidan visar de nya funktioner förpackade med "
-"plugin."
+"Congratulations, you are now using the latest version of BePro Listings. With lots of ways to customize, this software is ideal for creating your custom directory listing needs. This page shows the new features packaged with the plugin."
+msgstr "Grattis, använder du nu den senaste versionen av BePro Listings. Med massor av sätt att anpassa, är denna programvara perfekt för att skapa din egen kataloglista behov. Den här sidan visar de nya funktioner förpackade med plugin."
 
 #: admin/bepro_listings_wizard.php:17
 msgid "What's New"
@@ -440,16 +432,13 @@ msgstr "Sie verwenden"
 msgid "BePro Listings Version:"
 msgstr "BePro Listings Version:"
 
-#: ------------INSTALLATION WIZARD----------------
-#: admin/bepro_listings_wizard.php admin/bepro_listings_wizard.php:6
+#: ------------INSTALLATION WIZARD---------------- admin/bepro_listings_wizard.php admin/bepro_listings_wizard.php:6
 msgid "BePro Listings INSTALLATION WIZARD"
 msgstr "BePro Listings INSTALLATIONS-ASSISTENT"
 
 #: admin/bepro_listings_wizard.php:7
 msgid "Use the following steps to help you setup BePro Listings. Otherwise,"
-msgstr ""
-"Verwenden Sie die folgenden Schritte aus, um Sie Setup BePro Listings. "
-"Andernfalls"
+msgstr "Verwenden Sie die folgenden Schritte aus, um Sie Setup BePro Listings. Andernfalls"
 
 #: admin/bepro_listings_wizard.php:7
 msgid "Click Here"
@@ -462,3 +451,23 @@ msgstr "überspringen"
 #: admin/bepro_listings_wizard.php:47
 msgid "STEP 1: CREATE WORDPRESS PAGES"
 msgstr "SCHRITT 1: ERSTELLEN SIE WORDPRESS-SEITEN"
+
+#: ------------RATING REQUEST---------------- bepro_listings_functions.php:1703
+msgid "CONGRATULATIONS. You have been using BePro Listings for %1$s days and successfully created %2$s listings. Please consider supporting this free product by spreading the word with a 5 star review."
+msgstr "HERZLICHEN GLÜCKWUNSCH. Sie benutze BePro Listings für %1$ s Tage und erfolgreich erstellt %2$ s Kleinanzeigen. Bitte beachten Sie dieses kostenlose Produkt durch die Verbreitung des Wortes mit einer 5-Sterne-Prüfung zu unterstützen."
+
+#: bepro_listings_functions.php:1703
+msgid "No, not yet"
+msgstr "Nein, noch nicht"
+
+#: bepro_listings_functions.php:1703
+msgid "Already left a review"
+msgstr "Eine Überprüfung verlassen bereits"
+
+#: bepro_listings_functions.php:1703
+msgid "Yeah, great product"
+msgstr "Ja, tolles Produkt"
+
+#: ------------STATUS ADMIN PAGE---------------- admin/bepro_listings_admin.php:1990
+msgid "This page shows how the plugin is performing. This is the first place to look when trying to diagnose issues."
+msgstr "Diese Seite zeigt, wie das Plugin arbeitet. Dies ist der erste Ort zu suchen, wenn Sie versuchen, Probleme zu diagnostizieren."

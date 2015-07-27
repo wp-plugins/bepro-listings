@@ -74,7 +74,8 @@
 			$bl_my_list_template = apply_filters("bl_change_my_list_template",dirname( __FILE__ ) . '/templates/list.php', $items);
 			
 			ob_start(); 
-			require( $bl_my_list_template );
+			if(!empty($bl_my_list_template))
+				include( $bl_my_list_template );
 			$return_text .= ob_get_clean(); 
 			return $return_text;
 		}

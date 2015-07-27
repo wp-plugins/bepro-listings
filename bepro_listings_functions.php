@@ -117,6 +117,8 @@
 		$num_menus = apply_filters("bepro_listings_num_admin_menus", $num_admin_menus);
 		if($num_menus > 0)
 			add_submenu_page('edit.php?post_type=bepro_listings', 'AddOns', 'AddOns', 5, 'bepro_listings_addons', 'bepro_listings_addons');
+			
+		add_submenu_page('edit.php?post_type=bepro_listings', 'BPL Status', 'BPL Status', "manage_options", 'bepro_listings_status', 'bepro_listings_status');
 	}
 	
 	     
@@ -396,7 +398,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.1.99999' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.2.0' );
 		}	
 	}
 	
@@ -1073,10 +1075,12 @@
 			}
 			
 			if($addr_search_1)$addr_search_1 = json_decode($addr_search_1);
-			if($addr_search_1->results[0]->geometry->location){
+			if(@$addr_search_1->results[0]->geometry->location){
 				$latlon["lon"] = (string)$addr_search_1->results[0]->geometry->location->lng;
 				$latlon["lat"] = (string)$addr_search_1->results[0]->geometry->location->lat;
 			}
+			if(@$addr_search_1->status)
+				$latlon["status"] = $addr_search_1->status;
 		}
 		return $latlon;
 	}
@@ -1696,7 +1700,7 @@
 		if ( (!$vote) || ($days_since > 30)) {
 			$posts = $wpdb->get_row("SELECT count(*) as total FROM ".$wpdb->prefix."posts WHERE post_type = 'bepro_listings' AND post_status = 'publish'");
 			echo '<div class="updated">'; 
-			printf (__('<p>CONGRATULATIONS. You have been using BePro Listings for %1$s days and successfully created %2$s listings. Please consider supporting this free product by spreading the word with a 5 star review.</p><ul><li><a href="https://wordpress.org/support/view/plugin-reviews/bepro-listings?filter=5" target="_blank">Yeah, great product</a></li><li><a href="?bpl_rate_ignore=1">Already left a review</a></li><li><a href="?bpl_rate_ignore=2">No, not yet</a></li></ul>'), $days, $posts->total);
+			printf (("<p>".__('CONGRATULATIONS. You have been using BePro Listings for %1$s days and successfully created %2$s listings. Please consider supporting this free product by spreading the word with a 5 star review.').'</p><ul><li><a href="https://wordpress.org/support/view/plugin-reviews/bepro-listings?filter=5" target="_blank">'.__("Yeah, great product","bepro-listings").'</a></li><li><a href="?bpl_rate_ignore=1">'.__("Already left a review","bepro-listings").'</a></li><li><a href="?bpl_rate_ignore=2">'.__("No, not yet","bepro-listings").'</a></li></ul>'), $days, $posts->total);
 			echo "</div>";
 		}
 	}

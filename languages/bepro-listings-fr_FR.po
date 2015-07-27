@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2015-07-07 00:20-0300\n"
+"PO-Revision-Date: 2015-07-27 11:45-0300\n"
 "Last-Translator: David MT <mr-david@orange.fr>\n"
 "Language-Team: bepro software\n"
 "Language: fr\n"
@@ -393,22 +393,17 @@ msgstr "Aucune annonce créés"
 msgid "No live listings for this user"
 msgstr "Pas d'annonces pour cet utilisateur"
 
-#: ------------DASHBOARD---------------- admin/bepro_listings_dashboard.php:
-#: #BePro_Edits admin/bepro_listings_wizard.php:6
+#: ------------DASHBOARD---------------- admin/bepro_listings_dashboard.php: #BePro_Edits admin/bepro_listings_wizard.php:6
 msgid "Welcome to BePro Listings!"
 msgstr "Bienvenue chez BePro Listings!"
 
 #: admin/bepro_listings_wizard.php:12
 msgid ""
-"Congratulations, you are now using the latest version of BePro Listings. "
-"With lots of ways to customize, this software is ideal for creating your "
-"custom directory listing needs. This page shows the new features packaged "
-"with the plugin."
+"Congratulations, you are now using the latest version of BePro Listings. With lots of ways to customize, this software is ideal for creating your custom directory listing needs. This page shows the new features "
+"packaged with the plugin."
 msgstr ""
-"Félicitations, vous utilisez actuellement la dernière version de BePro "
-"Listings. Avec beaucoup de façons de personnaliser, ce logiciel est idéal "
-"pour créer votre répertoire personnalisé, liste des besoins. Cette page "
-"montre les nouvelles fonctionnalités empaquetées avec le plugin."
+"Félicitations, vous utilisez actuellement la dernière version de BePro Listings. Avec beaucoup de façons de personnaliser, ce logiciel est idéal pour créer votre répertoire personnalisé, liste des besoins. Cette "
+"page montre les nouvelles fonctionnalités empaquetées avec le plugin."
 
 #: admin/bepro_listings_wizard.php:17
 msgid "What's New"
@@ -422,16 +417,13 @@ msgstr "Vous utilisez"
 msgid "BePro Listings Version:"
 msgstr "BePro Listings Version:"
 
-#: ------------INSTALLATION WIZARD----------------
-#: admin/bepro_listings_wizard.php admin/bepro_listings_wizard.php:6
+#: ------------INSTALLATION WIZARD---------------- admin/bepro_listings_wizard.php admin/bepro_listings_wizard.php:6
 msgid "BePro Listings INSTALLATION WIZARD"
 msgstr "BePro annonces Assistant INSTALLATION"
 
 #: admin/bepro_listings_wizard.php:7
 msgid "Use the following steps to help you setup BePro Listings. Otherwise,"
-msgstr ""
-"Utilisez les étapes suivantes pour aider vous d'installation BePro Listings. "
-"Dans le cas contraire,"
+msgstr "Utilisez les étapes suivantes pour aider vous d'installation BePro Listings. Dans le cas contraire,"
 
 #: admin/bepro_listings_wizard.php:7
 msgid "Click Here"
@@ -444,3 +436,23 @@ msgstr "pour passer"
 #: admin/bepro_listings_wizard.php:47
 msgid "STEP 1: CREATE WORDPRESS PAGES"
 msgstr "ÉTAPE 1: CRÉER DES PAGES DE WORDPRESS"
+
+#: ------------RATING REQUEST---------------- bepro_listings_functions.php:1703
+msgid "CONGRATULATIONS. You have been using BePro Listings for %1$s days and successfully created %2$s listings. Please consider supporting this free product by spreading the word with a 5 star review."
+msgstr "FÉLICITATIONS. Vous avez utilisé BePro Listings pour %1$ s jours et avec succès créé %2$ s annonces. S'il vous plaît envisager de soutenir ce produit gratuit de répandre la parole avec un examen 5 étoiles."
+
+#: bepro_listings_functions.php:1703
+msgid "No, not yet"
+msgstr "Non, pas encore"
+
+#: bepro_listings_functions.php:1703
+msgid "Already left a review"
+msgstr "Déjà quitté un examen"
+
+#: bepro_listings_functions.php:1703
+msgid "Yeah, great product"
+msgstr "Oui, très bon produit"
+
+#: ------------STATUS ADMIN PAGE---------------- admin/bepro_listings_admin.php:1990
+msgid "This page shows how the plugin is performing. This is the first place to look when trying to diagnose issues."
+msgstr "Cette page montre comment le plugin fonctionne. Il s'agit de la première place à regarder lorsque vous tentez de diagnostiquer les problèmes."

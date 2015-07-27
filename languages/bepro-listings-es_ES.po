@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BePro Listings Translation 1.0\n"
 "Report-Msgid-Bugs-To: translate-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-09-14 16:20+0200\n"
-"PO-Revision-Date: 2015-04-18 09:04-0400\n"
+"PO-Revision-Date: 2015-07-27 11:49-0300\n"
 "Last-Translator: BePro Software Team <support@beprosoftware.com>\n"
 "Language-Team: bepro software\n"
 "Language: es\n"
@@ -15,18 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.2\n"
 
 msgid "Item Information"
-msgstr "Información de elemento"
+msgstr "Información del artículo"
 
 #: bepro_listings_frontend.php:321
 msgid "Item Name"
-msgstr "Nombre del elemento"
+msgstr "Nombre del ítem"
 
 #: bepro_listings_frontend.php:322
 msgid "Cost"
-msgstr "Costo"
+msgstr "Coste"
 
 #: bepro_listings_frontend.php:323
 msgid "Description"
@@ -375,22 +375,17 @@ msgstr "No hay anuncios vivos creados"
 msgid "No live listings for this user"
 msgstr "No hay anuncios de este usuario vivos"
 
-#: ------------DASHBOARD---------------- admin/bepro_listings_dashboard.php:
-#: #BePro_Edits admin/bepro_listings_wizard.php:6
+#: ------------DASHBOARD---------------- admin/bepro_listings_dashboard.php: #BePro_Edits admin/bepro_listings_wizard.php:6
 msgid "Welcome to BePro Listings!"
 msgstr "¡ Bienvenido a BePro Listings!"
 
 #: admin/bepro_listings_wizard.php:12
 msgid ""
-"Congratulations, you are now using the latest version of BePro Listings. "
-"With lots of ways to customize, this software is ideal for creating your "
-"custom directory listing needs. This page shows the new features packaged "
-"with the plugin."
+"Congratulations, you are now using the latest version of BePro Listings. With lots of ways to customize, this software is ideal for creating your custom directory listing needs. This page shows the new features packaged with "
+"the plugin."
 msgstr ""
-"Felicitaciones, ahora está utilizando la última versión de BePro Listings. "
-"Con un montón de maneras de personalizar, este software es ideal para crear "
-"el directorio personalizado de listado de necesidades. Esta página muestra "
-"las nuevas características de empaquetado con el plugin."
+"Felicitaciones, ahora está utilizando la última versión de BePro Listings. Con un montón de maneras de personalizar, este software es ideal para crear el directorio personalizado de listado de necesidades. Esta página "
+"muestra las nuevas características de empaquetado con el plugin."
 
 #: admin/bepro_listings_wizard.php:17
 msgid "What's New"
@@ -404,16 +399,13 @@ msgstr "Usted está usando"
 msgid "BePro Listings Version:"
 msgstr "BePro Listings Versión:"
 
-#: ------------INSTALLATION WIZARD----------------
-#: admin/bepro_listings_wizard.php admin/bepro_listings_wizard.php:6
+#: ------------INSTALLATION WIZARD---------------- admin/bepro_listings_wizard.php admin/bepro_listings_wizard.php:6
 msgid "BePro Listings INSTALLATION WIZARD"
 msgstr "BePro Listings ASISTENTE DE INSTALACIÓN"
 
 #: admin/bepro_listings_wizard.php:7
 msgid "Use the following steps to help you setup BePro Listings. Otherwise,"
-msgstr ""
-"Utilice los pasos siguientes para ayudarle a configurar BePro Listings. De "
-"lo contrario,"
+msgstr "Utilice los pasos siguientes para ayudarle a configurar BePro Listings. De lo contrario,"
 
 #: admin/bepro_listings_wizard.php:7
 msgid "Click Here"
@@ -426,3 +418,23 @@ msgstr "para saltar"
 #: admin/bepro_listings_wizard.php:47
 msgid "STEP 1: CREATE WORDPRESS PAGES"
 msgstr "PASO 1: CREAR PÁGINAS DE WORDPRESS"
+
+#: ------------RATING REQUEST---------------- bepro_listings_functions.php:1703
+msgid "CONGRATULATIONS. You have been using BePro Listings for %1$s days and successfully created %2$s listings. Please consider supporting this free product by spreading the word with a 5 star review."
+msgstr "FELICIDADES. Usted ha estado utilizando BePro Listings para %1$ s días y correctamente creado %2$ s listados. Por favor considere apoyar este producto gratuito de difusión de la palabra con una 5 revisión de estrellas."
+
+#: bepro_listings_functions.php:1703
+msgid "No, not yet"
+msgstr "No, aún no"
+
+#: bepro_listings_functions.php:1703
+msgid "Already left a review"
+msgstr "Ya salió una revisión"
+
+#: bepro_listings_functions.php:1703
+msgid "Yeah, great product"
+msgstr "Sí, gran producto"
+
+#: ------------STATUS ADMIN PAGE---------------- admin/bepro_listings_admin.php:1990
+msgid "This page shows how the plugin is performing. This is the first place to look when trying to diagnose issues."
+msgstr "Esta página muestra cómo está funcionando el plugin. Este es el primer lugar para buscar al tratar de diagnosticar problemas."

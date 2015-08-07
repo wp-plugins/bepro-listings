@@ -28,17 +28,17 @@
 								agree: "required"
 							},
 							messages: {
-								item_name: "Please give this a name",
-								content: "Please tell us about this",
-								first_name: "Please enter your firstname",
-								last_name: "Please enter your lastname",
+								item_name: "'.__("Please give this a name","bepro-listings").'",
+								content: "'.__("Please tell us about this","bepro-listings").'",
+								first_name: "'.__("Please enter your firstname","bepro-listings").'",
+								last_name: "'.__("Please enter your lastname","bepro-listings").'",
 								password: {
-									required: "Please provide a password",
-									minlength: "Your password must be at least 5 characters long"
+									required: "'.__("Please provide a password","bepro-listings").'",
+									minlength: "'.__("Your password must be at least 5 characters long","bepro-listings").'"
 								},
-								email: "Please enter a valid email address",
-								country: "Where in the world is this?",
-								agree: "Please accept our policy"
+								email: "'.__("Please enter a valid email address","bepro-listings").'",
+								country: "'.__("Where in the world is this?","bepro-listings").'",
+								agree: "'.__("Please accept our policy","bepro-listings").'"
 							},
 							submitHandler: function(form) {
 								form.submit();
@@ -98,12 +98,12 @@
 			
 				if(!empty($num_images) && ($num_images > 0) && (!empty($data["show_imgs"]))){
 					$counter = 1;
-					echo "<span class='bepro_form_images'><span class='form_heading'>Files (".apply_filters("bepro_listings_upload_file_heading","imgs").")</span>";
+					echo "<span class='bepro_form_images'><span class='form_heading'>".__("Files","bepro-listings")." (".apply_filters("bepro_listings_upload_file_heading","imgs").")</span>";
 					while($counter <= $num_images){
 						$filename = $thunmbnails[$counter-1][5];
 						echo '<span class="form_label">'.(empty($filename)? __("File ".$counter, "bepro-listings"):$filename).'</span>';
 						if(isset($thunmbnails[$counter-1]) && !stristr($thunmbnails[$counter-1][0], "no_img.jpg")){
-							echo "<img src='".$thunmbnails[$counter-1][0]."'><br /><span>Delete?</span><input type='checkbox' name='delete_image_".($counter-1)."' value='".$thunmbnails[$counter-1][4]."'><br />";
+							echo "<img src='".$thunmbnails[$counter-1][0]."'><br /><span>".__("Delete?","bepro-listings")."</span><input type='checkbox' name='delete_image_".($counter-1)."' value='".$thunmbnails[$counter-1][4]."'><br />";
 						}
 						echo '<input type="file" name="bepro_form_image_'.$counter.'"><br />';
 						$counter++;

@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Customizable listings used for, Business directory, classifieds, real estate, portfolio, etc. Optional base features include, front end upload, gallery, paypal payments & buddypress support. Use google maps and various result templates to showcase info. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.2.0
+Version: 2.2.0001
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -219,7 +219,7 @@ class Bepro_listings{
 					</span>';
 					$return_text .=	'<span class="blsearchbuttons">
 					<input type="submit" value="'.__("Search Listings", "bepro-listings").'">
-										<a class="clear_search" href="'.get_bloginfo("url")."/".$listing_page.'"><button>Clear Search</button></a>
+										<a class="clear_search" href="'.get_bloginfo("url")."/".$listing_page.'"><button>'.__("Clear Search","bepro-listings").'</button></a>
 					</span>					
 				</form>
 			</div>
@@ -545,11 +545,13 @@ class Bepro_listings{
 	
 	function check_load_payment(){
 		$data = get_option("bepro_listings");
-		if((is_numeric($data["require_payment"])) && (class_exists("Bepro_cart"))){
+		if((is_numeric($data["require_payment"])) && ($data["require_payment"] == 1) && (class_exists("Bepro_cart"))){
 			add_action( 'bepro_listing_types_add_form_fields', 'bepro_listings_edit_category_fee_field');
 			add_action( 'bepro_listing_types_edit_form_fields', 'bepro_listings_edit_category_fee_field', 11,2 );
 			add_action( 'created_term', 'bepro_listings_category_fee_field_save', 11,3 );
 			add_action( 'edit_term', 'bepro_listings_category_fee_field_save', 11,3 );
+			add_action( 'bepro_cart_item_payment_complete', 'bepro_payment_completed', 10, 2);
+		}else if((is_numeric($data["require_payment"])) &&  (class_exists("Bepro_cart"))){
 			add_action( 'bepro_cart_item_payment_complete', 'bepro_payment_completed', 10, 2);
 		}else if(!empty($data) && !class_exists("Bepro_cart")){
 			$data["require_payment"] = "";

@@ -18,7 +18,7 @@
 			";
 			
 			foreach($items as $item){
-				$notice = "None";
+				$notice = __("None","bepro-listings");
 				$post_status = (($item->post_status == "publish")? __("Published","bepro-listings"):__("Pending","bepro-listings"));
 				$order_status = $item->order_status;
 				
@@ -43,8 +43,8 @@
 					<tr>
 						<td>".$item->post_title."</td>
 						<td>".get_the_term_list($item->post_id, 'bepro_listing_types', '', ', ','')."</td>
-						<td>".((has_post_thumbnail( $item->post_id ))?"Yes":"No")."</td>
-						<td>".((isset($item->lat) && isset($item->lon))?"Valid":"Not Valid")."</td>
+						<td>".((has_post_thumbnail( $item->post_id ))?__("Yes","bepro-listings"):__("No","bepro-listings"))."</td>
+						<td>".((isset($item->lat) && isset($item->lon))?__("Valid","bepro-listings"):__("Not Valid","bepro-listings"))."</td>
 						<td>".$notice."</td>
 						<td>".$post_status."</td>
 						<td>";

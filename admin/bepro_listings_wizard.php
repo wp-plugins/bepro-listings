@@ -115,6 +115,7 @@
 						<li><a href="edit.php?post_type=bepro_listings" target="_blank"><?php _e("Manage Listings","bepro-listings"); ?></a> <?php _e("Via the Admin","bepro-listings"); ?></li>
 						<li><a href="edit.php?post_type=bepro_listings&page=bepro_listings_options" target="_blank"><?php _e("View","bepro-listings"); ?></a> <?php _e("all configuration options","bepro-listings"); ?></li>
 						<li><a href="post-new.php?post_type=bepro_listings" target="_blank"><?php _e("Create","bepro-listings"); ?></a> <?php _e("a new listing","bepro-listings"); ?></li>
+						<li><a href="edit.php?post_type=bepro_listings&page=bepro_listings_status" target="_blank"><?php _e("View","bepro-listings"); ?></a> <?php _e("Plugin Status & Errors","bepro-listings"); ?></li>
 					</ul>
 					<h4><?php _e("CONTRIBUTE","bepro-listings"); ?></h4>
 					<p><?php _e("Hopefully you like our plugin. Consider leaving a review or feedback. Spreading the word is one of the best ways to help support free solutions like this one.","bepro-listings"); ?> </p>

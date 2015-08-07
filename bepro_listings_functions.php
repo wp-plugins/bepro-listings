@@ -25,6 +25,7 @@
 	function bepro_listings_javascript() {
 		$data = get_option("bepro_listings");
 		$secure_url = (!empty($data["https"]))? "https":"http";
+		$scripts = "";
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('validate',plugins_url("js/jquery.validate.min.js", __FILE__ ), array('jquery'), true);
 		wp_enqueue_script('jquery-ui-datepicker');
@@ -334,7 +335,7 @@
 	//if selected, show link in footer
 	function footer_message(){
 		echo '<div id="bepro_lisings_footer">
-								<a href="http://www.beprosoftware.com/products/bepro-listings" title="Wordpress Directory Plugin" rel="generator">WP Directory powered by BePro Lisitngs</a>
+								<a href="http://www.beprosoftware.com/products/bepro-listings" title="Wordpress Directory Plugin" rel="generator">WordPress Directory powered by BePro Lisitngs</a>
 			</div>';
 	}
 	
@@ -398,7 +399,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.2.0' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.2.0001' );
 		}	
 	}
 	
@@ -754,7 +755,7 @@
 			
 			//retrieve variables
 			$item_name = addslashes(strip_tags($_POST["item_name"]));
-			$content = addslashes(strip_tags(strip_shortcodes($_POST["content"])));
+			$content = is_admin()? $_POST["content"]:addslashes(strip_tags(strip_shortcodes($_POST["content"])));
 			$categories = $wpdb->escape($_POST["categories"]);
 			$username = $wpdb->escape(strip_tags($_POST["username"]));
 			$password = $wpdb->escape(strip_tags($_POST["password"]));
@@ -1700,7 +1701,7 @@
 		if ( (!$vote) || ($days_since > 30)) {
 			$posts = $wpdb->get_row("SELECT count(*) as total FROM ".$wpdb->prefix."posts WHERE post_type = 'bepro_listings' AND post_status = 'publish'");
 			echo '<div class="updated">'; 
-			printf (("<p>".__('CONGRATULATIONS. You have been using BePro Listings for %1$s days and successfully created %2$s listings. Please consider supporting this free product by spreading the word with a 5 star review.').'</p><ul><li><a href="https://wordpress.org/support/view/plugin-reviews/bepro-listings?filter=5" target="_blank">'.__("Yeah, great product","bepro-listings").'</a></li><li><a href="?bpl_rate_ignore=1">'.__("Already left a review","bepro-listings").'</a></li><li><a href="?bpl_rate_ignore=2">'.__("No, not yet","bepro-listings").'</a></li></ul>'), $days, $posts->total);
+			printf (("<p>".__('CONGRATULATIONS. You have been using BePro Listings for %1$s days and successfully created %2$s listings. Please consider supporting this free product by spreading the word with a 5 star review.',"bepro-lisings").'</p><ul><li><a href="https://wordpress.org/support/view/plugin-reviews/bepro-listings?filter=5" target="_blank">'.__("Yeah, great product","bepro-listings").'</a></li><li><a href="?bpl_rate_ignore=1">'.__("Already left a review","bepro-listings").'</a></li><li><a href="?bpl_rate_ignore=2">'.__("No, not yet","bepro-listings").'</a></li></ul>'), $days, $posts->total);
 			echo "</div>";
 		}
 	}

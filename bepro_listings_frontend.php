@@ -277,7 +277,7 @@
 		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
 		$default_img = (!empty($thumbnail))? $thumbnail:'<img src="'.$data["default_image"].'"/>';
 		if($target == 2){
-			$link = "<a href=\"http://".urlencode($result->website)."\" target='_blank'>Visit Website</a>";
+			$link = "<a href=\"http://".urlencode($result->website)."\" target='_blank'>".__("Visit Website","bepro-listings")."</a>";
 		}elseif($target == 3){
 			$link =  "<a href=\"http://".urlencode($result->website)."\" class='bl_ajax_result_page' post_id=\"".$result->post_id."\">Visit Website</a>";
 		}elseif($target == 5){
@@ -286,7 +286,7 @@
 			$link ="<a href=\"http://".urlencode($result->website)."\" post_id=\"".$bp_listing->post_id."\">Visit Website</a>";
 		}
 		
-		return "var infowindow_".$counter." = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_title\">".addslashes(substr($result->post_title,0,18))."</span><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->address_line1.", ".$result->city.", ".$result->state.", ".$result->country."</span>".(empty($link)?"":"<span class=\"marker_links\">".$link."<br /><a href=\"".get_permalink($result->post_id)."\">View Listing</a></span>")."</div>', size: new google.maps.Size(50,50)});
+		return "var infowindow_".$counter." = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_title\">".addslashes(substr($result->post_title,0,18))."</span><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->address_line1.", ".$result->city.", ".$result->state.", ".$result->country."</span>".(empty($link)?"":"<span class=\"marker_links\">".$link."<br /><a href=\"".get_permalink($result->post_id)."\">".__("View Listing","bepro-listings")."</a></span>")."</div>', size: new google.maps.Size(50,50)});
 				  google.maps.event.addListener(marker_".$counter.", \"click\", function() {
 					if(openwindow){
 						eval(openwindow).close();

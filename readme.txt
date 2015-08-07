@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, api, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.2.0
+Stable tag: 2.2.0001
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,7 +57,7 @@ Compatible with most themes. Look at some of the ways people are using the plugi
 	* Projects - Feature your work in various ways, allowing users to view details and comment. Great for showcasing your projects.
 	* Pet Directory - Showcase information on any animal and allow users to search and filter through them 
 	* Store Finder - List your store or shop branches including, location and contact details 
-	* Business Directory - Employee, staff, members or any other type of directory listings site
+	* Business Directory - Employee, staff, authors, members or any other type of directory listings site
 	* Advertising - Sell ad space or use the system like a bullitin board
 	* Classifieds - Run mutiple directory types consecutively on the same domain (Requires Form Builder) or multisite support is included
 	* Product Catalogue - List them yourself or allow members to list products and/or services e.g.
@@ -68,7 +68,8 @@ Compatible with most themes. Look at some of the ways people are using the plugi
 	* Podcast & Music - List and categorize all of your audio files including mp3 and wav then play them on a HTML5 player  (w/ flv fallback) with our audio addon
 	* Document Directory - Showcase multiple file types allowing users to search and view them on your website with our documents addon
 	* Google Maps - We have one of the most feature rich google map options available for wordpress. Many users choose us just for this feature.
-	* Job Board - Use categories as job types, then allow users to search and filter through various opportunities.
+	* Geocaching - Showcase where items are located via google maps. Each item has its own unique page showing various details and related media
+	* Job Board - Use categories as job types, then allow users to submit, search and filter through various opportunities.
 	* Events & Appointments - Use the bookings addon to add searchable availability to each listing.
 
 = ADD ONS =
@@ -172,7 +173,7 @@ BePro Listings is very easy to setup
 
 * Follow the installation wizard
 
-You are done! If you prefer to manually install BePro Lisitngs, follow this [setup video tutorial](http://www.beprosoftware.com/documentation/setting-up-bepro-listings/)
+You are done! If you prefer to manually install BePro Listings, follow this [setup video tutorial](http://www.beprosoftware.com/documentation/setting-up-bepro-listings/)
 
 * If interested in payment features, you will need to install BePro Cart (FREE) from our website
 
@@ -252,6 +253,11 @@ BePro Listings is part of the BePro Software Suite of products. Maintained by th
 Integration with other plugins in our suite is always free and integrated into the core of our plugins. For example, activating payment features for BePro Listings requires that you have BePro Cart installed. The notification features are similar, requiring BePro Email to be installed. This separation allows us to develop multiple products with extensive payment and notification features. Most importantly, this architecture provides a central and familiar interface for you to manage these features.
 
 == Changelog ==
+
+= 2.2.0001 (Aug 5th, 2015) =
+
+* Admin can submit unfiltered content.
+* Imporoved localization
 
 = 2.2.0 (July 27th, 2015) =
 

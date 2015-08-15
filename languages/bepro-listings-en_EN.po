@@ -17,8 +17,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.7\n"
 
+#: templates/form.php:135
 msgid "Item Information"
 msgstr "Item Information"
+
+#: templates/form.php:205
+msgid "Files"
+msgstr "Files"
+
+#: bepro_listings_frontend.php:211
+msgid "File"
+msgstr "File"
+
+#: bepro_listings_frontend.php:345
+msgid "Update Listing"
+msgstr "Update Listing"
 
 #: bepro_listings_frontend.php:321
 msgid "Item Name"

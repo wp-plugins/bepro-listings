@@ -4,14 +4,14 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: auto, api, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.2.0001
+Stable tag: 2.2.0002
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Responsive Listings (Product, Classifieds, Business Directory, Events etc) w/ (google maps, front end upload, search, payments & more)
 
 == Description ==
-This plugin proivdes a highly customizable listings experience. With its modular architecture, you decide how users, contribute, search and view information. Use optional base features like, clustered google maps, **paypal payments**, photo galleries, ajax search results and **front end submission**. Our unmatched template architecture facilitates solutions for, Real Estate, Business Directories, Product Catalogues, Event Booking, Classifieds and other niche information. 
+Allow frontend user submissions or create listings yourself. Easily setup within seconds, this highly configurable plugin can capture various types of information including, cost, contact, images and geography. Then allow visitors to use our ajax search features to view details in various ways including optional google maps and various result templates. This plugin is ideal for various website niches including, Real Estate, Business Directories, Product Catalogues, Event Booking, Classifieds, Paid Listings and others
 
 [BePro Listings](https://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](https://www.beprosoftware.com/forums/) | [Documentation](https://www.beprosoftware.com/documentation/bepro-listings/ ) | [Themes](https://www.beprosoftware.com/themes/) | [Demos](http://www.beprothemes.com)
 
@@ -149,20 +149,6 @@ You can support the development of this plugin via the donations link on the rig
 
 * github repo - https://github.com/BeProSoftware/bepro-listings
 
-= TRANSLATIONS =
-
-You can contribute languages that are not yet supported by the plugin. Documentation regarding how to do this is available on our website. If you find deficiencies in our use of localization, simply reach out. The usefulness of BePro Listings beyond english, is very important to us. Here is a list of currently supported languages
-
-* Dutch (Netherlands) - BePro Software Team
-* French (France) - wnconcept
-* German (Germany) - BePro Software Team
-* Italian (Italy) - BePro Software Team
-* Norwegian (Norway) - BePro Software Team
-* Polish (Poland) - BePro Software Team
-* Portuguese (Portugal) - Joao
-* Spanish (Spain) - BePro Software Team
-* Swedish (Sweden) - BePro Software Team
-
 == Installation ==
 
 BePro Listings is very easy to setup
@@ -253,6 +239,15 @@ BePro Listings is part of the BePro Software Suite of products. Maintained by th
 Integration with other plugins in our suite is always free and integrated into the core of our plugins. For example, activating payment features for BePro Listings requires that you have BePro Cart installed. The notification features are similar, requiring BePro Email to be installed. This separation allows us to develop multiple products with extensive payment and notification features. Most importantly, this architecture provides a central and familiar interface for you to manage these features.
 
 == Changelog ==
+
+= 2.2.0002 (Aug 15th, 2015) =
+
+* Tweak how plugin features are loaded
+* reduce errors and warnings
+* Remove slashes from content when displayed on detail pages. Slashes prevent sql injection
+* Improve how address is formatted for frontend display
+* Improvements to localization
+* Introduction of POT file
 
 = 2.2.0001 (Aug 5th, 2015) =
 

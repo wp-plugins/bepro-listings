@@ -286,7 +286,8 @@
 			$link ="<a href=\"http://".urlencode($result->website)."\" post_id=\"".$bp_listing->post_id."\">Visit Website</a>";
 		}
 		
-		return "var infowindow_".$counter." = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_title\">".addslashes(substr($result->post_title,0,18))."</span><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$result->address_line1.", ".$result->city.", ".$result->state.", ".$result->country."</span>".(empty($link)?"":"<span class=\"marker_links\">".$link."<br /><a href=\"".get_permalink($result->post_id)."\">".__("View Listing","bepro-listings")."</a></span>")."</div>', size: new google.maps.Size(50,50)});
+		$format_address = bpl_format_address($result);
+		return "var infowindow_".$counter." = new google.maps.InfoWindow( { content: '<div class=\"marker_content\"><span class=\"marker_title\">".addslashes(substr($result->post_title,0,18))."</span><span class=\"marker_img\">".$default_img."</span><span class=\"marker_detais\">".$format_address."</span>".(empty($link)?"":"<span class=\"marker_links\">".$link."<br /><a href=\"".get_permalink($result->post_id)."\">".__("View Listing","bepro-listings")."</a></span>")."</div>', size: new google.maps.Size(50,50)});
 				  google.maps.event.addListener(marker_".$counter.", \"click\", function() {
 					if(openwindow){
 						eval(openwindow).close();
@@ -916,7 +917,7 @@
 		$item = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." WHERE post_id = ".$page_id);		
 		if( @$item->lat){			
 			$map_url = "http://maps.google.com/maps?&z=10&q=".$item->lat."+".$item->lon."+(".urlencode($item->address_line1.", ".$item->city.", ".$item->state.", ".$item->country).")&mrt=yp ";			
-			$address_val = ($data["protect_contact"] == "on")? "<a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a>" : $item->address_line1.", ".$item->city.", ".$item->state.", ".$item->country;			
+			$address_val = ($data["protect_contact"] == "on")? "<a href='$map_url' target='_blank'>".__("View Map", "bepro-listings")."</a>" : bpl_format_address($item);			
 			echo "<div class='bepro_address_info'><span class='item_label'>".__("Address", "bepro-listings")."</span> - $address_val</div>";		
 		}	
 	}

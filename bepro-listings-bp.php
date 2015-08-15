@@ -202,7 +202,7 @@
 			bp_core_new_subnav_item( array( 'name' => __( BEPRO_LISTINGS_LIST_SLUG, 'bepro-listings' ), 'slug' => BEPRO_LISTINGS_LIST_SLUG, 'parent_url' => $settings_link, 'parent_slug' => BEPRO_LISTINGS_SLUG, 'screen_function' => 'display_item_list', 'position' => 10) );
 			
 			//if there is a 3rd party plugin which takes over the creation of listings, then don't show the button
-			$add_new_button = apply_filters("bl_change_add_listing_button", false, $listing_url);
+			$add_new_button = apply_filters("bl_change_add_listing_button", false, "");
 			$item_css_id = "";
 			if($add_new_button){
 				$item_css_id = "bl_hide_bp_create_menu";
@@ -220,7 +220,7 @@
 	function bepro_listings_nav_count() {
 			global $bp, $wpdb;
 			
-			$user_id = $bp->displayed_user->id;
+			$user_id = @$bp->displayed_user->id;
 			// This will probably only work on BP 1.3+
 			if ( !empty( $bp->bp_nav[BEPRO_LISTINGS_SLUG]) && $user_id && (is_numeric($user_id))) {
 				$current_tab_name = $bp->bp_nav[BEPRO_LISTINGS_SLUG]['name'];

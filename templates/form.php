@@ -103,7 +103,7 @@
 						$filename = $thunmbnails[$counter-1][5];
 						echo '<span class="form_label">'.(empty($filename)? __("File ".$counter, "bepro-listings"):$filename).'</span>';
 						if(isset($thunmbnails[$counter-1]) && !stristr($thunmbnails[$counter-1][0], "no_img.jpg")){
-							echo "<img src='".$thunmbnails[$counter-1][0]."'><br /><span>".__("Delete?","bepro-listings")."</span><input type='checkbox' name='delete_image_".($counter-1)."' value='".$thunmbnails[$counter-1][4]."'><br />";
+							echo "<img src='".$thunmbnails[$counter-1][0]."'><br /><span>".__("Delete","bepro-listings")."?</span><input type='checkbox' name='delete_image_".($counter-1)."' value='".$thunmbnails[$counter-1][4]."'><br />";
 						}
 						echo '<input type="file" name="bepro_form_image_'.$counter.'"><br />';
 						$counter++;

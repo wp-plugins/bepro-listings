@@ -399,7 +399,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.2.0001' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.2.0002' );
 		}	
 	}
 	
@@ -755,7 +755,7 @@
 			
 			//retrieve variables
 			$item_name = addslashes(strip_tags($_POST["item_name"]));
-			$content = is_admin()? $_POST["content"]:addslashes(strip_tags(strip_shortcodes($_POST["content"])));
+			$content = (is_admin() && is_user_logged_in())? $_POST["content"]:addslashes(strip_tags(strip_shortcodes($_POST["content"])));
 			$categories = $wpdb->escape($_POST["categories"]);
 			$username = $wpdb->escape(strip_tags($_POST["username"]));
 			$password = $wpdb->escape(strip_tags($_POST["password"]));
@@ -1717,5 +1717,21 @@
 				 @add_user_meta($user_id, 'bpl_rate_ignore', date("Y-m-d H:i:s"), true);
 			}
 		}
+	}
+	
+	function bpl_format_address($address){
+		$return_addr = array();
+		if(@$address->address_line1)
+			$return_addr[] = $address->address_line1;
+		if(@$address->city)
+			$return_addr[] = $address->city;
+		if(@$address->state)
+			$return_addr[] = $address->state;
+		if(@$address->country)
+			$return_addr[] = $address->country;
+		if(@$address->postcode)
+			$return_addr[] = $address->postcode;
+		
+		return implode(",",$return_addr);
 	}
 ?>

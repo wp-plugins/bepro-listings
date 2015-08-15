@@ -22,17 +22,14 @@
 		<h3><?php _e( 'You are using', "bepro-listings" ); _e( 'BePro Listings Version:', "bepro-listings" ); echo " ".BEPRO_LISTINGS_VERSION; ?>   </h3>
 	
 		<div class="feature-section images-stagger-right">
+			<h4><?php _e( 'Translations', "bepro-listings" ); ?></h4>
+			<p><?php _e( 'We have introduced a .POT file for those interested in creating their own translations. We will eventually move all tranlation files, except for the POT file from the plugin. This will reduce the plugin size while still allowing users to create the needed translations. The current po and mo files that we have created, will be moved to the copy of the plugin on github.', "bepro-listings" ); ?></p>
+			
+			<h4><?php _e( 'Front End Improvements', "bepro-listings" ); ?></h4>
+			<p><?php _e( 'When users submit content, slashes are added to potentially malicious aspects, to prevent sql injection. We now remove those slashes when the information is displayed to users. We have also improved the formating for addresses shown on the frontend.', "bepro-listings" ); ?></p>
+			
 			<h4><?php _e( 'Import / Export', "bepro-listings" ); ?></h4>
 			<p><?php _e( 'We have improved our CSV import process. Now you can list the category names instead of their IDs and upload multiple images. There is also a new delimiter option for csv imports. These changes make it easier to use our FREE csv import features for quickly uploading lots of data.', "bepro-listings" ); ?></p>
-			
-			<h4><?php _e( 'New Layout Options', "bepro-listings" ); ?></h4>
-			<p><?php _e( 'Now you have more control over the layout of detail pages. You can put more info in tabs or remove tabs altogether. When paired with existing tab controls, you have tons of ways to make your listings experience unique. <a href="https://www.beprosoftware.com/blog/bepro-listings-2-1-99991/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
-			
-			<h4><?php _e( 'New Form Category Option', "bepro-listings" ); ?></h4>
-			<p><?php _e( 'We heard you. Now you can select between a category select box or stay with the check boxes. The select box option removes the untidy label design issue affecting some users. If you choose to stay with the checkbox option, you will notice that we have improved its css style. <a href="https://www.beprosoftware.com/blog/bepro-listings-2-1-99991/" target="_blank">Click here</a> to learn more', "bepro-listings" ); ?></p>
-			
-			<h4><?php _e( 'Translations', "bepro-listings" ); ?></h4>
-			<p><?php _e( 'BePro Listngs translations have been updated for the languages that we support. This continues our trend of supporting languages other than English. If you find deficiencies in our use of localization and would like to help, contact us today.', "bepro-listings" ); ?></p>
 			
 			<h4><?php _e( 'Support Us', "bepro-listings" ); ?></h4>
 			<p><?php _e( 'Hopefully you like BePro Listings. Consider sharing your experience with other users by leaving a <a href="http://wordpress.org/support/view/plugin-reviews/bepro-listings" target="_blank">review on wordpress.org</a>. Your feedback helps to support development of this free solution and informs fellow wordpress users of its usefulness.', "bepro-listings" ); ?></p>

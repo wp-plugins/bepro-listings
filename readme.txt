@@ -1,17 +1,17 @@
 === BePro Listings ===
 Contributors: BeyondPrograms, BeProSoftware
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: auto, api, buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, directory listings, front end upload, front end submission, google maps, google map directory, HTML5, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, vehicle, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
+Tags: buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, front end upload, front end submission, google maps, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
 Stable tag: 2.2.0002
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Responsive Listings (Product, Classifieds, Business Directory, Events etc) w/ (google maps, front end upload, search, payments & more)
+Search front end submissions. Optional galleries, google maps, payments. Best for Business Directory, Classifieds, Catalog or Portfolio
 
 == Description ==
-Allow frontend user submissions or create listings yourself. Easily setup within seconds, this highly configurable plugin can capture various types of information including, cost, contact, images and geography. Then allow visitors to use our ajax search features to view details in various ways including optional google maps and various result templates. This plugin is ideal for various website niches including, Real Estate, Business Directories, Product Catalogues, Event Booking, Classifieds, Paid Listings and others
+Allow frontend user submissions or create listings yourself. Easily setup within seconds, this highly configurable plugin can capture various types of user submitted content including, cost, contact, images and geography. Then allow visitors to search and filter through listings in various ways including optional google maps and various listing layouts. Depending on configuration, this plugin will fit the need of various website niches including, Real Estate, Business Directories, Product Catalogues, Portfolios, Classifieds and others via addons.
 
 [BePro Listings](https://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](https://www.beprosoftware.com/forums/) | [Documentation](https://www.beprosoftware.com/documentation/bepro-listings/ ) | [Themes](https://www.beprosoftware.com/themes/) | [Demos](http://www.beprothemes.com)
 
@@ -223,8 +223,8 @@ No. However, if interested, you can.
 
 == Screenshots ==
 
-1. Shortcode Features on ByCater $1 Theme
-2. Gallery Features on FolioProjects $1 Theme
+1. Shortcode Features on ByCater
+2. Gallery Features on FolioProjects
 3. E.g. alternate Search and filter design
 4. Listing page with addons
 5. Manage Listings and Orders on the front end
@@ -252,7 +252,7 @@ Integration with other plugins in our suite is always free and integrated into t
 = 2.2.0001 (Aug 5th, 2015) =
 
 * Admin can submit unfiltered content.
-* Imporoved localization
+* Improved localization
 
 = 2.2.0 (July 27th, 2015) =
 
@@ -275,7 +275,7 @@ Integration with other plugins in our suite is always free and integrated into t
 = 2.1.99998 (July 21st, 2015) =
 
 * Fix ajax when certain html elements are turned off.
-* New delimiter option added
+* New delimiter option added for csv uploads
 * Fix show_geo check for search shortcode
 * Fix clear search button not working
 

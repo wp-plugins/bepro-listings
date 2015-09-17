@@ -1,19 +1,23 @@
 === BePro Listings ===
 Contributors: BeyondPrograms, BeProSoftware
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@beprosoftware.com&item_name=Donation+for+BePro+Listings
-Tags: buddypress, buddypress directory, business, car, catalog, catalogue, classifieds, classifieds plugin, directory, directory builder, directory plugin, front end upload, front end submission, google maps, image directory, listing, listings, paid, paypal, pets, plugin, portfolio, product, product catalogue, product listings, product directory, search, submission, upload, wordpress directory, wordpress classifieds, wordpress catalogue, yellow pages
+Tags: buddypress, car, catalog, catalogue, classifieds, directory, directory builder, front end, frontend form, frontend upload, frontend submission, google map, inventory, list product, listing, listings, listing search, pets, product catalog, product listings, product gallery, product management, wordpress classifieds, wordpress product catalog, wordpress directory, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.2.0002
+Stable tag: 2.2.0004
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Search front end submissions. Optional galleries, google maps, payments. Best for Business Directory, Classifieds, Catalog or Portfolio
+Let users search and/or contribute configurable frontend submissions. Works great as a Directory, Classifieds, Product Catalog or Portfolio
 
 == Description ==
-Allow frontend user submissions or create listings yourself. Easily setup within seconds, this highly configurable plugin can capture various types of user submitted content including, cost, contact, images and geography. Then allow visitors to search and filter through listings in various ways including optional google maps and various listing layouts. Depending on configuration, this plugin will fit the need of various website niches including, Real Estate, Business Directories, Product Catalogues, Portfolios, Classifieds and others via addons.
+Allow frontend submissions or create listings yourself. Easily setup within seconds, this highly configurable plugin can capture various types of user submitted content including, cost, contact, images and address. Then allow visitors to search and filter through listings in various ways including optional google maps and various listing layouts. Depending on configuration, this plugin will fit the need of various website tpyes including, Real Estate, Business Directories, Product Catalogues, Portfolios, Classifieds and others via addons.
 
-[BePro Listings](https://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](https://www.beprosoftware.com/forums/) | [Documentation](https://www.beprosoftware.com/documentation/bepro-listings/ ) | [Themes](https://www.beprosoftware.com/themes/) | [Demos](http://www.beprothemes.com)
+[BePro Listings](https://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](https://www.beprosoftware.com/forums/) | [Documentation](https://www.beprosoftware.com/documentation/bepro-listings/ ) | [Themes](https://www.beprosoftware.com/themes/)
+
+= DEMOS =
+
+[All 12+ Demos](https://beprothemes.com) | [Product Catalog](https://beprothemes.com/catalog) | [Business Directory](https://beprothemes.com/business) | [Real Estate](https://beprothemes.com/realestate)
 
 = INTRO VIDEO =
 
@@ -236,9 +240,27 @@ No. However, if interested, you can.
 
 BePro Listings is part of the BePro Software Suite of products. Maintained by the BePro Software Team, you know that this product will be well supported for years to come. As part of our suite, it also integrates with other software we create like BePro Email, BePro Software Api and BePro Cart. This integration guarantees compatability and continues our trend of offering you a flexible way to build the website experience that your users require.  
 
-Integration with other plugins in our suite is always free and integrated into the core of our plugins. For example, activating payment features for BePro Listings requires that you have BePro Cart installed. The notification features are similar, requiring BePro Email to be installed. This separation allows us to develop multiple products with extensive payment and notification features. Most importantly, this architecture provides a central and familiar interface for you to manage these features.
+Easily setup within a minute, this highly configurable listings solution will allow you to capture and search various types of information. Combine addons to extend base features and create the user experience your website needs. From notifications to payments, each feature is easily turned off or packaged in a separate plugin. This architechture makes BePro Listings lite and applicable to various uses. 
 
 == Changelog ==
+
+= 2.2.0004 (Sep 17th, 2015) =
+
+* Fix new display for showing remaining packages to user while creating/editing listings
+* Tweak form builder integration to accomodate ajax forms
+
+= 2.2.0003 (Sep 15th, 2015) =
+
+* Multisite my listings fix when payments are activated
+* Packages now show # of listings remaining
+* Change Optional label to Options for category form field
+* Removed Pre Selected label if there are no categories pre selected
+* Fix required select box. Options were not being pre selected
+* Upgrade category function to allow for single select boxes
+* Fix creation of order via admin
+* POT language file updated to reflect changes in plugin
+* Show if package is selected when editing a listing
+* Fixed default image on details page if no image attached
 
 = 2.2.0002 (Aug 15th, 2015) =
 

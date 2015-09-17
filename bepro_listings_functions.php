@@ -386,7 +386,7 @@
 		if (!is_numeric(substr($wpdb->prefix, -2, 1)) && is_multisite()) {
 			$cur_blog_id = ($wpdb->blogid == 1)? "":$wpdb->blogid.'_';
 			define( 'BEPRO_LISTINGS_TABLE_NAME', $cur_blog_id.'bepro_listings' );
-			define( 'BEPRO_LISTINGS_ORDERS_TABLE_NAME', $cur_blog_id.'bepro_listing_orders' );
+			define( 'BEPRO_LISTINGS_ORDERS_TABLE_NAME', $wpdb->prefix.'bepro_listing_orders' );
 		}else if ( !defined( 'BEPRO_LISTINGS_TABLE_NAME' ) ){
 			define( 'BEPRO_LISTINGS_TABLE_NAME', 'bepro_listings' );
 			define( 'BEPRO_LISTINGS_ORDERS_TABLE_NAME', $wpdb->prefix.'bepro_listing_orders' );
@@ -399,7 +399,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.2.0002' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.2.0004' );
 		}	
 	}
 	
@@ -1469,9 +1469,8 @@
 	function bl_create_payment_order($order){
 		global $wpdb;
 		if(empty($order) || !is_array($order)) return false;
-		
 		if($curr_record = bl_get_payment_order($order["bl_order_id"])){
-			return $wpdb->query("UPDATE ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." SET feature_id = ".$order["feature_id"].", cust_user_id = ".$order["cust_user_id"].", bepro_cart_id = ".$order["bepro_cart_id"].", status = ".$order["status"].", feature_type = ".$order["feature_type"].", expires = '".@$order["expires"]."', date_paid = '".@$order["date_paid"]."' WHERE bl_order_id = ".$order["bl_order_id"]);
+			return $wpdb->query("UPDATE ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." SET feature_id = ".$order["feature_id"].", cust_user_id = '".$order["cust_user_id"]."', bepro_cart_id = '".$order["bepro_cart_id"]."', status = '".$order["status"]."', feature_type = '".$order["feature_type"]."', expires = '".@$order["expires"]."', date_paid = '".@$order["date_paid"]."' WHERE bl_order_id = ".$order["bl_order_id"]);
 		}else{
 			return $wpdb->query("INSERT INTO ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." (bl_order_id, feature_id, cust_user_id, bepro_cart_id, status, feature_type, date_paid, expires) VALUES(".$order["bl_order_id"].",".$order["feature_id"].",".$order["cust_user_id"].",'".$order["bepro_cart_id"]."','".$order["status"]."',".$order["feature_type"].",'".$order["date_paid"]."','".$order["expires"]."')");
 		}
@@ -1491,7 +1490,7 @@
 		return $wpdb->get_row("SELECT * FROM ".BEPRO_LISTINGS_ORDERS_TABLE_NAME." ORDER by created DESC LIMIT 1");
 	}
 	
-	function bl_get_vacant_order_id($user_id, $payment_type, $feature_id = false){
+	function bl_get_vacant_order_id($user_id, $payment_type, $feature_id = false, $new = true){
 		global $wpdb;
 		$data = get_option("bepro_listings");
 		$found_vacant = false;
@@ -1511,6 +1510,10 @@
 				} 
 			}
 		}
+		
+		//if its requested that we prevent new orders from being created
+		if(!$new)
+			return false;
 		
 		//if category or cant find package with room then create new order
 		if(!$found_vacant){

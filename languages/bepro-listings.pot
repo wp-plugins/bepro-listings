@@ -25,6 +25,14 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
+#: templates/form.php:187
+msgid "Pre Selected"
+msgstr ""
+
+#: templates/form.php:189
+msgid "Options"
+msgstr ""
+
 #: bepro_listings_frontend.php:211
 msgid "File"
 msgstr ""

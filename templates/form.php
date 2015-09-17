@@ -90,7 +90,7 @@
 					$cat_style = get_form_cats($cats, $exclude, $required, $categories);
 					
 					//category section
-					echo "<div class='bepro_listing_category_section'><h3>".__("Categories","bepro-listings")." : </h3>";					echo (empty($data["bepro_listings_cat_required"])? "" : "<p><strong>".__("Pre Selected","bepro-listings")."</strong></p>".$cat_style["required_list"]);					echo "<div style='clear:both'><br /></div><p><strong>".__("Optional","bepro-listings")."</strong></p>".$cat_style["normal_list"]."</div>";
+					echo "<div class='bepro_listing_category_section'><h3>".__("Categories","bepro-listings")." : </h3>";					echo (empty($data["bepro_listings_cat_required"]) || empty($cat_style["required_list"])? "" : "<p><strong>".__("Pre Selected","bepro-listings")."</strong></p>".$cat_style["required_list"]);					echo "<div style='clear:both'><br /></div><p><strong>".__("Options","bepro-listings")."</strong></p>".$cat_style["normal_list"]."</div>";
 				}
 				echo "<div style='clear:both'></div>";
 				

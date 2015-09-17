@@ -846,7 +846,7 @@
 
 		global $wpdb;
 
-		if (!isset($_POST['save_bepro_listing']) && (!isset($_POST["package_duration"]))) return; 
+		if (!isset($_POST['save_bepro_listing']) && (!isset($_POST["package_duration"])) && (!isset($_POST["bpl_save_order"]))) return; 
 
 		if ($parent_id = wp_is_post_revision($post_id)) 
 
@@ -867,7 +867,7 @@
 			bp_payment_packages_save($post_id);
 
 		}
-
+		
 		if($post_type === "bpl_orders"){
 
 			bl_order_meta_save($post_id);
@@ -2628,11 +2628,11 @@
 
 			<span class="form_label">'.__("Listing Duration","bepro-listings").'</span><input type="text" name="package_duration"  value="'.get_post_meta($post->ID, "package_duration", true).'" placeholder="'.__("# in days","bepro-listings").'" /> <br />
 
-			<span class="form_label">'.__("Cost","bepro-listings").'</span><input type="text" name="package_cost"  value="'.get_post_meta($post->ID, "package_cost", true).'" placeholder="e.g. 5.86"/> <br />
+			<span class="form_label">'.__("Cost","bepro-listings").'</span><input type="text" name="package_cost"  value="'.get_post_meta($post->ID, "package_cost", true).'" placeholder="e.g. 5.86"/> <br />';
 
-		</div>
-
-		';
+		do_action("bpl_package_meta_show", $post);
+		
+		echo "</div>";
 
 	}
 
@@ -2651,6 +2651,8 @@
 		update_post_meta($post_id, 'package_duration', $package_duration);
 
 		update_post_meta($post_id, 'package_cost', $package_cost);
+		
+		do_action("bpl_package_meta_save", $post_id);
 
 	}
 
@@ -2661,10 +2663,11 @@
 		$order = bl_get_payment_order($post->ID);
 
 		echo '<div id="bl_order_general_meta">
+			'.(@$order->feature_type? "<input type='hidden' name='feature_type' value='".$order->feature_type."'>":"").'
+			'.(@$order->status? "<input type='hidden' name='status' value='".$order->status."'>":"").'
+			<span class="form_label">Cust User ID</span><input type="text" name="cust_user_id" value="'.@$order->cust_user_id.'" '.((@$order->cust_user_id)? "readonly":"").'/> <br />
 
-			<span class="form_label">Cust User ID</span><input type="text" name="cust_user_id" value="'.@$order->cust_user_id.'" '.((@$order->cust_user_id)? "disabled='disabled'":"").'/> <br />
-
-			<span class="form_label">'.__("Status","bepro-listings").'</span><select name="status" '.@$order->status.'" '.((@$order->status)? "disabled='disabled'":"").'> 
+			<span class="form_label">'.__("Status","bepro-listings").'</span><select name="status" '.((@$order->status)? "disabled='disabled'":"").'> 
 
 				<option value="">'.__("Select", "bepro-listings").'</option>
 
@@ -2676,9 +2679,9 @@
 
 			</select><br />
 
-			<span class="form_label">BePro Cart ID</span><input type="text" name="bepro_cart_id"  value="'.@$order->bepro_cart_id.'" '.@$order->bepro_cart_id.'" '.((@$order->bepro_cart_id)? "disabled='disabled'":"").'/> <br />
+			<span class="form_label">BePro Cart ID</span><input type="text" name="bepro_cart_id"  value="'.@$order->bepro_cart_id.'" '.@$order->bepro_cart_id.'" '.((@$order->bepro_cart_id)? "readonly":"").'/> <br />
 
-			<span class="form_label">Feature Type</span><select name="feature_type" '.@$order->feature_type.'" '.((@$order->feature_type)? "disabled='disabled'":"").'> 
+			<span class="form_label">Feature Type</span><select name="feature_type" '.((@$order->feature_type)? "disabled='disabled'":"").'> 
 
 				<option value="">'.__("Select", "bepro-listings").'</option>
 
@@ -2688,10 +2691,10 @@
 
 			</select><br />
 
-			<span class="form_label">'.__("Feature ID","bepro-listings").'</span><input type="text" name="feature_id"  value="'.@$order->feature_id.'" '.@$order->feature_id.'" '.((@$order->feature_id)? "disabled='disabled'":"").'/> <br />
+			<span class="form_label">'.__("Feature ID","bepro-listings").'</span><input type="text" name="feature_id"  value="'.@$order->feature_id.'" '.@$order->feature_id.'" '.((@$order->feature_id)? "readonly":"").'/> <br />
 
 			<span class="form_label">'.__("Date Paid","bepro-listings").'</span><input class="bl_date_input" type="text" name="date_paid"  value="'.((@$order->date_paid && (@$order->date_paid != "0000-00-00 00:00:00"))? $order->date_paid:"").'" /> 
-
+			<input type="hidden" name="bpl_save_order" value="1">
 		</div>
 
 		';
@@ -2719,8 +2722,20 @@
 		$feature_type = is_numeric($_POST["feature_type"])? $_POST["feature_type"]:"";
 
 		$feature_id = is_numeric($_POST["feature_id"])? $_POST["feature_id"]:"";
-
-		bl_create_payment_order(array("bl_order_id" => $bl_order_id,"cust_user_id" => $cust_user_id,"status" => $status,"feature_type" => $feature_type,"feature_id" => $feature_id,));
+		
+		$date_paid = $_POST["date_paid"];
+		
+		$expires = "";
+		if($feature_id && ($status == 1)){
+			$feature = get_post($feature_id);
+			$duration = get_post_meta($feature_id, "package_duration", true);
+			if(is_numeric($duration)){
+				$expires = strtotime("+".$duration." day", strtotime($date_paid));
+				$expires = date("Y-m-d H:i:s", $expires);
+			}
+		}
+		
+		bl_create_payment_order(array("bl_order_id" => $bl_order_id,"cust_user_id" => $cust_user_id,"status" => $status,"feature_type" => $feature_type,"feature_id" => $feature_id,"date_paid" => $date_paid,"expires" => $expires));
 
 	}
 

@@ -893,6 +893,11 @@
 		
 		//Show wordpress gallery for this page
 		$gallery = ($num_images == 0)? "":do_shortcode("[gallery size='".$data["gallery_size"]."' columns=".((!empty($data["gallery_cols"]))? $data["gallery_cols"]:3)." ids='".implode(",",$attachments)."']");
+		if(empty($gallery) && ($num_images != 0)){
+			$default_img = '<img src="'.$data["default_image"].'"/>';
+			if(!empty($default_img))
+				$gallery = $default_img;
+		}
 		echo "<div class='bepro_listing_gallery'>".apply_filters("bepro_listings_item_gallery_feature", $gallery)."</div>";
 	}
 	
@@ -1005,7 +1010,8 @@
 		 ), $atts));
 		
 		//addon tie ins
-		$_POST["bl_form_id"] = $bl_form_id; 
+		if(empty($_POST["bl_form_id"]))
+			$_POST["bl_form_id"] = $bl_form_id; 
 		$_POST["origami"] = $origami; 
 		$_POST["redirect"] = $redirect; 
 		//get settings
@@ -1102,15 +1108,19 @@
 		include(plugin_dir_path( __FILE__ )."templates/tabs/details.php");
 	}
 
-	function bl_form_package_field($bl_order_id = null, $return_this = false){
+	function bl_form_package_field($bl_order_id = null, $return_this = false, $selected=false){
 		$data = get_option("bepro_listings");
 		$order = false;
 		$return_text = "";
-		if($bl_order_id){
-			$order = bl_get_payment_order($bl_order_id);
-			//allow user to change which package this listing is associated with
-			if($order->status == 1)
-			$return_text .= "<p>".__("Package Selected and Active","bepro-listings")."</p>";
+		$user_id = get_current_user_id();
+		if(!$selected && is_numeric($_POST["bpl_package"])){
+			$selected = $_POST["bpl_package"];
+		}else if($bl_order_id){
+			$order = bl_get_payment_order($bl_order_id); 
+
+			//allow user to change which package this listing is associated with but show its selected
+			if(@is_numeric($order->feature_id))
+				$selected = $order->feature_id;
 		}
 		
 		$return_text .= '<div id="flat_fee">';
@@ -1119,24 +1129,36 @@
 			if(!$packages || (sizeof($packages) < 1)) return;
 			
 			$return_text .= '<h3>'.__("Available Packages", "bepro-listings").'</h3>';
-			foreach($packages as $packages){
-				$num_listings = get_post_meta($packages->ID, "num_package_listings", true);
-				$duration = get_post_meta($packages->ID, "package_duration", true);
-				$cost = get_post_meta($packages->ID, "package_cost", true);
+			foreach($packages as $package){
+				$num_listings = get_post_meta($package->ID, "num_package_listings", true);
+				$duration = get_post_meta($package->ID, "package_duration", true);
+				$cost = get_post_meta($package->ID, "package_cost", true);
+				$vacant = bl_get_vacant_order_id($user_id, 2, $package->ID, false);
+				$listings_left = "";
+				
+				if($vacant){
+					global $wpdb;
+					$exiting_listings = $wpdb->get_row("SELECT count(*) as num_listings FROM ".$wpdb->prefix.BEPRO_LISTINGS_TABLE_NAME." as bl WHERE bl.bl_order_id =".$vacant);		
+					$exiting_listings = (!empty($exiting_listings))? $exiting_listings->num_listings:"";
+					
+					$listings_left = is_numeric($exiting_listings) ? ($num_listings - $exiting_listings):"";
+					$listings_left = is_numeric($listings_left) && ($listings_left > 0)? "(".($listings_left)." ".__("Remaining","bepro-listings").")":"";
+				}
+				
 				
 				//this is a package, we need to know how many listings are possible
 				if(!$num_listings || !is_numeric($num_listings) || ($num_listings < 1)) return; 
 				
 				$package_div[] = array();
-				$return_text .= '<div class="package_option"><input type="radio" name="bpl_package" id="package_sel_'.$packages->ID.'" value="'.$packages->ID.'" '.((@$order && ($order->feature_id == $packages->ID))? "checked='checked'":"").'><span class="package_head">'.$packages->post_title.'  ('.$data["currency_sign"].$cost.')</span>
+				$return_text .= '<div class="package_option"><input type="radio" name="bpl_package" id="package_sel_'.$package->ID.'" value="'.$package->ID.'" '.((@$order && ($order->feature_id == $package->ID))? "checked='checked'":"").' '.((@$selected && ($selected == $package->ID))? "checked='checked'":"").'> <span class="package_head">'.$package->post_title.' '.$listings_left.'</span>
 				<span class="package_options">
 					<ul>
 						<li># '.__("Days","bepro-listings").' '.$duration.'</li>
 						<li># '.__("Listings","bepro-listings").' '.$num_listings.'</li>
-						<li>'.$data["currency_sign"].$cost.'</li>
+						<li>'.__("Cost","bepro-listings").' '.$data["currency_sign"].$cost.'</li>
 					</ul>
 				<span>
-				<span class="package_details">'.$packages->post_content.'<span>
+				<span class="package_details">'.$package->post_content.'<span>
 				</div>';
 				
 			}
@@ -1151,14 +1173,16 @@
 		cats = all possible categories
 		categores = the selected categories
 	*/
-	function get_form_cats($cats, $exclude = array(), $required = array(), $categories = array()){
+	function get_form_cats($cats, $exclude = array(), $required = array(), $categories = array(), $multiple = true){
 		$data = get_option("bepro_listings");
+		$required_hidden = ""; // disable required and use hidden select to send to backend
 		foreach($cats as $cat){
 			if(!empty($exclude) && in_array($cat->term_id, array_values($exclude))){
 			
 			}elseif(!empty($required) && in_array($cat->term_id, array_values($required))){
 				if($data["form_cat_style"] == 2){
-					$required_list .= '<option value="'.$cat->term_id.'">'.$cat->name.'</option>';
+					$required_list .= '<option value="'.$cat->term_id.'" selected="selected" disabled>'.$cat->name.'</option>';
+					$required_hidden .= '<input type="hidden" name="categories[]" value="'.$cat->term_id.'"/>';
 				}else{
 					$required_list .= '<span class="bepro_form_cat"><span class="form_label">'.$cat->name.'</span><input type="checkbox" id="categories" name="categories[]" value="'.$cat->term_id.'" checked="checked" disabled="disabled"></span>';
 				}
@@ -1172,9 +1196,11 @@
 				}
 			}
 		}
+		if($multiple) $multiple_text = "multiple";
+		
 		if($data["form_cat_style"] == 2){
-			$required_list = "<select name='categories[]' class='chosen-select' multiple>".$required_list."</select>";
-			$normal_list = "<select name='categories[]' class='chosen-select' multiple>".$normal_list."</select>";
+			$required_list = $required_hidden."<select name='categories[]' class='chosen-select' ".$multiple_text.">".$required_list."</select>";
+			$normal_list = "<select name='categories[]' class='chosen-select' ".$multiple_text."><option></option>".$normal_list."</select>";
 		}
 		return array("required_list" => $required_list,"normal_list" => $normal_list);
 	}

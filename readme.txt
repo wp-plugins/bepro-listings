@@ -11,13 +11,15 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Let users search and/or contribute configurable frontend submissions. Works great as a Directory, Classifieds, Product Catalog or Portfolio
 
 == Description ==
-Allow frontend submissions or create listings yourself. Easily setup within seconds, this highly configurable plugin can capture various types of user submitted content including, cost, contact, images and address. Then allow visitors to search and filter through listings in various ways including optional google maps and various listing layouts. Depending on configuration, this plugin will fit the need of various website tpyes including, Real Estate, Business Directories, Product Catalogues, Portfolios, Classifieds and others via addons.
+Allow frontend submissions or create listings yourself. Easily setup within seconds, this highly configurable plugin can capture various types of user submitted content including, cost, contact, images and address. Then allow visitors to search and filter through listings in various ways including optional google maps and several search result layouts. Depending on configuration, this plugin will fit the needs of various types of websites including, Real Estate, Business Directories, Product Catalogues, Portfolios, Classifieds and others via addons.
+
+= LEARN MORE =
 
 [BePro Listings](https://www.beprosoftware.com/shop/bepro-listings/) | [Support Forum](https://www.beprosoftware.com/forums/) | [Documentation](https://www.beprosoftware.com/documentation/bepro-listings/ ) | [Themes](https://www.beprosoftware.com/themes/)
 
 = DEMOS =
 
-[All 12+ Demos](https://beprothemes.com) | [Product Catalog](https://beprothemes.com/catalog) | [Business Directory](https://beprothemes.com/business) | [Real Estate](https://beprothemes.com/realestate)
+[All 12+ Demos](https://beprothemes.com/demos) | [Product Catalog](https://beprothemes.com/catalog) | [Business Directory](https://beprothemes.com/business) | [Real Estate](https://beprothemes.com/realestate)
 
 = INTRO VIDEO =
 

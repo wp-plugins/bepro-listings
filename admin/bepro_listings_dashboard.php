@@ -22,6 +22,9 @@
 		<h3><?php _e( 'You are using', "bepro-listings" ); _e( 'BePro Listings Version:', "bepro-listings" ); echo " ".BEPRO_LISTINGS_VERSION; ?>   </h3>
 	
 		<div class="feature-section images-stagger-right">
+			<h4><?php _e( 'Various Search Result Refinements', "bepro-listings" ); ?></h4>
+			<p><?php _e( 'We just rewrote a lot of the code which generates search results. The new enhancements should make searches faster and be more informative to end users. Also, developers can now tie into our ajax via wordpress hooks, perfect for creating custom addons', "bepro-listings" ); ?></p>
+			
 			<h4><?php _e( 'Form & Package Improvements', "bepro-listings" ); ?></h4>
 			<p><?php _e( 'We have tweaked a few form labels and improved the category selectbox capabilities. Also, Packages now show the remaining number of listings while creating or editing a listing from the frontend.', "bepro-listings" ); ?></p>
 			

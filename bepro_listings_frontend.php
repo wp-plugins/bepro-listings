@@ -221,7 +221,7 @@
 				}
 			});
 		</script>
-		<div id='shortcode_map'>
+		<div id='shortcode_map' class='bl_frontend_search_section'>
 		<div id='bl_size' class='bl_shortcode_selected'>$size</div>
 		<div id='bl_pop_up' class='bl_shortcode_selected'>$pop_up</div>
 		<div id='".$map_id."' class='result_map_$size'></div>
@@ -340,21 +340,31 @@
 		
 		$categories = get_terms( array('bepro_listing_types'), $query_args);
 		
-		$cat_list = "<div id='shortcode_cat' class='cat_lists'>";
+		$cat_list = "<div id='shortcode_cat' class='cat_lists bl_frontend_search_section'>";
 		
 		if($categories && (count($categories) > 0)){
 			//If only one category was selected then show its name in the heading
 			if((is_numeric($_REQUEST["l_type"]) || (is_array($_REQUEST["l_type"]) && (@$_REQUEST["l_type"][0] != 0) && (count($_REQUEST["l_type"]) == 1))) && !empty($categories)){
 				$cat = $categories[0];
 				$cat_list .= "<h3>".$cat->name." ".$data["cat_singular"]."</h3>";
+				foreach($categories as $cat){
+					$cat_list.= bepro_cat_templates($cat, $url_input, $ctype);
+				}
 			}else{
+				$cat_heading = $data["cat_heading"];
 				$cat_list .= "<h3>".__($cat_heading,"bepro_listings")."</h3>";
 				foreach($categories as $cat){
 					$cat_list.= bepro_cat_templates($cat, $url_input, $ctype);
 				}
 			}
 		}else{
-			$cat_list .= "<div class='cat_list_no_item'> ".$cat_heading." Created.</div>";
+			if(sizeof($_REQUEST["l_type"]) == 1){
+				$selected_cat = get_term($_REQUEST["l_type"][0], 'bepro_listing_types');
+				$cat_list .= "<h3>".$selected_cat->name." ".$data["cat_singular"]."</h3>";
+			}else{
+				$cat_list .= "<h3>".count($_REQUEST["l_type"])." ".$data["cat_heading"]."</h3>";
+			}
+			$cat_list .= "<div class='cat_list_no_item'> ".$cat_heading."</div>";
 		}
 		$cat_list.= "</div>";
 		
@@ -474,7 +484,7 @@
 			
 		//Create the GUI layout for the listings
 		if(empty($raw_results) || is_null($raw_results)){
-			$results = "<p>your criteria returned no results.</p>";
+			$results = "<p>".__("your criteria returned no results.")."</p>";
 			$results = apply_filters("bl_search_no_results", $results);
 		}else{
 			//item listing template
@@ -485,7 +495,7 @@
 				else if($key == "template_file")
 					$results .="";
 				else
-					add_action($key, $val);
+					add_action($key, $val, 10, 2);
 			}
 			
 			$previous = array();
@@ -506,7 +516,7 @@
 			$results .= @(is_numeric($check) || ($check == $type))? "":$check;
 			
 			foreach($list_templates as $key => $val){
-				remove_action($key, $val);
+				remove_action($key, $val, 2);
 			}
 		}
 		
@@ -552,7 +562,7 @@
 			$bl_l_type = "<div id='bl_l_type' class='bl_shortcode_selected'>".$l_type."</div>";
 		}
 		
-		$results = "<div id='shortcode_list$l_featured_id'>".$results."</div>";
+		$results = "<div id='shortcode_list$l_featured_id' class='bl_frontend_search_section'>".$results."</div>";
 		$results .= "$hidden_limit_text $show_bl_type $show_paging $bl_order $bl_form_id $bl_l_type";
 		if($echo_this){
 			echo $results;
@@ -591,7 +601,6 @@
 		$order_dir = (($order_dir == 1) || (empty($order_dir)))? "ASC":"DESC";
 
 		//Handle Paging selection calculations and process listings
-
 			$page = (empty($_REQUEST["lpage"]))? 1 : $_REQUEST["lpage"];
 			$page = ($page - 1) * $num_results;
 			$limit_clause = " ORDER BY $order_by $order_dir LIMIT $page , $num_results";
@@ -604,7 +613,7 @@
 		return $findings;
 	}
 	
-	function basic_listing_layout($result, $listing_template_file = ''){
+	function basic_listing_layout($result, $listing_template_file = ''){ 
 		if(empty($listing_template_file))$listing_template_file = plugin_dir_path( __FILE__ ).'/templates/listings/generic_1.php';
 		
 		//allow other features to tie in
@@ -612,6 +621,7 @@
 		if($get_listing_template != -1)$listing_template_file = $get_listing_template;
 		
 		ob_start();
+		$data = get_option("bepro_listings");
 		include($listing_template_file);
 		$results = ob_get_contents();
 		ob_end_clean();	
@@ -715,8 +725,7 @@
 	//Listing templates
 	//
 	*/	
-	function bepro_listings_list_title_template($bp_listing){
-		$data = get_option("bepro_listings");
+	function bepro_listings_list_title_template($bp_listing, $data){
 		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
 		
 		//if its an external link (4) then change the permalink
@@ -749,32 +758,29 @@
 		}
 	}
 	
-	function bepro_listings_list_category_template($bp_listing){
+	function bepro_listings_list_category_template($bp_listing, $data){
 		$terms = get_the_term_list($bp_listing->post_id, 'bepro_listing_types', '', ', ','');
-		$data = get_option("bepro_listings");
 	
 		if($data["link_new_page"] == 5)
 			$terms = strip_tags($terms);
 		
 		echo '<span class="result_type">'.$terms.'</span>';
 	}
-	function bepro_listings_list_featured_template($bp_listing){
+	function bepro_listings_list_featured_template($bp_listing, $data){
 		if($bp_listing->featured)
 			echo '<span class="result_featured"></span>';
 	}
-	function bepro_listings_list_phone_template($bp_listing){
+	function bepro_listings_list_phone_template($bp_listing, $data){
 		if(!empty($bp_listing->phone)){
 			echo "<span class='result_phone'>".__("Phone", "bepro-listings")." - ".$bp_listing->phone."</span>";
 		}
 	}
-	function bepro_listings_list_email_template($bp_listing){
-		$data = get_option("bepro_listings");
+	function bepro_listings_list_email_template($bp_listing, $data){
 		if(!empty($bp_listing->email) && !empty($data["show_con"])){
 			echo "<span class='result_email'>".__("Email", "bepro-listings")." - ".$bp_listing->email."</span>";	
 		}
 	}
-	function bepro_listings_list_image_template($bp_listing){
-		$data = get_option("bepro_listings");
+	function bepro_listings_list_image_template($bp_listing, $data){
 		if(empty($data["show_imgs"]))return;
 		if($data["link_new_page"] == 4){
 			$permalink = $bp_listing->website;
@@ -799,8 +805,7 @@
 			echo '<span class="result_img"><a href="'.$permalink.'">'.$default_img.'</a></span>';
 		}
 	}
-	function bepro_listings_list_geo_template($bp_listing){
-		$data = get_option("bepro_listings");
+	function bepro_listings_list_geo_template($bp_listing, $data){
 		if($data["show_geo"])
 			echo '<span class="result_title"><span class="bl_list_addr_element">'.$bp_listing->address_line1.", </span>";
 			
@@ -815,13 +820,13 @@
 			
 			echo '</span>';
 	}
-	function bepro_listings_list_content_template($bp_listing){
-		$content =  substr(strip_tags($bp_listing->post_content), 0, 80);
+	function bepro_listings_list_content_template($bp_listing, $data){
+		$desc_length = empty($data["desc_length"])? 80:$data["desc_length"];
+		$content =  substr(strip_tags($bp_listing->post_content), 0, $desc_length);
 		echo '<span class="result_desc">'.stripslashes(do_shortcode($content)).'...</span>';
 	}
 	
-	function bepro_listings_list_cost_template($bp_listing){
-		$data = get_option("bepro_listings");
+	function bepro_listings_list_cost_template($bp_listing, $data){
 		if($data["show_cost"]){
 			if(is_numeric($bp_listing->cost)){ 
 				//formats the price to have comas and dollar sign like currency.
@@ -835,8 +840,7 @@
 		}
 	}
 	
-	function bepro_listings_list_links_template($bp_listing){
-		$data = get_option("bepro_listings");
+	function bepro_listings_list_links_template($bp_listing, $data){
 		$target = empty($data["link_new_page"])? 1:$data["link_new_page"];
 		$show_web_link = $data["show_web_link"];
 		$details_link = empty($data["details_link"])? "Item":$data["details_link"];

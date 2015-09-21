@@ -675,6 +675,8 @@
 			$data["search_names"] = $_POST["search_names"];
 
 			$data["title_length"] = is_numeric($_POST["title_length"])?$_POST["title_length"]:$data["title_length"];
+			
+			$data["desc_length"] = is_numeric($_POST["desc_length"])?$_POST["desc_length"]:$data["desc_length"];
 
 			$data["details_link"] = $_POST["details_link"];
 
@@ -1674,7 +1676,9 @@
 
 						</select><br />
 
-						<span class="form_label"><?php _e("Title Length", "bepro-listings"); ?></span><input type="text" name="title_length" value="<?php echo $data["title_length"]; ?>" /></br>
+						<span class="form_label"><?php _e("Title Length", "bepro-listings"); ?></span><input type="text" name="title_length" value="<?php echo $data["title_length"]; ?>" placeholder="e.g. 18" /></br>
+
+						<span class="form_label"><?php _e("Description Length", "bepro-listings"); ?></span><input type="text" name="desc_length" value="<?php echo $data["desc_length"]; ?>" placeholder="e.g. 80"/></br>
 
 						<span class="form_label"><?php _e("Details Link Text", "bepro-listings"); ?></span><input type="text" name="details_link" value="<?php echo $data["details_link"]; ?>" /></br>
 

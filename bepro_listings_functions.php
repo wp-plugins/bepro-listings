@@ -55,7 +55,7 @@
 					jQuery("#max_date").datepicker({dateFormat: "yy-mm-dd"});
 				if(jQuery(".bl_date_input"))	
 					jQuery(".bl_date_input").datepicker({dateFormat: "yy-mm-dd"});
-				if(jQuery(".bl_time_input"))	
+				if(jQuery(".bl_time_input") && jQuery.isFunction("timepicker"))	
 					jQuery(".bl_time_input").timepicker();
 				if(jQuery("#bepro_listings_package_tabs"))
 					jQuery( "#bepro_listings_package_tabs" ).tabs();
@@ -108,6 +108,7 @@
 		';
 			
 		echo $scripts;
+		require(dirname( __FILE__ )."/js/js_ajax_hooks.php");
 		return;
 	}
 
@@ -399,7 +400,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.2.0004' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.2.0005' );
 		}	
 	}
 	
@@ -421,7 +422,7 @@
 			$data["show_imgs"] = 1;
 			$data["num_images"] = 3;
 			$data["cat_heading"] = __("Categories","bepro-listings");
-			$data["cat_empty"] = __("No Categories","bepro-listings");
+			$data["cat_empty"] = __("No Sub Categories","bepro-listings");
 			$data["cat_singular"] = __("Category","bepro-listings");
 			$data["permalink"] = "/".BEPRO_LISTINGS_SEARCH_SLUG;
 			$data["cat_permalink"] = "/".BEPRO_LISTINGS_CATEGORY_SLUG;
@@ -444,6 +445,7 @@
 			$data["distance"] = 150;
 			$data["search_names"] = 1;
 			$data["title_length"] = 18;
+			$data["desc_length"] = 80;
 			$data["details_link"] = __("Item","bepro-listings");
 			$data["show_web_link"] = "";
 			$data["currency_sign"] = "$";
@@ -578,6 +580,10 @@
 			if($data["show_content"] == "on" )$data["show_content"] = 1;
 			if($data["show_geo"] == "on" )$data["show_geo"] = 1;
 			if($data["show_con"] == "on" )$data["show_con"] = 1;
+		}
+		
+		if(version_compare($bepro_listings_version, '2.2.0004', '<')){
+			if(empty($data["desc_length"]))$data["desc_length"] = 80;
 		}
 		
 		if($bepro_listings_version != BEPRO_LISTINGS_VERSION){

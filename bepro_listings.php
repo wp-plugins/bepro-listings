@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Best way to search front end submissions. Use optional base features like Galleries, payments & google maps. Ideal for various websites including Business directories, Classifieds, Product Catalogs, Portfolios & more. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.2.0004
+Version: 2.2.0005
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -198,13 +198,14 @@ class Bepro_listings{
 			$l_type = bl_check_is_valid_cat($_REQUEST["l_type"]);
 		}
 		$return_text = '
-			<div class="search_listings">
-				<form method="post" name="searchform" id="listingsearchform" action="'.get_bloginfo("url")."/".$listing_page.'">
+			<div class="search_listings bl_frontend_search_section">
+				<form method="post" name="searchform" id="listingsearchform" action="'.$listing_page.'">
 					<input type="hidden" name="filter_search" value="1">
 					<input type="hidden" name="l_type" value="'.$l_type .'">
 					<input type="hidden" name="distance" value="'.$_POST["distance"].'">
 					<input type="hidden" name="min_date" value="'.$_POST["min_date"].'">
 					<input type="hidden" name="max_date" value="'.$_POST["max_date"].'">
+					<input type="hidden" name="listing_page" value="'.$listing_page.'">
 					<input type="hidden" name="min_cost" value="'.$_POST["min_cost"].'">
 					<input type="hidden" name="max_cost" value="'.$_POST["max_cost"].'">';	
 		if(is_numeric($data["show_geo"]) && ($data["show_geo"] > 0))$return_text .= '
@@ -373,9 +374,10 @@ class Bepro_listings{
 		
 		$cat_heading = $data["cat_heading"];
 		
-		$search_form = "<div class='filter_search_form'>
+		$search_form = "<div class='filter_search_form bl_frontend_search_section'>
 			<form id='filter_search_form' method='post' action='".$listing_page."'>
 				<input type='hidden' name='name_search' value='".$_POST["name_search"]."'>
+				<input type='hidden' name='listing_page' value='".$listing_page."'>
 				<input type='hidden' name='addr_search' value='".$_POST["addr_search"]."'>
 				<input type='hidden' name='order_dir' value='".$_POST["order_dir"]."'>
 				<input type='hidden' name='filter_search' value='1'>

@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Best way to search front end submissions. Use optional base features like Galleries, payments & google maps. Ideal for various websites including Business directories, Classifieds, Product Catalogs, Portfolios & more. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.2.0005
+Version: 2.2.0006
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -236,13 +236,13 @@ class Bepro_listings{
 	function listitems($atts) {
 		global $wpdb;
 		extract(shortcode_atts(array(
-			  'l_type' => $wpdb->escape($_POST["l_type"]),
-			  'min_cost' => $wpdb->escape($_POST["min_cost"]),
-			  'max_cost' => $wpdb->escape($_POST["max_cost"]),
-			  'min_date' => $wpdb->escape($_POST["min_date"]),
-			  'max_date' => $wpdb->escape($_POST["max_date"]),
-			  'l_name' => $wpdb->escape($_POST["name_search"]),
-			  'l_city' => $wpdb->escape($_POST["addr_search"]),
+			  'l_type' => $wpdb->escape($_REQUEST["l_type"]),
+			  'min_cost' => $wpdb->escape($_REQUEST["min_cost"]),
+			  'max_cost' => $wpdb->escape($_REQUEST["max_cost"]),
+			  'min_date' => $wpdb->escape($_REQUEST["min_date"]),
+			  'max_date' => $wpdb->escape($_REQUEST["max_date"]),
+			  'l_name' => $wpdb->escape($_REQUEST["name_search"]),
+			  'l_city' => $wpdb->escape($_REQUEST["addr_search"]),
 			  'wp_site' => $wpdb->escape($_POST["wp_site"]),
 		 ), $atts));
 		 
@@ -259,7 +259,7 @@ class Bepro_listings{
 			unset($_SESSION["name_search"]);
 			unset($_SESSION["addr_search"]);
 		 }
-		
+		 
 		//Query Bepro Listing Types
 		$returncaluse = "";
 		if(!empty($l_type) && is_numeric($l_type)){
@@ -354,13 +354,16 @@ class Bepro_listings{
 	function search_filter_options($atts = array(), $echo_this = false){
 		global $wpdb;
 		extract(shortcode_atts(array(
-			  'listing_page' => $wpdb->escape($_POST["listing_page"])
+			 'bl_form_id' => $wpdb->escape($_POST["bl_form_id"]),
+			 'listing_page' => $wpdb->escape($_POST["listing_page"])
 		 ), $atts));
 		
+		if(empty($atts["bl_form_id"]))$atts["bl_form_id"] = $_POST["bl_form_id"];
 		//get settings
 		$data = get_option("bepro_listings");
 		
 		//Process user requested Bepro listing types 
+		$types = "";
 		if(!empty($_REQUEST["l_type"])){
 			$l_type = $_REQUEST["l_type"];
 			if(is_array($l_type)){
@@ -374,31 +377,33 @@ class Bepro_listings{
 		
 		$cat_heading = $data["cat_heading"];
 		
-		$search_form = "<div class='filter_search_form bl_frontend_search_section'>
+		$search_form_head = "<div class='filter_search_form bl_frontend_search_section'>
 			<form id='filter_search_form' method='post' action='".$listing_page."'>
 				<input type='hidden' name='name_search' value='".$_POST["name_search"]."'>
 				<input type='hidden' name='listing_page' value='".$listing_page."'>
 				<input type='hidden' name='addr_search' value='".$_POST["addr_search"]."'>
 				<input type='hidden' name='order_dir' value='".$_POST["order_dir"]."'>
 				<input type='hidden' name='filter_search' value='1'>
+				<input type='hidden' name='bl_form_id' value='".$atts["bl_form_id"]."'>
 				<table>";
-		$search_form .= apply_filters("bepro_listings_search_filter_start","");
-
-		$search_form .= "
-					<tr>
-						<td>
-						<span class='searchlabel'>".__($cat_heading, "bepro-listings")."</span><br />
-						";
-						
+			
+		$search_form_fields = apply_filters("bepro_listings_search_filter_override",$atts);
+		if(empty($search_form_fields) || ($search_form_fields == $atts)){
+			$search_form_fields .= "
+						<tr>
+							<td>
+							<span class='searchlabel'>".__($cat_heading, "bepro-listings")."</span><br />
+							";
+							
 			
 			
 
-			$search_form .= bl_build_cat_checkbox(0, "l_type[]", 0, $types);
-			$search_form .= '</td>
+			$search_form_fields .= bl_build_cat_checkbox(0, "l_type[]", 0, $types);
+			$search_form_fields .= '</td>
 			</tr>';
 			///////////////////////////////////////////////////////////////////////
 			if(is_numeric($data["show_geo"]) && ($data["show_geo"] != 0))	
-			$search_form .= '
+			$search_form_fields .= '
 				<tr class="bl_distance_search_option"><td>
 					'.__("Distance", "bepro-listings").': <select name="distance">
 						<option value="">'.__("None","bepro-listings").'</option>
@@ -411,22 +416,25 @@ class Bepro_listings{
 					</select>
 				</td></tr>';
 				
-				//min/max cost
-				if(($data["show_cost"] == 1) || ($data["show_cost"] == "on"))
-				$search_form .= '
-				<tr><td>
-					<span class="label_sep">'.__("Price Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_cost" value="'.$_POST["min_cost"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_cost" value="'.$_POST["max_cost"].'">
-				</td></tr>';
+			//min/max cost
+			if(($data["show_cost"] == 1) || ($data["show_cost"] == "on"))
+			$search_form_fields .= '
+			<tr><td>
+				<span class="label_sep">'.__("Price Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_cost" value="'.$_POST["min_cost"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_cost" value="'.$_POST["max_cost"].'">
+			</td></tr>';
+			
+			if(($data["show_date"] == 1) || ($data["show_date"] == "on"))
+			$search_form_fields .= '
+			<tr><td>
+				<span class="label_sep">'.__("Date Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_date" id="min_date" value="'.$_POST["min_date"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_date" id="max_date" value="'.$_POST["max_date"].'">
+			</td></tr>';
+			
+			$check_form_fields = apply_filters("bepro_listings_search_filter",$atts, $search_form_fields);
+			if($check_form_fields != $atts)
+				$search_form_fields .= $check_form_fields;
+		}
 				
-				if(($data["show_date"] == 1) || ($data["show_date"] == "on"))
-				$search_form .= '
-				<tr><td>
-					<span class="label_sep">'.__("Date Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_date" id="min_date" value="'.$_POST["min_date"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_date" id="max_date" value="'.$_POST["max_date"].'">
-				</td></tr>';
-				
-				$search_form .= apply_filters("bepro_listings_search_filter","");
-				
-				$search_form .= '
+				$search_form_end = '
 				<tr>
 					<td>
 						<input type="submit" class="form-submit" value="'.__("Search", "bepro-listings").'" id="edit-submit" name="find">
@@ -437,9 +445,9 @@ class Bepro_listings{
 		</form></div>
 		';
 		if($echo_this){
-			echo $search_form;
+			echo $search_form_head.$search_form_fields.$search_form_end;
 		}else{	
-			return $search_form;
+			return $search_form_head.$search_form_fields.$search_form_end;
 		}
 	}
 	

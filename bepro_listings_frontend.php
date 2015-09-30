@@ -583,7 +583,6 @@
 			$returncaluse = Bepro_listings::listitems(array('l_type' => $l_type));
 			$filter_cat = true;
 		}	
-		
 		if(!empty($l_ids)){
 			$returncaluse .= " AND posts.ID IN ($l_ids)";
 		}

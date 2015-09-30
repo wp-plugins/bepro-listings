@@ -2006,6 +2006,7 @@
 				<tr><td>".__("Memory Limit","bepro-listings")."</td><td>".(ini_get("memory_limit"))."</td></tr>
 				<tr><td>".__("Max Upload Size","bepro-listings")."</td><td>".(ini_get("upload_max_filesize"))."</td></tr>
 				<tr><td>".__("PHP Time Limit","bepro-listings")."</td><td>".(ini_get("max_execution_time"))."</td></tr>
+				<tr><td>".__("ASP Tags","bepro-listings")."</td><td>".(ini_get("asp_tags")? "ON":"OFF")."</td></tr>
 			</table>
 			<table class='bpl_status_display_table'>
 				<thead><tr><td colspan='2'>".__("SERVER","bepro-listings")."</td></tr></thead>

@@ -23,8 +23,10 @@
 			if(($data["show_content"] == 1) || ($data["show_geo"] == 1) || ($data["show_comments"] == 1) || $launch_tabs){
 				add_action("bepro_listings_item_details", "bepro_listings_item_tabs");
 			}
-			$page_template = plugin_dir_path( __FILE__ )."/content-single-listing.php";
+			$page_template = "";
 			$page_template = apply_filters("bepro_listings_change_page_template",$page_template,$item);
+			if(empty($page_template))
+				$page_template = plugin_dir_path( __FILE__ )."/content-single-listing.php";
 			include($page_template); 
 		}else{
 			the_content();

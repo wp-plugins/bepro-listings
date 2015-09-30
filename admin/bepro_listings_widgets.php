@@ -36,6 +36,8 @@ class BL_Search_Filter_Widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		// Save widget options
 		if ($_POST["id_base"] == "bl_search_filter_widget"){
+			$data = array();
+			$data = apply_filters("bl_search_widget_save_hook", $data);
 			$data['listing_page'] = attribute_escape($_POST['listing_page']);
 			update_option('filter_search_widget', $data);
 			do_action("bl_save_search_widget_action");
@@ -50,7 +52,7 @@ class BL_Search_Filter_Widget extends WP_Widget {
 		  <p><label>Listing Page url<input name="listing_page"
 		type="text" value="<?php echo $data['listing_page']; ?>" /></label></p>
 		<?php
-		do_action("bl_search_widget_control");
+		do_action("bl_search_widget_control", $data);
 	}
 }
 

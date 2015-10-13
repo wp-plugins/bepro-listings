@@ -220,7 +220,6 @@
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-business-directory/'>Business Directory</a> - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-vehicles/'>Vehicles</a>  - Lists cars, boats, trucks, planes, and other automobiles with their details</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-reviews/'>Reviews</a> - Users can leave and search by star ratings</li>
-					<li><a href='https://www.beprosoftware.com/shop/origami/'>Origami</a> - Separate search features when running multiple listing types on one website</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-search/'>Search</a> - Add predictive google maps address lookup and auto complete enhancements to the basic search feature</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-software-api/'>Api</a> - Turn your website into a 24/7 remote content manager. Ideal for integration with other data feeds.</li>
 					<li><a href='https://www.beprosoftware.com/shop/bepro-listings-export/'>Export</a> - Export search results from BePro Lisitngs and version addons</li>
@@ -400,7 +399,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.2.0006' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.2.0007' );
 		}	
 	}
 	

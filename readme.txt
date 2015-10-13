@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: buddypress, car, catalog, catalogue, classifieds, directory, directory builder, front end, frontend form, frontend upload, frontend submission, google map, inventory, list product, listing, listings, listing search, pets, product catalog, product listings, product gallery, product management, wordpress classifieds, wordpress product catalog, wordpress directory, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.2.0006
+Stable tag: 2.2.0007
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -108,13 +108,12 @@ Customize the experience for managers and visitors with our growing list of add-
 	14. Business Directory - Use our business and staff focused listing templates with alphabetic filter. Typical phone book type layout.
 	15. Vehicles - Lists cars, boats, trucks, planes, and other automobiles with their details
 	16. Reviews - Users can leave and search by star ratings
-	17. Origami - Separate search features when running multiple listing types on one website
-	18. Search - Add predictive google maps address lookup and auto complete enhancements to the basic search feature
-	19. Tags - You and your members can tag your listings and allow users to search them via the tag widget
-	20. reCAPTCHA - Prevent spam and malicious submissions with this google reCAPTCHA system
-	21. Contact - Receive notifications when someone submits a listing. Also add a contact form to your listing detail pages.
-	22. API - Integrate with other apps. Add/update/delete millions or listings via our api system. Requires BePro Software Api
-	23. Export - Export records from BePro Listings and various addons
+	17. Search - Add predictive google maps address lookup and auto complete enhancements to the basic search feature
+	18. Tags - You and your members can tag your listings and allow users to search them via the tag widget
+	19. reCAPTCHA - Prevent spam and malicious submissions with this google reCAPTCHA system
+	20. Contact - Receive notifications when someone submits a listing. Also add a contact form to your listing detail pages.
+	21. API - Integrate with other apps. Add/update/delete millions or listings via our api system. Requires BePro Software Api
+	22. Export - Export records from BePro Listings and various addons
 
 = THEMES =
 
@@ -245,6 +244,11 @@ BePro Listings is part of the BePro Software Suite of products. Maintained by th
 Easily setup within a minute, this highly configurable listings solution will allow you to capture and search various types of information. Combine addons to extend base features and create the user experience your website needs. From notifications to payments, each feature is easily turned off or packaged in a separate plugin. This architechture makes BePro Listings lite and applicable to various uses. 
 
 == Changelog ==
+
+= 2.2.0007 (Oct 13th, 2015) =
+
+* Improved wordpress hooks and filters for 3rd party integration
+* Tweak product information
 
 = 2.2.0006 (Sep 30th, 2015) =
 

@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Best way to search front end submissions. Use optional base features like Galleries, payments & google maps. Ideal for various websites including Business directories, Classifieds, Product Catalogs, Portfolios & more. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.2.0006
+Version: 2.2.0007
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -389,10 +389,10 @@ class Bepro_listings{
 			
 		$search_form_fields = apply_filters("bepro_listings_search_filter_override",$atts);
 		if(empty($search_form_fields) || ($search_form_fields == $atts)){
-			$search_form_fields .= "
+			$search_form_fields = "
 						<tr>
 							<td>
-							<span class='searchlabel'>".__($cat_heading, "bepro-listings")."</span><br />
+							<span class='label_sep'>".__($cat_heading, "bepro-listings")."</span><br />
 							";
 							
 			
@@ -429,7 +429,7 @@ class Bepro_listings{
 				<span class="label_sep">'.__("Date Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_date" id="min_date" value="'.$_POST["min_date"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_date" id="max_date" value="'.$_POST["max_date"].'">
 			</td></tr>';
 			
-			$check_form_fields = apply_filters("bepro_listings_search_filter",$atts, $search_form_fields);
+			$check_form_fields = apply_filters("bepro_listings_search_filter",$atts, ""); 
 			if($check_form_fields != $atts)
 				$search_form_fields .= $check_form_fields;
 		}

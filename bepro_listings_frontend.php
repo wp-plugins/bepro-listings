@@ -153,7 +153,7 @@
 		 
 		 
 		//form builder integration
-		$_POST["bl_form_id"] = $bl_form_id;
+		$_REQUEST["bl_form_id"] = $bl_form_id;
 		 
 		//Setup data
 		$data = get_option("bepro_listings");
@@ -455,7 +455,7 @@
 		 ), $atts));
 		 
 		//form builder and origami integration
-		$_POST["bl_form_id"] = $bl_form_id;
+		$_REQUEST["bl_form_id"] = $bl_form_id;
 		$_POST["origami"] = $origami;
 		$_POST["l_featured"] = $l_featured;
 		
@@ -650,7 +650,13 @@
 			<form id='filter_search_shortcode_form' method='post' action='".$listing_page."'>
 				<input type='hidden' name='name_search' value='".$_POST["name_search"]."'>
 				<input type='hidden' name='addr_search' value='".$_POST["addr_search"]."'>
-				<input type='hidden' name='filter_search' value='1'>
+				<input type='hidden' name='filter_search' value='1'>";
+				
+		$search_form_fields = apply_filters("bepro_listings_search_filter_shortcode_override",$atts);
+		if(!empty($search_form_fields) && ($search_form_fields != $atts)){
+			$search_form .= $search_form_fields;
+		}else{
+			$search_form .= "
 				<div>
 						<span class='searchlabel'>".__($data["cat_heading"], "bepro-listings")."</span>
 						";
@@ -706,12 +712,13 @@
 					<div><span class="label_sep">'.__("Date Range", "bepro-listings").'</span><span class="form_label">'.__("From", "bepro-listings").'</span><input class="input_text" type="text" name="min_date" id="min_date" value="'.$_POST["min_date"].'"><span class="form_label">'.__("To", "bepro-listings").'</span><input class="input_text" type="text" name="max_date" id="max_date" value="'.$_POST["max_date"].'"></div>';
 				
 				$search_form .= apply_filters("bepro_listings_search_filter_shortcode","", $atts);
-				
+		}
 				$search_form .= '
 						<div id="search_filter_shortcode_button"><input type="submit" class="form-submit" value="'.__("Filter", "bepro-listings").'" id="edit-submit" name="find">
 						<a class="clear_search" href="'.get_bloginfo("url")."/".$listing_page.'"><button>Clear</button></a></div>
 		</form></div>
 		';
+		
 		if($echo_this){
 			echo $search_form;
 		}else{	

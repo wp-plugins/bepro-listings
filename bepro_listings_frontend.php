@@ -548,8 +548,13 @@
 			$hidden_limit_text = "<div id='bl_limit' class='bl_shortcode_selected'>$limit</div>";
 		}
 		
+		$bl_order_dir = "";
 		if(is_numeric($order_dir))
-			$bl_order = "<div id='bl_order' class='bl_shortcode_selected'>$order_dir</div>";
+			$bl_order_dir = "<div id='bl_order_dir' class='bl_shortcode_selected'>$order_dir</div>";
+		
+		$bl_order_by = "";
+		if(is_numeric($order_by))
+			$bl_order_by = "<div id='bl_order_by' class='bl_shortcode_selected'>$order_by</div>";
 		
 		
 		if(is_numeric($bl_form_id))
@@ -563,7 +568,7 @@
 		}
 		
 		$results = "<div id='shortcode_list$l_featured_id' class='bl_frontend_search_section'>".$results."</div>";
-		$results .= "$hidden_limit_text $show_bl_type $show_paging $bl_order $bl_form_id $bl_l_type";
+		$results .= "$hidden_limit_text $show_bl_type $show_paging $bl_order_dir $bl_order_by $bl_form_id $bl_l_type";
 		if($echo_this){
 			echo $results;
 		}else{	

@@ -245,6 +245,11 @@ Easily setup within a minute, this highly configurable listings solution will al
 
 == Changelog ==
 
+= 2.2.0008 (Oct 22nd, 2015) =
+
+* Fixed the loss of order dir and order by values during searches
+* Fix email registration
+
 = 2.2.0007 (Oct 13th, 2015) =
 
 * Improved wordpress hooks and filters for 3rd party integration

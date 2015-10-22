@@ -67,8 +67,10 @@
 			returnstr = returnstr + "&limit=" + jQuery("#bl_limit").html();
 		if(jQuery("#bl_type").length > 0)
 			returnstr = returnstr + "&type=" + jQuery("#bl_type").html();
-		if(jQuery("#bl_order").length > 0)
-			returnstr = returnstr + "&order_dir=" + jQuery("#bl_order").html();
+		if(jQuery("#bl_order_dir").length > 0)
+			returnstr = returnstr + "&order_dir=" + jQuery("#bl_order_dir").html();
+		if(jQuery("#bl_order_by").length > 0)
+			returnstr = returnstr + "&order_by=" + jQuery("#bl_order_by").html();
 		if(jQuery("#bl_show_paging").length > 0)
 			returnstr = returnstr + "&show_paging=" + jQuery("#bl_show_paging").html();
 		if(jQuery("#bl_form_id").length > 0)

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: buddypress, car, catalog, catalogue, classifieds, directory, directory builder, front end, frontend form, frontend upload, frontend submission, google map, inventory, list product, listing, listings, listing search, pets, product catalog, product listings, product gallery, product management, wordpress classifieds, wordpress product catalog, wordpress directory, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.2.0007
+Stable tag: 2.2.0008
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

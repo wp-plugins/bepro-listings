@@ -399,7 +399,7 @@
 		
 		// Current version
 		if ( !defined( 'BEPRO_LISTINGS_VERSION' ) ){
-			define( 'BEPRO_LISTINGS_VERSION', '2.2.0008' );
+			define( 'BEPRO_LISTINGS_VERSION', '2.2.0011' );
 		}	
 	}
 	
@@ -442,6 +442,7 @@
 			$data["ajax_on"] = "on";
 			$data["num_listings"] = 8;
 			$data["distance"] = 150;
+			$data["dist_measurement"] = 1;
 			$data["search_names"] = 1;
 			$data["title_length"] = 18;
 			$data["desc_length"] = 80;
@@ -603,6 +604,8 @@
 		$data['bepro_listings_list_template_1'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_above_image" => "bepro_listings_list_featured_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_image" => "bepro_listings_list_image_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_list_end" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_1.css", __FILE__ ), "template_file" => plugin_dir_path( __FILE__ ).'/templates/listings/generic_1.php');
 		$data['bepro_listings_list_template_2'] = array("bepro_listings_list_title" => "bepro_listings_list_title_template","bepro_listings_list_above_image" => "bepro_listings_list_featured_template","bepro_listings_list_below_title" => "bepro_listings_list_category_template","bepro_listings_list_above_title" => "bepro_listings_list_image_template","bepro_listings_list_image" => "bepro_listings_list_geo_template","bepro_listings_list_content" => "bepro_listings_list_content_template","bepro_listings_after_content" => "bepro_listings_list_cost_template","bepro_listings_list_end" => "bepro_listings_list_links_template", "style" => plugins_url("css/generic_listings_2.css", __FILE__ ), "template_file" => plugin_dir_path( __FILE__ ).'/templates/listings/generic_2.php');
 		return $data;
+		
+		do_action("bpl_recreate_templates", $data);
 	}
 	
 	//BePro Email Integration
@@ -776,7 +779,8 @@
 			if(is_user_logged_in()){
 				$user_id = $user_data->ID;
 			}elseif(isset($username) && !empty($password)){
-				$user_id = wp_create_user( $username, $password, $email );		
+				$user_id = wp_create_user( $username, $password, $email );
+				if(is_numeric($user_id)) wp_set_current_user($user_id);
 			}
 			if(empty($user_id))$user_id = $default_user_id;
 			
@@ -1003,6 +1007,26 @@
 			$attachments = array_filter( explode( ',', $listing_image_gallery ) );
 		}else{
 			$raw_images = get_children(array('post_parent'=>$post_id,'post_mime_type' => 'image'), ARRAY_A);
+			$attachments = array_keys($raw_images);
+			//remove featured image for reassignment later
+			unset($raw_images[$post_thumbnail_id]);
+		}
+		
+		//add featured image infront of others
+		if($post_thumbnail_id)
+			array_unshift($attachments, $post_thumbnail_id);
+		return $attachments;
+	}
+	
+	function bl_get_listing_attachments($post_id){
+		$attachments = array();
+		$post_thumbnail_id = get_post_thumbnail_id( $post_id );
+		
+		if ( metadata_exists( 'post', $post_id, '_listing_image_gallery' ) ) {
+			$listing_image_gallery = get_post_meta( $post_id, '_listing_image_gallery', true );
+			$attachments = array_filter( explode( ',', $listing_image_gallery ) );
+		}else{
+			$raw_images = get_children(array('post_parent'=>$post_id), ARRAY_A);
 			$attachments = array_keys($raw_images);
 			//remove featured image for reassignment later
 			unset($raw_images[$post_thumbnail_id]);
@@ -1707,7 +1731,7 @@
 		}
 		
 		//if no rating or time to ask again
-		if ( (!$vote) || ($days_since > 30)) {
+		if ( (!$vote) && ($days_since > 30)) {
 			$posts = $wpdb->get_row("SELECT count(*) as total FROM ".$wpdb->prefix."posts WHERE post_type = 'bepro_listings' AND post_status = 'publish'");
 			echo '<div class="updated">'; 
 			printf (("<p>".__('CONGRATULATIONS. You have been using BePro Listings for %1$s days and successfully created %2$s listings. Please consider supporting this free product by spreading the word with a 5 star review.',"bepro-lisings").'</p><ul><li><a href="https://wordpress.org/support/view/plugin-reviews/bepro-listings?filter=5" target="_blank">'.__("Yeah, great product","bepro-listings").'</a></li><li><a href="?bpl_rate_ignore=1">'.__("Already left a review","bepro-listings").'</a></li><li><a href="?bpl_rate_ignore=2">'.__("No, not yet","bepro-listings").'</a></li></ul>'), $days, $posts->total);

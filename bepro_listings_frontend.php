@@ -491,7 +491,7 @@
 			$list_templates = isset($data['bepro_listings_list_template_'.$type])? $data['bepro_listings_list_template_'.$type]: $data['bepro_listings_list_template_1'];
 			foreach($list_templates as $key => $val){
 				if($key == "style")
-					$results .="<link href='".$val."' rel='stylesheet' />";
+					$results .="<link href='".$val."' rel='stylesheet' type='text/css' />";
 				else if($key == "template_file")
 					$results .="";
 				else
@@ -558,7 +558,7 @@
 		
 		
 		if(is_numeric($bl_form_id))
-			$bl_form_id = "<div id='bl_form_id' class='bl_shortcode_selected'>$bl_form_id</div>";
+			$bl_form_id_div = "<div id='bl_form_id' class='bl_shortcode_selected'>$bl_form_id</div>";
 		
 		$bl_l_type = "";
 		
@@ -567,8 +567,8 @@
 			$bl_l_type = "<div id='bl_l_type' class='bl_shortcode_selected'>".$l_type."</div>";
 		}
 		
-		$results = "<div id='shortcode_list$l_featured_id' class='bl_frontend_search_section'>".$results."</div>";
-		$results .= "$hidden_limit_text $show_bl_type $show_paging $bl_order_dir $bl_order_by $bl_form_id $bl_l_type";
+		$results = "<div id='shortcode_list$l_featured_id' class='bl_frontend_search_section result_type_".$type."'>".$results."</div>";
+		$results .= "$hidden_limit_text $show_bl_type $show_paging $bl_order_dir $bl_order_by $bl_form_id_div $bl_l_type";
 		if($echo_this){
 			echo $results;
 		}else{	
@@ -696,15 +696,16 @@
 				$search_form .= wp_dropdown_categories( $args )."</div>";
 
 			///////////////////////////////////////////////////////////////////////
+			$dist_measurement = (@$data["dist_measurement"] && ($data["dist_measurement"]==2))? "Km":"Mi";
 			if(is_numeric($data["show_geo"]) && ($data["show_geo"] != 0))	
 			$search_form .= "<div class='bl_distance_search_option'>".__("Distance", "bepro-listings").': <select name="distance">
 						<option value="">'.__("None","bepro-listings").'</option>
-						<option value="10" '.(($_POST["distance"] == 10)||((empty($_POST["distance"])) && $data["distance"] == 10)? 'selected="selected"':"").'>'.__("10 miles","bepro-listings").'</option>
-						<option value="50" '.(($_POST["distance"] == 50)||((empty($_POST["distance"])) && $data["distance"] == 50)? 'selected="selected"':"").'>'.__("50 miles","bepro-listings").'</option>
-						<option value="150" '.((($_POST["distance"] == 150) || ((empty($_POST["distance"])) && $data["distance"] == 150))? 'selected="selected"':"").'>'.__("150 miles","bepro-listings").'</option>
-						<option value="250" '.(($_POST["distance"] == 250)||((empty($_POST["distance"])) && $data["distance"] == 250)? 'selected="selected"':"").'>'.__("250 miles","bepro-listings").'</option>
-						<option value="500" '.(($_POST["distance"] == 500)||((empty($_POST["distance"])) && $data["distance"] == 500)? 'selected="selected"':"").'>'.__("500 miles","bepro-listings").'</option>
-						<option value="1000" '.(($_POST["distance"] == 1000)||((empty($_POST["distance"])) && $data["distance"] == 1000)? 'selected="selected"':"").'>'.__("1000 miles","bepro-listings").'</option>
+						<option value="10" '.(($_POST["distance"] == 10)||((empty($_POST["distance"])) && $data["distance"] == 10)? 'selected="selected"':"").'>10 '.$dist_measurement.'</option>
+						<option value="50" '.(($_POST["distance"] == 50)||((empty($_POST["distance"])) && $data["distance"] == 50)? 'selected="selected"':"").'>50 '.$dist_measurement.'</option>
+						<option value="150" '.((($_POST["distance"] == 150) || ((empty($_POST["distance"])) && $data["distance"] == 150))? 'selected="selected"':"").'>150 '.$dist_measurement.'</option>
+						<option value="250" '.(($_POST["distance"] == 250)||((empty($_POST["distance"])) && $data["distance"] == 250)? 'selected="selected"':"").'>250 '.$dist_measurement.'</option>
+						<option value="500" '.(($_POST["distance"] == 500)||((empty($_POST["distance"])) && $data["distance"] == 500)? 'selected="selected"':"").'>500 '.$dist_measurement.'</option>
+						<option value="1000" '.(($_POST["distance"] == 1000)||((empty($_POST["distance"])) && $data["distance"] == 1000)? 'selected="selected"':"").'>1000 '.$dist_measurement.'</option>
 					</select></div>';
 				
 				//min/max cost
@@ -865,8 +866,10 @@
 		* 4 = hide internal
 		*/		
 		if($target == 2){
-			if(!empty($bp_listing->website) && !empty($show_web_link))
+			if(!empty($bp_listing->website) && !empty($show_web_link)){
+				$website = (stristr($bp_listing->website,"http"))? $bp_listing->website:"http://".$bp_listing->website;
 				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'"  target="_blank">'.__("Website","bepro-listings").'</a></span>';
+			}
 			
 			if($bp_listing->post_status == "publish")
 				echo '<span class="result_button"><a href="'.$permalink.'" target="_blank">'.$details_link.'</a></span>';
@@ -879,9 +882,10 @@
 		}elseif($target == 5){
 				//do nothing. this is readonly
 		}else{
-			if(!empty($bp_listing->website) && !empty($show_web_link))
+			if(!empty($bp_listing->website) && !empty($show_web_link)){
+				$website = (stristr($bp_listing->website,"http"))? $bp_listing->website:"http://".$bp_listing->website;
 				echo '<span class="result_button"><a href="http://'.$bp_listing->website.'">'.__("Website","bepro-listings").'</a></span>';
-			
+			}
 			if($bp_listing->post_status == "publish")
 				echo '<span class="result_button"><a href="'.$permalink.'">'.$details_link.'</a></span>';
 		}

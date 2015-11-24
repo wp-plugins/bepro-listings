@@ -61,8 +61,7 @@
 		if((is_numeric($data["show_geo"]) && ($data["show_geo"] > 0)) || ($data["show_geo"] == "on"))add_meta_box("geographic_details_meta", "Geographic Details", "BL_Meta_Box_Listing_Images::geographic_details_meta", "bepro_listings", "normal", "low");
 
 		
-
-		if(($data["show_imgs"]==1) || ($data["show_imgs"] == "on"))add_meta_box( 'bepro-listings-images', __( 'Listing Gallery', 'bepro-listings' ), 'BL_Meta_Box_Listing_Images::gallery_images_meta', 'bepro_listings', 'side' );
+		add_meta_box( 'bepro-listings-images', __( 'Listing Gallery', 'bepro-listings' ), 'BL_Meta_Box_Listing_Images::gallery_images_meta', 'bepro_listings', 'side' );
 
 		
 
@@ -671,6 +670,8 @@
 			$data["num_listings"] = $_POST["num_listings"];
 
 			$data["distance"] = $_POST["distance"];
+			
+			$data["dist_measurement"] = $_POST["dist_measurement"];
 
 			$data["search_names"] = $_POST["search_names"];
 
@@ -1646,7 +1647,7 @@
 
 						</select></br>
 
-						<span class="form_label"><?php _e("Default Search Distance (Mi)", "bepro-listings"); ?></span><select name="distance">
+						<span class="form_label"><?php _e("Default Search Distance", "bepro-listings"); ?></span><select name="distance">
 
 							<option value="10" <?php echo ($data["distance"]== 10)? 'selected="selected"':"" ?>>10</option>
 
@@ -1659,6 +1660,14 @@
 							<option value="500" <?php echo ($data["distance"]== 500)? 'selected="selected"':"" ?>>500</option>
 
 							<option value="1000" <?php echo ($data["distance"]== 1000)? 'selected="selected"':"" ?>>1000</option>
+
+						</select><br />
+						
+						<span class="form_label"><?php _e("Measurement", "bepro-listings"); ?></span><select name="dist_measurement">
+
+							<option value="1" <?php echo ($data["dist_measurement"] == 1)? 'selected="selected"':"" ?>>Mi</option>
+
+							<option value="2" <?php echo ($data["dist_measurement"] == 2)? 'selected="selected"':"" ?>>Km</option>
 
 						</select>
 

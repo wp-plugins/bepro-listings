@@ -4,7 +4,7 @@ Plugin Name: BePro Listings
 Plugin Script: bepro_listings.php
 Plugin URI: http://www.beprosoftware.com/shop
 Description: Best way to search front end submissions. Use optional base features like Galleries, payments & google maps. Ideal for various websites including Business directories, Classifieds, Product Catalogs, Portfolios & more. Put this shortcode [bl_all_in_one] in any page or post. Visit website for more
-Version: 2.2.0008
+Version: 2.2.0011
 License: GPL V3
 Author: BePro Software Team
 Author URI: http://www.beprosoftware.com
@@ -56,7 +56,7 @@ class Bepro_listings{
 		
 		add_action( 'admin_notices', "bpl_admin_rate" );
 		add_action('init', array($this, 'check_flush_permalinks') );
-		add_action('init', 'save_data_and_redirect' );
+		add_action('template_redirect', 'save_data_and_redirect' );
 		add_action('admin_init', 'bepro_admin_init' );
 		add_action('admin_head', 'bepro_admin_head' );
 		add_action('admin_bar_menu', 'bpl_admin_tool_bar', 888 );
@@ -291,9 +291,10 @@ class Bepro_listings{
 			 $x2 = 'geo.lat';
 			 $y = $currentlon;
 			 $y2 = 'geo.lon';
-			 
+			 // km = 6,371
+			 $global_radius = (@$data["dist_measurement"] && ($data["dist_measurement"]==2))? "6371":"3958";
 			 if($_result){
-				$returncaluse .=  "AND (3958 * 3.1415926 * SQRT(({$y2} - {$y}) * ({$y2} - {$y}) + COS({$y2} / 57.29578) * COS({$y} / 57.29578) * ({$x2} - {$x}) * ({$x2} - {$x})) / 180) <= {$distance} AND geo.lat IS NOT NULL AND geo.lon IS NOT NULL";
+				$returncaluse .=  "AND (".$global_radius." * 3.1415926 * SQRT(({$y2} - {$y}) * ({$y2} - {$y}) + COS({$y2} / 57.29578) * COS({$y} / 57.29578) * ({$x2} - {$x}) * ({$x2} - {$x})) / 180) <= {$distance} AND geo.lat IS NOT NULL AND geo.lon IS NOT NULL";
 			 }
 	   }
 	   

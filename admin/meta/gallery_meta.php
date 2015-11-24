@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class BL_Meta_Box_Listing_Images {
 	public static function gallery_images_meta( $post ) {
 		
-		$attachments = bl_get_listing_images($post->ID); 
+		$attachments = bl_get_listing_attachments($post->ID); 
 		$post_thumbnail_id = get_post_thumbnail_id( $post->ID );
 		if(($keys = array_keys($attachments, $post_thumbnail_id)) !== false) 
 			foreach($keys as $key)
@@ -32,8 +32,14 @@ class BL_Meta_Box_Listing_Images {
 
 					if ( $attachments ) {
 						foreach ( $attachments as $attachment_id ) {
+							$attachment_img = wp_get_attachment_image( $attachment_id, 'thumbnail' );
+							if(!$attachment_img){ 
+								$attachment_info = get_post($attachment_id);
+								$attachment_info = explode("/", $attachment_info->guid);
+								$attachment_img = "<img src='".get_bloginfo("wpurl")."/wp-includes/images/crystal/default.png' title='".$attachment_info[sizeof($attachment_info) - 1]."'>";
+							}
 							echo '<li class="image" data-attachment_id="' . esc_attr( $attachment_id ) . '">
-								' . wp_get_attachment_image( $attachment_id, 'thumbnail' ) . '
+								' . $attachment_img . '
 								<ul class="actions">
 									<li><a href="#" class="delete dashicons dashicons-no" title="' . __( 'Delete image', 'bepro-listings' ) . '">' . __( 'Delete', 'bepro-listings' ) . '</a></li>
 								</ul>
@@ -47,7 +53,7 @@ class BL_Meta_Box_Listing_Images {
 
 		</div>
 		<p class="add_listing_images hide-if-no-js">
-			<a href="#" data-choose="<?php _e( 'Add Images to Listing Gallery', 'bepro-listings' ); ?>" data-update="<?php _e( 'Add to gallery', 'bepro-listings' ); ?>" data-delete="<?php _e( 'Delete image', 'bepro-listings' ); ?>" data-text="<?php _e( 'Delete', 'bepro-listings' ); ?>"><?php _e( 'Add Listing gallery images', 'bepro-listings' ); ?></a>
+			<a href="#" data-choose="<?php _e( 'Add Media to Listing Gallery', 'bepro-listings' ); ?>" data-update="<?php _e( 'Add to gallery', 'bepro-listings' ); ?>" data-delete="<?php _e( 'Delete image', 'bepro-listings' ); ?>" data-text="<?php _e( 'Delete', 'bepro-listings' ); ?>"><?php _e( 'Add Listing gallery media', 'bepro-listings' ); ?></a>
 		</p>
 		<?php
 	}

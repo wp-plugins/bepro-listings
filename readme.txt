@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@
 Tags: buddypress, car, catalog, catalogue, classifieds, directory, directory builder, front end, frontend form, frontend upload, frontend submission, google map, inventory, list product, listing, listings, listing search, pets, product catalog, product listings, product gallery, product management, wordpress classifieds, wordpress product catalog, wordpress directory, yellow pages
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.2.0008
+Stable tag: 2.2.0011
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -244,6 +244,22 @@ BePro Listings is part of the BePro Software Suite of products. Maintained by th
 Easily setup within a minute, this highly configurable listings solution will allow you to capture and search various types of information. Combine addons to extend base features and create the user experience your website needs. From notifications to payments, each feature is easily turned off or packaged in a separate plugin. This architechture makes BePro Listings lite and applicable to various uses. 
 
 == Changelog ==
+
+= 2.2.0011 (Nov 24th, 2015) =
+
+* Fix rating request
+
+= 2.2.0010 (Nov 16th, 2015) =
+
+* Change how website urls work on listing templates
+* New action hook for addons to recreate listing templates
+* Admin gallery manager now handles files other than images
+
+= 2.2.0009 (Oct 29th, 2015) =
+
+* On listing submission, if a user is created, set user as current user
+* Using a better wordpress action hook for forms being redirected after submission
+* New ability to change the distance measurement for geographic searches from miles to kilometers
 
 = 2.2.0008 (Oct 22nd, 2015) =
 

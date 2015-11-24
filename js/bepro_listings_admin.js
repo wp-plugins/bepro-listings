@@ -39,19 +39,33 @@ jQuery( function( $ ){
 
 			selection.map( function( attachment ) {
 				attachment = attachment.toJSON();
-
+				append_this = true;
 				if ( attachment.id ) {
 				attachment_ids = attachment_ids ? attachment_ids + "," + attachment.id : attachment.id;
-
-				$listing_images.append('\
-					<li class="image" data-attachment_id="' + attachment.id + '">\
-						<img src="' + attachment.url + '" />\
-						<ul class="actions">\
-							<li><a href="#" class="delete dashicons dashicons-no" title="' + $el.data('delete') + '">' + $el.data('text') + '</a></li>\
-						</ul>\
-					</li>');
+				rau = attachment.url;
+				
+				//show image if image or default jpg if some other type of file
+				if((rau.indexOf(".jpg") >= 0) || (rau.indexOf(".jpeg") >= 0) || (rau.indexOf(".png") >= 0)){
+					attachment_url = rau;
+				}else{
+					website_url = attachment.url.split("/wp-content");
+					attachment_url = website_url[0] + "/wp-includes/images/crystal/default.png";
 				}
-
+				
+				//dont attach images of files that already exist
+				jQuery(".listing_images li").each(function(e){
+					if(jQuery(this).attr("data-attachment_id") == attachment.id) append_this = false;
+				});
+				
+				if(append_this)
+					$listing_images.append('\
+						<li class="image" data-attachment_id="' + attachment.id + '">\
+							<img src="' + attachment_url + '" title="' + attachment.filename + '"/>\
+							<ul class="actions">\
+								<li><a href="#" class="delete dashicons dashicons-no" title="' + $el.data('delete') + '">' + $el.data('text') + '</a></li>\
+							</ul>\
+						</li>');
+					}
 			});
 
 			$image_gallery_ids.val( attachment_ids );
